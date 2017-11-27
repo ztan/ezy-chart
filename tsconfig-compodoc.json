@@ -1,14 +1,15 @@
 {
-  "extends": "./tsconfig.json",
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules",
-    "demo",
-    "test",
-    "karma.conf.ts",
-    "webpack.config.ts",
-    "webpack.config.umd.ts"
-  ]
+	"extends": "./tsconfig.json",
+	"include": [
+		"src"
+	],
+	"exclude": [
+		"node_modules",
+		"demo",
+		"src/test.entry.ts",
+		"src/**/*.spec.ts",
+		"karma.conf.ts",
+		"webpack.config.ts",
+		"webpack.config.umd.ts"
+	]
 }

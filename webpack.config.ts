@@ -23,12 +23,10 @@ export default (environment = 'development') => {
 					exclude: /node_modules/,
 					enforce: 'pre'
 				}),
-				ifDevelopment(
-					{
-						test: /\.html$/,
-						use: ['html-loader']
-					}
-				),
+				{
+					test: /\.html$/,
+					use: ['html-loader']
+				},
 				ifDevelopment(
 					{
 						test: /\.ts$/,
