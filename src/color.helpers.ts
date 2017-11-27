@@ -1,5 +1,8 @@
 import * as _ from 'lodash';
 
+/**
+ * @internal
+ */
 const DEFAULT_COLORS = [
 	[255, 99, 132],
 	[54, 162, 235],
@@ -33,6 +36,9 @@ const DEFAULT_COLORS = [
 	[128, 128, 128]
 ];
 
+/**
+ * @internal
+ */
 export interface ColorGroup {
 	backgroundColor?: Chart.ChartColor;
 	borderColor?: Chart.ChartColor;
@@ -43,6 +49,9 @@ export interface ColorGroup {
 	pointHoverBorderColor?: Chart.ChartColor;
 }
 
+/**
+ * @internal
+ */
 function generateColors(definedColors: string[], totalNum: number): number[][] {
 	let defaultIdx = 0;
 	const colors: number[][] = [];
@@ -59,6 +68,9 @@ function generateColors(definedColors: string[], totalNum: number): number[][] {
 	return colors;
 }
 
+/**
+ * @internal
+ */
 function parseColor(input: string): number[] | undefined {
 	if (!input) {
 		return undefined;
@@ -86,18 +98,30 @@ function parseColor(input: string): number[] | undefined {
 	}
 }
 
+/**
+ * @internal
+ */
 function rgba(colour: number[], alpha: number): string {
 	return 'rgba(' + colour.concat(alpha).join(',') + ')';
 }
 
+/**
+ * @internal
+ */
 function getRandomInt(min: number, max: number): number {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+/**
+ * @internal
+ */
 function getRandomColor() {
 	return [getRandomInt(0, 255), getRandomInt(0, 255), getRandomInt(0, 255)];
 }
 
+/**
+ * @internal
+ */
 function formatChartColorsForSeries(colors: number[][], type: string): ColorGroup[] {
 	return colors.map(color => ({
 		backgroundColor: rgba(color, 0.6),
@@ -109,10 +133,16 @@ function formatChartColorsForSeries(colors: number[][], type: string): ColorGrou
 	}));
 }
 
+/**
+ * @internal
+ */
 export function generateColorsBySeries(definedColors: string[], totalNum: number, type: string): ColorGroup[] {
 	return formatChartColorsForSeries(generateColors(definedColors || [], totalNum), type);
 }
 
+/**
+ * @internal
+ */
 function formatChartColorsForData(colors: number[][], type: string): ColorGroup {
 	return {
 		backgroundColor: colors.map(color => rgba(color, 0.6)),
@@ -124,6 +154,9 @@ function formatChartColorsForData(colors: number[][], type: string): ColorGroup 
 	};
 }
 
+/**
+ * @internal
+ */
 export function generateColorsByDataPoints(definedColors: string[], totalNum: number, type: string): ColorGroup {
 	return formatChartColorsForData(generateColors(definedColors || [], totalNum), type);
 }
