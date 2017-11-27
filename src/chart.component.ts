@@ -158,11 +158,9 @@ export class ChartComponent implements OnDestroy, DoCheck {
 	private _chartContainer: ElementRef;
 
 	constructor(private _zone: NgZone) {
-		this._wndEvSubs = fromEvent(window, 'resize')
-			.pipe(debounceTime(100))
-			.subscribe(() => {
-				this._resized = true;
-			});
+		this._wndEvSubs = fromEvent(window, 'resize').subscribe(() => {
+			this._resized = true;
+		});
 	}
 
 	/**
@@ -283,7 +281,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 			clearTimeout(this._debounceTimer as any);
 		}
 		this._zone.runOutsideAngular(() => {
-			this._debounceTimer = setTimeout(() => this._checkUpdate(), 100);
+			this._debounceTimer = setTimeout(() => this._checkUpdate(), 50);
 		});
 	}
 
