@@ -49,8 +49,10 @@ export class DemoComponent {
 	}
 
 	scaleChanged() {
+		let dataPoints: number = 0;
 		this.datasets.forEach(ds => {
 			const data = (ds.data as Array<number | Chart.ChartPoint>) || [];
+			dataPoints = Math.max(dataPoints, data.length);
 			data.forEach((d, i) => {
 				if (_.isNumber(d) && this.timeScale) {
 					data[i] = { y: d, x: moment().add(-i, 'year') as any };
@@ -59,6 +61,13 @@ export class DemoComponent {
 				}
 			});
 		});
+		this.labels = [];
+
+		if (!this.timeScale) {
+			for (let i = 0; i < dataPoints; i++) {
+				this.labels.push(`sample ${this.labels.length + 1}`);
+			}
+		}
 	}
 
 	private _getRandomDataItem(dsIndex: number): number | Chart.ChartPoint {
