@@ -37,7 +37,7 @@ import { ChartsModule } from 'ezy-chart';
 
 @NgModule({
   imports: [
-    ChartsModule.forRoot()
+    ChartsModule
   ]
 })
 export class MyModule {}
@@ -48,9 +48,11 @@ Finally use in one of your apps components:
 import { Component } from '@angular/core';
 
 @Component({
-  template: '<hello-world></hello-world>'
+  template: '<ezy-chart type="bar" [datasets]="chartDatasets"></ezy-chart>'
 })
-export class MyComponent {}
+export class MyComponent {
+	chartDatasets: Chart.ChartDataSets[] = [{ data: [12, 19, 3, 5, 2, 3], label: 'series 1' }];
+}
 ```
 
 You may also find it useful to view the [demo source](https://github.com/ztan/ezy-chart/blob/master/demo/demo.component.ts).
@@ -59,7 +61,7 @@ You may also find it useful to view the [demo source](https://github.com/ztan/ez
 ```
 <script src="node_modules/ezy-chart/bundles/ezy-chart.umd.js"></script>
 <script>
-    // everything is exported angularToolsCharts namespace
+    // everything is exported ezyChart namespace
 </script>
 ```
 
