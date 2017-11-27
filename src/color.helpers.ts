@@ -50,9 +50,9 @@ function generateColors(definedColors: string[], totalNum: number): number[][] {
 		definedColors = _.concat(definedColors, new Array<string>(totalNum - definedColors.length));
 	}
 	_.each(definedColors, (val, i) => {
-		let col = DEFAULT_COLORS[defaultIdx++];
+		let col = parseColor(val);
 		if (!col) {
-			col = getRandomColor();
+			col = DEFAULT_COLORS[defaultIdx++] || getRandomColor();
 		}
 		colors.push(col);
 	});
