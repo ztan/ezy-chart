@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.3"></a>
+## [0.0.3](https://github.com/ztan/ezy-chart/compare/v0.0.2...v0.0.3) (2017-11-27)
+
+
+### Bug Fixes
+
+* demo outputs warning messages when changing to timescale ([a6ead79](https://github.com/ztan/ezy-chart/commit/a6ead79))
+* module import issue in Angular 5 ([a8a62f9](https://github.com/ztan/ezy-chart/commit/a8a62f9))
+
+
+### Performance Improvements
+
+* fine tune update interval ([f5ca0e5](https://github.com/ztan/ezy-chart/commit/f5ca0e5))
+
+
+
 <a name="0.0.2"></a>
 ## 0.0.2 (2017-11-27)
 
