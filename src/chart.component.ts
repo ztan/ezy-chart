@@ -27,19 +27,10 @@ import * as moment from 'moment';
  */
 const MULTI_SERIES_BY_DEFAULT = ['line', 'bar', 'horizontalBar'];
 
-/**
- * @internal
- */
 export type ColorsForType = 'auto' | 'series' | 'data' | 'none';
 
-/**
- * @internal
- */
 export type LegendType = Chart.ChartLegendOptions | 'auto' | boolean | Chart.PositionType;
 
-/**
- * @internal
- */
 export type ShowPercentageType = boolean | 'only';
 
 /**
@@ -148,7 +139,7 @@ interface ChartParameters {
 
 @Component({
 	selector: 'ezy-chart',
-	templateUrl: './chart.component.html',
+	template: `<div #chartContainer></div>`,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChartComponent implements OnDestroy, DoCheck {
@@ -383,12 +374,6 @@ export class ChartComponent implements OnDestroy, DoCheck {
 		}
 		const labels = (this._config.data.labels = _.cloneDeep(this._params.labels || []));
 
-		if (ds.length === 0 || (ds[0].data || []).length === 0) {
-			console.warn('ezy-chart: empty datasets. ');
-		} else if ((ds[0].data || []).length > labels.length) {
-			console.warn('ezy-chart: wrong number of labels. ');
-		}
-
 		_.set(this._config.options || {}, 'aspectRatio', this._params.ratio || 2);
 
 		const legend = this._params.legend || 'auto';
@@ -422,20 +407,32 @@ export class ChartComponent implements OnDestroy, DoCheck {
 			}
 		}
 
+		let timeScaleConfigured: boolean = false;
+
 		if (this._params.type === 'line') {
 			const isTimeScale = ds.every(d =>
 				((d.data as Chart.ChartPoint[]) || []).every(item => (item.x ? moment(item.x).isValid() : false))
 			);
 			if (isTimeScale) {
 				this._config.options.scales = this._config.options.scales || {};
-				const minTime = _.min(_.flatMap(ds, d => d.data as Chart.ChartPoint[]).map(p => moment(p.x))) as moment.Moment;
+				const minTime = _.min(_.flatMap(ds, d => d.data as Chart.ChartPoint[]).map(p => moment(p.x)));
 				ds.every(d =>
 					((d.data as Chart.ChartPoint[]) || []).every(item => (item.x ? moment(item.x).isValid() : false))
 				);
 				this._config.options.scales.xAxes = [
-					{ type: 'time', time: { tooltipFormat: this._params.timeFormat || 'L', min: minTime.format('L') } }
+					{
+						type: 'time',
+						time: { tooltipFormat: this._params.timeFormat || 'L', min: minTime ? minTime.toISOString() : undefined }
+					}
 				];
+				timeScaleConfigured = true;
 			}
+		}
+
+		if (ds.length === 0 || (ds[0].data || []).length === 0) {
+			console.warn('ezy-chart: empty datasets. ');
+		} else if ((ds[0].data || []).length > labels.length && !timeScaleConfigured) {
+			console.warn('ezy-chart: wrong number of labels. ');
 		}
 
 		if (_.isEmpty(this._config.options.scales)) {

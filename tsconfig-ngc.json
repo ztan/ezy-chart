@@ -9,7 +9,7 @@
 		"inlineSources": true,
 		"types": [],
 		"importHelpers": true,
-		"emitDecoratorMetadata": false
+		"emitDecoratorMetadata": true
 	},
 	"files": [
 		"src/index.ts"
@@ -21,8 +21,8 @@
 	],
 	"angularCompilerOptions": {
 		"strictMetadataEmit": true,
-		"genDir": "./dist/",
 		"skipTemplateCodegen": true,
-		"trace": true
+		"trace": true,
+		"annotationsAs": "decorators"
 	}
 }
