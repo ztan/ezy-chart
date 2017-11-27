@@ -22,12 +22,29 @@ import * as Chart from 'chart.js';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 
+/**
+ * @internal
+ */
 const MULTI_SERIES_BY_DEFAULT = ['line', 'bar', 'horizontalBar'];
 
+/**
+ * @internal
+ */
 export type ColorsForType = 'auto' | 'series' | 'data' | 'none';
+
+/**
+ * @internal
+ */
 export type LegendType = Chart.ChartLegendOptions | 'auto' | boolean | Chart.PositionType;
+
+/**
+ * @internal
+ */
 export type ShowPercentageType = boolean | 'only';
 
+/**
+ * @internal
+ */
 export function getTooltipLabelCallBack(
 	currency?: string,
 	percentage?: ShowPercentageType
@@ -58,6 +75,9 @@ export function getTooltipLabelCallBack(
 	};
 }
 
+/**
+ * @internal
+ */
 export function getTooltipTitleCallBack(horizontal?: boolean): Chart.ChartTooltipCallback['title'] {
 	return (tooltipItems, data) => {
 		// Pick first xLabel for now
@@ -79,6 +99,9 @@ export function getTooltipTitleCallBack(horizontal?: boolean): Chart.ChartToolti
 	};
 }
 
+/**
+ * @internal
+ */
 export function formatScale(val: any, currency: string) {
 	let n = Number(val);
 	if (n === 0) {
@@ -96,6 +119,9 @@ export function formatScale(val: any, currency: string) {
 	return (formatMoney(n, currency) || '').replace(/\.0+?$/, '') + base;
 }
 
+/**
+ * @internal
+ */
 export function formatMoney(val: any, currency: string) {
 	if (val && currency) {
 		const pipe = new CurrencyPipe(moment.locale());
@@ -103,6 +129,9 @@ export function formatMoney(val: any, currency: string) {
 	}
 }
 
+/**
+ * @internal
+ */
 interface ChartParameters {
 	type?: string;
 	labels?: string[];
