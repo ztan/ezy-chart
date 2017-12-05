@@ -357,7 +357,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 	}
 
 	private _applyConfig() {
-		const multiType: boolean = MULTI_SERIES_BY_DEFAULT.indexOf(this._params.type || '') >= 0;
+		const multiType: boolean = MULTI_SERIES_BY_DEFAULT.indexOf(this._params.type || 'bar') >= 0;
 
 		this._config.type = this._params.type || 'bar';
 		this._config.options = this._config.options || {};
@@ -456,7 +456,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 
 	private _applyColors(colors: string[], colorsFor: ColorsForType, datasets: Chart.ChartDataSets[]) {
 		if (colorsFor === 'auto') {
-			if (MULTI_SERIES_BY_DEFAULT.indexOf(this._params.type || '') >= 0) {
+			if (MULTI_SERIES_BY_DEFAULT.indexOf(this._params.type || 'bar') >= 0) {
 				colorsFor = 'series';
 			} else {
 				colorsFor = 'data';
