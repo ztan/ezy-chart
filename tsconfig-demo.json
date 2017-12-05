@@ -4,8 +4,14 @@
 		"module": "es2015",
 		"outDir": "./dist",
 		"baseUrl": "",
-		"emitDecoratorMetadata": false
+		"emitDecoratorMetadata": false,
+		"strict": true
 	},
+	"exclude": [
+		"src/test.entry.ts",
+		"src/**/*.spec.ts",
+		"node_modules"
+	],
 	"angularCompilerOptions": {
 		"strictMetadataEmit": true,
 		"skipMetadataEmit": true,

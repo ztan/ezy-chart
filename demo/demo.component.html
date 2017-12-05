@@ -1,11 +1,12 @@
 <div class="row">
 	<div class="col-lg-6">
-		<ezy-chart [datasets]="datasets" [labels]="labels" [type]="type" [colorsFor]="colorsFor"></ezy-chart>
+		<ezy-chart [datasets]="datasets" [labels]="labels" [type]="type" [colorsFor]="colorsFor" [currency]="currencyMode ? 'USD' : undefined"
+		 [percentage]="showPercentage"></ezy-chart>
 
-		<div class="row">
+		<div class="row align-items-center">
 			<div class="form-group col-lg-6">
 				<label class="col-form-label" for="chartType">Chart type</label>
-				<select [(ngModel)]="type" class="form-control" id="chartType" (change)="colorsFor = 'auto'; timeScale = false; scaleChanged();">
+				<select [(ngModel)]="type" class="form-control" id="chartType" (change)="chartTypeChanged()">
 					<option [value]="'bar'">Bar</option>
 					<option [value]="'horizontalBar'">Horizontal Bar</option>
 					<option [value]="'line'">Line</option>
@@ -40,12 +41,38 @@
 				</div>
 			</div>
 
-			<div class="form-check col-lg-6">
+			<div class="form-check col-lg-3">
 				<label class="form-check-label d-flex align-items-center">
 					<input class="form-check-input mt-0" type="checkbox" [(ngModel)]="timeScale" (change)="scaleChanged()" [disabled]="type !== 'line'"
 					/>
 					<span>Time scale</span>
 				</label>
+			</div>
+			<div class="form-check col-lg-3">
+				<label class="form-check-label d-flex align-items-center">
+					<input class="form-check-input mt-0" type="checkbox" [(ngModel)]="currencyMode" />
+					<span>Currency mode</span>
+				</label>
+			</div>
+			<div class="form-check col-lg-6">
+				<label class="col-form-label">Show percentage</label>
+				<div>
+					<div class="form-check form-check-inline">
+						<label class="form-check-label">
+							<input class="form-control" type="radio" name="showPercentage" [value]="false" [(ngModel)]="showPercentage" /> False
+						</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<label class="form-check-label">
+							<input class="form-control" type="radio" name="showPercentage" [value]="true" [(ngModel)]="showPercentage" /> True
+						</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<label class="form-check-label">
+							<input class="form-control" type="radio" name="showPercentage" value="only" [(ngModel)]="showPercentage" /> Only
+						</label>
+					</div>
+				</div>
 			</div>
 		</div>
 		<button (click)="addData()" class="btn btn-default mb-1">Add data point</button>
@@ -62,5 +89,12 @@
 			<label class="col-form-label">Labels</label>
 			<pre class="form-control pre-scrollable"><code>{{labels | json}}</code></pre>
 		</div>
+	</div>
+	<div class="col">
+		<div class="form-group">
+			<label class="col-form-label">Template code</label>
+			<pre class="form-control pre-scrollable"><code>{{sampleTemplate}}</code></pre>
+		</div>
+
 	</div>
 </div>

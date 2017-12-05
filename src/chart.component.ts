@@ -307,9 +307,12 @@ export class ChartComponent implements OnDestroy, DoCheck {
 		configChanged = configChanged || this._params.colorsFor !== this._prevParams.colorsFor;
 
 		configChanged = configChanged || !_.isEqual(this._params.colors, this._prevParams.colors);
+		configChanged = configChanged || !_.isEqual(this._params.percentage, this._prevParams.percentage);
+		configChanged = configChanged || !_.isEqual(this._params.currency, this._prevParams.currency);
+		configChanged = configChanged || !_.isEqual(this._params.timeFormat, this._prevParams.timeFormat);
 
 		if (dataOrParamsChanged || configChanged || this._resized) {
-			this._refresh(configChanged || this._resized);
+			this._refresh(configChanged || (this._resized && (this._params.legend || 'auto') === 'auto'));
 		}
 		this._resized = false;
 	}
@@ -348,7 +351,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 			this._chart = new Chart(canvas, cfg);
 			const width = this._chart.chartArea.right - this._chart.chartArea.left;
 			const height = this._chart.chartArea.bottom - this._chart.chartArea.top;
-			if ((width < 100 || height < 100) && retryIfTooSmall) {
+			if ((width < 120 || height < 120) && retryIfTooSmall) {
 				this._chart.destroy();
 				((cfg.options || {}).legend || {}).display = false;
 				this._createNewChart(cfg, false);
@@ -357,7 +360,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 	}
 
 	private _applyConfig() {
-		const multiType: boolean = MULTI_SERIES_BY_DEFAULT.indexOf(this._params.type || '') >= 0;
+		const multiType: boolean = MULTI_SERIES_BY_DEFAULT.indexOf(this._params.type || 'bar') >= 0;
 
 		this._config.type = this._params.type || 'bar';
 		this._config.options = this._config.options || {};
@@ -456,7 +459,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 
 	private _applyColors(colors: string[], colorsFor: ColorsForType, datasets: Chart.ChartDataSets[]) {
 		if (colorsFor === 'auto') {
-			if (MULTI_SERIES_BY_DEFAULT.indexOf(this._params.type || '') >= 0) {
+			if (MULTI_SERIES_BY_DEFAULT.indexOf(this._params.type || 'bar') >= 0) {
 				colorsFor = 'series';
 			} else {
 				colorsFor = 'data';

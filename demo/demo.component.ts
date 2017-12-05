@@ -12,6 +12,8 @@ export class DemoComponent {
 	type: string = 'bar';
 	colorsFor: string = 'auto';
 	timeScale: boolean = false;
+	currencyMode: boolean = false;
+	showPercentage: string | boolean = false;
 
 	addData() {
 		this.labels.push(`sample ${this.labels.length + 1}`);
@@ -28,7 +30,11 @@ export class DemoComponent {
 				data[i] = this._getRandomDataItem(i);
 			}
 
-			this.datasets.push({ data, label: `series ${this.datasets.length + 1}` });
+			const ds: Chart.ChartDataSets = { data, label: `series ${this.datasets.length + 1}` };
+			if (this.type === 'line') {
+				this._configLineSpecificProperties(ds);
+			}
+			this.datasets.push(ds);
 		}
 	}
 
@@ -45,6 +51,17 @@ export class DemoComponent {
 	removeSeries() {
 		if (this.datasets.length > 1) {
 			this.datasets.pop();
+		}
+	}
+
+	chartTypeChanged() {
+		this.colorsFor = 'auto';
+		this.timeScale = false;
+		this.scaleChanged();
+		if (this.type === 'line') {
+			this.datasets.forEach(ds => this._configLineSpecificProperties(ds));
+		} else {
+			this.datasets = this.datasets.map(ds => _.pick(ds, 'data', 'label'));
 		}
 	}
 
@@ -68,6 +85,33 @@ export class DemoComponent {
 				this.labels.push(`sample ${this.labels.length + 1}`);
 			}
 		}
+	}
+
+	get sampleTemplate(): string {
+		let templ = `<ezy-chart type="${this.type}" [datasets]="datasets"`;
+		if (this.labels && this.labels.length) {
+			templ += ' [labels]="labels"';
+		}
+		if (this.colorsFor !== 'auto') {
+			templ += ` colorsFor="${this.colorsFor}"`;
+		}
+		if (this.currencyMode) {
+			templ += ' currency="USD"';
+		}
+		if (this.showPercentage === 'only') {
+			templ += ' percentage="only"';
+		} else if (this.showPercentage) {
+			templ += ' [percentage]="true"';
+		}
+		templ += '></ezy-chart>';
+		return templ;
+	}
+
+	private _configLineSpecificProperties(ds: Chart.ChartDataSets) {
+		ds.fill = false;
+		ds.pointRadius = 8;
+		ds.pointHoverRadius = 10;
+		ds.lineTension = 0.1;
 	}
 
 	private _getRandomDataItem(dsIndex: number): number | Chart.ChartPoint {
