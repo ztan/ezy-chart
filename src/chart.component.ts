@@ -309,7 +309,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 		configChanged = configChanged || !_.isEqual(this._params.colors, this._prevParams.colors);
 
 		if (dataOrParamsChanged || configChanged || this._resized) {
-			this._refresh(configChanged || this._resized);
+			this._refresh(configChanged || (this._resized && (this._params.legend || 'auto') === 'auto'));
 		}
 		this._resized = false;
 	}
