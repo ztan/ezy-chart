@@ -351,7 +351,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 			this._chart = new Chart(canvas, cfg);
 			const width = this._chart.chartArea.right - this._chart.chartArea.left;
 			const height = this._chart.chartArea.bottom - this._chart.chartArea.top;
-			if ((width < 100 || height < 100) && retryIfTooSmall) {
+			if ((width < 120 || height < 120) && retryIfTooSmall) {
 				this._chart.destroy();
 				((cfg.options || {}).legend || {}).display = false;
 				this._createNewChart(cfg, false);
