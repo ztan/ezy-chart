@@ -10,12 +10,10 @@
 			"es2015",
 			"dom"
 		],
-		"strict": true,
+		"strict": false,
 		"skipLibCheck": true
 	},
 	"exclude": [
-		"src/test.entry.ts",
-		"src/**/*.spec.ts",
 		"node_modules"
 	]
 }

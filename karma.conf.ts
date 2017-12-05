@@ -64,15 +64,15 @@ export default (config: any) => {
 					columns: false,
 					test: /\.(ts|js)($|\?)/i
 				}),
-				new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)@angular/, path.join(__dirname, 'src')),
+				new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)/, path.join(__dirname, 'src')),
 				...(config.singleRun
 					? [new WebpackKarmaDieHardPlugin(), new webpack.NoEmitOnErrorsPlugin()]
 					: [
-							new ForkTsCheckerWebpackPlugin({
-								watch: ['./src'],
-								formatter: 'codeframe'
-							})
-						])
+						new ForkTsCheckerWebpackPlugin({
+							watch: ['./src'],
+							formatter: 'codeframe'
+						})
+					])
 			]
 		},
 
