@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.4"></a>
+## [0.0.4](https://github.com/ztan/ezy-chart/compare/v0.0.3...v0.0.4) (2017-12-05)
+
+
+### Bug Fixes
+
+* detect binding input changes ([33daa46](https://github.com/ztan/ezy-chart/commit/33daa46))
+* incorrect default chart type ([77edf2f](https://github.com/ztan/ezy-chart/commit/77edf2f))
+
+
+### Features
+
+* change cursor type on hovering legend boxes ([13a2fc5](https://github.com/ztan/ezy-chart/commit/13a2fc5))
+* increase min chart size (for auto display legend) to 120x120 ([7c88f18](https://github.com/ztan/ezy-chart/commit/7c88f18))
+* only recreate on resize if legend is automatic ([a1278fd](https://github.com/ztan/ezy-chart/commit/a1278fd))
+
+
+
 <a name="0.0.3"></a>
 ## [0.0.3](https://github.com/ztan/ezy-chart/compare/v0.0.2...v0.0.3) (2017-11-27)
 
