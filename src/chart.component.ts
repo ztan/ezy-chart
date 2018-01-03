@@ -454,7 +454,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 	}
 
 	private _isYAxisAllNumbers(data: Array<Chart.ChartPoint | number>): boolean {
-		return data.every(d => _.isNumber(d) || _.isNumber(d.y));
+		return data.every(d => !d || _.isNumber(d) || _.isNumber(d.y));
 	}
 
 	private _applyColors(colors: string[], colorsFor: ColorsForType, datasets: Chart.ChartDataSets[]) {

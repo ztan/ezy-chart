@@ -336,4 +336,22 @@ describe('ezy-chart component', () => {
 		const h2 = comp['_chart'].chartArea.bottom - comp['_chart'].chartArea.top;
 		expect(w2 / h2).closeTo(4, 1);
 	});
+
+	it('should deal with null values gracefully', async () => {
+		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
+		const comp = fixture.componentInstance;
+		comp.percentage = true;
+		comp.currency = 'USD';
+		comp.datasets = [{ data: [0, undefined, 10, 2] }];
+		comp.labels = ['a', 'b', undefined, 'c'];
+		fixture.detectChanges();
+		await changeDetectionDelay();
+		await fixture.whenStable();
+
+		expect(comp['_chart'].data.datasets)
+			.to.be.an('array')
+			.of.length(1, '1 dataset only');
+		expect(comp['_chart'].data.datasets[0].data).to.deep.equal([0, , 10, 2]);
+		expect(comp['_chart'].data.labels).to.deep.equal(['a', 'b', , 'c']);
+	});
 });
