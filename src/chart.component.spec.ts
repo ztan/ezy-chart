@@ -354,4 +354,25 @@ describe('ezy-chart component', () => {
 		expect(comp['_chart'].data.datasets[0].data).to.deep.equal([0, , 10, 2]);
 		expect(comp['_chart'].data.labels).to.deep.equal(['a', 'b', , 'c']);
 	});
+
+	it('should render numbers with correct digit info', async () => {
+		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
+		const comp = fixture.componentInstance;
+
+		const ds = [{ data: [2020.2343, 10000, 50.3235] }];
+		comp.datasets = ds;
+		comp.labels = ['a', 'b', 'c'];
+		comp.digits = '0.3-3';
+		fixture.detectChanges();
+		await changeDetectionDelay();
+		await fixture.whenStable();
+		const tooltipItem: Chart.ChartTooltipItem = {
+			index: 0,
+			datasetIndex: 0,
+			xLabel: 'a',
+			yLabel: '2000'
+		};
+		const label = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds });
+		expect(label).to.equal('2,020.234');
+	});
 });

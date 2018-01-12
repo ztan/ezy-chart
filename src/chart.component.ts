@@ -17,7 +17,7 @@ import { Observable } from 'rxjs/Observable';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
 import { debounceTime } from 'rxjs/operators';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import * as Chart from 'chart.js';
 import * as _ from 'lodash';
 import * as moment from 'moment';
@@ -38,7 +38,8 @@ export type ShowPercentageType = boolean | 'only';
  */
 export function getTooltipLabelCallBack(
 	currency?: string,
-	percentage?: ShowPercentageType
+	percentage?: ShowPercentageType,
+	digitInfo?: string
 ): Chart.ChartTooltipCallback['label'] {
 	return (tooltipItem, data) => {
 		const ds = data.datasets || [];
@@ -52,7 +53,9 @@ export function getTooltipLabelCallBack(
 		}
 		if (percentage !== 'only') {
 			if (currency) {
-				label += formatMoney(value, currency);
+				label += formatMoney(value, currency, digitInfo);
+			} else if (digitInfo && _.isNumber(value)) {
+				label += new DecimalPipe(moment.locale()).transform(value, digitInfo);
 			} else {
 				label += tooltipItem.yLabel || value;
 			}
@@ -107,16 +110,16 @@ export function formatScale(val: any, currency: string) {
 		n = n / 1000;
 		base = 'M';
 	}
-	return (formatMoney(n, currency) || '').replace(/\.0+?$/, '') + base;
+	return (formatMoney(n, currency, undefined) || '').replace(/\.0+?$/, '') + base;
 }
 
 /**
  * @internal
  */
-export function formatMoney(val: any, currency: string) {
+export function formatMoney(val: any, currency: string, digitInfo?: string) {
 	if (val && currency) {
 		const pipe = new CurrencyPipe(moment.locale());
-		return pipe.transform(val, currency, 'symbol-narrow');
+		return pipe.transform(val, currency, 'symbol-narrow', digitInfo);
 	}
 }
 
@@ -135,6 +138,7 @@ interface ChartParameters {
 	currency?: string;
 	timeFormat?: string;
 	percentage?: ShowPercentageType;
+	digits?: string;
 }
 
 @Component({
@@ -250,6 +254,15 @@ export class ChartComponent implements OnDestroy, DoCheck {
 	}
 
 	/**
+	 * The digit info of the output template, used to format numbers in scales. Please refer to https://angular.io/api/common/DecimalPipe for its usage.
+	 * @property
+	 */
+	@Input()
+	set digits(d: string) {
+		this._params.digits = d;
+	}
+
+	/**
 	 * Corresponds to Chart.ChartConfiguration.options. This overrides any other settings.
 	 * @property
 	 */
@@ -326,7 +339,11 @@ export class ChartComponent implements OnDestroy, DoCheck {
 				this._chart.destroy();
 			}
 			const cfg = _.cloneDeep(this._prevConfig);
-			this._applyColors(this._params.colors || [], this._params.colorsFor || 'auto', (cfg.data || {}).datasets || []);
+			this._applyColors(
+				this._params.colors || [],
+				this._params.colorsFor || 'auto',
+				(cfg.data || {}).datasets || []
+			);
 			this._createNewChart(cfg);
 		} else {
 			this._chart.config.data = _.cloneDeep(this._config.data || {});
@@ -423,7 +440,10 @@ export class ChartComponent implements OnDestroy, DoCheck {
 				this._config.options.scales.xAxes = [
 					{
 						type: 'time',
-						time: { tooltipFormat: this._params.timeFormat || 'L', min: minTime ? minTime.toISOString() : undefined }
+						time: {
+							tooltipFormat: this._params.timeFormat || 'L',
+							min: minTime ? minTime.toISOString() : undefined
+						}
 					}
 				];
 				timeScaleConfigured = true;
@@ -444,7 +464,8 @@ export class ChartComponent implements OnDestroy, DoCheck {
 		this._config.options.tooltips.callbacks = this._config.options.tooltips.callbacks || {};
 		this._config.options.tooltips.callbacks.label = getTooltipLabelCallBack(
 			this._params.currency,
-			this._params.percentage || false
+			this._params.percentage || false,
+			this._params.digits
 		);
 		this._config.options.tooltips.callbacks.title = getTooltipTitleCallBack(this._params.type === 'horizontalBar');
 
@@ -471,7 +492,11 @@ export class ChartComponent implements OnDestroy, DoCheck {
 			_.merge(datasets, colorGroups);
 		} else if (colorsFor === 'data') {
 			for (const ds of datasets) {
-				const colorGroup = generateColorsByDataPoints(colors, (ds.data || []).length, this._params.type || 'bar');
+				const colorGroup = generateColorsByDataPoints(
+					colors,
+					(ds.data || []).length,
+					this._params.type || 'bar'
+				);
 				_.merge(ds, colorGroup);
 			}
 		}
