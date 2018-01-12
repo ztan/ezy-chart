@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.5"></a>
+## [0.0.5](https://github.com/ztan/ezy-chart/compare/v0.0.4...v0.0.5) (2018-01-12)
+
+
+### Bug Fixes
+
+* a null pointer when null values are provided a long with a currency code ([144122c](https://github.com/ztan/ezy-chart/commit/144122c))
+
+
+### Features
+
+* add support for digit info ([2d7cd01](https://github.com/ztan/ezy-chart/commit/2d7cd01))
+* upgrade libraries ([5c519cc](https://github.com/ztan/ezy-chart/commit/5c519cc))
+
+
+
 <a name="0.0.4"></a>
 ## [0.0.4](https://github.com/ztan/ezy-chart/compare/v0.0.3...v0.0.4) (2017-12-05)
 
