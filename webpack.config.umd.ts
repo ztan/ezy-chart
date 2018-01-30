@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as webpack from 'webpack';
 import * as angularExternals from 'webpack-angular-externals';
 import * as rxjsExternals from 'webpack-rxjs-externals';
+import { AngularCompilerPlugin } from '@ngtools/webpack';
 
 const pkg = JSON.parse(fs.readFileSync('./package.json').toString());
 
@@ -33,7 +34,7 @@ export default {
 			},
 			{
 				test: /\.ts$/,
-				loader: 'ts-loader',
+				use: ['@ngtools/webpack'],
 				exclude: /node_modules/
 			}
 		]
@@ -42,12 +43,16 @@ export default {
 		extensions: ['.ts', '.js']
 	},
 	plugins: [
+		new AngularCompilerPlugin({
+			tsConfigPath: './tsconfig.json',
+			skipCodeGeneration: true,
+			sourceMap: true
+		}),
 		new webpack.optimize.ModuleConcatenationPlugin(),
 		new webpack.optimize.UglifyJsPlugin({
 			include: /\.min\.js$/,
 			sourceMap: true
 		}),
-		new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)/, path.join(__dirname, 'src')),
 		new webpack.BannerPlugin({
 			banner: `
 /**

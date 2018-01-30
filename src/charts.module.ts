@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChartComponent } from './chart.component';
-import * as Chart from 'chart.js';
+import { Chart } from 'chart.js';
 
 @NgModule({
 	declarations: [ChartComponent],

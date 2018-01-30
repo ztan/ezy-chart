@@ -18,7 +18,7 @@ import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
 import { debounceTime } from 'rxjs/operators';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
-import * as Chart from 'chart.js';
+import { Chart } from 'chart.js';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 

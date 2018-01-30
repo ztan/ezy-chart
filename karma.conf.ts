@@ -2,6 +2,7 @@ import * as webpack from 'webpack';
 import * as path from 'path';
 import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import * as WebpackKarmaDieHardPlugin from '@mattlewis92/webpack-karma-die-hard';
+import { AngularCompilerPlugin } from '@ngtools/webpack';
 
 export default (config: any) => {
 	config.set({
@@ -47,7 +48,7 @@ export default (config: any) => {
 					},
 					{
 						test: /\.ts$/,
-						use: ['ts-loader', 'angular2-template-loader'],
+						use: ['@ngtools/webpack'],
 						exclude: /node_modules/
 					},
 					{
@@ -64,15 +65,14 @@ export default (config: any) => {
 					columns: false,
 					test: /\.(ts|js)($|\?)/i
 				}),
-				new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)/, path.join(__dirname, 'src')),
+				new AngularCompilerPlugin({
+					tsConfigPath: './tsconfig.json',
+					skipCodeGeneration: true,
+					sourceMap: true
+				}),
 				...(config.singleRun
 					? [new WebpackKarmaDieHardPlugin(), new webpack.NoEmitOnErrorsPlugin()]
-					: [
-						new ForkTsCheckerWebpackPlugin({
-							watch: ['./src'],
-							formatter: 'codeframe'
-						})
-					])
+					: [])
 			]
 		},
 
