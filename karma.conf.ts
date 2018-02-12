@@ -39,7 +39,8 @@ export default (config: any) => {
 								loader: 'tslint-loader',
 								options: {
 									emitErrors: config.singleRun,
-									failOnHint: config.singleRun
+									failOnHint: config.singleRun,
+									configFile: './tslint-test.json'
 								}
 							}
 						],

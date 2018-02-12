@@ -205,7 +205,9 @@ describe('ezy-chart component', () => {
 		await fixture.whenStable();
 		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(10000, 0, [1000, 10000])).equals('$10K');
 		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(0, 0, [0, 10000])).equals('0');
-		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(1000000, 0, [1000000, 10000])).equals('$1M');
+		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(1000000, 0, [1000000, 10000])).equals(
+			'$1M'
+		);
 	});
 
 	it('should not change data binding inputs', async () => {
@@ -253,7 +255,9 @@ describe('ezy-chart component', () => {
 	});
 
 	it('should not render a legend when chart size is too small', async () => {
-		const fixture: ComponentFixture<TestSmallContainerComponent> = TestBed.createComponent(TestSmallContainerComponent);
+		const fixture: ComponentFixture<TestSmallContainerComponent> = TestBed.createComponent(
+			TestSmallContainerComponent
+		);
 		fixture.detectChanges();
 		await changeDetectionDelay();
 		await fixture.whenStable();
@@ -374,5 +378,29 @@ describe('ezy-chart component', () => {
 		};
 		const label = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds });
 		expect(label).to.equal('2,020.234');
+
+		const label1 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, {
+			datasets: [{ data: [{}, {}, {}] }]
+		});
+		expect(label1).to.equal('2000');
+
+		comp.percentage = 'only';
+
+		fixture.detectChanges();
+		await changeDetectionDelay();
+		await fixture.whenStable();
+
+		const label2 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds });
+		expect(label2).to.contains('16.74%');
+
+		const label3 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, {
+			datasets: [{ data: [{ y: 3 }, { y: 4 }, { y: 5 }] }]
+		});
+		expect(label3).to.contains('25.00%');
+
+		const label4 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, {
+			datasets: [{ data: [{}, {}, {}] }]
+		});
+		expect(label4).to.contains('0%');
 	});
 });

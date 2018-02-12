@@ -21,17 +21,12 @@ import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { Chart } from 'chart.js';
 import * as _ from 'lodash';
 import * as moment from 'moment';
+import { BaseChart, ShowPercentageType, ColorsForType } from './base.chart';
 
 /**
  * @internal
  */
 const MULTI_SERIES_BY_DEFAULT = ['line', 'bar', 'horizontalBar'];
-
-export type ColorsForType = 'auto' | 'series' | 'data' | 'none';
-
-export type LegendType = Chart.ChartLegendOptions | 'auto' | boolean | Chart.PositionType;
-
-export type ShowPercentageType = boolean | 'only';
 
 /**
  * @internal
@@ -42,7 +37,7 @@ export function getTooltipLabelCallBack(
 	digitInfo?: string
 ): Chart.ChartTooltipCallback['label'] {
 	return (tooltipItem, data) => {
-		const ds = data.datasets || [];
+		const ds = data.datasets;
 		let label = ds.length > 1 ? ds[tooltipItem.datasetIndex || 0].label || '' : '';
 		const dsData: Array<number | Chart.ChartPoint> = ds[tooltipItem.datasetIndex || 0].data || [];
 		const point = dsData[tooltipItem.index || 0];
@@ -123,35 +118,14 @@ export function formatMoney(val: any, currency: string, digitInfo?: string) {
 	}
 }
 
-/**
- * @internal
- */
-interface ChartParameters {
-	type?: string;
-	labels?: string[];
-	datasets?: Chart.ChartDataSets[];
-	colors?: string[];
-	colorsFor?: ColorsForType;
-	ratio?: number;
-	legend?: LegendType;
-	options?: Chart.ChartOptions;
-	currency?: string;
-	timeFormat?: string;
-	percentage?: ShowPercentageType;
-	digits?: string;
-}
-
 @Component({
 	selector: 'ezy-chart',
 	template: `<div #chartContainer></div>`,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChartComponent implements OnDestroy, DoCheck {
+export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 	private _config: Chart.ChartConfiguration = {};
 	private _prevConfig: Chart.ChartConfiguration = {};
-
-	private _params: ChartParameters = {};
-	private _prevParams: ChartParameters = {};
 
 	private _chart: Chart;
 	private _debounceTimer: any;
@@ -162,131 +136,10 @@ export class ChartComponent implements OnDestroy, DoCheck {
 	private _chartContainer: ElementRef;
 
 	constructor(private _zone: NgZone) {
+		super();
 		this._wndEvSubs = fromEvent(window, 'resize').subscribe(() => {
 			this._resized = true;
 		});
-	}
-
-	/**
-	 * An array of strings, corresponding to Chart.ChartConfiguration.data.labels
-	 * @property
-	 */
-	@Input()
-	set labels(l: string[]) {
-		this._params.labels = l;
-	}
-
-	/**
-	 * The chart type, corresponding to Chart.ChartConfiguration.type
-	 * @default 'bar'
-	 * @property
-	 */
-	@Input()
-	set type(t: string) {
-		this._params.type = t;
-	}
-
-	/**
-	 * An array of Chart.ChartDataSets, corresponding to Chart.ChartConfiguration.data.datasets
-	 * @property
-	 */
-	@Input()
-	set datasets(ds: Chart.ChartDataSets[]) {
-		this._params.datasets = ds;
-	}
-
-	/**
-	 * An array of strings in hex, rgb, or rgba format, to define the base colors of datasets, or the data points of each dataset. If this
-	 * property is absent, or the colors defined are less than the number of datasets (or the data points of each dataset), the missing colors will
-	 * be assigned from the defult palette
-	 * @property
-	 */
-	@Input()
-	set colors(c: string[]) {
-		this._params.colors = c;
-	}
-
-	/**
-	 * Specify what the colors (either defined or generated) are for.
-	 *  * 'series' - each color corresponds to a dataset
-	 *  * 'data' - each color corresponds to a data point of each dataset
-	 *  * 'auto' - use 'series' for chart types 'bar', 'horizontalBar' and 'line'; and use 'data' for other chart types
-	 *  * 'none' - turn off the color generator. Use this value if colors are specified via #options
-	 * @default 'auto'
-	 * @property
-	 */
-	@Input()
-	set colorsFor(cf: ColorsForType) {
-		this._params.colorsFor = cf;
-	}
-
-	/**
-	 * The aspect ratio of the chart
-	 * @default 2
-	 * @property
-	 */
-	@Input()
-	set ratio(r: number) {
-		this._params.ratio = r;
-	}
-
-	/**
-	 * Specifiy how to display the legend
-	 *  * if the value is a boolean, it corresponds to Chart.ChartConfiguration.options.legend.display
-	 *  * if the value is 'auto', the legend will be arranged automatically. For example, the legend will be hidden if the chart area is too small
-	 *  * if the value is of type Chart.ChartLegendOptions, it corresponds to Chart.ChartConfiguration.options.legend.position
-	 *  * if the value is of type Chart.ChartLegendOptions, it corresponds to Chart.ChartConfiguration.options.legend
-	 * @default 'auto'
-	 * @property
-	 */
-	@Input()
-	set legend(l: LegendType) {
-		this._params.legend = l;
-	}
-
-	/**
-	 * An ISO 4217 currency code. If specified, it will be used to format the scales of the main axis, as well as the values in the tooltips.
-	 * @property
-	 */
-	@Input()
-	set currency(curr: string) {
-		this._params.currency = curr;
-	}
-
-	/**
-	 * The digit info of the output template, used to format numbers in scales. Please refer to https://angular.io/api/common/DecimalPipe for its usage.
-	 * @property
-	 */
-	@Input()
-	set digits(d: string) {
-		this._params.digits = d;
-	}
-
-	/**
-	 * Corresponds to Chart.ChartConfiguration.options. This overrides any other settings.
-	 * @property
-	 */
-	@Input()
-	set options(opt: Chart.ChartOptions) {
-		this._params.options = opt;
-	}
-
-	/**
-	 * A moment.js format string. When specified, the X axis will be configured with time scales, and this value will be used to format the tooltips.
-	 * @property
-	 */
-	@Input()
-	set timeFormat(tf: string) {
-		this._params.timeFormat = tf;
-	}
-
-	/**
-	 * Specify whether to show the overall percentage values in the popover tooltips.
-	 * @property
-	 */
-	@Input()
-	set percentage(p: ShowPercentageType) {
-		this._params.percentage = p;
 	}
 
 	ngDoCheck(): void {
@@ -307,7 +160,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 
 	private _checkUpdate() {
 		let dataOrParamsChanged: boolean = false;
-		if (!_.isEqual(this._params, this._prevParams) || this._resized) {
+		if (this.paramsChanged || this._resized) {
 			this._applyConfig();
 			dataOrParamsChanged = true;
 		}
@@ -317,41 +170,33 @@ export class ChartComponent implements OnDestroy, DoCheck {
 			!_.isEqual(JSON.stringify(this._config.options), JSON.stringify(this._prevConfig.options)) ||
 			this._config.type !== this._prevConfig.type;
 
-		configChanged = configChanged || this._params.colorsFor !== this._prevParams.colorsFor;
+		configChanged = configChanged || this.isParamChanged('colorsFor');
 
-		configChanged = configChanged || !_.isEqual(this._params.colors, this._prevParams.colors);
-		configChanged = configChanged || !_.isEqual(this._params.percentage, this._prevParams.percentage);
-		configChanged = configChanged || !_.isEqual(this._params.currency, this._prevParams.currency);
-		configChanged = configChanged || !_.isEqual(this._params.timeFormat, this._prevParams.timeFormat);
+		configChanged = configChanged || this.isParamChanged('colors');
+		configChanged = configChanged || this.isParamChanged('percentage');
+		configChanged = configChanged || this.isParamChanged('currency');
+		configChanged = configChanged || this.isParamChanged('timeFormat');
 
 		if (dataOrParamsChanged || configChanged || this._resized) {
-			this._refresh(configChanged || (this._resized && (this._params.legend || 'auto') === 'auto'));
+			this._refresh(configChanged || (this._resized && (this.legend || 'auto') === 'auto'));
 		}
 		this._resized = false;
 	}
 
 	private _refresh(configChanged: boolean) {
 		this._prevConfig = _.cloneDeep(this._config);
-		this._prevParams = _.cloneDeep(this._params);
+		this.resetParamsChangeState();
 
 		if (configChanged || !this._chart) {
 			if (this._chart) {
 				this._chart.destroy();
 			}
 			const cfg = _.cloneDeep(this._prevConfig);
-			this._applyColors(
-				this._params.colors || [],
-				this._params.colorsFor || 'auto',
-				(cfg.data || {}).datasets || []
-			);
+			this._applyColors(this.colors || [], this.colorsFor || 'auto', (cfg.data || {}).datasets || []);
 			this._createNewChart(cfg);
 		} else {
 			this._chart.config.data = _.cloneDeep(this._config.data || {});
-			this._applyColors(
-				this._params.colors || [],
-				this._params.colorsFor || 'auto',
-				this._chart.config.data.datasets || []
-			);
+			this._applyColors(this.colors || [], this.colorsFor || 'auto', this._chart.config.data.datasets || []);
 			this._chart.update();
 		}
 	}
@@ -377,24 +222,24 @@ export class ChartComponent implements OnDestroy, DoCheck {
 	}
 
 	private _applyConfig() {
-		const multiType: boolean = MULTI_SERIES_BY_DEFAULT.indexOf(this._params.type || 'bar') >= 0;
+		const multiType: boolean = MULTI_SERIES_BY_DEFAULT.indexOf(this.type || 'bar') >= 0;
 
-		this._config.type = this._params.type || 'bar';
+		this._config.type = this.type || 'bar';
 		this._config.options = this._config.options || {};
 		this._config.options.legend = this._config.options.legend || {};
 		this._config.data = this._config.data || {};
-		const ds = (this._config.data.datasets = _.cloneDeep(this._params.datasets || []));
+		const ds = (this._config.data.datasets = _.cloneDeep(this.datasets || []));
 
 		if (!(this._config.data.datasets || []).some(d => (d.label ? true : false))) {
 			if (multiType) {
 				this._config.options.legend.display = false;
 			}
 		}
-		const labels = (this._config.data.labels = _.cloneDeep(this._params.labels || []));
+		const labels = (this._config.data.labels = _.cloneDeep(this.labels || []));
 
-		_.set(this._config.options || {}, 'aspectRatio', this._params.ratio || 2);
+		_.set(this._config.options || {}, 'aspectRatio', this.ratio || 2);
 
-		const legend = this._params.legend || 'auto';
+		const legend = this.legend || 'auto';
 		if (_.isString(legend) && ['top', 'right', 'bottom', 'left'].indexOf(legend) >= 0) {
 			this._config.options.legend.position = legend as Chart.PositionType;
 		} else if (_.isBoolean(legend)) {
@@ -409,14 +254,14 @@ export class ChartComponent implements OnDestroy, DoCheck {
 		}
 
 		this._config.options.scales = {};
-		if (this._params.currency) {
-			const curr = this._params.currency;
+		if (this.currency) {
+			const curr = this.currency;
 			if (multiType) {
 				const axes: Chart.CommonAxe = {
 					ticks: { callback: val => formatScale(val, curr) }
 				};
 				if (ds.every(d => this._isYAxisAllNumbers(d.data || []))) {
-					if (this._params.type !== 'horizontalBar') {
+					if (this.type !== 'horizontalBar') {
 						this._config.options.scales.yAxes = [axes];
 					} else {
 						this._config.options.scales.xAxes = [axes];
@@ -427,7 +272,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 
 		let timeScaleConfigured: boolean = false;
 
-		if (this._params.type === 'line') {
+		if (this.type === 'line') {
 			const isTimeScale = ds.every(d =>
 				((d.data as Chart.ChartPoint[]) || []).every(item => (item.x ? moment(item.x).isValid() : false))
 			);
@@ -441,7 +286,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 					{
 						type: 'time',
 						time: {
-							tooltipFormat: this._params.timeFormat || 'L',
+							tooltipFormat: this.timeFormat || 'L',
 							min: minTime ? minTime.toISOString() : undefined
 						}
 					}
@@ -463,14 +308,14 @@ export class ChartComponent implements OnDestroy, DoCheck {
 		this._config.options.tooltips = this._config.options.tooltips || {};
 		this._config.options.tooltips.callbacks = this._config.options.tooltips.callbacks || {};
 		this._config.options.tooltips.callbacks.label = getTooltipLabelCallBack(
-			this._params.currency,
-			this._params.percentage || false,
-			this._params.digits
+			this.currency,
+			this.percentage || false,
+			this.digits
 		);
-		this._config.options.tooltips.callbacks.title = getTooltipTitleCallBack(this._params.type === 'horizontalBar');
+		this._config.options.tooltips.callbacks.title = getTooltipTitleCallBack(this.type === 'horizontalBar');
 
-		if (this._params.options) {
-			_.merge(this._config.options, this._params.options);
+		if (this.options) {
+			_.merge(this._config.options, this.options);
 		}
 	}
 
@@ -480,7 +325,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 
 	private _applyColors(colors: string[], colorsFor: ColorsForType, datasets: Chart.ChartDataSets[]) {
 		if (colorsFor === 'auto') {
-			if (MULTI_SERIES_BY_DEFAULT.indexOf(this._params.type || 'bar') >= 0) {
+			if (MULTI_SERIES_BY_DEFAULT.indexOf(this.type || 'bar') >= 0) {
 				colorsFor = 'series';
 			} else {
 				colorsFor = 'data';
@@ -488,15 +333,11 @@ export class ChartComponent implements OnDestroy, DoCheck {
 		}
 
 		if (colorsFor === 'series') {
-			const colorGroups = generateColorsBySeries(colors, datasets.length, this._params.type || 'bar');
+			const colorGroups = generateColorsBySeries(colors, datasets.length, this.type || 'bar');
 			_.merge(datasets, colorGroups);
 		} else if (colorsFor === 'data') {
 			for (const ds of datasets) {
-				const colorGroup = generateColorsByDataPoints(
-					colors,
-					(ds.data || []).length,
-					this._params.type || 'bar'
-				);
+				const colorGroup = generateColorsByDataPoints(colors, (ds.data || []).length, this.type || 'bar');
 				_.merge(ds, colorGroup);
 			}
 		}
