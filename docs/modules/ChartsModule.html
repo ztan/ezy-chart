@@ -117,7 +117,7 @@
                                 id="xs-miscellaneous-links"
                             >
                                 <li class="link">
-                                  <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
+                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
                         </ul>
                     </li>
@@ -238,7 +238,7 @@
                                        id="miscellaneous-links"
                    >
                                        <li class="link">
-                                         <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
+                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
                                </ul>
                            </li>
@@ -279,7 +279,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info">
+    <div class="tab-pane fade active in" id="c-info">
 
         <p class="comment">
             <h3>File</h3>
@@ -312,19 +312,56 @@
     </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { NgModule, ModuleWithProviders } from &#x27;@angular/core&#x27;;
+    <div class="tab-pane fade tab-source-code" id="c-source">
+        <pre class="line-numbers"><code class="language-typescript">import { NgModule, ModuleWithProviders, InjectionToken, Inject, Optional } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { ChartComponent } from &#x27;./chart.component&#x27;;
+import { Chart } from &#x27;chart.js&#x27;;
+import { replaceDefaultColors } from &#x27;./color.helpers&#x27;;
+
+export const CHART_DEFAULT_COLORS: InjectionToken&lt;number[][]&gt; &#x3D; new InjectionToken&lt;number[][]&gt;(
+	&#x27;ezy-chart-default-colours&#x27;
+);
 
 @NgModule({
 	declarations: [ChartComponent],
 	imports: [CommonModule],
 	exports: [ChartComponent]
 })
-export class ChartsModule {}
+export class ChartsModule {
+	constructor(
+		@Optional()
+		@Inject(CHART_DEFAULT_COLORS)
+		defaultColors: number[][]
+	) {
+		if (defaultColors) {
+			replaceDefaultColors(defaultColors);
+		}
+	}
+}
 
 export { ChartComponent };
+
+Chart.pluginService.register({
+	afterEvent: (chartInstance: Chart, chartEvent: MouseEvent) &#x3D;&gt; {
+		const legend &#x3D; (chartInstance as any).legend;
+		const canvas &#x3D; chartInstance.canvas;
+		const x &#x3D; chartEvent.x;
+		const y &#x3D; chartEvent.y;
+		let cursorStyle &#x3D; &#x27;default&#x27;;
+		if (x &lt;&#x3D; legend.right &amp;&amp; x &gt;&#x3D; legend.left &amp;&amp; y &lt;&#x3D; legend.bottom &amp;&amp; y &gt;&#x3D; legend.top) {
+			for (const box of legend.legendHitBoxes) {
+				if (x &lt;&#x3D; box.left + box.width &amp;&amp; x &gt;&#x3D; box.left &amp;&amp; y &lt;&#x3D; box.top + box.height &amp;&amp; y &gt;&#x3D; box.top) {
+					cursorStyle &#x3D; &#x27;pointer&#x27;;
+					break;
+				}
+			}
+		}
+		if (canvas) {
+			canvas.style.cursor &#x3D; cursorStyle;
+		}
+	}
+});
 </code></pre>
     </div>
 </div>

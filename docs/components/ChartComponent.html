@@ -117,7 +117,7 @@
                                 id="xs-miscellaneous-links"
                             >
                                 <li class="link">
-                                  <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
+                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
                         </ul>
                     </li>
@@ -238,7 +238,7 @@
                                        id="miscellaneous-links"
                    >
                                        <li class="link">
-                                         <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
+                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
                                </ul>
                            </li>
@@ -282,7 +282,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -290,13 +290,19 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+            <code>BaseChart</code>
+    </p>
 
     <p class="comment">
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/api/core/DoCheck" target="_blank" >DoCheck</a></code>
+                <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                <code><a href="https://angular.io/api/core/DoCheck" target="_blank" >DoCheck</a></code>
     </p>
 
 
@@ -327,6 +333,10 @@
 
 
 
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div #chartContainer&gt;&lt;/div&gt;</code></pre></td>
+            </tr>
 
 
 
@@ -334,101 +344,6 @@
     </table>
 </section>
 
-    <section>
-        <h3 id="index">Index</h3>
-        <table class="table table-sm table-bordered index-table">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Inputs</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#colors">colors</a>
-                            </li>
-                            <li>
-                                <a href="#colorsFor">colorsFor</a>
-                            </li>
-                            <li>
-                                <a href="#currency">currency</a>
-                            </li>
-                            <li>
-                                <a href="#datasets">datasets</a>
-                            </li>
-                            <li>
-                                <a href="#labels">labels</a>
-                            </li>
-                            <li>
-                                <a href="#legend">legend</a>
-                            </li>
-                            <li>
-                                <a href="#options">options</a>
-                            </li>
-                            <li>
-                                <a href="#percentage">percentage</a>
-                            </li>
-                            <li>
-                                <a href="#ratio">ratio</a>
-                            </li>
-                            <li>
-                                <a href="#timeFormat">timeFormat</a>
-                            </li>
-                            <li>
-                                <a href="#type">type</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Accessors</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                 <a href="#labels">labels</a>
-                            </li>
-                            <li>
-                                 <a href="#type">type</a>
-                            </li>
-                            <li>
-                                 <a href="#datasets">datasets</a>
-                            </li>
-                            <li>
-                                 <a href="#colors">colors</a>
-                            </li>
-                            <li>
-                                 <a href="#colorsFor">colorsFor</a>
-                            </li>
-                            <li>
-                                 <a href="#ratio">ratio</a>
-                            </li>
-                            <li>
-                                 <a href="#legend">legend</a>
-                            </li>
-                            <li>
-                                 <a href="#currency">currency</a>
-                            </li>
-                            <li>
-                                 <a href="#options">options</a>
-                            </li>
-                            <li>
-                                 <a href="#timeFormat">timeFormat</a>
-                            </li>
-                            <li>
-                                 <a href="#percentage">percentage</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
 
     <section>
         <h3 id="constructor">Constructor</h3>
@@ -436,12 +351,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(_zone: <a href="https://angular.io/docs/ts/latest/api/api/core/NgZone" target="_blank">NgZone</a>)</code>
+                            <code>constructor(_zone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/chart.component.ts:158</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/chart.component.ts:136</a></div>
                                 </td>
                             </tr>
     
@@ -462,7 +377,7 @@
                                                     <tr>
                                                       <td>_zone</td>
                                                       <td>
-                                                                <code><a href="https://angular.io/docs/ts/latest/api/api/core/NgZone" target="_blank" >NgZone</a></code>
+                                                                <code><a href="https://angular.io/api/core/NgZone" target="_blank" >NgZone</a></code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -477,934 +392,16 @@
             </table>
     </section>
 
-    <section>
-        <h3 id="inputs">Inputs</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="colors"></a>
-                            <code>colors</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>An array of strings in hex, rgb, or rgba format, to define the base colors of datasets, or the data points of each dataset. If this
-property is absent, or the colors defined are less than the number of datasets (or the data points of each dataset), the missing colors will
-be assigned from the defult palette</p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code>[]</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">src/chart.component.ts:201</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="colorsFor"></a>
-                            <code>colorsFor</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>Specify what the colors (either defined or generated) are for.</p>
-<ul>
-<li>&#39;series&#39; - each color corresponds to a dataset</li>
-<li>&#39;data&#39; - each color corresponds to a data point of each dataset</li>
-<li>&#39;auto&#39; - use &#39;series&#39; for chart types &#39;bar&#39;, &#39;horizontalBar&#39; and &#39;line&#39;; and use &#39;data&#39; for other chart types</li>
-<li>&#39;none&#39; - turn off the color generator. Use this value if colors are specified via #options</li>
-</ul>
-</div>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">src/chart.component.ts:215</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="currency"></a>
-                            <code>currency</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>An ISO 4217 currency code. If specified, it will be used to format the scales of the main axis, as well as the values in the tooltips.</p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="248" class="link-to-prism">src/chart.component.ts:248</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="datasets"></a>
-                            <code>datasets</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>An array of Chart.ChartDataSets, corresponding to Chart.ChartConfiguration.data.datasets</p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code>[]</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">src/chart.component.ts:190</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="labels"></a>
-                            <code>labels</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>An array of strings, corresponding to Chart.ChartConfiguration.data.labels</p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code>[]</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">src/chart.component.ts:171</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="legend"></a>
-                            <code>legend</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>Specifiy how to display the legend</p>
-<ul>
-<li>if the value is a boolean, it corresponds to Chart.ChartConfiguration.options.legend.display</li>
-<li>if the value is &#39;auto&#39;, the legend will be arranged automatically. For example, the legend will be hidden if the chart area is too small</li>
-<li>if the value is of type Chart.ChartLegendOptions, it corresponds to Chart.ChartConfiguration.options.legend.position</li>
-<li>if the value is of type Chart.ChartLegendOptions, it corresponds to Chart.ChartConfiguration.options.legend</li>
-</ul>
-</div>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="239" class="link-to-prism">src/chart.component.ts:239</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="options"></a>
-                            <code>options</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>Corresponds to Chart.ChartConfiguration.options. This overrides any other settings.</p>
-</div>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="257" class="link-to-prism">src/chart.component.ts:257</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="percentage"></a>
-                            <code>percentage</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>Specify whether to show the overall percentage values in the popover tooltips.</p>
-</div>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="275" class="link-to-prism">src/chart.component.ts:275</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="ratio"></a>
-                            <code>ratio</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>The aspect ratio of the chart</p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="225" class="link-to-prism">src/chart.component.ts:225</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="timeFormat"></a>
-                            <code>timeFormat</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>A moment.js format string. When specified, the X axis will be configured with time scales, and this value will be used to format the tooltips.</p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="266" class="link-to-prism">src/chart.component.ts:266</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="type"></a>
-                            <code>type</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>The chart type, corresponding to Chart.ChartConfiguration.type</p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">src/chart.component.ts:181</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-    </section>
 
 
 
 
 
 
-    <section>
-        <h3 id="accessors">
-            Accessors
-        </h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="labels"></a>
-                            <span class="name"><b>labels</b><a href="#labels"><span class="fa fa-link"></span></a></span>
-                        </td>
-                    </tr>
-    
-    
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="accessor"><b>set</b><code>labels(l: [])</code></span>
-                        </td>
-                    </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">src/chart.component.ts:171</a></div>
-                                    </td>
-                                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-description"><p>An array of strings, corresponding to Chart.ChartConfiguration.data.labels</p>
-    </div>
-    
-                                    <div class="io-description">
-                                            <b>Parameters :</b>
-                                            <table class="params">
-                                                <thead>
-                                                    <tr>
-                                                        <td>Name</td>
-                                                        <td>Type</td>
-                                                        <td>Optional</td>
-                                                        <td>Description</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                        <tr>
-                                                          <td>l</td>
-                                                          <td>
-                                                                  <code>[]</code>
-                                                          </td>
-                                                          <td>
-                                                          </td>
-                                                          <td></td>
-                                                        </tr>
-                                                </tbody>
-                                            </table>
-                                    </div>
-                                    <div>
-                                    </div>
-                                    <div class="io-description">
-                                        <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                    </div>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="type"></a>
-                            <span class="name"><b>type</b><a href="#type"><span class="fa fa-link"></span></a></span>
-                        </td>
-                    </tr>
-    
-    
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="accessor"><b>set</b><code>type(t: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code></span>
-                        </td>
-                    </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">src/chart.component.ts:181</a></div>
-                                    </td>
-                                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-description"><p>The chart type, corresponding to Chart.ChartConfiguration.type</p>
-    </div>
-    
-                                    <div class="io-description">
-                                            <b>Parameters :</b>
-                                            <table class="params">
-                                                <thead>
-                                                    <tr>
-                                                        <td>Name</td>
-                                                        <td>Type</td>
-                                                        <td>Optional</td>
-                                                        <td>Description</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                        <tr>
-                                                          <td>t</td>
-                                                          <td>
-                                                                  <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                          </td>
-                                                          <td>
-                                                          </td>
-                                                          <td></td>
-                                                        </tr>
-                                                </tbody>
-                                            </table>
-                                    </div>
-                                    <div>
-                                    </div>
-                                    <div class="io-description">
-                                        <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                    </div>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="datasets"></a>
-                            <span class="name"><b>datasets</b><a href="#datasets"><span class="fa fa-link"></span></a></span>
-                        </td>
-                    </tr>
-    
-    
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="accessor"><b>set</b><code>datasets(ds: [])</code></span>
-                        </td>
-                    </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">src/chart.component.ts:190</a></div>
-                                    </td>
-                                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-description"><p>An array of Chart.ChartDataSets, corresponding to Chart.ChartConfiguration.data.datasets</p>
-    </div>
-    
-                                    <div class="io-description">
-                                            <b>Parameters :</b>
-                                            <table class="params">
-                                                <thead>
-                                                    <tr>
-                                                        <td>Name</td>
-                                                        <td>Type</td>
-                                                        <td>Optional</td>
-                                                        <td>Description</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                        <tr>
-                                                          <td>ds</td>
-                                                          <td>
-                                                                  <code>[]</code>
-                                                          </td>
-                                                          <td>
-                                                          </td>
-                                                          <td></td>
-                                                        </tr>
-                                                </tbody>
-                                            </table>
-                                    </div>
-                                    <div>
-                                    </div>
-                                    <div class="io-description">
-                                        <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                    </div>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="colors"></a>
-                            <span class="name"><b>colors</b><a href="#colors"><span class="fa fa-link"></span></a></span>
-                        </td>
-                    </tr>
-    
-    
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="accessor"><b>set</b><code>colors(c: [])</code></span>
-                        </td>
-                    </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">src/chart.component.ts:201</a></div>
-                                    </td>
-                                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-description"><p>An array of strings in hex, rgb, or rgba format, to define the base colors of datasets, or the data points of each dataset. If this
-    property is absent, or the colors defined are less than the number of datasets (or the data points of each dataset), the missing colors will
-    be assigned from the defult palette</p>
-    </div>
-    
-                                    <div class="io-description">
-                                            <b>Parameters :</b>
-                                            <table class="params">
-                                                <thead>
-                                                    <tr>
-                                                        <td>Name</td>
-                                                        <td>Type</td>
-                                                        <td>Optional</td>
-                                                        <td>Description</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                        <tr>
-                                                          <td>c</td>
-                                                          <td>
-                                                                  <code>[]</code>
-                                                          </td>
-                                                          <td>
-                                                          </td>
-                                                          <td></td>
-                                                        </tr>
-                                                </tbody>
-                                            </table>
-                                    </div>
-                                    <div>
-                                    </div>
-                                    <div class="io-description">
-                                        <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                    </div>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="colorsFor"></a>
-                            <span class="name"><b>colorsFor</b><a href="#colorsFor"><span class="fa fa-link"></span></a></span>
-                        </td>
-                    </tr>
-    
-    
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="accessor"><b>set</b><code>colorsFor(cf: )</code></span>
-                        </td>
-                    </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">src/chart.component.ts:215</a></div>
-                                    </td>
-                                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-description"><p>Specify what the colors (either defined or generated) are for.</p>
-    <ul>
-    <li>&#39;series&#39; - each color corresponds to a dataset</li>
-    <li>&#39;data&#39; - each color corresponds to a data point of each dataset</li>
-    <li>&#39;auto&#39; - use &#39;series&#39; for chart types &#39;bar&#39;, &#39;horizontalBar&#39; and &#39;line&#39;; and use &#39;data&#39; for other chart types</li>
-    <li>&#39;none&#39; - turn off the color generator. Use this value if colors are specified via #options</li>
-    </ul>
-    </div>
-    
-                                    <div class="io-description">
-                                            <b>Parameters :</b>
-                                            <table class="params">
-                                                <thead>
-                                                    <tr>
-                                                        <td>Name</td>
-                                                        <td>Type</td>
-                                                        <td>Optional</td>
-                                                        <td>Description</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                        <tr>
-                                                          <td>cf</td>
-                                                          <td>
-                                                          </td>
-                                                          <td>
-                                                          </td>
-                                                          <td></td>
-                                                        </tr>
-                                                </tbody>
-                                            </table>
-                                    </div>
-                                    <div>
-                                    </div>
-                                    <div class="io-description">
-                                        <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                    </div>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="ratio"></a>
-                            <span class="name"><b>ratio</b><a href="#ratio"><span class="fa fa-link"></span></a></span>
-                        </td>
-                    </tr>
-    
-    
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="accessor"><b>set</b><code>ratio(r: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code></span>
-                        </td>
-                    </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="225" class="link-to-prism">src/chart.component.ts:225</a></div>
-                                    </td>
-                                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-description"><p>The aspect ratio of the chart</p>
-    </div>
-    
-                                    <div class="io-description">
-                                            <b>Parameters :</b>
-                                            <table class="params">
-                                                <thead>
-                                                    <tr>
-                                                        <td>Name</td>
-                                                        <td>Type</td>
-                                                        <td>Optional</td>
-                                                        <td>Description</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                        <tr>
-                                                          <td>r</td>
-                                                          <td>
-                                                                  <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                                          </td>
-                                                          <td>
-                                                          </td>
-                                                          <td></td>
-                                                        </tr>
-                                                </tbody>
-                                            </table>
-                                    </div>
-                                    <div>
-                                    </div>
-                                    <div class="io-description">
-                                        <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                    </div>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="legend"></a>
-                            <span class="name"><b>legend</b><a href="#legend"><span class="fa fa-link"></span></a></span>
-                        </td>
-                    </tr>
-    
-    
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="accessor"><b>set</b><code>legend(l: )</code></span>
-                        </td>
-                    </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="239" class="link-to-prism">src/chart.component.ts:239</a></div>
-                                    </td>
-                                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-description"><p>Specifiy how to display the legend</p>
-    <ul>
-    <li>if the value is a boolean, it corresponds to Chart.ChartConfiguration.options.legend.display</li>
-    <li>if the value is &#39;auto&#39;, the legend will be arranged automatically. For example, the legend will be hidden if the chart area is too small</li>
-    <li>if the value is of type Chart.ChartLegendOptions, it corresponds to Chart.ChartConfiguration.options.legend.position</li>
-    <li>if the value is of type Chart.ChartLegendOptions, it corresponds to Chart.ChartConfiguration.options.legend</li>
-    </ul>
-    </div>
-    
-                                    <div class="io-description">
-                                            <b>Parameters :</b>
-                                            <table class="params">
-                                                <thead>
-                                                    <tr>
-                                                        <td>Name</td>
-                                                        <td>Type</td>
-                                                        <td>Optional</td>
-                                                        <td>Description</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                        <tr>
-                                                          <td>l</td>
-                                                          <td>
-                                                          </td>
-                                                          <td>
-                                                          </td>
-                                                          <td></td>
-                                                        </tr>
-                                                </tbody>
-                                            </table>
-                                    </div>
-                                    <div>
-                                    </div>
-                                    <div class="io-description">
-                                        <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                    </div>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="currency"></a>
-                            <span class="name"><b>currency</b><a href="#currency"><span class="fa fa-link"></span></a></span>
-                        </td>
-                    </tr>
-    
-    
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="accessor"><b>set</b><code>currency(curr: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code></span>
-                        </td>
-                    </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="248" class="link-to-prism">src/chart.component.ts:248</a></div>
-                                    </td>
-                                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-description"><p>An ISO 4217 currency code. If specified, it will be used to format the scales of the main axis, as well as the values in the tooltips.</p>
-    </div>
-    
-                                    <div class="io-description">
-                                            <b>Parameters :</b>
-                                            <table class="params">
-                                                <thead>
-                                                    <tr>
-                                                        <td>Name</td>
-                                                        <td>Type</td>
-                                                        <td>Optional</td>
-                                                        <td>Description</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                        <tr>
-                                                          <td>curr</td>
-                                                          <td>
-                                                                  <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                          </td>
-                                                          <td>
-                                                          </td>
-                                                          <td></td>
-                                                        </tr>
-                                                </tbody>
-                                            </table>
-                                    </div>
-                                    <div>
-                                    </div>
-                                    <div class="io-description">
-                                        <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                    </div>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="options"></a>
-                            <span class="name"><b>options</b><a href="#options"><span class="fa fa-link"></span></a></span>
-                        </td>
-                    </tr>
-    
-    
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="accessor"><b>set</b><code>options(opt: )</code></span>
-                        </td>
-                    </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="257" class="link-to-prism">src/chart.component.ts:257</a></div>
-                                    </td>
-                                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-description"><p>Corresponds to Chart.ChartConfiguration.options. This overrides any other settings.</p>
-    </div>
-    
-                                    <div class="io-description">
-                                            <b>Parameters :</b>
-                                            <table class="params">
-                                                <thead>
-                                                    <tr>
-                                                        <td>Name</td>
-                                                        <td>Type</td>
-                                                        <td>Optional</td>
-                                                        <td>Description</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                        <tr>
-                                                          <td>opt</td>
-                                                          <td>
-                                                          </td>
-                                                          <td>
-                                                          </td>
-                                                          <td></td>
-                                                        </tr>
-                                                </tbody>
-                                            </table>
-                                    </div>
-                                    <div>
-                                    </div>
-                                    <div class="io-description">
-                                        <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                    </div>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="timeFormat"></a>
-                            <span class="name"><b>timeFormat</b><a href="#timeFormat"><span class="fa fa-link"></span></a></span>
-                        </td>
-                    </tr>
-    
-    
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="accessor"><b>set</b><code>timeFormat(tf: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code></span>
-                        </td>
-                    </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="266" class="link-to-prism">src/chart.component.ts:266</a></div>
-                                    </td>
-                                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-description"><p>A moment.js format string. When specified, the X axis will be configured with time scales, and this value will be used to format the tooltips.</p>
-    </div>
-    
-                                    <div class="io-description">
-                                            <b>Parameters :</b>
-                                            <table class="params">
-                                                <thead>
-                                                    <tr>
-                                                        <td>Name</td>
-                                                        <td>Type</td>
-                                                        <td>Optional</td>
-                                                        <td>Description</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                        <tr>
-                                                          <td>tf</td>
-                                                          <td>
-                                                                  <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                          </td>
-                                                          <td>
-                                                          </td>
-                                                          <td></td>
-                                                        </tr>
-                                                </tbody>
-                                            </table>
-                                    </div>
-                                    <div>
-                                    </div>
-                                    <div class="io-description">
-                                        <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                    </div>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="percentage"></a>
-                            <span class="name"><b>percentage</b><a href="#percentage"><span class="fa fa-link"></span></a></span>
-                        </td>
-                    </tr>
-    
-    
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="accessor"><b>set</b><code>percentage(p: )</code></span>
-                        </td>
-                    </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="275" class="link-to-prism">src/chart.component.ts:275</a></div>
-                                    </td>
-                                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-description"><p>Specify whether to show the overall percentage values in the popover tooltips.</p>
-    </div>
-    
-                                    <div class="io-description">
-                                            <b>Parameters :</b>
-                                            <table class="params">
-                                                <thead>
-                                                    <tr>
-                                                        <td>Name</td>
-                                                        <td>Type</td>
-                                                        <td>Optional</td>
-                                                        <td>Description</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                        <tr>
-                                                          <td>p</td>
-                                                          <td>
-                                                          </td>
-                                                          <td>
-                                                          </td>
-                                                          <td></td>
-                                                        </tr>
-                                                </tbody>
-                                            </table>
-                                    </div>
-                                    <div>
-                                    </div>
-                                    <div class="io-description">
-                                        <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                    </div>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-    </section>
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import {
 	Component,
 	ChangeDetectionStrategy,
@@ -1424,28 +421,24 @@ import { Observable } from &#x27;rxjs/Observable&#x27;;
 import { fromEvent } from &#x27;rxjs/observable/fromEvent&#x27;;
 import { Subscription } from &#x27;rxjs/Subscription&#x27;;
 import { debounceTime } from &#x27;rxjs/operators&#x27;;
-import { CurrencyPipe } from &#x27;@angular/common&#x27;;
-import * as Chart from &#x27;chart.js&#x27;;
+import { CurrencyPipe, DecimalPipe } from &#x27;@angular/common&#x27;;
+import { Chart } from &#x27;chart.js&#x27;;
 import * as _ from &#x27;lodash&#x27;;
 import * as moment from &#x27;moment&#x27;;
+import { BaseChart, ShowPercentageType, ColorsForType } from &#x27;./base.chart&#x27;;
 
 /**
  * @internal
  */
 const MULTI_SERIES_BY_DEFAULT &#x3D; [&#x27;line&#x27;, &#x27;bar&#x27;, &#x27;horizontalBar&#x27;];
 
-export type ColorsForType &#x3D; &#x27;auto&#x27; | &#x27;series&#x27; | &#x27;data&#x27; | &#x27;none&#x27;;
-
-export type LegendType &#x3D; Chart.ChartLegendOptions | &#x27;auto&#x27; | boolean | Chart.PositionType;
-
-export type ShowPercentageType &#x3D; boolean | &#x27;only&#x27;;
-
 /**
  * @internal
  */
 export function getTooltipLabelCallBack(
 	currency?: string,
-	percentage?: ShowPercentageType
+	percentage?: ShowPercentageType,
+	digitInfo?: string
 ): Chart.ChartTooltipCallback[&#x27;label&#x27;] {
 	return (tooltipItem, data) &#x3D;&gt; {
 		const ds &#x3D; data.datasets || [];
@@ -1459,7 +452,9 @@ export function getTooltipLabelCallBack(
 		}
 		if (percentage !&#x3D;&#x3D; &#x27;only&#x27;) {
 			if (currency) {
-				label +&#x3D; formatMoney(value, currency);
+				label +&#x3D; formatMoney(value, currency, digitInfo);
+			} else if (digitInfo &amp;&amp; _.isNumber(value)) {
+				label +&#x3D; new DecimalPipe(moment.locale()).transform(value, digitInfo);
 			} else {
 				label +&#x3D; tooltipItem.yLabel || value;
 			}
@@ -1514,34 +509,17 @@ export function formatScale(val: any, currency: string) {
 		n &#x3D; n / 1000;
 		base &#x3D; &#x27;M&#x27;;
 	}
-	return (formatMoney(n, currency) || &#x27;&#x27;).replace(/\.0+?$/, &#x27;&#x27;) + base;
+	return (formatMoney(n, currency, undefined) || &#x27;&#x27;).replace(/\.0+?$/, &#x27;&#x27;) + base;
 }
 
 /**
  * @internal
  */
-export function formatMoney(val: any, currency: string) {
+export function formatMoney(val: any, currency: string, digitInfo?: string) {
 	if (val &amp;&amp; currency) {
 		const pipe &#x3D; new CurrencyPipe(moment.locale());
-		return pipe.transform(val, currency, &#x27;symbol-narrow&#x27;);
+		return pipe.transform(val, currency, &#x27;symbol-narrow&#x27;, digitInfo);
 	}
-}
-
-/**
- * @internal
- */
-interface ChartParameters {
-	type?: string;
-	labels?: string[];
-	datasets?: Chart.ChartDataSets[];
-	colors?: string[];
-	colorsFor?: ColorsForType;
-	ratio?: number;
-	legend?: LegendType;
-	options?: Chart.ChartOptions;
-	currency?: string;
-	timeFormat?: string;
-	percentage?: ShowPercentageType;
 }
 
 @Component({
@@ -1549,12 +527,9 @@ interface ChartParameters {
 	template: &#x60;&lt;div #chartContainer&gt;&lt;/div&gt;&#x60;,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChartComponent implements OnDestroy, DoCheck {
+export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 	private _config: Chart.ChartConfiguration &#x3D; {};
 	private _prevConfig: Chart.ChartConfiguration &#x3D; {};
-
-	private _params: ChartParameters &#x3D; {};
-	private _prevParams: ChartParameters &#x3D; {};
 
 	private _chart: Chart;
 	private _debounceTimer: any;
@@ -1565,122 +540,10 @@ export class ChartComponent implements OnDestroy, DoCheck {
 	private _chartContainer: ElementRef;
 
 	constructor(private _zone: NgZone) {
+		super();
 		this._wndEvSubs &#x3D; fromEvent(window, &#x27;resize&#x27;).subscribe(() &#x3D;&gt; {
 			this._resized &#x3D; true;
 		});
-	}
-
-	/**
-	 * An array of strings, corresponding to Chart.ChartConfiguration.data.labels
-	 * @property
-	 */
-	@Input()
-	set labels(l: string[]) {
-		this._params.labels &#x3D; l;
-	}
-
-	/**
-	 * The chart type, corresponding to Chart.ChartConfiguration.type
-	 * @default &#x27;bar&#x27;
-	 * @property
-	 */
-	@Input()
-	set type(t: string) {
-		this._params.type &#x3D; t;
-	}
-
-	/**
-	 * An array of Chart.ChartDataSets, corresponding to Chart.ChartConfiguration.data.datasets
-	 * @property
-	 */
-	@Input()
-	set datasets(ds: Chart.ChartDataSets[]) {
-		this._params.datasets &#x3D; ds;
-	}
-
-	/**
-	 * An array of strings in hex, rgb, or rgba format, to define the base colors of datasets, or the data points of each dataset. If this
-	 * property is absent, or the colors defined are less than the number of datasets (or the data points of each dataset), the missing colors will
-	 * be assigned from the defult palette
-	 * @property
-	 */
-	@Input()
-	set colors(c: string[]) {
-		this._params.colors &#x3D; c;
-	}
-
-	/**
-	 * Specify what the colors (either defined or generated) are for.
-	 *  * &#x27;series&#x27; - each color corresponds to a dataset
-	 *  * &#x27;data&#x27; - each color corresponds to a data point of each dataset
-	 *  * &#x27;auto&#x27; - use &#x27;series&#x27; for chart types &#x27;bar&#x27;, &#x27;horizontalBar&#x27; and &#x27;line&#x27;; and use &#x27;data&#x27; for other chart types
-	 *  * &#x27;none&#x27; - turn off the color generator. Use this value if colors are specified via #options
-	 * @default &#x27;auto&#x27;
-	 * @property
-	 */
-	@Input()
-	set colorsFor(cf: ColorsForType) {
-		this._params.colorsFor &#x3D; cf;
-	}
-
-	/**
-	 * The aspect ratio of the chart
-	 * @default 2
-	 * @property
-	 */
-	@Input()
-	set ratio(r: number) {
-		this._params.ratio &#x3D; r;
-	}
-
-	/**
-	 * Specifiy how to display the legend
-	 *  * if the value is a boolean, it corresponds to Chart.ChartConfiguration.options.legend.display
-	 *  * if the value is &#x27;auto&#x27;, the legend will be arranged automatically. For example, the legend will be hidden if the chart area is too small
-	 *  * if the value is of type Chart.ChartLegendOptions, it corresponds to Chart.ChartConfiguration.options.legend.position
-	 *  * if the value is of type Chart.ChartLegendOptions, it corresponds to Chart.ChartConfiguration.options.legend
-	 * @default &#x27;auto&#x27;
-	 * @property
-	 */
-	@Input()
-	set legend(l: LegendType) {
-		this._params.legend &#x3D; l;
-	}
-
-	/**
-	 * An ISO 4217 currency code. If specified, it will be used to format the scales of the main axis, as well as the values in the tooltips.
-	 * @property
-	 */
-	@Input()
-	set currency(curr: string) {
-		this._params.currency &#x3D; curr;
-	}
-
-	/**
-	 * Corresponds to Chart.ChartConfiguration.options. This overrides any other settings.
-	 * @property
-	 */
-	@Input()
-	set options(opt: Chart.ChartOptions) {
-		this._params.options &#x3D; opt;
-	}
-
-	/**
-	 * A moment.js format string. When specified, the X axis will be configured with time scales, and this value will be used to format the tooltips.
-	 * @property
-	 */
-	@Input()
-	set timeFormat(tf: string) {
-		this._params.timeFormat &#x3D; tf;
-	}
-
-	/**
-	 * Specify whether to show the overall percentage values in the popover tooltips.
-	 * @property
-	 */
-	@Input()
-	set percentage(p: ShowPercentageType) {
-		this._params.percentage &#x3D; p;
 	}
 
 	ngDoCheck(): void {
@@ -1701,7 +564,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 
 	private _checkUpdate() {
 		let dataOrParamsChanged: boolean &#x3D; false;
-		if (!_.isEqual(this._params, this._prevParams) || this._resized) {
+		if (this.paramsChanged || this._resized) {
 			this._applyConfig();
 			dataOrParamsChanged &#x3D; true;
 		}
@@ -1711,34 +574,33 @@ export class ChartComponent implements OnDestroy, DoCheck {
 			!_.isEqual(JSON.stringify(this._config.options), JSON.stringify(this._prevConfig.options)) ||
 			this._config.type !&#x3D;&#x3D; this._prevConfig.type;
 
-		configChanged &#x3D; configChanged || this._params.colorsFor !&#x3D;&#x3D; this._prevParams.colorsFor;
+		configChanged &#x3D; configChanged || this.isParamChanged(&#x27;colorsFor&#x27;);
 
-		configChanged &#x3D; configChanged || !_.isEqual(this._params.colors, this._prevParams.colors);
+		configChanged &#x3D; configChanged || this.isParamChanged(&#x27;colors&#x27;);
+		configChanged &#x3D; configChanged || this.isParamChanged(&#x27;percentage&#x27;);
+		configChanged &#x3D; configChanged || this.isParamChanged(&#x27;currency&#x27;);
+		configChanged &#x3D; configChanged || this.isParamChanged(&#x27;timeFormat&#x27;);
 
 		if (dataOrParamsChanged || configChanged || this._resized) {
-			this._refresh(configChanged || this._resized);
+			this._refresh(configChanged || (this._resized &amp;&amp; (this.legend || &#x27;auto&#x27;) &#x3D;&#x3D;&#x3D; &#x27;auto&#x27;));
 		}
 		this._resized &#x3D; false;
 	}
 
 	private _refresh(configChanged: boolean) {
 		this._prevConfig &#x3D; _.cloneDeep(this._config);
-		this._prevParams &#x3D; _.cloneDeep(this._params);
+		this.resetParamsChangeState();
 
 		if (configChanged || !this._chart) {
 			if (this._chart) {
 				this._chart.destroy();
 			}
 			const cfg &#x3D; _.cloneDeep(this._prevConfig);
-			this._applyColors(this._params.colors || [], this._params.colorsFor || &#x27;auto&#x27;, (cfg.data || {}).datasets || []);
+			this._applyColors(this.colors || [], this.colorsFor || &#x27;auto&#x27;, (cfg.data || {}).datasets || []);
 			this._createNewChart(cfg);
 		} else {
 			this._chart.config.data &#x3D; _.cloneDeep(this._config.data || {});
-			this._applyColors(
-				this._params.colors || [],
-				this._params.colorsFor || &#x27;auto&#x27;,
-				this._chart.config.data.datasets || []
-			);
+			this._applyColors(this.colors || [], this.colorsFor || &#x27;auto&#x27;, this._chart.config.data.datasets || []);
 			this._chart.update();
 		}
 	}
@@ -1755,7 +617,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 			this._chart &#x3D; new Chart(canvas, cfg);
 			const width &#x3D; this._chart.chartArea.right - this._chart.chartArea.left;
 			const height &#x3D; this._chart.chartArea.bottom - this._chart.chartArea.top;
-			if ((width &lt; 100 || height &lt; 100) &amp;&amp; retryIfTooSmall) {
+			if ((width &lt; 120 || height &lt; 120) &amp;&amp; retryIfTooSmall) {
 				this._chart.destroy();
 				((cfg.options || {}).legend || {}).display &#x3D; false;
 				this._createNewChart(cfg, false);
@@ -1764,24 +626,24 @@ export class ChartComponent implements OnDestroy, DoCheck {
 	}
 
 	private _applyConfig() {
-		const multiType: boolean &#x3D; MULTI_SERIES_BY_DEFAULT.indexOf(this._params.type || &#x27;&#x27;) &gt;&#x3D; 0;
+		const multiType: boolean &#x3D; MULTI_SERIES_BY_DEFAULT.indexOf(this.type || &#x27;bar&#x27;) &gt;&#x3D; 0;
 
-		this._config.type &#x3D; this._params.type || &#x27;bar&#x27;;
+		this._config.type &#x3D; this.type || &#x27;bar&#x27;;
 		this._config.options &#x3D; this._config.options || {};
 		this._config.options.legend &#x3D; this._config.options.legend || {};
 		this._config.data &#x3D; this._config.data || {};
-		const ds &#x3D; (this._config.data.datasets &#x3D; _.cloneDeep(this._params.datasets || []));
+		const ds &#x3D; (this._config.data.datasets &#x3D; _.cloneDeep(this.datasets || []));
 
 		if (!(this._config.data.datasets || []).some(d &#x3D;&gt; (d.label ? true : false))) {
 			if (multiType) {
 				this._config.options.legend.display &#x3D; false;
 			}
 		}
-		const labels &#x3D; (this._config.data.labels &#x3D; _.cloneDeep(this._params.labels || []));
+		const labels &#x3D; (this._config.data.labels &#x3D; _.cloneDeep(this.labels || []));
 
-		_.set(this._config.options || {}, &#x27;aspectRatio&#x27;, this._params.ratio || 2);
+		_.set(this._config.options || {}, &#x27;aspectRatio&#x27;, this.ratio || 2);
 
-		const legend &#x3D; this._params.legend || &#x27;auto&#x27;;
+		const legend &#x3D; this.legend || &#x27;auto&#x27;;
 		if (_.isString(legend) &amp;&amp; [&#x27;top&#x27;, &#x27;right&#x27;, &#x27;bottom&#x27;, &#x27;left&#x27;].indexOf(legend) &gt;&#x3D; 0) {
 			this._config.options.legend.position &#x3D; legend as Chart.PositionType;
 		} else if (_.isBoolean(legend)) {
@@ -1796,14 +658,14 @@ export class ChartComponent implements OnDestroy, DoCheck {
 		}
 
 		this._config.options.scales &#x3D; {};
-		if (this._params.currency) {
-			const curr &#x3D; this._params.currency;
+		if (this.currency) {
+			const curr &#x3D; this.currency;
 			if (multiType) {
 				const axes: Chart.CommonAxe &#x3D; {
 					ticks: { callback: val &#x3D;&gt; formatScale(val, curr) }
 				};
 				if (ds.every(d &#x3D;&gt; this._isYAxisAllNumbers(d.data || []))) {
-					if (this._params.type !&#x3D;&#x3D; &#x27;horizontalBar&#x27;) {
+					if (this.type !&#x3D;&#x3D; &#x27;horizontalBar&#x27;) {
 						this._config.options.scales.yAxes &#x3D; [axes];
 					} else {
 						this._config.options.scales.xAxes &#x3D; [axes];
@@ -1814,7 +676,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 
 		let timeScaleConfigured: boolean &#x3D; false;
 
-		if (this._params.type &#x3D;&#x3D;&#x3D; &#x27;line&#x27;) {
+		if (this.type &#x3D;&#x3D;&#x3D; &#x27;line&#x27;) {
 			const isTimeScale &#x3D; ds.every(d &#x3D;&gt;
 				((d.data as Chart.ChartPoint[]) || []).every(item &#x3D;&gt; (item.x ? moment(item.x).isValid() : false))
 			);
@@ -1827,7 +689,10 @@ export class ChartComponent implements OnDestroy, DoCheck {
 				this._config.options.scales.xAxes &#x3D; [
 					{
 						type: &#x27;time&#x27;,
-						time: { tooltipFormat: this._params.timeFormat || &#x27;L&#x27;, min: minTime ? minTime.toISOString() : undefined }
+						time: {
+							tooltipFormat: this.timeFormat || &#x27;L&#x27;,
+							min: minTime ? minTime.toISOString() : undefined
+						}
 					}
 				];
 				timeScaleConfigured &#x3D; true;
@@ -1847,23 +712,24 @@ export class ChartComponent implements OnDestroy, DoCheck {
 		this._config.options.tooltips &#x3D; this._config.options.tooltips || {};
 		this._config.options.tooltips.callbacks &#x3D; this._config.options.tooltips.callbacks || {};
 		this._config.options.tooltips.callbacks.label &#x3D; getTooltipLabelCallBack(
-			this._params.currency,
-			this._params.percentage || false
+			this.currency,
+			this.percentage || false,
+			this.digits
 		);
-		this._config.options.tooltips.callbacks.title &#x3D; getTooltipTitleCallBack(this._params.type &#x3D;&#x3D;&#x3D; &#x27;horizontalBar&#x27;);
+		this._config.options.tooltips.callbacks.title &#x3D; getTooltipTitleCallBack(this.type &#x3D;&#x3D;&#x3D; &#x27;horizontalBar&#x27;);
 
-		if (this._params.options) {
-			_.merge(this._config.options, this._params.options);
+		if (this.options) {
+			_.merge(this._config.options, this.options);
 		}
 	}
 
 	private _isYAxisAllNumbers(data: Array&lt;Chart.ChartPoint | number&gt;): boolean {
-		return data.every(d &#x3D;&gt; _.isNumber(d) || _.isNumber(d.y));
+		return data.every(d &#x3D;&gt; !d || _.isNumber(d) || _.isNumber(d.y));
 	}
 
 	private _applyColors(colors: string[], colorsFor: ColorsForType, datasets: Chart.ChartDataSets[]) {
 		if (colorsFor &#x3D;&#x3D;&#x3D; &#x27;auto&#x27;) {
-			if (MULTI_SERIES_BY_DEFAULT.indexOf(this._params.type || &#x27;&#x27;) &gt;&#x3D; 0) {
+			if (MULTI_SERIES_BY_DEFAULT.indexOf(this.type || &#x27;bar&#x27;) &gt;&#x3D; 0) {
 				colorsFor &#x3D; &#x27;series&#x27;;
 			} else {
 				colorsFor &#x3D; &#x27;data&#x27;;
@@ -1871,11 +737,11 @@ export class ChartComponent implements OnDestroy, DoCheck {
 		}
 
 		if (colorsFor &#x3D;&#x3D;&#x3D; &#x27;series&#x27;) {
-			const colorGroups &#x3D; generateColorsBySeries(colors, datasets.length, this._params.type || &#x27;bar&#x27;);
+			const colorGroups &#x3D; generateColorsBySeries(colors, datasets.length, this.type || &#x27;bar&#x27;);
 			_.merge(datasets, colorGroups);
 		} else if (colorsFor &#x3D;&#x3D;&#x3D; &#x27;data&#x27;) {
 			for (const ds of datasets) {
-				const colorGroup &#x3D; generateColorsByDataPoints(colors, (ds.data || []).length, this._params.type || &#x27;bar&#x27;);
+				const colorGroup &#x3D; generateColorsByDataPoints(colors, (ds.data || []).length, this.type || &#x27;bar&#x27;);
 				_.merge(ds, colorGroup);
 			}
 		}
@@ -1885,7 +751,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
     </div>
 
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -1908,7 +774,7 @@ export class ChartComponent implements OnDestroy, DoCheck {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div></div>'
+        var COMPONENT_TEMPLATE = '<div><div #chartContainer></div></div>'
     var COMPONENTS = [{'name': 'ChartComponent', 'selector': 'ezy-chart'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ChartComponent'};
