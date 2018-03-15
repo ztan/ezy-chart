@@ -37,7 +37,7 @@ export function getTooltipLabelCallBack(
 	digitInfo?: string
 ): Chart.ChartTooltipCallback['label'] {
 	return (tooltipItem, data) => {
-		const ds = data.datasets;
+		const ds = data.datasets || [];
 		let label = ds.length > 1 ? ds[tooltipItem.datasetIndex || 0].label || '' : '';
 		const dsData: Array<number | Chart.ChartPoint> = ds[tooltipItem.datasetIndex || 0].data || [];
 		const point = dsData[tooltipItem.index || 0];
