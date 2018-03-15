@@ -1,7 +1,6 @@
 import * as webpack from 'webpack';
 import * as path from 'path';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
-import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { getIfUtils, removeEmpty } from 'webpack-config-utils';
 import { AngularCompilerPlugin } from '@ngtools/webpack';
 import * as OfflinePlugin from 'offline-plugin';
@@ -27,22 +26,10 @@ export default (environment = 'development') => {
 					test: /\.html$/,
 					use: ['html-loader']
 				},
-				ifDevelopment(
-					{
-						test: /\.ts$/,
-						use: [{
-							loader: 'ts-loader',
-							options: {
-								transpileOnly: true
-							}
-						}, 'angular2-template-loader'],
-						exclude: /node_modules/,
-					},
-					{
-						test: /\.ts$/,
-						use: ['@ngtools/webpack']
-					}
-				)
+				{
+					test: /\.ts$/,
+					use: ['@ngtools/webpack']
+				}
 			])
 		},
 		resolve: {
@@ -59,16 +46,16 @@ export default (environment = 'development') => {
 			ifProduction(new webpack.optimize.ModuleConcatenationPlugin()),
 			ifProduction(
 				new AngularCompilerPlugin({
-					tsConfigPath: './tsconfig-demo.json'
+					tsConfigPath: './tsconfig-demo.json',
+					sourceMap: true
+				}),
+				new AngularCompilerPlugin({
+					tsConfigPath: './tsconfig.json',
+					skipCodeGeneration: true,
+					sourceMap: true
 				})
 			),
 			ifDevelopment(new webpack.HotModuleReplacementPlugin()),
-			ifDevelopment(
-				new ForkTsCheckerWebpackPlugin({
-					watch: ['./src', './demo'],
-					formatter: 'codeframe'
-				})
-			),
 			new webpack.DefinePlugin({
 				ENV: JSON.stringify(environment)
 			}),
@@ -77,7 +64,6 @@ export default (environment = 'development') => {
 					sourceMap: true
 				})
 			),
-			new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)/, path.join(__dirname, 'src')),
 			new HtmlWebpackPlugin({
 				template: path.join(__dirname, 'demo', 'index.ejs')
 			}),

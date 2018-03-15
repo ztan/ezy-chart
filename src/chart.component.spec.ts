@@ -205,7 +205,9 @@ describe('ezy-chart component', () => {
 		await fixture.whenStable();
 		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(10000, 0, [1000, 10000])).equals('$10K');
 		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(0, 0, [0, 10000])).equals('0');
-		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(1000000, 0, [1000000, 10000])).equals('$1M');
+		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(1000000, 0, [1000000, 10000])).equals(
+			'$1M'
+		);
 	});
 
 	it('should not change data binding inputs', async () => {
@@ -253,7 +255,9 @@ describe('ezy-chart component', () => {
 	});
 
 	it('should not render a legend when chart size is too small', async () => {
-		const fixture: ComponentFixture<TestSmallContainerComponent> = TestBed.createComponent(TestSmallContainerComponent);
+		const fixture: ComponentFixture<TestSmallContainerComponent> = TestBed.createComponent(
+			TestSmallContainerComponent
+		);
 		fixture.detectChanges();
 		await changeDetectionDelay();
 		await fixture.whenStable();
@@ -335,5 +339,68 @@ describe('ezy-chart component', () => {
 		const w2 = comp['_chart'].chartArea.right - comp['_chart'].chartArea.left;
 		const h2 = comp['_chart'].chartArea.bottom - comp['_chart'].chartArea.top;
 		expect(w2 / h2).closeTo(4, 1);
+	});
+
+	it('should deal with null values gracefully', async () => {
+		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
+		const comp = fixture.componentInstance;
+		comp.percentage = true;
+		comp.currency = 'USD';
+		comp.datasets = [{ data: [0, undefined, 10, 2] }];
+		comp.labels = ['a', 'b', undefined, 'c'];
+		fixture.detectChanges();
+		await changeDetectionDelay();
+		await fixture.whenStable();
+
+		expect(comp['_chart'].data.datasets)
+			.to.be.an('array')
+			.of.length(1, '1 dataset only');
+		expect(comp['_chart'].data.datasets[0].data).to.deep.equal([0, , 10, 2]);
+		expect(comp['_chart'].data.labels).to.deep.equal(['a', 'b', , 'c']);
+	});
+
+	it('should render numbers with correct digit info', async () => {
+		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
+		const comp = fixture.componentInstance;
+
+		const ds = [{ data: [2020.2343, 10000, 50.3235] }];
+		comp.datasets = ds;
+		comp.labels = ['a', 'b', 'c'];
+		comp.digits = '0.3-3';
+		fixture.detectChanges();
+		await changeDetectionDelay();
+		await fixture.whenStable();
+		const tooltipItem: Chart.ChartTooltipItem = {
+			index: 0,
+			datasetIndex: 0,
+			xLabel: 'a',
+			yLabel: '2000'
+		};
+		const label = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds });
+		expect(label).to.equal('2,020.234');
+
+		const label1 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, {
+			datasets: [{ data: [{}, {}, {}] }]
+		});
+		expect(label1).to.equal('2000');
+
+		comp.percentage = 'only';
+
+		fixture.detectChanges();
+		await changeDetectionDelay();
+		await fixture.whenStable();
+
+		const label2 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds });
+		expect(label2).to.contains('16.74%');
+
+		const label3 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, {
+			datasets: [{ data: [{ y: 3 }, { y: 4 }, { y: 5 }] }]
+		});
+		expect(label3).to.contains('25.00%');
+
+		const label4 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, {
+			datasets: [{ data: [{}, {}, {}] }]
+		});
+		expect(label4).to.contains('0%');
 	});
 });

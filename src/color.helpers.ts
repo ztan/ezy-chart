@@ -4,6 +4,17 @@ import * as _ from 'lodash';
  * @internal
  */
 const DEFAULT_COLORS = [
+	[236, 64, 122],
+	[92, 107, 192],
+	[38, 198, 218],
+	[255, 238, 88],
+	[156, 204, 101],
+	[0, 102, 204],
+	[102, 153, 204],
+	[102, 0, 204],
+	[204, 102, 204],
+	[204, 255, 204],
+	[255, 0, 102],
 	[255, 99, 132],
 	[54, 162, 235],
 	[255, 206, 86],
@@ -47,6 +58,13 @@ export interface ColorGroup {
 	pointBorderColor?: Chart.ChartColor;
 	pointHoverBackgroundColor?: Chart.ChartColor;
 	pointHoverBorderColor?: Chart.ChartColor;
+}
+
+/**
+ * @internal
+ */
+export function replaceDefaultColors(colors: number[][]) {
+	_.merge(DEFAULT_COLORS, colors);
 }
 
 /**
