@@ -1,14 +1,29 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders, InjectionToken, Inject, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChartComponent } from './chart.component';
 import { Chart } from 'chart.js';
+import { replaceDefaultColors } from './color.helpers';
+
+export const CHART_DEFAULT_COLORS: InjectionToken<number[][]> = new InjectionToken<number[][]>(
+	'ezy-chart-default-colours'
+);
 
 @NgModule({
 	declarations: [ChartComponent],
 	imports: [CommonModule],
 	exports: [ChartComponent]
 })
-export class ChartsModule {}
+export class ChartsModule {
+	constructor(
+		@Optional()
+		@Inject(CHART_DEFAULT_COLORS)
+		defaultColors: number[][]
+	) {
+		if (defaultColors) {
+			replaceDefaultColors(defaultColors);
+		}
+	}
+}
 
 export { ChartComponent };
 
