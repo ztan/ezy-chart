@@ -117,6 +117,9 @@
                                 id="xs-miscellaneous-links"
                             >
                                 <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
+                                <li class="link">
                                   <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
                         </ul>
@@ -238,6 +241,9 @@
                                        id="miscellaneous-links"
                    >
                                        <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
                                          <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
                                </ul>
@@ -356,7 +362,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/chart.component.ts:136</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/chart.component.ts:153</a></div>
                                 </td>
                             </tr>
     
@@ -441,31 +447,48 @@ export function getTooltipLabelCallBack(
 	digitInfo?: string
 ): Chart.ChartTooltipCallback[&#x27;label&#x27;] {
 	return (tooltipItem, data) &#x3D;&gt; {
+		const labels: any[] &#x3D; [];
 		const ds &#x3D; data.datasets || [];
-		let label &#x3D; ds.length &gt; 1 ? ds[tooltipItem.datasetIndex || 0].label || &#x27;&#x27; : &#x27;&#x27;;
+		const label &#x3D; ds.length &gt; 1 ? ds[tooltipItem.datasetIndex || 0].label || &#x27;&#x27; : &#x27;&#x27;;
+		if (label) {
+			labels.push(label);
+		}
 		const dsData: Array&lt;number | Chart.ChartPoint&gt; &#x3D; ds[tooltipItem.datasetIndex || 0].data || [];
 		const point &#x3D; dsData[tooltipItem.index || 0];
 		const value &#x3D; _.isNumber(point) ? point : point.y;
 
-		if (label) {
-			label +&#x3D; &#x27; 	\r\n&#x27;;
-		}
 		if (percentage !&#x3D;&#x3D; &#x27;only&#x27;) {
 			if (currency) {
-				label +&#x3D; formatMoney(value, currency, digitInfo);
+				labels.push(formatMoney(value, currency, digitInfo));
 			} else if (digitInfo &amp;&amp; _.isNumber(value)) {
-				label +&#x3D; new DecimalPipe(moment.locale()).transform(value, digitInfo);
+				labels.push(new DecimalPipe(moment.locale()).transform(value, digitInfo));
 			} else {
-				label +&#x3D; tooltipItem.yLabel || value;
+				labels.push(tooltipItem.yLabel || value);
 			}
 		}
 
 		if (percentage) {
 			const total &#x3D; _.sumBy(dsData, d &#x3D;&gt; (_.isNumber(d) ? d : (d.y as number)));
-			label +&#x3D; &#x60; 	\r\n${value &amp;&amp; total ? (value * 100 / total).toFixed(2) : 0}%&#x60;;
+			labels.push(&#x60;${value &amp;&amp; total ? (value * 100 / total).toFixed(2) : 0}%&#x60;);
 		}
-		return label;
+		return labels;
 	};
+}
+
+function splitWords(text: string, maxLength: number) {
+	const words: string[] &#x3D; [];
+	let word: string &#x3D; &#x27;&#x27;;
+	text.split(&#x27; &#x27;).forEach(w &#x3D;&gt; {
+		word &#x3D; _.join([word, w], &#x27; &#x27;);
+		if (word.length &gt; maxLength) {
+			words.push(word);
+			word &#x3D; &#x27;&#x27;;
+		}
+	});
+	if (word) {
+		words.push(word);
+	}
+	return words;
 }
 
 /**
@@ -488,7 +511,7 @@ export function getTooltipTitleCallBack(horizontal?: boolean): Chart.ChartToolti
 			}
 		}
 
-		return title;
+		return splitWords(title, 15);
 	};
 }
 
