@@ -71,9 +71,7 @@ export default (config: any) => {
 					skipCodeGeneration: true,
 					sourceMap: true
 				}),
-				...(config.singleRun
-					? [new WebpackKarmaDieHardPlugin(), new webpack.NoEmitOnErrorsPlugin()]
-					: [])
+				...(config.singleRun ? [new WebpackKarmaDieHardPlugin(), new webpack.NoEmitOnErrorsPlugin()] : [])
 			]
 		},
 

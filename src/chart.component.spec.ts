@@ -254,6 +254,20 @@ describe('ezy-chart component', () => {
 		expect(comp['_chart'].config.options.legend.display).equals(true);
 	});
 
+	it('should not generate a legend', async () => {
+		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
+		const comp = fixture.componentInstance;
+		comp.datasets = [{ data: [1, 2, 6, 7, 8], label: 'sample' }];
+		comp.labels = ['a', 'b', 'c', 'd', 'e'];
+		comp.legend = false;
+
+		fixture.detectChanges();
+		await changeDetectionDelay();
+		await fixture.whenStable();
+
+		expect(comp['_chart'].config.options.legend.display).equals(false);
+	});
+
 	it('should not render a legend when chart size is too small', async () => {
 		const fixture: ComponentFixture<TestSmallContainerComponent> = TestBed.createComponent(
 			TestSmallContainerComponent
