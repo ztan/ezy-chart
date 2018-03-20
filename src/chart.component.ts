@@ -37,31 +37,48 @@ export function getTooltipLabelCallBack(
 	digitInfo?: string
 ): Chart.ChartTooltipCallback['label'] {
 	return (tooltipItem, data) => {
+		const labels: any[] = [];
 		const ds = data.datasets || [];
-		let label = ds.length > 1 ? ds[tooltipItem.datasetIndex || 0].label || '' : '';
+		const label = ds.length > 1 ? ds[tooltipItem.datasetIndex || 0].label || '' : '';
+		if (label) {
+			labels.push(label);
+		}
 		const dsData: Array<number | Chart.ChartPoint> = ds[tooltipItem.datasetIndex || 0].data || [];
 		const point = dsData[tooltipItem.index || 0];
 		const value = _.isNumber(point) ? point : point.y;
 
-		if (label) {
-			label += ' 	\r\n';
-		}
 		if (percentage !== 'only') {
 			if (currency) {
-				label += formatMoney(value, currency, digitInfo);
+				labels.push(formatMoney(value, currency, digitInfo));
 			} else if (digitInfo && _.isNumber(value)) {
-				label += new DecimalPipe(moment.locale()).transform(value, digitInfo);
+				labels.push(new DecimalPipe(moment.locale()).transform(value, digitInfo));
 			} else {
-				label += tooltipItem.yLabel || value;
+				labels.push(tooltipItem.yLabel || value);
 			}
 		}
 
 		if (percentage) {
 			const total = _.sumBy(dsData, d => (_.isNumber(d) ? d : (d.y as number)));
-			label += ` 	\r\n${value && total ? (value * 100 / total).toFixed(2) : 0}%`;
+			labels.push(`${value && total ? (value * 100 / total).toFixed(2) : 0}%`);
 		}
-		return label;
+		return labels;
 	};
+}
+
+function splitWords(text: string, maxLength: number) {
+	const words: string[] = [];
+	let word: string = '';
+	text.split(' ').forEach(w => {
+		word = _.join([word, w], ' ');
+		if (word.length > maxLength) {
+			words.push(word);
+			word = '';
+		}
+	});
+	if (word) {
+		words.push(word);
+	}
+	return words;
 }
 
 /**
@@ -84,7 +101,7 @@ export function getTooltipTitleCallBack(horizontal?: boolean): Chart.ChartToolti
 			}
 		}
 
-		return title;
+		return splitWords(title, 15);
 	};
 }
 
