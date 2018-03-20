@@ -377,12 +377,12 @@ describe('ezy-chart component', () => {
 			yLabel: '2000'
 		};
 		const label = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds });
-		expect(label).to.equal('2,020.234');
+		expect(label).to.deep.equal(['2,020.234']);
 
 		const label1 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, {
 			datasets: [{ data: [{}, {}, {}] }]
 		});
-		expect(label1).to.equal('2000');
+		expect(label1).to.deep.equal(['2000']);
 
 		comp.percentage = 'only';
 

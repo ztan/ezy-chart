@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.7"></a>
+## [0.0.7](https://github.com/ztan/ezy-chart/compare/v0.0.6...v0.0.7) (2018-03-20)
+
+
+### Features
+
+* split tooltip title & label to avoid tooltips being too wide ([096295b](https://github.com/ztan/ezy-chart/commit/096295b))
+
+
+
 <a name="0.0.6"></a>
 ## [0.0.6](https://github.com/ztan/ezy-chart/compare/v0.0.5...v0.0.6) (2018-03-15)
 
