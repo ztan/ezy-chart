@@ -38,12 +38,12 @@ export function getTooltipLabelCallBack(
 ): Chart.ChartTooltipCallback['label'] {
 	return (tooltipItem, data) => {
 		const labels: any[] = [];
-		const ds = data.datasets;
+		const ds = data.datasets as Chart.ChartDataSets[];
 		const label = ds.length > 1 ? ds[tooltipItem.datasetIndex || 0].label || '' : '';
 		if (label) {
 			labels.push(label);
 		}
-		const dsData: Array<number | Chart.ChartPoint> = ds[tooltipItem.datasetIndex || 0].data;
+		const dsData: Array<number | Chart.ChartPoint> = ds[tooltipItem.datasetIndex || 0].data || [];
 		const point = dsData[tooltipItem.index || 0];
 		const value = _.isNumber(point) ? point : point.y;
 
