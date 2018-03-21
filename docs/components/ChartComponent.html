@@ -436,7 +436,7 @@ import { BaseChart, ShowPercentageType, ColorsForType } from &#x27;./base.chart&
 /**
  * @internal
  */
-const MULTI_SERIES_BY_DEFAULT &#x3D; [&#x27;line&#x27;, &#x27;bar&#x27;, &#x27;horizontalBar&#x27;];
+const MULTI_SERIES_BY_DEFAULT &#x3D; [&#x27;line&#x27;, &#x27;bar&#x27;, &#x27;horizontalBar&#x27;, &#x27;radar&#x27;];
 
 /**
  * @internal
@@ -448,7 +448,7 @@ export function getTooltipLabelCallBack(
 ): Chart.ChartTooltipCallback[&#x27;label&#x27;] {
 	return (tooltipItem, data) &#x3D;&gt; {
 		const labels: any[] &#x3D; [];
-		const ds &#x3D; data.datasets || [];
+		const ds &#x3D; data.datasets as Chart.ChartDataSets[];
 		const label &#x3D; ds.length &gt; 1 ? ds[tooltipItem.datasetIndex || 0].label || &#x27;&#x27; : &#x27;&#x27;;
 		if (label) {
 			labels.push(label);
@@ -605,7 +605,9 @@ export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 		configChanged &#x3D; configChanged || this.isParamChanged(&#x27;timeFormat&#x27;);
 
 		if (dataOrParamsChanged || configChanged || this._resized) {
-			this._refresh(configChanged || (this._resized &amp;&amp; (this.legend || &#x27;auto&#x27;) &#x3D;&#x3D;&#x3D; &#x27;auto&#x27;));
+			this._refresh(
+				configChanged || (this._resized &amp;&amp; this.legend !&#x3D;&#x3D; false &amp;&amp; (this.legend || &#x27;auto&#x27;) &#x3D;&#x3D;&#x3D; &#x27;auto&#x27;)
+			);
 		}
 		this._resized &#x3D; false;
 	}
@@ -666,7 +668,7 @@ export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 
 		_.set(this._config.options || {}, &#x27;aspectRatio&#x27;, this.ratio || 2);
 
-		const legend &#x3D; this.legend || &#x27;auto&#x27;;
+		const legend &#x3D; this.legend &#x3D;&#x3D;&#x3D; false ? false : this.legend || &#x27;auto&#x27;;
 		if (_.isString(legend) &amp;&amp; [&#x27;top&#x27;, &#x27;right&#x27;, &#x27;bottom&#x27;, &#x27;left&#x27;].indexOf(legend) &gt;&#x3D; 0) {
 			this._config.options.legend.position &#x3D; legend as Chart.PositionType;
 		} else if (_.isBoolean(legend)) {
@@ -677,7 +679,7 @@ export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 			const multiPoints: boolean &#x3D; ds.every(d &#x3D;&gt; (d.data || []).length &gt; 1);
 			const maxPoints: number &#x3D; _.max(ds.map(d &#x3D;&gt; (d.data || []).length)) || 0;
 			this._config.options.legend.display &#x3D; (multiType &amp;&amp; ds.length &gt; 1) || (multiPoints &amp;&amp; !multiType);
-			this._config.options.legend.position &#x3D; multiType ? &#x27;top&#x27; : &#x27;right&#x27;;
+			this._config.options.legend.position &#x3D; multiType &amp;&amp; this.type !&#x3D;&#x3D; &#x27;radar&#x27; ? &#x27;top&#x27; : &#x27;right&#x27;;
 		}
 
 		this._config.options.scales &#x3D; {};
