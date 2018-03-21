@@ -26,7 +26,7 @@ import { BaseChart, ShowPercentageType, ColorsForType } from './base.chart';
 /**
  * @internal
  */
-const MULTI_SERIES_BY_DEFAULT = ['line', 'bar', 'horizontalBar'];
+const MULTI_SERIES_BY_DEFAULT = ['line', 'bar', 'horizontalBar', 'radar'];
 
 /**
  * @internal
@@ -38,12 +38,12 @@ export function getTooltipLabelCallBack(
 ): Chart.ChartTooltipCallback['label'] {
 	return (tooltipItem, data) => {
 		const labels: any[] = [];
-		const ds = data.datasets || [];
+		const ds = data.datasets;
 		const label = ds.length > 1 ? ds[tooltipItem.datasetIndex || 0].label || '' : '';
 		if (label) {
 			labels.push(label);
 		}
-		const dsData: Array<number | Chart.ChartPoint> = ds[tooltipItem.datasetIndex || 0].data || [];
+		const dsData: Array<number | Chart.ChartPoint> = ds[tooltipItem.datasetIndex || 0].data;
 		const point = dsData[tooltipItem.index || 0];
 		const value = _.isNumber(point) ? point : point.y;
 
@@ -269,7 +269,7 @@ export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 			const multiPoints: boolean = ds.every(d => (d.data || []).length > 1);
 			const maxPoints: number = _.max(ds.map(d => (d.data || []).length)) || 0;
 			this._config.options.legend.display = (multiType && ds.length > 1) || (multiPoints && !multiType);
-			this._config.options.legend.position = multiType ? 'top' : 'right';
+			this._config.options.legend.position = multiType && this.type !== 'radar' ? 'top' : 'right';
 		}
 
 		this._config.options.scales = {};
