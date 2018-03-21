@@ -3,6 +3,7 @@ import { expect, should } from 'chai';
 import { ChartsModule, ChartComponent } from '../src';
 import { timer } from 'rxjs/observable/timer';
 import { Component, ViewChild } from '@angular/core';
+import { CHART_DEFAULT_COLORS } from './charts.module';
 
 const changeDetectionDelay = () => timer(50).toPromise();
 
@@ -210,6 +211,24 @@ describe('ezy-chart component', () => {
 		);
 	});
 
+	it('should render x scales as monetary numbers when currency is set (horizontal bar)', async () => {
+		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
+		const comp = fixture.componentInstance;
+
+		comp.datasets = [{ data: [2000, 10000, 5000] }];
+		comp.labels = ['a', 'b', 'c'];
+		comp.currency = 'USD';
+		comp.type = 'horizontalBar';
+		fixture.detectChanges();
+		await changeDetectionDelay();
+		await fixture.whenStable();
+		expect(comp['_chart'].config.options.scales.xAxes[0].ticks.callback(10000, 0, [1000, 10000])).equals('$10K');
+		expect(comp['_chart'].config.options.scales.xAxes[0].ticks.callback(0, 0, [0, 10000])).equals('0');
+		expect(comp['_chart'].config.options.scales.xAxes[0].ticks.callback(1000000, 0, [1000000, 10000])).equals(
+			'$1M'
+		);
+	});
+
 	it('should not change data binding inputs', async () => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
@@ -254,6 +273,20 @@ describe('ezy-chart component', () => {
 		expect(comp['_chart'].config.options.legend.display).equals(true);
 	});
 
+	it('should not generate a legend', async () => {
+		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
+		const comp = fixture.componentInstance;
+		comp.datasets = [{ data: [1, 2, 6, 7, 8], label: 'sample' }];
+		comp.labels = ['a', 'b', 'c', 'd', 'e'];
+		comp.legend = false;
+
+		fixture.detectChanges();
+		await changeDetectionDelay();
+		await fixture.whenStable();
+
+		expect(comp['_chart'].config.options.legend.display).equals(false);
+	});
+
 	it('should not render a legend when chart size is too small', async () => {
 		const fixture: ComponentFixture<TestSmallContainerComponent> = TestBed.createComponent(
 			TestSmallContainerComponent
@@ -262,6 +295,21 @@ describe('ezy-chart component', () => {
 		await changeDetectionDelay();
 		await fixture.whenStable();
 		const comp = fixture.componentInstance.chartComponent;
+
+		expect(comp['_chart'].config.options.legend.display).equals(false);
+	});
+
+	it("should treat 'options' at higher priority", async () => {
+		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
+		const comp = fixture.componentInstance;
+		comp.datasets = [{ data: [1, 2, 6, 7, 8], label: 'sample' }];
+		comp.labels = ['a', 'b', 'c', 'd', 'e'];
+		comp.legend = { display: true };
+		comp.options = { legend: { display: false } };
+
+		fixture.detectChanges();
+		await changeDetectionDelay();
+		await fixture.whenStable();
 
 		expect(comp['_chart'].config.options.legend.display).equals(false);
 	});
@@ -357,6 +405,75 @@ describe('ezy-chart component', () => {
 			.of.length(1, '1 dataset only');
 		expect(comp['_chart'].data.datasets[0].data).to.deep.equal([0, , 10, 2]);
 		expect(comp['_chart'].data.labels).to.deep.equal(['a', 'b', , 'c']);
+	});
+
+	it('should render tooltip titles', async () => {
+		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
+		const comp = fixture.componentInstance;
+
+		const ds = [{ data: [2020.2343, 10000, 50.3235] }];
+		comp.datasets = ds;
+		comp.labels = ['a', 'b', 'c'];
+		fixture.detectChanges();
+		await changeDetectionDelay();
+		await fixture.whenStable();
+		const tooltipItem: Chart.ChartTooltipItem = {
+			index: 1,
+			datasetIndex: 0,
+			xLabel: 'TEST ----------- TEST ----------- TEST',
+			yLabel: 'TEST 2'
+		};
+		const title = comp['_chart'].config.options.tooltips.callbacks.title([tooltipItem], { datasets: ds });
+		expect(title).to.deep.equal([' TEST -----------', ' TEST -----------', ' TEST']);
+
+		const title1 = comp['_chart'].config.options.tooltips.callbacks.title([], { datasets: ds });
+		expect(title1).to.deep.equal([' ']);
+
+		tooltipItem.xLabel = '';
+		const title5 = comp['_chart'].config.options.tooltips.callbacks.title([tooltipItem], {
+			datasets: ds,
+			labels: ['aaa', 'bbb', 'ccc']
+		});
+		expect(title5).to.deep.equal([' bbb']);
+
+		comp.type = 'horizontalBar';
+		fixture.detectChanges();
+		await changeDetectionDelay();
+		await fixture.whenStable();
+
+		const title2 = comp['_chart'].config.options.tooltips.callbacks.title([tooltipItem], { datasets: ds });
+		expect(title2).to.deep.equal([' TEST 2']);
+
+		tooltipItem.yLabel = '';
+		const title3 = comp['_chart'].config.options.tooltips.callbacks.title([tooltipItem], { datasets: ds });
+		expect(title3).to.deep.equal([' ']);
+	});
+
+	it('should render tooltip labels', async () => {
+		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
+		const comp = fixture.componentInstance;
+
+		const ds = [{ data: [2020.2343, 10000, 50.3235] }];
+		const ds2 = [{ data: [3, 2, 1] }, { data: [1, 2, 3] }];
+		comp.datasets = ds;
+		comp.labels = ['a', 'b', 'c'];
+		comp.percentage = true;
+		fixture.detectChanges();
+		await changeDetectionDelay();
+		await fixture.whenStable();
+		const tooltipItem: Chart.ChartTooltipItem = {
+			index: 0,
+			datasetIndex: 0,
+			xLabel: 'a',
+			yLabel: '2000'
+		};
+		const label = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds });
+		expect(label).to.deep.equal(['2000', '16.74%']);
+
+		tooltipItem.datasetIndex = 1;
+		tooltipItem.yLabel = '';
+		const label2 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds2 });
+		expect(label2).to.deep.equal([1, '16.67%']);
 	});
 
 	it('should render numbers with correct digit info', async () => {

@@ -26,7 +26,7 @@ import { BaseChart, ShowPercentageType, ColorsForType } from './base.chart';
 /**
  * @internal
  */
-const MULTI_SERIES_BY_DEFAULT = ['line', 'bar', 'horizontalBar'];
+const MULTI_SERIES_BY_DEFAULT = ['line', 'bar', 'horizontalBar', 'radar'];
 
 /**
  * @internal
@@ -38,7 +38,7 @@ export function getTooltipLabelCallBack(
 ): Chart.ChartTooltipCallback['label'] {
 	return (tooltipItem, data) => {
 		const labels: any[] = [];
-		const ds = data.datasets || [];
+		const ds = data.datasets as Chart.ChartDataSets[];
 		const label = ds.length > 1 ? ds[tooltipItem.datasetIndex || 0].label || '' : '';
 		if (label) {
 			labels.push(label);
@@ -195,7 +195,9 @@ export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 		configChanged = configChanged || this.isParamChanged('timeFormat');
 
 		if (dataOrParamsChanged || configChanged || this._resized) {
-			this._refresh(configChanged || (this._resized && (this.legend || 'auto') === 'auto'));
+			this._refresh(
+				configChanged || (this._resized && this.legend !== false && (this.legend || 'auto') === 'auto')
+			);
 		}
 		this._resized = false;
 	}
@@ -256,7 +258,7 @@ export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 
 		_.set(this._config.options || {}, 'aspectRatio', this.ratio || 2);
 
-		const legend = this.legend || 'auto';
+		const legend = this.legend === false ? false : this.legend || 'auto';
 		if (_.isString(legend) && ['top', 'right', 'bottom', 'left'].indexOf(legend) >= 0) {
 			this._config.options.legend.position = legend as Chart.PositionType;
 		} else if (_.isBoolean(legend)) {
@@ -267,7 +269,7 @@ export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 			const multiPoints: boolean = ds.every(d => (d.data || []).length > 1);
 			const maxPoints: number = _.max(ds.map(d => (d.data || []).length)) || 0;
 			this._config.options.legend.display = (multiType && ds.length > 1) || (multiPoints && !multiType);
-			this._config.options.legend.position = multiType ? 'top' : 'right';
+			this._config.options.legend.position = multiType && this.type !== 'radar' ? 'top' : 'right';
 		}
 
 		this._config.options.scales = {};
