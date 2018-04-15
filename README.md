@@ -20,7 +20,7 @@ https://ztan.github.io/ezy-chart/
 
 ## About
 
-Angular components based on Chart.js
+Angular components based on Chart.js and ECharts
 
 ## Installation
 

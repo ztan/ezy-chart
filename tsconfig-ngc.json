@@ -7,10 +7,9 @@
 		"stripInternal": true,
 		"outDir": "./dist",
 		"inlineSources": true,
-		"types": [],
 		"importHelpers": true,
 		"emitDecoratorMetadata": true,
-		"strict": true
+		"strict": false
 	},
 	"files": [
 		"src/index.ts"

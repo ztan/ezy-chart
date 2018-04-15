@@ -55,6 +55,10 @@ export default (environment = 'development') => {
 					sourceMap: true
 				})
 			),
+			new webpack.ProvidePlugin({
+				'echarts': 'echarts',
+				'Chart': 'chart.js'
+			}),
 			ifDevelopment(new webpack.HotModuleReplacementPlugin()),
 			new webpack.DefinePlugin({
 				ENV: JSON.stringify(environment)

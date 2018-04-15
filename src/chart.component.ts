@@ -18,7 +18,6 @@ import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
 import { debounceTime } from 'rxjs/operators';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
-import { Chart } from 'chart.js';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { BaseChart, ShowPercentageType, ColorsForType, formatMoney, formatScale } from './base.chart';
@@ -105,6 +104,30 @@ export function getTooltipTitleCallBack(horizontal?: boolean): Chart.ChartToolti
 	};
 }
 
+declare const Chart: any;
+if (typeof Chart !== 'undefined') {
+	Chart.pluginService.register({
+		afterEvent: (chartInstance: Chart, chartEvent: MouseEvent) => {
+			const legend = (chartInstance as any).legend;
+			const canvas = chartInstance.canvas;
+			const x = chartEvent.x;
+			const y = chartEvent.y;
+			let cursorStyle = 'default';
+			if (x <= legend.right && x >= legend.left && y <= legend.bottom && y >= legend.top) {
+				for (const box of legend.legendHitBoxes) {
+					if (x <= box.left + box.width && x >= box.left && y <= box.top + box.height && y >= box.top) {
+						cursorStyle = 'pointer';
+						break;
+					}
+				}
+			}
+			if (canvas) {
+				canvas.style.cursor = cursorStyle;
+			}
+		}
+	});
+}
+
 @Component({
 	selector: 'ezy-chart',
 	template: `<div #chartContainer></div>`,
@@ -150,6 +173,8 @@ export class ChartComponent extends BaseChart {
 
 		if (dataOrParamsChanged || configChanged) {
 			this._refresh(configChanged);
+		} else {
+			this._onResize();
 		}
 	}
 
@@ -192,7 +217,7 @@ export class ChartComponent extends BaseChart {
 		const width = this._chart.chartArea.right - this._chart.chartArea.left;
 		const height = this._chart.chartArea.bottom - this._chart.chartArea.top;
 		const legendOptions = (this._chart.config.options || {}).legend || {};
-		if (width < 120 || height < 120) {
+		if (width < 150 || height < 150) {
 			legendOptions.display = false;
 		} else if (this._config.options.legend) {
 			legendOptions.display = this._config.options.legend.display;

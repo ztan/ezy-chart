@@ -1,8 +1,7 @@
 import { BaseChart, formatScale, formatMoney, ShowPercentageType } from './base.chart';
 
-import * as echarts from 'echarts';
 import { Component, ChangeDetectionStrategy, NgZone, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
-import _ = require('lodash');
+import * as _ from 'lodash';
 import { generateColorsAsStrings } from './color.helpers';
 import { DecimalPipe } from '@angular/common';
 import * as moment from 'moment';
@@ -48,7 +47,7 @@ export class EChartComponent extends BaseChart {
 		super(zone);
 	}
 
-	protected _checkUpdate(resized: boolean) {
+	protected async _checkUpdate(resized: boolean) {
 		if (this._chartContainer && !this._chart) {
 			this._createChart();
 		} else if (resized && !this.paramsChanged) {
