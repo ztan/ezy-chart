@@ -3,15 +3,16 @@ import { CommonModule } from '@angular/common';
 import { ChartComponent } from './chart.component';
 import { Chart } from 'chart.js';
 import { replaceDefaultColors } from './color.helpers';
+import { EChartComponent } from './echart.component';
 
 export const CHART_DEFAULT_COLORS: InjectionToken<number[][]> = new InjectionToken<number[][]>(
 	'ezy-chart-default-colours'
 );
 
 @NgModule({
-	declarations: [ChartComponent],
+	declarations: [ChartComponent, EChartComponent],
 	imports: [CommonModule],
-	exports: [ChartComponent]
+	exports: [ChartComponent, EChartComponent]
 })
 export class ChartsModule {
 	constructor(
@@ -25,7 +26,7 @@ export class ChartsModule {
 	}
 }
 
-export { ChartComponent };
+export { ChartComponent, EChartComponent };
 
 Chart.pluginService.register({
 	afterEvent: (chartInstance: Chart, chartEvent: MouseEvent) => {

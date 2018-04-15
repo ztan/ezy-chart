@@ -119,6 +119,13 @@ function parseColor(input: string): number[] | undefined {
 /**
  * @internal
  */
+export function generateColorsAsStrings(definedColors: string[], totalNum: number): string[] {
+	return generateColors(definedColors, totalNum).map(c => `rgba(${c[0]}, ${c[1]}, ${c[2]}, 0.8)`);
+}
+
+/**
+ * @internal
+ */
 function rgba(colour: number[], alpha: number): string {
 	return 'rgba(' + colour.concat(alpha).join(',') + ')';
 }

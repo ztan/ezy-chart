@@ -21,7 +21,7 @@ import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { Chart } from 'chart.js';
 import * as _ from 'lodash';
 import * as moment from 'moment';
-import { BaseChart, ShowPercentageType, ColorsForType } from './base.chart';
+import { BaseChart, ShowPercentageType, ColorsForType, formatMoney, formatScale } from './base.chart';
 
 /**
  * @internal
@@ -105,79 +105,33 @@ export function getTooltipTitleCallBack(horizontal?: boolean): Chart.ChartToolti
 	};
 }
 
-/**
- * @internal
- */
-export function formatScale(val: any, currency: string) {
-	let n = Number(val);
-	if (n === 0) {
-		return '0';
-	}
-	let base = '';
-	if (n >= 1000) {
-		n = n / 1000;
-		base = 'K';
-	}
-	if (n >= 1000) {
-		n = n / 1000;
-		base = 'M';
-	}
-	return (formatMoney(n, currency, undefined) || '').replace(/\.0+?$/, '') + base;
-}
-
-/**
- * @internal
- */
-export function formatMoney(val: any, currency: string, digitInfo?: string) {
-	if (val && currency) {
-		const pipe = new CurrencyPipe(moment.locale());
-		return pipe.transform(val, currency, 'symbol-narrow', digitInfo);
-	}
-}
-
 @Component({
 	selector: 'ezy-chart',
 	template: `<div #chartContainer></div>`,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
+export class ChartComponent extends BaseChart {
 	private _config: Chart.ChartConfiguration = {};
 	private _prevConfig: Chart.ChartConfiguration = {};
 
 	private _chart: Chart;
-	private _debounceTimer: any;
-	private _wndEvSubs: Subscription;
-	private _resized: boolean;
 
 	@ViewChild('chartContainer', { read: ElementRef })
 	private _chartContainer: ElementRef;
 
-	constructor(private _zone: NgZone) {
-		super();
-		this._wndEvSubs = fromEvent(window, 'resize').subscribe(() => {
-			this._resized = true;
-		});
+	constructor(zone: NgZone) {
+		super(zone);
 	}
 
-	ngDoCheck(): void {
-		if (this._debounceTimer) {
-			clearTimeout(this._debounceTimer as any);
-		}
-		this._zone.runOutsideAngular(() => {
-			this._debounceTimer = setTimeout(() => this._checkUpdate(), 50);
-		});
-	}
-
-	ngOnDestroy(): void {
+	protected _onDestroy() {
 		if (this._chart) {
 			this._chart.destroy();
 		}
-		this._wndEvSubs.unsubscribe();
 	}
 
-	private _checkUpdate() {
+	protected _checkUpdate(resized: boolean) {
 		let dataOrParamsChanged: boolean = false;
-		if (this.paramsChanged || this._resized) {
+		if (this.paramsChanged) {
 			this._applyConfig();
 			dataOrParamsChanged = true;
 		}
@@ -194,12 +148,9 @@ export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 		configChanged = configChanged || this.isParamChanged('currency');
 		configChanged = configChanged || this.isParamChanged('timeFormat');
 
-		if (dataOrParamsChanged || configChanged || this._resized) {
-			this._refresh(
-				configChanged || (this._resized && this.legend !== false && (this.legend || 'auto') === 'auto')
-			);
+		if (dataOrParamsChanged || configChanged) {
+			this._refresh(configChanged);
 		}
-		this._resized = false;
 	}
 
 	private _refresh(configChanged: boolean) {
@@ -220,7 +171,7 @@ export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 		}
 	}
 
-	private _createNewChart(cfg: Chart.ChartConfiguration, retryIfTooSmall: boolean = true) {
+	private _createNewChart(cfg: Chart.ChartConfiguration) {
 		this._zone.runOutsideAngular(() => {
 			const container: HTMLElement = this._chartContainer.nativeElement;
 			const nodes = container.getElementsByTagName('canvas');
@@ -229,15 +180,23 @@ export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 			}
 			const canvas = document.createElement('canvas');
 			container.appendChild(canvas);
-			this._chart = new Chart(canvas, cfg);
-			const width = this._chart.chartArea.right - this._chart.chartArea.left;
-			const height = this._chart.chartArea.bottom - this._chart.chartArea.top;
-			if ((width < 120 || height < 120) && retryIfTooSmall) {
-				this._chart.destroy();
-				((cfg.options || {}).legend || {}).display = false;
-				this._createNewChart(cfg, false);
+			if (this.legend !== false && (this.legend || 'auto') === 'auto') {
+				(cfg.options as any).onResize = this._onResize.bind(this);
 			}
+			this._chart = new Chart(canvas, cfg);
+			this._onResize();
 		});
+	}
+
+	private _onResize() {
+		const width = this._chart.chartArea.right - this._chart.chartArea.left;
+		const height = this._chart.chartArea.bottom - this._chart.chartArea.top;
+		const legendOptions = (this._chart.config.options || {}).legend || {};
+		if (width < 120 || height < 120) {
+			legendOptions.display = false;
+		} else if (this._config.options.legend) {
+			legendOptions.display = this._config.options.legend.display;
+		}
 	}
 
 	private _applyConfig() {
