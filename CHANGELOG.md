@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.0"></a>
+# [0.1.0](https://github.com/ztan/ezy-chart/compare/v0.0.9...v0.1.0) (2018-04-15)
+
+
+### Features
+
+* add support for echarts (experimental) ([d6f5bc5](https://github.com/ztan/ezy-chart/commit/d6f5bc5))
+
+
+
 <a name="0.0.9"></a>
 ## [0.0.9](https://github.com/ztan/ezy-chart/compare/v0.0.8...v0.0.9) (2018-03-21)
 
