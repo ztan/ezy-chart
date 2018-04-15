@@ -1,6 +1,6 @@
 {
 	"name": "ezy-chart",
-	"version": "0.0.9",
+	"version": "0.1.0",
 	"description": "Angular components based on Chart.js",
 	"main": "./bundles/ezy-chart.umd.js",
 	"module": "./index.js",
