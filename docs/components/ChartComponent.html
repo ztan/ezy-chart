@@ -96,10 +96,29 @@
                                 <li class="link">
                                     <a href="../components/ChartComponent.html"  data-type="entity-link" class="active" >ChartComponent</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../components/EChartComponent.html" >EChartComponent</a>
+                                </li>
                         </ul>
                     </li>
             
             
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/BaseChart.html" >BaseChart</a>
+                                </li>
+                        </ul>
+                    </li>
             
             
             
@@ -118,6 +137,9 @@
                             >
                                 <li class="link">
                                   <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
                                 </li>
                                 <li class="link">
                                   <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
@@ -220,10 +242,29 @@
                                        <li class="link">
                                            <a href="../components/ChartComponent.html"  data-type="entity-link" class="active" >ChartComponent</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../components/EChartComponent.html" >EChartComponent</a>
+                                       </li>
                                </ul>
                            </li>
                    
                    
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/BaseChart.html" >BaseChart</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                    
                    
@@ -242,6 +283,9 @@
                    >
                                        <li class="link">
                                          <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
                                        </li>
                                        <li class="link">
                                          <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
@@ -300,16 +344,9 @@
         <h3>Extends</h3>
     </p>
     <p class="comment">
-            <code>BaseChart</code>
+            <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
     </p>
 
-    <p class="comment">
-        <h3>Implements</h3>
-    </p>
-    <p class="comment">
-                <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
-                <code><a href="https://angular.io/api/core/DoCheck" target="_blank" >DoCheck</a></code>
-    </p>
 
 
 <section>
@@ -357,12 +394,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(_zone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>)</code>
+                            <code>constructor(zone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/chart.component.ts:153</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/chart.component.ts:143</a></div>
                                 </td>
                             </tr>
     
@@ -381,7 +418,7 @@
                                             </thead>
                                             <tbody>
                                                     <tr>
-                                                      <td>_zone</td>
+                                                      <td>zone</td>
                                                       <td>
                                                                 <code><a href="https://angular.io/api/core/NgZone" target="_blank" >NgZone</a></code>
                                                       </td>
@@ -428,10 +465,9 @@ import { fromEvent } from &#x27;rxjs/observable/fromEvent&#x27;;
 import { Subscription } from &#x27;rxjs/Subscription&#x27;;
 import { debounceTime } from &#x27;rxjs/operators&#x27;;
 import { CurrencyPipe, DecimalPipe } from &#x27;@angular/common&#x27;;
-import { Chart } from &#x27;chart.js&#x27;;
 import * as _ from &#x27;lodash&#x27;;
 import * as moment from &#x27;moment&#x27;;
-import { BaseChart, ShowPercentageType, ColorsForType } from &#x27;./base.chart&#x27;;
+import { BaseChart, ShowPercentageType, ColorsForType, formatMoney, formatScale } from &#x27;./base.chart&#x27;;
 
 /**
  * @internal
@@ -515,34 +551,28 @@ export function getTooltipTitleCallBack(horizontal?: boolean): Chart.ChartToolti
 	};
 }
 
-/**
- * @internal
- */
-export function formatScale(val: any, currency: string) {
-	let n &#x3D; Number(val);
-	if (n &#x3D;&#x3D;&#x3D; 0) {
-		return &#x27;0&#x27;;
-	}
-	let base &#x3D; &#x27;&#x27;;
-	if (n &gt;&#x3D; 1000) {
-		n &#x3D; n / 1000;
-		base &#x3D; &#x27;K&#x27;;
-	}
-	if (n &gt;&#x3D; 1000) {
-		n &#x3D; n / 1000;
-		base &#x3D; &#x27;M&#x27;;
-	}
-	return (formatMoney(n, currency, undefined) || &#x27;&#x27;).replace(/\.0+?$/, &#x27;&#x27;) + base;
-}
-
-/**
- * @internal
- */
-export function formatMoney(val: any, currency: string, digitInfo?: string) {
-	if (val &amp;&amp; currency) {
-		const pipe &#x3D; new CurrencyPipe(moment.locale());
-		return pipe.transform(val, currency, &#x27;symbol-narrow&#x27;, digitInfo);
-	}
+declare const Chart: any;
+if (typeof Chart !&#x3D;&#x3D; &#x27;undefined&#x27;) {
+	Chart.pluginService.register({
+		afterEvent: (chartInstance: Chart, chartEvent: MouseEvent) &#x3D;&gt; {
+			const legend &#x3D; (chartInstance as any).legend;
+			const canvas &#x3D; chartInstance.canvas;
+			const x &#x3D; chartEvent.x;
+			const y &#x3D; chartEvent.y;
+			let cursorStyle &#x3D; &#x27;default&#x27;;
+			if (x &lt;&#x3D; legend.right &amp;&amp; x &gt;&#x3D; legend.left &amp;&amp; y &lt;&#x3D; legend.bottom &amp;&amp; y &gt;&#x3D; legend.top) {
+				for (const box of legend.legendHitBoxes) {
+					if (x &lt;&#x3D; box.left + box.width &amp;&amp; x &gt;&#x3D; box.left &amp;&amp; y &lt;&#x3D; box.top + box.height &amp;&amp; y &gt;&#x3D; box.top) {
+						cursorStyle &#x3D; &#x27;pointer&#x27;;
+						break;
+					}
+				}
+			}
+			if (canvas) {
+				canvas.style.cursor &#x3D; cursorStyle;
+			}
+		}
+	});
 }
 
 @Component({
@@ -550,44 +580,28 @@ export function formatMoney(val: any, currency: string, digitInfo?: string) {
 	template: &#x60;&lt;div #chartContainer&gt;&lt;/div&gt;&#x60;,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
+export class ChartComponent extends BaseChart {
 	private _config: Chart.ChartConfiguration &#x3D; {};
 	private _prevConfig: Chart.ChartConfiguration &#x3D; {};
 
 	private _chart: Chart;
-	private _debounceTimer: any;
-	private _wndEvSubs: Subscription;
-	private _resized: boolean;
 
 	@ViewChild(&#x27;chartContainer&#x27;, { read: ElementRef })
 	private _chartContainer: ElementRef;
 
-	constructor(private _zone: NgZone) {
-		super();
-		this._wndEvSubs &#x3D; fromEvent(window, &#x27;resize&#x27;).subscribe(() &#x3D;&gt; {
-			this._resized &#x3D; true;
-		});
+	constructor(zone: NgZone) {
+		super(zone);
 	}
 
-	ngDoCheck(): void {
-		if (this._debounceTimer) {
-			clearTimeout(this._debounceTimer as any);
-		}
-		this._zone.runOutsideAngular(() &#x3D;&gt; {
-			this._debounceTimer &#x3D; setTimeout(() &#x3D;&gt; this._checkUpdate(), 50);
-		});
-	}
-
-	ngOnDestroy(): void {
+	protected _onDestroy() {
 		if (this._chart) {
 			this._chart.destroy();
 		}
-		this._wndEvSubs.unsubscribe();
 	}
 
-	private _checkUpdate() {
+	protected _checkUpdate(resized: boolean) {
 		let dataOrParamsChanged: boolean &#x3D; false;
-		if (this.paramsChanged || this._resized) {
+		if (this.paramsChanged) {
 			this._applyConfig();
 			dataOrParamsChanged &#x3D; true;
 		}
@@ -604,12 +618,11 @@ export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 		configChanged &#x3D; configChanged || this.isParamChanged(&#x27;currency&#x27;);
 		configChanged &#x3D; configChanged || this.isParamChanged(&#x27;timeFormat&#x27;);
 
-		if (dataOrParamsChanged || configChanged || this._resized) {
-			this._refresh(
-				configChanged || (this._resized &amp;&amp; this.legend !&#x3D;&#x3D; false &amp;&amp; (this.legend || &#x27;auto&#x27;) &#x3D;&#x3D;&#x3D; &#x27;auto&#x27;)
-			);
+		if (dataOrParamsChanged || configChanged) {
+			this._refresh(configChanged);
 		}
-		this._resized &#x3D; false;
+
+		this._checkSize();
 	}
 
 	private _refresh(configChanged: boolean) {
@@ -630,7 +643,7 @@ export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 		}
 	}
 
-	private _createNewChart(cfg: Chart.ChartConfiguration, retryIfTooSmall: boolean &#x3D; true) {
+	private _createNewChart(cfg: Chart.ChartConfiguration) {
 		this._zone.runOutsideAngular(() &#x3D;&gt; {
 			const container: HTMLElement &#x3D; this._chartContainer.nativeElement;
 			const nodes &#x3D; container.getElementsByTagName(&#x27;canvas&#x27;);
@@ -640,14 +653,30 @@ export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 			const canvas &#x3D; document.createElement(&#x27;canvas&#x27;);
 			container.appendChild(canvas);
 			this._chart &#x3D; new Chart(canvas, cfg);
-			const width &#x3D; this._chart.chartArea.right - this._chart.chartArea.left;
-			const height &#x3D; this._chart.chartArea.bottom - this._chart.chartArea.top;
-			if ((width &lt; 120 || height &lt; 120) &amp;&amp; retryIfTooSmall) {
-				this._chart.destroy();
-				((cfg.options || {}).legend || {}).display &#x3D; false;
-				this._createNewChart(cfg, false);
-			}
 		});
+	}
+
+	private _checkSize() {
+		if (!this._chart) {
+			return;
+		}
+		const cfg &#x3D; this._chart.config;
+		const width &#x3D; this._chart.chartArea.right - this._chart.chartArea.left;
+		const height &#x3D; this._chart.chartArea.bottom - this._chart.chartArea.top;
+		const legendOpt &#x3D; (cfg.options || {}).legend || {};
+		if ((width &lt; 140 || height &lt; 140) &amp;&amp; legendOpt.display) {
+			this._chart.destroy();
+			legendOpt.display &#x3D; false;
+			this._createNewChart(cfg);
+		} else if (
+			width &gt; 150 &amp;&amp;
+			height &gt; 150 &amp;&amp;
+			!legendOpt.display &amp;&amp;
+			this._config.options.legend &amp;&amp;
+			this._config.options.legend.display
+		) {
+			this._refresh(true);
+		}
 	}
 
 	private _applyConfig() {
@@ -800,7 +829,7 @@ export class ChartComponent extends BaseChart implements OnDestroy, DoCheck {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div #chartContainer></div></div>'
-    var COMPONENTS = [{'name': 'ChartComponent', 'selector': 'ezy-chart'}];
+    var COMPONENTS = [{'name': 'ChartComponent', 'selector': 'ezy-chart'},{'name': 'EChartComponent', 'selector': 'ezy-echart'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ChartComponent'};
 </script>

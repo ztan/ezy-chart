@@ -1,0 +1,817 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ezy-chart documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	    <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ezy-chart documentation</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../index.html">ezy-chart documentation</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                                <li class="link">
+                                  <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                        <a href="../changelog.html"
+                                    >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
+                                <li class="link">
+                                        <a href="../license.html"
+                                    >
+                                        <span class="fa fa-file-text-o"></span>LICENSE
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../modules.html" >
+                            <div class="menu-toggler linked" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-down"></span>
+                            </div>
+                        </a>
+                        <ul class="links collapse "
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/ChartsModule.html" >ChartsModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/ChartComponent.html" >ChartComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EChartComponent.html"  data-type="entity-link" class="active" >EChartComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/BaseChart.html" >BaseChart</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+            
+            
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-miscellaneous-links"
+                            >
+                            <span class="fa fa-cubes"></span>
+                            <span>Miscellaneous</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-miscellaneous-links"
+                            >
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../index.html">ezy-chart documentation</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                               <a href="../changelog.html"
+                                           >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                               <a href="../license.html"
+                                           >
+                                               <span class="fa fa-file-text-o"></span>LICENSE
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../modules.html" >
+                                   <div class="menu-toggler linked" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-down"></span>
+                                   </div>
+                               </a>
+                               <ul class="links collapse "
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/ChartsModule.html" >ChartsModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/ChartComponent.html" >ChartComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EChartComponent.html"  data-type="entity-link" class="active" >EChartComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/BaseChart.html" >BaseChart</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                   
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#miscellaneous-links"
+                   >
+                                   <span class="fa fa-cubes"></span>
+                                   <span>Miscellaneous</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="miscellaneous-links"
+                   >
+                                       <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
+               </div>
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>EChartComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+
+    <li>
+        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/echart.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+            <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
+    </p>
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">encapsulation</td>
+                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ezy-echart</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>.ezy-echart-series-indicator {
+			display: inline-block;
+			border-radius: 10px;
+			border-width: 1px;
+			border-style: solid;
+			border-color: white;
+			width: 10px;
+			height: 10px;
+		}
+		.ezy-echart-tooltip-item {
+			text-indent: -13px;
+			padding-left: 13px;
+		}
+		</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div #chartContainer&gt;&lt;/div&gt;</code></pre></td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section>
+        <h3 id="constructor">Constructor</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>constructor(zone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>)</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/echart.component.ts:44</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div>
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>zone</td>
+                                                      <td>
+                                                                <code><a href="https://angular.io/api/core/NgZone" target="_blank" >NgZone</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade tab-source-code" id="c-source">
+        <pre class="line-numbers"><code class="language-typescript">import { BaseChart, formatScale, formatMoney, ShowPercentageType } from &#x27;./base.chart&#x27;;
+
+import { Component, ChangeDetectionStrategy, NgZone, ViewChild, ElementRef, ViewEncapsulation } from &#x27;@angular/core&#x27;;
+import * as _ from &#x27;lodash&#x27;;
+import { generateColorsAsStrings } from &#x27;./color.helpers&#x27;;
+import { DecimalPipe } from &#x27;@angular/common&#x27;;
+import * as moment from &#x27;moment&#x27;;
+
+@Component({
+	selector: &#x27;ezy-echart&#x27;,
+	template: &#x60;&lt;div #chartContainer&gt;&lt;/div&gt;&#x60;,
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	encapsulation: ViewEncapsulation.None,
+	styles: [
+		&#x60;.ezy-echart-series-indicator {
+			display: inline-block;
+			border-radius: 10px;
+			border-width: 1px;
+			border-style: solid;
+			border-color: white;
+			width: 10px;
+			height: 10px;
+		}
+		.ezy-echart-tooltip-item {
+			text-indent: -13px;
+			padding-left: 13px;
+		}
+		&#x60;
+	]
+})
+export class EChartComponent extends BaseChart {
+	@ViewChild(&#x27;chartContainer&#x27;, { read: ElementRef })
+	private _chartContainer: ElementRef;
+
+	private _chart: echarts.ECharts;
+	private _echartsOptions: echarts.EChartOption &#x3D; {};
+
+	private _typeMap &#x3D; {
+		bar: &#x27;bar&#x27;,
+		horizontalBar: &#x27;bar&#x27;,
+		doughnut: &#x27;pie&#x27;,
+		pie: &#x27;pie&#x27;,
+		line: &#x27;line&#x27;
+	};
+
+	constructor(zone: NgZone) {
+		super(zone);
+	}
+
+	protected async _checkUpdate(resized: boolean) {
+		if (this._chartContainer &amp;&amp; !this._chart) {
+			this._createChart();
+		} else if (resized &amp;&amp; !this.paramsChanged) {
+			this._recalculateSize();
+		}
+
+		if (this.paramsChanged) {
+			this._applyOptions();
+			this.resetParamsChangeState();
+			this._recalculateSize();
+		}
+	}
+
+	protected _onDestroy() {
+		if (this._chart &amp;&amp; !this._chart.isDisposed()) {
+			this._chart.dispose();
+		}
+	}
+
+	private _recalculateSize() {
+		if (this._chartContainer) {
+			const div: HTMLDivElement &#x3D; this._chartContainer.nativeElement;
+			const height &#x3D; Math.max(div.clientWidth / (this.ratio || 2), 240);
+			div.style.height &#x3D; &#x60;${height}px&#x60;;
+			if (this._chart) {
+				this._chart.resize();
+				if (this._echartsOptions.legend) {
+					const opt: any &#x3D; this._chart.getOption();
+					if (div.clientWidth &lt;&#x3D; 240 || div.clientHeight &lt;&#x3D; 240) {
+						opt.legend &#x3D; undefined;
+					} else {
+						opt.legend &#x3D; _.cloneDeep(this._echartsOptions.legend);
+					}
+					this._chart.setOption(opt, true);
+				}
+			}
+		}
+	}
+
+	private _createChart() {
+		this._chart &#x3D; echarts.init(this._chartContainer.nativeElement);
+	}
+
+	private _applyOptions() {
+		const ds &#x3D; this.datasets || [];
+		this._echartsOptions &#x3D; {};
+		const mainType &#x3D; this.type || &#x27;bar&#x27;;
+		const series: any[] &#x3D; ds.map(v &#x3D;&gt; ({
+			name: v.name || _.isString(v.label) ? v.label : &#x27;&#x27;,
+			type: this._typeMap[v.type || mainType] || v.type || mainType,
+			data: (v.data || ([] as any[])).map(d &#x3D;&gt; this._mapDataItem(d, this.timeFormat))
+		}));
+		const isTime &#x3D; series.some(s &#x3D;&gt; s.data.some(d &#x3D;&gt; d.name &amp;&amp; moment(d.name).isValid()));
+		const labels &#x3D; this.labels || [];
+		const timeAxis &#x3D; [
+			{
+				type: &#x27;time&#x27;
+			}
+		];
+		const catAxis &#x3D; [{ data: labels, type: &#x27;category&#x27; }];
+		const valAxis: any[] &#x3D; [{ type: &#x27;value&#x27; }];
+		const tooltip: any &#x3D; {
+			axisPointer: {
+				type: &#x27;shadow&#x27;
+			}
+		};
+		tooltip.formatter &#x3D; this._formatTooltip.bind(this, this.currency, this.percentage, this.digits);
+		if (this.currency) {
+			valAxis[0].axisLabel &#x3D; { formatter: value &#x3D;&gt; formatScale(value, this.currency) };
+		}
+		this._echartsOptions &#x3D; {
+			series,
+			tooltip
+		};
+
+		if (mainType &#x3D;&#x3D;&#x3D; &#x27;horizontalBar&#x27;) {
+			this._echartsOptions.yAxis &#x3D; catAxis;
+			this._echartsOptions.xAxis &#x3D; valAxis;
+			this._echartsOptions.tooltip[&#x27;trigger&#x27;] &#x3D; &#x27;axis&#x27;;
+		} else if (mainType &#x3D;&#x3D;&#x3D; &#x27;line&#x27; || mainType &#x3D;&#x3D;&#x3D; &#x27;bar&#x27;) {
+			this._echartsOptions.xAxis &#x3D; isTime ? timeAxis : catAxis;
+			this._echartsOptions.yAxis &#x3D; valAxis;
+			this._echartsOptions.tooltip[&#x27;trigger&#x27;] &#x3D; &#x27;axis&#x27;;
+		} else if (this._typeMap[mainType] &#x3D;&#x3D;&#x3D; &#x27;pie&#x27;) {
+			this._definePieShape(series, labels, mainType &#x3D;&#x3D;&#x3D; &#x27;doughnut&#x27;);
+		}
+
+		if (this.legend !&#x3D;&#x3D; false) {
+			this._echartsOptions.legend &#x3D; this._generateLegendOptions(
+				series.length &gt; 1,
+				this._typeMap[mainType] &#x3D;&#x3D;&#x3D; &#x27;pie&#x27;
+			);
+		}
+
+		this._defineColors(series, this._typeMap[mainType] &#x3D;&#x3D;&#x3D; &#x27;pie&#x27;);
+
+		let opt &#x3D; _.cloneDeep(this._echartsOptions);
+		opt &#x3D; _.merge(opt, this.options);
+
+		this._chart.setOption(opt, true);
+	}
+
+	private _mapDataItem(item: any, timeFormat: string): any {
+		if (_.isNumber(item)) {
+			return { value: item };
+		}
+		if (!item) {
+			return undefined;
+		}
+		if (item.x &amp;&amp; moment(item.x).isValid() &amp;&amp; _.isNumber(item.y)) {
+			const m &#x3D; moment(item.x);
+			return {
+				name: moment(item.x).format(timeFormat || &#x27;L&#x27;),
+				value: [&#x60;${m.get(&#x27;year&#x27;)}-${m.get(&#x27;month&#x27;)}-${m.get(&#x27;day&#x27;)}&#x60;, item.y]
+			};
+		}
+		return item;
+	}
+
+	private _definePieShape(series: any[], labels: string[], makeDoughnut: boolean) {
+		let r &#x3D; 0;
+		let step &#x3D; 80;
+		if (makeDoughnut) {
+			r &#x3D; 40;
+		}
+		step &#x3D; (80 - r) / series.length;
+		series.forEach(s &#x3D;&gt; {
+			s.data.forEach((d, i) &#x3D;&gt; (d.name &#x3D; labels[i]));
+			s.radius &#x3D; [&#x60;${r}%&#x60;, &#x60;${r + step - 1}%&#x60;];
+			r &#x3D; r + step;
+			s.label &#x3D; {
+				normal: {
+					show: false,
+					position: &#x27;center&#x27;
+				},
+				emphasis: {
+					show: makeDoughnut ? true : false,
+					textShadowColor: &#x27;grey&#x27;,
+					textShadowOffsetY: 1
+				}
+			};
+			s[&#x27;avoidLabelOverlap&#x27;] &#x3D; false;
+		});
+	}
+
+	private _defineColors(series: any[], pieLike: boolean) {
+		let cf &#x3D; this.colorsFor || &#x27;auto&#x27;;
+		if (cf &#x3D;&#x3D;&#x3D; &#x27;auto&#x27;) {
+			if (pieLike) {
+				cf &#x3D; &#x27;data&#x27;;
+			} else {
+				cf &#x3D; &#x27;series&#x27;;
+			}
+		}
+		if (cf &#x3D;&#x3D;&#x3D; &#x27;series&#x27;) {
+			const colors &#x3D; generateColorsAsStrings(this.colors || [], series.length);
+			series.forEach((s, i) &#x3D;&gt; (s[&#x27;color&#x27;] &#x3D; colors[i]));
+		} else if (cf &#x3D;&#x3D;&#x3D; &#x27;data&#x27;) {
+			series.forEach(s &#x3D;&gt; {
+				const colors &#x3D; generateColorsAsStrings(this.colors || [], s.data.length);
+				s.data.forEach((d, i) &#x3D;&gt; (d.itemStyle &#x3D; { color: colors[i] }));
+			});
+		}
+	}
+
+	private _formatTooltip(currencyCode: string, percent: ShowPercentageType, digitInfo: string, param: any) {
+		const formatParam &#x3D; p &#x3D;&gt; {
+			let l &#x3D; &#x60;&lt;div class&#x3D;&quot;ezy-echart-tooltip-item&quot;&gt;&lt;span class&#x3D;&quot;ezy-echart-series-indicator&quot; style&#x3D;&quot;background-color: ${
+				p.color
+			}&quot;&gt;&lt;/span&gt;
+			 ${p.seriesName}: &#x60;;
+			const percentOnly: boolean &#x3D; percent &#x3D;&#x3D;&#x3D; &#x27;only&#x27; &amp;&amp; p.percent;
+			const showPercent: boolean &#x3D; percent &amp;&amp; p.percent;
+			const v &#x3D; _.isArray(p.data.value) ? p.data.value[1] : p.data.value;
+
+			if (!percentOnly) {
+				if (currencyCode) {
+					l +&#x3D; formatMoney(v, currencyCode, digitInfo);
+				} else {
+					l +&#x3D; new DecimalPipe(moment.locale()).transform(v, digitInfo);
+				}
+			}
+
+			if (showPercent) {
+				l +&#x3D; &#x60;&lt;span&gt; ${p.percent}%&lt;/span&gt;&#x60;;
+			}
+			l +&#x3D; &#x27;&lt;/div&gt;&#x27;;
+			return l;
+		};
+
+		let str &#x3D; &#x27;&lt;div style&#x3D;&quot;max-width: 35vw; white-space:normal&quot;&gt;&#x27;;
+		if (_.isArray(param)) {
+			str +&#x3D; &#x60;&lt;strong&gt;${param[0].name}&lt;/strong&gt;&lt;br/&gt;&#x60;;
+			str +&#x3D; &#x60;${param.map(p &#x3D;&gt; formatParam(p)).join(&#x27;&#x27;)}&#x60;;
+		} else {
+			str +&#x3D; &#x60;&lt;strong&gt;${param.name}&lt;/strong&gt;&lt;br/&gt;&#x60;;
+			str +&#x3D; &#x60;${formatParam(param)}&#x60;;
+		}
+		return str + &#x27;&lt;/div&gt;&#x27;;
+	}
+
+	private _generateLegendOptions(multiSeries: boolean, pieLike: boolean): any {
+		const l &#x3D; this.legend || &#x27;auto&#x27;;
+		if ((l &#x3D;&#x3D;&#x3D; &#x27;auto&#x27; &amp;&amp; (multiSeries || pieLike)) || _.isString(this.legend)) {
+			const legend: any &#x3D; {};
+			if (l &#x3D;&#x3D;&#x3D; &#x27;auto&#x27; &amp;&amp; pieLike) {
+				legend.x &#x3D; &#x27;left&#x27;;
+			}
+			if ([&#x27;left&#x27;, &#x27;right&#x27;, &#x27;top&#x27;, &#x27;bottom&#x27;].indexOf(l as string) &gt;&#x3D; 0) {
+				legend.x &#x3D; l;
+			}
+			if (legend.x &#x3D;&#x3D;&#x3D; &#x27;left&#x27; || legend.x &#x3D;&#x3D;&#x3D; &#x27;right&#x27;) {
+				legend.orient &#x3D; &#x27;vertical&#x27;;
+			}
+			return legend;
+		} else if (_.isObject(this.legend)) {
+			return this.legend;
+		}
+	}
+}
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade" id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div #chartContainer></div></div>'
+    var COMPONENTS = [{'name': 'ChartComponent', 'selector': 'ezy-chart'},{'name': 'EChartComponent', 'selector': 'ezy-echart'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'EChartComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+           </div>
+       </div>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 1;</script>
+
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
+
+    </body>
+</html>

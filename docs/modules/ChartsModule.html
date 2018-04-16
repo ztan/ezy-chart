@@ -96,10 +96,29 @@
                                 <li class="link">
                                     <a href="../components/ChartComponent.html" >ChartComponent</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../components/EChartComponent.html" >EChartComponent</a>
+                                </li>
                         </ul>
                     </li>
             
             
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/BaseChart.html" >BaseChart</a>
+                                </li>
+                        </ul>
+                    </li>
             
             
             
@@ -118,6 +137,9 @@
                             >
                                 <li class="link">
                                   <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
                                 </li>
                                 <li class="link">
                                   <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
@@ -220,10 +242,29 @@
                                        <li class="link">
                                            <a href="../components/ChartComponent.html" >ChartComponent</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../components/EChartComponent.html" >EChartComponent</a>
+                                       </li>
                                </ul>
                            </li>
                    
                    
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/BaseChart.html" >BaseChart</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                    
                    
@@ -242,6 +283,9 @@
                    >
                                        <li class="link">
                                          <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
                                        </li>
                                        <li class="link">
                                          <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
@@ -303,6 +347,9 @@
                             <li class="list-group-item">
                                 <a href="../components/ChartComponent.html">ChartComponent</a>
                             </li>
+                            <li class="list-group-item">
+                                <a href="../components/EChartComponent.html">EChartComponent</a>
+                            </li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
@@ -310,6 +357,9 @@
                     <ul class="list-group">
                             <li class="list-group-item">
                                     <a href="../components/ChartComponent.html" >ChartComponent</a>
+                            </li>
+                            <li class="list-group-item">
+                                    <a href="../components/EChartComponent.html" >EChartComponent</a>
                             </li>
                     </ul>
                 </div>
@@ -322,17 +372,17 @@
         <pre class="line-numbers"><code class="language-typescript">import { NgModule, ModuleWithProviders, InjectionToken, Inject, Optional } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { ChartComponent } from &#x27;./chart.component&#x27;;
-import { Chart } from &#x27;chart.js&#x27;;
 import { replaceDefaultColors } from &#x27;./color.helpers&#x27;;
+import { EChartComponent } from &#x27;./echart.component&#x27;;
 
 export const CHART_DEFAULT_COLORS: InjectionToken&lt;number[][]&gt; &#x3D; new InjectionToken&lt;number[][]&gt;(
 	&#x27;ezy-chart-default-colours&#x27;
 );
 
 @NgModule({
-	declarations: [ChartComponent],
+	declarations: [ChartComponent, EChartComponent],
 	imports: [CommonModule],
-	exports: [ChartComponent]
+	exports: [ChartComponent, EChartComponent]
 })
 export class ChartsModule {
 	constructor(
@@ -346,28 +396,7 @@ export class ChartsModule {
 	}
 }
 
-export { ChartComponent };
-
-Chart.pluginService.register({
-	afterEvent: (chartInstance: Chart, chartEvent: MouseEvent) &#x3D;&gt; {
-		const legend &#x3D; (chartInstance as any).legend;
-		const canvas &#x3D; chartInstance.canvas;
-		const x &#x3D; chartEvent.x;
-		const y &#x3D; chartEvent.y;
-		let cursorStyle &#x3D; &#x27;default&#x27;;
-		if (x &lt;&#x3D; legend.right &amp;&amp; x &gt;&#x3D; legend.left &amp;&amp; y &lt;&#x3D; legend.bottom &amp;&amp; y &gt;&#x3D; legend.top) {
-			for (const box of legend.legendHitBoxes) {
-				if (x &lt;&#x3D; box.left + box.width &amp;&amp; x &gt;&#x3D; box.left &amp;&amp; y &lt;&#x3D; box.top + box.height &amp;&amp; y &gt;&#x3D; box.top) {
-					cursorStyle &#x3D; &#x27;pointer&#x27;;
-					break;
-				}
-			}
-		}
-		if (canvas) {
-			canvas.style.cursor &#x3D; cursorStyle;
-		}
-	}
-});
+export { ChartComponent, EChartComponent };
 </code></pre>
     </div>
 </div>
