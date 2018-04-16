@@ -1,7 +1,31 @@
+<label class="col-form-label">Engine</label>
+<div>
+	<div class="form-check form-check-inline">
+		<label class="form-check-label">
+			<input class="form-control" type="radio" name="engine" value="chartjs" [(ngModel)]="engine" /> Chart.js
+		</label>
+	</div>
+	<div class="form-check form-check-inline">
+		<label class="form-check-label">
+			<input class="form-control" type="radio" name="engine" value="echarts" [(ngModel)]="engine" /> EChart
+		</label>
+	</div>
+</div>
+
 <div class="row">
 	<div class="col-lg-6">
-		<ezy-chart [datasets]="datasets" [labels]="labels" [type]="type" [colorsFor]="colorsFor" [currency]="currencyMode ? 'USD' : undefined"
-		 [percentage]="showPercentage"></ezy-chart>
+		<div [ngSwitch]="engine">
+			<div *ngSwitchCase="'chartjs'">
+				<ezy-chart [datasets]="datasets" [labels]="labels" [type]="type" [colorsFor]="colorsFor" [currency]="currencyMode ? 'USD' : undefined"
+				 [percentage]="showPercentage"></ezy-chart>
+
+			</div>
+			<div *ngSwitchDefault>
+				<ezy-echart [datasets]="datasets" [labels]="labels" [type]="type" [colorsFor]="colorsFor" [currency]="currencyMode ? 'USD' : undefined"
+				 [percentage]="showPercentage"></ezy-echart>
+
+			</div>
+		</div>
 
 		<div class="row align-items-center">
 			<div class="form-group col-lg-6">

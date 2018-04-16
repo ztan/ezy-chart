@@ -71,6 +71,10 @@ export default (config: any) => {
 					skipCodeGeneration: true,
 					sourceMap: true
 				}),
+				new webpack.ProvidePlugin({
+					'echarts': 'echarts',
+					'Chart': 'chart.js'
+				}),
 				...(config.singleRun ? [new WebpackKarmaDieHardPlugin(), new webpack.NoEmitOnErrorsPlugin()] : [])
 			]
 		},

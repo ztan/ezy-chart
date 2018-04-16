@@ -1,5 +1,9 @@
-import { Input } from '@angular/core';
+import { Input, NgZone, OnDestroy, DoCheck } from '@angular/core';
 import * as _ from 'lodash';
+import { Subscription } from 'rxjs/Subscription';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { CurrencyPipe } from '@angular/common';
+import * as moment from 'moment';
 
 export type ColorsForType = 'auto' | 'series' | 'data' | 'none';
 
@@ -25,9 +29,43 @@ export interface ChartParameters {
 	digits?: string;
 }
 
-export class BaseChart {
+/**
+ * @internal
+ */
+export function formatScale(val: any, currency: string) {
+	let n = Number(val);
+	if (n === 0) {
+		return '0';
+	}
+	let base = '';
+	if (n >= 1000) {
+		n = n / 1000;
+		base = 'K';
+	}
+	if (n >= 1000) {
+		n = n / 1000;
+		base = 'M';
+	}
+	return (formatMoney(n, currency, undefined) || '').replace(/\.0+?$/, '') + base;
+}
+
+/**
+ * @internal
+ */
+export function formatMoney(val: any, currency: string, digitInfo?: string) {
+	if (val && currency) {
+		const pipe = new CurrencyPipe(moment.locale());
+		return pipe.transform(val, currency, 'symbol-narrow', digitInfo);
+	}
+}
+
+export abstract class BaseChart implements OnDestroy, DoCheck {
 	private _params: ChartParameters = {};
 	private _prevParams: ChartParameters = {};
+
+	private _debounceTimer: any;
+	private _wndEvSubs: Subscription;
+	private _resized: boolean;
 
 	/**
 	 * An array of strings, corresponding to Chart.ChartConfiguration.data.labels
@@ -61,11 +99,11 @@ export class BaseChart {
 	 * @property
 	 */
 	@Input()
-	set datasets(ds: Chart.ChartDataSets[] | undefined) {
+	set datasets(ds: Chart.ChartDataSets[] | any) {
 		this._params.datasets = ds;
 	}
 
-	get datasets(): Chart.ChartDataSets[] | undefined {
+	get datasets(): Chart.ChartDataSets[] | any {
 		return this._params.datasets;
 	}
 
@@ -210,4 +248,30 @@ export class BaseChart {
 	resetParamsChangeState() {
 		this._prevParams = _.cloneDeep(this._params);
 	}
+
+	constructor(protected _zone: NgZone) {
+		this._wndEvSubs = fromEvent(window, 'resize').subscribe(() => {
+			this._resized = true;
+		});
+	}
+
+	ngDoCheck(): void {
+		if (this._debounceTimer) {
+			clearTimeout(this._debounceTimer as any);
+		}
+		this._zone.runOutsideAngular(() => {
+			this._debounceTimer = setTimeout(() => {
+				this._checkUpdate(this._resized);
+				this._resized = false;
+			}, 50);
+		});
+	}
+
+	ngOnDestroy(): void {
+		this._wndEvSubs.unsubscribe();
+		this._onDestroy();
+	}
+
+	protected abstract _checkUpdate(resized: boolean);
+	protected abstract _onDestroy();
 }

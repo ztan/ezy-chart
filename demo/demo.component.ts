@@ -14,6 +14,7 @@ export class DemoComponent {
 	timeScale: boolean = false;
 	currencyMode: boolean = false;
 	showPercentage: string | boolean = false;
+	engine: string = 'chartjs';
 
 	addData() {
 		this.labels.push(`sample ${this.labels.length + 1}`);
@@ -31,7 +32,7 @@ export class DemoComponent {
 			}
 
 			const ds: Chart.ChartDataSets = { data, label: `series ${this.datasets.length + 1}` };
-			if (this.type === 'line') {
+			if (this.type === 'line' && this.engine === 'chartjs') {
 				this._configLineSpecificProperties(ds);
 			}
 			this.datasets.push(ds);
@@ -58,7 +59,7 @@ export class DemoComponent {
 		this.colorsFor = 'auto';
 		this.timeScale = false;
 		this.scaleChanged();
-		if (this.type === 'line') {
+		if (this.type === 'line' && this.engine === 'chartjs') {
 			this.datasets.forEach(ds => this._configLineSpecificProperties(ds));
 		} else {
 			this.datasets = this.datasets.map(ds => _.pick(ds, 'data', 'label'));
