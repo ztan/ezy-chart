@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.1"></a>
+## [0.1.1](https://github.com/ztan/ezy-chart/compare/v0.1.0...v0.1.1) (2018-04-16)
+
+
+### Bug Fixes
+
+* charts with legend not rendered properly on small screens ([931eb7c](https://github.com/ztan/ezy-chart/commit/931eb7c))
+
+
+### Features
+
+* make all imports on underlying chart libraries optional ([6ed3c5d](https://github.com/ztan/ezy-chart/commit/6ed3c5d))
+
+
+
 <a name="0.1.0"></a>
 # [0.1.0](https://github.com/ztan/ezy-chart/compare/v0.0.9...v0.1.0) (2018-04-15)
 
