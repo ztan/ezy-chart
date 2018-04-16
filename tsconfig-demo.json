@@ -5,7 +5,7 @@
 		"outDir": "./dist",
 		"baseUrl": "",
 		"emitDecoratorMetadata": false,
-		"strict": true
+		"strict": false
 	},
 	"exclude": [
 		"src/test.entry.ts",
