@@ -173,9 +173,9 @@ export class ChartComponent extends BaseChart {
 
 		if (dataOrParamsChanged || configChanged) {
 			this._refresh(configChanged);
-		} else {
-			this._onResize();
 		}
+
+		this._checkSize();
 	}
 
 	private _refresh(configChanged: boolean) {
@@ -205,22 +205,30 @@ export class ChartComponent extends BaseChart {
 			}
 			const canvas = document.createElement('canvas');
 			container.appendChild(canvas);
-			if (this.legend !== false && (this.legend || 'auto') === 'auto') {
-				(cfg.options as any).onResize = this._onResize.bind(this);
-			}
 			this._chart = new Chart(canvas, cfg);
-			this._onResize();
 		});
 	}
 
-	private _onResize() {
+	private _checkSize() {
+		if (!this._chart) {
+			return;
+		}
+		const cfg = this._chart.config;
 		const width = this._chart.chartArea.right - this._chart.chartArea.left;
 		const height = this._chart.chartArea.bottom - this._chart.chartArea.top;
-		const legendOptions = (this._chart.config.options || {}).legend || {};
-		if (width < 150 || height < 150) {
-			legendOptions.display = false;
-		} else if (this._config.options.legend) {
-			legendOptions.display = this._config.options.legend.display;
+		const legendOpt = (cfg.options || {}).legend || {};
+		if ((width < 140 || height < 140) && legendOpt.display) {
+			this._chart.destroy();
+			legendOpt.display = false;
+			this._createNewChart(cfg);
+		} else if (
+			width > 150 &&
+			height > 150 &&
+			!legendOpt.display &&
+			this._config.options.legend &&
+			this._config.options.legend.display
+		) {
+			this._refresh(true);
 		}
 	}
 
