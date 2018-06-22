@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/ztan/ezy-chart/compare/v0.1.1...v0.1.2) (2018-06-22)
+
+
+### Bug Fixes
+
+* build error on demo app ([ce9fae3](https://github.com/ztan/ezy-chart/commit/ce9fae3))
+* labels auto hidden even if it's not set to 'auto' ([955be2a](https://github.com/ztan/ezy-chart/commit/955be2a))
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/ztan/ezy-chart/compare/v0.1.0...v0.1.1) (2018-04-16)
 
