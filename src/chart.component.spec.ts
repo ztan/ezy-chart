@@ -299,6 +299,19 @@ describe('ezy-chart component', () => {
 		expect(comp['_chart'].config.options.legend.display).equals(false);
 	});
 
+	it("should render a legend if it is not set to 'auto' even when chart size is too small", async () => {
+		const fixture: ComponentFixture<TestSmallContainerComponent> = TestBed.createComponent(
+			TestSmallContainerComponent
+		);
+		const comp = fixture.componentInstance.chartComponent;
+		comp.legend = 'top';
+		fixture.detectChanges();
+		await changeDetectionDelay();
+		await fixture.whenStable();
+
+		expect(comp['_chart'].config.options.legend.display).equals(true);
+	});
+
 	it("should treat 'options' at higher priority", async () => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;

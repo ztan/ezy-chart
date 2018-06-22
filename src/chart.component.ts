@@ -217,18 +217,20 @@ export class ChartComponent extends BaseChart {
 		const width = this._chart.chartArea.right - this._chart.chartArea.left;
 		const height = this._chart.chartArea.bottom - this._chart.chartArea.top;
 		const legendOpt = (cfg.options || {}).legend || {};
-		if ((width < 140 || height < 140) && legendOpt.display) {
-			this._chart.destroy();
-			legendOpt.display = false;
-			this._createNewChart(cfg);
-		} else if (
-			width > 150 &&
-			height > 150 &&
-			!legendOpt.display &&
-			this._config.options.legend &&
-			this._config.options.legend.display
-		) {
-			this._refresh(true);
+		if ((this.legend || 'auto') === 'auto') {
+			if ((width < 140 || height < 140) && legendOpt.display) {
+				this._chart.destroy();
+				legendOpt.display = false;
+				this._createNewChart(cfg);
+			} else if (
+				width > 150 &&
+				height > 150 &&
+				!legendOpt.display &&
+				this._config.options.legend &&
+				this._config.options.legend.display
+			) {
+				this._refresh(true);
+			}
 		}
 	}
 
