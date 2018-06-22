@@ -13,9 +13,7 @@ import {
 	ViewContainerRef
 } from '@angular/core';
 import { generateColorsBySeries, generateColorsByDataPoints } from './color.helpers';
-import { Observable } from 'rxjs/Observable';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable, Subscription, fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import * as _ from 'lodash';
@@ -57,8 +55,9 @@ export function getTooltipLabelCallBack(
 		}
 
 		if (percentage) {
+			const perc = _.isNumber(value) ? value : 0;
 			const total = _.sumBy(dsData, d => (_.isNumber(d) ? d : (d.y as number)));
-			labels.push(`${value && total ? (value * 100 / total).toFixed(2) : 0}%`);
+			labels.push(`${total ? ((perc * 100) / total).toFixed(2) : 0}%`);
 		}
 		return labels;
 	};

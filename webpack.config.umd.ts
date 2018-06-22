@@ -20,6 +20,7 @@ export default {
 	},
 	externals: [angularExternals(), rxjsExternals()],
 	devtool: 'source-map',
+	mode: 'production',
 	module: {
 		rules: [
 			{
@@ -49,10 +50,6 @@ export default {
 			sourceMap: true
 		}),
 		new webpack.optimize.ModuleConcatenationPlugin(),
-		new webpack.optimize.UglifyJsPlugin({
-			include: /\.min\.js$/,
-			sourceMap: true
-		}),
 		new webpack.BannerPlugin({
 			banner: `
 /**

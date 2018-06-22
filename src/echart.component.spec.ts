@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { expect, should } from 'chai';
 import { ChartsModule, EChartComponent } from '../src';
-import { timer } from 'rxjs/observable/timer';
+import { timer } from 'rxjs';
 import { Component, ViewChild } from '@angular/core';
 import { CHART_DEFAULT_COLORS } from './charts.module';
 

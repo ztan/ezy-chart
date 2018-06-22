@@ -1,7 +1,6 @@
 import { Input, NgZone, OnDestroy, DoCheck } from '@angular/core';
 import * as _ from 'lodash';
-import { Subscription } from 'rxjs/Subscription';
-import { fromEvent } from 'rxjs/observable/fromEvent';
+import { Subscription, fromEvent } from 'rxjs';
 import { CurrencyPipe } from '@angular/common';
 import * as moment from 'moment';
 
