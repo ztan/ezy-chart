@@ -664,18 +664,20 @@ export class ChartComponent extends BaseChart {
 		const width &#x3D; this._chart.chartArea.right - this._chart.chartArea.left;
 		const height &#x3D; this._chart.chartArea.bottom - this._chart.chartArea.top;
 		const legendOpt &#x3D; (cfg.options || {}).legend || {};
-		if ((width &lt; 140 || height &lt; 140) &amp;&amp; legendOpt.display) {
-			this._chart.destroy();
-			legendOpt.display &#x3D; false;
-			this._createNewChart(cfg);
-		} else if (
-			width &gt; 150 &amp;&amp;
-			height &gt; 150 &amp;&amp;
-			!legendOpt.display &amp;&amp;
-			this._config.options.legend &amp;&amp;
-			this._config.options.legend.display
-		) {
-			this._refresh(true);
+		if ((this.legend || &#x27;auto&#x27;) &#x3D;&#x3D;&#x3D; &#x27;auto&#x27;) {
+			if ((width &lt; 140 || height &lt; 140) &amp;&amp; legendOpt.display) {
+				this._chart.destroy();
+				legendOpt.display &#x3D; false;
+				this._createNewChart(cfg);
+			} else if (
+				width &gt; 150 &amp;&amp;
+				height &gt; 150 &amp;&amp;
+				!legendOpt.display &amp;&amp;
+				this._config.options.legend &amp;&amp;
+				this._config.options.legend.display
+			) {
+				this._refresh(true);
+			}
 		}
 	}
 
