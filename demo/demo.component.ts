@@ -89,7 +89,8 @@ export class DemoComponent {
 	}
 
 	get sampleTemplate(): string {
-		let templ = `<ezy-chart type="${this.type}" [datasets]="datasets"`;
+		const chartTag: string = this.engine === 'chartjs' ? 'ezy-chart' : 'ezy-echart';
+		let templ = `<${chartTag} type="${this.type}" [datasets]="datasets"`;
 		if (this.labels && this.labels.length) {
 			templ += ' [labels]="labels"';
 		}
@@ -104,7 +105,7 @@ export class DemoComponent {
 		} else if (this.showPercentage) {
 			templ += ' [percentage]="true"';
 		}
-		templ += '></ezy-chart>';
+		templ += `></${chartTag}>`;
 		return templ;
 	}
 
