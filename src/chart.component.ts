@@ -60,7 +60,7 @@ export function getTooltipLabelCallBack(
 			const total = _.sumBy(dsData, d => (_.isNumber(d) ? d : (d.y as number)));
 			labels.push(`${value && total ? (value * 100 / total).toFixed(2) : 0}%`);
 		}
-		return labels;
+		return labels.join(' : ');
 	};
 }
 

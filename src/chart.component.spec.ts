@@ -481,12 +481,12 @@ describe('ezy-chart component', () => {
 			yLabel: '2000'
 		};
 		const label = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds });
-		expect(label).to.deep.equal(['2000', '16.74%']);
+		expect(label).to.deep.equal('2000 : 16.74%');
 
 		tooltipItem.datasetIndex = 1;
 		tooltipItem.yLabel = '';
 		const label2 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds2 });
-		expect(label2).to.deep.equal([1, '16.67%']);
+		expect(label2).to.deep.equal('1 : 16.67%');
 	});
 
 	it('should render numbers with correct digit info', async () => {
@@ -507,12 +507,12 @@ describe('ezy-chart component', () => {
 			yLabel: '2000'
 		};
 		const label = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds });
-		expect(label).to.deep.equal(['2,020.234']);
+		expect(label).to.deep.equal('2,020.234');
 
 		const label1 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, {
 			datasets: [{ data: [{}, {}, {}] }]
 		});
-		expect(label1).to.deep.equal(['2000']);
+		expect(label1).to.deep.equal('2000');
 
 		comp.percentage = 'only';
 
