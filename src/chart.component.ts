@@ -13,7 +13,7 @@ import {
 	ViewContainerRef
 } from '@angular/core';
 import { generateColorsBySeries, generateColorsByDataPoints } from './color.helpers';
-import { Observable, Subscription, fromEvent } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import * as _ from 'lodash';
@@ -133,6 +133,8 @@ if (typeof Chart !== 'undefined') {
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChartComponent extends BaseChart {
+	@Input() plugins: any[];
+
 	private _config: Chart.ChartConfiguration = {};
 	private _prevConfig: Chart.ChartConfiguration = {};
 
@@ -204,6 +206,7 @@ export class ChartComponent extends BaseChart {
 			}
 			const canvas = document.createElement('canvas');
 			container.appendChild(canvas);
+			(cfg as any).plugins = this.plugins;
 			this._chart = new Chart(canvas, cfg);
 		});
 	}
