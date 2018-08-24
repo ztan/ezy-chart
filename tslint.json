@@ -4,6 +4,8 @@
     "directive-selector": [true, "attribute", "ezy", "camelCase"],
     "component-selector": [true, "element", "ezy", "kebab-case"],
     "pipe-naming": [true, "camelCase", "ezy"],
-    "no-inferrable-types": false
+	"no-inferrable-types": false,
+	"max-inline-declarations": false,
+	"use-view-encapsulation": false
   }
 }
