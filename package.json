@@ -2,7 +2,7 @@
 	"name": "ezy-chart",
 	"version": "0.2.2",
 	"description": "Angular components based on Chart.js and ECharts",
-	"main": "./bundles/ezy-chart.umd.js",
+	"main": "./index.js",
 	"module": "./index.js",
 	"typings": "./index.d.ts",
 	"scripts": {
@@ -10,7 +10,7 @@
 		"build:demo": "webpack --env=production",
 		"build:umd": "webpack --config webpack.config.umd.ts",
 		"build:ngc": "ngc -p tsconfig-ngc.json",
-		"build:dist": "yarn run build:umd && yarn run build:ngc",
+		"build:dist": "yarn run build:ngc",
 		"build:clean": "del-cli dist",
 		"test": "karma start --single-run && yarn run build:dist && yarn run build:clean",
 		"test:watch": "karma start --auto-watch",
