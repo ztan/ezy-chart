@@ -3,7 +3,6 @@ import { expect, should } from 'chai';
 import { ChartsModule, ChartComponent } from '../src';
 import { timer } from 'rxjs';
 import { Component, ViewChild } from '@angular/core';
-import { CHART_DEFAULT_COLORS } from './charts.module';
 
 const changeDetectionDelay = () => timer(50).toPromise();
 
@@ -15,7 +14,8 @@ const changeDetectionDelay = () => timer(50).toPromise();
 		</div>`
 })
 class TestSmallContainerComponent {
-	@ViewChild(ChartComponent) chartComponent: ChartComponent;
+	@ViewChild(ChartComponent)
+	chartComponent: ChartComponent;
 }
 
 describe('ezy-chart component', () => {

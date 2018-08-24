@@ -133,7 +133,8 @@ if (typeof Chart !== 'undefined') {
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChartComponent extends BaseChart {
-	@Input() plugins: any[];
+	@Input()
+	plugins: any[];
 
 	private _config: Chart.ChartConfiguration = {};
 	private _prevConfig: Chart.ChartConfiguration = {};
@@ -174,9 +175,10 @@ export class ChartComponent extends BaseChart {
 
 		if (dataOrParamsChanged || configChanged) {
 			this._refresh(configChanged);
+			this._checkSize();
+		} else if (resized) {
+			this._checkSize();
 		}
-
-		this._checkSize();
 	}
 
 	private _refresh(configChanged: boolean) {
