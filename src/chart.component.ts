@@ -279,6 +279,8 @@ export class ChartComponent extends BaseChart {
 
 		let timeScaleConfigured: boolean = false;
 
+		this._config.options.tooltips = this._config.options.tooltips || {};
+
 		if (this.type === 'line') {
 			const isTimeScale = ds.every(d =>
 				((d.data as Chart.ChartPoint[]) || []).every(item => (item.x ? moment(item.x).isValid() : false))
@@ -300,6 +302,11 @@ export class ChartComponent extends BaseChart {
 				];
 				timeScaleConfigured = true;
 			}
+			this._config.options.tooltips.mode = 'index';
+			this._config.options.tooltips.intersect = false;
+		} else {
+			this._config.options.tooltips.mode = 'nearest';
+			this._config.options.tooltips.intersect = true;
 		}
 
 		if (ds.length === 0 || (ds[0].data || []).length === 0) {
@@ -313,7 +320,6 @@ export class ChartComponent extends BaseChart {
 		}
 
 		const splitLabel: boolean = (this.type === 'pie' || this.type === 'doughnut') && ds.length > 1;
-		this._config.options.tooltips = this._config.options.tooltips || {};
 		this._config.options.tooltips.callbacks = this._config.options.tooltips.callbacks || {};
 		this._config.options.tooltips.callbacks.label = getTooltipLabelCallBack(
 			this.currency,
