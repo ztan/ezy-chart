@@ -1,5 +1,5 @@
 import { BaseChart } from './base.chart';
-import { expect, should } from 'chai';
+import { expect } from 'chai';
 import { async as ngAsync, inject } from '@angular/core/testing';
 import { NgZone } from '@angular/core';
 

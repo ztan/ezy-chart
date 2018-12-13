@@ -1,7 +1,6 @@
 import { Input, NgZone, OnDestroy, DoCheck } from '@angular/core';
 import * as _ from 'lodash';
-import { Subscription } from 'rxjs/Subscription';
-import { fromEvent } from 'rxjs/observable/fromEvent';
+import { Subscription, fromEvent } from 'rxjs';
 import { CurrencyPipe } from '@angular/common';
 import * as moment from 'moment';
 
@@ -252,19 +251,14 @@ export abstract class BaseChart implements OnDestroy, DoCheck {
 	constructor(protected _zone: NgZone) {
 		this._wndEvSubs = fromEvent(window, 'resize').subscribe(() => {
 			this._resized = true;
+			this._doCheck(500);
 		});
 	}
 
 	ngDoCheck(): void {
-		if (this._debounceTimer) {
-			clearTimeout(this._debounceTimer as any);
+		if (!this._resized) {
+			this._doCheck(50);
 		}
-		this._zone.runOutsideAngular(() => {
-			this._debounceTimer = setTimeout(() => {
-				this._checkUpdate(this._resized);
-				this._resized = false;
-			}, 50);
-		});
 	}
 
 	ngOnDestroy(): void {
@@ -274,4 +268,17 @@ export abstract class BaseChart implements OnDestroy, DoCheck {
 
 	protected abstract _checkUpdate(resized: boolean);
 	protected abstract _onDestroy();
+
+	private _doCheck(deferred: number): void {
+		if (this._debounceTimer) {
+			clearTimeout(this._debounceTimer as any);
+			this._debounceTimer = null;
+		}
+		this._zone.runOutsideAngular(() => {
+			this._debounceTimer = setTimeout(() => {
+				this._checkUpdate(this._resized);
+				this._resized = false;
+			}, deferred);
+		});
+	}
 }

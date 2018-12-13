@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders, InjectionToken, Inject, Optional } from '@angular/core';
+import { NgModule, InjectionToken, Inject, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChartComponent } from './chart.component';
 import { replaceDefaultColors } from './color.helpers';

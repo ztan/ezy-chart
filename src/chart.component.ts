@@ -1,23 +1,6 @@
-import {
-	Component,
-	ChangeDetectionStrategy,
-	Input,
-	ElementRef,
-	ViewChild,
-	OnDestroy,
-	DoCheck,
-	NgZone,
-	ContentChild,
-	TemplateRef,
-	ViewRef,
-	ViewContainerRef
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { generateColorsBySeries, generateColorsByDataPoints } from './color.helpers';
-import { Observable } from 'rxjs/Observable';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { Subscription } from 'rxjs/Subscription';
-import { debounceTime } from 'rxjs/operators';
-import { CurrencyPipe, DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { BaseChart, ShowPercentageType, ColorsForType, formatMoney, formatScale } from './base.chart';
@@ -30,17 +13,21 @@ const MULTI_SERIES_BY_DEFAULT = ['line', 'bar', 'horizontalBar', 'radar'];
 /**
  * @internal
  */
-export function getTooltipLabelCallBack(
-	currency?: string,
-	percentage?: ShowPercentageType,
-	digitInfo?: string
-): Chart.ChartTooltipCallback['label'] {
+function getTooltipLabelCallBack(
+	currency: string | undefined,
+	percentage: ShowPercentageType,
+	digitInfo: string | undefined,
+	type: 'label' | 'afterLabel' | 'both'
+): Chart.ChartTooltipCallback['label'] | Chart.ChartTooltipCallback['afterLabel'] {
 	return (tooltipItem, data) => {
 		const labels: any[] = [];
 		const ds = data.datasets as Chart.ChartDataSets[];
 		const label = ds.length > 1 ? ds[tooltipItem.datasetIndex || 0].label || '' : '';
-		if (label) {
+		if (label && type === 'both') {
 			labels.push(label);
+		}
+		if (type === 'label') {
+			return label;
 		}
 		const dsData: Array<number | Chart.ChartPoint> = ds[tooltipItem.datasetIndex || 0].data || [];
 		const point = dsData[tooltipItem.index || 0];
@@ -57,10 +44,11 @@ export function getTooltipLabelCallBack(
 		}
 
 		if (percentage) {
+			const perc = _.isNumber(value) ? value : 0;
 			const total = _.sumBy(dsData, d => (_.isNumber(d) ? d : (d.y as number)));
-			labels.push(`${value && total ? (value * 100 / total).toFixed(2) : 0}%`);
+			labels.push(`${total ? ((perc * 100) / total).toFixed(2) : 0}%`);
 		}
-		return labels;
+		return labels.join(' : ');
 	};
 }
 
@@ -130,10 +118,15 @@ if (typeof Chart !== 'undefined') {
 
 @Component({
 	selector: 'ezy-chart',
-	template: `<div #chartContainer></div>`,
+	template: `
+		<div #chartContainer></div>
+	`,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChartComponent extends BaseChart {
+	@Input()
+	plugins: any[];
+
 	private _config: Chart.ChartConfiguration = {};
 	private _prevConfig: Chart.ChartConfiguration = {};
 
@@ -173,9 +166,10 @@ export class ChartComponent extends BaseChart {
 
 		if (dataOrParamsChanged || configChanged) {
 			this._refresh(configChanged);
+			this._checkSize();
+		} else if (resized) {
+			this._checkSize();
 		}
-
-		this._checkSize();
 	}
 
 	private _refresh(configChanged: boolean) {
@@ -205,6 +199,7 @@ export class ChartComponent extends BaseChart {
 			}
 			const canvas = document.createElement('canvas');
 			container.appendChild(canvas);
+			(cfg as any).plugins = this.plugins;
 			this._chart = new Chart(canvas, cfg);
 		});
 	}
@@ -241,9 +236,9 @@ export class ChartComponent extends BaseChart {
 		this._config.options = this._config.options || {};
 		this._config.options.legend = this._config.options.legend || {};
 		this._config.data = this._config.data || {};
-		const ds = (this._config.data.datasets = _.cloneDeep(this.datasets || []));
+		const ds: Chart.ChartDataSets[] = (this._config.data.datasets = _.cloneDeep(this.datasets || []));
 
-		if (!(this._config.data.datasets || []).some(d => (d.label ? true : false))) {
+		if (!ds.some(d => (d.label ? true : false))) {
 			if (multiType) {
 				this._config.options.legend.display = false;
 			}
@@ -261,7 +256,6 @@ export class ChartComponent extends BaseChart {
 			this._config.options.legend = _.cloneDeep(legend) as Chart.ChartLegendOptions;
 		} else if (legend === 'auto') {
 			const multiPoints: boolean = ds.every(d => (d.data || []).length > 1);
-			const maxPoints: number = _.max(ds.map(d => (d.data || []).length)) || 0;
 			this._config.options.legend.display = (multiType && ds.length > 1) || (multiPoints && !multiType);
 			this._config.options.legend.position = multiType && this.type !== 'radar' ? 'top' : 'right';
 		}
@@ -285,6 +279,8 @@ export class ChartComponent extends BaseChart {
 
 		let timeScaleConfigured: boolean = false;
 
+		this._config.options.tooltips = this._config.options.tooltips || {};
+
 		if (this.type === 'line') {
 			const isTimeScale = ds.every(d =>
 				((d.data as Chart.ChartPoint[]) || []).every(item => (item.x ? moment(item.x).isValid() : false))
@@ -306,6 +302,11 @@ export class ChartComponent extends BaseChart {
 				];
 				timeScaleConfigured = true;
 			}
+			this._config.options.tooltips.mode = 'index';
+			this._config.options.tooltips.intersect = false;
+		} else {
+			this._config.options.tooltips.mode = 'nearest';
+			this._config.options.tooltips.intersect = true;
 		}
 
 		if (ds.length === 0 || (ds[0].data || []).length === 0) {
@@ -318,13 +319,24 @@ export class ChartComponent extends BaseChart {
 			this._config.options = _.pickBy(this._config.options, (val, key) => key !== 'scales');
 		}
 
-		this._config.options.tooltips = this._config.options.tooltips || {};
+		const splitLabel: boolean = (this.type === 'pie' || this.type === 'doughnut') && ds.length > 1;
 		this._config.options.tooltips.callbacks = this._config.options.tooltips.callbacks || {};
 		this._config.options.tooltips.callbacks.label = getTooltipLabelCallBack(
 			this.currency,
 			this.percentage || false,
-			this.digits
+			this.digits,
+			splitLabel ? 'label' : 'both'
 		);
+		if (splitLabel) {
+			this._config.options.tooltips.callbacks.afterLabel = getTooltipLabelCallBack(
+				this.currency,
+				this.percentage || false,
+				this.digits,
+				'afterLabel'
+			);
+		} else {
+			this._config.options.tooltips.callbacks.afterLabel = () => '';
+		}
 		this._config.options.tooltips.callbacks.title = getTooltipTitleCallBack(this.type === 'horizontalBar');
 
 		if (this.options) {

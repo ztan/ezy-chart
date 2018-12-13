@@ -1,4 +1,4 @@
-import { expect, should } from 'chai';
+import { expect } from 'chai';
 import { generateColorsBySeries, generateColorsByDataPoints } from './color.helpers';
 
 describe('color helper', () => {

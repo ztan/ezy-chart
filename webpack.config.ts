@@ -10,6 +10,7 @@ export default (environment = 'development') => {
 
 	return {
 		devtool: ifProduction('source-map', 'eval'),
+		mode: ifProduction('production', 'development'),
 		entry: path.join(__dirname, 'demo', 'entry.ts'),
 		output: {
 			filename: ifProduction('[name]-[chunkhash].js', '[name].js')
@@ -29,6 +30,13 @@ export default (environment = 'development') => {
 				{
 					test: /\.ts$/,
 					use: ['@ngtools/webpack']
+				},
+				{
+					// temporarily ignore warnings about System.import in Angular
+					test: /[\/\\]@angular[\/\\].+\.js$/,
+					parser: {
+						system: true
+					}
 				}
 			])
 		},
@@ -63,11 +71,6 @@ export default (environment = 'development') => {
 			new webpack.DefinePlugin({
 				ENV: JSON.stringify(environment)
 			}),
-			ifProduction(
-				new webpack.optimize.UglifyJsPlugin({
-					sourceMap: true
-				})
-			),
 			new HtmlWebpackPlugin({
 				template: path.join(__dirname, 'demo', 'index.ejs')
 			}),

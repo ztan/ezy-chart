@@ -1,6 +1,4 @@
 import * as webpack from 'webpack';
-import * as path from 'path';
-import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import * as WebpackKarmaDieHardPlugin from '@mattlewis92/webpack-karma-die-hard';
 import { AngularCompilerPlugin } from '@ngtools/webpack';
 
@@ -23,6 +21,7 @@ export default (config: any) => {
 		},
 
 		webpack: {
+			mode: "development",
 			resolve: {
 				extensions: ['.ts', '.js']
 			},
@@ -57,6 +56,18 @@ export default (config: any) => {
 						exclude: /(node_modules|\.spec\.ts$)/,
 						loader: 'istanbul-instrumenter-loader',
 						enforce: 'post'
+					},
+					{
+						test: /\.component\.css$/,
+						exclude: /node_modules/,
+						use: ['to-string-loader', 'css-loader']
+					},
+					{
+						// temporarily ignore warnings about System.import in Angular
+						test: /[\/\\]@angular[\/\\].+\.js$/,
+						parser: {
+							system: true
+						}
 					}
 				]
 			},

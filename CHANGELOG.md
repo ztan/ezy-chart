@@ -2,6 +2,62 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/ztan/ezy-chart/compare/v0.2.3...v0.3.0) (2018-12-13)
+
+
+### Features
+
+* change default tootlip mode to 'index' for line charts ([aee730e](https://github.com/ztan/ezy-chart/commit/aee730e))
+* split labels in multi-series pie/doughnut charts ([6d64f8c](https://github.com/ztan/ezy-chart/commit/6d64f8c))
+
+
+
+<a name="0.2.3"></a>
+## [0.2.3](https://github.com/ztan/ezy-chart/compare/v0.2.2...v0.2.3) (2018-08-24)
+
+
+### Bug Fixes
+
+* chart refreshed on scrolling the page ([3be30b6](https://github.com/ztan/ezy-chart/commit/3be30b6))
+
+
+
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/ztan/ezy-chart/compare/v0.2.1...v0.2.2) (2018-07-19)
+
+
+### Features
+
+* add per chart plugins ([78cb623](https://github.com/ztan/ezy-chart/commit/78cb623))
+
+
+
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/ztan/ezy-chart/compare/v0.2.0...v0.2.1) (2018-06-26)
+
+
+### Features
+
+* **tooltips:** render labels of a dataset in a single line ([87c3bba](https://github.com/ztan/ezy-chart/commit/87c3bba))
+
+
+
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/ztan/ezy-chart/compare/v0.1.2...v0.2.0) (2018-06-22)
+
+
+### Features
+
+* upgrade Angular to 6 ([b3d2575](https://github.com/ztan/ezy-chart/commit/b3d2575))
+
+
+### BREAKING CHANGES
+
+* use version 0.1.x for Angular 5
+
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/ztan/ezy-chart/compare/v0.1.1...v0.1.2) (2018-06-22)
 
