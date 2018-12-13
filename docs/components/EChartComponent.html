@@ -8,304 +8,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	    <link rel="stylesheet" href="../styles/style.css">
+	      <link rel="stylesheet" href="../styles/style.css">
     </head>
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
             <a href="../" class="navbar-brand">ezy-chart documentation</a>
-            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-            <div id="book-search-input" role="search">
-                <input type="text" placeholder="Type to search">
-            </div>
-            <nav>
-            
-                <ul class="list">
-            
-                    <li class="title">
-                        <a href="../index.html">ezy-chart documentation</a>
-                    </li>
-            
-                    <li class="divider"></li>
-            
-            
-                    <li class="chapter">
-                        <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
-                        <ul class="links">
-                                <li class="link">
-                                    <a 
-                                        
-                                         href="../overview.html" 
-                                         href="../overview.html" 
-                                        >
-                                        <span class="fa fa-th"></span>Overview
-                                    </a>
-                                </li>
-                                <li class="link">
-                                  <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
-                                </li>
-                                <li class="link">
-                                        <a href="../changelog.html"
-                                    >
-                                        <span class="fa fa-file-text-o"></span>CHANGELOG
-                                    </a>
-                                </li>
-                                <li class="link">
-                                        <a href="../license.html"
-                                    >
-                                        <span class="fa fa-file-text-o"></span>LICENSE
-                                    </a>
-                                </li>
-                        </ul>
-                    </li>
-            
-            
-                    <li class="chapter">
-                        <a data-type="chapter-link" href="../modules.html" >
-                            <div class="menu-toggler linked" data-toggle="collapse"
-                                    data-target="#xs-modules-links"
-                            >
-                                <span class="fa fa-archive"></span>
-                                <span class="link-name">Modules</span>
-                                <span class="fa fa-angle-down"></span>
-                            </div>
-                        </a>
-                        <ul class="links collapse "
-                                id="xs-modules-links"
-                            >
-                                <li class="link">
-                                    <a href="../modules/ChartsModule.html" >ChartsModule</a>
-                                </li>
-                        </ul>
-                    </li>
-            
-                    <li class="chapter">
-                        <div class="simple menu-toggler" data-toggle="collapse"
-                                data-target="#xs-components-links"
-                            >
-                            <span class="fa fa-cogs"></span>
-                            <span>Components</span>
-                            <span class="fa fa-angle-down"></span>
-                        </div>
-                        <ul class="links collapse "
-                                id="xs-components-links"
-                            >
-                                <li class="link">
-                                    <a href="../components/ChartComponent.html" >ChartComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/EChartComponent.html"  data-type="entity-link" class="active" >EChartComponent</a>
-                                </li>
-                        </ul>
-                    </li>
-            
-            
-                    <li class="chapter">
-                        <div class="simple menu-toggler" data-toggle="collapse"
-                                data-target="#xs-classes-links"
-                            >
-                            <span class="fa fa-file-code-o"></span>
-                            <span>Classes</span>
-                            <span class="fa fa-angle-down"></span>
-                        </div>
-                        <ul class="links collapse "
-                                id="xs-classes-links"
-                            >
-                                <li class="link">
-                                    <a href="../classes/BaseChart.html" >BaseChart</a>
-                                </li>
-                        </ul>
-                    </li>
-            
-            
-            
-            
-            
-                    <li class="chapter">
-                        <div class="simple menu-toggler" data-toggle="collapse"
-                                data-target="#xs-miscellaneous-links"
-                            >
-                            <span class="fa fa-cubes"></span>
-                            <span>Miscellaneous</span>
-                            <span class="fa fa-angle-down"></span>
-                        </div>
-                        <ul class="links collapse "
-                                id="xs-miscellaneous-links"
-                            >
-                                <li class="link">
-                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
-                                </li>
-                                <li class="link">
-                                  <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
-                                </li>
-                                <li class="link">
-                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
-                                </li>
-                        </ul>
-                    </li>
-            
-            
-            
-                    <li class="divider"></li>
-                    <li class="copyright">
-                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
-                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
-                            </a>
-                    </li>
-            
-                </ul>
-            
-            </nav>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
            <div class="row main">
                <div class="hidden-xs menu">
-                   <nav>
-                   
-                       <ul class="list">
-                   
-                           <li class="title">
-                               <a href="../index.html">ezy-chart documentation</a>
-                           </li>
-                   
-                           <li class="divider"></li>
-                   
-                               <div id="book-search-input" role="search">
-                                   <input type="text" placeholder="Type to search">
-                               </div>
-                   
-                           <li class="chapter">
-                               <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
-                               <ul class="links">
-                                       <li class="link">
-                                           <a 
-                                               
-                                                href="../overview.html" 
-                                                href="../overview.html" 
-                                               >
-                                               <span class="fa fa-th"></span>Overview
-                                           </a>
-                                       </li>
-                                       <li class="link">
-                                         <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
-                                       </li>
-                                       <li class="link">
-                                               <a href="../changelog.html"
-                                           >
-                                               <span class="fa fa-file-text-o"></span>CHANGELOG
-                                           </a>
-                                       </li>
-                                       <li class="link">
-                                               <a href="../license.html"
-                                           >
-                                               <span class="fa fa-file-text-o"></span>LICENSE
-                                           </a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                   
-                           <li class="chapter">
-                               <a data-type="chapter-link" href="../modules.html" >
-                                   <div class="menu-toggler linked" data-toggle="collapse"
-                                           data-target="#modules-links"
-                                   >
-                                       <span class="fa fa-archive"></span>
-                                       <span class="link-name">Modules</span>
-                                       <span class="fa fa-angle-down"></span>
-                                   </div>
-                               </a>
-                               <ul class="links collapse "
-                                       id="modules-links"
-                   >
-                                       <li class="link">
-                                           <a href="../modules/ChartsModule.html" >ChartsModule</a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                           <li class="chapter">
-                               <div class="simple menu-toggler" data-toggle="collapse"
-                                       data-target="#components-links"
-                   >
-                                   <span class="fa fa-cogs"></span>
-                                   <span>Components</span>
-                                   <span class="fa fa-angle-down"></span>
-                               </div>
-                               <ul class="links collapse "
-                                       id="components-links"
-                   >
-                                       <li class="link">
-                                           <a href="../components/ChartComponent.html" >ChartComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/EChartComponent.html"  data-type="entity-link" class="active" >EChartComponent</a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                   
-                           <li class="chapter">
-                               <div class="simple menu-toggler" data-toggle="collapse"
-                                       data-target="#classes-links"
-                   >
-                                   <span class="fa fa-file-code-o"></span>
-                                   <span>Classes</span>
-                                   <span class="fa fa-angle-down"></span>
-                               </div>
-                               <ul class="links collapse "
-                                       id="classes-links"
-                   >
-                                       <li class="link">
-                                           <a href="../classes/BaseChart.html" >BaseChart</a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                   
-                   
-                   
-                   
-                           <li class="chapter">
-                               <div class="simple menu-toggler" data-toggle="collapse"
-                                       data-target="#miscellaneous-links"
-                   >
-                                   <span class="fa fa-cubes"></span>
-                                   <span>Miscellaneous</span>
-                                   <span class="fa fa-angle-down"></span>
-                               </div>
-                               <ul class="links collapse "
-                                       id="miscellaneous-links"
-                   >
-                                       <li class="link">
-                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
-                                       </li>
-                                       <li class="link">
-                                         <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
-                                       </li>
-                                       <li class="link">
-                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                   
-                   
-                           <li class="divider"></li>
-                           <li class="copyright">
-                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
-                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
-                                   </a>
-                           </li>
-                   
-                       </ul>
-                   
-                   </nav>
+                   <compodoc-menu mode="normal"></compodoc-menu>
                </div>
+               <!-- START CONTENT -->
                <div class="content component">
                    <div class="content-data">
 
@@ -318,17 +39,18 @@
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-    <li class="active">
-        <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
-    </li>
-
-    <li>
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
-    </li>
-
-    <li>
-        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
-    </li>
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
 </ul>
 
 <div class="tab-content">
@@ -372,7 +94,6 @@
 
 
 
-
             <tr>
                 <td class="col-md-3">selector</td>
                 <td class="col-md-9"><code>ezy-echart</code></td>
@@ -381,26 +102,34 @@
 
             <tr>
                 <td class="col-md-3">styles</td>
-                <td class="col-md-9"><code>.ezy-echart-series-indicator {
-			display: inline-block;
-			border-radius: 10px;
-			border-width: 1px;
-			border-style: solid;
-			border-color: white;
-			width: 10px;
-			height: 10px;
-		}
-		.ezy-echart-tooltip-item {
-			text-indent: -13px;
-			padding-left: 13px;
-		}
+                <td class="col-md-9"><code>
+			.ezy-echart-series-indicator {
+				display: inline-block;
+				border-radius: 10px;
+				border-width: 1px;
+				border-style: solid;
+				border-color: white;
+				width: 10px;
+				height: 10px;
+			}
+			.ezy-echart-tooltip-item {
+				text-indent: -13px;
+				padding-left: 13px;
+			}
 		</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div #chartContainer&gt;&lt;/div&gt;</code></pre></td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div #chartContainer&gt;&lt;/div&gt;
+	</code></pre></td>
             </tr>
+
+
+
+
+
+
 
 
 
@@ -408,65 +137,585 @@
     </table>
 </section>
 
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#isParamChanged">isParamChanged</a>
+                            </li>
+                            <li>
+                                <a href="#resetParamsChangeState">resetParamsChangeState</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#colors">colors</a>
+                            </li>
+                            <li>
+                                <a href="#colorsFor">colorsFor</a>
+                            </li>
+                            <li>
+                                <a href="#currency">currency</a>
+                            </li>
+                            <li>
+                                <a href="#datasets">datasets</a>
+                            </li>
+                            <li>
+                                <a href="#digits">digits</a>
+                            </li>
+                            <li>
+                                <a href="#labels">labels</a>
+                            </li>
+                            <li>
+                                <a href="#legend">legend</a>
+                            </li>
+                            <li>
+                                <a href="#options">options</a>
+                            </li>
+                            <li>
+                                <a href="#percentage">percentage</a>
+                            </li>
+                            <li>
+                                <a href="#ratio">ratio</a>
+                            </li>
+                            <li>
+                                <a href="#timeFormat">timeFormat</a>
+                            </li>
+                            <li>
+                                <a href="#type">type</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
 
     <section>
-        <h3 id="constructor">Constructor</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>constructor(zone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>)</code>
-                        </td>
-                    </tr>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(zone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/echart.component.ts:47</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>zone</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/core/NgZone" target="_blank" >NgZone</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="colors"></a>
+                        <code>colors</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>An array of strings in hex, rgb, or rgba format, to define the base colors of datasets, or the data points of each dataset. If this
+property is absent, or the colors defined are less than the number of datasets (or the data points of each dataset), the missing colors will
+be assigned from the defult palette</p>
+</div>
+                    </td>
+                </tr>
                             <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/echart.component.ts:44</a></div>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
+</div>
                                 </td>
                             </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in BaseChart:116</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="colorsFor"></a>
+                        <code>colorsFor</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>Specify what the colors (either defined or generated) are for.</p>
+<ul>
+<li>&#39;series&#39; - each color corresponds to a dataset</li>
+<li>&#39;data&#39; - each color corresponds to a data point of each dataset</li>
+<li>&#39;auto&#39; - use &#39;series&#39; for chart types &#39;bar&#39;, &#39;horizontalBar&#39; and &#39;line&#39;; and use &#39;data&#39; for other chart types</li>
+<li>&#39;none&#39; - turn off the color generator. Use this value if colors are specified via #options</li>
+</ul>
+</div>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in BaseChart:134</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="currency"></a>
+                        <code>currency</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>An ISO 4217 currency code. If specified, it will be used to format the scales of the main axis, as well as the values in the tooltips.</p>
+</div>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in BaseChart:179</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="datasets"></a>
+                        <code>datasets</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>An array of Chart.ChartDataSets, corresponding to Chart.ChartConfiguration.data.datasets</p>
+</div>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in BaseChart:101</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="digits"></a>
+                        <code>digits</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The digit info of the output template, used to format numbers in scales. Please refer to <a href="https://angular.io/api/common/DecimalPipe">https://angular.io/api/common/DecimalPipe</a> for its usage.</p>
+</div>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in BaseChart:192</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="labels"></a>
+                        <code>labels</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>An array of strings, corresponding to Chart.ChartConfiguration.data.labels</p>
+</div>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in BaseChart:74</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="legend"></a>
+                        <code>legend</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>Specifiy how to display the legend</p>
+<ul>
+<li>if the value is a boolean, it corresponds to Chart.ChartConfiguration.options.legend.display</li>
+<li>if the value is &#39;auto&#39;, the legend will be arranged automatically. For example, the legend will be hidden if the chart area is too small</li>
+<li>if the value is of type Chart.ChartLegendOptions, it corresponds to Chart.ChartConfiguration.options.legend.position</li>
+<li>if the value is of type Chart.ChartLegendOptions, it corresponds to Chart.ChartConfiguration.options.legend</li>
+</ul>
+</div>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in BaseChart:166</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="options"></a>
+                        <code>options</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>Corresponds to Chart.ChartConfiguration.options. This overrides any other settings.</p>
+</div>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in BaseChart:205</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="percentage"></a>
+                        <code>percentage</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>Specify whether to show the overall percentage values in the popover tooltips.</p>
+</div>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in BaseChart:231</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="ratio"></a>
+                        <code>ratio</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The aspect ratio of the chart</p>
+</div>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in BaseChart:148</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="timeFormat"></a>
+                        <code>timeFormat</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>A moment.js format string. When specified, the X axis will be configured with time scales, and this value will be used to format the tooltips.</p>
+</div>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in BaseChart:218</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="type"></a>
+                        <code>type</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The chart type, corresponding to Chart.ChartConfiguration.type</p>
+</div>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in BaseChart:88</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
     
-                    <tr>
-                        <td class="col-md-4">
-                                <div>
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isParamChanged"></a>
+                        <span class="name">
+                            <b>
+                            isParamChanged
+                            </b>
+                            <a href="#isParamChanged"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>isParamChanged(property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in BaseChart:243</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
                                                     <td>Type</td>
-                                                    <td>Optional</td>
-                                                    <td>Description</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>property</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                      <td>zone</td>
-                                                      <td>
-                                                                <code><a href="https://angular.io/api/core/NgZone" target="_blank" >NgZone</a></code>
-                                                      </td>
-                                                      <td>
-                                                      </td>
-                                                      <td></td>
-                                                    </tr>
-                                            </tbody>
-                                        </table>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
                                 </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="resetParamsChangeState"></a>
+                        <span class="name">
+                            <b>
+                            resetParamsChangeState
+                            </b>
+                            <a href="#resetParamsChangeState"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>resetParamsChangeState()</code>
+                    </td>
+                </tr>
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/BaseChart.html" target="_self" >BaseChart</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in BaseChart:247</div>
+                            </td>
+                        </tr>
 
 
+                <tr>
+                    <td class="col-md-4">
 
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
 
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import { BaseChart, formatScale, formatMoney, ShowPercentageType } from &#x27;./base.chart&#x27;;
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { BaseChart, formatScale, formatMoney, ShowPercentageType } from &#x27;./base.chart&#x27;;
 
 import { Component, ChangeDetectionStrategy, NgZone, ViewChild, ElementRef, ViewEncapsulation } from &#x27;@angular/core&#x27;;
 import * as _ from &#x27;lodash&#x27;;
@@ -476,23 +725,26 @@ import * as moment from &#x27;moment&#x27;;
 
 @Component({
 	selector: &#x27;ezy-echart&#x27;,
-	template: &#x60;&lt;div #chartContainer&gt;&lt;/div&gt;&#x60;,
+	template: &#x60;
+		&lt;div #chartContainer&gt;&lt;/div&gt;
+	&#x60;,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 	styles: [
-		&#x60;.ezy-echart-series-indicator {
-			display: inline-block;
-			border-radius: 10px;
-			border-width: 1px;
-			border-style: solid;
-			border-color: white;
-			width: 10px;
-			height: 10px;
-		}
-		.ezy-echart-tooltip-item {
-			text-indent: -13px;
-			padding-left: 13px;
-		}
+		&#x60;
+			.ezy-echart-series-indicator {
+				display: inline-block;
+				border-radius: 10px;
+				border-width: 1px;
+				border-style: solid;
+				border-color: white;
+				width: 10px;
+				height: 10px;
+			}
+			.ezy-echart-tooltip-item {
+				text-indent: -13px;
+				padding-left: 13px;
+			}
 		&#x60;
 	]
 })
@@ -575,8 +827,10 @@ export class EChartComponent extends BaseChart {
 				type: &#x27;time&#x27;
 			}
 		];
-		const catAxis &#x3D; [{ data: labels, type: &#x27;category&#x27; }];
-		const valAxis: any[] &#x3D; [{ type: &#x27;value&#x27; }];
+		const catAxis: Array&lt;echarts.EChartOption.XAxis | echarts.EChartOption.YAxis&gt; &#x3D; [
+			{ data: labels, type: &#x27;category&#x27; }
+		];
+		const valAxis: Array&lt;echarts.EChartOption.XAxis | echarts.EChartOption.YAxis&gt; &#x3D; [{ type: &#x27;value&#x27; }];
 		const tooltip: any &#x3D; {
 			axisPointer: {
 				type: &#x27;shadow&#x27;
@@ -592,12 +846,12 @@ export class EChartComponent extends BaseChart {
 		};
 
 		if (mainType &#x3D;&#x3D;&#x3D; &#x27;horizontalBar&#x27;) {
-			this._echartsOptions.yAxis &#x3D; catAxis;
-			this._echartsOptions.xAxis &#x3D; valAxis;
+			this._echartsOptions.yAxis &#x3D; catAxis as echarts.EChartOption.YAxis[];
+			this._echartsOptions.xAxis &#x3D; valAxis as echarts.EChartOption.XAxis[];
 			this._echartsOptions.tooltip[&#x27;trigger&#x27;] &#x3D; &#x27;axis&#x27;;
 		} else if (mainType &#x3D;&#x3D;&#x3D; &#x27;line&#x27; || mainType &#x3D;&#x3D;&#x3D; &#x27;bar&#x27;) {
-			this._echartsOptions.xAxis &#x3D; isTime ? timeAxis : catAxis;
-			this._echartsOptions.yAxis &#x3D; valAxis;
+			this._echartsOptions.xAxis &#x3D; (isTime ? timeAxis : catAxis) as echarts.EChartOption.XAxis[];
+			this._echartsOptions.yAxis &#x3D; valAxis as echarts.EChartOption.YAxis[];
 			this._echartsOptions.tooltip[&#x27;trigger&#x27;] &#x3D; &#x27;axis&#x27;;
 		} else if (this._typeMap[mainType] &#x3D;&#x3D;&#x3D; &#x27;pie&#x27;) {
 			this._definePieShape(series, labels, mainType &#x3D;&#x3D;&#x3D; &#x27;doughnut&#x27;);
@@ -740,7 +994,26 @@ export class EChartComponent extends BaseChart {
     </div>
 
 
-    <div class="tab-pane fade" id="c-tree">
+    <div class="tab-pane fade " id="c-styleData">
+            <pre class="line-numbers"><code class="language-scss">
+			.ezy-echart-series-indicator {
+				display: inline-block;
+				border-radius: 10px;
+				border-width: 1px;
+				border-style: solid;
+				border-color: white;
+				width: 10px;
+				height: 10px;
+			}
+			.ezy-echart-tooltip-item {
+				text-indent: -13px;
+				padding-left: 13px;
+			}
+		
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -757,13 +1030,15 @@ export class EChartComponent extends BaseChart {
             </div>
         </div>
     </div>
+
+    
 </div>
 
 <script src="../js/libs/vis.min.js"></script>
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div #chartContainer></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div #chartContainer></div>	</div>'
     var COMPONENTS = [{'name': 'ChartComponent', 'selector': 'ezy-chart'},{'name': 'EChartComponent', 'selector': 'ezy-echart'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'EChartComponent'};
@@ -779,9 +1054,13 @@ export class EChartComponent extends BaseChart {
 
 
 
+
+
+
+
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -789,8 +1068,21 @@ export class EChartComponent extends BaseChart {
     </div>
 </div>
 </div>
+               <!-- END CONTENT -->
            </div>
        </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EChartComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
@@ -801,17 +1093,17 @@ export class EChartComponent extends BaseChart {
 
        <script src="../js/compodoc.js"></script>
 
-       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 1;</script>
-
-       <script src="../js/search/search.js"></script>
-       <script src="../js/search/lunr.min.js"></script>
-       <script src="../js/search/search-lunr.js"></script>
-
        <script src="../js/tabs.js"></script>
        <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
        <script src="../js/libs/prism.js"></script>
        <script src="../js/sourceCode.js"></script>
-       <script src="../js/search/search_index.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
 
     </body>
 </html>
