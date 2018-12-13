@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/ztan/ezy-chart/compare/v0.2.3...v0.3.0) (2018-12-13)
+
+
+### Features
+
+* change default tootlip mode to 'index' for line charts ([aee730e](https://github.com/ztan/ezy-chart/commit/aee730e))
+* split labels in multi-series pie/doughnut charts ([6d64f8c](https://github.com/ztan/ezy-chart/commit/6d64f8c))
+
+
+
 <a name="0.2.3"></a>
 ## [0.2.3](https://github.com/ztan/ezy-chart/compare/v0.2.2...v0.2.3) (2018-08-24)
 
