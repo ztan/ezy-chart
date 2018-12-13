@@ -10,6 +10,5 @@
 		"src/**/*.spec.ts",
 		"karma.conf.ts",
 		"webpack.config.ts",
-		"webpack.config.umd.ts"
 	]
 }

@@ -57,14 +57,6 @@ export class MyComponent {
 
 You may also find it useful to view the [demo source](https://github.com/ztan/ezy-chart/blob/master/demo/demo.component.ts).
 
-### Usage without a module bundler
-```
-<script src="node_modules/ezy-chart/bundles/ezy-chart.umd.js"></script>
-<script>
-    // everything is exported ezyChart namespace
-</script>
-```
-
 ## Documentation
 All documentation is auto-generated from the source via [compodoc](https://compodoc.github.io/compodoc/) and can be viewed here:
 https://ztan.github.io/ezy-chart/docs/
