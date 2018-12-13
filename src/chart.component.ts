@@ -1,21 +1,6 @@
-import {
-	Component,
-	ChangeDetectionStrategy,
-	Input,
-	ElementRef,
-	ViewChild,
-	OnDestroy,
-	DoCheck,
-	NgZone,
-	ContentChild,
-	TemplateRef,
-	ViewRef,
-	ViewContainerRef
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { generateColorsBySeries, generateColorsByDataPoints } from './color.helpers';
-import { Observable, Subscription } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
-import { CurrencyPipe, DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { BaseChart, ShowPercentageType, ColorsForType, formatMoney, formatScale } from './base.chart';
@@ -129,7 +114,9 @@ if (typeof Chart !== 'undefined') {
 
 @Component({
 	selector: 'ezy-chart',
-	template: `<div #chartContainer></div>`,
+	template: `
+		<div #chartContainer></div>
+	`,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChartComponent extends BaseChart {
@@ -265,7 +252,6 @@ export class ChartComponent extends BaseChart {
 			this._config.options.legend = _.cloneDeep(legend) as Chart.ChartLegendOptions;
 		} else if (legend === 'auto') {
 			const multiPoints: boolean = ds.every(d => (d.data || []).length > 1);
-			const maxPoints: number = _.max(ds.map(d => (d.data || []).length)) || 0;
 			this._config.options.legend.display = (multiType && ds.length > 1) || (multiPoints && !multiType);
 			this._config.options.legend.position = multiType && this.type !== 'radar' ? 'top' : 'right';
 		}
