@@ -61,6 +61,13 @@ export default (config: any) => {
 						test: /\.component\.css$/,
 						exclude: /node_modules/,
 						use: ['to-string-loader', 'css-loader']
+					},
+					{
+						// temporarily ignore warnings about System.import in Angular
+						test: /[\/\\]@angular[\/\\].+\.js$/,
+						parser: {
+							system: true
+						}
 					}
 				]
 			},

@@ -8,23 +8,26 @@ import * as moment from 'moment';
 
 @Component({
 	selector: 'ezy-echart',
-	template: `<div #chartContainer></div>`,
+	template: `
+		<div #chartContainer></div>
+	`,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 	styles: [
-		`.ezy-echart-series-indicator {
-			display: inline-block;
-			border-radius: 10px;
-			border-width: 1px;
-			border-style: solid;
-			border-color: white;
-			width: 10px;
-			height: 10px;
-		}
-		.ezy-echart-tooltip-item {
-			text-indent: -13px;
-			padding-left: 13px;
-		}
+		`
+			.ezy-echart-series-indicator {
+				display: inline-block;
+				border-radius: 10px;
+				border-width: 1px;
+				border-style: solid;
+				border-color: white;
+				width: 10px;
+				height: 10px;
+			}
+			.ezy-echart-tooltip-item {
+				text-indent: -13px;
+				padding-left: 13px;
+			}
 		`
 	]
 })
@@ -107,8 +110,10 @@ export class EChartComponent extends BaseChart {
 				type: 'time'
 			}
 		];
-		const catAxis = [{ data: labels, type: 'category' }];
-		const valAxis: any[] = [{ type: 'value' }];
+		const catAxis: Array<echarts.EChartOption.XAxis | echarts.EChartOption.YAxis> = [
+			{ data: labels, type: 'category' }
+		];
+		const valAxis: Array<echarts.EChartOption.XAxis | echarts.EChartOption.YAxis> = [{ type: 'value' }];
 		const tooltip: any = {
 			axisPointer: {
 				type: 'shadow'
@@ -124,12 +129,12 @@ export class EChartComponent extends BaseChart {
 		};
 
 		if (mainType === 'horizontalBar') {
-			this._echartsOptions.yAxis = catAxis;
-			this._echartsOptions.xAxis = valAxis;
+			this._echartsOptions.yAxis = catAxis as echarts.EChartOption.YAxis[];
+			this._echartsOptions.xAxis = valAxis as echarts.EChartOption.XAxis[];
 			this._echartsOptions.tooltip['trigger'] = 'axis';
 		} else if (mainType === 'line' || mainType === 'bar') {
-			this._echartsOptions.xAxis = isTime ? timeAxis : catAxis;
-			this._echartsOptions.yAxis = valAxis;
+			this._echartsOptions.xAxis = (isTime ? timeAxis : catAxis) as echarts.EChartOption.XAxis[];
+			this._echartsOptions.yAxis = valAxis as echarts.EChartOption.YAxis[];
 			this._echartsOptions.tooltip['trigger'] = 'axis';
 		} else if (this._typeMap[mainType] === 'pie') {
 			this._definePieShape(series, labels, mainType === 'doughnut');

@@ -30,6 +30,13 @@ export default (environment = 'development') => {
 				{
 					test: /\.ts$/,
 					use: ['@ngtools/webpack']
+				},
+				{
+					// temporarily ignore warnings about System.import in Angular
+					test: /[\/\\]@angular[\/\\].+\.js$/,
+					parser: {
+						system: true
+					}
 				}
 			])
 		},
