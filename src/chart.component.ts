@@ -13,17 +13,21 @@ const MULTI_SERIES_BY_DEFAULT = ['line', 'bar', 'horizontalBar', 'radar'];
 /**
  * @internal
  */
-export function getTooltipLabelCallBack(
-	currency?: string,
-	percentage?: ShowPercentageType,
-	digitInfo?: string
-): Chart.ChartTooltipCallback['label'] {
+function getTooltipLabelCallBack(
+	currency: string | undefined,
+	percentage: ShowPercentageType,
+	digitInfo: string | undefined,
+	type: 'label' | 'afterLabel' | 'both'
+): Chart.ChartTooltipCallback['label'] | Chart.ChartTooltipCallback['afterLabel'] {
 	return (tooltipItem, data) => {
 		const labels: any[] = [];
 		const ds = data.datasets as Chart.ChartDataSets[];
 		const label = ds.length > 1 ? ds[tooltipItem.datasetIndex || 0].label || '' : '';
-		if (label) {
+		if (label && type === 'both') {
 			labels.push(label);
+		}
+		if (type === 'label') {
+			return label;
 		}
 		const dsData: Array<number | Chart.ChartPoint> = ds[tooltipItem.datasetIndex || 0].data || [];
 		const point = dsData[tooltipItem.index || 0];
@@ -232,9 +236,9 @@ export class ChartComponent extends BaseChart {
 		this._config.options = this._config.options || {};
 		this._config.options.legend = this._config.options.legend || {};
 		this._config.data = this._config.data || {};
-		const ds = (this._config.data.datasets = _.cloneDeep(this.datasets || []));
+		const ds: Chart.ChartDataSets[] = (this._config.data.datasets = _.cloneDeep(this.datasets || []));
 
-		if (!(this._config.data.datasets || []).some(d => (d.label ? true : false))) {
+		if (!ds.some(d => (d.label ? true : false))) {
 			if (multiType) {
 				this._config.options.legend.display = false;
 			}
@@ -308,13 +312,25 @@ export class ChartComponent extends BaseChart {
 			this._config.options = _.pickBy(this._config.options, (val, key) => key !== 'scales');
 		}
 
+		const splitLabel: boolean = (this.type === 'pie' || this.type === 'doughnut') && ds.length > 1;
 		this._config.options.tooltips = this._config.options.tooltips || {};
 		this._config.options.tooltips.callbacks = this._config.options.tooltips.callbacks || {};
 		this._config.options.tooltips.callbacks.label = getTooltipLabelCallBack(
 			this.currency,
 			this.percentage || false,
-			this.digits
+			this.digits,
+			splitLabel ? 'label' : 'both'
 		);
+		if (splitLabel) {
+			this._config.options.tooltips.callbacks.afterLabel = getTooltipLabelCallBack(
+				this.currency,
+				this.percentage || false,
+				this.digits,
+				'afterLabel'
+			);
+		} else {
+			this._config.options.tooltips.callbacks.afterLabel = () => '';
+		}
 		this._config.options.tooltips.callbacks.title = getTooltipTitleCallBack(this.type === 'horizontalBar');
 
 		if (this.options) {
