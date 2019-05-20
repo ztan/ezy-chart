@@ -1,6 +1,6 @@
 {
 	"name": "ezy-chart",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"description": "Angular components based on Chart.js and ECharts",
 	"main": "./index.js",
 	"module": "./index.js",
@@ -8,7 +8,6 @@
 	"scripts": {
 		"start": "concurrently \"webpack-dev-server -d --host 0.0.0.0\" \"yarn run test:watch\"",
 		"build:demo": "webpack --env=production",
-		"build:umd": "webpack --config webpack.config.umd.ts",
 		"build:ngc": "ngc -p tsconfig-ngc.json",
 		"build:dist": "yarn run build:ngc",
 		"build:clean": "del-cli dist",

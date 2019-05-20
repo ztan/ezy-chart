@@ -58,6 +58,7 @@ export interface ColorGroup {
 	pointBorderColor?: Chart.ChartColor;
 	pointHoverBackgroundColor?: Chart.ChartColor;
 	pointHoverBorderColor?: Chart.ChartColor;
+	hoverBackgroundColor?: Chart.ChartColor;
 }
 
 /**
@@ -149,8 +150,9 @@ function getRandomColor() {
  */
 function formatChartColorsForSeries(colors: number[][], type: string): ColorGroup[] {
 	return colors.map(color => ({
-		backgroundColor: rgba(color, 0.6),
-		borderColor: type === 'line' ? rgba(color, 0.6) : '#fff',
+		hoverBackgroundColor: rgba(color, 0.6),
+		backgroundColor: rgba(color, 1),
+		borderColor: type === 'line' ? rgba(color, 0.6) : 'rgba(255, 255, 255, 0.3)',
 		pointBackgroundColor: rgba(color, 0.6),
 		pointBorderColor: '#fff',
 		pointHoverBackgroundColor: rgba(color, 1),
@@ -170,8 +172,9 @@ export function generateColorsBySeries(definedColors: string[], totalNum: number
  */
 function formatChartColorsForData(colors: number[][], type: string): ColorGroup {
 	return {
-		backgroundColor: colors.map(color => rgba(color, 0.6)),
-		borderColor: colors.map(color => (type === 'line' ? rgba(color, 0.6) : '#fff')),
+		hoverBackgroundColor: colors.map(color => rgba(color, 0.6)),
+		backgroundColor: colors.map(color => rgba(color, 1)),
+		borderColor: colors.map(color => (type === 'line' ? rgba(color, 0.6) : 'rgba(255, 255, 255, 0.3)')),
 		pointBackgroundColor: colors.map(color => rgba(color, 1)),
 		pointBorderColor: colors.map(color => '#fff'),
 		pointHoverBackgroundColor: colors.map(color => rgba(color, 1)),
