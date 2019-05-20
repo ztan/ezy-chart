@@ -10,8 +10,12 @@ const changeDetectionDelay = () => timer(50).toPromise();
 	selector: 'ezy-test-component',
 	template: `
 		<div style="width:100px; height: 100px;">
-			<ezy-chart [datasets]="[{data: [132, 122, 66], label: 's1'}, {data: [12, 144, 33], label: 's2'}]" [labels]="['d1', 'd2', 'd3']"></ezy-chart>
-		</div>`
+			<ezy-chart
+				[datasets]="[{ data: [132, 122, 66], label: 's1' }, { data: [12, 144, 33], label: 's2' }]"
+				[labels]="['d1', 'd2', 'd3']"
+			></ezy-chart>
+		</div>
+	`
 })
 class TestSmallContainerComponent {
 	@ViewChild(ChartComponent)
@@ -161,16 +165,16 @@ describe('ezy-chart component', () => {
 		await changeDetectionDelay();
 		await fixture.whenStable();
 
-		expect(comp['_chart'].data.datasets[0].backgroundColor).to.equal('rgba(51,68,255,0.6)');
+		expect(comp['_chart'].data.datasets[0].backgroundColor).to.equal('rgba(51,68,255,1)');
 		comp.colors = ['rgb(170,68,255)', '#cfa', '#800a01'];
 		comp.type = 'pie';
 		fixture.detectChanges();
 		await changeDetectionDelay();
 		await fixture.whenStable();
 		expect(comp['_chart'].data.datasets[0].backgroundColor).to.deep.equal([
-			'rgba(170,68,255,0.6)',
-			'rgba(204,255,170,0.6)',
-			'rgba(128,10,1,0.6)'
+			'rgba(170,68,255,1)',
+			'rgba(204,255,170,1)',
+			'rgba(128,10,1,1)'
 		]);
 	});
 
