@@ -1,10 +1,12 @@
 import { BaseChart, formatScale, formatMoney, ShowPercentageType } from './base.chart';
 
 import { Component, ChangeDetectionStrategy, NgZone, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
-import * as _ from 'lodash';
 import { generateColorsAsStrings } from './color.helpers';
 import { DecimalPipe } from '@angular/common';
-import * as moment from 'moment';
+import cloneDeep from 'lodash/cloneDeep';
+import isArray from 'lodash/isArray';
+import merge from 'lodash/merge';
+import moment from 'moment';
 
 @Component({
 	selector: 'ezy-echart',
@@ -32,7 +34,7 @@ import * as moment from 'moment';
 	]
 })
 export class EChartComponent extends BaseChart {
-	@ViewChild('chartContainer', { read: ElementRef })
+	@ViewChild('chartContainer', { read: ElementRef, static: true })
 	private _chartContainer: ElementRef;
 
 	private _chart: echarts.ECharts;
@@ -82,7 +84,7 @@ export class EChartComponent extends BaseChart {
 					if (div.clientWidth <= 240 || div.clientHeight <= 240) {
 						opt.legend = undefined;
 					} else {
-						opt.legend = _.cloneDeep(this._echartsOptions.legend);
+						opt.legend = cloneDeep(this._echartsOptions.legend);
 					}
 					this._chart.setOption(opt, true);
 				}
@@ -99,7 +101,7 @@ export class EChartComponent extends BaseChart {
 		this._echartsOptions = {};
 		const mainType = this.type || 'bar';
 		const series: any[] = ds.map(v => ({
-			name: v.name || _.isString(v.label) ? v.label : '',
+			name: v.name || typeof v.label === 'string' ? v.label : '',
 			type: this._typeMap[v.type || mainType] || v.type || mainType,
 			data: (v.data || ([] as any[])).map(d => this._mapDataItem(d, this.timeFormat))
 		}));
@@ -141,28 +143,25 @@ export class EChartComponent extends BaseChart {
 		}
 
 		if (this.legend !== false) {
-			this._echartsOptions.legend = this._generateLegendOptions(
-				series.length > 1,
-				this._typeMap[mainType] === 'pie'
-			);
+			this._echartsOptions.legend = this._generateLegendOptions(series.length > 1, this._typeMap[mainType] === 'pie');
 		}
 
 		this._defineColors(series, this._typeMap[mainType] === 'pie');
 
-		let opt = _.cloneDeep(this._echartsOptions);
-		opt = _.merge(opt, this.options);
+		let opt = cloneDeep(this._echartsOptions);
+		opt = merge(opt, this.options);
 
 		this._chart.setOption(opt, true);
 	}
 
 	private _mapDataItem(item: any, timeFormat: string): any {
-		if (_.isNumber(item)) {
+		if (typeof item === 'number') {
 			return { value: item };
 		}
 		if (!item) {
 			return undefined;
 		}
-		if (item.x && moment(item.x).isValid() && _.isNumber(item.y)) {
+		if (item.x && moment(item.x).isValid() && typeof item.y === 'number') {
 			const m = moment(item.x);
 			return {
 				name: moment(item.x).format(timeFormat || 'L'),
@@ -226,7 +225,7 @@ export class EChartComponent extends BaseChart {
 			 ${p.seriesName}: `;
 			const percentOnly: boolean = percent === 'only' && p.percent;
 			const showPercent: boolean = percent && p.percent;
-			const v = _.isArray(p.data.value) ? p.data.value[1] : p.data.value;
+			const v = isArray(p.data.value) ? p.data.value[1] : p.data.value;
 
 			if (!percentOnly) {
 				if (currencyCode) {
@@ -244,7 +243,7 @@ export class EChartComponent extends BaseChart {
 		};
 
 		let str = '<div style="max-width: 35vw; white-space:normal">';
-		if (_.isArray(param)) {
+		if (isArray(param)) {
 			str += `<strong>${param[0].name}</strong><br/>`;
 			str += `${param.map(p => formatParam(p)).join('')}`;
 		} else {
@@ -256,7 +255,7 @@ export class EChartComponent extends BaseChart {
 
 	private _generateLegendOptions(multiSeries: boolean, pieLike: boolean): any {
 		const l = this.legend || 'auto';
-		if ((l === 'auto' && (multiSeries || pieLike)) || _.isString(this.legend)) {
+		if ((l === 'auto' && (multiSeries || pieLike)) || typeof this.legend === 'string') {
 			const legend: any = {};
 			if (l === 'auto' && pieLike) {
 				legend.x = 'left';
@@ -268,7 +267,7 @@ export class EChartComponent extends BaseChart {
 				legend.orient = 'vertical';
 			}
 			return legend;
-		} else if (_.isObject(this.legend)) {
+		} else if (typeof this.legend === 'object') {
 			return this.legend;
 		}
 	}

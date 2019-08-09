@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { expect, should } from 'chai';
-import { ChartsModule, ChartComponent } from '../src';
+import { ChartsModule } from './charts.module';
+import { ChartComponent } from './chart.component';
 import { timer } from 'rxjs';
 import { Component, ViewChild } from '@angular/core';
 
@@ -18,19 +18,20 @@ const changeDetectionDelay = () => timer(50).toPromise();
 	`
 })
 class TestSmallContainerComponent {
-	@ViewChild(ChartComponent)
+	@ViewChild(ChartComponent, { static: true })
 	chartComponent: ChartComponent;
 }
 
 describe('ezy-chart component', () => {
-	beforeEach(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async done => {
+		await TestBed.configureTestingModule({
 			imports: [ChartsModule],
 			declarations: [TestSmallContainerComponent]
-		});
+		}).compileComponents();
+		done();
 	});
 
-	it('should render a chart', async () => {
+	it('should render a chart', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 		comp.datasets = [{ data: [] }];
@@ -41,26 +42,26 @@ describe('ezy-chart component', () => {
 		const element: HTMLElement = fixture.nativeElement;
 		const rootElem: Element = element.firstElementChild;
 
-		should().exist(rootElem, 'root element');
-		expect(rootElem.tagName).equals('DIV', 'root element');
+		expect(rootElem).toBeTruthy();
+		expect(rootElem.tagName).toEqual('DIV');
 
 		const canvasElem = rootElem.firstElementChild as HTMLCanvasElement;
 
-		should().exist(canvasElem, 'canvas');
-		expect(canvasElem.tagName).equals('CANVAS', 'canvas');
+		expect(canvasElem).toBeTruthy();
+		expect(canvasElem.tagName).toEqual('CANVAS');
 
-		expect(comp['_chart'])
-			.to.be.an('Object')
-			.that.has.ownProperty('ctx');
+		expect(comp['_chart']).toEqual(jasmine.objectContaining({ ctx: jasmine.any(Object) }));
 
 		const ev = document.createEvent('Event');
 		ev.initEvent('resize', true, true);
 		window.dispatchEvent(ev);
 		await changeDetectionDelay();
 		await fixture.whenStable();
+
+		done();
 	});
 
-	it('should apply data binding [datasets] dynamically', async () => {
+	it('should apply data binding [datasets] dynamically', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 		comp.datasets = [{ data: [0, 1, 2] }];
@@ -69,23 +70,23 @@ describe('ezy-chart component', () => {
 		await changeDetectionDelay();
 		await fixture.whenStable();
 
-		expect(comp['_chart'].data.datasets)
-			.to.be.an('array')
-			.of.length(1, '1 dataset only');
-		expect(comp['_chart'].data.datasets[0].data).to.deep.equal([0, 1, 2]);
-		expect(comp['_chart'].data.labels).to.deep.equal(['a', 'b', 'c']);
+		expect(comp['_chart'].data.datasets).toEqual(jasmine.any(Array));
+		expect(comp['_chart'].data.datasets.length).toEqual(1);
+		expect(comp['_chart'].data.datasets[0].data).toEqual([0, 1, 2]);
+		expect(comp['_chart'].data.labels).toEqual(['a', 'b', 'c']);
 
 		fixture.componentInstance.datasets = [{ data: [3, 4, 5, 6] }, { data: [0, 3, 4, 5] }];
 		fixture.detectChanges();
 		await changeDetectionDelay();
 		await fixture.whenStable();
-		expect(comp['_chart'].data.datasets)
-			.to.be.an('array')
-			.of.length(2, '2 datasets');
-		expect(comp['_chart'].data.datasets[0].data).to.deep.equal([3, 4, 5, 6]);
+		expect(comp['_chart'].data.datasets).toEqual(jasmine.any(Array));
+		expect(comp['_chart'].data.datasets.length).toEqual(2);
+		expect(comp['_chart'].data.datasets[0].data).toEqual([3, 4, 5, 6]);
+
+		done();
 	});
 
-	it('should apply data binding [labels] dynamically', async () => {
+	it('should apply data binding [labels] dynamically', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 		comp.datasets = [{ data: [0, 1, 2] }];
@@ -94,16 +95,18 @@ describe('ezy-chart component', () => {
 		await changeDetectionDelay();
 		await fixture.whenStable();
 
-		expect(comp['_chart'].data.labels).to.deep.equal(['a1', 'b1', 'c1']);
+		expect(comp['_chart'].data.labels).toEqual(['a1', 'b1', 'c1']);
 
 		comp.labels = ['a3', 'b1', 'c6'];
 		fixture.detectChanges();
 		await changeDetectionDelay();
 		await fixture.whenStable();
-		expect(comp['_chart'].data.labels).to.deep.equal(['a3', 'b1', 'c6']);
+		expect(comp['_chart'].data.labels).toEqual(['a3', 'b1', 'c6']);
+
+		done();
 	});
 
-	it('should not recreate chart when only [datasets] and/or [labels] are changed', async () => {
+	it('should not recreate chart when only [datasets] and/or [labels] are changed', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 		comp.datasets = [{ data: [0, 1, 2] }];
@@ -118,10 +121,12 @@ describe('ezy-chart component', () => {
 		fixture.detectChanges();
 		await changeDetectionDelay();
 		await fixture.whenStable();
-		expect(oldChart).to.equal(comp['_chart']);
+		expect(oldChart).toEqual(comp['_chart']);
+
+		done();
 	});
 
-	it('should apply data binding [type] dynamically', async () => {
+	it('should apply data binding [type] dynamically', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 
@@ -131,30 +136,27 @@ describe('ezy-chart component', () => {
 		await changeDetectionDelay();
 		await fixture.whenStable();
 
-		expect(comp['_chart'].config)
-			.to.be.an('Object')
-			.that.has.property('type', 'bar', 'a bar chart');
+		expect(comp['_chart'].config).toEqual(jasmine.any(Object));
+		expect(comp['_chart'].config).toEqual(jasmine.objectContaining({ type: 'bar' }));
 		comp.type = 'line';
 		fixture.detectChanges();
-		expect(comp['_chart'].config).to.have.property(
-			'type',
-			'bar',
-			'still a bar chart because of change detection delay'
-		);
+		expect(comp['_chart'].config).toEqual(jasmine.objectContaining({ type: 'bar' }));
 		await changeDetectionDelay();
 		await fixture.whenStable();
-		expect(comp['_chart'].config.type).equals('line', 'changed to line chart');
+		expect(comp['_chart'].config).toEqual(jasmine.objectContaining({ type: 'line' }));
 
 		for (const chartType of ['pie', 'horizontalBar', 'bar', 'line', 'doughnut']) {
 			comp.type = chartType;
 			fixture.detectChanges();
 			await changeDetectionDelay();
 			await fixture.whenStable();
-			expect(comp['_chart'].config.type).equals(chartType, `change to ${chartType} chart`);
+			expect(comp['_chart'].config.type).toEqual(chartType);
 		}
+
+		done();
 	});
 
-	it('should apply data binding [colors] dynamically', async () => {
+	it('should apply data binding [colors] dynamically', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 
@@ -165,20 +167,22 @@ describe('ezy-chart component', () => {
 		await changeDetectionDelay();
 		await fixture.whenStable();
 
-		expect(comp['_chart'].data.datasets[0].backgroundColor).to.equal('rgba(51,68,255,1)');
+		expect(comp['_chart'].data.datasets[0].backgroundColor).toEqual('rgba(51,68,255,1)');
 		comp.colors = ['rgb(170,68,255)', '#cfa', '#800a01'];
 		comp.type = 'pie';
 		fixture.detectChanges();
 		await changeDetectionDelay();
 		await fixture.whenStable();
-		expect(comp['_chart'].data.datasets[0].backgroundColor).to.deep.equal([
+		expect(comp['_chart'].data.datasets[0].backgroundColor).toEqual([
 			'rgba(170,68,255,1)',
 			'rgba(204,255,170,1)',
 			'rgba(128,10,1,1)'
 		]);
+
+		done();
 	});
 
-	it('should change to timescale based on data inputs', async () => {
+	it('should change to timescale based on data inputs', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 
@@ -195,10 +199,12 @@ describe('ezy-chart component', () => {
 		fixture.detectChanges();
 		await changeDetectionDelay();
 		await fixture.whenStable();
-		expect(comp['_chart'].config.options.scales.xAxes[0].type).equals('time');
+		expect(comp['_chart'].config.options.scales.xAxes[0].type).toEqual('time');
+
+		done();
 	});
 
-	it('should render y scales as monetary numbers when currency is set', async () => {
+	it('should render y scales as monetary numbers when currency is set', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 
@@ -208,14 +214,14 @@ describe('ezy-chart component', () => {
 		fixture.detectChanges();
 		await changeDetectionDelay();
 		await fixture.whenStable();
-		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(10000, 0, [1000, 10000])).equals('$10K');
-		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(0, 0, [0, 10000])).equals('0');
-		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(1000000, 0, [1000000, 10000])).equals(
-			'$1M'
-		);
+		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(10000, 0, [1000, 10000])).toEqual('$10K');
+		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(0, 0, [0, 10000])).toEqual('0');
+		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(1000000, 0, [1000000, 10000])).toEqual('$1M');
+
+		done();
 	});
 
-	it('should render x scales as monetary numbers when currency is set (horizontal bar)', async () => {
+	it('should render x scales as monetary numbers when currency is set (horizontal bar)', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 
@@ -226,14 +232,14 @@ describe('ezy-chart component', () => {
 		fixture.detectChanges();
 		await changeDetectionDelay();
 		await fixture.whenStable();
-		expect(comp['_chart'].config.options.scales.xAxes[0].ticks.callback(10000, 0, [1000, 10000])).equals('$10K');
-		expect(comp['_chart'].config.options.scales.xAxes[0].ticks.callback(0, 0, [0, 10000])).equals('0');
-		expect(comp['_chart'].config.options.scales.xAxes[0].ticks.callback(1000000, 0, [1000000, 10000])).equals(
-			'$1M'
-		);
+		expect(comp['_chart'].config.options.scales.xAxes[0].ticks.callback(10000, 0, [1000, 10000])).toEqual('$10K');
+		expect(comp['_chart'].config.options.scales.xAxes[0].ticks.callback(0, 0, [0, 10000])).toEqual('0');
+		expect(comp['_chart'].config.options.scales.xAxes[0].ticks.callback(1000000, 0, [1000000, 10000])).toEqual('$1M');
+
+		done();
 	});
 
-	it('should not change data binding inputs', async () => {
+	it('should not change data binding inputs', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 		comp.datasets = [{ data: [1, 2, 6, 7, 8], label: 'sample' }];
@@ -249,7 +255,7 @@ describe('ezy-chart component', () => {
 		fixture.detectChanges();
 		await changeDetectionDelay();
 		await fixture.whenStable();
-		expect(comp['_params']).deep.equals({
+		expect(comp['_params']).toEqual({
 			datasets: [{ data: [1, 2, 6, 7, 8], label: 'sample' }],
 			labels: ['a', 'b', 'c', 'd', 'e'],
 			colorsFor: 'series',
@@ -261,9 +267,11 @@ describe('ezy-chart component', () => {
 			colors: ['#333'],
 			ratio: 1
 		});
+
+		done();
 	});
 
-	it('should generate a legend', async () => {
+	it('should generate a legend', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 		comp.datasets = [{ data: [1, 2, 6, 7, 8], label: 'sample' }];
@@ -274,10 +282,12 @@ describe('ezy-chart component', () => {
 		await changeDetectionDelay();
 		await fixture.whenStable();
 
-		expect(comp['_chart'].config.options.legend.display).equals(true);
+		expect(comp['_chart'].config.options.legend.display).toEqual(true);
+
+		done();
 	});
 
-	it('should not generate a legend', async () => {
+	it('should not generate a legend', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 		comp.datasets = [{ data: [1, 2, 6, 7, 8], label: 'sample' }];
@@ -288,35 +298,37 @@ describe('ezy-chart component', () => {
 		await changeDetectionDelay();
 		await fixture.whenStable();
 
-		expect(comp['_chart'].config.options.legend.display).equals(false);
+		expect(comp['_chart'].config.options.legend.display).toEqual(false);
+
+		done();
 	});
 
-	it('should not render a legend when chart size is too small', async () => {
-		const fixture: ComponentFixture<TestSmallContainerComponent> = TestBed.createComponent(
-			TestSmallContainerComponent
-		);
+	it('should not render a legend when chart size is too small', async done => {
+		const fixture: ComponentFixture<TestSmallContainerComponent> = TestBed.createComponent(TestSmallContainerComponent);
 		fixture.detectChanges();
 		await changeDetectionDelay();
 		await fixture.whenStable();
 		const comp = fixture.componentInstance.chartComponent;
 
-		expect(comp['_chart'].config.options.legend.display).equals(false);
+		expect(comp['_chart'].config.options.legend.display).toEqual(false);
+
+		done();
 	});
 
-	it("should render a legend if it is not set to 'auto' even when chart size is too small", async () => {
-		const fixture: ComponentFixture<TestSmallContainerComponent> = TestBed.createComponent(
-			TestSmallContainerComponent
-		);
+	it("should render a legend if it is not set to 'auto' even when chart size is too small", async done => {
+		const fixture: ComponentFixture<TestSmallContainerComponent> = TestBed.createComponent(TestSmallContainerComponent);
 		const comp = fixture.componentInstance.chartComponent;
 		comp.legend = 'top';
 		fixture.detectChanges();
 		await changeDetectionDelay();
 		await fixture.whenStable();
 
-		expect(comp['_chart'].config.options.legend.display).equals(true);
+		expect(comp['_chart'].config.options.legend.display).toEqual(true);
+
+		done();
 	});
 
-	it("should treat 'options' at higher priority", async () => {
+	it("should treat 'options' at higher priority", async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 		comp.datasets = [{ data: [1, 2, 6, 7, 8], label: 'sample' }];
@@ -328,10 +340,12 @@ describe('ezy-chart component', () => {
 		await changeDetectionDelay();
 		await fixture.whenStable();
 
-		expect(comp['_chart'].config.options.legend.display).equals(false);
+		expect(comp['_chart'].config.options.legend.display).toEqual(false);
+
+		done();
 	});
 
-	it('should change mouse cursor when hovering on legend', async () => {
+	it('should change mouse cursor when hovering on legend', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 		comp.datasets = [{ data: [8, 7, 6, 7, 6], label: 'sample 1' }, { data: [1, 5, 3, 1, 3], label: 'sample 2' }];
@@ -350,13 +364,14 @@ describe('ezy-chart component', () => {
 
 		await changeDetectionDelay();
 		const box = comp['_chart']['legend'].legendHitBoxes[0];
-		const x: number = box.left + 12;
-		const y: number = box.top + 12;
+		const rect = canvasElem.getBoundingClientRect();
+		const x: number = box.left + 12 + rect.left;
+		const y: number = box.top + 6 + rect.top;
 		const ev = new MouseEvent('mousemove');
 		ev.initMouseEvent('mousemove', true, false, window, 0, x, y, x, y, false, false, false, false, 0, canvasElem);
 		canvasElem.dispatchEvent(ev);
 		await changeDetectionDelay();
-		expect(canvasElem.style.cursor).equals('pointer');
+		expect(canvasElem.style.cursor).toEqual('pointer');
 
 		const ev1 = new MouseEvent('mousemove');
 		ev1.initMouseEvent(
@@ -377,10 +392,12 @@ describe('ezy-chart component', () => {
 			canvasElem
 		);
 		canvasElem.dispatchEvent(ev1);
-		expect(canvasElem.style.cursor).equals('default');
+		expect(canvasElem.style.cursor).toEqual('default');
+
+		done();
 	});
 
-	it('should apply specified ratio', async () => {
+	it('should apply specified ratio', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 		comp.datasets = [{ data: [1, 2, 6, 7, 8], label: 'sample' }];
@@ -393,7 +410,7 @@ describe('ezy-chart component', () => {
 
 		const w1 = comp['_chart'].chartArea.right - comp['_chart'].chartArea.left;
 		const h1 = comp['_chart'].chartArea.bottom - comp['_chart'].chartArea.top;
-		expect(w1 / h1).closeTo(1, 0.3);
+		expect(w1 / h1).toBeCloseTo(1, 0);
 
 		comp.ratio = 4;
 
@@ -403,10 +420,12 @@ describe('ezy-chart component', () => {
 
 		const w2 = comp['_chart'].chartArea.right - comp['_chart'].chartArea.left;
 		const h2 = comp['_chart'].chartArea.bottom - comp['_chart'].chartArea.top;
-		expect(w2 / h2).closeTo(4, 1);
+		expect(w2 / h2).toBeCloseTo(5, 0);
+
+		done();
 	});
 
-	it('should deal with null values gracefully', async () => {
+	it('should deal with null values gracefully', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 		comp.percentage = true;
@@ -417,14 +436,15 @@ describe('ezy-chart component', () => {
 		await changeDetectionDelay();
 		await fixture.whenStable();
 
-		expect(comp['_chart'].data.datasets)
-			.to.be.an('array')
-			.of.length(1, '1 dataset only');
-		expect(comp['_chart'].data.datasets[0].data).to.deep.equal([0, , 10, 2]);
-		expect(comp['_chart'].data.labels).to.deep.equal(['a', 'b', , 'c']);
+		expect(comp['_chart'].data.datasets).toEqual(jasmine.any(Array));
+		expect(comp['_chart'].data.datasets.length).toEqual(1);
+		expect(comp['_chart'].data.datasets[0].data).toEqual([0, , 10, 2]);
+		expect(comp['_chart'].data.labels).toEqual(['a', 'b', , 'c']);
+
+		done();
 	});
 
-	it('should render tooltip titles', async () => {
+	it('should render tooltip titles', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 
@@ -441,17 +461,17 @@ describe('ezy-chart component', () => {
 			yLabel: 'TEST 2'
 		};
 		const title = comp['_chart'].config.options.tooltips.callbacks.title([tooltipItem], { datasets: ds });
-		expect(title).to.deep.equal([' TEST -----------', ' TEST -----------', ' TEST']);
+		expect(title).toEqual([' TEST -----------', ' TEST -----------', ' TEST']);
 
 		const title1 = comp['_chart'].config.options.tooltips.callbacks.title([], { datasets: ds });
-		expect(title1).to.deep.equal([' ']);
+		expect(title1).toEqual([' ']);
 
 		tooltipItem.xLabel = '';
 		const title5 = comp['_chart'].config.options.tooltips.callbacks.title([tooltipItem], {
 			datasets: ds,
 			labels: ['aaa', 'bbb', 'ccc']
 		});
-		expect(title5).to.deep.equal([' bbb']);
+		expect(title5).toEqual([' bbb']);
 
 		comp.type = 'horizontalBar';
 		fixture.detectChanges();
@@ -459,14 +479,16 @@ describe('ezy-chart component', () => {
 		await fixture.whenStable();
 
 		const title2 = comp['_chart'].config.options.tooltips.callbacks.title([tooltipItem], { datasets: ds });
-		expect(title2).to.deep.equal([' TEST 2']);
+		expect(title2).toEqual([' TEST 2']);
 
 		tooltipItem.yLabel = '';
 		const title3 = comp['_chart'].config.options.tooltips.callbacks.title([tooltipItem], { datasets: ds });
-		expect(title3).to.deep.equal([' ']);
+		expect(title3).toEqual([' ']);
+
+		done();
 	});
 
-	it('should render tooltip labels', async () => {
+	it('should render tooltip labels', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 
@@ -485,15 +507,17 @@ describe('ezy-chart component', () => {
 			yLabel: '2000'
 		};
 		const label = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds });
-		expect(label).to.deep.equal('2000 : 16.74%');
+		expect(label).toEqual('2000 : 16.74%');
 
 		tooltipItem.datasetIndex = 1;
 		tooltipItem.yLabel = '';
 		const label2 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds2 });
-		expect(label2).to.deep.equal('1 : 16.67%');
+		expect(label2).toEqual('1 : 16.67%');
+
+		done();
 	});
 
-	it('should render numbers with correct digit info', async () => {
+	it('should render numbers with correct digit info', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 
@@ -511,12 +535,12 @@ describe('ezy-chart component', () => {
 			yLabel: '2000'
 		};
 		const label = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds });
-		expect(label).to.deep.equal('2,020.234');
+		expect(label).toEqual('2,020.234');
 
 		const label1 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, {
 			datasets: [{ data: [{}, {}, {}] }]
 		});
-		expect(label1).to.deep.equal('2000');
+		expect(label1).toEqual('2000');
 
 		comp.percentage = 'only';
 
@@ -525,16 +549,18 @@ describe('ezy-chart component', () => {
 		await fixture.whenStable();
 
 		const label2 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds });
-		expect(label2).to.contains('16.74%');
+		expect(label2).toContain('16.74%');
 
 		const label3 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, {
 			datasets: [{ data: [{ y: 3 }, { y: 4 }, { y: 5 }] }]
 		});
-		expect(label3).to.contains('25.00%');
+		expect(label3).toContain('25.00%');
 
 		const label4 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, {
 			datasets: [{ data: [{}, {}, {}] }]
 		});
-		expect(label4).to.contains('0%');
+		expect(label4).toContain('0%');
+
+		done();
 	});
 });
