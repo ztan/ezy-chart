@@ -1,8 +1,14 @@
 import { Component, ChangeDetectionStrategy, Input, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { generateColorsBySeries, generateColorsByDataPoints } from './color.helpers';
 import { DecimalPipe } from '@angular/common';
-import * as _ from 'lodash';
-import * as moment from 'moment';
+import cloneDeep from 'lodash/cloneDeep';
+import min from 'lodash/min';
+import flatMap from 'lodash/flatMap';
+import sumBy from 'lodash/sumBy';
+import isEmpty from 'lodash/isEmpty';
+import merge from 'lodash/merge';
+import pickBy from 'lodash/pickBy';
+import moment from 'moment';
 import { BaseChart, ShowPercentageType, ColorsForType, formatMoney, formatScale } from './base.chart';
 
 /**
@@ -31,12 +37,12 @@ function getTooltipLabelCallBack(
 		}
 		const dsData: Array<number | Chart.ChartPoint> = ds[tooltipItem.datasetIndex || 0].data || [];
 		const point = dsData[tooltipItem.index || 0];
-		const value = _.isNumber(point) ? point : point.y;
+		const value = typeof point === 'number' ? point : point.y;
 
 		if (percentage !== 'only') {
 			if (currency) {
 				labels.push(formatMoney(value, currency, digitInfo));
-			} else if (digitInfo && _.isNumber(value)) {
+			} else if (digitInfo && typeof value === 'number') {
 				labels.push(new DecimalPipe(moment.locale()).transform(value, digitInfo));
 			} else {
 				labels.push(tooltipItem.yLabel || value);
@@ -44,8 +50,8 @@ function getTooltipLabelCallBack(
 		}
 
 		if (percentage) {
-			const perc = _.isNumber(value) ? value : 0;
-			const total = _.sumBy(dsData, d => (_.isNumber(d) ? d : (d.y as number)));
+			const perc = typeof value === 'number' ? value : 0;
+			const total = sumBy(dsData, d => (typeof d === 'number' ? d : (d.y as number)));
 			labels.push(`${total ? ((perc * 100) / total).toFixed(2) : 0}%`);
 		}
 		return labels.join(' : ');
@@ -56,7 +62,7 @@ function splitWords(text: string, maxLength: number) {
 	const words: string[] = [];
 	let word: string = '';
 	text.split(' ').forEach(w => {
-		word = _.join([word, w], ' ');
+		word = [word, w].join(' ');
 		if (word.length > maxLength) {
 			words.push(word);
 			word = '';
@@ -82,7 +88,7 @@ export function getTooltipTitleCallBack(horizontal?: boolean): Chart.ChartToolti
 			const item = tooltipItems[0];
 
 			if (item.xLabel || (horizontal && item.yLabel)) {
-				title = (horizontal ? item.yLabel : item.xLabel) || '';
+				title = ((horizontal ? item.yLabel : item.xLabel) as string) || '';
 			} else if ((labelCount > 0 && item.index) || 0 < labelCount) {
 				title = labels[item.index || 0] as string;
 			}
@@ -132,7 +138,7 @@ export class ChartComponent extends BaseChart {
 
 	private _chart: Chart;
 
-	@ViewChild('chartContainer', { read: ElementRef })
+	@ViewChild('chartContainer', { read: ElementRef, static: true })
 	private _chartContainer: ElementRef;
 
 	constructor(zone: NgZone) {
@@ -152,9 +158,10 @@ export class ChartComponent extends BaseChart {
 			dataOrParamsChanged = true;
 		}
 
-		dataOrParamsChanged = dataOrParamsChanged || !_.isEqual(this._config.data, this._prevConfig.data);
+		dataOrParamsChanged =
+			dataOrParamsChanged || JSON.stringify(this._config.data) !== JSON.stringify(this._prevConfig.data);
 		let configChanged: boolean =
-			!_.isEqual(JSON.stringify(this._config.options), JSON.stringify(this._prevConfig.options)) ||
+			JSON.stringify(this._config.options) !== JSON.stringify(this._prevConfig.options) ||
 			this._config.type !== this._prevConfig.type;
 
 		configChanged = configChanged || this.isParamChanged('colorsFor');
@@ -173,18 +180,18 @@ export class ChartComponent extends BaseChart {
 	}
 
 	private _refresh(configChanged: boolean) {
-		this._prevConfig = _.cloneDeep(this._config);
+		this._prevConfig = cloneDeep(this._config);
 		this.resetParamsChangeState();
 
 		if (configChanged || !this._chart) {
 			if (this._chart) {
 				this._chart.destroy();
 			}
-			const cfg = _.cloneDeep(this._prevConfig);
+			const cfg = cloneDeep(this._prevConfig);
 			this._applyColors(this.colors || [], this.colorsFor || 'auto', (cfg.data || {}).datasets || []);
 			this._createNewChart(cfg);
 		} else {
-			this._chart.config.data = _.cloneDeep(this._config.data || {});
+			this._chart.config.data = cloneDeep(this._config.data || {});
 			this._applyColors(this.colors || [], this.colorsFor || 'auto', this._chart.config.data.datasets || []);
 			this._chart.update();
 		}
@@ -236,24 +243,24 @@ export class ChartComponent extends BaseChart {
 		this._config.options = this._config.options || {};
 		this._config.options.legend = this._config.options.legend || {};
 		this._config.data = this._config.data || {};
-		const ds: Chart.ChartDataSets[] = (this._config.data.datasets = _.cloneDeep(this.datasets || []));
+		const ds: Chart.ChartDataSets[] = (this._config.data.datasets = cloneDeep(this.datasets || []));
 
 		if (!ds.some(d => (d.label ? true : false))) {
 			if (multiType) {
 				this._config.options.legend.display = false;
 			}
 		}
-		const labels = (this._config.data.labels = _.cloneDeep(this.labels || []));
+		const labels = (this._config.data.labels = cloneDeep(this.labels || []));
 
-		_.set(this._config.options || {}, 'aspectRatio', this.ratio || 2);
+		((this._config.options || {}) as any).aspectRatio = this.ratio || 2;
 
 		const legend = this.legend === false ? false : this.legend || 'auto';
-		if (_.isString(legend) && ['top', 'right', 'bottom', 'left'].indexOf(legend) >= 0) {
+		if (typeof legend === 'string' && ['top', 'right', 'bottom', 'left'].indexOf(legend) >= 0) {
 			this._config.options.legend.position = legend as Chart.PositionType;
-		} else if (_.isBoolean(legend)) {
+		} else if (typeof legend === 'boolean') {
 			this._config.options.legend.display = legend;
-		} else if (_.isObject(legend)) {
-			this._config.options.legend = _.cloneDeep(legend) as Chart.ChartLegendOptions;
+		} else if (typeof legend === 'object') {
+			this._config.options.legend = cloneDeep(legend) as Chart.ChartLegendOptions;
 		} else if (legend === 'auto') {
 			const multiPoints: boolean = ds.every(d => (d.data || []).length > 1);
 			this._config.options.legend.display = (multiType && ds.length > 1) || (multiPoints && !multiType);
@@ -287,7 +294,7 @@ export class ChartComponent extends BaseChart {
 			);
 			if (isTimeScale) {
 				this._config.options.scales = this._config.options.scales || {};
-				const minTime = _.min(_.flatMap(ds, d => d.data as Chart.ChartPoint[]).map(p => moment(p.x)));
+				const minTime = min(flatMap(ds, d => d.data as Chart.ChartPoint[]).map(p => moment(p.x)));
 				ds.every(d =>
 					((d.data as Chart.ChartPoint[]) || []).every(item => (item.x ? moment(item.x).isValid() : false))
 				);
@@ -315,8 +322,8 @@ export class ChartComponent extends BaseChart {
 			console.warn('ezy-chart: wrong number of labels. ');
 		}
 
-		if (_.isEmpty(this._config.options.scales)) {
-			this._config.options = _.pickBy(this._config.options, (val, key) => key !== 'scales');
+		if (isEmpty(this._config.options.scales)) {
+			this._config.options = pickBy(this._config.options, (val, key) => key !== 'scales');
 		}
 
 		const splitLabel: boolean = (this.type === 'pie' || this.type === 'doughnut') && ds.length > 1;
@@ -340,12 +347,12 @@ export class ChartComponent extends BaseChart {
 		this._config.options.tooltips.callbacks.title = getTooltipTitleCallBack(this.type === 'horizontalBar');
 
 		if (this.options) {
-			_.merge(this._config.options, this.options);
+			merge(this._config.options, this.options);
 		}
 	}
 
 	private _isYAxisAllNumbers(data: Array<Chart.ChartPoint | number>): boolean {
-		return data.every(d => !d || _.isNumber(d) || _.isNumber(d.y));
+		return data.every(d => !d || typeof d === 'number' || typeof d.y === 'number');
 	}
 
 	private _applyColors(colors: string[], colorsFor: ColorsForType, datasets: Chart.ChartDataSets[]) {
@@ -359,11 +366,11 @@ export class ChartComponent extends BaseChart {
 
 		if (colorsFor === 'series') {
 			const colorGroups = generateColorsBySeries(colors, datasets.length, this.type || 'bar');
-			_.merge(datasets, colorGroups);
+			merge(datasets, colorGroups);
 		} else if (colorsFor === 'data') {
 			for (const ds of datasets) {
 				const colorGroup = generateColorsByDataPoints(colors, (ds.data || []).length, this.type || 'bar');
-				_.merge(ds, colorGroup);
+				merge(ds, colorGroup);
 			}
 		}
 	}

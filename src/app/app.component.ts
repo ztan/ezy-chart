@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import * as _ from 'lodash';
-import * as moment from 'moment';
+import moment from 'moment';
 
 @Component({
-	selector: 'ezy-demo-app',
-	templateUrl: './demo.component.html'
+	selector: 'ezy-chart-app-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.scss']
 })
-export class DemoComponent {
+export class AppComponent {
 	datasets: Chart.ChartDataSets[] = [{ data: [12, 19, 3, 5, 2, 3], label: 'series 1' }];
 	labels: string[] = ['sample 1', 'sample 2', 'sample 3', 'sample 4', 'sample 5', 'sample 6'];
 	type: string = 'bar';
@@ -72,9 +73,9 @@ export class DemoComponent {
 			const data = (ds.data as Array<number | Chart.ChartPoint>) || [];
 			dataPoints = Math.max(dataPoints, data.length);
 			data.forEach((d, i) => {
-				if (_.isNumber(d) && this.timeScale) {
+				if (typeof d === 'number' && this.timeScale) {
 					data[i] = { y: d, x: moment().add(-i, 'year') as any };
-				} else if (!this.timeScale && !_.isNumber(d)) {
+				} else if (!this.timeScale && typeof d !== 'number') {
 					data[i] = d.y as number;
 				}
 			});

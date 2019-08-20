@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { expect, should } from 'chai';
-import { ChartsModule, EChartComponent } from '../src';
 import { timer } from 'rxjs';
 import { Component, ViewChild } from '@angular/core';
+import { EChartComponent } from './echart.component';
+import { ChartsModule } from './charts.module';
 
 const changeDetectionDelay = () => timer(200).toPromise();
 
@@ -18,7 +18,7 @@ const changeDetectionDelay = () => timer(200).toPromise();
 	`
 })
 class TestSmallContainerComponent {
-	@ViewChild(EChartComponent) chartComponent: EChartComponent;
+	@ViewChild(EChartComponent, { static: true }) chartComponent: EChartComponent;
 }
 
 describe('ezy-echart component', () => {
@@ -40,17 +40,15 @@ describe('ezy-echart component', () => {
 		const element: HTMLElement = fixture.nativeElement;
 		const rootElem: Element = element.firstElementChild;
 
-		should().exist(rootElem, 'root element');
-		expect(rootElem.tagName).equals('DIV', 'root element');
+		expect(rootElem).toBeDefined();
+		expect(rootElem.tagName).toEqual('DIV');
 
 		const canvasElem = rootElem.firstElementChild.firstElementChild as HTMLCanvasElement;
 
-		should().exist(canvasElem, 'canvas');
-		expect(canvasElem.tagName).equals('CANVAS', 'canvas');
+		expect(canvasElem).toBeDefined();
+		expect(canvasElem.tagName).toEqual('CANVAS', 'canvas');
 
-		expect(comp['_chart'])
-			.to.be.an('Object')
-			.that.has.ownProperty('_dom');
+		expect(comp['_chart']).toEqual(jasmine.objectContaining({ _dom: jasmine.any(Object) }));
 	});
 
 	it('should apply data binding [datasets] dynamically', async () => {
@@ -63,19 +61,17 @@ describe('ezy-echart component', () => {
 		await fixture.whenStable();
 
 		const series = comp['_chart']['_model'].option.series;
-		expect(series)
-			.to.be.an('array')
-			.of.length(1, '1 dataset only');
-		expect(series[0].data.map(d => d.value)).to.deep.equal([0, 1, 2]);
-		expect(comp['_chart']['_model'].option.xAxis[0].data).to.deep.equal(['a', 'b', 'c']);
+		expect(series).toEqual(jasmine.any(Array));
+		expect(series.length).toEqual(1);
+		expect(series[0].data.map(d => d.value)).toEqual([0, 1, 2]);
+		expect(comp['_chart']['_model'].option.xAxis[0].data).toEqual(['a', 'b', 'c']);
 
 		fixture.componentInstance.datasets = [{ data: [3, 4, 5, 6] }, { data: [0, 3, 4, 5] }];
 		fixture.detectChanges();
 		await changeDetectionDelay();
 		await fixture.whenStable();
-		expect(comp['_chart']['_model'].option.series)
-			.to.be.an('array')
-			.of.length(2, '2 datasets');
-		expect(comp['_chart']['_model'].option.series[0].data.map(d => d.value)).to.deep.equal([3, 4, 5, 6]);
+		expect(comp['_chart']['_model'].option.series).toEqual(jasmine.any(Array));
+		expect(comp['_chart']['_model'].option.series.length).toEqual(2);
+		expect(comp['_chart']['_model'].option.series[0].data.map(d => d.value)).toEqual([3, 4, 5, 6]);
 	});
 });

@@ -1,0 +1,26 @@
+{
+	"name": "ezy-chart",
+	"version": "0.5.0-beta.1",
+	"description": "Angular components based on Chart.js and ECharts",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ztan/ezy-chart.git"
+	},
+	"keywords": [
+		"angular5",
+		"angular"
+	],
+	"author": "Zhendong Tan",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/ztan/ezy-chart/issues"
+	},
+	"homepage": "https://github.com/ztan/ezy-chart/projects/ezy-chart#readme",
+	"peerDependencies": {
+		"@angular/common": "^8.0.3",
+		"@angular/core": "^8.0.3",
+		"chart.js": ">=2.7.1 <3.0.0",
+		"echarts": ">=4.0.0 <5.0.0",
+		"moment": ">=2.18.0 <3.0.0"
+	}
+}
