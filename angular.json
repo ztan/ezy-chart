@@ -152,6 +152,7 @@
 							"projects/ezy-chart/tsconfig.lib.json",
 							"projects/ezy-chart/tsconfig.spec.json"
 						],
+						"tslintConfig": "tslint-test.json",
 						"exclude": [
 							"**/node_modules/**"
 						]

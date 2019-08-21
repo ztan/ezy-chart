@@ -4,6 +4,7 @@
 		"no-unused-expression": [
 			false
 		],
-		"no-life-cycle-call": false
+		"no-life-cycle-call": false,
+		"no-string-literal": false
 	}
 }

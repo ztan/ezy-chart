@@ -10,12 +10,12 @@ import moment from 'moment';
 export class AppComponent {
 	datasets: Chart.ChartDataSets[] = [{ data: [12, 19, 3, 5, 2, 3], label: 'series 1' }];
 	labels: string[] = ['sample 1', 'sample 2', 'sample 3', 'sample 4', 'sample 5', 'sample 6'];
-	type: string = 'bar';
-	colorsFor: string = 'auto';
-	timeScale: boolean = false;
-	currencyMode: boolean = false;
+	type = 'bar';
+	colorsFor = 'auto';
+	timeScale = false;
+	currencyMode = false;
 	showPercentage: string | boolean = false;
-	engine: string = 'chartjs';
+	engine = 'chartjs';
 
 	addData() {
 		this.labels.push(`sample ${this.labels.length + 1}`);
@@ -68,7 +68,7 @@ export class AppComponent {
 	}
 
 	scaleChanged() {
-		let dataPoints: number = 0;
+		let dataPoints = 0;
 		this.datasets.forEach(ds => {
 			const data = (ds.data as Array<number | Chart.ChartPoint>) || [];
 			dataPoints = Math.max(dataPoints, data.length);

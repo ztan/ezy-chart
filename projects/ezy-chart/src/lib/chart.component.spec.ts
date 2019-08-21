@@ -9,10 +9,10 @@ const changeDetectionDelay = () => timer(50).toPromise();
 @Component({
 	selector: 'ezy-test-component',
 	template: `
-		<div style="width:100px; height: 100px;">
+		<div style='width:100px; height: 100px;'>
 			<ezy-chart
-				[datasets]="[{ data: [132, 122, 66], label: 's1' }, { data: [12, 144, 33], label: 's2' }]"
-				[labels]="['d1', 'd2', 'd3']"
+				[datasets]='[{ data: [132, 122, 66], label: 's1' }, { data: [12, 144, 33], label: 's2' }]'
+				[labels]='['d1', 'd2', 'd3']'
 			></ezy-chart>
 		</div>
 	`
@@ -216,7 +216,9 @@ describe('ezy-chart component', () => {
 		await fixture.whenStable();
 		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(10000, 0, [1000, 10000])).toEqual('$10K');
 		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(0, 0, [0, 10000])).toEqual('0');
-		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(1000000, 0, [1000000, 10000])).toEqual('$1M');
+		expect(comp['_chart'].config.options.scales.yAxes[0].ticks.callback(1000000, 0, [1000000, 10000])).toEqual(
+			'$1M'
+		);
 
 		done();
 	});
@@ -234,7 +236,9 @@ describe('ezy-chart component', () => {
 		await fixture.whenStable();
 		expect(comp['_chart'].config.options.scales.xAxes[0].ticks.callback(10000, 0, [1000, 10000])).toEqual('$10K');
 		expect(comp['_chart'].config.options.scales.xAxes[0].ticks.callback(0, 0, [0, 10000])).toEqual('0');
-		expect(comp['_chart'].config.options.scales.xAxes[0].ticks.callback(1000000, 0, [1000000, 10000])).toEqual('$1M');
+		expect(comp['_chart'].config.options.scales.xAxes[0].ticks.callback(1000000, 0, [1000000, 10000])).toEqual(
+			'$1M'
+		);
 
 		done();
 	});
@@ -304,7 +308,9 @@ describe('ezy-chart component', () => {
 	});
 
 	it('should not render a legend when chart size is too small', async done => {
-		const fixture: ComponentFixture<TestSmallContainerComponent> = TestBed.createComponent(TestSmallContainerComponent);
+		const fixture: ComponentFixture<TestSmallContainerComponent> = TestBed.createComponent(
+			TestSmallContainerComponent
+		);
 		fixture.detectChanges();
 		await changeDetectionDelay();
 		await fixture.whenStable();
@@ -315,8 +321,10 @@ describe('ezy-chart component', () => {
 		done();
 	});
 
-	it("should render a legend if it is not set to 'auto' even when chart size is too small", async done => {
-		const fixture: ComponentFixture<TestSmallContainerComponent> = TestBed.createComponent(TestSmallContainerComponent);
+	it('should render a legend if it is not set to \'auto\' even when chart size is too small', async done => {
+		const fixture: ComponentFixture<TestSmallContainerComponent> = TestBed.createComponent(
+			TestSmallContainerComponent
+		);
 		const comp = fixture.componentInstance.chartComponent;
 		comp.legend = 'top';
 		fixture.detectChanges();
@@ -328,7 +336,7 @@ describe('ezy-chart component', () => {
 		done();
 	});
 
-	it("should treat 'options' at higher priority", async done => {
+	it('should treat \'options\' at higher priority', async done => {
 		const fixture: ComponentFixture<ChartComponent> = TestBed.createComponent(ChartComponent);
 		const comp = fixture.componentInstance;
 		comp.datasets = [{ data: [1, 2, 6, 7, 8], label: 'sample' }];
