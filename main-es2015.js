@@ -433,8 +433,8 @@ class BaseChart {
     }
     /**
      * An array of strings in hex, rgb, or rgba format, to define the base colors of datasets, or the data points of each dataset. If this
-     * property is absent, or the colors defined are less than the number of datasets (or the data points of each dataset), the missing colors will
-     * be assigned from the defult palette
+     * property is absent, or the colors defined are less than the number of datasets (or the data points of each dataset), the missing
+     * colors will be assigned from the default palette
      * \@property
      * @param {?} c
      * @return {?}
@@ -487,7 +487,8 @@ class BaseChart {
     /**
      * Specifiy how to display the legend
      *  * if the value is a boolean, it corresponds to Chart.ChartConfiguration.options.legend.display
-     *  * if the value is 'auto', the legend will be arranged automatically. For example, the legend will be hidden if the chart area is too small
+     *  * if the value is 'auto', the legend will be arranged automatically. For example, the legend will be hidden if the chart area is
+     *    too small
      *  * if the value is of type Chart.ChartLegendOptions, it corresponds to Chart.ChartConfiguration.options.legend.position
      *  * if the value is of type Chart.ChartLegendOptions, it corresponds to Chart.ChartConfiguration.options.legend
      * \@default 'auto'
@@ -520,7 +521,8 @@ class BaseChart {
         return this._params.currency;
     }
     /**
-     * The digit info of the output template, used to format numbers in scales. Please refer to https://angular.io/api/common/DecimalPipe for its usage.
+     * The digit info of the output template, used to format numbers in scales. Please refer to https://angular.io/api/common/DecimalPipe
+     * for its usage.
      * \@property
      * @param {?} d
      * @return {?}
@@ -550,7 +552,8 @@ class BaseChart {
         return this._params.options;
     }
     /**
-     * A moment.js format string. When specified, the X axis will be configured with time scales, and this value will be used to format the tooltips.
+     * A moment.js format string. When specified, the X axis will be configured with time scales, and this value will be used to format the
+     * tooltips.
      * \@property
      * @param {?} tf
      * @return {?}
