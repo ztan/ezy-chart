@@ -60,7 +60,7 @@ function getTooltipLabelCallBack(
 
 function splitWords(text: string, maxLength: number) {
 	const words: string[] = [];
-	let word: string = '';
+	let word = '';
 	text.split(' ').forEach(w => {
 		word = [word, w].join(' ');
 		if (word.length > maxLength) {
@@ -152,7 +152,7 @@ export class ChartComponent extends BaseChart {
 	}
 
 	protected _checkUpdate(resized: boolean) {
-		let dataOrParamsChanged: boolean = false;
+		let dataOrParamsChanged = false;
 		if (this.paramsChanged) {
 			this._applyConfig();
 			dataOrParamsChanged = true;
@@ -284,7 +284,7 @@ export class ChartComponent extends BaseChart {
 			}
 		}
 
-		let timeScaleConfigured: boolean = false;
+		let timeScaleConfigured = false;
 
 		this._config.options.tooltips = this._config.options.tooltips || {};
 
