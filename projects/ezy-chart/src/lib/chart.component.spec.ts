@@ -9,11 +9,10 @@ const changeDetectionDelay = () => timer(50).toPromise();
 @Component({
 	selector: 'ezy-test-component',
 	template: `
-		<div style='width:100px; height: 100px;'>
+		<div style="width:100px; height: 100px;">
 			<ezy-chart
-				[datasets]='[{ data: [132, 122, 66], label: 's1' }, { data: [12, 144, 33], label: 's2' }]'
-				[labels]='['d1', 'd2', 'd3']'
-			></ezy-chart>
+				[datasets]="[{ data: [132, 122, 66], label: 's1' }, { data: [12, 144, 33], label: 's2' }]"
+				[labels]="['d1', 'd2', 'd3']"></ezy-chart>
 		</div>
 	`
 })

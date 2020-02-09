@@ -6,6 +6,6 @@ export class AppPage {
 	}
 
 	getTitleText() {
-		return element(by.css('ezy-chart-app-root h1')).getText() as Promise<string>;
+		return element(by.css('h1')).getText() as Promise<string>;
 	}
 }
