@@ -1,4 +1,4 @@
-import { Input, NgZone, OnDestroy, DoCheck } from '@angular/core';
+import { Input, NgZone, OnDestroy, DoCheck, Directive } from '@angular/core';
 import * as _ from 'lodash';
 import { Subscription, fromEvent } from 'rxjs';
 import { CurrencyPipe } from '@angular/common';
@@ -58,6 +58,7 @@ export function formatMoney(val: any, currency: string, digitInfo?: string) {
 	}
 }
 
+@Directive()
 export abstract class BaseChart implements OnDestroy, DoCheck {
 	private _params: ChartParameters = {};
 	private _prevParams: ChartParameters = {};

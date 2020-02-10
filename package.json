@@ -1,92 +1,91 @@
 {
-	"name": "ezy-chart",
-	"version": "0.5.0-beta.1",
-	"scripts": {
-		"ng": "ng",
-		"start": "ng serve ezy-chart-app",
-		"build": "ng build",
-		"test": "ng test ezy-chart --watch=false --browsers=ChromeHeadless",
-		"test:watch": "ng test ezy-chart",
-		"lint": "ng lint",
-		"e2e": "ng e2e",
-		"build:clean": "del-cli dist",
-		"commit": "git-cz",
-		"compodoc": "compodoc -p projects/ezy-chart/tsconfig.lib.json -d docs --disableGraph --disableCoverage --disablePrivate --disableProtected --disableInternal --disableLifeCycleHooks",
-		"gh-pages": "git checkout gh-pages && git merge master --no-edit --no-ff && ng build && ng build ezy-chart-app && copyfiles -a -f ./dist/ezy-chart-app/* ./ && npm run compodoc && git add . && git commit -m \"ci: build demo and docs\" && git push && git checkout master",
-		"copyfiles": "copyfiles LICENSE README.md CHANGELOG.md dist/ezy-chart",
-		"prerelease": "ng test",
-		"release:git": "git add package.json && git commit -m \"ci: bump version number\" && standard-version --first-release --no-verify && git push --follow-tags origin master",
-		"release:npm": "npm run build && npm run copyfiles && npm publish dist/ezy-chart",
-		"postrelease": "npm run build:clean && npm run gh-pages",
-		"codecov": "cat coverage/lcov.info | codecov"
-	},
-	"config": {
-		"commitizen": {
-			"path": "@commitlint/prompt"
-		}
-	},
-	"commitlint": {
-		"extends": [
-			"@commitlint/config-angular"
-		]
-	},
-	"license": "MIT",
-	"dependencies": {
-		"@angular/animations": "~8.0.0",
-		"@angular/common": "~8.0.0",
-		"@angular/compiler": "~8.0.0",
-		"@angular/core": "~8.0.0",
-		"@angular/forms": "~8.0.0",
-		"@angular/platform-browser": "~8.0.0",
-		"@angular/platform-browser-dynamic": "~8.0.0",
-		"@angular/router": "~8.0.0",
-		"chart.js": "^2.8.0",
-		"echarts": "^4.2.1",
-		"moment": "^2.24.0",
-		"rxjs": "~6.4.0",
-		"tslib": "^1.9.0",
-		"zone.js": "~0.9.1"
-	},
-	"devDependencies": {
-		"@angular-devkit/build-angular": "~0.800.0",
-		"@angular-devkit/build-ng-packagr": "~0.800.6",
-		"@angular/cli": "~8.0.0",
-		"@angular/compiler-cli": "~8.0.0",
-		"@angular/language-service": "~8.0.0",
-		"@commitlint/cli": "^8.1.0",
-		"@commitlint/config-angular": "^8.1.0",
-		"@commitlint/prompt": "^8.1.0",
-		"@compodoc/compodoc": "^1.1.10",
-		"@types/chart.js": "^2.7.56",
-		"@types/echarts": "^4.1.10",
-		"@types/jasmine": "~3.3.8",
-		"@types/jasminewd2": "~2.0.3",
-		"@types/node": "~8.9.4",
-		"codecov": "^3.5.0",
-		"codelyzer": "^5.0.0",
-		"commitizen": "^4.0.3",
-		"copyfiles": "^2.1.1",
-		"del-cli": "^2.0.0",
-		"husky": "^3.0.4",
-		"jasmine-core": "~3.4.0",
-		"jasmine-spec-reporter": "~4.2.1",
-		"karma": "~4.1.0",
-		"karma-chrome-launcher": "~2.2.0",
-		"karma-coverage-istanbul-reporter": "~2.0.1",
-		"karma-jasmine": "~2.0.1",
-		"karma-jasmine-html-reporter": "^1.4.0",
-		"karma-spec-reporter": "0.0.32",
-		"ng-packagr": "^5.1.0",
-		"protractor": "~5.4.0",
-		"standard-version": "^7.0.0",
-		"ts-node": "~7.0.0",
-		"tsickle": "^0.35.0",
-		"tslint": "~5.15.0",
-		"typescript": "~3.4.3"
-	},
-	"husky": {
-		"hooks": {
-			"commit-msg": "commitlint -e"
-		}
-	}
+  "name": "ezy-chart",
+  "version": "0.5.0-beta.2",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve ezy-chart-app",
+    "build": "ng build --prod",
+    "test": "ng test ezy-chart --watch=false --browsers=ChromeHeadless",
+    "test:watch": "ng test ezy-chart",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "build:clean": "del-cli dist",
+    "commit": "git-cz",
+    "compodoc": "compodoc -p projects/ezy-chart/tsconfig.lib.json -d docs --disableGraph --disableCoverage --disablePrivate --disableProtected --disableInternal --disableLifeCycleHooks",
+    "gh-pages": "git checkout gh-pages && git merge master --no-edit --no-ff && ng build && ng build ezy-chart-app && copyfiles -a -f ./dist/ezy-chart-app/* ./ && npm run compodoc && git add . && git commit -m \"ci: build demo and docs\" && git push && git checkout master",
+    "copyfiles": "copyfiles LICENSE README.md CHANGELOG.md dist/ezy-chart",
+    "prerelease": "ng test",
+    "release:git": "git add package.json && git commit -m \"ci: bump version number\" && standard-version --first-release --no-verify && git push --follow-tags origin master",
+    "release:npm": "npm run build && npm run copyfiles && npm publish dist/ezy-chart",
+    "postrelease": "npm run build:clean && npm run gh-pages",
+    "codecov": "cat coverage/lcov.info | codecov"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/prompt"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-angular"
+    ]
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@angular/animations": "~9.0.0",
+    "@angular/common": "~9.0.0",
+    "@angular/compiler": "~9.0.0",
+    "@angular/core": "~9.0.0",
+    "@angular/forms": "~9.0.0",
+    "@angular/platform-browser": "~9.0.0",
+    "@angular/platform-browser-dynamic": "~9.0.0",
+    "@angular/router": "~9.0.0",
+    "chart.js": "^2.9.3",
+    "echarts": "^4.6.0",
+    "moment": "^2.24.0",
+    "rxjs": "~6.5.4",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.900.1",
+    "@angular-devkit/build-ng-packagr": "~0.900.1",
+    "@angular/cli": "~9.0.1",
+    "@angular/compiler-cli": "~9.0.0",
+    "@angular/language-service": "~9.0.0",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-angular": "^8.3.4",
+    "@commitlint/prompt": "^8.3.5",
+    "@compodoc/compodoc": "^1.1.11",
+    "@types/chart.js": "^2.9.13",
+    "@types/echarts": "^4.4.3",
+    "@types/jasmine": "~3.5.3",
+    "@types/jasminewd2": "~2.0.8",
+    "@types/node": "^13.7.0",
+    "codecov": "^3.6.5",
+    "codelyzer": "^5.2.1",
+    "commitizen": "^4.0.3",
+    "copyfiles": "^2.2.0",
+    "del-cli": "^3.0.0",
+    "husky": "^4.2.1",
+    "jasmine-core": "~3.5.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~4.4.1",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~2.1.1",
+    "karma-jasmine": "~3.1.0",
+    "karma-jasmine-html-reporter": "^1.5.2",
+    "karma-spec-reporter": "0.0.32",
+    "ng-packagr": "^9.0.0",
+    "protractor": "~5.4.3",
+    "standard-version": "^7.1.0",
+    "ts-node": "~8.6.2",
+    "tslint": "~6.0.0",
+    "typescript": "~3.7.5"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e"
+    }
+  }
 }

@@ -1,6 +1,8 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [0.5.0-beta.2](https://github.com/ztan/ezy-chart/compare/v0.3.1...v0.5.0-beta.2) (2020-02-10)
 
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/ztan/ezy-chart/compare/v0.3.0...v0.3.1) (2019-05-20)
