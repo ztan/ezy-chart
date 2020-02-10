@@ -1,28 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["polyfills"],{
 
-/***/ "./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js":
-/*!**************************************************************************************************!*\
-  !*** ./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js ***!
-  \**************************************************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_proposals_reflect_metadata__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/proposals/reflect-metadata */ "./node_modules/core-js/proposals/reflect-metadata.js");
-/* harmony import */ var core_js_proposals_reflect_metadata__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_proposals_reflect_metadata__WEBPACK_IMPORTED_MODULE_0__);
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-
-
-
-/***/ }),
-
 /***/ "./node_modules/chart.js/dist/Chart.js":
 /*!*********************************************!*\
   !*** ./node_modules/chart.js/dist/Chart.js ***!
@@ -31,7 +8,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
- * Chart.js v2.8.0
+ * Chart.js v2.9.3
  * https://www.chartjs.org
  * (c) 2019 Chart.js Contributors
  * Released under the MIT License
@@ -43,797 +20,1223 @@ undefined;
 
 moment = moment && moment.hasOwnProperty('default') ? moment['default'] : moment;
 
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+function getCjsExportFromNamespace (n) {
+	return n && n['default'] || n;
+}
+
+var colorName = {
+	"aliceblue": [240, 248, 255],
+	"antiquewhite": [250, 235, 215],
+	"aqua": [0, 255, 255],
+	"aquamarine": [127, 255, 212],
+	"azure": [240, 255, 255],
+	"beige": [245, 245, 220],
+	"bisque": [255, 228, 196],
+	"black": [0, 0, 0],
+	"blanchedalmond": [255, 235, 205],
+	"blue": [0, 0, 255],
+	"blueviolet": [138, 43, 226],
+	"brown": [165, 42, 42],
+	"burlywood": [222, 184, 135],
+	"cadetblue": [95, 158, 160],
+	"chartreuse": [127, 255, 0],
+	"chocolate": [210, 105, 30],
+	"coral": [255, 127, 80],
+	"cornflowerblue": [100, 149, 237],
+	"cornsilk": [255, 248, 220],
+	"crimson": [220, 20, 60],
+	"cyan": [0, 255, 255],
+	"darkblue": [0, 0, 139],
+	"darkcyan": [0, 139, 139],
+	"darkgoldenrod": [184, 134, 11],
+	"darkgray": [169, 169, 169],
+	"darkgreen": [0, 100, 0],
+	"darkgrey": [169, 169, 169],
+	"darkkhaki": [189, 183, 107],
+	"darkmagenta": [139, 0, 139],
+	"darkolivegreen": [85, 107, 47],
+	"darkorange": [255, 140, 0],
+	"darkorchid": [153, 50, 204],
+	"darkred": [139, 0, 0],
+	"darksalmon": [233, 150, 122],
+	"darkseagreen": [143, 188, 143],
+	"darkslateblue": [72, 61, 139],
+	"darkslategray": [47, 79, 79],
+	"darkslategrey": [47, 79, 79],
+	"darkturquoise": [0, 206, 209],
+	"darkviolet": [148, 0, 211],
+	"deeppink": [255, 20, 147],
+	"deepskyblue": [0, 191, 255],
+	"dimgray": [105, 105, 105],
+	"dimgrey": [105, 105, 105],
+	"dodgerblue": [30, 144, 255],
+	"firebrick": [178, 34, 34],
+	"floralwhite": [255, 250, 240],
+	"forestgreen": [34, 139, 34],
+	"fuchsia": [255, 0, 255],
+	"gainsboro": [220, 220, 220],
+	"ghostwhite": [248, 248, 255],
+	"gold": [255, 215, 0],
+	"goldenrod": [218, 165, 32],
+	"gray": [128, 128, 128],
+	"green": [0, 128, 0],
+	"greenyellow": [173, 255, 47],
+	"grey": [128, 128, 128],
+	"honeydew": [240, 255, 240],
+	"hotpink": [255, 105, 180],
+	"indianred": [205, 92, 92],
+	"indigo": [75, 0, 130],
+	"ivory": [255, 255, 240],
+	"khaki": [240, 230, 140],
+	"lavender": [230, 230, 250],
+	"lavenderblush": [255, 240, 245],
+	"lawngreen": [124, 252, 0],
+	"lemonchiffon": [255, 250, 205],
+	"lightblue": [173, 216, 230],
+	"lightcoral": [240, 128, 128],
+	"lightcyan": [224, 255, 255],
+	"lightgoldenrodyellow": [250, 250, 210],
+	"lightgray": [211, 211, 211],
+	"lightgreen": [144, 238, 144],
+	"lightgrey": [211, 211, 211],
+	"lightpink": [255, 182, 193],
+	"lightsalmon": [255, 160, 122],
+	"lightseagreen": [32, 178, 170],
+	"lightskyblue": [135, 206, 250],
+	"lightslategray": [119, 136, 153],
+	"lightslategrey": [119, 136, 153],
+	"lightsteelblue": [176, 196, 222],
+	"lightyellow": [255, 255, 224],
+	"lime": [0, 255, 0],
+	"limegreen": [50, 205, 50],
+	"linen": [250, 240, 230],
+	"magenta": [255, 0, 255],
+	"maroon": [128, 0, 0],
+	"mediumaquamarine": [102, 205, 170],
+	"mediumblue": [0, 0, 205],
+	"mediumorchid": [186, 85, 211],
+	"mediumpurple": [147, 112, 219],
+	"mediumseagreen": [60, 179, 113],
+	"mediumslateblue": [123, 104, 238],
+	"mediumspringgreen": [0, 250, 154],
+	"mediumturquoise": [72, 209, 204],
+	"mediumvioletred": [199, 21, 133],
+	"midnightblue": [25, 25, 112],
+	"mintcream": [245, 255, 250],
+	"mistyrose": [255, 228, 225],
+	"moccasin": [255, 228, 181],
+	"navajowhite": [255, 222, 173],
+	"navy": [0, 0, 128],
+	"oldlace": [253, 245, 230],
+	"olive": [128, 128, 0],
+	"olivedrab": [107, 142, 35],
+	"orange": [255, 165, 0],
+	"orangered": [255, 69, 0],
+	"orchid": [218, 112, 214],
+	"palegoldenrod": [238, 232, 170],
+	"palegreen": [152, 251, 152],
+	"paleturquoise": [175, 238, 238],
+	"palevioletred": [219, 112, 147],
+	"papayawhip": [255, 239, 213],
+	"peachpuff": [255, 218, 185],
+	"peru": [205, 133, 63],
+	"pink": [255, 192, 203],
+	"plum": [221, 160, 221],
+	"powderblue": [176, 224, 230],
+	"purple": [128, 0, 128],
+	"rebeccapurple": [102, 51, 153],
+	"red": [255, 0, 0],
+	"rosybrown": [188, 143, 143],
+	"royalblue": [65, 105, 225],
+	"saddlebrown": [139, 69, 19],
+	"salmon": [250, 128, 114],
+	"sandybrown": [244, 164, 96],
+	"seagreen": [46, 139, 87],
+	"seashell": [255, 245, 238],
+	"sienna": [160, 82, 45],
+	"silver": [192, 192, 192],
+	"skyblue": [135, 206, 235],
+	"slateblue": [106, 90, 205],
+	"slategray": [112, 128, 144],
+	"slategrey": [112, 128, 144],
+	"snow": [255, 250, 250],
+	"springgreen": [0, 255, 127],
+	"steelblue": [70, 130, 180],
+	"tan": [210, 180, 140],
+	"teal": [0, 128, 128],
+	"thistle": [216, 191, 216],
+	"tomato": [255, 99, 71],
+	"turquoise": [64, 224, 208],
+	"violet": [238, 130, 238],
+	"wheat": [245, 222, 179],
+	"white": [255, 255, 255],
+	"whitesmoke": [245, 245, 245],
+	"yellow": [255, 255, 0],
+	"yellowgreen": [154, 205, 50]
+};
+
+var conversions = createCommonjsModule(function (module) {
 /* MIT license */
 
-var conversions = {
-  rgb2hsl: rgb2hsl,
-  rgb2hsv: rgb2hsv,
-  rgb2hwb: rgb2hwb,
-  rgb2cmyk: rgb2cmyk,
-  rgb2keyword: rgb2keyword,
-  rgb2xyz: rgb2xyz,
-  rgb2lab: rgb2lab,
-  rgb2lch: rgb2lch,
 
-  hsl2rgb: hsl2rgb,
-  hsl2hsv: hsl2hsv,
-  hsl2hwb: hsl2hwb,
-  hsl2cmyk: hsl2cmyk,
-  hsl2keyword: hsl2keyword,
-
-  hsv2rgb: hsv2rgb,
-  hsv2hsl: hsv2hsl,
-  hsv2hwb: hsv2hwb,
-  hsv2cmyk: hsv2cmyk,
-  hsv2keyword: hsv2keyword,
-
-  hwb2rgb: hwb2rgb,
-  hwb2hsl: hwb2hsl,
-  hwb2hsv: hwb2hsv,
-  hwb2cmyk: hwb2cmyk,
-  hwb2keyword: hwb2keyword,
-
-  cmyk2rgb: cmyk2rgb,
-  cmyk2hsl: cmyk2hsl,
-  cmyk2hsv: cmyk2hsv,
-  cmyk2hwb: cmyk2hwb,
-  cmyk2keyword: cmyk2keyword,
-
-  keyword2rgb: keyword2rgb,
-  keyword2hsl: keyword2hsl,
-  keyword2hsv: keyword2hsv,
-  keyword2hwb: keyword2hwb,
-  keyword2cmyk: keyword2cmyk,
-  keyword2lab: keyword2lab,
-  keyword2xyz: keyword2xyz,
-
-  xyz2rgb: xyz2rgb,
-  xyz2lab: xyz2lab,
-  xyz2lch: xyz2lch,
-
-  lab2xyz: lab2xyz,
-  lab2rgb: lab2rgb,
-  lab2lch: lab2lch,
-
-  lch2lab: lch2lab,
-  lch2xyz: lch2xyz,
-  lch2rgb: lch2rgb
-};
-
-
-function rgb2hsl(rgb) {
-  var r = rgb[0]/255,
-      g = rgb[1]/255,
-      b = rgb[2]/255,
-      min = Math.min(r, g, b),
-      max = Math.max(r, g, b),
-      delta = max - min,
-      h, s, l;
-
-  if (max == min)
-    h = 0;
-  else if (r == max)
-    h = (g - b) / delta;
-  else if (g == max)
-    h = 2 + (b - r) / delta;
-  else if (b == max)
-    h = 4 + (r - g)/ delta;
-
-  h = Math.min(h * 60, 360);
-
-  if (h < 0)
-    h += 360;
-
-  l = (min + max) / 2;
-
-  if (max == min)
-    s = 0;
-  else if (l <= 0.5)
-    s = delta / (max + min);
-  else
-    s = delta / (2 - max - min);
-
-  return [h, s * 100, l * 100];
-}
-
-function rgb2hsv(rgb) {
-  var r = rgb[0],
-      g = rgb[1],
-      b = rgb[2],
-      min = Math.min(r, g, b),
-      max = Math.max(r, g, b),
-      delta = max - min,
-      h, s, v;
-
-  if (max == 0)
-    s = 0;
-  else
-    s = (delta/max * 1000)/10;
-
-  if (max == min)
-    h = 0;
-  else if (r == max)
-    h = (g - b) / delta;
-  else if (g == max)
-    h = 2 + (b - r) / delta;
-  else if (b == max)
-    h = 4 + (r - g) / delta;
-
-  h = Math.min(h * 60, 360);
-
-  if (h < 0)
-    h += 360;
-
-  v = ((max / 255) * 1000) / 10;
-
-  return [h, s, v];
-}
-
-function rgb2hwb(rgb) {
-  var r = rgb[0],
-      g = rgb[1],
-      b = rgb[2],
-      h = rgb2hsl(rgb)[0],
-      w = 1/255 * Math.min(r, Math.min(g, b)),
-      b = 1 - 1/255 * Math.max(r, Math.max(g, b));
-
-  return [h, w * 100, b * 100];
-}
-
-function rgb2cmyk(rgb) {
-  var r = rgb[0] / 255,
-      g = rgb[1] / 255,
-      b = rgb[2] / 255,
-      c, m, y, k;
-
-  k = Math.min(1 - r, 1 - g, 1 - b);
-  c = (1 - r - k) / (1 - k) || 0;
-  m = (1 - g - k) / (1 - k) || 0;
-  y = (1 - b - k) / (1 - k) || 0;
-  return [c * 100, m * 100, y * 100, k * 100];
-}
-
-function rgb2keyword(rgb) {
-  return reverseKeywords[JSON.stringify(rgb)];
-}
-
-function rgb2xyz(rgb) {
-  var r = rgb[0] / 255,
-      g = rgb[1] / 255,
-      b = rgb[2] / 255;
-
-  // assume sRGB
-  r = r > 0.04045 ? Math.pow(((r + 0.055) / 1.055), 2.4) : (r / 12.92);
-  g = g > 0.04045 ? Math.pow(((g + 0.055) / 1.055), 2.4) : (g / 12.92);
-  b = b > 0.04045 ? Math.pow(((b + 0.055) / 1.055), 2.4) : (b / 12.92);
-
-  var x = (r * 0.4124) + (g * 0.3576) + (b * 0.1805);
-  var y = (r * 0.2126) + (g * 0.7152) + (b * 0.0722);
-  var z = (r * 0.0193) + (g * 0.1192) + (b * 0.9505);
-
-  return [x * 100, y *100, z * 100];
-}
-
-function rgb2lab(rgb) {
-  var xyz = rgb2xyz(rgb),
-        x = xyz[0],
-        y = xyz[1],
-        z = xyz[2],
-        l, a, b;
-
-  x /= 95.047;
-  y /= 100;
-  z /= 108.883;
-
-  x = x > 0.008856 ? Math.pow(x, 1/3) : (7.787 * x) + (16 / 116);
-  y = y > 0.008856 ? Math.pow(y, 1/3) : (7.787 * y) + (16 / 116);
-  z = z > 0.008856 ? Math.pow(z, 1/3) : (7.787 * z) + (16 / 116);
-
-  l = (116 * y) - 16;
-  a = 500 * (x - y);
-  b = 200 * (y - z);
-
-  return [l, a, b];
-}
-
-function rgb2lch(args) {
-  return lab2lch(rgb2lab(args));
-}
-
-function hsl2rgb(hsl) {
-  var h = hsl[0] / 360,
-      s = hsl[1] / 100,
-      l = hsl[2] / 100,
-      t1, t2, t3, rgb, val;
-
-  if (s == 0) {
-    val = l * 255;
-    return [val, val, val];
-  }
-
-  if (l < 0.5)
-    t2 = l * (1 + s);
-  else
-    t2 = l + s - l * s;
-  t1 = 2 * l - t2;
-
-  rgb = [0, 0, 0];
-  for (var i = 0; i < 3; i++) {
-    t3 = h + 1 / 3 * - (i - 1);
-    t3 < 0 && t3++;
-    t3 > 1 && t3--;
-
-    if (6 * t3 < 1)
-      val = t1 + (t2 - t1) * 6 * t3;
-    else if (2 * t3 < 1)
-      val = t2;
-    else if (3 * t3 < 2)
-      val = t1 + (t2 - t1) * (2 / 3 - t3) * 6;
-    else
-      val = t1;
-
-    rgb[i] = val * 255;
-  }
-
-  return rgb;
-}
-
-function hsl2hsv(hsl) {
-  var h = hsl[0],
-      s = hsl[1] / 100,
-      l = hsl[2] / 100,
-      sv, v;
-
-  if(l === 0) {
-      // no need to do calc on black
-      // also avoids divide by 0 error
-      return [0, 0, 0];
-  }
-
-  l *= 2;
-  s *= (l <= 1) ? l : 2 - l;
-  v = (l + s) / 2;
-  sv = (2 * s) / (l + s);
-  return [h, sv * 100, v * 100];
-}
-
-function hsl2hwb(args) {
-  return rgb2hwb(hsl2rgb(args));
-}
-
-function hsl2cmyk(args) {
-  return rgb2cmyk(hsl2rgb(args));
-}
-
-function hsl2keyword(args) {
-  return rgb2keyword(hsl2rgb(args));
-}
-
-
-function hsv2rgb(hsv) {
-  var h = hsv[0] / 60,
-      s = hsv[1] / 100,
-      v = hsv[2] / 100,
-      hi = Math.floor(h) % 6;
-
-  var f = h - Math.floor(h),
-      p = 255 * v * (1 - s),
-      q = 255 * v * (1 - (s * f)),
-      t = 255 * v * (1 - (s * (1 - f))),
-      v = 255 * v;
-
-  switch(hi) {
-    case 0:
-      return [v, t, p];
-    case 1:
-      return [q, v, p];
-    case 2:
-      return [p, v, t];
-    case 3:
-      return [p, q, v];
-    case 4:
-      return [t, p, v];
-    case 5:
-      return [v, p, q];
-  }
-}
-
-function hsv2hsl(hsv) {
-  var h = hsv[0],
-      s = hsv[1] / 100,
-      v = hsv[2] / 100,
-      sl, l;
-
-  l = (2 - s) * v;
-  sl = s * v;
-  sl /= (l <= 1) ? l : 2 - l;
-  sl = sl || 0;
-  l /= 2;
-  return [h, sl * 100, l * 100];
-}
-
-function hsv2hwb(args) {
-  return rgb2hwb(hsv2rgb(args))
-}
-
-function hsv2cmyk(args) {
-  return rgb2cmyk(hsv2rgb(args));
-}
-
-function hsv2keyword(args) {
-  return rgb2keyword(hsv2rgb(args));
-}
-
-// http://dev.w3.org/csswg/css-color/#hwb-to-rgb
-function hwb2rgb(hwb) {
-  var h = hwb[0] / 360,
-      wh = hwb[1] / 100,
-      bl = hwb[2] / 100,
-      ratio = wh + bl,
-      i, v, f, n;
-
-  // wh + bl cant be > 1
-  if (ratio > 1) {
-    wh /= ratio;
-    bl /= ratio;
-  }
-
-  i = Math.floor(6 * h);
-  v = 1 - bl;
-  f = 6 * h - i;
-  if ((i & 0x01) != 0) {
-    f = 1 - f;
-  }
-  n = wh + f * (v - wh);  // linear interpolation
-
-  switch (i) {
-    default:
-    case 6:
-    case 0: r = v; g = n; b = wh; break;
-    case 1: r = n; g = v; b = wh; break;
-    case 2: r = wh; g = v; b = n; break;
-    case 3: r = wh; g = n; b = v; break;
-    case 4: r = n; g = wh; b = v; break;
-    case 5: r = v; g = wh; b = n; break;
-  }
-
-  return [r * 255, g * 255, b * 255];
-}
-
-function hwb2hsl(args) {
-  return rgb2hsl(hwb2rgb(args));
-}
-
-function hwb2hsv(args) {
-  return rgb2hsv(hwb2rgb(args));
-}
-
-function hwb2cmyk(args) {
-  return rgb2cmyk(hwb2rgb(args));
-}
-
-function hwb2keyword(args) {
-  return rgb2keyword(hwb2rgb(args));
-}
-
-function cmyk2rgb(cmyk) {
-  var c = cmyk[0] / 100,
-      m = cmyk[1] / 100,
-      y = cmyk[2] / 100,
-      k = cmyk[3] / 100,
-      r, g, b;
-
-  r = 1 - Math.min(1, c * (1 - k) + k);
-  g = 1 - Math.min(1, m * (1 - k) + k);
-  b = 1 - Math.min(1, y * (1 - k) + k);
-  return [r * 255, g * 255, b * 255];
-}
-
-function cmyk2hsl(args) {
-  return rgb2hsl(cmyk2rgb(args));
-}
-
-function cmyk2hsv(args) {
-  return rgb2hsv(cmyk2rgb(args));
-}
-
-function cmyk2hwb(args) {
-  return rgb2hwb(cmyk2rgb(args));
-}
-
-function cmyk2keyword(args) {
-  return rgb2keyword(cmyk2rgb(args));
-}
-
-
-function xyz2rgb(xyz) {
-  var x = xyz[0] / 100,
-      y = xyz[1] / 100,
-      z = xyz[2] / 100,
-      r, g, b;
-
-  r = (x * 3.2406) + (y * -1.5372) + (z * -0.4986);
-  g = (x * -0.9689) + (y * 1.8758) + (z * 0.0415);
-  b = (x * 0.0557) + (y * -0.2040) + (z * 1.0570);
-
-  // assume sRGB
-  r = r > 0.0031308 ? ((1.055 * Math.pow(r, 1.0 / 2.4)) - 0.055)
-    : r = (r * 12.92);
-
-  g = g > 0.0031308 ? ((1.055 * Math.pow(g, 1.0 / 2.4)) - 0.055)
-    : g = (g * 12.92);
-
-  b = b > 0.0031308 ? ((1.055 * Math.pow(b, 1.0 / 2.4)) - 0.055)
-    : b = (b * 12.92);
-
-  r = Math.min(Math.max(0, r), 1);
-  g = Math.min(Math.max(0, g), 1);
-  b = Math.min(Math.max(0, b), 1);
-
-  return [r * 255, g * 255, b * 255];
-}
-
-function xyz2lab(xyz) {
-  var x = xyz[0],
-      y = xyz[1],
-      z = xyz[2],
-      l, a, b;
-
-  x /= 95.047;
-  y /= 100;
-  z /= 108.883;
-
-  x = x > 0.008856 ? Math.pow(x, 1/3) : (7.787 * x) + (16 / 116);
-  y = y > 0.008856 ? Math.pow(y, 1/3) : (7.787 * y) + (16 / 116);
-  z = z > 0.008856 ? Math.pow(z, 1/3) : (7.787 * z) + (16 / 116);
-
-  l = (116 * y) - 16;
-  a = 500 * (x - y);
-  b = 200 * (y - z);
-
-  return [l, a, b];
-}
-
-function xyz2lch(args) {
-  return lab2lch(xyz2lab(args));
-}
-
-function lab2xyz(lab) {
-  var l = lab[0],
-      a = lab[1],
-      b = lab[2],
-      x, y, z, y2;
-
-  if (l <= 8) {
-    y = (l * 100) / 903.3;
-    y2 = (7.787 * (y / 100)) + (16 / 116);
-  } else {
-    y = 100 * Math.pow((l + 16) / 116, 3);
-    y2 = Math.pow(y / 100, 1/3);
-  }
-
-  x = x / 95.047 <= 0.008856 ? x = (95.047 * ((a / 500) + y2 - (16 / 116))) / 7.787 : 95.047 * Math.pow((a / 500) + y2, 3);
-
-  z = z / 108.883 <= 0.008859 ? z = (108.883 * (y2 - (b / 200) - (16 / 116))) / 7.787 : 108.883 * Math.pow(y2 - (b / 200), 3);
-
-  return [x, y, z];
-}
-
-function lab2lch(lab) {
-  var l = lab[0],
-      a = lab[1],
-      b = lab[2],
-      hr, h, c;
-
-  hr = Math.atan2(b, a);
-  h = hr * 360 / 2 / Math.PI;
-  if (h < 0) {
-    h += 360;
-  }
-  c = Math.sqrt(a * a + b * b);
-  return [l, c, h];
-}
-
-function lab2rgb(args) {
-  return xyz2rgb(lab2xyz(args));
-}
-
-function lch2lab(lch) {
-  var l = lch[0],
-      c = lch[1],
-      h = lch[2],
-      a, b, hr;
-
-  hr = h / 360 * 2 * Math.PI;
-  a = c * Math.cos(hr);
-  b = c * Math.sin(hr);
-  return [l, a, b];
-}
-
-function lch2xyz(args) {
-  return lab2xyz(lch2lab(args));
-}
-
-function lch2rgb(args) {
-  return lab2rgb(lch2lab(args));
-}
-
-function keyword2rgb(keyword) {
-  return cssKeywords[keyword];
-}
-
-function keyword2hsl(args) {
-  return rgb2hsl(keyword2rgb(args));
-}
-
-function keyword2hsv(args) {
-  return rgb2hsv(keyword2rgb(args));
-}
-
-function keyword2hwb(args) {
-  return rgb2hwb(keyword2rgb(args));
-}
-
-function keyword2cmyk(args) {
-  return rgb2cmyk(keyword2rgb(args));
-}
-
-function keyword2lab(args) {
-  return rgb2lab(keyword2rgb(args));
-}
-
-function keyword2xyz(args) {
-  return rgb2xyz(keyword2rgb(args));
-}
-
-var cssKeywords = {
-  aliceblue:  [240,248,255],
-  antiquewhite: [250,235,215],
-  aqua: [0,255,255],
-  aquamarine: [127,255,212],
-  azure:  [240,255,255],
-  beige:  [245,245,220],
-  bisque: [255,228,196],
-  black:  [0,0,0],
-  blanchedalmond: [255,235,205],
-  blue: [0,0,255],
-  blueviolet: [138,43,226],
-  brown:  [165,42,42],
-  burlywood:  [222,184,135],
-  cadetblue:  [95,158,160],
-  chartreuse: [127,255,0],
-  chocolate:  [210,105,30],
-  coral:  [255,127,80],
-  cornflowerblue: [100,149,237],
-  cornsilk: [255,248,220],
-  crimson:  [220,20,60],
-  cyan: [0,255,255],
-  darkblue: [0,0,139],
-  darkcyan: [0,139,139],
-  darkgoldenrod:  [184,134,11],
-  darkgray: [169,169,169],
-  darkgreen:  [0,100,0],
-  darkgrey: [169,169,169],
-  darkkhaki:  [189,183,107],
-  darkmagenta:  [139,0,139],
-  darkolivegreen: [85,107,47],
-  darkorange: [255,140,0],
-  darkorchid: [153,50,204],
-  darkred:  [139,0,0],
-  darksalmon: [233,150,122],
-  darkseagreen: [143,188,143],
-  darkslateblue:  [72,61,139],
-  darkslategray:  [47,79,79],
-  darkslategrey:  [47,79,79],
-  darkturquoise:  [0,206,209],
-  darkviolet: [148,0,211],
-  deeppink: [255,20,147],
-  deepskyblue:  [0,191,255],
-  dimgray:  [105,105,105],
-  dimgrey:  [105,105,105],
-  dodgerblue: [30,144,255],
-  firebrick:  [178,34,34],
-  floralwhite:  [255,250,240],
-  forestgreen:  [34,139,34],
-  fuchsia:  [255,0,255],
-  gainsboro:  [220,220,220],
-  ghostwhite: [248,248,255],
-  gold: [255,215,0],
-  goldenrod:  [218,165,32],
-  gray: [128,128,128],
-  green:  [0,128,0],
-  greenyellow:  [173,255,47],
-  grey: [128,128,128],
-  honeydew: [240,255,240],
-  hotpink:  [255,105,180],
-  indianred:  [205,92,92],
-  indigo: [75,0,130],
-  ivory:  [255,255,240],
-  khaki:  [240,230,140],
-  lavender: [230,230,250],
-  lavenderblush:  [255,240,245],
-  lawngreen:  [124,252,0],
-  lemonchiffon: [255,250,205],
-  lightblue:  [173,216,230],
-  lightcoral: [240,128,128],
-  lightcyan:  [224,255,255],
-  lightgoldenrodyellow: [250,250,210],
-  lightgray:  [211,211,211],
-  lightgreen: [144,238,144],
-  lightgrey:  [211,211,211],
-  lightpink:  [255,182,193],
-  lightsalmon:  [255,160,122],
-  lightseagreen:  [32,178,170],
-  lightskyblue: [135,206,250],
-  lightslategray: [119,136,153],
-  lightslategrey: [119,136,153],
-  lightsteelblue: [176,196,222],
-  lightyellow:  [255,255,224],
-  lime: [0,255,0],
-  limegreen:  [50,205,50],
-  linen:  [250,240,230],
-  magenta:  [255,0,255],
-  maroon: [128,0,0],
-  mediumaquamarine: [102,205,170],
-  mediumblue: [0,0,205],
-  mediumorchid: [186,85,211],
-  mediumpurple: [147,112,219],
-  mediumseagreen: [60,179,113],
-  mediumslateblue:  [123,104,238],
-  mediumspringgreen:  [0,250,154],
-  mediumturquoise:  [72,209,204],
-  mediumvioletred:  [199,21,133],
-  midnightblue: [25,25,112],
-  mintcream:  [245,255,250],
-  mistyrose:  [255,228,225],
-  moccasin: [255,228,181],
-  navajowhite:  [255,222,173],
-  navy: [0,0,128],
-  oldlace:  [253,245,230],
-  olive:  [128,128,0],
-  olivedrab:  [107,142,35],
-  orange: [255,165,0],
-  orangered:  [255,69,0],
-  orchid: [218,112,214],
-  palegoldenrod:  [238,232,170],
-  palegreen:  [152,251,152],
-  paleturquoise:  [175,238,238],
-  palevioletred:  [219,112,147],
-  papayawhip: [255,239,213],
-  peachpuff:  [255,218,185],
-  peru: [205,133,63],
-  pink: [255,192,203],
-  plum: [221,160,221],
-  powderblue: [176,224,230],
-  purple: [128,0,128],
-  rebeccapurple: [102, 51, 153],
-  red:  [255,0,0],
-  rosybrown:  [188,143,143],
-  royalblue:  [65,105,225],
-  saddlebrown:  [139,69,19],
-  salmon: [250,128,114],
-  sandybrown: [244,164,96],
-  seagreen: [46,139,87],
-  seashell: [255,245,238],
-  sienna: [160,82,45],
-  silver: [192,192,192],
-  skyblue:  [135,206,235],
-  slateblue:  [106,90,205],
-  slategray:  [112,128,144],
-  slategrey:  [112,128,144],
-  snow: [255,250,250],
-  springgreen:  [0,255,127],
-  steelblue:  [70,130,180],
-  tan:  [210,180,140],
-  teal: [0,128,128],
-  thistle:  [216,191,216],
-  tomato: [255,99,71],
-  turquoise:  [64,224,208],
-  violet: [238,130,238],
-  wheat:  [245,222,179],
-  white:  [255,255,255],
-  whitesmoke: [245,245,245],
-  yellow: [255,255,0],
-  yellowgreen:  [154,205,50]
-};
+// NOTE: conversions should only return primitive values (i.e. arrays, or
+//       values that give correct `typeof` results).
+//       do not use box values types (i.e. Number(), String(), etc.)
 
 var reverseKeywords = {};
-for (var key in cssKeywords) {
-  reverseKeywords[JSON.stringify(cssKeywords[key])] = key;
+for (var key in colorName) {
+	if (colorName.hasOwnProperty(key)) {
+		reverseKeywords[colorName[key]] = key;
+	}
 }
 
-var convert = function() {
-   return new Converter();
+var convert = module.exports = {
+	rgb: {channels: 3, labels: 'rgb'},
+	hsl: {channels: 3, labels: 'hsl'},
+	hsv: {channels: 3, labels: 'hsv'},
+	hwb: {channels: 3, labels: 'hwb'},
+	cmyk: {channels: 4, labels: 'cmyk'},
+	xyz: {channels: 3, labels: 'xyz'},
+	lab: {channels: 3, labels: 'lab'},
+	lch: {channels: 3, labels: 'lch'},
+	hex: {channels: 1, labels: ['hex']},
+	keyword: {channels: 1, labels: ['keyword']},
+	ansi16: {channels: 1, labels: ['ansi16']},
+	ansi256: {channels: 1, labels: ['ansi256']},
+	hcg: {channels: 3, labels: ['h', 'c', 'g']},
+	apple: {channels: 3, labels: ['r16', 'g16', 'b16']},
+	gray: {channels: 1, labels: ['gray']}
 };
 
-for (var func in conversions) {
-  // export Raw versions
-  convert[func + "Raw"] =  (function(func) {
-    // accept array or plain args
-    return function(arg) {
-      if (typeof arg == "number")
-        arg = Array.prototype.slice.call(arguments);
-      return conversions[func](arg);
-    }
-  })(func);
+// hide .channels and .labels properties
+for (var model in convert) {
+	if (convert.hasOwnProperty(model)) {
+		if (!('channels' in convert[model])) {
+			throw new Error('missing channels property: ' + model);
+		}
 
-  var pair = /(\w+)2(\w+)/.exec(func),
-      from = pair[1],
-      to = pair[2];
+		if (!('labels' in convert[model])) {
+			throw new Error('missing channel labels property: ' + model);
+		}
 
-  // export rgb2hsl and ["rgb"]["hsl"]
-  convert[from] = convert[from] || {};
+		if (convert[model].labels.length !== convert[model].channels) {
+			throw new Error('channel and label counts mismatch: ' + model);
+		}
 
-  convert[from][to] = convert[func] = (function(func) { 
-    return function(arg) {
-      if (typeof arg == "number")
-        arg = Array.prototype.slice.call(arguments);
-      
-      var val = conversions[func](arg);
-      if (typeof val == "string" || val === undefined)
-        return val; // keyword
-
-      for (var i = 0; i < val.length; i++)
-        val[i] = Math.round(val[i]);
-      return val;
-    }
-  })(func);
+		var channels = convert[model].channels;
+		var labels = convert[model].labels;
+		delete convert[model].channels;
+		delete convert[model].labels;
+		Object.defineProperty(convert[model], 'channels', {value: channels});
+		Object.defineProperty(convert[model], 'labels', {value: labels});
+	}
 }
 
+convert.rgb.hsl = function (rgb) {
+	var r = rgb[0] / 255;
+	var g = rgb[1] / 255;
+	var b = rgb[2] / 255;
+	var min = Math.min(r, g, b);
+	var max = Math.max(r, g, b);
+	var delta = max - min;
+	var h;
+	var s;
+	var l;
 
-/* Converter does lazy conversion and caching */
-var Converter = function() {
-   this.convs = {};
+	if (max === min) {
+		h = 0;
+	} else if (r === max) {
+		h = (g - b) / delta;
+	} else if (g === max) {
+		h = 2 + (b - r) / delta;
+	} else if (b === max) {
+		h = 4 + (r - g) / delta;
+	}
+
+	h = Math.min(h * 60, 360);
+
+	if (h < 0) {
+		h += 360;
+	}
+
+	l = (min + max) / 2;
+
+	if (max === min) {
+		s = 0;
+	} else if (l <= 0.5) {
+		s = delta / (max + min);
+	} else {
+		s = delta / (2 - max - min);
+	}
+
+	return [h, s * 100, l * 100];
 };
 
-/* Either get the values for a space or
-  set the values for a space, depending on args */
-Converter.prototype.routeSpace = function(space, args) {
-   var values = args[0];
-   if (values === undefined) {
-      // color.rgb()
-      return this.getValues(space);
-   }
-   // color.rgb(10, 10, 10)
-   if (typeof values == "number") {
-      values = Array.prototype.slice.call(args);        
-   }
+convert.rgb.hsv = function (rgb) {
+	var rdif;
+	var gdif;
+	var bdif;
+	var h;
+	var s;
 
-   return this.setValues(space, values);
+	var r = rgb[0] / 255;
+	var g = rgb[1] / 255;
+	var b = rgb[2] / 255;
+	var v = Math.max(r, g, b);
+	var diff = v - Math.min(r, g, b);
+	var diffc = function (c) {
+		return (v - c) / 6 / diff + 1 / 2;
+	};
+
+	if (diff === 0) {
+		h = s = 0;
+	} else {
+		s = diff / v;
+		rdif = diffc(r);
+		gdif = diffc(g);
+		bdif = diffc(b);
+
+		if (r === v) {
+			h = bdif - gdif;
+		} else if (g === v) {
+			h = (1 / 3) + rdif - bdif;
+		} else if (b === v) {
+			h = (2 / 3) + gdif - rdif;
+		}
+		if (h < 0) {
+			h += 1;
+		} else if (h > 1) {
+			h -= 1;
+		}
+	}
+
+	return [
+		h * 360,
+		s * 100,
+		v * 100
+	];
 };
-  
-/* Set the values for a space, invalidating cache */
-Converter.prototype.setValues = function(space, values) {
-   this.space = space;
-   this.convs = {};
-   this.convs[space] = values;
-   return this;
+
+convert.rgb.hwb = function (rgb) {
+	var r = rgb[0];
+	var g = rgb[1];
+	var b = rgb[2];
+	var h = convert.rgb.hsl(rgb)[0];
+	var w = 1 / 255 * Math.min(r, Math.min(g, b));
+
+	b = 1 - 1 / 255 * Math.max(r, Math.max(g, b));
+
+	return [h, w * 100, b * 100];
 };
 
-/* Get the values for a space. If there's already
-  a conversion for the space, fetch it, otherwise
-  compute it */
-Converter.prototype.getValues = function(space) {
-   var vals = this.convs[space];
-   if (!vals) {
-      var fspace = this.space,
-          from = this.convs[fspace];
-      vals = convert[fspace][space](from);
+convert.rgb.cmyk = function (rgb) {
+	var r = rgb[0] / 255;
+	var g = rgb[1] / 255;
+	var b = rgb[2] / 255;
+	var c;
+	var m;
+	var y;
+	var k;
 
-      this.convs[space] = vals;
-   }
-  return vals;
+	k = Math.min(1 - r, 1 - g, 1 - b);
+	c = (1 - r - k) / (1 - k) || 0;
+	m = (1 - g - k) / (1 - k) || 0;
+	y = (1 - b - k) / (1 - k) || 0;
+
+	return [c * 100, m * 100, y * 100, k * 100];
 };
 
-["rgb", "hsl", "hsv", "cmyk", "keyword"].forEach(function(space) {
-   Converter.prototype[space] = function(vals) {
-      return this.routeSpace(space, arguments);
-   };
+/**
+ * See https://en.m.wikipedia.org/wiki/Euclidean_distance#Squared_Euclidean_distance
+ * */
+function comparativeDistance(x, y) {
+	return (
+		Math.pow(x[0] - y[0], 2) +
+		Math.pow(x[1] - y[1], 2) +
+		Math.pow(x[2] - y[2], 2)
+	);
+}
+
+convert.rgb.keyword = function (rgb) {
+	var reversed = reverseKeywords[rgb];
+	if (reversed) {
+		return reversed;
+	}
+
+	var currentClosestDistance = Infinity;
+	var currentClosestKeyword;
+
+	for (var keyword in colorName) {
+		if (colorName.hasOwnProperty(keyword)) {
+			var value = colorName[keyword];
+
+			// Compute comparative distance
+			var distance = comparativeDistance(rgb, value);
+
+			// Check if its less, if so set as closest
+			if (distance < currentClosestDistance) {
+				currentClosestDistance = distance;
+				currentClosestKeyword = keyword;
+			}
+		}
+	}
+
+	return currentClosestKeyword;
+};
+
+convert.keyword.rgb = function (keyword) {
+	return colorName[keyword];
+};
+
+convert.rgb.xyz = function (rgb) {
+	var r = rgb[0] / 255;
+	var g = rgb[1] / 255;
+	var b = rgb[2] / 255;
+
+	// assume sRGB
+	r = r > 0.04045 ? Math.pow(((r + 0.055) / 1.055), 2.4) : (r / 12.92);
+	g = g > 0.04045 ? Math.pow(((g + 0.055) / 1.055), 2.4) : (g / 12.92);
+	b = b > 0.04045 ? Math.pow(((b + 0.055) / 1.055), 2.4) : (b / 12.92);
+
+	var x = (r * 0.4124) + (g * 0.3576) + (b * 0.1805);
+	var y = (r * 0.2126) + (g * 0.7152) + (b * 0.0722);
+	var z = (r * 0.0193) + (g * 0.1192) + (b * 0.9505);
+
+	return [x * 100, y * 100, z * 100];
+};
+
+convert.rgb.lab = function (rgb) {
+	var xyz = convert.rgb.xyz(rgb);
+	var x = xyz[0];
+	var y = xyz[1];
+	var z = xyz[2];
+	var l;
+	var a;
+	var b;
+
+	x /= 95.047;
+	y /= 100;
+	z /= 108.883;
+
+	x = x > 0.008856 ? Math.pow(x, 1 / 3) : (7.787 * x) + (16 / 116);
+	y = y > 0.008856 ? Math.pow(y, 1 / 3) : (7.787 * y) + (16 / 116);
+	z = z > 0.008856 ? Math.pow(z, 1 / 3) : (7.787 * z) + (16 / 116);
+
+	l = (116 * y) - 16;
+	a = 500 * (x - y);
+	b = 200 * (y - z);
+
+	return [l, a, b];
+};
+
+convert.hsl.rgb = function (hsl) {
+	var h = hsl[0] / 360;
+	var s = hsl[1] / 100;
+	var l = hsl[2] / 100;
+	var t1;
+	var t2;
+	var t3;
+	var rgb;
+	var val;
+
+	if (s === 0) {
+		val = l * 255;
+		return [val, val, val];
+	}
+
+	if (l < 0.5) {
+		t2 = l * (1 + s);
+	} else {
+		t2 = l + s - l * s;
+	}
+
+	t1 = 2 * l - t2;
+
+	rgb = [0, 0, 0];
+	for (var i = 0; i < 3; i++) {
+		t3 = h + 1 / 3 * -(i - 1);
+		if (t3 < 0) {
+			t3++;
+		}
+		if (t3 > 1) {
+			t3--;
+		}
+
+		if (6 * t3 < 1) {
+			val = t1 + (t2 - t1) * 6 * t3;
+		} else if (2 * t3 < 1) {
+			val = t2;
+		} else if (3 * t3 < 2) {
+			val = t1 + (t2 - t1) * (2 / 3 - t3) * 6;
+		} else {
+			val = t1;
+		}
+
+		rgb[i] = val * 255;
+	}
+
+	return rgb;
+};
+
+convert.hsl.hsv = function (hsl) {
+	var h = hsl[0];
+	var s = hsl[1] / 100;
+	var l = hsl[2] / 100;
+	var smin = s;
+	var lmin = Math.max(l, 0.01);
+	var sv;
+	var v;
+
+	l *= 2;
+	s *= (l <= 1) ? l : 2 - l;
+	smin *= lmin <= 1 ? lmin : 2 - lmin;
+	v = (l + s) / 2;
+	sv = l === 0 ? (2 * smin) / (lmin + smin) : (2 * s) / (l + s);
+
+	return [h, sv * 100, v * 100];
+};
+
+convert.hsv.rgb = function (hsv) {
+	var h = hsv[0] / 60;
+	var s = hsv[1] / 100;
+	var v = hsv[2] / 100;
+	var hi = Math.floor(h) % 6;
+
+	var f = h - Math.floor(h);
+	var p = 255 * v * (1 - s);
+	var q = 255 * v * (1 - (s * f));
+	var t = 255 * v * (1 - (s * (1 - f)));
+	v *= 255;
+
+	switch (hi) {
+		case 0:
+			return [v, t, p];
+		case 1:
+			return [q, v, p];
+		case 2:
+			return [p, v, t];
+		case 3:
+			return [p, q, v];
+		case 4:
+			return [t, p, v];
+		case 5:
+			return [v, p, q];
+	}
+};
+
+convert.hsv.hsl = function (hsv) {
+	var h = hsv[0];
+	var s = hsv[1] / 100;
+	var v = hsv[2] / 100;
+	var vmin = Math.max(v, 0.01);
+	var lmin;
+	var sl;
+	var l;
+
+	l = (2 - s) * v;
+	lmin = (2 - s) * vmin;
+	sl = s * vmin;
+	sl /= (lmin <= 1) ? lmin : 2 - lmin;
+	sl = sl || 0;
+	l /= 2;
+
+	return [h, sl * 100, l * 100];
+};
+
+// http://dev.w3.org/csswg/css-color/#hwb-to-rgb
+convert.hwb.rgb = function (hwb) {
+	var h = hwb[0] / 360;
+	var wh = hwb[1] / 100;
+	var bl = hwb[2] / 100;
+	var ratio = wh + bl;
+	var i;
+	var v;
+	var f;
+	var n;
+
+	// wh + bl cant be > 1
+	if (ratio > 1) {
+		wh /= ratio;
+		bl /= ratio;
+	}
+
+	i = Math.floor(6 * h);
+	v = 1 - bl;
+	f = 6 * h - i;
+
+	if ((i & 0x01) !== 0) {
+		f = 1 - f;
+	}
+
+	n = wh + f * (v - wh); // linear interpolation
+
+	var r;
+	var g;
+	var b;
+	switch (i) {
+		default:
+		case 6:
+		case 0: r = v; g = n; b = wh; break;
+		case 1: r = n; g = v; b = wh; break;
+		case 2: r = wh; g = v; b = n; break;
+		case 3: r = wh; g = n; b = v; break;
+		case 4: r = n; g = wh; b = v; break;
+		case 5: r = v; g = wh; b = n; break;
+	}
+
+	return [r * 255, g * 255, b * 255];
+};
+
+convert.cmyk.rgb = function (cmyk) {
+	var c = cmyk[0] / 100;
+	var m = cmyk[1] / 100;
+	var y = cmyk[2] / 100;
+	var k = cmyk[3] / 100;
+	var r;
+	var g;
+	var b;
+
+	r = 1 - Math.min(1, c * (1 - k) + k);
+	g = 1 - Math.min(1, m * (1 - k) + k);
+	b = 1 - Math.min(1, y * (1 - k) + k);
+
+	return [r * 255, g * 255, b * 255];
+};
+
+convert.xyz.rgb = function (xyz) {
+	var x = xyz[0] / 100;
+	var y = xyz[1] / 100;
+	var z = xyz[2] / 100;
+	var r;
+	var g;
+	var b;
+
+	r = (x * 3.2406) + (y * -1.5372) + (z * -0.4986);
+	g = (x * -0.9689) + (y * 1.8758) + (z * 0.0415);
+	b = (x * 0.0557) + (y * -0.2040) + (z * 1.0570);
+
+	// assume sRGB
+	r = r > 0.0031308
+		? ((1.055 * Math.pow(r, 1.0 / 2.4)) - 0.055)
+		: r * 12.92;
+
+	g = g > 0.0031308
+		? ((1.055 * Math.pow(g, 1.0 / 2.4)) - 0.055)
+		: g * 12.92;
+
+	b = b > 0.0031308
+		? ((1.055 * Math.pow(b, 1.0 / 2.4)) - 0.055)
+		: b * 12.92;
+
+	r = Math.min(Math.max(0, r), 1);
+	g = Math.min(Math.max(0, g), 1);
+	b = Math.min(Math.max(0, b), 1);
+
+	return [r * 255, g * 255, b * 255];
+};
+
+convert.xyz.lab = function (xyz) {
+	var x = xyz[0];
+	var y = xyz[1];
+	var z = xyz[2];
+	var l;
+	var a;
+	var b;
+
+	x /= 95.047;
+	y /= 100;
+	z /= 108.883;
+
+	x = x > 0.008856 ? Math.pow(x, 1 / 3) : (7.787 * x) + (16 / 116);
+	y = y > 0.008856 ? Math.pow(y, 1 / 3) : (7.787 * y) + (16 / 116);
+	z = z > 0.008856 ? Math.pow(z, 1 / 3) : (7.787 * z) + (16 / 116);
+
+	l = (116 * y) - 16;
+	a = 500 * (x - y);
+	b = 200 * (y - z);
+
+	return [l, a, b];
+};
+
+convert.lab.xyz = function (lab) {
+	var l = lab[0];
+	var a = lab[1];
+	var b = lab[2];
+	var x;
+	var y;
+	var z;
+
+	y = (l + 16) / 116;
+	x = a / 500 + y;
+	z = y - b / 200;
+
+	var y2 = Math.pow(y, 3);
+	var x2 = Math.pow(x, 3);
+	var z2 = Math.pow(z, 3);
+	y = y2 > 0.008856 ? y2 : (y - 16 / 116) / 7.787;
+	x = x2 > 0.008856 ? x2 : (x - 16 / 116) / 7.787;
+	z = z2 > 0.008856 ? z2 : (z - 16 / 116) / 7.787;
+
+	x *= 95.047;
+	y *= 100;
+	z *= 108.883;
+
+	return [x, y, z];
+};
+
+convert.lab.lch = function (lab) {
+	var l = lab[0];
+	var a = lab[1];
+	var b = lab[2];
+	var hr;
+	var h;
+	var c;
+
+	hr = Math.atan2(b, a);
+	h = hr * 360 / 2 / Math.PI;
+
+	if (h < 0) {
+		h += 360;
+	}
+
+	c = Math.sqrt(a * a + b * b);
+
+	return [l, c, h];
+};
+
+convert.lch.lab = function (lch) {
+	var l = lch[0];
+	var c = lch[1];
+	var h = lch[2];
+	var a;
+	var b;
+	var hr;
+
+	hr = h / 360 * 2 * Math.PI;
+	a = c * Math.cos(hr);
+	b = c * Math.sin(hr);
+
+	return [l, a, b];
+};
+
+convert.rgb.ansi16 = function (args) {
+	var r = args[0];
+	var g = args[1];
+	var b = args[2];
+	var value = 1 in arguments ? arguments[1] : convert.rgb.hsv(args)[2]; // hsv -> ansi16 optimization
+
+	value = Math.round(value / 50);
+
+	if (value === 0) {
+		return 30;
+	}
+
+	var ansi = 30
+		+ ((Math.round(b / 255) << 2)
+		| (Math.round(g / 255) << 1)
+		| Math.round(r / 255));
+
+	if (value === 2) {
+		ansi += 60;
+	}
+
+	return ansi;
+};
+
+convert.hsv.ansi16 = function (args) {
+	// optimization here; we already know the value and don't need to get
+	// it converted for us.
+	return convert.rgb.ansi16(convert.hsv.rgb(args), args[2]);
+};
+
+convert.rgb.ansi256 = function (args) {
+	var r = args[0];
+	var g = args[1];
+	var b = args[2];
+
+	// we use the extended greyscale palette here, with the exception of
+	// black and white. normal palette only has 4 greyscale shades.
+	if (r === g && g === b) {
+		if (r < 8) {
+			return 16;
+		}
+
+		if (r > 248) {
+			return 231;
+		}
+
+		return Math.round(((r - 8) / 247) * 24) + 232;
+	}
+
+	var ansi = 16
+		+ (36 * Math.round(r / 255 * 5))
+		+ (6 * Math.round(g / 255 * 5))
+		+ Math.round(b / 255 * 5);
+
+	return ansi;
+};
+
+convert.ansi16.rgb = function (args) {
+	var color = args % 10;
+
+	// handle greyscale
+	if (color === 0 || color === 7) {
+		if (args > 50) {
+			color += 3.5;
+		}
+
+		color = color / 10.5 * 255;
+
+		return [color, color, color];
+	}
+
+	var mult = (~~(args > 50) + 1) * 0.5;
+	var r = ((color & 1) * mult) * 255;
+	var g = (((color >> 1) & 1) * mult) * 255;
+	var b = (((color >> 2) & 1) * mult) * 255;
+
+	return [r, g, b];
+};
+
+convert.ansi256.rgb = function (args) {
+	// handle greyscale
+	if (args >= 232) {
+		var c = (args - 232) * 10 + 8;
+		return [c, c, c];
+	}
+
+	args -= 16;
+
+	var rem;
+	var r = Math.floor(args / 36) / 5 * 255;
+	var g = Math.floor((rem = args % 36) / 6) / 5 * 255;
+	var b = (rem % 6) / 5 * 255;
+
+	return [r, g, b];
+};
+
+convert.rgb.hex = function (args) {
+	var integer = ((Math.round(args[0]) & 0xFF) << 16)
+		+ ((Math.round(args[1]) & 0xFF) << 8)
+		+ (Math.round(args[2]) & 0xFF);
+
+	var string = integer.toString(16).toUpperCase();
+	return '000000'.substring(string.length) + string;
+};
+
+convert.hex.rgb = function (args) {
+	var match = args.toString(16).match(/[a-f0-9]{6}|[a-f0-9]{3}/i);
+	if (!match) {
+		return [0, 0, 0];
+	}
+
+	var colorString = match[0];
+
+	if (match[0].length === 3) {
+		colorString = colorString.split('').map(function (char) {
+			return char + char;
+		}).join('');
+	}
+
+	var integer = parseInt(colorString, 16);
+	var r = (integer >> 16) & 0xFF;
+	var g = (integer >> 8) & 0xFF;
+	var b = integer & 0xFF;
+
+	return [r, g, b];
+};
+
+convert.rgb.hcg = function (rgb) {
+	var r = rgb[0] / 255;
+	var g = rgb[1] / 255;
+	var b = rgb[2] / 255;
+	var max = Math.max(Math.max(r, g), b);
+	var min = Math.min(Math.min(r, g), b);
+	var chroma = (max - min);
+	var grayscale;
+	var hue;
+
+	if (chroma < 1) {
+		grayscale = min / (1 - chroma);
+	} else {
+		grayscale = 0;
+	}
+
+	if (chroma <= 0) {
+		hue = 0;
+	} else
+	if (max === r) {
+		hue = ((g - b) / chroma) % 6;
+	} else
+	if (max === g) {
+		hue = 2 + (b - r) / chroma;
+	} else {
+		hue = 4 + (r - g) / chroma + 4;
+	}
+
+	hue /= 6;
+	hue %= 1;
+
+	return [hue * 360, chroma * 100, grayscale * 100];
+};
+
+convert.hsl.hcg = function (hsl) {
+	var s = hsl[1] / 100;
+	var l = hsl[2] / 100;
+	var c = 1;
+	var f = 0;
+
+	if (l < 0.5) {
+		c = 2.0 * s * l;
+	} else {
+		c = 2.0 * s * (1.0 - l);
+	}
+
+	if (c < 1.0) {
+		f = (l - 0.5 * c) / (1.0 - c);
+	}
+
+	return [hsl[0], c * 100, f * 100];
+};
+
+convert.hsv.hcg = function (hsv) {
+	var s = hsv[1] / 100;
+	var v = hsv[2] / 100;
+
+	var c = s * v;
+	var f = 0;
+
+	if (c < 1.0) {
+		f = (v - c) / (1 - c);
+	}
+
+	return [hsv[0], c * 100, f * 100];
+};
+
+convert.hcg.rgb = function (hcg) {
+	var h = hcg[0] / 360;
+	var c = hcg[1] / 100;
+	var g = hcg[2] / 100;
+
+	if (c === 0.0) {
+		return [g * 255, g * 255, g * 255];
+	}
+
+	var pure = [0, 0, 0];
+	var hi = (h % 1) * 6;
+	var v = hi % 1;
+	var w = 1 - v;
+	var mg = 0;
+
+	switch (Math.floor(hi)) {
+		case 0:
+			pure[0] = 1; pure[1] = v; pure[2] = 0; break;
+		case 1:
+			pure[0] = w; pure[1] = 1; pure[2] = 0; break;
+		case 2:
+			pure[0] = 0; pure[1] = 1; pure[2] = v; break;
+		case 3:
+			pure[0] = 0; pure[1] = w; pure[2] = 1; break;
+		case 4:
+			pure[0] = v; pure[1] = 0; pure[2] = 1; break;
+		default:
+			pure[0] = 1; pure[1] = 0; pure[2] = w;
+	}
+
+	mg = (1.0 - c) * g;
+
+	return [
+		(c * pure[0] + mg) * 255,
+		(c * pure[1] + mg) * 255,
+		(c * pure[2] + mg) * 255
+	];
+};
+
+convert.hcg.hsv = function (hcg) {
+	var c = hcg[1] / 100;
+	var g = hcg[2] / 100;
+
+	var v = c + g * (1.0 - c);
+	var f = 0;
+
+	if (v > 0.0) {
+		f = c / v;
+	}
+
+	return [hcg[0], f * 100, v * 100];
+};
+
+convert.hcg.hsl = function (hcg) {
+	var c = hcg[1] / 100;
+	var g = hcg[2] / 100;
+
+	var l = g * (1.0 - c) + 0.5 * c;
+	var s = 0;
+
+	if (l > 0.0 && l < 0.5) {
+		s = c / (2 * l);
+	} else
+	if (l >= 0.5 && l < 1.0) {
+		s = c / (2 * (1 - l));
+	}
+
+	return [hcg[0], s * 100, l * 100];
+};
+
+convert.hcg.hwb = function (hcg) {
+	var c = hcg[1] / 100;
+	var g = hcg[2] / 100;
+	var v = c + g * (1.0 - c);
+	return [hcg[0], (v - c) * 100, (1 - v) * 100];
+};
+
+convert.hwb.hcg = function (hwb) {
+	var w = hwb[1] / 100;
+	var b = hwb[2] / 100;
+	var v = 1 - b;
+	var c = v - w;
+	var g = 0;
+
+	if (c < 1) {
+		g = (v - c) / (1 - c);
+	}
+
+	return [hwb[0], c * 100, g * 100];
+};
+
+convert.apple.rgb = function (apple) {
+	return [(apple[0] / 65535) * 255, (apple[1] / 65535) * 255, (apple[2] / 65535) * 255];
+};
+
+convert.rgb.apple = function (rgb) {
+	return [(rgb[0] / 255) * 65535, (rgb[1] / 255) * 65535, (rgb[2] / 255) * 65535];
+};
+
+convert.gray.rgb = function (args) {
+	return [args[0] / 100 * 255, args[0] / 100 * 255, args[0] / 100 * 255];
+};
+
+convert.gray.hsl = convert.gray.hsv = function (args) {
+	return [0, 0, args[0]];
+};
+
+convert.gray.hwb = function (gray) {
+	return [0, 100, gray[0]];
+};
+
+convert.gray.cmyk = function (gray) {
+	return [0, 0, 0, gray[0]];
+};
+
+convert.gray.lab = function (gray) {
+	return [gray[0], 0, 0];
+};
+
+convert.gray.hex = function (gray) {
+	var val = Math.round(gray[0] / 100 * 255) & 0xFF;
+	var integer = (val << 16) + (val << 8) + val;
+
+	var string = integer.toString(16).toUpperCase();
+	return '000000'.substring(string.length) + string;
+};
+
+convert.rgb.gray = function (rgb) {
+	var val = (rgb[0] + rgb[1] + rgb[2]) / 3;
+	return [val / 255 * 100];
+};
+});
+var conversions_1 = conversions.rgb;
+var conversions_2 = conversions.hsl;
+var conversions_3 = conversions.hsv;
+var conversions_4 = conversions.hwb;
+var conversions_5 = conversions.cmyk;
+var conversions_6 = conversions.xyz;
+var conversions_7 = conversions.lab;
+var conversions_8 = conversions.lch;
+var conversions_9 = conversions.hex;
+var conversions_10 = conversions.keyword;
+var conversions_11 = conversions.ansi16;
+var conversions_12 = conversions.ansi256;
+var conversions_13 = conversions.hcg;
+var conversions_14 = conversions.apple;
+var conversions_15 = conversions.gray;
+
+/*
+	this function routes a model to all other models.
+
+	all functions that are routed have a property `.conversion` attached
+	to the returned synthetic function. This property is an array
+	of strings, each with the steps in between the 'from' and 'to'
+	color models (inclusive).
+
+	conversions that are not possible simply are not included.
+*/
+
+function buildGraph() {
+	var graph = {};
+	// https://jsperf.com/object-keys-vs-for-in-with-closure/3
+	var models = Object.keys(conversions);
+
+	for (var len = models.length, i = 0; i < len; i++) {
+		graph[models[i]] = {
+			// http://jsperf.com/1-vs-infinity
+			// micro-opt, but this is simple.
+			distance: -1,
+			parent: null
+		};
+	}
+
+	return graph;
+}
+
+// https://en.wikipedia.org/wiki/Breadth-first_search
+function deriveBFS(fromModel) {
+	var graph = buildGraph();
+	var queue = [fromModel]; // unshift -> queue -> pop
+
+	graph[fromModel].distance = 0;
+
+	while (queue.length) {
+		var current = queue.pop();
+		var adjacents = Object.keys(conversions[current]);
+
+		for (var len = adjacents.length, i = 0; i < len; i++) {
+			var adjacent = adjacents[i];
+			var node = graph[adjacent];
+
+			if (node.distance === -1) {
+				node.distance = graph[current].distance + 1;
+				node.parent = current;
+				queue.unshift(adjacent);
+			}
+		}
+	}
+
+	return graph;
+}
+
+function link(from, to) {
+	return function (args) {
+		return to(from(args));
+	};
+}
+
+function wrapConversion(toModel, graph) {
+	var path = [graph[toModel].parent, toModel];
+	var fn = conversions[graph[toModel].parent][toModel];
+
+	var cur = graph[toModel].parent;
+	while (graph[cur].parent) {
+		path.unshift(graph[cur].parent);
+		fn = link(conversions[graph[cur].parent][cur], fn);
+		cur = graph[cur].parent;
+	}
+
+	fn.conversion = path;
+	return fn;
+}
+
+var route = function (fromModel) {
+	var graph = deriveBFS(fromModel);
+	var conversion = {};
+
+	var models = Object.keys(graph);
+	for (var len = models.length, i = 0; i < len; i++) {
+		var toModel = models[i];
+		var node = graph[toModel];
+
+		if (node.parent === null) {
+			// no possible conversion, or this node is the source model.
+			continue;
+		}
+
+		conversion[toModel] = wrapConversion(toModel, graph);
+	}
+
+	return conversion;
+};
+
+var convert = {};
+
+var models = Object.keys(conversions);
+
+function wrapRaw(fn) {
+	var wrappedFn = function (args) {
+		if (args === undefined || args === null) {
+			return args;
+		}
+
+		if (arguments.length > 1) {
+			args = Array.prototype.slice.call(arguments);
+		}
+
+		return fn(args);
+	};
+
+	// preserve .conversion property if there is one
+	if ('conversion' in fn) {
+		wrappedFn.conversion = fn.conversion;
+	}
+
+	return wrappedFn;
+}
+
+function wrapRounded(fn) {
+	var wrappedFn = function (args) {
+		if (args === undefined || args === null) {
+			return args;
+		}
+
+		if (arguments.length > 1) {
+			args = Array.prototype.slice.call(arguments);
+		}
+
+		var result = fn(args);
+
+		// we're assuming the result is an array here.
+		// see notice in conversions.js; don't use box types
+		// in conversion functions.
+		if (typeof result === 'object') {
+			for (var len = result.length, i = 0; i < len; i++) {
+				result[i] = Math.round(result[i]);
+			}
+		}
+
+		return result;
+	};
+
+	// preserve .conversion property if there is one
+	if ('conversion' in fn) {
+		wrappedFn.conversion = fn.conversion;
+	}
+
+	return wrappedFn;
+}
+
+models.forEach(function (fromModel) {
+	convert[fromModel] = {};
+
+	Object.defineProperty(convert[fromModel], 'channels', {value: conversions[fromModel].channels});
+	Object.defineProperty(convert[fromModel], 'labels', {value: conversions[fromModel].labels});
+
+	var routes = route(fromModel);
+	var routeModels = Object.keys(routes);
+
+	routeModels.forEach(function (toModel) {
+		var fn = routes[toModel];
+
+		convert[fromModel][toModel] = wrapRounded(fn);
+		convert[fromModel][toModel].raw = wrapRaw(fn);
+	});
 });
 
 var colorConvert = convert;
 
-var colorName = {
+var colorName$1 = {
 	"aliceblue": [240, 248, 255],
 	"antiquewhite": [250, 235, 215],
 	"aqua": [0, 255, 255],
@@ -1056,7 +1459,7 @@ function getRgba(string) {
       if (match[1] == "transparent") {
          return [0, 0, 0, 0];
       }
-      rgb = colorName[match[1]];
+      rgb = colorName$1[match[1]];
       if (!rgb) {
          return;
       }
@@ -1218,8 +1621,8 @@ function hexDouble(num) {
 
 //create a list of reverse color names
 var reverseNames = {};
-for (var name in colorName) {
-   reverseNames[colorName[name]] = name;
+for (var name in colorName$1) {
+   reverseNames[colorName$1[name]] = name;
 }
 
 /* MIT license */
@@ -1983,14 +2386,12 @@ var helpers = {
 	 * @param {object} argN - Additional objects containing properties to merge in target.
 	 * @returns {object} The `target` object.
 	 */
-	extend: function(target) {
-		var setFn = function(value, key) {
-			target[key] = value;
-		};
-		for (var i = 1, ilen = arguments.length; i < ilen; ++i) {
-			helpers.each(arguments[i], setFn);
-		}
-		return target;
+	extend: Object.assign || function(target) {
+		return helpers.merge(target, [].slice.call(arguments, 1), {
+			merger: function(key, dst, src) {
+				dst[key] = src[key];
+			}
+		});
 	},
 
 	/**
@@ -2016,6 +2417,13 @@ var helpers = {
 
 		ChartElement.__super__ = me.prototype;
 		return ChartElement;
+	},
+
+	_deprecated: function(scope, value, previous, current) {
+		if (value !== undefined) {
+			console.warn(scope + ': "' + previous +
+				'" is deprecated. Please use "' + current + '" instead');
+		}
 	}
 };
 
@@ -2377,7 +2785,11 @@ var exports$1 = {
 		if (style && typeof style === 'object') {
 			type = style.toString();
 			if (type === '[object HTMLImageElement]' || type === '[object HTMLCanvasElement]') {
-				ctx.drawImage(style, x - style.width / 2, y - style.height / 2, style.width, style.height);
+				ctx.save();
+				ctx.translate(x, y);
+				ctx.rotate(rad);
+				ctx.drawImage(style, -style.width / 2, -style.height / 2, style.width, style.height);
+				ctx.restore();
 				return;
 			}
 		}
@@ -2569,6 +2981,8 @@ var defaults = {
 	}
 };
 
+// TODO(v3): remove 'global' from namespace.  all default are global and
+// there's inconsistency around which options are under 'global'
 defaults._set('global', {
 	defaultColor: 'rgba(0,0,0,0.1)',
 	defaultFontColor: '#666',
@@ -2626,8 +3040,6 @@ var helpers_options = {
 			return value;
 		case '%':
 			value /= 100;
-			break;
-		default:
 			break;
 		}
 
@@ -2693,9 +3105,12 @@ var helpers_options = {
 	 * is called with `context` as first argument and the result becomes the new input.
 	 * @param {number} [index] - If defined and the current value is an array, the value
 	 * at `index` become the new input.
+	 * @param {object} [info] - object to return information about resolution in
+	 * @param {boolean} [info.cacheable] - Will be set to `false` if option is not cacheable.
 	 * @since 2.7.0
 	 */
-	resolve: function(inputs, context, index) {
+	resolve: function(inputs, context, index, info) {
+		var cacheable = true;
 		var i, ilen, value;
 
 		for (i = 0, ilen = inputs.length; i < ilen; ++i) {
@@ -2705,24 +3120,161 @@ var helpers_options = {
 			}
 			if (context !== undefined && typeof value === 'function') {
 				value = value(context);
+				cacheable = false;
 			}
 			if (index !== undefined && helpers_core.isArray(value)) {
 				value = value[index];
+				cacheable = false;
 			}
 			if (value !== undefined) {
+				if (info && !cacheable) {
+					info.cacheable = false;
+				}
 				return value;
 			}
 		}
 	}
 };
 
+/**
+ * @alias Chart.helpers.math
+ * @namespace
+ */
+var exports$2 = {
+	/**
+	 * Returns an array of factors sorted from 1 to sqrt(value)
+	 * @private
+	 */
+	_factorize: function(value) {
+		var result = [];
+		var sqrt = Math.sqrt(value);
+		var i;
+
+		for (i = 1; i < sqrt; i++) {
+			if (value % i === 0) {
+				result.push(i);
+				result.push(value / i);
+			}
+		}
+		if (sqrt === (sqrt | 0)) { // if value is a square number
+			result.push(sqrt);
+		}
+
+		result.sort(function(a, b) {
+			return a - b;
+		}).pop();
+		return result;
+	},
+
+	log10: Math.log10 || function(x) {
+		var exponent = Math.log(x) * Math.LOG10E; // Math.LOG10E = 1 / Math.LN10.
+		// Check for whole powers of 10,
+		// which due to floating point rounding error should be corrected.
+		var powerOf10 = Math.round(exponent);
+		var isPowerOf10 = x === Math.pow(10, powerOf10);
+
+		return isPowerOf10 ? powerOf10 : exponent;
+	}
+};
+
+var helpers_math = exports$2;
+
+// DEPRECATIONS
+
+/**
+ * Provided for backward compatibility, use Chart.helpers.math.log10 instead.
+ * @namespace Chart.helpers.log10
+ * @deprecated since version 2.9.0
+ * @todo remove at version 3
+ * @private
+ */
+helpers_core.log10 = exports$2.log10;
+
+var getRtlAdapter = function(rectX, width) {
+	return {
+		x: function(x) {
+			return rectX + rectX + width - x;
+		},
+		setWidth: function(w) {
+			width = w;
+		},
+		textAlign: function(align) {
+			if (align === 'center') {
+				return align;
+			}
+			return align === 'right' ? 'left' : 'right';
+		},
+		xPlus: function(x, value) {
+			return x - value;
+		},
+		leftForLtr: function(x, itemWidth) {
+			return x - itemWidth;
+		},
+	};
+};
+
+var getLtrAdapter = function() {
+	return {
+		x: function(x) {
+			return x;
+		},
+		setWidth: function(w) { // eslint-disable-line no-unused-vars
+		},
+		textAlign: function(align) {
+			return align;
+		},
+		xPlus: function(x, value) {
+			return x + value;
+		},
+		leftForLtr: function(x, _itemWidth) { // eslint-disable-line no-unused-vars
+			return x;
+		},
+	};
+};
+
+var getAdapter = function(rtl, rectX, width) {
+	return rtl ? getRtlAdapter(rectX, width) : getLtrAdapter();
+};
+
+var overrideTextDirection = function(ctx, direction) {
+	var style, original;
+	if (direction === 'ltr' || direction === 'rtl') {
+		style = ctx.canvas.style;
+		original = [
+			style.getPropertyValue('direction'),
+			style.getPropertyPriority('direction'),
+		];
+
+		style.setProperty('direction', direction, 'important');
+		ctx.prevTextDirection = original;
+	}
+};
+
+var restoreTextDirection = function(ctx) {
+	var original = ctx.prevTextDirection;
+	if (original !== undefined) {
+		delete ctx.prevTextDirection;
+		ctx.canvas.style.setProperty('direction', original[0], original[1]);
+	}
+};
+
+var helpers_rtl = {
+	getRtlAdapter: getAdapter,
+	overrideTextDirection: overrideTextDirection,
+	restoreTextDirection: restoreTextDirection,
+};
+
 var helpers$1 = helpers_core;
 var easing = helpers_easing;
 var canvas = helpers_canvas;
 var options = helpers_options;
+var math = helpers_math;
+var rtl = helpers_rtl;
 helpers$1.easing = easing;
 helpers$1.canvas = canvas;
 helpers$1.options = options;
+helpers$1.math = math;
+helpers$1.rtl = rtl;
 
 function interpolate(start, view, model, ease) {
 	var keys = Object.keys(model);
@@ -2779,6 +3331,7 @@ var Element = function(configuration) {
 };
 
 helpers$1.extend(Element.prototype, {
+	_type: undefined,
 
 	initialize: function() {
 		this.hidden = false;
@@ -2787,7 +3340,7 @@ helpers$1.extend(Element.prototype, {
 	pivot: function() {
 		var me = this;
 		if (!me._view) {
-			me._view = helpers$1.clone(me._model);
+			me._view = helpers$1.extend({}, me._model);
 		}
 		me._start = {};
 		return me;
@@ -2801,7 +3354,7 @@ helpers$1.extend(Element.prototype, {
 
 		// No animation -> No Transition
 		if (!model || ease === 1) {
-			me._view = model;
+			me._view = helpers$1.extend({}, model);
 			me._start = null;
 			return me;
 		}
@@ -2835,7 +3388,7 @@ Element.extend = helpers$1.inherits;
 
 var core_element = Element;
 
-var exports$2 = core_element.extend({
+var exports$3 = core_element.extend({
 	chart: null, // the animation associated chart instance
 	currentStep: 0, // the current animation step
 	numSteps: 60, // default number of steps
@@ -2846,7 +3399,7 @@ var exports$2 = core_element.extend({
 	onAnimationComplete: null, // user specified callback to fire when the animation finishes
 });
 
-var core_animation = exports$2;
+var core_animation = exports$3;
 
 // DEPRECATIONS
 
@@ -2856,7 +3409,7 @@ var core_animation = exports$2;
  * @deprecated since version 2.6.0
  * @todo remove at version 3
  */
-Object.defineProperty(exports$2.prototype, 'animationObject', {
+Object.defineProperty(exports$3.prototype, 'animationObject', {
 	get: function() {
 		return this;
 	}
@@ -2868,7 +3421,7 @@ Object.defineProperty(exports$2.prototype, 'animationObject', {
  * @deprecated since version 2.6.0
  * @todo remove at version 3
  */
-Object.defineProperty(exports$2.prototype, 'chartInstance', {
+Object.defineProperty(exports$3.prototype, 'chartInstance', {
 	get: function() {
 		return this.chart;
 	},
@@ -3086,12 +3639,42 @@ helpers$1.extend(DatasetController.prototype, {
 	 */
 	dataElementType: null,
 
+	/**
+	 * Dataset element option keys to be resolved in _resolveDatasetElementOptions.
+	 * A derived controller may override this to resolve controller-specific options.
+	 * The keys defined here are for backward compatibility for legend styles.
+	 * @private
+	 */
+	_datasetElementOptions: [
+		'backgroundColor',
+		'borderCapStyle',
+		'borderColor',
+		'borderDash',
+		'borderDashOffset',
+		'borderJoinStyle',
+		'borderWidth'
+	],
+
+	/**
+	 * Data element option keys to be resolved in _resolveDataElementOptions.
+	 * A derived controller may override this to resolve controller-specific options.
+	 * The keys defined here are for backward compatibility for legend styles.
+	 * @private
+	 */
+	_dataElementOptions: [
+		'backgroundColor',
+		'borderColor',
+		'borderWidth',
+		'pointStyle'
+	],
+
 	initialize: function(chart, datasetIndex) {
 		var me = this;
 		me.chart = chart;
 		me.index = datasetIndex;
 		me.linkScales();
 		me.addElements();
+		me._type = me.getMeta().type;
 	},
 
 	updateIndex: function(datasetIndex) {
@@ -3101,13 +3684,16 @@ helpers$1.extend(DatasetController.prototype, {
 	linkScales: function() {
 		var me = this;
 		var meta = me.getMeta();
+		var chart = me.chart;
+		var scales = chart.scales;
 		var dataset = me.getDataset();
+		var scalesOpts = chart.options.scales;
 
-		if (meta.xAxisID === null || !(meta.xAxisID in me.chart.scales)) {
-			meta.xAxisID = dataset.xAxisID || me.chart.options.scales.xAxes[0].id;
+		if (meta.xAxisID === null || !(meta.xAxisID in scales) || dataset.xAxisID) {
+			meta.xAxisID = dataset.xAxisID || scalesOpts.xAxes[0].id;
 		}
-		if (meta.yAxisID === null || !(meta.yAxisID in me.chart.scales)) {
-			meta.yAxisID = dataset.yAxisID || me.chart.options.scales.yAxes[0].id;
+		if (meta.yAxisID === null || !(meta.yAxisID in scales) || dataset.yAxisID) {
+			meta.yAxisID = dataset.yAxisID || scalesOpts.yAxes[0].id;
 		}
 	},
 
@@ -3152,7 +3738,7 @@ helpers$1.extend(DatasetController.prototype, {
 	},
 
 	reset: function() {
-		this.update(true);
+		this._update(true);
 	},
 
 	/**
@@ -3228,6 +3814,31 @@ helpers$1.extend(DatasetController.prototype, {
 		me.resyncElements();
 	},
 
+	/**
+	 * Returns the merged user-supplied and default dataset-level options
+	 * @private
+	 */
+	_configure: function() {
+		var me = this;
+		me._config = helpers$1.merge({}, [
+			me.chart.options.datasets[me._type],
+			me.getDataset(),
+		], {
+			merger: function(key, target, source) {
+				if (key !== '_meta' && key !== 'data') {
+					helpers$1._merger(key, target, source);
+				}
+			}
+		});
+	},
+
+	_update: function(reset) {
+		var me = this;
+		me._configure();
+		me._cachedDataOpts = null;
+		me.update(reset);
+	},
+
 	update: helpers$1.noop,
 
 	transition: function(easingValue) {
@@ -3260,6 +3871,127 @@ helpers$1.extend(DatasetController.prototype, {
 		}
 	},
 
+	/**
+	 * Returns a set of predefined style properties that should be used to represent the dataset
+	 * or the data if the index is specified
+	 * @param {number} index - data index
+	 * @return {IStyleInterface} style object
+	 */
+	getStyle: function(index) {
+		var me = this;
+		var meta = me.getMeta();
+		var dataset = meta.dataset;
+		var style;
+
+		me._configure();
+		if (dataset && index === undefined) {
+			style = me._resolveDatasetElementOptions(dataset || {});
+		} else {
+			index = index || 0;
+			style = me._resolveDataElementOptions(meta.data[index] || {}, index);
+		}
+
+		if (style.fill === false || style.fill === null) {
+			style.backgroundColor = style.borderColor;
+		}
+
+		return style;
+	},
+
+	/**
+	 * @private
+	 */
+	_resolveDatasetElementOptions: function(element, hover) {
+		var me = this;
+		var chart = me.chart;
+		var datasetOpts = me._config;
+		var custom = element.custom || {};
+		var options = chart.options.elements[me.datasetElementType.prototype._type] || {};
+		var elementOptions = me._datasetElementOptions;
+		var values = {};
+		var i, ilen, key, readKey;
+
+		// Scriptable options
+		var context = {
+			chart: chart,
+			dataset: me.getDataset(),
+			datasetIndex: me.index,
+			hover: hover
+		};
+
+		for (i = 0, ilen = elementOptions.length; i < ilen; ++i) {
+			key = elementOptions[i];
+			readKey = hover ? 'hover' + key.charAt(0).toUpperCase() + key.slice(1) : key;
+			values[key] = resolve([
+				custom[readKey],
+				datasetOpts[readKey],
+				options[readKey]
+			], context);
+		}
+
+		return values;
+	},
+
+	/**
+	 * @private
+	 */
+	_resolveDataElementOptions: function(element, index) {
+		var me = this;
+		var custom = element && element.custom;
+		var cached = me._cachedDataOpts;
+		if (cached && !custom) {
+			return cached;
+		}
+		var chart = me.chart;
+		var datasetOpts = me._config;
+		var options = chart.options.elements[me.dataElementType.prototype._type] || {};
+		var elementOptions = me._dataElementOptions;
+		var values = {};
+
+		// Scriptable options
+		var context = {
+			chart: chart,
+			dataIndex: index,
+			dataset: me.getDataset(),
+			datasetIndex: me.index
+		};
+
+		// `resolve` sets cacheable to `false` if any option is indexed or scripted
+		var info = {cacheable: !custom};
+
+		var keys, i, ilen, key;
+
+		custom = custom || {};
+
+		if (helpers$1.isArray(elementOptions)) {
+			for (i = 0, ilen = elementOptions.length; i < ilen; ++i) {
+				key = elementOptions[i];
+				values[key] = resolve([
+					custom[key],
+					datasetOpts[key],
+					options[key]
+				], context, index, info);
+			}
+		} else {
+			keys = Object.keys(elementOptions);
+			for (i = 0, ilen = keys.length; i < ilen; ++i) {
+				key = keys[i];
+				values[key] = resolve([
+					custom[key],
+					datasetOpts[elementOptions[key]],
+					datasetOpts[key],
+					options[key]
+				], context, index, info);
+			}
+		}
+
+		if (info.cacheable) {
+			me._cachedDataOpts = Object.freeze(values);
+		}
+
+		return values;
+	},
+
 	removeHoverStyle: function(element) {
 		helpers$1.merge(element._model, element.$previousStyle || {});
 		delete element.$previousStyle;
@@ -3281,6 +4013,42 @@ helpers$1.extend(DatasetController.prototype, {
 		model.backgroundColor = resolve([custom.hoverBackgroundColor, dataset.hoverBackgroundColor, getHoverColor(model.backgroundColor)], undefined, index);
 		model.borderColor = resolve([custom.hoverBorderColor, dataset.hoverBorderColor, getHoverColor(model.borderColor)], undefined, index);
 		model.borderWidth = resolve([custom.hoverBorderWidth, dataset.hoverBorderWidth, model.borderWidth], undefined, index);
+	},
+
+	/**
+	 * @private
+	 */
+	_removeDatasetHoverStyle: function() {
+		var element = this.getMeta().dataset;
+
+		if (element) {
+			this.removeHoverStyle(element);
+		}
+	},
+
+	/**
+	 * @private
+	 */
+	_setDatasetHoverStyle: function() {
+		var element = this.getMeta().dataset;
+		var prev = {};
+		var i, ilen, key, keys, hoverOptions, model;
+
+		if (!element) {
+			return;
+		}
+
+		model = element._model;
+		hoverOptions = this._resolveDatasetElementOptions(element, true);
+
+		keys = Object.keys(hoverOptions);
+		for (i = 0, ilen = keys.length; i < ilen; ++i) {
+			key = keys[i];
+			prev[key] = model[key];
+			model[key] = hoverOptions[key];
+		}
+
+		element.$previousStyle = prev;
 	},
 
 	/**
@@ -3351,6 +4119,8 @@ DatasetController.extend = helpers$1.inherits;
 
 var core_datasetController = DatasetController;
 
+var TAU = Math.PI * 2;
+
 core_defaults._set('global', {
 	elements: {
 		arc: {
@@ -3362,7 +4132,84 @@ core_defaults._set('global', {
 	}
 });
 
+function clipArc(ctx, arc) {
+	var startAngle = arc.startAngle;
+	var endAngle = arc.endAngle;
+	var pixelMargin = arc.pixelMargin;
+	var angleMargin = pixelMargin / arc.outerRadius;
+	var x = arc.x;
+	var y = arc.y;
+
+	// Draw an inner border by cliping the arc and drawing a double-width border
+	// Enlarge the clipping arc by 0.33 pixels to eliminate glitches between borders
+	ctx.beginPath();
+	ctx.arc(x, y, arc.outerRadius, startAngle - angleMargin, endAngle + angleMargin);
+	if (arc.innerRadius > pixelMargin) {
+		angleMargin = pixelMargin / arc.innerRadius;
+		ctx.arc(x, y, arc.innerRadius - pixelMargin, endAngle + angleMargin, startAngle - angleMargin, true);
+	} else {
+		ctx.arc(x, y, pixelMargin, endAngle + Math.PI / 2, startAngle - Math.PI / 2);
+	}
+	ctx.closePath();
+	ctx.clip();
+}
+
+function drawFullCircleBorders(ctx, vm, arc, inner) {
+	var endAngle = arc.endAngle;
+	var i;
+
+	if (inner) {
+		arc.endAngle = arc.startAngle + TAU;
+		clipArc(ctx, arc);
+		arc.endAngle = endAngle;
+		if (arc.endAngle === arc.startAngle && arc.fullCircles) {
+			arc.endAngle += TAU;
+			arc.fullCircles--;
+		}
+	}
+
+	ctx.beginPath();
+	ctx.arc(arc.x, arc.y, arc.innerRadius, arc.startAngle + TAU, arc.startAngle, true);
+	for (i = 0; i < arc.fullCircles; ++i) {
+		ctx.stroke();
+	}
+
+	ctx.beginPath();
+	ctx.arc(arc.x, arc.y, vm.outerRadius, arc.startAngle, arc.startAngle + TAU);
+	for (i = 0; i < arc.fullCircles; ++i) {
+		ctx.stroke();
+	}
+}
+
+function drawBorder(ctx, vm, arc) {
+	var inner = vm.borderAlign === 'inner';
+
+	if (inner) {
+		ctx.lineWidth = vm.borderWidth * 2;
+		ctx.lineJoin = 'round';
+	} else {
+		ctx.lineWidth = vm.borderWidth;
+		ctx.lineJoin = 'bevel';
+	}
+
+	if (arc.fullCircles) {
+		drawFullCircleBorders(ctx, vm, arc, inner);
+	}
+
+	if (inner) {
+		clipArc(ctx, arc);
+	}
+
+	ctx.beginPath();
+	ctx.arc(arc.x, arc.y, vm.outerRadius, arc.startAngle, arc.endAngle);
+	ctx.arc(arc.x, arc.y, arc.innerRadius, arc.endAngle, arc.startAngle, true);
+	ctx.closePath();
+	ctx.stroke();
+}
+
 var element_arc = core_element.extend({
+	_type: 'arc',
+
 	inLabelRange: function(mouseX) {
 		var vm = this._view;
 
@@ -3377,20 +4224,20 @@ var element_arc = core_element.extend({
 
 		if (vm) {
 			var pointRelativePosition = helpers$1.getAngleFromPoint(vm, {x: chartX, y: chartY});
-			var	angle = pointRelativePosition.angle;
+			var angle = pointRelativePosition.angle;
 			var distance = pointRelativePosition.distance;
 
 			// Sanitise angle range
 			var startAngle = vm.startAngle;
 			var endAngle = vm.endAngle;
 			while (endAngle < startAngle) {
-				endAngle += 2.0 * Math.PI;
+				endAngle += TAU;
 			}
 			while (angle > endAngle) {
-				angle -= 2.0 * Math.PI;
+				angle -= TAU;
 			}
 			while (angle < startAngle) {
-				angle += 2.0 * Math.PI;
+				angle += TAU;
 			}
 
 			// Check if within the range of the open/close angle
@@ -3431,51 +4278,44 @@ var element_arc = core_element.extend({
 	draw: function() {
 		var ctx = this._chart.ctx;
 		var vm = this._view;
-		var sA = vm.startAngle;
-		var eA = vm.endAngle;
 		var pixelMargin = (vm.borderAlign === 'inner') ? 0.33 : 0;
-		var angleMargin;
+		var arc = {
+			x: vm.x,
+			y: vm.y,
+			innerRadius: vm.innerRadius,
+			outerRadius: Math.max(vm.outerRadius - pixelMargin, 0),
+			pixelMargin: pixelMargin,
+			startAngle: vm.startAngle,
+			endAngle: vm.endAngle,
+			fullCircles: Math.floor(vm.circumference / TAU)
+		};
+		var i;
 
 		ctx.save();
 
-		ctx.beginPath();
-		ctx.arc(vm.x, vm.y, Math.max(vm.outerRadius - pixelMargin, 0), sA, eA);
-		ctx.arc(vm.x, vm.y, vm.innerRadius, eA, sA, true);
-		ctx.closePath();
-
 		ctx.fillStyle = vm.backgroundColor;
+		ctx.strokeStyle = vm.borderColor;
+
+		if (arc.fullCircles) {
+			arc.endAngle = arc.startAngle + TAU;
+			ctx.beginPath();
+			ctx.arc(arc.x, arc.y, arc.outerRadius, arc.startAngle, arc.endAngle);
+			ctx.arc(arc.x, arc.y, arc.innerRadius, arc.endAngle, arc.startAngle, true);
+			ctx.closePath();
+			for (i = 0; i < arc.fullCircles; ++i) {
+				ctx.fill();
+			}
+			arc.endAngle = arc.startAngle + vm.circumference % TAU;
+		}
+
+		ctx.beginPath();
+		ctx.arc(arc.x, arc.y, arc.outerRadius, arc.startAngle, arc.endAngle);
+		ctx.arc(arc.x, arc.y, arc.innerRadius, arc.endAngle, arc.startAngle, true);
+		ctx.closePath();
 		ctx.fill();
 
 		if (vm.borderWidth) {
-			if (vm.borderAlign === 'inner') {
-				// Draw an inner border by cliping the arc and drawing a double-width border
-				// Enlarge the clipping arc by 0.33 pixels to eliminate glitches between borders
-				ctx.beginPath();
-				angleMargin = pixelMargin / vm.outerRadius;
-				ctx.arc(vm.x, vm.y, vm.outerRadius, sA - angleMargin, eA + angleMargin);
-				if (vm.innerRadius > pixelMargin) {
-					angleMargin = pixelMargin / vm.innerRadius;
-					ctx.arc(vm.x, vm.y, vm.innerRadius - pixelMargin, eA + angleMargin, sA - angleMargin, true);
-				} else {
-					ctx.arc(vm.x, vm.y, pixelMargin, eA + Math.PI / 2, sA - Math.PI / 2);
-				}
-				ctx.closePath();
-				ctx.clip();
-
-				ctx.beginPath();
-				ctx.arc(vm.x, vm.y, vm.outerRadius, sA, eA);
-				ctx.arc(vm.x, vm.y, vm.innerRadius, eA, sA, true);
-				ctx.closePath();
-
-				ctx.lineWidth = vm.borderWidth * 2;
-				ctx.lineJoin = 'round';
-			} else {
-				ctx.lineWidth = vm.borderWidth;
-				ctx.lineJoin = 'bevel';
-			}
-
-			ctx.strokeStyle = vm.borderColor;
-			ctx.stroke();
+			drawBorder(ctx, vm, arc);
 		}
 
 		ctx.restore();
@@ -3504,6 +4344,8 @@ core_defaults._set('global', {
 });
 
 var element_line = core_element.extend({
+	_type: 'line',
+
 	draw: function() {
 		var me = this;
 		var vm = me._view;
@@ -3513,11 +4355,27 @@ var element_line = core_element.extend({
 		var globalDefaults = core_defaults.global;
 		var globalOptionLineElements = globalDefaults.elements.line;
 		var lastDrawnIndex = -1;
-		var index, current, previous, currentVM;
+		var closePath = me._loop;
+		var index, previous, currentVM;
 
-		// If we are looping, adding the first point again
-		if (me._loop && points.length) {
-			points.push(points[0]);
+		if (!points.length) {
+			return;
+		}
+
+		if (me._loop) {
+			for (index = 0; index < points.length; ++index) {
+				previous = helpers$1.previousItem(points, index);
+				// If the line has an open path, shift the point array
+				if (!points[index]._view.skip && previous._view.skip) {
+					points = points.slice(index).concat(points.slice(0, index));
+					closePath = spanGaps;
+					break;
+				}
+			}
+			// If the line has a close path, add the first point again
+			if (closePath) {
+				points.push(points[0]);
+			}
 		}
 
 		ctx.save();
@@ -3537,33 +4395,32 @@ var element_line = core_element.extend({
 
 		// Stroke Line
 		ctx.beginPath();
-		lastDrawnIndex = -1;
 
-		for (index = 0; index < points.length; ++index) {
-			current = points[index];
-			previous = helpers$1.previousItem(points, index);
-			currentVM = current._view;
+		// First point moves to it's starting position no matter what
+		currentVM = points[0]._view;
+		if (!currentVM.skip) {
+			ctx.moveTo(currentVM.x, currentVM.y);
+			lastDrawnIndex = 0;
+		}
 
-			// First point moves to it's starting position no matter what
-			if (index === 0) {
-				if (!currentVM.skip) {
+		for (index = 1; index < points.length; ++index) {
+			currentVM = points[index]._view;
+			previous = lastDrawnIndex === -1 ? helpers$1.previousItem(points, index) : points[lastDrawnIndex];
+
+			if (!currentVM.skip) {
+				if ((lastDrawnIndex !== (index - 1) && !spanGaps) || lastDrawnIndex === -1) {
+					// There was a gap and this is the first point after the gap
 					ctx.moveTo(currentVM.x, currentVM.y);
-					lastDrawnIndex = index;
+				} else {
+					// Line to next point
+					helpers$1.canvas.lineTo(ctx, previous._view, currentVM);
 				}
-			} else {
-				previous = lastDrawnIndex === -1 ? previous : points[lastDrawnIndex];
-
-				if (!currentVM.skip) {
-					if ((lastDrawnIndex !== (index - 1) && !spanGaps) || lastDrawnIndex === -1) {
-						// There was a gap and this is the first point after the gap
-						ctx.moveTo(currentVM.x, currentVM.y);
-					} else {
-						// Line to next point
-						helpers$1.canvas.lineTo(ctx, previous._view, current._view);
-					}
-					lastDrawnIndex = index;
-				}
+				lastDrawnIndex = index;
 			}
+		}
+
+		if (closePath) {
+			ctx.closePath();
 		}
 
 		ctx.stroke();
@@ -3602,6 +4459,8 @@ function yRange(mouseY) {
 }
 
 var element_point = core_element.extend({
+	_type: 'point',
+
 	inRange: function(mouseX, mouseY) {
 		var vm = this._view;
 		return vm ? ((Math.pow(mouseX - vm.x, 2) + Math.pow(mouseY - vm.y, 2)) < Math.pow(vm.hitRadius + vm.radius, 2)) : false;
@@ -3784,6 +4643,8 @@ function inRange(vm, x, y) {
 }
 
 var element_rectangle = core_element.extend({
+	_type: 'rectangle',
+
 	draw: function() {
 		var ctx = this._chart.ctx;
 		var vm = this._view;
@@ -3873,7 +4734,8 @@ elements.Line = Line;
 elements.Point = Point;
 elements.Rectangle = Rectangle;
 
-var resolve$1 = helpers$1.options.resolve;
+var deprecated = helpers$1._deprecated;
+var valueOrDefault$3 = helpers$1.valueOrDefault;
 
 core_defaults._set('bar', {
 	hover: {
@@ -3883,8 +4745,6 @@ core_defaults._set('bar', {
 	scales: {
 		xAxes: [{
 			type: 'category',
-			categoryPercentage: 0.8,
-			barPercentage: 0.9,
 			offset: true,
 			gridLines: {
 				offsetGridLines: true
@@ -3897,22 +4757,30 @@ core_defaults._set('bar', {
 	}
 });
 
+core_defaults._set('global', {
+	datasets: {
+		bar: {
+			categoryPercentage: 0.8,
+			barPercentage: 0.9
+		}
+	}
+});
+
 /**
  * Computes the "optimal" sample size to maintain bars equally sized while preventing overlap.
  * @private
  */
 function computeMinSampleSize(scale, pixels) {
-	var min = scale.isHorizontal() ? scale.width : scale.height;
-	var ticks = scale.getTicks();
+	var min = scale._length;
 	var prev, curr, i, ilen;
 
 	for (i = 1, ilen = pixels.length; i < ilen; ++i) {
 		min = Math.min(min, Math.abs(pixels[i] - pixels[i - 1]));
 	}
 
-	for (i = 0, ilen = ticks.length; i < ilen; ++i) {
+	for (i = 0, ilen = scale.getTicks().length; i < ilen; ++i) {
 		curr = scale.getPixelForTick(i);
-		min = i > 0 ? Math.min(min, curr - prev) : min;
+		min = i > 0 ? Math.min(min, Math.abs(curr - prev)) : min;
 		prev = curr;
 	}
 
@@ -3929,10 +4797,13 @@ function computeFitCategoryTraits(index, ruler, options) {
 	var thickness = options.barThickness;
 	var count = ruler.stackCount;
 	var curr = ruler.pixels[index];
+	var min = helpers$1.isNullOrUndef(thickness)
+		? computeMinSampleSize(ruler.scale, ruler.pixels)
+		: -1;
 	var size, ratio;
 
 	if (helpers$1.isNullOrUndef(thickness)) {
-		size = ruler.min * options.categoryPercentage;
+		size = min * options.categoryPercentage;
 		ratio = options.barPercentage;
 	} else {
 		// When bar thickness is enforced, category and bar percentages are ignored.
@@ -3988,15 +4859,37 @@ var controller_bar = core_datasetController.extend({
 
 	dataElementType: elements.Rectangle,
 
+	/**
+	 * @private
+	 */
+	_dataElementOptions: [
+		'backgroundColor',
+		'borderColor',
+		'borderSkipped',
+		'borderWidth',
+		'barPercentage',
+		'barThickness',
+		'categoryPercentage',
+		'maxBarThickness',
+		'minBarLength'
+	],
+
 	initialize: function() {
 		var me = this;
-		var meta;
+		var meta, scaleOpts;
 
 		core_datasetController.prototype.initialize.apply(me, arguments);
 
 		meta = me.getMeta();
 		meta.stack = me.getDataset().stack;
 		meta.bar = true;
+
+		scaleOpts = me._getIndexScale().options;
+		deprecated('bar chart', scaleOpts.barPercentage, 'scales.[x/y]Axes.barPercentage', 'dataset.barPercentage');
+		deprecated('bar chart', scaleOpts.barThickness, 'scales.[x/y]Axes.barThickness', 'dataset.barThickness');
+		deprecated('bar chart', scaleOpts.categoryPercentage, 'scales.[x/y]Axes.categoryPercentage', 'dataset.categoryPercentage');
+		deprecated('bar chart', me._getValueScale().options.minBarLength, 'scales.[x/y]Axes.minBarLength', 'dataset.minBarLength');
+		deprecated('bar chart', scaleOpts.maxBarThickness, 'scales.[x/y]Axes.maxBarThickness', 'dataset.maxBarThickness');
 	},
 
 	update: function(reset) {
@@ -4015,7 +4908,7 @@ var controller_bar = core_datasetController.extend({
 		var me = this;
 		var meta = me.getMeta();
 		var dataset = me.getDataset();
-		var options = me._resolveElementOptions(rectangle, index);
+		var options = me._resolveDataElementOptions(rectangle, index);
 
 		rectangle._xScale = me.getScaleForId(meta.xAxisID);
 		rectangle._yScale = me.getScaleForId(meta.yAxisID);
@@ -4030,7 +4923,11 @@ var controller_bar = core_datasetController.extend({
 			label: me.chart.data.labels[index]
 		};
 
-		me._updateElementGeometry(rectangle, index, reset);
+		if (helpers$1.isArray(dataset.data[index])) {
+			rectangle._model.borderSkipped = null;
+		}
+
+		me._updateElementGeometry(rectangle, index, reset, options);
 
 		rectangle.pivot();
 	},
@@ -4038,15 +4935,15 @@ var controller_bar = core_datasetController.extend({
 	/**
 	 * @private
 	 */
-	_updateElementGeometry: function(rectangle, index, reset) {
+	_updateElementGeometry: function(rectangle, index, reset, options) {
 		var me = this;
 		var model = rectangle._model;
 		var vscale = me._getValueScale();
 		var base = vscale.getBasePixel();
 		var horizontal = vscale.isHorizontal();
 		var ruler = me._ruler || me.getRuler();
-		var vpixels = me.calculateBarValuePixels(me.index, index);
-		var ipixels = me.calculateBarIndexPixels(me.index, index, ruler);
+		var vpixels = me.calculateBarValuePixels(me.index, index, options);
+		var ipixels = me.calculateBarIndexPixels(me.index, index, ruler, options);
 
 		model.horizontal = horizontal;
 		model.base = reset ? base : vpixels.base;
@@ -4064,20 +4961,26 @@ var controller_bar = core_datasetController.extend({
 	 */
 	_getStacks: function(last) {
 		var me = this;
-		var chart = me.chart;
 		var scale = me._getIndexScale();
+		var metasets = scale._getMatchingVisibleMetas(me._type);
 		var stacked = scale.options.stacked;
-		var ilen = last === undefined ? chart.data.datasets.length : last + 1;
+		var ilen = metasets.length;
 		var stacks = [];
 		var i, meta;
 
 		for (i = 0; i < ilen; ++i) {
-			meta = chart.getDatasetMeta(i);
-			if (meta.bar && chart.isDatasetVisible(i) &&
-				(stacked === false ||
-				(stacked === true && stacks.indexOf(meta.stack) === -1) ||
-				(stacked === undefined && (meta.stack === undefined || stacks.indexOf(meta.stack) === -1)))) {
+			meta = metasets[i];
+			// stacked   | meta.stack
+			//           | found | not found | undefined
+			// false     |   x   |     x     |     x
+			// true      |       |     x     |
+			// undefined |       |     x     |     x
+			if (stacked === false || stacks.indexOf(meta.stack) === -1 ||
+				(stacked === undefined && meta.stack === undefined)) {
 				stacks.push(meta.stack);
+			}
+			if (meta.index === last) {
+				break;
 			}
 		}
 
@@ -4116,28 +5019,18 @@ var controller_bar = core_datasetController.extend({
 	getRuler: function() {
 		var me = this;
 		var scale = me._getIndexScale();
-		var stackCount = me.getStackCount();
-		var datasetIndex = me.index;
-		var isHorizontal = scale.isHorizontal();
-		var start = isHorizontal ? scale.left : scale.top;
-		var end = start + (isHorizontal ? scale.width : scale.height);
 		var pixels = [];
-		var i, ilen, min;
+		var i, ilen;
 
 		for (i = 0, ilen = me.getMeta().data.length; i < ilen; ++i) {
-			pixels.push(scale.getPixelForValue(null, i, datasetIndex));
+			pixels.push(scale.getPixelForValue(null, i, me.index));
 		}
 
-		min = helpers$1.isNullOrUndef(scale.options.barThickness)
-			? computeMinSampleSize(scale, pixels)
-			: -1;
-
 		return {
-			min: min,
 			pixels: pixels,
-			start: start,
-			end: end,
-			stackCount: stackCount,
+			start: scale._startPixel,
+			end: scale._endPixel,
+			stackCount: me.getStackCount(),
 			scale: scale
 		};
 	},
@@ -4146,31 +5039,35 @@ var controller_bar = core_datasetController.extend({
 	 * Note: pixel values are not clamped to the scale area.
 	 * @private
 	 */
-	calculateBarValuePixels: function(datasetIndex, index) {
+	calculateBarValuePixels: function(datasetIndex, index, options) {
 		var me = this;
 		var chart = me.chart;
-		var meta = me.getMeta();
 		var scale = me._getValueScale();
 		var isHorizontal = scale.isHorizontal();
 		var datasets = chart.data.datasets;
-		var value = +scale.getRightValue(datasets[datasetIndex].data[index]);
-		var minBarLength = scale.options.minBarLength;
+		var metasets = scale._getMatchingVisibleMetas(me._type);
+		var value = scale._parseValue(datasets[datasetIndex].data[index]);
+		var minBarLength = options.minBarLength;
 		var stacked = scale.options.stacked;
-		var stack = meta.stack;
-		var start = 0;
-		var i, imeta, ivalue, base, head, size;
+		var stack = me.getMeta().stack;
+		var start = value.start === undefined ? 0 : value.max >= 0 && value.min >= 0 ? value.min : value.max;
+		var length = value.start === undefined ? value.end : value.max >= 0 && value.min >= 0 ? value.max - value.min : value.min - value.max;
+		var ilen = metasets.length;
+		var i, imeta, ivalue, base, head, size, stackLength;
 
 		if (stacked || (stacked === undefined && stack !== undefined)) {
-			for (i = 0; i < datasetIndex; ++i) {
-				imeta = chart.getDatasetMeta(i);
+			for (i = 0; i < ilen; ++i) {
+				imeta = metasets[i];
 
-				if (imeta.bar &&
-					imeta.stack === stack &&
-					imeta.controller._getValueScaleId() === scale.id &&
-					chart.isDatasetVisible(i)) {
+				if (imeta.index === datasetIndex) {
+					break;
+				}
 
-					ivalue = +scale.getRightValue(datasets[i].data[index]);
-					if ((value < 0 && ivalue < 0) || (value >= 0 && ivalue > 0)) {
+				if (imeta.stack === stack) {
+					stackLength = scale._parseValue(datasets[imeta.index].data[index]);
+					ivalue = stackLength.start === undefined ? stackLength.end : stackLength.min >= 0 && stackLength.max >= 0 ? stackLength.max : stackLength.min;
+
+					if ((value.min < 0 && ivalue < 0) || (value.max >= 0 && ivalue > 0)) {
 						start += ivalue;
 					}
 				}
@@ -4178,12 +5075,12 @@ var controller_bar = core_datasetController.extend({
 		}
 
 		base = scale.getPixelForValue(start);
-		head = scale.getPixelForValue(start + value);
+		head = scale.getPixelForValue(start + length);
 		size = head - base;
 
 		if (minBarLength !== undefined && Math.abs(size) < minBarLength) {
 			size = minBarLength;
-			if (value >= 0 && !isHorizontal || value < 0 && isHorizontal) {
+			if (length >= 0 && !isHorizontal || length < 0 && isHorizontal) {
 				head = base - minBarLength;
 			} else {
 				head = base + minBarLength;
@@ -4201,9 +5098,8 @@ var controller_bar = core_datasetController.extend({
 	/**
 	 * @private
 	 */
-	calculateBarIndexPixels: function(datasetIndex, index, ruler) {
+	calculateBarIndexPixels: function(datasetIndex, index, ruler, options) {
 		var me = this;
-		var options = ruler.scale.options;
 		var range = options.barThickness === 'flex'
 			? computeFlexCategoryTraits(index, ruler, options)
 			: computeFitCategoryTraits(index, ruler, options);
@@ -4211,7 +5107,7 @@ var controller_bar = core_datasetController.extend({
 		var stackIndex = me.getStackIndex(datasetIndex, me.getMeta().stack);
 		var center = range.start + (range.chunk * stackIndex) + (range.chunk / 2);
 		var size = Math.min(
-			helpers$1.valueOrDefault(options.maxBarThickness, Infinity),
+			valueOrDefault$3(options.maxBarThickness, Infinity),
 			range.chunk * range.ratio);
 
 		return {
@@ -4234,7 +5130,8 @@ var controller_bar = core_datasetController.extend({
 		helpers$1.canvas.clipArea(chart.ctx, chart.chartArea);
 
 		for (; i < ilen; ++i) {
-			if (!isNaN(scale.getRightValue(dataset.data[i]))) {
+			var val = scale._parseValue(dataset.data[i]);
+			if (!isNaN(val.min) && !isNaN(val.max)) {
 				rects[i].draw();
 			}
 		}
@@ -4245,46 +5142,25 @@ var controller_bar = core_datasetController.extend({
 	/**
 	 * @private
 	 */
-	_resolveElementOptions: function(rectangle, index) {
+	_resolveDataElementOptions: function() {
 		var me = this;
-		var chart = me.chart;
-		var datasets = chart.data.datasets;
-		var dataset = datasets[me.index];
-		var custom = rectangle.custom || {};
-		var options = chart.options.elements.rectangle;
-		var values = {};
-		var i, ilen, key;
+		var values = helpers$1.extend({}, core_datasetController.prototype._resolveDataElementOptions.apply(me, arguments));
+		var indexOpts = me._getIndexScale().options;
+		var valueOpts = me._getValueScale().options;
 
-		// Scriptable options
-		var context = {
-			chart: chart,
-			dataIndex: index,
-			dataset: dataset,
-			datasetIndex: me.index
-		};
-
-		var keys = [
-			'backgroundColor',
-			'borderColor',
-			'borderSkipped',
-			'borderWidth'
-		];
-
-		for (i = 0, ilen = keys.length; i < ilen; ++i) {
-			key = keys[i];
-			values[key] = resolve$1([
-				custom[key],
-				dataset[key],
-				options[key]
-			], context, index);
-		}
+		values.barPercentage = valueOrDefault$3(indexOpts.barPercentage, values.barPercentage);
+		values.barThickness = valueOrDefault$3(indexOpts.barThickness, values.barThickness);
+		values.categoryPercentage = valueOrDefault$3(indexOpts.categoryPercentage, values.categoryPercentage);
+		values.maxBarThickness = valueOrDefault$3(indexOpts.maxBarThickness, values.maxBarThickness);
+		values.minBarLength = valueOrDefault$3(valueOpts.minBarLength, values.minBarLength);
 
 		return values;
 	}
+
 });
 
-var valueOrDefault$3 = helpers$1.valueOrDefault;
-var resolve$2 = helpers$1.options.resolve;
+var valueOrDefault$4 = helpers$1.valueOrDefault;
+var resolve$1 = helpers$1.options.resolve;
 
 core_defaults._set('bubble', {
 	hover: {
@@ -4326,6 +5202,22 @@ var controller_bubble = core_datasetController.extend({
 	dataElementType: elements.Point,
 
 	/**
+	 * @private
+	 */
+	_dataElementOptions: [
+		'backgroundColor',
+		'borderColor',
+		'borderWidth',
+		'hoverBackgroundColor',
+		'hoverBorderColor',
+		'hoverBorderWidth',
+		'hoverRadius',
+		'hitRadius',
+		'pointStyle',
+		'rotation'
+	],
+
+	/**
 	 * @protected
 	 */
 	update: function(reset) {
@@ -4348,7 +5240,7 @@ var controller_bubble = core_datasetController.extend({
 		var custom = point.custom || {};
 		var xScale = me.getScaleForId(meta.xAxisID);
 		var yScale = me.getScaleForId(meta.yAxisID);
-		var options = me._resolveElementOptions(point, index);
+		var options = me._resolveDataElementOptions(point, index);
 		var data = me.getDataset().data[index];
 		var dsIndex = me.index;
 
@@ -4391,25 +5283,22 @@ var controller_bubble = core_datasetController.extend({
 			radius: model.radius
 		};
 
-		model.backgroundColor = valueOrDefault$3(options.hoverBackgroundColor, getHoverColor(options.backgroundColor));
-		model.borderColor = valueOrDefault$3(options.hoverBorderColor, getHoverColor(options.borderColor));
-		model.borderWidth = valueOrDefault$3(options.hoverBorderWidth, options.borderWidth);
+		model.backgroundColor = valueOrDefault$4(options.hoverBackgroundColor, getHoverColor(options.backgroundColor));
+		model.borderColor = valueOrDefault$4(options.hoverBorderColor, getHoverColor(options.borderColor));
+		model.borderWidth = valueOrDefault$4(options.hoverBorderWidth, options.borderWidth);
 		model.radius = options.radius + options.hoverRadius;
 	},
 
 	/**
 	 * @private
 	 */
-	_resolveElementOptions: function(point, index) {
+	_resolveDataElementOptions: function(point, index) {
 		var me = this;
 		var chart = me.chart;
-		var datasets = chart.data.datasets;
-		var dataset = datasets[me.index];
+		var dataset = me.getDataset();
 		var custom = point.custom || {};
-		var options = chart.options.elements.point;
-		var data = dataset.data[index];
-		var values = {};
-		var i, ilen, key;
+		var data = dataset.data[index] || {};
+		var values = core_datasetController.prototype._resolveDataElementOptions.apply(me, arguments);
 
 		// Scriptable options
 		var context = {
@@ -4419,42 +5308,28 @@ var controller_bubble = core_datasetController.extend({
 			datasetIndex: me.index
 		};
 
-		var keys = [
-			'backgroundColor',
-			'borderColor',
-			'borderWidth',
-			'hoverBackgroundColor',
-			'hoverBorderColor',
-			'hoverBorderWidth',
-			'hoverRadius',
-			'hitRadius',
-			'pointStyle',
-			'rotation'
-		];
-
-		for (i = 0, ilen = keys.length; i < ilen; ++i) {
-			key = keys[i];
-			values[key] = resolve$2([
-				custom[key],
-				dataset[key],
-				options[key]
-			], context, index);
+		// In case values were cached (and thus frozen), we need to clone the values
+		if (me._cachedDataOpts === values) {
+			values = helpers$1.extend({}, values);
 		}
 
 		// Custom radius resolution
-		values.radius = resolve$2([
+		values.radius = resolve$1([
 			custom.radius,
-			data ? data.r : undefined,
-			dataset.radius,
-			options.radius
+			data.r,
+			me._config.radius,
+			chart.options.elements.point.radius
 		], context, index);
 
 		return values;
 	}
 });
 
-var resolve$3 = helpers$1.options.resolve;
-var valueOrDefault$4 = helpers$1.valueOrDefault;
+var valueOrDefault$5 = helpers$1.valueOrDefault;
+
+var PI$1 = Math.PI;
+var DOUBLE_PI$1 = PI$1 * 2;
+var HALF_PI$1 = PI$1 / 2;
 
 core_defaults._set('doughnut', {
 	animation: {
@@ -4467,25 +5342,25 @@ core_defaults._set('doughnut', {
 		mode: 'single'
 	},
 	legendCallback: function(chart) {
-		var text = [];
-		text.push('<ul class="' + chart.id + '-legend">');
-
+		var list = document.createElement('ul');
 		var data = chart.data;
 		var datasets = data.datasets;
 		var labels = data.labels;
+		var i, ilen, listItem, listItemSpan;
 
+		list.setAttribute('class', chart.id + '-legend');
 		if (datasets.length) {
-			for (var i = 0; i < datasets[0].data.length; ++i) {
-				text.push('<li><span style="background-color:' + datasets[0].backgroundColor[i] + '"></span>');
+			for (i = 0, ilen = datasets[0].data.length; i < ilen; ++i) {
+				listItem = list.appendChild(document.createElement('li'));
+				listItemSpan = listItem.appendChild(document.createElement('span'));
+				listItemSpan.style.backgroundColor = datasets[0].backgroundColor[i];
 				if (labels[i]) {
-					text.push(labels[i]);
+					listItem.appendChild(document.createTextNode(labels[i]));
 				}
-				text.push('</li>');
 			}
 		}
 
-		text.push('</ul>');
-		return text.join('');
+		return list.outerHTML;
 	},
 	legend: {
 		labels: {
@@ -4494,20 +5369,14 @@ core_defaults._set('doughnut', {
 				if (data.labels.length && data.datasets.length) {
 					return data.labels.map(function(label, i) {
 						var meta = chart.getDatasetMeta(0);
-						var ds = data.datasets[0];
-						var arc = meta.data[i];
-						var custom = arc && arc.custom || {};
-						var arcOpts = chart.options.elements.arc;
-						var fill = resolve$3([custom.backgroundColor, ds.backgroundColor, arcOpts.backgroundColor], undefined, i);
-						var stroke = resolve$3([custom.borderColor, ds.borderColor, arcOpts.borderColor], undefined, i);
-						var bw = resolve$3([custom.borderWidth, ds.borderWidth, arcOpts.borderWidth], undefined, i);
+						var style = meta.controller.getStyle(i);
 
 						return {
 							text: label,
-							fillStyle: fill,
-							strokeStyle: stroke,
-							lineWidth: bw,
-							hidden: isNaN(ds.data[i]) || meta.data[i].hidden,
+							fillStyle: style.backgroundColor,
+							strokeStyle: style.borderColor,
+							lineWidth: style.borderWidth,
+							hidden: isNaN(data.datasets[0].data[i]) || meta.data[i].hidden,
 
 							// Extra data used for toggling the correct item
 							index: i
@@ -4539,10 +5408,10 @@ core_defaults._set('doughnut', {
 	cutoutPercentage: 50,
 
 	// The rotation of the chart, where the first data arc begins.
-	rotation: Math.PI * -0.5,
+	rotation: -HALF_PI$1,
 
 	// The total circumference of the chart.
-	circumference: Math.PI * 2.0,
+	circumference: DOUBLE_PI$1,
 
 	// Need to override these to give a nice default
 	tooltips: {
@@ -4575,6 +5444,19 @@ var controller_doughnut = core_datasetController.extend({
 
 	linkScales: helpers$1.noop,
 
+	/**
+	 * @private
+	 */
+	_dataElementOptions: [
+		'backgroundColor',
+		'borderColor',
+		'borderWidth',
+		'borderAlign',
+		'hoverBackgroundColor',
+		'hoverBorderColor',
+		'hoverBorderWidth',
+	],
+
 	// Get index of the dataset in relation to the visible datasets. This allows determining the inner and outer radius correctly
 	getRingIndex: function(datasetIndex) {
 		var ringIndex = 0;
@@ -4593,46 +5475,52 @@ var controller_doughnut = core_datasetController.extend({
 		var chart = me.chart;
 		var chartArea = chart.chartArea;
 		var opts = chart.options;
-		var availableWidth = chartArea.right - chartArea.left;
-		var availableHeight = chartArea.bottom - chartArea.top;
-		var minSize = Math.min(availableWidth, availableHeight);
-		var offset = {x: 0, y: 0};
+		var ratioX = 1;
+		var ratioY = 1;
+		var offsetX = 0;
+		var offsetY = 0;
 		var meta = me.getMeta();
 		var arcs = meta.data;
-		var cutoutPercentage = opts.cutoutPercentage;
+		var cutout = opts.cutoutPercentage / 100 || 0;
 		var circumference = opts.circumference;
 		var chartWeight = me._getRingWeight(me.index);
-		var i, ilen;
+		var maxWidth, maxHeight, i, ilen;
 
-		// If the chart's circumference isn't a full circle, calculate minSize as a ratio of the width/height of the arc
-		if (circumference < Math.PI * 2.0) {
-			var startAngle = opts.rotation % (Math.PI * 2.0);
-			startAngle += Math.PI * 2.0 * (startAngle >= Math.PI ? -1 : startAngle < -Math.PI ? 1 : 0);
+		// If the chart's circumference isn't a full circle, calculate size as a ratio of the width/height of the arc
+		if (circumference < DOUBLE_PI$1) {
+			var startAngle = opts.rotation % DOUBLE_PI$1;
+			startAngle += startAngle >= PI$1 ? -DOUBLE_PI$1 : startAngle < -PI$1 ? DOUBLE_PI$1 : 0;
 			var endAngle = startAngle + circumference;
-			var start = {x: Math.cos(startAngle), y: Math.sin(startAngle)};
-			var end = {x: Math.cos(endAngle), y: Math.sin(endAngle)};
-			var contains0 = (startAngle <= 0 && endAngle >= 0) || (startAngle <= Math.PI * 2.0 && Math.PI * 2.0 <= endAngle);
-			var contains90 = (startAngle <= Math.PI * 0.5 && Math.PI * 0.5 <= endAngle) || (startAngle <= Math.PI * 2.5 && Math.PI * 2.5 <= endAngle);
-			var contains180 = (startAngle <= -Math.PI && -Math.PI <= endAngle) || (startAngle <= Math.PI && Math.PI <= endAngle);
-			var contains270 = (startAngle <= -Math.PI * 0.5 && -Math.PI * 0.5 <= endAngle) || (startAngle <= Math.PI * 1.5 && Math.PI * 1.5 <= endAngle);
-			var cutout = cutoutPercentage / 100.0;
-			var min = {x: contains180 ? -1 : Math.min(start.x * (start.x < 0 ? 1 : cutout), end.x * (end.x < 0 ? 1 : cutout)), y: contains270 ? -1 : Math.min(start.y * (start.y < 0 ? 1 : cutout), end.y * (end.y < 0 ? 1 : cutout))};
-			var max = {x: contains0 ? 1 : Math.max(start.x * (start.x > 0 ? 1 : cutout), end.x * (end.x > 0 ? 1 : cutout)), y: contains90 ? 1 : Math.max(start.y * (start.y > 0 ? 1 : cutout), end.y * (end.y > 0 ? 1 : cutout))};
-			var size = {width: (max.x - min.x) * 0.5, height: (max.y - min.y) * 0.5};
-			minSize = Math.min(availableWidth / size.width, availableHeight / size.height);
-			offset = {x: (max.x + min.x) * -0.5, y: (max.y + min.y) * -0.5};
+			var startX = Math.cos(startAngle);
+			var startY = Math.sin(startAngle);
+			var endX = Math.cos(endAngle);
+			var endY = Math.sin(endAngle);
+			var contains0 = (startAngle <= 0 && endAngle >= 0) || endAngle >= DOUBLE_PI$1;
+			var contains90 = (startAngle <= HALF_PI$1 && endAngle >= HALF_PI$1) || endAngle >= DOUBLE_PI$1 + HALF_PI$1;
+			var contains180 = startAngle === -PI$1 || endAngle >= PI$1;
+			var contains270 = (startAngle <= -HALF_PI$1 && endAngle >= -HALF_PI$1) || endAngle >= PI$1 + HALF_PI$1;
+			var minX = contains180 ? -1 : Math.min(startX, startX * cutout, endX, endX * cutout);
+			var minY = contains270 ? -1 : Math.min(startY, startY * cutout, endY, endY * cutout);
+			var maxX = contains0 ? 1 : Math.max(startX, startX * cutout, endX, endX * cutout);
+			var maxY = contains90 ? 1 : Math.max(startY, startY * cutout, endY, endY * cutout);
+			ratioX = (maxX - minX) / 2;
+			ratioY = (maxY - minY) / 2;
+			offsetX = -(maxX + minX) / 2;
+			offsetY = -(maxY + minY) / 2;
 		}
 
 		for (i = 0, ilen = arcs.length; i < ilen; ++i) {
-			arcs[i]._options = me._resolveElementOptions(arcs[i], i);
+			arcs[i]._options = me._resolveDataElementOptions(arcs[i], i);
 		}
 
 		chart.borderWidth = me.getMaxBorderWidth();
-		chart.outerRadius = Math.max((minSize - chart.borderWidth) / 2, 0);
-		chart.innerRadius = Math.max(cutoutPercentage ? (chart.outerRadius / 100) * (cutoutPercentage) : 0, 0);
+		maxWidth = (chartArea.right - chartArea.left - chart.borderWidth) / ratioX;
+		maxHeight = (chartArea.bottom - chartArea.top - chart.borderWidth) / ratioY;
+		chart.outerRadius = Math.max(Math.min(maxWidth, maxHeight) / 2, 0);
+		chart.innerRadius = Math.max(chart.outerRadius * cutout, 0);
 		chart.radiusLength = (chart.outerRadius - chart.innerRadius) / (me._getVisibleDatasetWeightTotal() || 1);
-		chart.offsetX = offset.x * chart.outerRadius;
-		chart.offsetY = offset.y * chart.outerRadius;
+		chart.offsetX = offsetX * chart.outerRadius;
+		chart.offsetY = offsetY * chart.outerRadius;
 
 		meta.total = me.calculateTotal();
 
@@ -4655,7 +5543,7 @@ var controller_doughnut = core_datasetController.extend({
 		var startAngle = opts.rotation; // non reset case handled later
 		var endAngle = opts.rotation; // non reset case handled later
 		var dataset = me.getDataset();
-		var circumference = reset && animationOpts.animateRotate ? 0 : arc.hidden ? 0 : me.calculateCircumference(dataset.data[index]) * (opts.circumference / (2.0 * Math.PI));
+		var circumference = reset && animationOpts.animateRotate ? 0 : arc.hidden ? 0 : me.calculateCircumference(dataset.data[index]) * (opts.circumference / DOUBLE_PI$1);
 		var innerRadius = reset && animationOpts.animateScale ? 0 : me.innerRadius;
 		var outerRadius = reset && animationOpts.animateScale ? 0 : me.outerRadius;
 		var options = arc._options || {};
@@ -4721,7 +5609,7 @@ var controller_doughnut = core_datasetController.extend({
 	calculateCircumference: function(value) {
 		var total = this.getMeta().total;
 		if (total > 0 && !isNaN(value)) {
-			return (Math.PI * 2.0) * (Math.abs(value) / total);
+			return DOUBLE_PI$1 * (Math.abs(value) / total);
 		}
 		return 0;
 	},
@@ -4753,7 +5641,12 @@ var controller_doughnut = core_datasetController.extend({
 
 		for (i = 0, ilen = arcs.length; i < ilen; ++i) {
 			arc = arcs[i];
-			options = controller ? controller._resolveElementOptions(arc, i) : arc._options;
+			if (controller) {
+				controller._configure();
+				options = controller._resolveDataElementOptions(arc, i);
+			} else {
+				options = arc._options;
+			}
 			if (options.borderAlign !== 'inner') {
 				borderWidth = options.borderWidth;
 				hoverWidth = options.hoverBorderWidth;
@@ -4779,51 +5672,9 @@ var controller_doughnut = core_datasetController.extend({
 			borderWidth: model.borderWidth,
 		};
 
-		model.backgroundColor = valueOrDefault$4(options.hoverBackgroundColor, getHoverColor(options.backgroundColor));
-		model.borderColor = valueOrDefault$4(options.hoverBorderColor, getHoverColor(options.borderColor));
-		model.borderWidth = valueOrDefault$4(options.hoverBorderWidth, options.borderWidth);
-	},
-
-	/**
-	 * @private
-	 */
-	_resolveElementOptions: function(arc, index) {
-		var me = this;
-		var chart = me.chart;
-		var dataset = me.getDataset();
-		var custom = arc.custom || {};
-		var options = chart.options.elements.arc;
-		var values = {};
-		var i, ilen, key;
-
-		// Scriptable options
-		var context = {
-			chart: chart,
-			dataIndex: index,
-			dataset: dataset,
-			datasetIndex: me.index
-		};
-
-		var keys = [
-			'backgroundColor',
-			'borderColor',
-			'borderWidth',
-			'borderAlign',
-			'hoverBackgroundColor',
-			'hoverBorderColor',
-			'hoverBorderWidth',
-		];
-
-		for (i = 0, ilen = keys.length; i < ilen; ++i) {
-			key = keys[i];
-			values[key] = resolve$3([
-				custom[key],
-				dataset[key],
-				options[key]
-			], context, index);
-		}
-
-		return values;
+		model.backgroundColor = valueOrDefault$5(options.hoverBackgroundColor, getHoverColor(options.backgroundColor));
+		model.borderColor = valueOrDefault$5(options.hoverBorderColor, getHoverColor(options.borderColor));
+		model.borderWidth = valueOrDefault$5(options.hoverBorderWidth, options.borderWidth);
 	},
 
 	/**
@@ -4846,7 +5697,7 @@ var controller_doughnut = core_datasetController.extend({
 	 * @private
 	 */
 	_getRingWeight: function(dataSetIndex) {
-		return Math.max(valueOrDefault$4(this.chart.data.datasets[dataSetIndex].weight, 1), 0);
+		return Math.max(valueOrDefault$5(this.chart.data.datasets[dataSetIndex].weight, 1), 0);
 	},
 
 	/**
@@ -4873,8 +5724,6 @@ core_defaults._set('horizontalBar', {
 		yAxes: [{
 			type: 'category',
 			position: 'left',
-			categoryPercentage: 0.8,
-			barPercentage: 0.9,
 			offset: true,
 			gridLines: {
 				offsetGridLines: true
@@ -4894,6 +5743,15 @@ core_defaults._set('horizontalBar', {
 	}
 });
 
+core_defaults._set('global', {
+	datasets: {
+		horizontalBar: {
+			categoryPercentage: 0.8,
+			barPercentage: 0.9
+		}
+	}
+});
+
 var controller_horizontalBar = controller_bar.extend({
 	/**
 	 * @private
@@ -4910,8 +5768,8 @@ var controller_horizontalBar = controller_bar.extend({
 	}
 });
 
-var valueOrDefault$5 = helpers$1.valueOrDefault;
-var resolve$4 = helpers$1.options.resolve;
+var valueOrDefault$6 = helpers$1.valueOrDefault;
+var resolve$2 = helpers$1.options.resolve;
 var isPointInArea = helpers$1.canvas._isPointInArea;
 
 core_defaults._set('line', {
@@ -4934,9 +5792,50 @@ core_defaults._set('line', {
 	}
 });
 
-function lineEnabled(dataset, options) {
-	return valueOrDefault$5(dataset.showLine, options.showLines);
+function scaleClip(scale, halfBorderWidth) {
+	var tickOpts = scale && scale.options.ticks || {};
+	var reverse = tickOpts.reverse;
+	var min = tickOpts.min === undefined ? halfBorderWidth : 0;
+	var max = tickOpts.max === undefined ? halfBorderWidth : 0;
+	return {
+		start: reverse ? max : min,
+		end: reverse ? min : max
+	};
 }
+
+function defaultClip(xScale, yScale, borderWidth) {
+	var halfBorderWidth = borderWidth / 2;
+	var x = scaleClip(xScale, halfBorderWidth);
+	var y = scaleClip(yScale, halfBorderWidth);
+
+	return {
+		top: y.end,
+		right: x.end,
+		bottom: y.start,
+		left: x.start
+	};
+}
+
+function toClip(value) {
+	var t, r, b, l;
+
+	if (helpers$1.isObject(value)) {
+		t = value.top;
+		r = value.right;
+		b = value.bottom;
+		l = value.left;
+	} else {
+		t = r = b = l = value;
+	}
+
+	return {
+		top: t,
+		right: r,
+		bottom: b,
+		left: l
+	};
+}
+
 
 var controller_line = core_datasetController.extend({
 
@@ -4944,30 +5843,65 @@ var controller_line = core_datasetController.extend({
 
 	dataElementType: elements.Point,
 
+	/**
+	 * @private
+	 */
+	_datasetElementOptions: [
+		'backgroundColor',
+		'borderCapStyle',
+		'borderColor',
+		'borderDash',
+		'borderDashOffset',
+		'borderJoinStyle',
+		'borderWidth',
+		'cubicInterpolationMode',
+		'fill'
+	],
+
+	/**
+	 * @private
+	 */
+	_dataElementOptions: {
+		backgroundColor: 'pointBackgroundColor',
+		borderColor: 'pointBorderColor',
+		borderWidth: 'pointBorderWidth',
+		hitRadius: 'pointHitRadius',
+		hoverBackgroundColor: 'pointHoverBackgroundColor',
+		hoverBorderColor: 'pointHoverBorderColor',
+		hoverBorderWidth: 'pointHoverBorderWidth',
+		hoverRadius: 'pointHoverRadius',
+		pointStyle: 'pointStyle',
+		radius: 'pointRadius',
+		rotation: 'pointRotation'
+	},
+
 	update: function(reset) {
 		var me = this;
 		var meta = me.getMeta();
 		var line = meta.dataset;
 		var points = meta.data || [];
-		var scale = me.getScaleForId(meta.yAxisID);
-		var dataset = me.getDataset();
-		var showLine = lineEnabled(dataset, me.chart.options);
+		var options = me.chart.options;
+		var config = me._config;
+		var showLine = me._showLine = valueOrDefault$6(config.showLine, options.showLines);
 		var i, ilen;
+
+		me._xScale = me.getScaleForId(meta.xAxisID);
+		me._yScale = me.getScaleForId(meta.yAxisID);
 
 		// Update Line
 		if (showLine) {
 			// Compatibility: If the properties are defined with only the old name, use those values
-			if ((dataset.tension !== undefined) && (dataset.lineTension === undefined)) {
-				dataset.lineTension = dataset.tension;
+			if (config.tension !== undefined && config.lineTension === undefined) {
+				config.lineTension = config.tension;
 			}
 
 			// Utility
-			line._scale = scale;
+			line._scale = me._yScale;
 			line._datasetIndex = me.index;
 			// Data
 			line._children = points;
 			// Model
-			line._model = me._resolveLineOptions(line);
+			line._model = me._resolveDatasetElementOptions(line);
 
 			line.pivot();
 		}
@@ -4994,12 +5928,12 @@ var controller_line = core_datasetController.extend({
 		var dataset = me.getDataset();
 		var datasetIndex = me.index;
 		var value = dataset.data[index];
-		var yScale = me.getScaleForId(meta.yAxisID);
-		var xScale = me.getScaleForId(meta.xAxisID);
+		var xScale = me._xScale;
+		var yScale = me._yScale;
 		var lineModel = meta.dataset._model;
 		var x, y;
 
-		var options = me._resolvePointOptions(point, index);
+		var options = me._resolveDataElementOptions(point, index);
 
 		x = xScale.getPixelForValue(typeof value === 'object' ? value : NaN, index, datasetIndex);
 		y = reset ? yScale.getBasePixel() : me.calculatePointY(value, index, datasetIndex);
@@ -5023,7 +5957,7 @@ var controller_line = core_datasetController.extend({
 			backgroundColor: options.backgroundColor,
 			borderColor: options.borderColor,
 			borderWidth: options.borderWidth,
-			tension: valueOrDefault$5(custom.tension, lineModel ? lineModel.tension : 0),
+			tension: valueOrDefault$6(custom.tension, lineModel ? lineModel.tension : 0),
 			steppedLine: lineModel ? lineModel.steppedLine : false,
 			// Tooltip
 			hitRadius: options.hitRadius
@@ -5033,91 +5967,21 @@ var controller_line = core_datasetController.extend({
 	/**
 	 * @private
 	 */
-	_resolvePointOptions: function(element, index) {
+	_resolveDatasetElementOptions: function(element) {
 		var me = this;
-		var chart = me.chart;
-		var dataset = chart.data.datasets[me.index];
+		var config = me._config;
 		var custom = element.custom || {};
-		var options = chart.options.elements.point;
-		var values = {};
-		var i, ilen, key;
-
-		// Scriptable options
-		var context = {
-			chart: chart,
-			dataIndex: index,
-			dataset: dataset,
-			datasetIndex: me.index
-		};
-
-		var ELEMENT_OPTIONS = {
-			backgroundColor: 'pointBackgroundColor',
-			borderColor: 'pointBorderColor',
-			borderWidth: 'pointBorderWidth',
-			hitRadius: 'pointHitRadius',
-			hoverBackgroundColor: 'pointHoverBackgroundColor',
-			hoverBorderColor: 'pointHoverBorderColor',
-			hoverBorderWidth: 'pointHoverBorderWidth',
-			hoverRadius: 'pointHoverRadius',
-			pointStyle: 'pointStyle',
-			radius: 'pointRadius',
-			rotation: 'pointRotation'
-		};
-		var keys = Object.keys(ELEMENT_OPTIONS);
-
-		for (i = 0, ilen = keys.length; i < ilen; ++i) {
-			key = keys[i];
-			values[key] = resolve$4([
-				custom[key],
-				dataset[ELEMENT_OPTIONS[key]],
-				dataset[key],
-				options[key]
-			], context, index);
-		}
-
-		return values;
-	},
-
-	/**
-	 * @private
-	 */
-	_resolveLineOptions: function(element) {
-		var me = this;
-		var chart = me.chart;
-		var dataset = chart.data.datasets[me.index];
-		var custom = element.custom || {};
-		var options = chart.options;
-		var elementOptions = options.elements.line;
-		var values = {};
-		var i, ilen, key;
-
-		var keys = [
-			'backgroundColor',
-			'borderWidth',
-			'borderColor',
-			'borderCapStyle',
-			'borderDash',
-			'borderDashOffset',
-			'borderJoinStyle',
-			'fill',
-			'cubicInterpolationMode'
-		];
-
-		for (i = 0, ilen = keys.length; i < ilen; ++i) {
-			key = keys[i];
-			values[key] = resolve$4([
-				custom[key],
-				dataset[key],
-				elementOptions[key]
-			]);
-		}
+		var options = me.chart.options;
+		var lineOptions = options.elements.line;
+		var values = core_datasetController.prototype._resolveDatasetElementOptions.apply(me, arguments);
 
 		// The default behavior of lines is to break at null values, according
 		// to https://github.com/chartjs/Chart.js/issues/2435#issuecomment-216718158
 		// This option gives lines the ability to span gaps
-		values.spanGaps = valueOrDefault$5(dataset.spanGaps, options.spanGaps);
-		values.tension = valueOrDefault$5(dataset.lineTension, elementOptions.tension);
-		values.steppedLine = resolve$4([custom.steppedLine, dataset.steppedLine, elementOptions.stepped]);
+		values.spanGaps = valueOrDefault$6(config.spanGaps, options.spanGaps);
+		values.tension = valueOrDefault$6(config.lineTension, lineOptions.tension);
+		values.steppedLine = resolve$2([custom.steppedLine, config.steppedLine, lineOptions.stepped]);
+		values.clip = toClip(valueOrDefault$6(config.clip, defaultClip(me._xScale, me._yScale, values.borderWidth)));
 
 		return values;
 	},
@@ -5125,18 +5989,25 @@ var controller_line = core_datasetController.extend({
 	calculatePointY: function(value, index, datasetIndex) {
 		var me = this;
 		var chart = me.chart;
-		var meta = me.getMeta();
-		var yScale = me.getScaleForId(meta.yAxisID);
+		var yScale = me._yScale;
 		var sumPos = 0;
 		var sumNeg = 0;
-		var i, ds, dsMeta;
+		var i, ds, dsMeta, stackedRightValue, rightValue, metasets, ilen;
 
 		if (yScale.options.stacked) {
-			for (i = 0; i < datasetIndex; i++) {
-				ds = chart.data.datasets[i];
-				dsMeta = chart.getDatasetMeta(i);
-				if (dsMeta.type === 'line' && dsMeta.yAxisID === yScale.id && chart.isDatasetVisible(i)) {
-					var stackedRightValue = Number(yScale.getRightValue(ds.data[index]));
+			rightValue = +yScale.getRightValue(value);
+			metasets = chart._getSortedVisibleDatasetMetas();
+			ilen = metasets.length;
+
+			for (i = 0; i < ilen; ++i) {
+				dsMeta = metasets[i];
+				if (dsMeta.index === datasetIndex) {
+					break;
+				}
+
+				ds = chart.data.datasets[dsMeta.index];
+				if (dsMeta.type === 'line' && dsMeta.yAxisID === yScale.id) {
+					stackedRightValue = +yScale.getRightValue(ds.data[index]);
 					if (stackedRightValue < 0) {
 						sumNeg += stackedRightValue || 0;
 					} else {
@@ -5145,13 +6016,11 @@ var controller_line = core_datasetController.extend({
 				}
 			}
 
-			var rightValue = Number(yScale.getRightValue(value));
 			if (rightValue < 0) {
 				return yScale.getPixelForValue(sumNeg + rightValue);
 			}
 			return yScale.getPixelForValue(sumPos + rightValue);
 		}
-
 		return yScale.getPixelForValue(value);
 	},
 
@@ -5216,18 +6085,19 @@ var controller_line = core_datasetController.extend({
 		var meta = me.getMeta();
 		var points = meta.data || [];
 		var area = chart.chartArea;
-		var ilen = points.length;
-		var halfBorderWidth;
+		var canvas = chart.canvas;
 		var i = 0;
+		var ilen = points.length;
+		var clip;
 
-		if (lineEnabled(me.getDataset(), chart.options)) {
-			halfBorderWidth = (meta.dataset._model.borderWidth || 0) / 2;
+		if (me._showLine) {
+			clip = meta.dataset._model.clip;
 
 			helpers$1.canvas.clipArea(chart.ctx, {
-				left: area.left,
-				right: area.right,
-				top: area.top - halfBorderWidth,
-				bottom: area.bottom + halfBorderWidth
+				left: clip.left === false ? 0 : area.left - clip.left,
+				right: clip.right === false ? canvas.width : area.right + clip.right,
+				top: clip.top === false ? 0 : area.top - clip.top,
+				bottom: clip.bottom === false ? canvas.height : area.bottom + clip.bottom
 			});
 
 			meta.dataset.draw();
@@ -5256,14 +6126,14 @@ var controller_line = core_datasetController.extend({
 			radius: model.radius
 		};
 
-		model.backgroundColor = valueOrDefault$5(options.hoverBackgroundColor, getHoverColor(options.backgroundColor));
-		model.borderColor = valueOrDefault$5(options.hoverBorderColor, getHoverColor(options.borderColor));
-		model.borderWidth = valueOrDefault$5(options.hoverBorderWidth, options.borderWidth);
-		model.radius = valueOrDefault$5(options.hoverRadius, options.radius);
+		model.backgroundColor = valueOrDefault$6(options.hoverBackgroundColor, getHoverColor(options.backgroundColor));
+		model.borderColor = valueOrDefault$6(options.hoverBorderColor, getHoverColor(options.borderColor));
+		model.borderWidth = valueOrDefault$6(options.hoverBorderWidth, options.borderWidth);
+		model.radius = valueOrDefault$6(options.hoverRadius, options.radius);
 	},
 });
 
-var resolve$5 = helpers$1.options.resolve;
+var resolve$3 = helpers$1.options.resolve;
 
 core_defaults._set('polarArea', {
 	scale: {
@@ -5290,25 +6160,25 @@ core_defaults._set('polarArea', {
 
 	startAngle: -0.5 * Math.PI,
 	legendCallback: function(chart) {
-		var text = [];
-		text.push('<ul class="' + chart.id + '-legend">');
-
+		var list = document.createElement('ul');
 		var data = chart.data;
 		var datasets = data.datasets;
 		var labels = data.labels;
+		var i, ilen, listItem, listItemSpan;
 
+		list.setAttribute('class', chart.id + '-legend');
 		if (datasets.length) {
-			for (var i = 0; i < datasets[0].data.length; ++i) {
-				text.push('<li><span style="background-color:' + datasets[0].backgroundColor[i] + '"></span>');
+			for (i = 0, ilen = datasets[0].data.length; i < ilen; ++i) {
+				listItem = list.appendChild(document.createElement('li'));
+				listItemSpan = listItem.appendChild(document.createElement('span'));
+				listItemSpan.style.backgroundColor = datasets[0].backgroundColor[i];
 				if (labels[i]) {
-					text.push(labels[i]);
+					listItem.appendChild(document.createTextNode(labels[i]));
 				}
-				text.push('</li>');
 			}
 		}
 
-		text.push('</ul>');
-		return text.join('');
+		return list.outerHTML;
 	},
 	legend: {
 		labels: {
@@ -5317,20 +6187,14 @@ core_defaults._set('polarArea', {
 				if (data.labels.length && data.datasets.length) {
 					return data.labels.map(function(label, i) {
 						var meta = chart.getDatasetMeta(0);
-						var ds = data.datasets[0];
-						var arc = meta.data[i];
-						var custom = arc.custom || {};
-						var arcOpts = chart.options.elements.arc;
-						var fill = resolve$5([custom.backgroundColor, ds.backgroundColor, arcOpts.backgroundColor], undefined, i);
-						var stroke = resolve$5([custom.borderColor, ds.borderColor, arcOpts.borderColor], undefined, i);
-						var bw = resolve$5([custom.borderWidth, ds.borderWidth, arcOpts.borderWidth], undefined, i);
+						var style = meta.controller.getStyle(i);
 
 						return {
 							text: label,
-							fillStyle: fill,
-							strokeStyle: stroke,
-							lineWidth: bw,
-							hidden: isNaN(ds.data[i]) || meta.data[i].hidden,
+							fillStyle: style.backgroundColor,
+							strokeStyle: style.borderColor,
+							lineWidth: style.borderWidth,
+							hidden: isNaN(data.datasets[0].data[i]) || meta.data[i].hidden,
 
 							// Extra data used for toggling the correct item
 							index: i
@@ -5374,6 +6238,33 @@ var controller_polarArea = core_datasetController.extend({
 
 	linkScales: helpers$1.noop,
 
+	/**
+	 * @private
+	 */
+	_dataElementOptions: [
+		'backgroundColor',
+		'borderColor',
+		'borderWidth',
+		'borderAlign',
+		'hoverBackgroundColor',
+		'hoverBorderColor',
+		'hoverBorderWidth',
+	],
+
+	/**
+	 * @private
+	 */
+	_getIndexScaleId: function() {
+		return this.chart.scale.id;
+	},
+
+	/**
+	 * @private
+	 */
+	_getValueScaleId: function() {
+		return this.chart.scale.id;
+	},
+
 	update: function(reset) {
 		var me = this;
 		var dataset = me.getDataset();
@@ -5396,7 +6287,7 @@ var controller_polarArea = core_datasetController.extend({
 		}
 
 		for (i = 0, ilen = arcs.length; i < ilen; ++i) {
-			arcs[i]._options = me._resolveElementOptions(arcs[i], i);
+			arcs[i]._options = me._resolveDataElementOptions(arcs[i], i);
 			me.updateElement(arcs[i], i, reset);
 		}
 	},
@@ -5502,48 +6393,6 @@ var controller_polarArea = core_datasetController.extend({
 	/**
 	 * @private
 	 */
-	_resolveElementOptions: function(arc, index) {
-		var me = this;
-		var chart = me.chart;
-		var dataset = me.getDataset();
-		var custom = arc.custom || {};
-		var options = chart.options.elements.arc;
-		var values = {};
-		var i, ilen, key;
-
-		// Scriptable options
-		var context = {
-			chart: chart,
-			dataIndex: index,
-			dataset: dataset,
-			datasetIndex: me.index
-		};
-
-		var keys = [
-			'backgroundColor',
-			'borderColor',
-			'borderWidth',
-			'borderAlign',
-			'hoverBackgroundColor',
-			'hoverBorderColor',
-			'hoverBorderWidth',
-		];
-
-		for (i = 0, ilen = keys.length; i < ilen; ++i) {
-			key = keys[i];
-			values[key] = resolve$5([
-				custom[key],
-				dataset[key],
-				options[key]
-			], context, index);
-		}
-
-		return values;
-	},
-
-	/**
-	 * @private
-	 */
 	_computeAngle: function(index) {
 		var me = this;
 		var count = this.getMeta().count;
@@ -5562,7 +6411,7 @@ var controller_polarArea = core_datasetController.extend({
 			datasetIndex: me.index
 		};
 
-		return resolve$5([
+		return resolve$3([
 			me.chart.options.elements.arc.angle,
 			(2 * Math.PI) / count
 		], context, index);
@@ -5577,27 +6426,72 @@ core_defaults._set('pie', {
 // Pie charts are Doughnut chart with different defaults
 var controller_pie = controller_doughnut;
 
-var valueOrDefault$6 = helpers$1.valueOrDefault;
-var resolve$6 = helpers$1.options.resolve;
+var valueOrDefault$7 = helpers$1.valueOrDefault;
 
 core_defaults._set('radar', {
+	spanGaps: false,
 	scale: {
 		type: 'radialLinear'
 	},
 	elements: {
 		line: {
+			fill: 'start',
 			tension: 0 // no bezier in radar
 		}
 	}
 });
 
 var controller_radar = core_datasetController.extend({
-
 	datasetElementType: elements.Line,
 
 	dataElementType: elements.Point,
 
 	linkScales: helpers$1.noop,
+
+	/**
+	 * @private
+	 */
+	_datasetElementOptions: [
+		'backgroundColor',
+		'borderWidth',
+		'borderColor',
+		'borderCapStyle',
+		'borderDash',
+		'borderDashOffset',
+		'borderJoinStyle',
+		'fill'
+	],
+
+	/**
+	 * @private
+	 */
+	_dataElementOptions: {
+		backgroundColor: 'pointBackgroundColor',
+		borderColor: 'pointBorderColor',
+		borderWidth: 'pointBorderWidth',
+		hitRadius: 'pointHitRadius',
+		hoverBackgroundColor: 'pointHoverBackgroundColor',
+		hoverBorderColor: 'pointHoverBorderColor',
+		hoverBorderWidth: 'pointHoverBorderWidth',
+		hoverRadius: 'pointHoverRadius',
+		pointStyle: 'pointStyle',
+		radius: 'pointRadius',
+		rotation: 'pointRotation'
+	},
+
+	/**
+	 * @private
+	 */
+	_getIndexScaleId: function() {
+		return this.chart.scale.id;
+	},
+
+	/**
+	 * @private
+	 */
+	_getValueScaleId: function() {
+		return this.chart.scale.id;
+	},
 
 	update: function(reset) {
 		var me = this;
@@ -5605,12 +6499,12 @@ var controller_radar = core_datasetController.extend({
 		var line = meta.dataset;
 		var points = meta.data || [];
 		var scale = me.chart.scale;
-		var dataset = me.getDataset();
+		var config = me._config;
 		var i, ilen;
 
 		// Compatibility: If the properties are defined with only the old name, use those values
-		if ((dataset.tension !== undefined) && (dataset.lineTension === undefined)) {
-			dataset.lineTension = dataset.tension;
+		if (config.tension !== undefined && config.lineTension === undefined) {
+			config.lineTension = config.tension;
 		}
 
 		// Utility
@@ -5620,7 +6514,7 @@ var controller_radar = core_datasetController.extend({
 		line._children = points;
 		line._loop = true;
 		// Model
-		line._model = me._resolveLineOptions(line);
+		line._model = me._resolveDatasetElementOptions(line);
 
 		line.pivot();
 
@@ -5644,7 +6538,7 @@ var controller_radar = core_datasetController.extend({
 		var dataset = me.getDataset();
 		var scale = me.chart.scale;
 		var pointPosition = scale.getPointPositionForValue(index, dataset.data[index]);
-		var options = me._resolvePointOptions(point, index);
+		var options = me._resolveDataElementOptions(point, index);
 		var lineModel = me.getMeta().dataset._model;
 		var x = reset ? scale.xCenter : pointPosition.x;
 		var y = reset ? scale.yCenter : pointPosition.y;
@@ -5667,7 +6561,7 @@ var controller_radar = core_datasetController.extend({
 			backgroundColor: options.backgroundColor,
 			borderColor: options.borderColor,
 			borderWidth: options.borderWidth,
-			tension: valueOrDefault$6(custom.tension, lineModel ? lineModel.tension : 0),
+			tension: valueOrDefault$7(custom.tension, lineModel ? lineModel.tension : 0),
 
 			// Tooltip
 			hitRadius: options.hitRadius
@@ -5677,84 +6571,14 @@ var controller_radar = core_datasetController.extend({
 	/**
 	 * @private
 	 */
-	_resolvePointOptions: function(element, index) {
+	_resolveDatasetElementOptions: function() {
 		var me = this;
-		var chart = me.chart;
-		var dataset = chart.data.datasets[me.index];
-		var custom = element.custom || {};
-		var options = chart.options.elements.point;
-		var values = {};
-		var i, ilen, key;
+		var config = me._config;
+		var options = me.chart.options;
+		var values = core_datasetController.prototype._resolveDatasetElementOptions.apply(me, arguments);
 
-		// Scriptable options
-		var context = {
-			chart: chart,
-			dataIndex: index,
-			dataset: dataset,
-			datasetIndex: me.index
-		};
-
-		var ELEMENT_OPTIONS = {
-			backgroundColor: 'pointBackgroundColor',
-			borderColor: 'pointBorderColor',
-			borderWidth: 'pointBorderWidth',
-			hitRadius: 'pointHitRadius',
-			hoverBackgroundColor: 'pointHoverBackgroundColor',
-			hoverBorderColor: 'pointHoverBorderColor',
-			hoverBorderWidth: 'pointHoverBorderWidth',
-			hoverRadius: 'pointHoverRadius',
-			pointStyle: 'pointStyle',
-			radius: 'pointRadius',
-			rotation: 'pointRotation'
-		};
-		var keys = Object.keys(ELEMENT_OPTIONS);
-
-		for (i = 0, ilen = keys.length; i < ilen; ++i) {
-			key = keys[i];
-			values[key] = resolve$6([
-				custom[key],
-				dataset[ELEMENT_OPTIONS[key]],
-				dataset[key],
-				options[key]
-			], context, index);
-		}
-
-		return values;
-	},
-
-	/**
-	 * @private
-	 */
-	_resolveLineOptions: function(element) {
-		var me = this;
-		var chart = me.chart;
-		var dataset = chart.data.datasets[me.index];
-		var custom = element.custom || {};
-		var options = chart.options.elements.line;
-		var values = {};
-		var i, ilen, key;
-
-		var keys = [
-			'backgroundColor',
-			'borderWidth',
-			'borderColor',
-			'borderCapStyle',
-			'borderDash',
-			'borderDashOffset',
-			'borderJoinStyle',
-			'fill'
-		];
-
-		for (i = 0, ilen = keys.length; i < ilen; ++i) {
-			key = keys[i];
-			values[key] = resolve$6([
-				custom[key],
-				dataset[key],
-				options[key]
-			]);
-		}
-
-		values.tension = valueOrDefault$6(dataset.lineTension, options.tension);
+		values.spanGaps = valueOrDefault$7(config.spanGaps, options.spanGaps);
+		values.tension = valueOrDefault$7(config.lineTension, options.elements.line.tension);
 
 		return values;
 	},
@@ -5765,6 +6589,13 @@ var controller_radar = core_datasetController.extend({
 		var area = me.chart.chartArea;
 		var points = meta.data || [];
 		var i, ilen, model, controlPoints;
+
+		// Only consider points that are drawn in case the spanGaps option is used
+		if (meta.dataset._model.spanGaps) {
+			points = points.filter(function(pt) {
+				return !pt._model.skip;
+			});
+		}
 
 		function capControlPoint(pt, min, max) {
 			return Math.max(Math.min(pt, max), min);
@@ -5799,10 +6630,10 @@ var controller_radar = core_datasetController.extend({
 			radius: model.radius
 		};
 
-		model.backgroundColor = valueOrDefault$6(options.hoverBackgroundColor, getHoverColor(options.backgroundColor));
-		model.borderColor = valueOrDefault$6(options.hoverBorderColor, getHoverColor(options.borderColor));
-		model.borderWidth = valueOrDefault$6(options.hoverBorderWidth, options.borderWidth);
-		model.radius = valueOrDefault$6(options.hoverRadius, options.radius);
+		model.backgroundColor = valueOrDefault$7(options.hoverBackgroundColor, getHoverColor(options.backgroundColor));
+		model.borderColor = valueOrDefault$7(options.hoverBorderColor, getHoverColor(options.borderColor));
+		model.borderWidth = valueOrDefault$7(options.hoverBorderWidth, options.borderWidth);
+		model.radius = valueOrDefault$7(options.hoverRadius, options.radius);
 	}
 });
 
@@ -5824,8 +6655,6 @@ core_defaults._set('scatter', {
 		}]
 	},
 
-	showLines: false,
-
 	tooltips: {
 		callbacks: {
 			title: function() {
@@ -5834,6 +6663,14 @@ core_defaults._set('scatter', {
 			label: function(item) {
 				return '(' + item.xLabel + ', ' + item.yLabel + ')';
 			}
+		}
+	}
+});
+
+core_defaults._set('global', {
+	datasets: {
+		scatter: {
+			showLine: false
 		}
 	}
 });
@@ -5880,17 +6717,13 @@ function getRelativePosition(e, chart) {
  * @param {function} handler - the callback to execute for each visible item
  */
 function parseVisibleItems(chart, handler) {
-	var datasets = chart.data.datasets;
-	var meta, i, j, ilen, jlen;
+	var metasets = chart._getSortedVisibleDatasetMetas();
+	var metadata, i, j, ilen, jlen, element;
 
-	for (i = 0, ilen = datasets.length; i < ilen; ++i) {
-		if (!chart.isDatasetVisible(i)) {
-			continue;
-		}
-
-		meta = chart.getDatasetMeta(i);
-		for (j = 0, jlen = meta.data.length; j < jlen; ++j) {
-			var element = meta.data[j];
+	for (i = 0, ilen = metasets.length; i < ilen; ++i) {
+		metadata = metasets[i].data;
+		for (j = 0, jlen = metadata.length; j < jlen; ++j) {
+			element = metadata[j];
 			if (!element._view.skip) {
 				handler(element);
 			}
@@ -5975,15 +6808,12 @@ function indexMode(chart, e, options) {
 		return [];
 	}
 
-	chart.data.datasets.forEach(function(dataset, datasetIndex) {
-		if (chart.isDatasetVisible(datasetIndex)) {
-			var meta = chart.getDatasetMeta(datasetIndex);
-			var element = meta.data[items[0]._index];
+	chart._getSortedVisibleDatasetMetas().forEach(function(meta) {
+		var element = meta.data[items[0]._index];
 
-			// don't count items that are skipped (null data)
-			if (element && !element._view.skip) {
-				elements.push(element);
-			}
+		// don't count items that are skipped (null data)
+		if (element && !element._view.skip) {
+			elements.push(element);
 		}
 	});
 
@@ -6164,55 +6994,193 @@ var core_interaction = {
 	}
 };
 
+var extend = helpers$1.extend;
+
 function filterByPosition(array, position) {
 	return helpers$1.where(array, function(v) {
-		return v.position === position;
+		return v.pos === position;
 	});
 }
 
 function sortByWeight(array, reverse) {
-	array.forEach(function(v, i) {
-		v._tmpIndex_ = i;
-		return v;
-	});
-	array.sort(function(a, b) {
+	return array.sort(function(a, b) {
 		var v0 = reverse ? b : a;
 		var v1 = reverse ? a : b;
 		return v0.weight === v1.weight ?
-			v0._tmpIndex_ - v1._tmpIndex_ :
+			v0.index - v1.index :
 			v0.weight - v1.weight;
-	});
-	array.forEach(function(v) {
-		delete v._tmpIndex_;
 	});
 }
 
-function findMaxPadding(boxes) {
-	var top = 0;
-	var left = 0;
-	var bottom = 0;
-	var right = 0;
-	helpers$1.each(boxes, function(box) {
-		if (box.getPadding) {
-			var boxPadding = box.getPadding();
-			top = Math.max(top, boxPadding.top);
-			left = Math.max(left, boxPadding.left);
-			bottom = Math.max(bottom, boxPadding.bottom);
-			right = Math.max(right, boxPadding.right);
-		}
-	});
+function wrapBoxes(boxes) {
+	var layoutBoxes = [];
+	var i, ilen, box;
+
+	for (i = 0, ilen = (boxes || []).length; i < ilen; ++i) {
+		box = boxes[i];
+		layoutBoxes.push({
+			index: i,
+			box: box,
+			pos: box.position,
+			horizontal: box.isHorizontal(),
+			weight: box.weight
+		});
+	}
+	return layoutBoxes;
+}
+
+function setLayoutDims(layouts, params) {
+	var i, ilen, layout;
+	for (i = 0, ilen = layouts.length; i < ilen; ++i) {
+		layout = layouts[i];
+		// store width used instead of chartArea.w in fitBoxes
+		layout.width = layout.horizontal
+			? layout.box.fullWidth && params.availableWidth
+			: params.vBoxMaxWidth;
+		// store height used instead of chartArea.h in fitBoxes
+		layout.height = layout.horizontal && params.hBoxMaxHeight;
+	}
+}
+
+function buildLayoutBoxes(boxes) {
+	var layoutBoxes = wrapBoxes(boxes);
+	var left = sortByWeight(filterByPosition(layoutBoxes, 'left'), true);
+	var right = sortByWeight(filterByPosition(layoutBoxes, 'right'));
+	var top = sortByWeight(filterByPosition(layoutBoxes, 'top'), true);
+	var bottom = sortByWeight(filterByPosition(layoutBoxes, 'bottom'));
+
 	return {
-		top: top,
-		left: left,
-		bottom: bottom,
-		right: right
+		leftAndTop: left.concat(top),
+		rightAndBottom: right.concat(bottom),
+		chartArea: filterByPosition(layoutBoxes, 'chartArea'),
+		vertical: left.concat(right),
+		horizontal: top.concat(bottom)
 	};
 }
 
-function addSizeByPosition(boxes, size) {
-	helpers$1.each(boxes, function(box) {
-		size[box.position] += box.isHorizontal() ? box.height : box.width;
-	});
+function getCombinedMax(maxPadding, chartArea, a, b) {
+	return Math.max(maxPadding[a], chartArea[a]) + Math.max(maxPadding[b], chartArea[b]);
+}
+
+function updateDims(chartArea, params, layout) {
+	var box = layout.box;
+	var maxPadding = chartArea.maxPadding;
+	var newWidth, newHeight;
+
+	if (layout.size) {
+		// this layout was already counted for, lets first reduce old size
+		chartArea[layout.pos] -= layout.size;
+	}
+	layout.size = layout.horizontal ? box.height : box.width;
+	chartArea[layout.pos] += layout.size;
+
+	if (box.getPadding) {
+		var boxPadding = box.getPadding();
+		maxPadding.top = Math.max(maxPadding.top, boxPadding.top);
+		maxPadding.left = Math.max(maxPadding.left, boxPadding.left);
+		maxPadding.bottom = Math.max(maxPadding.bottom, boxPadding.bottom);
+		maxPadding.right = Math.max(maxPadding.right, boxPadding.right);
+	}
+
+	newWidth = params.outerWidth - getCombinedMax(maxPadding, chartArea, 'left', 'right');
+	newHeight = params.outerHeight - getCombinedMax(maxPadding, chartArea, 'top', 'bottom');
+
+	if (newWidth !== chartArea.w || newHeight !== chartArea.h) {
+		chartArea.w = newWidth;
+		chartArea.h = newHeight;
+
+		// return true if chart area changed in layout's direction
+		return layout.horizontal ? newWidth !== chartArea.w : newHeight !== chartArea.h;
+	}
+}
+
+function handleMaxPadding(chartArea) {
+	var maxPadding = chartArea.maxPadding;
+
+	function updatePos(pos) {
+		var change = Math.max(maxPadding[pos] - chartArea[pos], 0);
+		chartArea[pos] += change;
+		return change;
+	}
+	chartArea.y += updatePos('top');
+	chartArea.x += updatePos('left');
+	updatePos('right');
+	updatePos('bottom');
+}
+
+function getMargins(horizontal, chartArea) {
+	var maxPadding = chartArea.maxPadding;
+
+	function marginForPositions(positions) {
+		var margin = {left: 0, top: 0, right: 0, bottom: 0};
+		positions.forEach(function(pos) {
+			margin[pos] = Math.max(chartArea[pos], maxPadding[pos]);
+		});
+		return margin;
+	}
+
+	return horizontal
+		? marginForPositions(['left', 'right'])
+		: marginForPositions(['top', 'bottom']);
+}
+
+function fitBoxes(boxes, chartArea, params) {
+	var refitBoxes = [];
+	var i, ilen, layout, box, refit, changed;
+
+	for (i = 0, ilen = boxes.length; i < ilen; ++i) {
+		layout = boxes[i];
+		box = layout.box;
+
+		box.update(
+			layout.width || chartArea.w,
+			layout.height || chartArea.h,
+			getMargins(layout.horizontal, chartArea)
+		);
+		if (updateDims(chartArea, params, layout)) {
+			changed = true;
+			if (refitBoxes.length) {
+				// Dimensions changed and there were non full width boxes before this
+				// -> we have to refit those
+				refit = true;
+			}
+		}
+		if (!box.fullWidth) { // fullWidth boxes don't need to be re-fitted in any case
+			refitBoxes.push(layout);
+		}
+	}
+
+	return refit ? fitBoxes(refitBoxes, chartArea, params) || changed : changed;
+}
+
+function placeBoxes(boxes, chartArea, params) {
+	var userPadding = params.padding;
+	var x = chartArea.x;
+	var y = chartArea.y;
+	var i, ilen, layout, box;
+
+	for (i = 0, ilen = boxes.length; i < ilen; ++i) {
+		layout = boxes[i];
+		box = layout.box;
+		if (layout.horizontal) {
+			box.left = box.fullWidth ? userPadding.left : chartArea.left;
+			box.right = box.fullWidth ? params.outerWidth - userPadding.right : chartArea.left + chartArea.w;
+			box.top = y;
+			box.bottom = y + box.height;
+			box.width = box.right - box.left;
+			y = box.bottom;
+		} else {
+			box.left = x;
+			box.right = x + box.width;
+			box.top = chartArea.top;
+			box.bottom = chartArea.top + chartArea.h;
+			box.height = box.bottom - box.top;
+			x = box.right;
+		}
+	}
+
+	chartArea.x = x;
+	chartArea.y = y;
 }
 
 core_defaults._set('global', {
@@ -6264,6 +7232,14 @@ var core_layouts = {
 		item.fullWidth = item.fullWidth || false;
 		item.position = item.position || 'top';
 		item.weight = item.weight || 0;
+		item._layers = item._layers || function() {
+			return [{
+				z: 0,
+				draw: function() {
+					item.draw.apply(item, arguments);
+				}
+			}];
+		};
 
 		chart.boxes.push(item);
 	},
@@ -6314,26 +7290,12 @@ var core_layouts = {
 
 		var layoutOptions = chart.options.layout || {};
 		var padding = helpers$1.options.toPadding(layoutOptions.padding);
-		var leftPadding = padding.left;
-		var rightPadding = padding.right;
-		var topPadding = padding.top;
-		var bottomPadding = padding.bottom;
 
-		var leftBoxes = filterByPosition(chart.boxes, 'left');
-		var rightBoxes = filterByPosition(chart.boxes, 'right');
-		var topBoxes = filterByPosition(chart.boxes, 'top');
-		var bottomBoxes = filterByPosition(chart.boxes, 'bottom');
-		var chartAreaBoxes = filterByPosition(chart.boxes, 'chartArea');
-
-		// Sort boxes by weight. A higher weight is further away from the chart area
-		sortByWeight(leftBoxes, true);
-		sortByWeight(rightBoxes, false);
-		sortByWeight(topBoxes, true);
-		sortByWeight(bottomBoxes, false);
-
-		var verticalBoxes = leftBoxes.concat(rightBoxes);
-		var horizontalBoxes = topBoxes.concat(bottomBoxes);
-		var outerBoxes = verticalBoxes.concat(horizontalBoxes);
+		var availableWidth = width - padding.width;
+		var availableHeight = height - padding.height;
+		var boxes = buildLayoutBoxes(chart.boxes);
+		var verticalBoxes = boxes.vertical;
+		var horizontalBoxes = boxes.horizontal;
 
 		// Essentially we now have any number of boxes on each of the 4 sides.
 		// Our canvas looks like the following.
@@ -6361,201 +7323,57 @@ var core_layouts = {
 		// |                  B2 (Full Width)                   |
 		// |----------------------------------------------------|
 		//
-		// What we do to find the best sizing, we do the following
-		// 1. Determine the minimum size of the chart area.
-		// 2. Split the remaining width equally between each vertical axis
-		// 3. Split the remaining height equally between each horizontal axis
-		// 4. Give each layout the maximum size it can be. The layout will return it's minimum size
-		// 5. Adjust the sizes of each axis based on it's minimum reported size.
-		// 6. Refit each axis
-		// 7. Position each axis in the final location
-		// 8. Tell the chart the final location of the chart area
-		// 9. Tell any axes that overlay the chart area the positions of the chart area
 
-		// Step 1
-		var chartWidth = width - leftPadding - rightPadding;
-		var chartHeight = height - topPadding - bottomPadding;
-		var chartAreaWidth = chartWidth / 2; // min 50%
+		var params = Object.freeze({
+			outerWidth: width,
+			outerHeight: height,
+			padding: padding,
+			availableWidth: availableWidth,
+			vBoxMaxWidth: availableWidth / 2 / verticalBoxes.length,
+			hBoxMaxHeight: availableHeight / 2
+		});
+		var chartArea = extend({
+			maxPadding: extend({}, padding),
+			w: availableWidth,
+			h: availableHeight,
+			x: padding.left,
+			y: padding.top
+		}, padding);
 
-		// Step 2
-		var verticalBoxWidth = (width - chartAreaWidth) / verticalBoxes.length;
+		setLayoutDims(verticalBoxes.concat(horizontalBoxes), params);
 
-		// Step 3
-		// TODO re-limit horizontal axis height (this limit has affected only padding calculation since PR 1837)
-		// var horizontalBoxHeight = (height - chartAreaHeight) / horizontalBoxes.length;
+		// First fit vertical boxes
+		fitBoxes(verticalBoxes, chartArea, params);
 
-		// Step 4
-		var maxChartAreaWidth = chartWidth;
-		var maxChartAreaHeight = chartHeight;
-		var outerBoxSizes = {top: topPadding, left: leftPadding, bottom: bottomPadding, right: rightPadding};
-		var minBoxSizes = [];
-		var maxPadding;
-
-		function getMinimumBoxSize(box) {
-			var minSize;
-			var isHorizontal = box.isHorizontal();
-
-			if (isHorizontal) {
-				minSize = box.update(box.fullWidth ? chartWidth : maxChartAreaWidth, chartHeight / 2);
-				maxChartAreaHeight -= minSize.height;
-			} else {
-				minSize = box.update(verticalBoxWidth, maxChartAreaHeight);
-				maxChartAreaWidth -= minSize.width;
-			}
-
-			minBoxSizes.push({
-				horizontal: isHorizontal,
-				width: minSize.width,
-				box: box,
-			});
+		// Then fit horizontal boxes
+		if (fitBoxes(horizontalBoxes, chartArea, params)) {
+			// if the area changed, re-fit vertical boxes
+			fitBoxes(verticalBoxes, chartArea, params);
 		}
 
-		helpers$1.each(outerBoxes, getMinimumBoxSize);
+		handleMaxPadding(chartArea);
 
-		// If a horizontal box has padding, we move the left boxes over to avoid ugly charts (see issue #2478)
-		maxPadding = findMaxPadding(outerBoxes);
+		// Finally place the boxes to correct coordinates
+		placeBoxes(boxes.leftAndTop, chartArea, params);
 
-		// At this point, maxChartAreaHeight and maxChartAreaWidth are the size the chart area could
-		// be if the axes are drawn at their minimum sizes.
-		// Steps 5 & 6
+		// Move to opposite side of chart
+		chartArea.x += chartArea.w;
+		chartArea.y += chartArea.h;
 
-		// Function to fit a box
-		function fitBox(box) {
-			var minBoxSize = helpers$1.findNextWhere(minBoxSizes, function(minBox) {
-				return minBox.box === box;
-			});
+		placeBoxes(boxes.rightAndBottom, chartArea, params);
 
-			if (minBoxSize) {
-				if (minBoxSize.horizontal) {
-					var scaleMargin = {
-						left: Math.max(outerBoxSizes.left, maxPadding.left),
-						right: Math.max(outerBoxSizes.right, maxPadding.right),
-						top: 0,
-						bottom: 0
-					};
-
-					// Don't use min size here because of label rotation. When the labels are rotated, their rotation highly depends
-					// on the margin. Sometimes they need to increase in size slightly
-					box.update(box.fullWidth ? chartWidth : maxChartAreaWidth, chartHeight / 2, scaleMargin);
-				} else {
-					box.update(minBoxSize.width, maxChartAreaHeight);
-				}
-			}
-		}
-
-		// Update, and calculate the left and right margins for the horizontal boxes
-		helpers$1.each(verticalBoxes, fitBox);
-		addSizeByPosition(verticalBoxes, outerBoxSizes);
-
-		// Set the Left and Right margins for the horizontal boxes
-		helpers$1.each(horizontalBoxes, fitBox);
-		addSizeByPosition(horizontalBoxes, outerBoxSizes);
-
-		function finalFitVerticalBox(box) {
-			var minBoxSize = helpers$1.findNextWhere(minBoxSizes, function(minSize) {
-				return minSize.box === box;
-			});
-
-			var scaleMargin = {
-				left: 0,
-				right: 0,
-				top: outerBoxSizes.top,
-				bottom: outerBoxSizes.bottom
-			};
-
-			if (minBoxSize) {
-				box.update(minBoxSize.width, maxChartAreaHeight, scaleMargin);
-			}
-		}
-
-		// Let the left layout know the final margin
-		helpers$1.each(verticalBoxes, finalFitVerticalBox);
-
-		// Recalculate because the size of each layout might have changed slightly due to the margins (label rotation for instance)
-		outerBoxSizes = {top: topPadding, left: leftPadding, bottom: bottomPadding, right: rightPadding};
-		addSizeByPosition(outerBoxes, outerBoxSizes);
-
-		// We may be adding some padding to account for rotated x axis labels
-		var leftPaddingAddition = Math.max(maxPadding.left - outerBoxSizes.left, 0);
-		outerBoxSizes.left += leftPaddingAddition;
-		outerBoxSizes.right += Math.max(maxPadding.right - outerBoxSizes.right, 0);
-
-		var topPaddingAddition = Math.max(maxPadding.top - outerBoxSizes.top, 0);
-		outerBoxSizes.top += topPaddingAddition;
-		outerBoxSizes.bottom += Math.max(maxPadding.bottom - outerBoxSizes.bottom, 0);
-
-		// Figure out if our chart area changed. This would occur if the dataset layout label rotation
-		// changed due to the application of the margins in step 6. Since we can only get bigger, this is safe to do
-		// without calling `fit` again
-		var newMaxChartAreaHeight = height - outerBoxSizes.top - outerBoxSizes.bottom;
-		var newMaxChartAreaWidth = width - outerBoxSizes.left - outerBoxSizes.right;
-
-		if (newMaxChartAreaWidth !== maxChartAreaWidth || newMaxChartAreaHeight !== maxChartAreaHeight) {
-			helpers$1.each(verticalBoxes, function(box) {
-				box.height = newMaxChartAreaHeight;
-			});
-
-			helpers$1.each(horizontalBoxes, function(box) {
-				if (!box.fullWidth) {
-					box.width = newMaxChartAreaWidth;
-				}
-			});
-
-			maxChartAreaHeight = newMaxChartAreaHeight;
-			maxChartAreaWidth = newMaxChartAreaWidth;
-		}
-
-		// Step 7 - Position the boxes
-		var left = leftPadding + leftPaddingAddition;
-		var top = topPadding + topPaddingAddition;
-
-		function placeBox(box) {
-			if (box.isHorizontal()) {
-				box.left = box.fullWidth ? leftPadding : outerBoxSizes.left;
-				box.right = box.fullWidth ? width - rightPadding : outerBoxSizes.left + maxChartAreaWidth;
-				box.top = top;
-				box.bottom = top + box.height;
-
-				// Move to next point
-				top = box.bottom;
-
-			} else {
-
-				box.left = left;
-				box.right = left + box.width;
-				box.top = outerBoxSizes.top;
-				box.bottom = outerBoxSizes.top + maxChartAreaHeight;
-
-				// Move to next point
-				left = box.right;
-			}
-		}
-
-		helpers$1.each(leftBoxes.concat(topBoxes), placeBox);
-
-		// Account for chart width and height
-		left += maxChartAreaWidth;
-		top += maxChartAreaHeight;
-
-		helpers$1.each(rightBoxes, placeBox);
-		helpers$1.each(bottomBoxes, placeBox);
-
-		// Step 8
 		chart.chartArea = {
-			left: outerBoxSizes.left,
-			top: outerBoxSizes.top,
-			right: outerBoxSizes.left + maxChartAreaWidth,
-			bottom: outerBoxSizes.top + maxChartAreaHeight
+			left: chartArea.left,
+			top: chartArea.top,
+			right: chartArea.left + chartArea.w,
+			bottom: chartArea.top + chartArea.h
 		};
 
-		// Step 9
-		helpers$1.each(chartAreaBoxes, function(box) {
-			box.left = chart.chartArea.left;
-			box.top = chart.chartArea.top;
-			box.right = chart.chartArea.right;
-			box.bottom = chart.chartArea.bottom;
-
-			box.update(maxChartAreaWidth, maxChartAreaHeight);
+		// Finally update boxes in chartArea (radial scale for example)
+		helpers$1.each(boxes.chartArea, function(layout) {
+			var box = layout.box;
+			extend(box, chart.chartArea);
+			box.update(chartArea.w, chartArea.h);
 		});
 	}
 };
@@ -6579,12 +7397,9 @@ var platform_basic = {
 var platform_dom = "/*\n * DOM element rendering detection\n * https://davidwalsh.name/detect-node-insertion\n */\n@keyframes chartjs-render-animation {\n\tfrom { opacity: 0.99; }\n\tto { opacity: 1; }\n}\n\n.chartjs-render-monitor {\n\tanimation: chartjs-render-animation 0.001s;\n}\n\n/*\n * DOM element resizing detection\n * https://github.com/marcj/css-element-queries\n */\n.chartjs-size-monitor,\n.chartjs-size-monitor-expand,\n.chartjs-size-monitor-shrink {\n\tposition: absolute;\n\tdirection: ltr;\n\tleft: 0;\n\ttop: 0;\n\tright: 0;\n\tbottom: 0;\n\toverflow: hidden;\n\tpointer-events: none;\n\tvisibility: hidden;\n\tz-index: -1;\n}\n\n.chartjs-size-monitor-expand > div {\n\tposition: absolute;\n\twidth: 1000000px;\n\theight: 1000000px;\n\tleft: 0;\n\ttop: 0;\n}\n\n.chartjs-size-monitor-shrink > div {\n\tposition: absolute;\n\twidth: 200%;\n\theight: 200%;\n\tleft: 0;\n\ttop: 0;\n}\n";
 
 var platform_dom$1 = /*#__PURE__*/Object.freeze({
-default: platform_dom
+__proto__: null,
+'default': platform_dom
 });
-
-function getCjsExportFromNamespace (n) {
-	return n && n.default || n;
-}
 
 var stylesheet = getCjsExportFromNamespace(platform_dom$1);
 
@@ -6875,17 +7690,22 @@ function removeResizeListener(node) {
 	}
 }
 
-function injectCSS(platform, css) {
+/**
+ * Injects CSS styles inline if the styles are not already present.
+ * @param {HTMLDocument|ShadowRoot} rootNode - the node to contain the <style>.
+ * @param {string} css - the CSS to be injected.
+ */
+function injectCSS(rootNode, css) {
 	// https://stackoverflow.com/q/3922139
-	var style = platform._style || document.createElement('style');
-	if (!platform._style) {
-		platform._style = style;
+	var expando = rootNode[EXPANDO_KEY] || (rootNode[EXPANDO_KEY] = {});
+	if (!expando.containsStyles) {
+		expando.containsStyles = true;
 		css = '/* Chart.js */\n' + css;
+		var style = document.createElement('style');
 		style.setAttribute('type', 'text/css');
-		document.getElementsByTagName('head')[0].appendChild(style);
+		style.appendChild(document.createTextNode(css));
+		rootNode.appendChild(style);
 	}
-
-	style.appendChild(document.createTextNode(css));
 }
 
 var platform_dom$2 = {
@@ -6906,18 +7726,18 @@ var platform_dom$2 = {
 	_enabled: typeof window !== 'undefined' && typeof document !== 'undefined',
 
 	/**
+	 * Initializes resources that depend on platform options.
+	 * @param {HTMLCanvasElement} canvas - The Canvas element.
 	 * @private
 	 */
-	_ensureLoaded: function() {
-		if (this._loaded) {
-			return;
-		}
-
-		this._loaded = true;
-
-		// https://github.com/chartjs/Chart.js/issues/5208
+	_ensureLoaded: function(canvas) {
 		if (!this.disableCSSInjection) {
-			injectCSS(this, stylesheet);
+			// If the canvas is in a shadow DOM, then the styles must also be inserted
+			// into the same shadow DOM.
+			// https://github.com/chartjs/Chart.js/issues/5763
+			var root = canvas.getRootNode ? canvas.getRootNode() : document;
+			var targetNode = root.host ? root : document.head;
+			injectCSS(targetNode, stylesheet);
 		}
 	},
 
@@ -6939,10 +7759,6 @@ var platform_dom$2 = {
 		// https://github.com/chartjs/Chart.js/issues/2807
 		var context = item && item.getContext && item.getContext('2d');
 
-		// Load platform resources on first chart creation, to make possible to change
-		// platform options after importing the library (e.g. `disableCSSInjection`).
-		this._ensureLoaded();
-
 		// `instanceof HTMLCanvasElement/CanvasRenderingContext2D` fails when the item is
 		// inside an iframe or when running in a protected environment. We could guess the
 		// types from their toString() value but let's keep things flexible and assume it's
@@ -6951,6 +7767,9 @@ var platform_dom$2 = {
 		// https://github.com/chartjs/Chart.js/issues/4102
 		// https://github.com/chartjs/Chart.js/issues/4152
 		if (context && context.canvas === item) {
+			// Load platform resources on first chart creation, to make it possible to
+			// import the library before setting platform options.
+			this._ensureLoaded(item);
 			initCanvas(item, config);
 			return context;
 		}
@@ -7303,7 +8122,8 @@ var core_scaleService = {
 	}
 };
 
-var valueOrDefault$7 = helpers$1.valueOrDefault;
+var valueOrDefault$8 = helpers$1.valueOrDefault;
+var getRtlHelper = helpers$1.rtl.getRtlAdapter;
 
 core_defaults._set('global', {
 	tooltips: {
@@ -7541,28 +8361,32 @@ function getBaseModel(tooltipOpts) {
 		xAlign: tooltipOpts.xAlign,
 		yAlign: tooltipOpts.yAlign,
 
+		// Drawing direction and text direction
+		rtl: tooltipOpts.rtl,
+		textDirection: tooltipOpts.textDirection,
+
 		// Body
 		bodyFontColor: tooltipOpts.bodyFontColor,
-		_bodyFontFamily: valueOrDefault$7(tooltipOpts.bodyFontFamily, globalDefaults.defaultFontFamily),
-		_bodyFontStyle: valueOrDefault$7(tooltipOpts.bodyFontStyle, globalDefaults.defaultFontStyle),
+		_bodyFontFamily: valueOrDefault$8(tooltipOpts.bodyFontFamily, globalDefaults.defaultFontFamily),
+		_bodyFontStyle: valueOrDefault$8(tooltipOpts.bodyFontStyle, globalDefaults.defaultFontStyle),
 		_bodyAlign: tooltipOpts.bodyAlign,
-		bodyFontSize: valueOrDefault$7(tooltipOpts.bodyFontSize, globalDefaults.defaultFontSize),
+		bodyFontSize: valueOrDefault$8(tooltipOpts.bodyFontSize, globalDefaults.defaultFontSize),
 		bodySpacing: tooltipOpts.bodySpacing,
 
 		// Title
 		titleFontColor: tooltipOpts.titleFontColor,
-		_titleFontFamily: valueOrDefault$7(tooltipOpts.titleFontFamily, globalDefaults.defaultFontFamily),
-		_titleFontStyle: valueOrDefault$7(tooltipOpts.titleFontStyle, globalDefaults.defaultFontStyle),
-		titleFontSize: valueOrDefault$7(tooltipOpts.titleFontSize, globalDefaults.defaultFontSize),
+		_titleFontFamily: valueOrDefault$8(tooltipOpts.titleFontFamily, globalDefaults.defaultFontFamily),
+		_titleFontStyle: valueOrDefault$8(tooltipOpts.titleFontStyle, globalDefaults.defaultFontStyle),
+		titleFontSize: valueOrDefault$8(tooltipOpts.titleFontSize, globalDefaults.defaultFontSize),
 		_titleAlign: tooltipOpts.titleAlign,
 		titleSpacing: tooltipOpts.titleSpacing,
 		titleMarginBottom: tooltipOpts.titleMarginBottom,
 
 		// Footer
 		footerFontColor: tooltipOpts.footerFontColor,
-		_footerFontFamily: valueOrDefault$7(tooltipOpts.footerFontFamily, globalDefaults.defaultFontFamily),
-		_footerFontStyle: valueOrDefault$7(tooltipOpts.footerFontStyle, globalDefaults.defaultFontStyle),
-		footerFontSize: valueOrDefault$7(tooltipOpts.footerFontSize, globalDefaults.defaultFontSize),
+		_footerFontFamily: valueOrDefault$8(tooltipOpts.footerFontFamily, globalDefaults.defaultFontFamily),
+		_footerFontStyle: valueOrDefault$8(tooltipOpts.footerFontStyle, globalDefaults.defaultFontStyle),
+		footerFontSize: valueOrDefault$8(tooltipOpts.footerFontSize, globalDefaults.defaultFontSize),
 		_footerAlign: tooltipOpts.footerAlign,
 		footerSpacing: tooltipOpts.footerSpacing,
 		footerMarginTop: tooltipOpts.footerMarginTop,
@@ -7789,7 +8613,7 @@ function getBeforeAfterBodyLines(callback) {
 	return pushOrConcat([], splitNewlines(callback));
 }
 
-var exports$3 = core_element.extend({
+var exports$4 = core_element.extend({
 	initialize: function() {
 		this._model = getBaseModel(this._options);
 		this._lastActive = [];
@@ -8047,25 +8871,28 @@ var exports$3 = core_element.extend({
 
 	drawTitle: function(pt, vm, ctx) {
 		var title = vm.title;
+		var length = title.length;
+		var titleFontSize, titleSpacing, i;
 
-		if (title.length) {
+		if (length) {
+			var rtlHelper = getRtlHelper(vm.rtl, vm.x, vm.width);
+
 			pt.x = getAlignedX(vm, vm._titleAlign);
 
-			ctx.textAlign = vm._titleAlign;
-			ctx.textBaseline = 'top';
+			ctx.textAlign = rtlHelper.textAlign(vm._titleAlign);
+			ctx.textBaseline = 'middle';
 
-			var titleFontSize = vm.titleFontSize;
-			var titleSpacing = vm.titleSpacing;
+			titleFontSize = vm.titleFontSize;
+			titleSpacing = vm.titleSpacing;
 
 			ctx.fillStyle = vm.titleFontColor;
 			ctx.font = helpers$1.fontString(titleFontSize, vm._titleFontStyle, vm._titleFontFamily);
 
-			var i, len;
-			for (i = 0, len = title.length; i < len; ++i) {
-				ctx.fillText(title[i], pt.x, pt.y);
+			for (i = 0; i < length; ++i) {
+				ctx.fillText(title[i], rtlHelper.x(pt.x), pt.y + titleFontSize / 2);
 				pt.y += titleFontSize + titleSpacing; // Line Height and spacing
 
-				if (i + 1 === title.length) {
+				if (i + 1 === length) {
 					pt.y += vm.titleMarginBottom - titleSpacing; // If Last, add margin, remove spacing
 				}
 			}
@@ -8078,60 +8905,68 @@ var exports$3 = core_element.extend({
 		var bodyAlign = vm._bodyAlign;
 		var body = vm.body;
 		var drawColorBoxes = vm.displayColors;
-		var labelColors = vm.labelColors;
 		var xLinePadding = 0;
 		var colorX = drawColorBoxes ? getAlignedX(vm, 'left') : 0;
-		var textColor;
 
-		ctx.textAlign = bodyAlign;
-		ctx.textBaseline = 'top';
-		ctx.font = helpers$1.fontString(bodyFontSize, vm._bodyFontStyle, vm._bodyFontFamily);
+		var rtlHelper = getRtlHelper(vm.rtl, vm.x, vm.width);
 
-		pt.x = getAlignedX(vm, bodyAlign);
-
-		// Before Body
 		var fillLineOfText = function(line) {
-			ctx.fillText(line, pt.x + xLinePadding, pt.y);
+			ctx.fillText(line, rtlHelper.x(pt.x + xLinePadding), pt.y + bodyFontSize / 2);
 			pt.y += bodyFontSize + bodySpacing;
 		};
+
+		var bodyItem, textColor, labelColors, lines, i, j, ilen, jlen;
+		var bodyAlignForCalculation = rtlHelper.textAlign(bodyAlign);
+
+		ctx.textAlign = bodyAlign;
+		ctx.textBaseline = 'middle';
+		ctx.font = helpers$1.fontString(bodyFontSize, vm._bodyFontStyle, vm._bodyFontFamily);
+
+		pt.x = getAlignedX(vm, bodyAlignForCalculation);
 
 		// Before body lines
 		ctx.fillStyle = vm.bodyFontColor;
 		helpers$1.each(vm.beforeBody, fillLineOfText);
 
-		xLinePadding = drawColorBoxes && bodyAlign !== 'right'
+		xLinePadding = drawColorBoxes && bodyAlignForCalculation !== 'right'
 			? bodyAlign === 'center' ? (bodyFontSize / 2 + 1) : (bodyFontSize + 2)
 			: 0;
 
 		// Draw body lines now
-		helpers$1.each(body, function(bodyItem, i) {
+		for (i = 0, ilen = body.length; i < ilen; ++i) {
+			bodyItem = body[i];
 			textColor = vm.labelTextColors[i];
+			labelColors = vm.labelColors[i];
+
 			ctx.fillStyle = textColor;
 			helpers$1.each(bodyItem.before, fillLineOfText);
 
-			helpers$1.each(bodyItem.lines, function(line) {
+			lines = bodyItem.lines;
+			for (j = 0, jlen = lines.length; j < jlen; ++j) {
 				// Draw Legend-like boxes if needed
 				if (drawColorBoxes) {
+					var rtlColorX = rtlHelper.x(colorX);
+
 					// Fill a white rect so that colours merge nicely if the opacity is < 1
 					ctx.fillStyle = vm.legendColorBackground;
-					ctx.fillRect(colorX, pt.y, bodyFontSize, bodyFontSize);
+					ctx.fillRect(rtlHelper.leftForLtr(rtlColorX, bodyFontSize), pt.y, bodyFontSize, bodyFontSize);
 
 					// Border
 					ctx.lineWidth = 1;
-					ctx.strokeStyle = labelColors[i].borderColor;
-					ctx.strokeRect(colorX, pt.y, bodyFontSize, bodyFontSize);
+					ctx.strokeStyle = labelColors.borderColor;
+					ctx.strokeRect(rtlHelper.leftForLtr(rtlColorX, bodyFontSize), pt.y, bodyFontSize, bodyFontSize);
 
 					// Inner square
-					ctx.fillStyle = labelColors[i].backgroundColor;
-					ctx.fillRect(colorX + 1, pt.y + 1, bodyFontSize - 2, bodyFontSize - 2);
+					ctx.fillStyle = labelColors.backgroundColor;
+					ctx.fillRect(rtlHelper.leftForLtr(rtlHelper.xPlus(rtlColorX, 1), bodyFontSize - 2), pt.y + 1, bodyFontSize - 2, bodyFontSize - 2);
 					ctx.fillStyle = textColor;
 				}
 
-				fillLineOfText(line);
-			});
+				fillLineOfText(lines[j]);
+			}
 
 			helpers$1.each(bodyItem.after, fillLineOfText);
-		});
+		}
 
 		// Reset back to 0 for after body
 		xLinePadding = 0;
@@ -8143,21 +8978,27 @@ var exports$3 = core_element.extend({
 
 	drawFooter: function(pt, vm, ctx) {
 		var footer = vm.footer;
+		var length = footer.length;
+		var footerFontSize, i;
 
-		if (footer.length) {
+		if (length) {
+			var rtlHelper = getRtlHelper(vm.rtl, vm.x, vm.width);
+
 			pt.x = getAlignedX(vm, vm._footerAlign);
 			pt.y += vm.footerMarginTop;
 
-			ctx.textAlign = vm._footerAlign;
-			ctx.textBaseline = 'top';
+			ctx.textAlign = rtlHelper.textAlign(vm._footerAlign);
+			ctx.textBaseline = 'middle';
+
+			footerFontSize = vm.footerFontSize;
 
 			ctx.fillStyle = vm.footerFontColor;
-			ctx.font = helpers$1.fontString(vm.footerFontSize, vm._footerFontStyle, vm._footerFontFamily);
+			ctx.font = helpers$1.fontString(footerFontSize, vm._footerFontStyle, vm._footerFontFamily);
 
-			helpers$1.each(footer, function(line) {
-				ctx.fillText(line, pt.x, pt.y);
-				pt.y += vm.footerFontSize + vm.footerSpacing;
-			});
+			for (i = 0; i < length; ++i) {
+				ctx.fillText(footer[i], rtlHelper.x(pt.x), pt.y + footerFontSize / 2);
+				pt.y += footerFontSize + vm.footerSpacing;
+			}
 		}
 	},
 
@@ -8237,6 +9078,8 @@ var exports$3 = core_element.extend({
 			// Draw Title, Body, and Footer
 			pt.y += vm.yPadding;
 
+			helpers$1.rtl.overrideTextDirection(ctx, vm.textDirection);
+
 			// Titles
 			this.drawTitle(pt, vm, ctx);
 
@@ -8245,6 +9088,8 @@ var exports$3 = core_element.extend({
 
 			// Footer
 			this.drawFooter(pt, vm, ctx);
+
+			helpers$1.rtl.restoreTextDirection(ctx, vm.textDirection);
 
 			ctx.restore();
 		}
@@ -8268,6 +9113,9 @@ var exports$3 = core_element.extend({
 			me._active = [];
 		} else {
 			me._active = me._chart.getElementsAtEventForMode(e, options.mode, options);
+			if (options.reverse) {
+				me._active.reverse();
+			}
 		}
 
 		// Remember Last Actives
@@ -8297,10 +9145,10 @@ var exports$3 = core_element.extend({
  */
 var positioners_1 = positioners;
 
-var core_tooltip = exports$3;
+var core_tooltip = exports$4;
 core_tooltip.positioners = positioners_1;
 
-var valueOrDefault$8 = helpers$1.valueOrDefault;
+var valueOrDefault$9 = helpers$1.valueOrDefault;
 
 core_defaults._set('global', {
 	elements: {},
@@ -8341,7 +9189,7 @@ function mergeScaleConfig(/* config objects ... */) {
 
 				for (i = 0; i < slen; ++i) {
 					scale = source[key][i];
-					type = valueOrDefault$8(scale.type, key === 'xAxes' ? 'category' : 'linear');
+					type = valueOrDefault$9(scale.type, key === 'xAxes' ? 'category' : 'linear');
 
 					if (i >= target[key].length) {
 						target[key].push({});
@@ -8425,8 +9273,29 @@ function updateConfig(chart) {
 	chart.tooltip.initialize();
 }
 
+function nextAvailableScaleId(axesOpts, prefix, index) {
+	var id;
+	var hasId = function(obj) {
+		return obj.id === id;
+	};
+
+	do {
+		id = prefix + index++;
+	} while (helpers$1.findIndex(axesOpts, hasId) >= 0);
+
+	return id;
+}
+
 function positionIsHorizontal(position) {
 	return position === 'top' || position === 'bottom';
+}
+
+function compare2Level(l1, l2) {
+	return function(a, b) {
+		return a[l1] === b[l1]
+			? a[l2] - b[l2]
+			: a[l1] - b[l1];
+	};
 }
 
 var Chart = function(item, config) {
@@ -8457,6 +9326,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 		me.aspectRatio = height ? width / height : null;
 		me.options = config.options;
 		me._bufferedRender = false;
+		me._layers = [];
 
 		/**
 		 * Provided for backward compatibility, Chart and Chart.Controller have been merged,
@@ -8513,9 +9383,6 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 			me.resize(true);
 		}
 
-		// Make sure scales have IDs and are built before we build any controllers.
-		me.ensureScalesHaveIDs();
-		me.buildOrUpdateScales();
 		me.initToolTip();
 
 		// After init plugin notification
@@ -8582,11 +9449,15 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 		var scaleOptions = options.scale;
 
 		helpers$1.each(scalesOptions.xAxes, function(xAxisOptions, index) {
-			xAxisOptions.id = xAxisOptions.id || ('x-axis-' + index);
+			if (!xAxisOptions.id) {
+				xAxisOptions.id = nextAvailableScaleId(scalesOptions.xAxes, 'x-axis-', index);
+			}
 		});
 
 		helpers$1.each(scalesOptions.yAxes, function(yAxisOptions, index) {
-			yAxisOptions.id = yAxisOptions.id || ('y-axis-' + index);
+			if (!yAxisOptions.id) {
+				yAxisOptions.id = nextAvailableScaleId(scalesOptions.yAxes, 'y-axis-', index);
+			}
 		});
 
 		if (scaleOptions) {
@@ -8630,7 +9501,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 		helpers$1.each(items, function(item) {
 			var scaleOptions = item.options;
 			var id = scaleOptions.id;
-			var scaleType = valueOrDefault$8(scaleOptions.type, item.dtype);
+			var scaleType = valueOrDefault$9(scaleOptions.type, item.dtype);
 
 			if (positionIsHorizontal(scaleOptions.position) !== positionIsHorizontal(item.dposition)) {
 				scaleOptions.position = item.dposition;
@@ -8682,19 +9553,24 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 	buildOrUpdateControllers: function() {
 		var me = this;
 		var newControllers = [];
+		var datasets = me.data.datasets;
+		var i, ilen;
 
-		helpers$1.each(me.data.datasets, function(dataset, datasetIndex) {
-			var meta = me.getDatasetMeta(datasetIndex);
+		for (i = 0, ilen = datasets.length; i < ilen; i++) {
+			var dataset = datasets[i];
+			var meta = me.getDatasetMeta(i);
 			var type = dataset.type || me.config.type;
 
 			if (meta.type && meta.type !== type) {
-				me.destroyDatasetMeta(datasetIndex);
-				meta = me.getDatasetMeta(datasetIndex);
+				me.destroyDatasetMeta(i);
+				meta = me.getDatasetMeta(i);
 			}
 			meta.type = type;
+			meta.order = dataset.order || 0;
+			meta.index = i;
 
 			if (meta.controller) {
-				meta.controller.updateIndex(datasetIndex);
+				meta.controller.updateIndex(i);
 				meta.controller.linkScales();
 			} else {
 				var ControllerClass = controllers[meta.type];
@@ -8702,10 +9578,10 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 					throw new Error('"' + meta.type + '" is not a chart type.');
 				}
 
-				meta.controller = new ControllerClass(me, datasetIndex);
+				meta.controller = new ControllerClass(me, i);
 				newControllers.push(meta.controller);
 			}
-		}, me);
+		}
 
 		return newControllers;
 	},
@@ -8731,6 +9607,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 
 	update: function(config) {
 		var me = this;
+		var i, ilen;
 
 		if (!config || typeof config !== 'object') {
 			// backwards compatibility
@@ -8757,9 +9634,9 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 		var newControllers = me.buildOrUpdateControllers();
 
 		// Make sure all dataset controllers have correct meta data counts
-		helpers$1.each(me.data.datasets, function(dataset, datasetIndex) {
-			me.getDatasetMeta(datasetIndex).controller.buildOrUpdateElements();
-		}, me);
+		for (i = 0, ilen = me.data.datasets.length; i < ilen; i++) {
+			me.getDatasetMeta(i).controller.buildOrUpdateElements();
+		}
 
 		me.updateLayout();
 
@@ -8782,6 +9659,8 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 
 		// Do this before render so that any plugins that need final scale updates can use it
 		core_plugins.notify(me, 'afterUpdate');
+
+		me._layers.sort(compare2Level('z', '_idx'));
 
 		if (me._bufferedRender) {
 			me._bufferedRequest = {
@@ -8807,6 +9686,20 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 		}
 
 		core_layouts.update(this, this.width, this.height);
+
+		me._layers = [];
+		helpers$1.each(me.boxes, function(box) {
+			// _configure is called twice, once in core.scale.update and once here.
+			// Here the boxes are fully updated and at their final positions.
+			if (box._configure) {
+				box._configure();
+			}
+			me._layers.push.apply(me._layers, box._layers());
+		}, me);
+
+		me._layers.forEach(function(item, index) {
+			item._idx = index;
+		});
 
 		/**
 		 * Provided for backward compatibility, use `afterLayout` instead.
@@ -8855,7 +9748,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 			return;
 		}
 
-		meta.controller.update();
+		meta.controller._update();
 
 		core_plugins.notify(me, 'afterDatasetUpdate', [args]);
 	},
@@ -8872,7 +9765,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 		}
 
 		var animationOptions = me.options.animation;
-		var duration = valueOrDefault$8(config.duration, animationOptions && animationOptions.duration);
+		var duration = valueOrDefault$9(config.duration, animationOptions && animationOptions.duration);
 		var lazy = config.lazy;
 
 		if (core_plugins.notify(me, 'beforeRender') === false) {
@@ -8914,6 +9807,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 
 	draw: function(easingValue) {
 		var me = this;
+		var i, layers;
 
 		me.clear();
 
@@ -8931,12 +9825,21 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 			return;
 		}
 
-		// Draw all the scales
-		helpers$1.each(me.boxes, function(box) {
-			box.draw(me.chartArea);
-		}, me);
+		// Because of plugin hooks (before/afterDatasetsDraw), datasets can't
+		// currently be part of layers. Instead, we draw
+		// layers <= 0 before(default, backward compat), and the rest after
+		layers = me._layers;
+		for (i = 0; i < layers.length && layers[i].z <= 0; ++i) {
+			layers[i].draw(me.chartArea);
+		}
 
 		me.drawDatasets(easingValue);
+
+		// Rest of layers
+		for (; i < layers.length; ++i) {
+			layers[i].draw(me.chartArea);
+		}
+
 		me._drawTooltip(easingValue);
 
 		core_plugins.notify(me, 'afterDraw', [easingValue]);
@@ -8958,22 +9861,48 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 	},
 
 	/**
+	 * @private
+	 */
+	_getSortedDatasetMetas: function(filterVisible) {
+		var me = this;
+		var datasets = me.data.datasets || [];
+		var result = [];
+		var i, ilen;
+
+		for (i = 0, ilen = datasets.length; i < ilen; ++i) {
+			if (!filterVisible || me.isDatasetVisible(i)) {
+				result.push(me.getDatasetMeta(i));
+			}
+		}
+
+		result.sort(compare2Level('order', 'index'));
+
+		return result;
+	},
+
+	/**
+	 * @private
+	 */
+	_getSortedVisibleDatasetMetas: function() {
+		return this._getSortedDatasetMetas(true);
+	},
+
+	/**
 	 * Draws all datasets unless a plugin returns `false` to the `beforeDatasetsDraw`
 	 * hook, in which case, plugins will not be called on `afterDatasetsDraw`.
 	 * @private
 	 */
 	drawDatasets: function(easingValue) {
 		var me = this;
+		var metasets, i;
 
 		if (core_plugins.notify(me, 'beforeDatasetsDraw', [easingValue]) === false) {
 			return;
 		}
 
-		// Draw datasets reversed to support proper line stacking
-		for (var i = (me.data.datasets || []).length - 1; i >= 0; --i) {
-			if (me.isDatasetVisible(i)) {
-				me.drawDataset(i, easingValue);
-			}
+		metasets = me._getSortedVisibleDatasetMetas();
+		for (i = metasets.length - 1; i >= 0; --i) {
+			me.drawDataset(metasets[i], easingValue);
 		}
 
 		core_plugins.notify(me, 'afterDatasetsDraw', [easingValue]);
@@ -8984,12 +9913,11 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 	 * hook, in which case, plugins will not be called on `afterDatasetDraw`.
 	 * @private
 	 */
-	drawDataset: function(index, easingValue) {
+	drawDataset: function(meta, easingValue) {
 		var me = this;
-		var meta = me.getDatasetMeta(index);
 		var args = {
 			meta: meta,
-			index: index,
+			index: meta.index,
 			easingValue: easingValue
 		};
 
@@ -9069,7 +9997,9 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 				controller: null,
 				hidden: null,			// See isDatasetVisible() comment
 				xAxisID: null,
-				yAxisID: null
+				yAxisID: null,
+				order: dataset.order || 0,
+				index: datasetIndex
 			};
 		}
 
@@ -9195,14 +10125,18 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 	},
 
 	updateHoverStyle: function(elements, mode, enabled) {
-		var method = enabled ? 'setHoverStyle' : 'removeHoverStyle';
+		var prefix = enabled ? 'set' : 'remove';
 		var element, i, ilen;
 
 		for (i = 0, ilen = elements.length; i < ilen; ++i) {
 			element = elements[i];
 			if (element) {
-				this.getDatasetMeta(element._datasetIndex).controller[method](element);
+				this.getDatasetMeta(element._datasetIndex).controller[prefix + 'HoverStyle'](element);
 			}
+		}
+
+		if (mode === 'dataset') {
+			this.getDatasetMeta(elements[0]._datasetIndex).controller['_' + prefix + 'DatasetHoverStyle']();
 		}
 	},
 
@@ -9419,7 +10353,7 @@ var core_helpers = function() {
 	};
 	helpers$1.almostWhole = function(x, epsilon) {
 		var rounded = Math.round(x);
-		return (((rounded - epsilon) < x) && ((rounded + epsilon) > x));
+		return ((rounded - epsilon) <= x) && ((rounded + epsilon) >= x);
 	};
 	helpers$1.max = function(array) {
 		return array.reduce(function(max, value) {
@@ -9447,19 +10381,6 @@ var core_helpers = function() {
 				return x;
 			}
 			return x > 0 ? 1 : -1;
-		};
-	helpers$1.log10 = Math.log10 ?
-		function(x) {
-			return Math.log10(x);
-		} :
-		function(x) {
-			var exponent = Math.log(x) * Math.LOG10E; // Math.LOG10E = 1 / Math.LN10.
-			// Check for whole powers of 10,
-			// which due to floating point rounding error should be corrected.
-			var powerOf10 = Math.round(exponent);
-			var isPowerOf10 = x === Math.pow(10, powerOf10);
-
-			return isPowerOf10 ? powerOf10 : exponent;
 		};
 	helpers$1.toRadians = function(degrees) {
 		return degrees * (Math.PI / 180);
@@ -9901,25 +10822,30 @@ var core_helpers = function() {
 
 		ctx.font = font;
 		var longest = 0;
-		helpers$1.each(arrayOfThings, function(thing) {
+		var ilen = arrayOfThings.length;
+		var i, j, jlen, thing, nestedThing;
+		for (i = 0; i < ilen; i++) {
+			thing = arrayOfThings[i];
+
 			// Undefined strings and arrays should not be measured
 			if (thing !== undefined && thing !== null && helpers$1.isArray(thing) !== true) {
 				longest = helpers$1.measureText(ctx, data, gc, longest, thing);
 			} else if (helpers$1.isArray(thing)) {
 				// if it is an array lets measure each element
 				// to do maybe simplify this function a bit so we can do this more recursively?
-				helpers$1.each(thing, function(nestedThing) {
+				for (j = 0, jlen = thing.length; j < jlen; j++) {
+					nestedThing = thing[j];
 					// Undefined strings and arrays should not be measured
 					if (nestedThing !== undefined && nestedThing !== null && !helpers$1.isArray(nestedThing)) {
 						longest = helpers$1.measureText(ctx, data, gc, longest, nestedThing);
 					}
-				});
+				}
 			}
-		});
+		}
 
 		var gcLen = gc.length / 2;
 		if (gcLen > arrayOfThings.length) {
-			for (var i = 0; i < gcLen; i++) {
+			for (i = 0; i < gcLen; i++) {
 				delete data[gc[i]];
 			}
 			gc.splice(0, gcLen);
@@ -9937,6 +10863,10 @@ var core_helpers = function() {
 		}
 		return longest;
 	};
+
+	/**
+	 * @deprecated
+	 */
 	helpers$1.numberOfLabelLines = function(arrayOfThings) {
 		var numberOfLines = 1;
 		helpers$1.each(arrayOfThings, function(thing) {
@@ -10134,7 +11064,9 @@ var core_ticks = {
 				var maxTick = Math.max(Math.abs(ticks[0]), Math.abs(ticks[ticks.length - 1]));
 				if (maxTick < 1e-4) { // all ticks are small numbers; use scientific notation
 					var logTick = helpers$1.log10(Math.abs(tickValue));
-					tickString = tickValue.toExponential(Math.floor(logTick) - Math.floor(logDelta));
+					var numExponential = Math.floor(logTick) - Math.floor(logDelta);
+					numExponential = Math.max(Math.min(numExponential, 20), 0);
+					tickString = tickValue.toExponential(numExponential);
 				} else {
 					var numDecimal = -1 * Math.floor(logDelta);
 					numDecimal = Math.max(Math.min(numDecimal, 20), 0); // toFixed has a max of 20 decimal places
@@ -10160,7 +11092,9 @@ var core_ticks = {
 	}
 };
 
-var valueOrDefault$9 = helpers$1.valueOrDefault;
+var isArray = helpers$1.isArray;
+var isNullOrUndef = helpers$1.isNullOrUndef;
+var valueOrDefault$a = helpers$1.valueOrDefault;
 var valueAtIndexOrDefault = helpers$1.valueAtIndexOrDefault;
 
 core_defaults._set('scale', {
@@ -10171,7 +11105,7 @@ core_defaults._set('scale', {
 	// grid line settings
 	gridLines: {
 		display: true,
-		color: 'rgba(0, 0, 0, 0.1)',
+		color: 'rgba(0,0,0,0.1)',
 		lineWidth: 1,
 		drawBorder: true,
 		drawOnChartArea: true,
@@ -10220,41 +11154,266 @@ core_defaults._set('scale', {
 	}
 });
 
-function labelsFromTicks(ticks) {
-	var labels = [];
-	var i, ilen;
+/** Returns a new array containing numItems from arr */
+function sample(arr, numItems) {
+	var result = [];
+	var increment = arr.length / numItems;
+	var i = 0;
+	var len = arr.length;
 
-	for (i = 0, ilen = ticks.length; i < ilen; ++i) {
-		labels.push(ticks[i].label);
+	for (; i < len; i += increment) {
+		result.push(arr[Math.floor(i)]);
 	}
-
-	return labels;
+	return result;
 }
 
 function getPixelForGridLine(scale, index, offsetGridLines) {
-	var lineValue = scale.getPixelForTick(index);
+	var length = scale.getTicks().length;
+	var validIndex = Math.min(index, length - 1);
+	var lineValue = scale.getPixelForTick(validIndex);
+	var start = scale._startPixel;
+	var end = scale._endPixel;
+	var epsilon = 1e-6; // 1e-6 is margin in pixels for accumulated error.
+	var offset;
 
 	if (offsetGridLines) {
-		if (scale.getTicks().length === 1) {
-			lineValue -= scale.isHorizontal() ?
-				Math.max(lineValue - scale.left, scale.right - lineValue) :
-				Math.max(lineValue - scale.top, scale.bottom - lineValue);
+		if (length === 1) {
+			offset = Math.max(lineValue - start, end - lineValue);
 		} else if (index === 0) {
-			lineValue -= (scale.getPixelForTick(1) - lineValue) / 2;
+			offset = (scale.getPixelForTick(1) - lineValue) / 2;
 		} else {
-			lineValue -= (lineValue - scale.getPixelForTick(index - 1)) / 2;
+			offset = (lineValue - scale.getPixelForTick(validIndex - 1)) / 2;
+		}
+		lineValue += validIndex < index ? offset : -offset;
+
+		// Return undefined if the pixel is out of the range
+		if (lineValue < start - epsilon || lineValue > end + epsilon) {
+			return;
 		}
 	}
 	return lineValue;
 }
 
-function computeTextSize(context, tick, font) {
-	return helpers$1.isArray(tick) ?
-		helpers$1.longestText(context, font, tick) :
-		context.measureText(tick).width;
+function garbageCollect(caches, length) {
+	helpers$1.each(caches, function(cache) {
+		var gc = cache.gc;
+		var gcLen = gc.length / 2;
+		var i;
+		if (gcLen > length) {
+			for (i = 0; i < gcLen; ++i) {
+				delete cache.data[gc[i]];
+			}
+			gc.splice(0, gcLen);
+		}
+	});
 }
 
-var core_scale = core_element.extend({
+/**
+ * Returns {width, height, offset} objects for the first, last, widest, highest tick
+ * labels where offset indicates the anchor point offset from the top in pixels.
+ */
+function computeLabelSizes(ctx, tickFonts, ticks, caches) {
+	var length = ticks.length;
+	var widths = [];
+	var heights = [];
+	var offsets = [];
+	var i, j, jlen, label, tickFont, fontString, cache, lineHeight, width, height, nestedLabel, widest, highest;
+
+	for (i = 0; i < length; ++i) {
+		label = ticks[i].label;
+		tickFont = ticks[i].major ? tickFonts.major : tickFonts.minor;
+		ctx.font = fontString = tickFont.string;
+		cache = caches[fontString] = caches[fontString] || {data: {}, gc: []};
+		lineHeight = tickFont.lineHeight;
+		width = height = 0;
+		// Undefined labels and arrays should not be measured
+		if (!isNullOrUndef(label) && !isArray(label)) {
+			width = helpers$1.measureText(ctx, cache.data, cache.gc, width, label);
+			height = lineHeight;
+		} else if (isArray(label)) {
+			// if it is an array let's measure each element
+			for (j = 0, jlen = label.length; j < jlen; ++j) {
+				nestedLabel = label[j];
+				// Undefined labels and arrays should not be measured
+				if (!isNullOrUndef(nestedLabel) && !isArray(nestedLabel)) {
+					width = helpers$1.measureText(ctx, cache.data, cache.gc, width, nestedLabel);
+					height += lineHeight;
+				}
+			}
+		}
+		widths.push(width);
+		heights.push(height);
+		offsets.push(lineHeight / 2);
+	}
+	garbageCollect(caches, length);
+
+	widest = widths.indexOf(Math.max.apply(null, widths));
+	highest = heights.indexOf(Math.max.apply(null, heights));
+
+	function valueAt(idx) {
+		return {
+			width: widths[idx] || 0,
+			height: heights[idx] || 0,
+			offset: offsets[idx] || 0
+		};
+	}
+
+	return {
+		first: valueAt(0),
+		last: valueAt(length - 1),
+		widest: valueAt(widest),
+		highest: valueAt(highest)
+	};
+}
+
+function getTickMarkLength(options) {
+	return options.drawTicks ? options.tickMarkLength : 0;
+}
+
+function getScaleLabelHeight(options) {
+	var font, padding;
+
+	if (!options.display) {
+		return 0;
+	}
+
+	font = helpers$1.options._parseFont(options);
+	padding = helpers$1.options.toPadding(options.padding);
+
+	return font.lineHeight + padding.height;
+}
+
+function parseFontOptions(options, nestedOpts) {
+	return helpers$1.extend(helpers$1.options._parseFont({
+		fontFamily: valueOrDefault$a(nestedOpts.fontFamily, options.fontFamily),
+		fontSize: valueOrDefault$a(nestedOpts.fontSize, options.fontSize),
+		fontStyle: valueOrDefault$a(nestedOpts.fontStyle, options.fontStyle),
+		lineHeight: valueOrDefault$a(nestedOpts.lineHeight, options.lineHeight)
+	}), {
+		color: helpers$1.options.resolve([nestedOpts.fontColor, options.fontColor, core_defaults.global.defaultFontColor])
+	});
+}
+
+function parseTickFontOptions(options) {
+	var minor = parseFontOptions(options, options.minor);
+	var major = options.major.enabled ? parseFontOptions(options, options.major) : minor;
+
+	return {minor: minor, major: major};
+}
+
+function nonSkipped(ticksToFilter) {
+	var filtered = [];
+	var item, index, len;
+	for (index = 0, len = ticksToFilter.length; index < len; ++index) {
+		item = ticksToFilter[index];
+		if (typeof item._index !== 'undefined') {
+			filtered.push(item);
+		}
+	}
+	return filtered;
+}
+
+function getEvenSpacing(arr) {
+	var len = arr.length;
+	var i, diff;
+
+	if (len < 2) {
+		return false;
+	}
+
+	for (diff = arr[0], i = 1; i < len; ++i) {
+		if (arr[i] - arr[i - 1] !== diff) {
+			return false;
+		}
+	}
+	return diff;
+}
+
+function calculateSpacing(majorIndices, ticks, axisLength, ticksLimit) {
+	var evenMajorSpacing = getEvenSpacing(majorIndices);
+	var spacing = (ticks.length - 1) / ticksLimit;
+	var factors, factor, i, ilen;
+
+	// If the major ticks are evenly spaced apart, place the minor ticks
+	// so that they divide the major ticks into even chunks
+	if (!evenMajorSpacing) {
+		return Math.max(spacing, 1);
+	}
+
+	factors = helpers$1.math._factorize(evenMajorSpacing);
+	for (i = 0, ilen = factors.length - 1; i < ilen; i++) {
+		factor = factors[i];
+		if (factor > spacing) {
+			return factor;
+		}
+	}
+	return Math.max(spacing, 1);
+}
+
+function getMajorIndices(ticks) {
+	var result = [];
+	var i, ilen;
+	for (i = 0, ilen = ticks.length; i < ilen; i++) {
+		if (ticks[i].major) {
+			result.push(i);
+		}
+	}
+	return result;
+}
+
+function skipMajors(ticks, majorIndices, spacing) {
+	var count = 0;
+	var next = majorIndices[0];
+	var i, tick;
+
+	spacing = Math.ceil(spacing);
+	for (i = 0; i < ticks.length; i++) {
+		tick = ticks[i];
+		if (i === next) {
+			tick._index = i;
+			count++;
+			next = majorIndices[count * spacing];
+		} else {
+			delete tick.label;
+		}
+	}
+}
+
+function skip(ticks, spacing, majorStart, majorEnd) {
+	var start = valueOrDefault$a(majorStart, 0);
+	var end = Math.min(valueOrDefault$a(majorEnd, ticks.length), ticks.length);
+	var count = 0;
+	var length, i, tick, next;
+
+	spacing = Math.ceil(spacing);
+	if (majorEnd) {
+		length = majorEnd - majorStart;
+		spacing = length / Math.floor(length / spacing);
+	}
+
+	next = start;
+
+	while (next < 0) {
+		count++;
+		next = Math.round(start + count * spacing);
+	}
+
+	for (i = Math.max(start, 0); i < end; i++) {
+		tick = ticks[i];
+		if (i === next) {
+			tick._index = i;
+			count++;
+			next = Math.round(start + count * spacing);
+		} else {
+			delete tick.label;
+		}
+	}
+}
+
+var Scale = core_element.extend({
+
+	zeroLineIndex: 0,
+
 	/**
 	 * Get the padding needed for the scale
 	 * @method getPadding
@@ -10279,40 +11438,45 @@ var core_scale = core_element.extend({
 		return this._ticks;
 	},
 
+	/**
+	* @private
+	*/
+	_getLabels: function() {
+		var data = this.chart.data;
+		return this.options.labels || (this.isHorizontal() ? data.xLabels : data.yLabels) || data.labels || [];
+	},
+
 	// These methods are ordered by lifecyle. Utilities then follow.
 	// Any function defined here is inherited by all scale types.
 	// Any function can be extended by the scale type
 
+	/**
+	 * Provided for backward compatibility, not available anymore
+	 * @function Chart.Scale.mergeTicksOptions
+	 * @deprecated since version 2.8.0
+	 * @todo remove at version 3
+	 */
 	mergeTicksOptions: function() {
-		var ticks = this.options.ticks;
-		if (ticks.minor === false) {
-			ticks.minor = {
-				display: false
-			};
-		}
-		if (ticks.major === false) {
-			ticks.major = {
-				display: false
-			};
-		}
-		for (var key in ticks) {
-			if (key !== 'major' && key !== 'minor') {
-				if (typeof ticks.minor[key] === 'undefined') {
-					ticks.minor[key] = ticks[key];
-				}
-				if (typeof ticks.major[key] === 'undefined') {
-					ticks.major[key] = ticks[key];
-				}
-			}
-		}
+		// noop
 	},
+
 	beforeUpdate: function() {
 		helpers$1.callback(this.options.beforeUpdate, [this]);
 	},
 
+	/**
+	 * @param {number} maxWidth - the max width in pixels
+	 * @param {number} maxHeight - the max height in pixels
+	 * @param {object} margins - the space between the edge of the other scales and edge of the chart
+	 *   This space comes from two sources:
+	 *     - padding - space that's required to show the labels at the edges of the scale
+	 *     - thickness of scales or legends in another orientation
+	 */
 	update: function(maxWidth, maxHeight, margins) {
 		var me = this;
-		var i, ilen, labels, label, ticks, tick;
+		var tickOpts = me.options.ticks;
+		var sampleSize = tickOpts.sampleSize;
+		var i, ilen, labels, ticks, samplingEnabled;
 
 		// Update Lifecycle - Probably don't want to ever extend or overwrite this function ;)
 		me.beforeUpdate();
@@ -10327,9 +11491,14 @@ var core_scale = core_element.extend({
 			bottom: 0
 		}, margins);
 
+		me._ticks = null;
+		me.ticks = null;
+		me._labelSizes = null;
 		me._maxLabelLines = 0;
 		me.longestLabelWidth = 0;
 		me.longestTextCache = me.longestTextCache || {};
+		me._gridLineItems = null;
+		me._labelItems = null;
 
 		// Dimensions
 		me.beforeSetDimensions();
@@ -10357,49 +11526,81 @@ var core_scale = core_element.extend({
 		// Allow modification of ticks in callback.
 		ticks = me.afterBuildTicks(ticks) || ticks;
 
-		me.beforeTickToLabelConversion();
-
-		// New implementations should return the formatted tick labels but for BACKWARD
-		// COMPAT, we still support no return (`this.ticks` internally changed by calling
-		// this method and supposed to contain only string values).
-		labels = me.convertTicksToLabels(ticks) || me.ticks;
-
-		me.afterTickToLabelConversion();
-
-		me.ticks = labels;   // BACKWARD COMPATIBILITY
-
-		// IMPORTANT: from this point, we consider that `this.ticks` will NEVER change!
-
-		// BACKWARD COMPAT: synchronize `_ticks` with labels (so potentially `this.ticks`)
-		for (i = 0, ilen = labels.length; i < ilen; ++i) {
-			label = labels[i];
-			tick = ticks[i];
-			if (!tick) {
-				ticks.push(tick = {
-					label: label,
+		// Ensure ticks contains ticks in new tick format
+		if ((!ticks || !ticks.length) && me.ticks) {
+			ticks = [];
+			for (i = 0, ilen = me.ticks.length; i < ilen; ++i) {
+				ticks.push({
+					value: me.ticks[i],
 					major: false
 				});
-			} else {
-				tick.label = label;
 			}
 		}
 
 		me._ticks = ticks;
 
+		// Compute tick rotation and fit using a sampled subset of labels
+		// We generally don't need to compute the size of every single label for determining scale size
+		samplingEnabled = sampleSize < ticks.length;
+		labels = me._convertTicksToLabels(samplingEnabled ? sample(ticks, sampleSize) : ticks);
+
+		// _configure is called twice, once here, once from core.controller.updateLayout.
+		// Here we haven't been positioned yet, but dimensions are correct.
+		// Variables set in _configure are needed for calculateTickRotation, and
+		// it's ok that coordinates are not correct there, only dimensions matter.
+		me._configure();
+
 		// Tick Rotation
 		me.beforeCalculateTickRotation();
 		me.calculateTickRotation();
 		me.afterCalculateTickRotation();
-		// Fit
+
 		me.beforeFit();
 		me.fit();
 		me.afterFit();
-		//
+
+		// Auto-skip
+		me._ticksToDraw = tickOpts.display && (tickOpts.autoSkip || tickOpts.source === 'auto') ? me._autoSkip(ticks) : ticks;
+
+		if (samplingEnabled) {
+			// Generate labels using all non-skipped ticks
+			labels = me._convertTicksToLabels(me._ticksToDraw);
+		}
+
+		me.ticks = labels;   // BACKWARD COMPATIBILITY
+
+		// IMPORTANT: after this point, we consider that `this.ticks` will NEVER change!
+
 		me.afterUpdate();
 
+		// TODO(v3): remove minSize as a public property and return value from all layout boxes. It is unused
+		// make maxWidth and maxHeight private
 		return me.minSize;
-
 	},
+
+	/**
+	 * @private
+	 */
+	_configure: function() {
+		var me = this;
+		var reversePixels = me.options.ticks.reverse;
+		var startPixel, endPixel;
+
+		if (me.isHorizontal()) {
+			startPixel = me.left;
+			endPixel = me.right;
+		} else {
+			startPixel = me.top;
+			endPixel = me.bottom;
+			// by default vertical scales are from bottom to top, so pixels are reversed
+			reversePixels = !reversePixels;
+		}
+		me._startPixel = startPixel;
+		me._endPixel = endPixel;
+		me._reversePixels = reversePixels;
+		me._length = endPixel - startPixel;
+	},
+
 	afterUpdate: function() {
 		helpers$1.callback(this.options.afterUpdate, [this]);
 	},
@@ -10452,7 +11653,7 @@ var core_scale = core_element.extend({
 	afterBuildTicks: function(ticks) {
 		var me = this;
 		// ticks is empty for old axis implementations here
-		if (helpers$1.isArray(ticks) && ticks.length) {
+		if (isArray(ticks) && ticks.length) {
 			return helpers$1.callback(me.options.afterBuildTicks, [me, ticks]);
 		}
 		// Support old implementations (that modified `this.ticks` directly in buildTicks)
@@ -10480,40 +11681,39 @@ var core_scale = core_element.extend({
 	},
 	calculateTickRotation: function() {
 		var me = this;
-		var context = me.ctx;
-		var tickOpts = me.options.ticks;
-		var labels = labelsFromTicks(me._ticks);
+		var options = me.options;
+		var tickOpts = options.ticks;
+		var numTicks = me.getTicks().length;
+		var minRotation = tickOpts.minRotation || 0;
+		var maxRotation = tickOpts.maxRotation;
+		var labelRotation = minRotation;
+		var labelSizes, maxLabelWidth, maxLabelHeight, maxWidth, tickWidth, maxHeight, maxLabelDiagonal;
 
-		// Get the width of each grid by calculating the difference
-		// between x offsets between 0 and 1.
-		var tickFont = helpers$1.options._parseFont(tickOpts);
-		context.font = tickFont.string;
+		if (!me._isVisible() || !tickOpts.display || minRotation >= maxRotation || numTicks <= 1 || !me.isHorizontal()) {
+			me.labelRotation = minRotation;
+			return;
+		}
 
-		var labelRotation = tickOpts.minRotation || 0;
+		labelSizes = me._getLabelSizes();
+		maxLabelWidth = labelSizes.widest.width;
+		maxLabelHeight = labelSizes.highest.height - labelSizes.highest.offset;
 
-		if (labels.length && me.options.display && me.isHorizontal()) {
-			var originalLabelWidth = helpers$1.longestText(context, tickFont.string, labels, me.longestTextCache);
-			var labelWidth = originalLabelWidth;
-			var cosRotation, sinRotation;
+		// Estimate the width of each grid based on the canvas width, the maximum
+		// label width and the number of tick intervals
+		maxWidth = Math.min(me.maxWidth, me.chart.width - maxLabelWidth);
+		tickWidth = options.offset ? me.maxWidth / numTicks : maxWidth / (numTicks - 1);
 
-			// Allow 3 pixels x2 padding either side for label readability
-			var tickWidth = me.getPixelForTick(1) - me.getPixelForTick(0) - 6;
-
-			// Max label rotation can be set or default to 90 - also act as a loop counter
-			while (labelWidth > tickWidth && labelRotation < tickOpts.maxRotation) {
-				var angleRadians = helpers$1.toRadians(labelRotation);
-				cosRotation = Math.cos(angleRadians);
-				sinRotation = Math.sin(angleRadians);
-
-				if (sinRotation * originalLabelWidth > me.maxHeight) {
-					// go back one step
-					labelRotation--;
-					break;
-				}
-
-				labelRotation++;
-				labelWidth = cosRotation * originalLabelWidth;
-			}
+		// Allow 3 pixels x2 padding either side for label readability
+		if (maxLabelWidth + 6 > tickWidth) {
+			tickWidth = maxWidth / (numTicks - (options.offset ? 0.5 : 1));
+			maxHeight = me.maxHeight - getTickMarkLength(options.gridLines)
+				- tickOpts.padding - getScaleLabelHeight(options.scaleLabel);
+			maxLabelDiagonal = Math.sqrt(maxLabelWidth * maxLabelWidth + maxLabelHeight * maxLabelHeight);
+			labelRotation = helpers$1.toDegrees(Math.min(
+				Math.asin(Math.min((labelSizes.highest.height + 6) / tickWidth, 1)),
+				Math.asin(Math.min(maxHeight / maxLabelDiagonal, 1)) - Math.asin(maxLabelHeight / maxLabelDiagonal)
+			));
+			labelRotation = Math.max(minRotation, Math.min(maxRotation, labelRotation));
 		}
 
 		me.labelRotation = labelRotation;
@@ -10535,111 +11735,99 @@ var core_scale = core_element.extend({
 			height: 0
 		};
 
-		var labels = labelsFromTicks(me._ticks);
-
+		var chart = me.chart;
 		var opts = me.options;
 		var tickOpts = opts.ticks;
 		var scaleLabelOpts = opts.scaleLabel;
 		var gridLineOpts = opts.gridLines;
 		var display = me._isVisible();
-		var position = opts.position;
+		var isBottom = opts.position === 'bottom';
 		var isHorizontal = me.isHorizontal();
-
-		var parseFont = helpers$1.options._parseFont;
-		var tickFont = parseFont(tickOpts);
-		var tickMarkLength = opts.gridLines.tickMarkLength;
 
 		// Width
 		if (isHorizontal) {
-			// subtract the margins to line up with the chartArea if we are a full width scale
-			minSize.width = me.isFullWidth() ? me.maxWidth - me.margins.left - me.margins.right : me.maxWidth;
-		} else {
-			minSize.width = display && gridLineOpts.drawTicks ? tickMarkLength : 0;
+			minSize.width = me.maxWidth;
+		} else if (display) {
+			minSize.width = getTickMarkLength(gridLineOpts) + getScaleLabelHeight(scaleLabelOpts);
 		}
 
 		// height
-		if (isHorizontal) {
-			minSize.height = display && gridLineOpts.drawTicks ? tickMarkLength : 0;
-		} else {
+		if (!isHorizontal) {
 			minSize.height = me.maxHeight; // fill all the height
-		}
-
-		// Are we showing a title for the scale?
-		if (scaleLabelOpts.display && display) {
-			var scaleLabelFont = parseFont(scaleLabelOpts);
-			var scaleLabelPadding = helpers$1.options.toPadding(scaleLabelOpts.padding);
-			var deltaHeight = scaleLabelFont.lineHeight + scaleLabelPadding.height;
-
-			if (isHorizontal) {
-				minSize.height += deltaHeight;
-			} else {
-				minSize.width += deltaHeight;
-			}
+		} else if (display) {
+			minSize.height = getTickMarkLength(gridLineOpts) + getScaleLabelHeight(scaleLabelOpts);
 		}
 
 		// Don't bother fitting the ticks if we are not showing the labels
 		if (tickOpts.display && display) {
-			var largestTextWidth = helpers$1.longestText(me.ctx, tickFont.string, labels, me.longestTextCache);
-			var tallestLabelHeightInLines = helpers$1.numberOfLabelLines(labels);
-			var lineSpace = tickFont.size * 0.5;
-			var tickPadding = me.options.ticks.padding;
-
-			// Store max number of lines and widest label for _autoSkip
-			me._maxLabelLines = tallestLabelHeightInLines;
-			me.longestLabelWidth = largestTextWidth;
+			var tickFonts = parseTickFontOptions(tickOpts);
+			var labelSizes = me._getLabelSizes();
+			var firstLabelSize = labelSizes.first;
+			var lastLabelSize = labelSizes.last;
+			var widestLabelSize = labelSizes.widest;
+			var highestLabelSize = labelSizes.highest;
+			var lineSpace = tickFonts.minor.lineHeight * 0.4;
+			var tickPadding = tickOpts.padding;
 
 			if (isHorizontal) {
+				// A horizontal axis is more constrained by the height.
+				var isRotated = me.labelRotation !== 0;
 				var angleRadians = helpers$1.toRadians(me.labelRotation);
 				var cosRotation = Math.cos(angleRadians);
 				var sinRotation = Math.sin(angleRadians);
 
-				// TODO - improve this calculation
-				var labelHeight = (sinRotation * largestTextWidth)
-					+ (tickFont.lineHeight * tallestLabelHeightInLines)
-					+ lineSpace; // padding
+				var labelHeight = sinRotation * widestLabelSize.width
+					+ cosRotation * (highestLabelSize.height - (isRotated ? highestLabelSize.offset : 0))
+					+ (isRotated ? 0 : lineSpace); // padding
 
 				minSize.height = Math.min(me.maxHeight, minSize.height + labelHeight + tickPadding);
 
-				me.ctx.font = tickFont.string;
-				var firstLabelWidth = computeTextSize(me.ctx, labels[0], tickFont.string);
-				var lastLabelWidth = computeTextSize(me.ctx, labels[labels.length - 1], tickFont.string);
 				var offsetLeft = me.getPixelForTick(0) - me.left;
-				var offsetRight = me.right - me.getPixelForTick(labels.length - 1);
+				var offsetRight = me.right - me.getPixelForTick(me.getTicks().length - 1);
 				var paddingLeft, paddingRight;
 
 				// Ensure that our ticks are always inside the canvas. When rotated, ticks are right aligned
 				// which means that the right padding is dominated by the font height
-				if (me.labelRotation !== 0) {
-					paddingLeft = position === 'bottom' ? (cosRotation * firstLabelWidth) : (cosRotation * lineSpace);
-					paddingRight = position === 'bottom' ? (cosRotation * lineSpace) : (cosRotation * lastLabelWidth);
+				if (isRotated) {
+					paddingLeft = isBottom ?
+						cosRotation * firstLabelSize.width + sinRotation * firstLabelSize.offset :
+						sinRotation * (firstLabelSize.height - firstLabelSize.offset);
+					paddingRight = isBottom ?
+						sinRotation * (lastLabelSize.height - lastLabelSize.offset) :
+						cosRotation * lastLabelSize.width + sinRotation * lastLabelSize.offset;
 				} else {
-					paddingLeft = firstLabelWidth / 2;
-					paddingRight = lastLabelWidth / 2;
+					paddingLeft = firstLabelSize.width / 2;
+					paddingRight = lastLabelSize.width / 2;
 				}
-				me.paddingLeft = Math.max(paddingLeft - offsetLeft, 0) + 3; // add 3 px to move away from canvas edges
-				me.paddingRight = Math.max(paddingRight - offsetRight, 0) + 3;
+
+				// Adjust padding taking into account changes in offsets
+				// and add 3 px to move away from canvas edges
+				me.paddingLeft = Math.max((paddingLeft - offsetLeft) * me.width / (me.width - offsetLeft), 0) + 3;
+				me.paddingRight = Math.max((paddingRight - offsetRight) * me.width / (me.width - offsetRight), 0) + 3;
 			} else {
 				// A vertical axis is more constrained by the width. Labels are the
 				// dominant factor here, so get that length first and account for padding
-				if (tickOpts.mirror) {
-					largestTextWidth = 0;
-				} else {
+				var labelWidth = tickOpts.mirror ? 0 :
 					// use lineSpace for consistency with horizontal axis
 					// tickPadding is not implemented for horizontal
-					largestTextWidth += tickPadding + lineSpace;
-				}
+					widestLabelSize.width + tickPadding + lineSpace;
 
-				minSize.width = Math.min(me.maxWidth, minSize.width + largestTextWidth);
+				minSize.width = Math.min(me.maxWidth, minSize.width + labelWidth);
 
-				me.paddingTop = tickFont.size / 2;
-				me.paddingBottom = tickFont.size / 2;
+				me.paddingTop = firstLabelSize.height / 2;
+				me.paddingBottom = lastLabelSize.height / 2;
 			}
 		}
 
 		me.handleMargins();
 
-		me.width = minSize.width;
-		me.height = minSize.height;
+		if (isHorizontal) {
+			me.width = me._length = chart.width - me.margins.left - me.margins.right;
+			me.height = minSize.height;
+		} else {
+			me.width = minSize.width;
+			me.height = me._length = chart.height - me.margins.top - me.margins.bottom;
+		}
 	},
 
 	/**
@@ -10649,10 +11837,10 @@ var core_scale = core_element.extend({
 	handleMargins: function() {
 		var me = this;
 		if (me.margins) {
-			me.paddingLeft = Math.max(me.paddingLeft - me.margins.left, 0);
-			me.paddingTop = Math.max(me.paddingTop - me.margins.top, 0);
-			me.paddingRight = Math.max(me.paddingRight - me.margins.right, 0);
-			me.paddingBottom = Math.max(me.paddingBottom - me.margins.bottom, 0);
+			me.margins.left = Math.max(me.paddingLeft, me.margins.left);
+			me.margins.top = Math.max(me.paddingTop, me.margins.top);
+			me.margins.right = Math.max(me.paddingRight, me.margins.right);
+			me.margins.bottom = Math.max(me.paddingBottom, me.margins.bottom);
 		}
 	},
 
@@ -10662,22 +11850,24 @@ var core_scale = core_element.extend({
 
 	// Shared Methods
 	isHorizontal: function() {
-		return this.options.position === 'top' || this.options.position === 'bottom';
+		var pos = this.options.position;
+		return pos === 'top' || pos === 'bottom';
 	},
 	isFullWidth: function() {
-		return (this.options.fullWidth);
+		return this.options.fullWidth;
 	},
 
 	// Get the correct value. NaN bad inputs, If the value type is object get the x or y based on whether we are horizontal or not
 	getRightValue: function(rawValue) {
 		// Null and undefined values first
-		if (helpers$1.isNullOrUndef(rawValue)) {
+		if (isNullOrUndef(rawValue)) {
 			return NaN;
 		}
 		// isNaN(object) returns true, so make sure NaN is checking for a number; Discard Infinite values
 		if ((typeof rawValue === 'number' || rawValue instanceof Number) && !isFinite(rawValue)) {
 			return NaN;
 		}
+
 		// If it is in fact an object, dive in one more level
 		if (rawValue) {
 			if (this.isHorizontal()) {
@@ -10691,6 +11881,85 @@ var core_scale = core_element.extend({
 
 		// Value is good, return it
 		return rawValue;
+	},
+
+	_convertTicksToLabels: function(ticks) {
+		var me = this;
+		var labels, i, ilen;
+
+		me.ticks = ticks.map(function(tick) {
+			return tick.value;
+		});
+
+		me.beforeTickToLabelConversion();
+
+		// New implementations should return the formatted tick labels but for BACKWARD
+		// COMPAT, we still support no return (`this.ticks` internally changed by calling
+		// this method and supposed to contain only string values).
+		labels = me.convertTicksToLabels(ticks) || me.ticks;
+
+		me.afterTickToLabelConversion();
+
+		// BACKWARD COMPAT: synchronize `_ticks` with labels (so potentially `this.ticks`)
+		for (i = 0, ilen = ticks.length; i < ilen; ++i) {
+			ticks[i].label = labels[i];
+		}
+
+		return labels;
+	},
+
+	/**
+	 * @private
+	 */
+	_getLabelSizes: function() {
+		var me = this;
+		var labelSizes = me._labelSizes;
+
+		if (!labelSizes) {
+			me._labelSizes = labelSizes = computeLabelSizes(me.ctx, parseTickFontOptions(me.options.ticks), me.getTicks(), me.longestTextCache);
+			me.longestLabelWidth = labelSizes.widest.width;
+		}
+
+		return labelSizes;
+	},
+
+	/**
+	 * @private
+	 */
+	_parseValue: function(value) {
+		var start, end, min, max;
+
+		if (isArray(value)) {
+			start = +this.getRightValue(value[0]);
+			end = +this.getRightValue(value[1]);
+			min = Math.min(start, end);
+			max = Math.max(start, end);
+		} else {
+			value = +this.getRightValue(value);
+			start = undefined;
+			end = value;
+			min = value;
+			max = value;
+		}
+
+		return {
+			min: min,
+			max: max,
+			start: start,
+			end: end
+		};
+	},
+
+	/**
+	* @private
+	*/
+	_getScaleLabel: function(rawValue) {
+		var v = this._parseValue(rawValue);
+		if (v.start !== undefined) {
+			return '[' + v.start + ', ' + v.end + ']';
+		}
+
+		return +this.getRightValue(rawValue);
 	},
 
 	/**
@@ -10723,21 +11992,12 @@ var core_scale = core_element.extend({
 	getPixelForTick: function(index) {
 		var me = this;
 		var offset = me.options.offset;
-		if (me.isHorizontal()) {
-			var innerWidth = me.width - (me.paddingLeft + me.paddingRight);
-			var tickWidth = innerWidth / Math.max((me._ticks.length - (offset ? 0 : 1)), 1);
-			var pixel = (tickWidth * index) + me.paddingLeft;
+		var numTicks = me._ticks.length;
+		var tickWidth = 1 / Math.max(numTicks - (offset ? 0 : 1), 1);
 
-			if (offset) {
-				pixel += tickWidth / 2;
-			}
-
-			var finalVal = me.left + pixel;
-			finalVal += me.isFullWidth() ? me.margins.left : 0;
-			return finalVal;
-		}
-		var innerHeight = me.height - (me.paddingTop + me.paddingBottom);
-		return me.top + (index * (innerHeight / (me._ticks.length - 1)));
+		return index < 0 || index > numTicks - 1
+			? null
+			: me.getPixelForDecimal(index * tickWidth + (offset ? tickWidth / 2 : 0));
 	},
 
 	/**
@@ -10746,15 +12006,17 @@ var core_scale = core_element.extend({
 	 */
 	getPixelForDecimal: function(decimal) {
 		var me = this;
-		if (me.isHorizontal()) {
-			var innerWidth = me.width - (me.paddingLeft + me.paddingRight);
-			var valueOffset = (innerWidth * decimal) + me.paddingLeft;
 
-			var finalVal = me.left + valueOffset;
-			finalVal += me.isFullWidth() ? me.margins.left : 0;
-			return finalVal;
+		if (me._reversePixels) {
+			decimal = 1 - decimal;
 		}
-		return me.top + (decimal * me.height);
+
+		return me._startPixel + decimal * me._length;
+	},
+
+	getDecimalForPixel: function(pixel) {
+		var decimal = (pixel - this._startPixel) / this._length;
+		return this._reversePixels ? 1 - decimal : decimal;
 	},
 
 	/**
@@ -10782,44 +12044,34 @@ var core_scale = core_element.extend({
 	 */
 	_autoSkip: function(ticks) {
 		var me = this;
-		var isHorizontal = me.isHorizontal();
-		var optionTicks = me.options.ticks.minor;
-		var tickCount = ticks.length;
-		var skipRatio = false;
-		var maxTicks = optionTicks.maxTicksLimit;
+		var tickOpts = me.options.ticks;
+		var axisLength = me._length;
+		var ticksLimit = tickOpts.maxTicksLimit || axisLength / me._tickSize() + 1;
+		var majorIndices = tickOpts.major.enabled ? getMajorIndices(ticks) : [];
+		var numMajorIndices = majorIndices.length;
+		var first = majorIndices[0];
+		var last = majorIndices[numMajorIndices - 1];
+		var i, ilen, spacing, avgMajorSpacing;
 
-		// Total space needed to display all ticks. First and last ticks are
-		// drawn as their center at end of axis, so tickCount-1
-		var ticksLength = me._tickSize() * (tickCount - 1);
-
-		// Axis length
-		var axisLength = isHorizontal
-			? me.width - (me.paddingLeft + me.paddingRight)
-			: me.height - (me.paddingTop + me.PaddingBottom);
-
-		var result = [];
-		var i, tick;
-
-		if (ticksLength > axisLength) {
-			skipRatio = 1 + Math.floor(ticksLength / axisLength);
+		// If there are too many major ticks to display them all
+		if (numMajorIndices > ticksLimit) {
+			skipMajors(ticks, majorIndices, numMajorIndices / ticksLimit);
+			return nonSkipped(ticks);
 		}
 
-		// if they defined a max number of optionTicks,
-		// increase skipRatio until that number is met
-		if (tickCount > maxTicks) {
-			skipRatio = Math.max(skipRatio, 1 + Math.floor(tickCount / maxTicks));
-		}
+		spacing = calculateSpacing(majorIndices, ticks, axisLength, ticksLimit);
 
-		for (i = 0; i < tickCount; i++) {
-			tick = ticks[i];
-
-			if (skipRatio > 1 && i % skipRatio > 0) {
-				// leave tick in place but make sure it's not displayed (#4635)
-				delete tick.label;
+		if (numMajorIndices > 0) {
+			for (i = 0, ilen = numMajorIndices - 1; i < ilen; i++) {
+				skip(ticks, spacing, majorIndices[i], majorIndices[i + 1]);
 			}
-			result.push(tick);
+			avgMajorSpacing = numMajorIndices > 1 ? (last - first) / (numMajorIndices - 1) : null;
+			skip(ticks, spacing, helpers$1.isNullOrUndef(avgMajorSpacing) ? 0 : first - avgMajorSpacing, first);
+			skip(ticks, spacing, last, helpers$1.isNullOrUndef(avgMajorSpacing) ? ticks.length : last + avgMajorSpacing);
+			return nonSkipped(ticks);
 		}
-		return result;
+		skip(ticks, spacing);
+		return nonSkipped(ticks);
 	},
 
 	/**
@@ -10827,22 +12079,20 @@ var core_scale = core_element.extend({
 	 */
 	_tickSize: function() {
 		var me = this;
-		var isHorizontal = me.isHorizontal();
-		var optionTicks = me.options.ticks.minor;
+		var optionTicks = me.options.ticks;
 
 		// Calculate space needed by label in axis direction.
 		var rot = helpers$1.toRadians(me.labelRotation);
 		var cos = Math.abs(Math.cos(rot));
 		var sin = Math.abs(Math.sin(rot));
 
+		var labelSizes = me._getLabelSizes();
 		var padding = optionTicks.autoSkipPadding || 0;
-		var w = (me.longestLabelWidth + padding) || 0;
-
-		var tickFont = helpers$1.options._parseFont(optionTicks);
-		var h = (me._maxLabelLines * tickFont.lineHeight + padding) || 0;
+		var w = labelSizes ? labelSizes.widest.width + padding : 0;
+		var h = labelSizes ? labelSizes.highest.height + padding : 0;
 
 		// Calculate space needed for 1 tick in axis direction.
-		return isHorizontal
+		return me.isHorizontal()
 			? h * cos > w * sin ? w / cos : h / sin
 			: h * sin < w * cos ? h / cos : w / sin;
 	},
@@ -10874,152 +12124,93 @@ var core_scale = core_element.extend({
 	},
 
 	/**
-	 * Actually draw the scale on the canvas
-	 * @param {object} chartArea - the area of the chart to draw full grid lines on
+	 * @private
 	 */
-	draw: function(chartArea) {
+	_computeGridLineItems: function(chartArea) {
 		var me = this;
-		var options = me.options;
-
-		if (!me._isVisible()) {
-			return;
-		}
-
 		var chart = me.chart;
-		var context = me.ctx;
-		var globalDefaults = core_defaults.global;
-		var defaultFontColor = globalDefaults.defaultFontColor;
-		var optionTicks = options.ticks.minor;
-		var optionMajorTicks = options.ticks.major || optionTicks;
+		var options = me.options;
 		var gridLines = options.gridLines;
-		var scaleLabel = options.scaleLabel;
 		var position = options.position;
-
-		var isRotated = me.labelRotation !== 0;
-		var isMirrored = optionTicks.mirror;
+		var offsetGridLines = gridLines.offsetGridLines;
 		var isHorizontal = me.isHorizontal();
+		var ticks = me._ticksToDraw;
+		var ticksLength = ticks.length + (offsetGridLines ? 1 : 0);
 
-		var parseFont = helpers$1.options._parseFont;
-		var ticks = optionTicks.display && optionTicks.autoSkip ? me._autoSkip(me.getTicks()) : me.getTicks();
-		var tickFontColor = valueOrDefault$9(optionTicks.fontColor, defaultFontColor);
-		var tickFont = parseFont(optionTicks);
-		var lineHeight = tickFont.lineHeight;
-		var majorTickFontColor = valueOrDefault$9(optionMajorTicks.fontColor, defaultFontColor);
-		var majorTickFont = parseFont(optionMajorTicks);
-		var tickPadding = optionTicks.padding;
-		var labelOffset = optionTicks.labelOffset;
-
-		var tl = gridLines.drawTicks ? gridLines.tickMarkLength : 0;
-
-		var scaleLabelFontColor = valueOrDefault$9(scaleLabel.fontColor, defaultFontColor);
-		var scaleLabelFont = parseFont(scaleLabel);
-		var scaleLabelPadding = helpers$1.options.toPadding(scaleLabel.padding);
-		var labelRotationRadians = helpers$1.toRadians(me.labelRotation);
-
-		var itemsToDraw = [];
-
+		var tl = getTickMarkLength(gridLines);
+		var items = [];
 		var axisWidth = gridLines.drawBorder ? valueAtIndexOrDefault(gridLines.lineWidth, 0, 0) : 0;
+		var axisHalfWidth = axisWidth / 2;
 		var alignPixel = helpers$1._alignPixel;
-		var borderValue, tickStart, tickEnd;
+		var alignBorderValue = function(pixel) {
+			return alignPixel(chart, pixel, axisWidth);
+		};
+		var borderValue, i, tick, lineValue, alignedLineValue;
+		var tx1, ty1, tx2, ty2, x1, y1, x2, y2, lineWidth, lineColor, borderDash, borderDashOffset;
 
 		if (position === 'top') {
-			borderValue = alignPixel(chart, me.bottom, axisWidth);
-			tickStart = me.bottom - tl;
-			tickEnd = borderValue - axisWidth / 2;
+			borderValue = alignBorderValue(me.bottom);
+			ty1 = me.bottom - tl;
+			ty2 = borderValue - axisHalfWidth;
+			y1 = alignBorderValue(chartArea.top) + axisHalfWidth;
+			y2 = chartArea.bottom;
 		} else if (position === 'bottom') {
-			borderValue = alignPixel(chart, me.top, axisWidth);
-			tickStart = borderValue + axisWidth / 2;
-			tickEnd = me.top + tl;
+			borderValue = alignBorderValue(me.top);
+			y1 = chartArea.top;
+			y2 = alignBorderValue(chartArea.bottom) - axisHalfWidth;
+			ty1 = borderValue + axisHalfWidth;
+			ty2 = me.top + tl;
 		} else if (position === 'left') {
-			borderValue = alignPixel(chart, me.right, axisWidth);
-			tickStart = me.right - tl;
-			tickEnd = borderValue - axisWidth / 2;
+			borderValue = alignBorderValue(me.right);
+			tx1 = me.right - tl;
+			tx2 = borderValue - axisHalfWidth;
+			x1 = alignBorderValue(chartArea.left) + axisHalfWidth;
+			x2 = chartArea.right;
 		} else {
-			borderValue = alignPixel(chart, me.left, axisWidth);
-			tickStart = borderValue + axisWidth / 2;
-			tickEnd = me.left + tl;
+			borderValue = alignBorderValue(me.left);
+			x1 = chartArea.left;
+			x2 = alignBorderValue(chartArea.right) - axisHalfWidth;
+			tx1 = borderValue + axisHalfWidth;
+			tx2 = me.left + tl;
 		}
 
-		var epsilon = 0.0000001; // 0.0000001 is margin in pixels for Accumulated error.
+		for (i = 0; i < ticksLength; ++i) {
+			tick = ticks[i] || {};
 
-		helpers$1.each(ticks, function(tick, index) {
 			// autoskipper skipped this tick (#4635)
-			if (helpers$1.isNullOrUndef(tick.label)) {
-				return;
+			if (isNullOrUndef(tick.label) && i < ticks.length) {
+				continue;
 			}
 
-			var label = tick.label;
-			var lineWidth, lineColor, borderDash, borderDashOffset;
-			if (index === me.zeroLineIndex && options.offset === gridLines.offsetGridLines) {
+			if (i === me.zeroLineIndex && options.offset === offsetGridLines) {
 				// Draw the first index specially
 				lineWidth = gridLines.zeroLineWidth;
 				lineColor = gridLines.zeroLineColor;
 				borderDash = gridLines.zeroLineBorderDash || [];
 				borderDashOffset = gridLines.zeroLineBorderDashOffset || 0.0;
 			} else {
-				lineWidth = valueAtIndexOrDefault(gridLines.lineWidth, index);
-				lineColor = valueAtIndexOrDefault(gridLines.color, index);
+				lineWidth = valueAtIndexOrDefault(gridLines.lineWidth, i, 1);
+				lineColor = valueAtIndexOrDefault(gridLines.color, i, 'rgba(0,0,0,0.1)');
 				borderDash = gridLines.borderDash || [];
 				borderDashOffset = gridLines.borderDashOffset || 0.0;
 			}
 
-			// Common properties
-			var tx1, ty1, tx2, ty2, x1, y1, x2, y2, labelX, labelY, textOffset, textAlign;
-			var labelCount = helpers$1.isArray(label) ? label.length : 1;
-			var lineValue = getPixelForGridLine(me, index, gridLines.offsetGridLines);
+			lineValue = getPixelForGridLine(me, tick._index || i, offsetGridLines);
 
-			if (isHorizontal) {
-				var labelYOffset = tl + tickPadding;
-
-				if (lineValue < me.left - epsilon) {
-					lineColor = 'rgba(0,0,0,0)';
-				}
-
-				tx1 = tx2 = x1 = x2 = alignPixel(chart, lineValue, lineWidth);
-				ty1 = tickStart;
-				ty2 = tickEnd;
-				labelX = me.getPixelForTick(index) + labelOffset; // x values for optionTicks (need to consider offsetLabel option)
-
-				if (position === 'top') {
-					y1 = alignPixel(chart, chartArea.top, axisWidth) + axisWidth / 2;
-					y2 = chartArea.bottom;
-					textOffset = ((!isRotated ? 0.5 : 1) - labelCount) * lineHeight;
-					textAlign = !isRotated ? 'center' : 'left';
-					labelY = me.bottom - labelYOffset;
-				} else {
-					y1 = chartArea.top;
-					y2 = alignPixel(chart, chartArea.bottom, axisWidth) - axisWidth / 2;
-					textOffset = (!isRotated ? 0.5 : 0) * lineHeight;
-					textAlign = !isRotated ? 'center' : 'right';
-					labelY = me.top + labelYOffset;
-				}
-			} else {
-				var labelXOffset = (isMirrored ? 0 : tl) + tickPadding;
-
-				if (lineValue < me.top - epsilon) {
-					lineColor = 'rgba(0,0,0,0)';
-				}
-
-				tx1 = tickStart;
-				tx2 = tickEnd;
-				ty1 = ty2 = y1 = y2 = alignPixel(chart, lineValue, lineWidth);
-				labelY = me.getPixelForTick(index) + labelOffset;
-				textOffset = (1 - labelCount) * lineHeight / 2;
-
-				if (position === 'left') {
-					x1 = alignPixel(chart, chartArea.left, axisWidth) + axisWidth / 2;
-					x2 = chartArea.right;
-					textAlign = isMirrored ? 'left' : 'right';
-					labelX = me.right - labelXOffset;
-				} else {
-					x1 = chartArea.left;
-					x2 = alignPixel(chart, chartArea.right, axisWidth) - axisWidth / 2;
-					textAlign = isMirrored ? 'right' : 'left';
-					labelX = me.left + labelXOffset;
-				}
+			// Skip if the pixel is out of the range
+			if (lineValue === undefined) {
+				continue;
 			}
 
-			itemsToDraw.push({
+			alignedLineValue = alignPixel(chart, lineValue, lineWidth);
+
+			if (isHorizontal) {
+				tx1 = tx2 = x1 = x2 = alignedLineValue;
+			} else {
+				ty1 = ty2 = y1 = y2 = alignedLineValue;
+			}
+
+			items.push({
 				tx1: tx1,
 				ty1: ty1,
 				tx2: tx2,
@@ -11028,114 +12219,146 @@ var core_scale = core_element.extend({
 				y1: y1,
 				x2: x2,
 				y2: y2,
-				labelX: labelX,
-				labelY: labelY,
-				glWidth: lineWidth,
-				glColor: lineColor,
-				glBorderDash: borderDash,
-				glBorderDashOffset: borderDashOffset,
-				rotation: -1 * labelRotationRadians,
+				width: lineWidth,
+				color: lineColor,
+				borderDash: borderDash,
+				borderDashOffset: borderDashOffset,
+			});
+		}
+
+		items.ticksLength = ticksLength;
+		items.borderValue = borderValue;
+
+		return items;
+	},
+
+	/**
+	 * @private
+	 */
+	_computeLabelItems: function() {
+		var me = this;
+		var options = me.options;
+		var optionTicks = options.ticks;
+		var position = options.position;
+		var isMirrored = optionTicks.mirror;
+		var isHorizontal = me.isHorizontal();
+		var ticks = me._ticksToDraw;
+		var fonts = parseTickFontOptions(optionTicks);
+		var tickPadding = optionTicks.padding;
+		var tl = getTickMarkLength(options.gridLines);
+		var rotation = -helpers$1.toRadians(me.labelRotation);
+		var items = [];
+		var i, ilen, tick, label, x, y, textAlign, pixel, font, lineHeight, lineCount, textOffset;
+
+		if (position === 'top') {
+			y = me.bottom - tl - tickPadding;
+			textAlign = !rotation ? 'center' : 'left';
+		} else if (position === 'bottom') {
+			y = me.top + tl + tickPadding;
+			textAlign = !rotation ? 'center' : 'right';
+		} else if (position === 'left') {
+			x = me.right - (isMirrored ? 0 : tl) - tickPadding;
+			textAlign = isMirrored ? 'left' : 'right';
+		} else {
+			x = me.left + (isMirrored ? 0 : tl) + tickPadding;
+			textAlign = isMirrored ? 'right' : 'left';
+		}
+
+		for (i = 0, ilen = ticks.length; i < ilen; ++i) {
+			tick = ticks[i];
+			label = tick.label;
+
+			// autoskipper skipped this tick (#4635)
+			if (isNullOrUndef(label)) {
+				continue;
+			}
+
+			pixel = me.getPixelForTick(tick._index || i) + optionTicks.labelOffset;
+			font = tick.major ? fonts.major : fonts.minor;
+			lineHeight = font.lineHeight;
+			lineCount = isArray(label) ? label.length : 1;
+
+			if (isHorizontal) {
+				x = pixel;
+				textOffset = position === 'top'
+					? ((!rotation ? 0.5 : 1) - lineCount) * lineHeight
+					: (!rotation ? 0.5 : 0) * lineHeight;
+			} else {
+				y = pixel;
+				textOffset = (1 - lineCount) * lineHeight / 2;
+			}
+
+			items.push({
+				x: x,
+				y: y,
+				rotation: rotation,
 				label: label,
-				major: tick.major,
+				font: font,
 				textOffset: textOffset,
 				textAlign: textAlign
 			});
-		});
+		}
 
-		// Draw all of the tick labels, tick marks, and grid lines at the correct places
-		helpers$1.each(itemsToDraw, function(itemToDraw) {
-			var glWidth = itemToDraw.glWidth;
-			var glColor = itemToDraw.glColor;
+		return items;
+	},
 
-			if (gridLines.display && glWidth && glColor) {
-				context.save();
-				context.lineWidth = glWidth;
-				context.strokeStyle = glColor;
-				if (context.setLineDash) {
-					context.setLineDash(itemToDraw.glBorderDash);
-					context.lineDashOffset = itemToDraw.glBorderDashOffset;
+	/**
+	 * @private
+	 */
+	_drawGrid: function(chartArea) {
+		var me = this;
+		var gridLines = me.options.gridLines;
+
+		if (!gridLines.display) {
+			return;
+		}
+
+		var ctx = me.ctx;
+		var chart = me.chart;
+		var alignPixel = helpers$1._alignPixel;
+		var axisWidth = gridLines.drawBorder ? valueAtIndexOrDefault(gridLines.lineWidth, 0, 0) : 0;
+		var items = me._gridLineItems || (me._gridLineItems = me._computeGridLineItems(chartArea));
+		var width, color, i, ilen, item;
+
+		for (i = 0, ilen = items.length; i < ilen; ++i) {
+			item = items[i];
+			width = item.width;
+			color = item.color;
+
+			if (width && color) {
+				ctx.save();
+				ctx.lineWidth = width;
+				ctx.strokeStyle = color;
+				if (ctx.setLineDash) {
+					ctx.setLineDash(item.borderDash);
+					ctx.lineDashOffset = item.borderDashOffset;
 				}
 
-				context.beginPath();
+				ctx.beginPath();
 
 				if (gridLines.drawTicks) {
-					context.moveTo(itemToDraw.tx1, itemToDraw.ty1);
-					context.lineTo(itemToDraw.tx2, itemToDraw.ty2);
+					ctx.moveTo(item.tx1, item.ty1);
+					ctx.lineTo(item.tx2, item.ty2);
 				}
 
 				if (gridLines.drawOnChartArea) {
-					context.moveTo(itemToDraw.x1, itemToDraw.y1);
-					context.lineTo(itemToDraw.x2, itemToDraw.y2);
+					ctx.moveTo(item.x1, item.y1);
+					ctx.lineTo(item.x2, item.y2);
 				}
 
-				context.stroke();
-				context.restore();
+				ctx.stroke();
+				ctx.restore();
 			}
-
-			if (optionTicks.display) {
-				// Make sure we draw text in the correct color and font
-				context.save();
-				context.translate(itemToDraw.labelX, itemToDraw.labelY);
-				context.rotate(itemToDraw.rotation);
-				context.font = itemToDraw.major ? majorTickFont.string : tickFont.string;
-				context.fillStyle = itemToDraw.major ? majorTickFontColor : tickFontColor;
-				context.textBaseline = 'middle';
-				context.textAlign = itemToDraw.textAlign;
-
-				var label = itemToDraw.label;
-				var y = itemToDraw.textOffset;
-				if (helpers$1.isArray(label)) {
-					for (var i = 0; i < label.length; ++i) {
-						// We just make sure the multiline element is a string here..
-						context.fillText('' + label[i], 0, y);
-						y += lineHeight;
-					}
-				} else {
-					context.fillText(label, 0, y);
-				}
-				context.restore();
-			}
-		});
-
-		if (scaleLabel.display) {
-			// Draw the scale label
-			var scaleLabelX;
-			var scaleLabelY;
-			var rotation = 0;
-			var halfLineHeight = scaleLabelFont.lineHeight / 2;
-
-			if (isHorizontal) {
-				scaleLabelX = me.left + ((me.right - me.left) / 2); // midpoint of the width
-				scaleLabelY = position === 'bottom'
-					? me.bottom - halfLineHeight - scaleLabelPadding.bottom
-					: me.top + halfLineHeight + scaleLabelPadding.top;
-			} else {
-				var isLeft = position === 'left';
-				scaleLabelX = isLeft
-					? me.left + halfLineHeight + scaleLabelPadding.top
-					: me.right - halfLineHeight - scaleLabelPadding.top;
-				scaleLabelY = me.top + ((me.bottom - me.top) / 2);
-				rotation = isLeft ? -0.5 * Math.PI : 0.5 * Math.PI;
-			}
-
-			context.save();
-			context.translate(scaleLabelX, scaleLabelY);
-			context.rotate(rotation);
-			context.textAlign = 'center';
-			context.textBaseline = 'middle';
-			context.fillStyle = scaleLabelFontColor; // render in correct colour
-			context.font = scaleLabelFont.string;
-			context.fillText(scaleLabel.labelString, 0, 0);
-			context.restore();
 		}
 
 		if (axisWidth) {
 			// Draw the line at the edge of the axis
 			var firstLineWidth = axisWidth;
-			var lastLineWidth = valueAtIndexOrDefault(gridLines.lineWidth, ticks.length - 1, 0);
+			var lastLineWidth = valueAtIndexOrDefault(gridLines.lineWidth, items.ticksLength - 1, 1);
+			var borderValue = items.borderValue;
 			var x1, x2, y1, y2;
 
-			if (isHorizontal) {
+			if (me.isHorizontal()) {
 				x1 = alignPixel(chart, me.left, firstLineWidth) - firstLineWidth / 2;
 				x2 = alignPixel(chart, me.right, lastLineWidth) + lastLineWidth / 2;
 				y1 = y2 = borderValue;
@@ -11145,59 +12368,214 @@ var core_scale = core_element.extend({
 				x1 = x2 = borderValue;
 			}
 
-			context.lineWidth = axisWidth;
-			context.strokeStyle = valueAtIndexOrDefault(gridLines.color, 0);
-			context.beginPath();
-			context.moveTo(x1, y1);
-			context.lineTo(x2, y2);
-			context.stroke();
+			ctx.lineWidth = axisWidth;
+			ctx.strokeStyle = valueAtIndexOrDefault(gridLines.color, 0);
+			ctx.beginPath();
+			ctx.moveTo(x1, y1);
+			ctx.lineTo(x2, y2);
+			ctx.stroke();
 		}
+	},
+
+	/**
+	 * @private
+	 */
+	_drawLabels: function() {
+		var me = this;
+		var optionTicks = me.options.ticks;
+
+		if (!optionTicks.display) {
+			return;
+		}
+
+		var ctx = me.ctx;
+		var items = me._labelItems || (me._labelItems = me._computeLabelItems());
+		var i, j, ilen, jlen, item, tickFont, label, y;
+
+		for (i = 0, ilen = items.length; i < ilen; ++i) {
+			item = items[i];
+			tickFont = item.font;
+
+			// Make sure we draw text in the correct color and font
+			ctx.save();
+			ctx.translate(item.x, item.y);
+			ctx.rotate(item.rotation);
+			ctx.font = tickFont.string;
+			ctx.fillStyle = tickFont.color;
+			ctx.textBaseline = 'middle';
+			ctx.textAlign = item.textAlign;
+
+			label = item.label;
+			y = item.textOffset;
+			if (isArray(label)) {
+				for (j = 0, jlen = label.length; j < jlen; ++j) {
+					// We just make sure the multiline element is a string here..
+					ctx.fillText('' + label[j], 0, y);
+					y += tickFont.lineHeight;
+				}
+			} else {
+				ctx.fillText(label, 0, y);
+			}
+			ctx.restore();
+		}
+	},
+
+	/**
+	 * @private
+	 */
+	_drawTitle: function() {
+		var me = this;
+		var ctx = me.ctx;
+		var options = me.options;
+		var scaleLabel = options.scaleLabel;
+
+		if (!scaleLabel.display) {
+			return;
+		}
+
+		var scaleLabelFontColor = valueOrDefault$a(scaleLabel.fontColor, core_defaults.global.defaultFontColor);
+		var scaleLabelFont = helpers$1.options._parseFont(scaleLabel);
+		var scaleLabelPadding = helpers$1.options.toPadding(scaleLabel.padding);
+		var halfLineHeight = scaleLabelFont.lineHeight / 2;
+		var position = options.position;
+		var rotation = 0;
+		var scaleLabelX, scaleLabelY;
+
+		if (me.isHorizontal()) {
+			scaleLabelX = me.left + me.width / 2; // midpoint of the width
+			scaleLabelY = position === 'bottom'
+				? me.bottom - halfLineHeight - scaleLabelPadding.bottom
+				: me.top + halfLineHeight + scaleLabelPadding.top;
+		} else {
+			var isLeft = position === 'left';
+			scaleLabelX = isLeft
+				? me.left + halfLineHeight + scaleLabelPadding.top
+				: me.right - halfLineHeight - scaleLabelPadding.top;
+			scaleLabelY = me.top + me.height / 2;
+			rotation = isLeft ? -0.5 * Math.PI : 0.5 * Math.PI;
+		}
+
+		ctx.save();
+		ctx.translate(scaleLabelX, scaleLabelY);
+		ctx.rotate(rotation);
+		ctx.textAlign = 'center';
+		ctx.textBaseline = 'middle';
+		ctx.fillStyle = scaleLabelFontColor; // render in correct colour
+		ctx.font = scaleLabelFont.string;
+		ctx.fillText(scaleLabel.labelString, 0, 0);
+		ctx.restore();
+	},
+
+	draw: function(chartArea) {
+		var me = this;
+
+		if (!me._isVisible()) {
+			return;
+		}
+
+		me._drawGrid(chartArea);
+		me._drawTitle();
+		me._drawLabels();
+	},
+
+	/**
+	 * @private
+	 */
+	_layers: function() {
+		var me = this;
+		var opts = me.options;
+		var tz = opts.ticks && opts.ticks.z || 0;
+		var gz = opts.gridLines && opts.gridLines.z || 0;
+
+		if (!me._isVisible() || tz === gz || me.draw !== me._draw) {
+			// backward compatibility: draw has been overridden by custom scale
+			return [{
+				z: tz,
+				draw: function() {
+					me.draw.apply(me, arguments);
+				}
+			}];
+		}
+
+		return [{
+			z: gz,
+			draw: function() {
+				me._drawGrid.apply(me, arguments);
+				me._drawTitle.apply(me, arguments);
+			}
+		}, {
+			z: tz,
+			draw: function() {
+				me._drawLabels.apply(me, arguments);
+			}
+		}];
+	},
+
+	/**
+	 * @private
+	 */
+	_getMatchingVisibleMetas: function(type) {
+		var me = this;
+		var isHorizontal = me.isHorizontal();
+		return me.chart._getSortedVisibleDatasetMetas()
+			.filter(function(meta) {
+				return (!type || meta.type === type)
+					&& (isHorizontal ? meta.xAxisID === me.id : meta.yAxisID === me.id);
+			});
 	}
 });
+
+Scale.prototype._draw = Scale.prototype.draw;
+
+var core_scale = Scale;
+
+var isNullOrUndef$1 = helpers$1.isNullOrUndef;
 
 var defaultConfig = {
 	position: 'bottom'
 };
 
 var scale_category = core_scale.extend({
-	/**
-	* Internal function to get the correct labels. If data.xLabels or data.yLabels are defined, use those
-	* else fall back to data.labels
-	* @private
-	*/
-	getLabels: function() {
-		var data = this.chart.data;
-		return this.options.labels || (this.isHorizontal() ? data.xLabels : data.yLabels) || data.labels;
-	},
-
 	determineDataLimits: function() {
 		var me = this;
-		var labels = me.getLabels();
-		me.minIndex = 0;
-		me.maxIndex = labels.length - 1;
+		var labels = me._getLabels();
+		var ticksOpts = me.options.ticks;
+		var min = ticksOpts.min;
+		var max = ticksOpts.max;
+		var minIndex = 0;
+		var maxIndex = labels.length - 1;
 		var findIndex;
 
-		if (me.options.ticks.min !== undefined) {
+		if (min !== undefined) {
 			// user specified min value
-			findIndex = labels.indexOf(me.options.ticks.min);
-			me.minIndex = findIndex !== -1 ? findIndex : me.minIndex;
+			findIndex = labels.indexOf(min);
+			if (findIndex >= 0) {
+				minIndex = findIndex;
+			}
 		}
 
-		if (me.options.ticks.max !== undefined) {
+		if (max !== undefined) {
 			// user specified max value
-			findIndex = labels.indexOf(me.options.ticks.max);
-			me.maxIndex = findIndex !== -1 ? findIndex : me.maxIndex;
+			findIndex = labels.indexOf(max);
+			if (findIndex >= 0) {
+				maxIndex = findIndex;
+			}
 		}
 
-		me.min = labels[me.minIndex];
-		me.max = labels[me.maxIndex];
+		me.minIndex = minIndex;
+		me.maxIndex = maxIndex;
+		me.min = labels[minIndex];
+		me.max = labels[maxIndex];
 	},
 
 	buildTicks: function() {
 		var me = this;
-		var labels = me.getLabels();
+		var labels = me._getLabels();
+		var minIndex = me.minIndex;
+		var maxIndex = me.maxIndex;
+
 		// If we are viewing some subset of labels, slice the original array
-		me.ticks = (me.minIndex === 0 && me.maxIndex === labels.length - 1) ? labels : labels.slice(me.minIndex, me.maxIndex + 1);
+		me.ticks = (minIndex === 0 && maxIndex === labels.length - 1) ? labels : labels.slice(minIndex, maxIndex + 1);
 	},
 
 	getLabelForIndex: function(index, datasetIndex) {
@@ -11208,74 +12586,66 @@ var scale_category = core_scale.extend({
 			return me.getRightValue(chart.data.datasets[datasetIndex].data[index]);
 		}
 
-		return me.ticks[index - me.minIndex];
+		return me._getLabels()[index];
+	},
+
+	_configure: function() {
+		var me = this;
+		var offset = me.options.offset;
+		var ticks = me.ticks;
+
+		core_scale.prototype._configure.call(me);
+
+		if (!me.isHorizontal()) {
+			// For backward compatibility, vertical category scale reverse is inverted.
+			me._reversePixels = !me._reversePixels;
+		}
+
+		if (!ticks) {
+			return;
+		}
+
+		me._startValue = me.minIndex - (offset ? 0.5 : 0);
+		me._valueRange = Math.max(ticks.length - (offset ? 0 : 1), 1);
 	},
 
 	// Used to get data value locations.  Value can either be an index or a numerical value
-	getPixelForValue: function(value, index) {
+	getPixelForValue: function(value, index, datasetIndex) {
 		var me = this;
-		var offset = me.options.offset;
-		// 1 is added because we need the length but we have the indexes
-		var offsetAmt = Math.max((me.maxIndex + 1 - me.minIndex - (offset ? 0 : 1)), 1);
+		var valueCategory, labels, idx;
+
+		if (!isNullOrUndef$1(index) && !isNullOrUndef$1(datasetIndex)) {
+			value = me.chart.data.datasets[datasetIndex].data[index];
+		}
 
 		// If value is a data object, then index is the index in the data array,
 		// not the index of the scale. We need to change that.
-		var valueCategory;
-		if (value !== undefined && value !== null) {
+		if (!isNullOrUndef$1(value)) {
 			valueCategory = me.isHorizontal() ? value.x : value.y;
 		}
 		if (valueCategory !== undefined || (value !== undefined && isNaN(index))) {
-			var labels = me.getLabels();
-			value = valueCategory || value;
-			var idx = labels.indexOf(value);
+			labels = me._getLabels();
+			value = helpers$1.valueOrDefault(valueCategory, value);
+			idx = labels.indexOf(value);
 			index = idx !== -1 ? idx : index;
-		}
-
-		if (me.isHorizontal()) {
-			var valueWidth = me.width / offsetAmt;
-			var widthOffset = (valueWidth * (index - me.minIndex));
-
-			if (offset) {
-				widthOffset += (valueWidth / 2);
+			if (isNaN(index)) {
+				index = value;
 			}
-
-			return me.left + widthOffset;
 		}
-		var valueHeight = me.height / offsetAmt;
-		var heightOffset = (valueHeight * (index - me.minIndex));
-
-		if (offset) {
-			heightOffset += (valueHeight / 2);
-		}
-
-		return me.top + heightOffset;
+		return me.getPixelForDecimal((index - me._startValue) / me._valueRange);
 	},
 
 	getPixelForTick: function(index) {
-		return this.getPixelForValue(this.ticks[index], index + this.minIndex, null);
+		var ticks = this.ticks;
+		return index < 0 || index > ticks.length - 1
+			? null
+			: this.getPixelForValue(ticks[index], index + this.minIndex);
 	},
 
 	getValueForPixel: function(pixel) {
 		var me = this;
-		var offset = me.options.offset;
-		var value;
-		var offsetAmt = Math.max((me._ticks.length - (offset ? 0 : 1)), 1);
-		var horz = me.isHorizontal();
-		var valueDimension = (horz ? me.width : me.height) / offsetAmt;
-
-		pixel -= horz ? me.left : me.top;
-
-		if (offset) {
-			pixel -= (valueDimension / 2);
-		}
-
-		if (pixel <= 0) {
-			value = 0;
-		} else {
-			value = Math.round(pixel / valueDimension);
-		}
-
-		return value + me.minIndex;
+		var value = Math.round(me._startValue + me.getDecimalForPixel(pixel) * me._valueRange);
+		return Math.min(Math.max(value, 0), me.ticks.length - 1);
 	},
 
 	getBasePixel: function() {
@@ -11288,7 +12658,7 @@ var _defaults = defaultConfig;
 scale_category._defaults = _defaults;
 
 var noop = helpers$1.noop;
-var isNullOrUndef = helpers$1.isNullOrUndef;
+var isNullOrUndef$2 = helpers$1.isNullOrUndef;
 
 /**
  * Generate a set of linear ticks
@@ -11316,7 +12686,7 @@ function generateTicks(generationOptions, dataRange) {
 
 	// Beyond MIN_SPACING floating point numbers being to lose precision
 	// such that we can't do the math necessary to generate ticks
-	if (spacing < MIN_SPACING && isNullOrUndef(min) && isNullOrUndef(max)) {
+	if (spacing < MIN_SPACING && isNullOrUndef$2(min) && isNullOrUndef$2(max)) {
 		return [rmin, rmax];
 	}
 
@@ -11326,7 +12696,7 @@ function generateTicks(generationOptions, dataRange) {
 		spacing = helpers$1.niceNum(numSpaces * spacing / maxNumSpaces / unit) * unit;
 	}
 
-	if (stepSize || isNullOrUndef(precision)) {
+	if (stepSize || isNullOrUndef$2(precision)) {
 		// If a precision is not specified, calculate factor based on spacing
 		factor = Math.pow(10, helpers$1._decimalPlaces(spacing));
 	} else {
@@ -11341,10 +12711,10 @@ function generateTicks(generationOptions, dataRange) {
 	// If min, max and stepSize is set and they make an evenly spaced scale use it.
 	if (stepSize) {
 		// If very close to our whole number, use it.
-		if (!isNullOrUndef(min) && helpers$1.almostWhole(min / spacing, spacing / 1000)) {
+		if (!isNullOrUndef$2(min) && helpers$1.almostWhole(min / spacing, spacing / 1000)) {
 			niceMin = min;
 		}
-		if (!isNullOrUndef(max) && helpers$1.almostWhole(max / spacing, spacing / 1000)) {
+		if (!isNullOrUndef$2(max) && helpers$1.almostWhole(max / spacing, spacing / 1000)) {
 			niceMax = max;
 		}
 	}
@@ -11359,11 +12729,11 @@ function generateTicks(generationOptions, dataRange) {
 
 	niceMin = Math.round(niceMin * factor) / factor;
 	niceMax = Math.round(niceMax * factor) / factor;
-	ticks.push(isNullOrUndef(min) ? niceMin : min);
+	ticks.push(isNullOrUndef$2(min) ? niceMin : min);
 	for (var j = 1; j < numSpaces; ++j) {
 		ticks.push(Math.round((niceMin + j * spacing) * factor) / factor);
 	}
-	ticks.push(isNullOrUndef(max) ? niceMax : max);
+	ticks.push(isNullOrUndef$2(max) ? niceMax : max);
 
 	return ticks;
 }
@@ -11515,6 +12885,25 @@ var scale_linearbase = core_scale.extend({
 		me.zeroLineIndex = me.ticks.indexOf(0);
 
 		core_scale.prototype.convertTicksToLabels.call(me);
+	},
+
+	_configure: function() {
+		var me = this;
+		var ticks = me.getTicks();
+		var start = me.min;
+		var end = me.max;
+		var offset;
+
+		core_scale.prototype._configure.call(me);
+
+		if (me.options.offset && ticks.length) {
+			offset = (end - start) / Math.max(ticks.length - 1, 1) / 2;
+			start -= offset;
+			end += offset;
+		}
+		me._startValue = start;
+		me._endValue = end;
+		me._valueRange = end - start;
 	}
 });
 
@@ -11525,123 +12914,113 @@ var defaultConfig$1 = {
 	}
 };
 
+var DEFAULT_MIN = 0;
+var DEFAULT_MAX = 1;
+
+function getOrCreateStack(stacks, stacked, meta) {
+	var key = [
+		meta.type,
+		// we have a separate stack for stack=undefined datasets when the opts.stacked is undefined
+		stacked === undefined && meta.stack === undefined ? meta.index : '',
+		meta.stack
+	].join('.');
+
+	if (stacks[key] === undefined) {
+		stacks[key] = {
+			pos: [],
+			neg: []
+		};
+	}
+
+	return stacks[key];
+}
+
+function stackData(scale, stacks, meta, data) {
+	var opts = scale.options;
+	var stacked = opts.stacked;
+	var stack = getOrCreateStack(stacks, stacked, meta);
+	var pos = stack.pos;
+	var neg = stack.neg;
+	var ilen = data.length;
+	var i, value;
+
+	for (i = 0; i < ilen; ++i) {
+		value = scale._parseValue(data[i]);
+		if (isNaN(value.min) || isNaN(value.max) || meta.data[i].hidden) {
+			continue;
+		}
+
+		pos[i] = pos[i] || 0;
+		neg[i] = neg[i] || 0;
+
+		if (opts.relativePoints) {
+			pos[i] = 100;
+		} else if (value.min < 0 || value.max < 0) {
+			neg[i] += value.min;
+		} else {
+			pos[i] += value.max;
+		}
+	}
+}
+
+function updateMinMax(scale, meta, data) {
+	var ilen = data.length;
+	var i, value;
+
+	for (i = 0; i < ilen; ++i) {
+		value = scale._parseValue(data[i]);
+		if (isNaN(value.min) || isNaN(value.max) || meta.data[i].hidden) {
+			continue;
+		}
+
+		scale.min = Math.min(scale.min, value.min);
+		scale.max = Math.max(scale.max, value.max);
+	}
+}
+
 var scale_linear = scale_linearbase.extend({
 	determineDataLimits: function() {
 		var me = this;
 		var opts = me.options;
 		var chart = me.chart;
-		var data = chart.data;
-		var datasets = data.datasets;
-		var isHorizontal = me.isHorizontal();
-		var DEFAULT_MIN = 0;
-		var DEFAULT_MAX = 1;
-
-		function IDMatches(meta) {
-			return isHorizontal ? meta.xAxisID === me.id : meta.yAxisID === me.id;
-		}
-
-		// First Calculate the range
-		me.min = null;
-		me.max = null;
-
+		var datasets = chart.data.datasets;
+		var metasets = me._getMatchingVisibleMetas();
 		var hasStacks = opts.stacked;
+		var stacks = {};
+		var ilen = metasets.length;
+		var i, meta, data, values;
+
+		me.min = Number.POSITIVE_INFINITY;
+		me.max = Number.NEGATIVE_INFINITY;
+
 		if (hasStacks === undefined) {
-			helpers$1.each(datasets, function(dataset, datasetIndex) {
-				if (hasStacks) {
-					return;
-				}
-
-				var meta = chart.getDatasetMeta(datasetIndex);
-				if (chart.isDatasetVisible(datasetIndex) && IDMatches(meta) &&
-					meta.stack !== undefined) {
-					hasStacks = true;
-				}
-			});
+			for (i = 0; !hasStacks && i < ilen; ++i) {
+				meta = metasets[i];
+				hasStacks = meta.stack !== undefined;
+			}
 		}
 
-		if (opts.stacked || hasStacks) {
-			var valuesPerStack = {};
-
-			helpers$1.each(datasets, function(dataset, datasetIndex) {
-				var meta = chart.getDatasetMeta(datasetIndex);
-				var key = [
-					meta.type,
-					// we have a separate stack for stack=undefined datasets when the opts.stacked is undefined
-					((opts.stacked === undefined && meta.stack === undefined) ? datasetIndex : ''),
-					meta.stack
-				].join('.');
-
-				if (valuesPerStack[key] === undefined) {
-					valuesPerStack[key] = {
-						positiveValues: [],
-						negativeValues: []
-					};
-				}
-
-				// Store these per type
-				var positiveValues = valuesPerStack[key].positiveValues;
-				var negativeValues = valuesPerStack[key].negativeValues;
-
-				if (chart.isDatasetVisible(datasetIndex) && IDMatches(meta)) {
-					helpers$1.each(dataset.data, function(rawValue, index) {
-						var value = +me.getRightValue(rawValue);
-						if (isNaN(value) || meta.data[index].hidden) {
-							return;
-						}
-
-						positiveValues[index] = positiveValues[index] || 0;
-						negativeValues[index] = negativeValues[index] || 0;
-
-						if (opts.relativePoints) {
-							positiveValues[index] = 100;
-						} else if (value < 0) {
-							negativeValues[index] += value;
-						} else {
-							positiveValues[index] += value;
-						}
-					});
-				}
-			});
-
-			helpers$1.each(valuesPerStack, function(valuesForType) {
-				var values = valuesForType.positiveValues.concat(valuesForType.negativeValues);
-				var minVal = helpers$1.min(values);
-				var maxVal = helpers$1.max(values);
-				me.min = me.min === null ? minVal : Math.min(me.min, minVal);
-				me.max = me.max === null ? maxVal : Math.max(me.max, maxVal);
-			});
-
-		} else {
-			helpers$1.each(datasets, function(dataset, datasetIndex) {
-				var meta = chart.getDatasetMeta(datasetIndex);
-				if (chart.isDatasetVisible(datasetIndex) && IDMatches(meta)) {
-					helpers$1.each(dataset.data, function(rawValue, index) {
-						var value = +me.getRightValue(rawValue);
-						if (isNaN(value) || meta.data[index].hidden) {
-							return;
-						}
-
-						if (me.min === null) {
-							me.min = value;
-						} else if (value < me.min) {
-							me.min = value;
-						}
-
-						if (me.max === null) {
-							me.max = value;
-						} else if (value > me.max) {
-							me.max = value;
-						}
-					});
-				}
-			});
+		for (i = 0; i < ilen; ++i) {
+			meta = metasets[i];
+			data = datasets[meta.index].data;
+			if (hasStacks) {
+				stackData(me, stacks, meta, data);
+			} else {
+				updateMinMax(me, meta, data);
+			}
 		}
 
-		me.min = isFinite(me.min) && !isNaN(me.min) ? me.min : DEFAULT_MIN;
-		me.max = isFinite(me.max) && !isNaN(me.max) ? me.max : DEFAULT_MAX;
+		helpers$1.each(stacks, function(stackValues) {
+			values = stackValues.pos.concat(stackValues.neg);
+			me.min = Math.min(me.min, helpers$1.min(values));
+			me.max = Math.max(me.max, helpers$1.max(values));
+		});
+
+		me.min = helpers$1.isFinite(me.min) && !isNaN(me.min) ? me.min : DEFAULT_MIN;
+		me.max = helpers$1.isFinite(me.max) && !isNaN(me.max) ? me.max : DEFAULT_MAX;
 
 		// Common base implementation to handle ticks.min, ticks.max, ticks.beginAtZero
-		this.handleTickRangeOptions();
+		me.handleTickRangeOptions();
 	},
 
 	// Returns the maximum number of ticks based on the scale dimension
@@ -11665,38 +13044,25 @@ var scale_linear = scale_linearbase.extend({
 	},
 
 	getLabelForIndex: function(index, datasetIndex) {
-		return +this.getRightValue(this.chart.data.datasets[datasetIndex].data[index]);
+		return this._getScaleLabel(this.chart.data.datasets[datasetIndex].data[index]);
 	},
 
 	// Utils
 	getPixelForValue: function(value) {
-		// This must be called after fit has been run so that
-		// this.left, this.top, this.right, and this.bottom have been defined
 		var me = this;
-		var start = me.start;
-
-		var rightValue = +me.getRightValue(value);
-		var pixel;
-		var range = me.end - start;
-
-		if (me.isHorizontal()) {
-			pixel = me.left + (me.width / range * (rightValue - start));
-		} else {
-			pixel = me.bottom - (me.height / range * (rightValue - start));
-		}
-		return pixel;
+		return me.getPixelForDecimal((+me.getRightValue(value) - me._startValue) / me._valueRange);
 	},
 
 	getValueForPixel: function(pixel) {
-		var me = this;
-		var isHorizontal = me.isHorizontal();
-		var innerDimension = isHorizontal ? me.width : me.height;
-		var offset = (isHorizontal ? pixel - me.left : me.bottom - pixel) / innerDimension;
-		return me.start + ((me.end - me.start) * offset);
+		return this._startValue + this.getDecimalForPixel(pixel) * this._valueRange;
 	},
 
 	getPixelForTick: function(index) {
-		return this.getPixelForValue(this.ticksAsNumbers[index]);
+		var ticks = this.ticksAsNumbers;
+		if (index < 0 || index > ticks.length - 1) {
+			return null;
+		}
+		return this.getPixelForValue(ticks[index]);
 	}
 });
 
@@ -11704,7 +13070,8 @@ var scale_linear = scale_linearbase.extend({
 var _defaults$1 = defaultConfig$1;
 scale_linear._defaults = _defaults$1;
 
-var valueOrDefault$a = helpers$1.valueOrDefault;
+var valueOrDefault$b = helpers$1.valueOrDefault;
+var log10 = helpers$1.math.log10;
 
 /**
  * Generate a set of logarithmic ticks
@@ -11715,20 +13082,20 @@ var valueOrDefault$a = helpers$1.valueOrDefault;
 function generateTicks$1(generationOptions, dataRange) {
 	var ticks = [];
 
-	var tickVal = valueOrDefault$a(generationOptions.min, Math.pow(10, Math.floor(helpers$1.log10(dataRange.min))));
+	var tickVal = valueOrDefault$b(generationOptions.min, Math.pow(10, Math.floor(log10(dataRange.min))));
 
-	var endExp = Math.floor(helpers$1.log10(dataRange.max));
+	var endExp = Math.floor(log10(dataRange.max));
 	var endSignificand = Math.ceil(dataRange.max / Math.pow(10, endExp));
 	var exp, significand;
 
 	if (tickVal === 0) {
-		exp = Math.floor(helpers$1.log10(dataRange.minNotZero));
+		exp = Math.floor(log10(dataRange.minNotZero));
 		significand = Math.floor(dataRange.minNotZero / Math.pow(10, exp));
 
 		ticks.push(tickVal);
 		tickVal = significand * Math.pow(10, exp);
 	} else {
-		exp = Math.floor(helpers$1.log10(tickVal));
+		exp = Math.floor(log10(tickVal));
 		significand = Math.floor(tickVal / Math.pow(10, exp));
 	}
 	var precision = exp < 0 ? Math.pow(10, Math.abs(exp)) : 1;
@@ -11746,7 +13113,7 @@ function generateTicks$1(generationOptions, dataRange) {
 		tickVal = Math.round(significand * Math.pow(10, exp) * precision) / precision;
 	} while (exp < endExp || (exp === endExp && significand < endSignificand));
 
-	var lastTick = valueOrDefault$a(generationOptions.max, tickVal);
+	var lastTick = valueOrDefault$b(generationOptions.max, tickVal);
 	ticks.push(lastTick);
 
 	return ticks;
@@ -11771,38 +13138,35 @@ var scale_logarithmic = core_scale.extend({
 		var me = this;
 		var opts = me.options;
 		var chart = me.chart;
-		var data = chart.data;
-		var datasets = data.datasets;
+		var datasets = chart.data.datasets;
 		var isHorizontal = me.isHorizontal();
 		function IDMatches(meta) {
 			return isHorizontal ? meta.xAxisID === me.id : meta.yAxisID === me.id;
 		}
+		var datasetIndex, meta, value, data, i, ilen;
 
 		// Calculate Range
-		me.min = null;
-		me.max = null;
-		me.minNotZero = null;
+		me.min = Number.POSITIVE_INFINITY;
+		me.max = Number.NEGATIVE_INFINITY;
+		me.minNotZero = Number.POSITIVE_INFINITY;
 
 		var hasStacks = opts.stacked;
 		if (hasStacks === undefined) {
-			helpers$1.each(datasets, function(dataset, datasetIndex) {
-				if (hasStacks) {
-					return;
-				}
-
-				var meta = chart.getDatasetMeta(datasetIndex);
+			for (datasetIndex = 0; datasetIndex < datasets.length; datasetIndex++) {
+				meta = chart.getDatasetMeta(datasetIndex);
 				if (chart.isDatasetVisible(datasetIndex) && IDMatches(meta) &&
 					meta.stack !== undefined) {
 					hasStacks = true;
+					break;
 				}
-			});
+			}
 		}
 
 		if (opts.stacked || hasStacks) {
 			var valuesPerStack = {};
 
-			helpers$1.each(datasets, function(dataset, datasetIndex) {
-				var meta = chart.getDatasetMeta(datasetIndex);
+			for (datasetIndex = 0; datasetIndex < datasets.length; datasetIndex++) {
+				meta = chart.getDatasetMeta(datasetIndex);
 				var key = [
 					meta.type,
 					// we have a separate stack for stack=undefined datasets when the opts.stacked is undefined
@@ -11815,58 +13179,55 @@ var scale_logarithmic = core_scale.extend({
 						valuesPerStack[key] = [];
 					}
 
-					helpers$1.each(dataset.data, function(rawValue, index) {
+					data = datasets[datasetIndex].data;
+					for (i = 0, ilen = data.length; i < ilen; i++) {
 						var values = valuesPerStack[key];
-						var value = +me.getRightValue(rawValue);
+						value = me._parseValue(data[i]);
 						// invalid, hidden and negative values are ignored
-						if (isNaN(value) || meta.data[index].hidden || value < 0) {
-							return;
+						if (isNaN(value.min) || isNaN(value.max) || meta.data[i].hidden || value.min < 0 || value.max < 0) {
+							continue;
 						}
-						values[index] = values[index] || 0;
-						values[index] += value;
-					});
+						values[i] = values[i] || 0;
+						values[i] += value.max;
+					}
 				}
-			});
+			}
 
 			helpers$1.each(valuesPerStack, function(valuesForType) {
 				if (valuesForType.length > 0) {
 					var minVal = helpers$1.min(valuesForType);
 					var maxVal = helpers$1.max(valuesForType);
-					me.min = me.min === null ? minVal : Math.min(me.min, minVal);
-					me.max = me.max === null ? maxVal : Math.max(me.max, maxVal);
+					me.min = Math.min(me.min, minVal);
+					me.max = Math.max(me.max, maxVal);
 				}
 			});
 
 		} else {
-			helpers$1.each(datasets, function(dataset, datasetIndex) {
-				var meta = chart.getDatasetMeta(datasetIndex);
+			for (datasetIndex = 0; datasetIndex < datasets.length; datasetIndex++) {
+				meta = chart.getDatasetMeta(datasetIndex);
 				if (chart.isDatasetVisible(datasetIndex) && IDMatches(meta)) {
-					helpers$1.each(dataset.data, function(rawValue, index) {
-						var value = +me.getRightValue(rawValue);
+					data = datasets[datasetIndex].data;
+					for (i = 0, ilen = data.length; i < ilen; i++) {
+						value = me._parseValue(data[i]);
 						// invalid, hidden and negative values are ignored
-						if (isNaN(value) || meta.data[index].hidden || value < 0) {
-							return;
+						if (isNaN(value.min) || isNaN(value.max) || meta.data[i].hidden || value.min < 0 || value.max < 0) {
+							continue;
 						}
 
-						if (me.min === null) {
-							me.min = value;
-						} else if (value < me.min) {
-							me.min = value;
-						}
+						me.min = Math.min(value.min, me.min);
+						me.max = Math.max(value.max, me.max);
 
-						if (me.max === null) {
-							me.max = value;
-						} else if (value > me.max) {
-							me.max = value;
+						if (value.min !== 0) {
+							me.minNotZero = Math.min(value.min, me.minNotZero);
 						}
-
-						if (value !== 0 && (me.minNotZero === null || value < me.minNotZero)) {
-							me.minNotZero = value;
-						}
-					});
+					}
 				}
-			});
+			}
 		}
+
+		me.min = helpers$1.isFinite(me.min) ? me.min : null;
+		me.max = helpers$1.isFinite(me.max) ? me.max : null;
+		me.minNotZero = helpers$1.isFinite(me.minNotZero) ? me.minNotZero : null;
 
 		// Common base implementation to handle ticks.min, ticks.max
 		this.handleTickRangeOptions();
@@ -11883,26 +13244,26 @@ var scale_logarithmic = core_scale.extend({
 
 		if (me.min === me.max) {
 			if (me.min !== 0 && me.min !== null) {
-				me.min = Math.pow(10, Math.floor(helpers$1.log10(me.min)) - 1);
-				me.max = Math.pow(10, Math.floor(helpers$1.log10(me.max)) + 1);
+				me.min = Math.pow(10, Math.floor(log10(me.min)) - 1);
+				me.max = Math.pow(10, Math.floor(log10(me.max)) + 1);
 			} else {
 				me.min = DEFAULT_MIN;
 				me.max = DEFAULT_MAX;
 			}
 		}
 		if (me.min === null) {
-			me.min = Math.pow(10, Math.floor(helpers$1.log10(me.max)) - 1);
+			me.min = Math.pow(10, Math.floor(log10(me.max)) - 1);
 		}
 		if (me.max === null) {
 			me.max = me.min !== 0
-				? Math.pow(10, Math.floor(helpers$1.log10(me.min)) + 1)
+				? Math.pow(10, Math.floor(log10(me.min)) + 1)
 				: DEFAULT_MAX;
 		}
 		if (me.minNotZero === null) {
 			if (me.min > 0) {
 				me.minNotZero = me.min;
 			} else if (me.max < 1) {
-				me.minNotZero = Math.pow(10, Math.floor(helpers$1.log10(me.max)));
+				me.minNotZero = Math.pow(10, Math.floor(log10(me.max)));
 			} else {
 				me.minNotZero = DEFAULT_MIN;
 			}
@@ -11946,11 +13307,15 @@ var scale_logarithmic = core_scale.extend({
 
 	// Get the correct tooltip label
 	getLabelForIndex: function(index, datasetIndex) {
-		return +this.getRightValue(this.chart.data.datasets[datasetIndex].data[index]);
+		return this._getScaleLabel(this.chart.data.datasets[datasetIndex].data[index]);
 	},
 
 	getPixelForTick: function(index) {
-		return this.getPixelForValue(this.tickValues[index]);
+		var ticks = this.tickValues;
+		if (index < 0 || index > ticks.length - 1) {
+			return null;
+		}
+		return this.getPixelForValue(ticks[index]);
 	},
 
 	/**
@@ -11960,87 +13325,47 @@ var scale_logarithmic = core_scale.extend({
 	 * @private
 	 */
 	_getFirstTickValue: function(value) {
-		var exp = Math.floor(helpers$1.log10(value));
+		var exp = Math.floor(log10(value));
 		var significand = Math.floor(value / Math.pow(10, exp));
 
 		return significand * Math.pow(10, exp);
 	},
 
+	_configure: function() {
+		var me = this;
+		var start = me.min;
+		var offset = 0;
+
+		core_scale.prototype._configure.call(me);
+
+		if (start === 0) {
+			start = me._getFirstTickValue(me.minNotZero);
+			offset = valueOrDefault$b(me.options.ticks.fontSize, core_defaults.global.defaultFontSize) / me._length;
+		}
+
+		me._startValue = log10(start);
+		me._valueOffset = offset;
+		me._valueRange = (log10(me.max) - log10(start)) / (1 - offset);
+	},
+
 	getPixelForValue: function(value) {
 		var me = this;
-		var tickOpts = me.options.ticks;
-		var reverse = tickOpts.reverse;
-		var log10 = helpers$1.log10;
-		var firstTickValue = me._getFirstTickValue(me.minNotZero);
-		var offset = 0;
-		var innerDimension, pixel, start, end, sign;
+		var decimal = 0;
 
 		value = +me.getRightValue(value);
-		if (reverse) {
-			start = me.end;
-			end = me.start;
-			sign = -1;
-		} else {
-			start = me.start;
-			end = me.end;
-			sign = 1;
+
+		if (value > me.min && value > 0) {
+			decimal = (log10(value) - me._startValue) / me._valueRange + me._valueOffset;
 		}
-		if (me.isHorizontal()) {
-			innerDimension = me.width;
-			pixel = reverse ? me.right : me.left;
-		} else {
-			innerDimension = me.height;
-			sign *= -1; // invert, since the upper-left corner of the canvas is at pixel (0, 0)
-			pixel = reverse ? me.top : me.bottom;
-		}
-		if (value !== start) {
-			if (start === 0) { // include zero tick
-				offset = valueOrDefault$a(tickOpts.fontSize, core_defaults.global.defaultFontSize);
-				innerDimension -= offset;
-				start = firstTickValue;
-			}
-			if (value !== 0) {
-				offset += innerDimension / (log10(end) - log10(start)) * (log10(value) - log10(start));
-			}
-			pixel += sign * offset;
-		}
-		return pixel;
+		return me.getPixelForDecimal(decimal);
 	},
 
 	getValueForPixel: function(pixel) {
 		var me = this;
-		var tickOpts = me.options.ticks;
-		var reverse = tickOpts.reverse;
-		var log10 = helpers$1.log10;
-		var firstTickValue = me._getFirstTickValue(me.minNotZero);
-		var innerDimension, start, end, value;
-
-		if (reverse) {
-			start = me.end;
-			end = me.start;
-		} else {
-			start = me.start;
-			end = me.end;
-		}
-		if (me.isHorizontal()) {
-			innerDimension = me.width;
-			value = reverse ? me.right - pixel : pixel - me.left;
-		} else {
-			innerDimension = me.height;
-			value = reverse ? pixel - me.top : me.bottom - pixel;
-		}
-		if (value !== start) {
-			if (start === 0) { // include zero tick
-				var offset = valueOrDefault$a(tickOpts.fontSize, core_defaults.global.defaultFontSize);
-				value -= offset;
-				innerDimension -= offset;
-				start = firstTickValue;
-			}
-			value *= log10(end) - log10(start);
-			value /= innerDimension;
-			value = Math.pow(10, log10(start) + value);
-		}
-		return value;
+		var decimal = me.getDecimalForPixel(pixel);
+		return decimal === 0 && me.min === 0
+			? 0
+			: Math.pow(10, me._startValue + (decimal - me._valueOffset) * me._valueRange);
 	}
 });
 
@@ -12048,9 +13373,9 @@ var scale_logarithmic = core_scale.extend({
 var _defaults$2 = defaultConfig$2;
 scale_logarithmic._defaults = _defaults$2;
 
-var valueOrDefault$b = helpers$1.valueOrDefault;
+var valueOrDefault$c = helpers$1.valueOrDefault;
 var valueAtIndexOrDefault$1 = helpers$1.valueAtIndexOrDefault;
-var resolve$7 = helpers$1.options.resolve;
+var resolve$4 = helpers$1.options.resolve;
 
 var defaultConfig$3 = {
 	display: true,
@@ -12061,7 +13386,7 @@ var defaultConfig$3 = {
 
 	angleLines: {
 		display: true,
-		color: 'rgba(0, 0, 0, 0.1)',
+		color: 'rgba(0,0,0,0.1)',
 		lineWidth: 1,
 		borderDash: [],
 		borderDashOffset: 0.0
@@ -12102,16 +13427,11 @@ var defaultConfig$3 = {
 	}
 };
 
-function getValueCount(scale) {
-	var opts = scale.options;
-	return opts.angleLines.display || opts.pointLabels.display ? scale.chart.data.labels.length : 0;
-}
-
 function getTickBackdropHeight(opts) {
 	var tickOpts = opts.ticks;
 
 	if (tickOpts.display && opts.display) {
-		return valueOrDefault$b(tickOpts.fontSize, core_defaults.global.defaultFontSize) + tickOpts.backdropPaddingY * 2;
+		return valueOrDefault$c(tickOpts.fontSize, core_defaults.global.defaultFontSize) + tickOpts.backdropPaddingY * 2;
 	}
 	return 0;
 }
@@ -12196,10 +13516,10 @@ function fitWithPointLabels(scale) {
 	scale.ctx.font = plFont.string;
 	scale._pointLabelSizes = [];
 
-	var valueCount = getValueCount(scale);
+	var valueCount = scale.chart.data.labels.length;
 	for (i = 0; i < valueCount; i++) {
 		pointPosition = scale.getPointPosition(i, scale.drawingArea + 5);
-		textSize = measureLabelSize(scale.ctx, plFont.lineHeight, scale.pointLabels[i] || '');
+		textSize = measureLabelSize(scale.ctx, plFont.lineHeight, scale.pointLabels[i]);
 		scale._pointLabelSizes[i] = textSize;
 
 		// Add quarter circle to make degree 0 mean top of circle
@@ -12267,53 +13587,30 @@ function adjustPointPositionForLabelHeight(angle, textSize, position) {
 function drawPointLabels(scale) {
 	var ctx = scale.ctx;
 	var opts = scale.options;
-	var angleLineOpts = opts.angleLines;
-	var gridLineOpts = opts.gridLines;
 	var pointLabelOpts = opts.pointLabels;
-	var lineWidth = valueOrDefault$b(angleLineOpts.lineWidth, gridLineOpts.lineWidth);
-	var lineColor = valueOrDefault$b(angleLineOpts.color, gridLineOpts.color);
 	var tickBackdropHeight = getTickBackdropHeight(opts);
+	var outerDistance = scale.getDistanceFromCenterForValue(opts.ticks.reverse ? scale.min : scale.max);
+	var plFont = helpers$1.options._parseFont(pointLabelOpts);
 
 	ctx.save();
-	ctx.lineWidth = lineWidth;
-	ctx.strokeStyle = lineColor;
-	if (ctx.setLineDash) {
-		ctx.setLineDash(resolve$7([angleLineOpts.borderDash, gridLineOpts.borderDash, []]));
-		ctx.lineDashOffset = resolve$7([angleLineOpts.borderDashOffset, gridLineOpts.borderDashOffset, 0.0]);
-	}
-
-	var outerDistance = scale.getDistanceFromCenterForValue(opts.ticks.reverse ? scale.min : scale.max);
-
-	// Point Label Font
-	var plFont = helpers$1.options._parseFont(pointLabelOpts);
 
 	ctx.font = plFont.string;
 	ctx.textBaseline = 'middle';
 
-	for (var i = getValueCount(scale) - 1; i >= 0; i--) {
-		if (angleLineOpts.display && lineWidth && lineColor) {
-			var outerPosition = scale.getPointPosition(i, outerDistance);
-			ctx.beginPath();
-			ctx.moveTo(scale.xCenter, scale.yCenter);
-			ctx.lineTo(outerPosition.x, outerPosition.y);
-			ctx.stroke();
-		}
+	for (var i = scale.chart.data.labels.length - 1; i >= 0; i--) {
+		// Extra pixels out for some label spacing
+		var extra = (i === 0 ? tickBackdropHeight / 2 : 0);
+		var pointLabelPosition = scale.getPointPosition(i, outerDistance + extra + 5);
 
-		if (pointLabelOpts.display) {
-			// Extra pixels out for some label spacing
-			var extra = (i === 0 ? tickBackdropHeight / 2 : 0);
-			var pointLabelPosition = scale.getPointPosition(i, outerDistance + extra + 5);
+		// Keep this in loop since we may support array properties here
+		var pointLabelFontColor = valueAtIndexOrDefault$1(pointLabelOpts.fontColor, i, core_defaults.global.defaultFontColor);
+		ctx.fillStyle = pointLabelFontColor;
 
-			// Keep this in loop since we may support array properties here
-			var pointLabelFontColor = valueAtIndexOrDefault$1(pointLabelOpts.fontColor, i, core_defaults.global.defaultFontColor);
-			ctx.fillStyle = pointLabelFontColor;
-
-			var angleRadians = scale.getIndexAngle(i);
-			var angle = helpers$1.toDegrees(angleRadians);
-			ctx.textAlign = getTextAlignForAngle(angle);
-			adjustPointPositionForLabelHeight(angle, scale._pointLabelSizes[i], pointLabelPosition);
-			fillText(ctx, scale.pointLabels[i] || '', pointLabelPosition, plFont.lineHeight);
-		}
+		var angleRadians = scale.getIndexAngle(i);
+		var angle = helpers$1.toDegrees(angleRadians);
+		ctx.textAlign = getTextAlignForAngle(angle);
+		adjustPointPositionForLabelHeight(angle, scale._pointLabelSizes[i], pointLabelPosition);
+		fillText(ctx, scale.pointLabels[i], pointLabelPosition, plFont.lineHeight);
 	}
 	ctx.restore();
 }
@@ -12321,7 +13618,7 @@ function drawPointLabels(scale) {
 function drawRadiusLine(scale, gridLineOpts, radius, index) {
 	var ctx = scale.ctx;
 	var circular = gridLineOpts.circular;
-	var valueCount = getValueCount(scale);
+	var valueCount = scale.chart.data.labels.length;
 	var lineColor = valueAtIndexOrDefault$1(gridLineOpts.color, index - 1);
 	var lineWidth = valueAtIndexOrDefault$1(gridLineOpts.lineWidth, index - 1);
 	var pointPosition;
@@ -12414,7 +13711,10 @@ var scale_radialLinear = scale_linearbase.extend({
 		scale_linearbase.prototype.convertTicksToLabels.call(me);
 
 		// Point labels
-		me.pointLabels = me.chart.data.labels.map(me.options.pointLabels.callback, me);
+		me.pointLabels = me.chart.data.labels.map(function() {
+			var label = helpers$1.callback(me.options.pointLabels.callback, arguments, me);
+			return label || label === 0 ? label : '';
+		});
 	},
 
 	getLabelForIndex: function(index, datasetIndex) {
@@ -12466,22 +13766,22 @@ var scale_radialLinear = scale_linearbase.extend({
 	},
 
 	getIndexAngle: function(index) {
-		var angleMultiplier = (Math.PI * 2) / getValueCount(this);
-		var startAngle = this.chart.options && this.chart.options.startAngle ?
-			this.chart.options.startAngle :
-			0;
-
-		var startAngleRadians = startAngle * Math.PI * 2 / 360;
+		var chart = this.chart;
+		var angleMultiplier = 360 / chart.data.labels.length;
+		var options = chart.options || {};
+		var startAngle = options.startAngle || 0;
 
 		// Start from the top instead of right, so remove a quarter of the circle
-		return index * angleMultiplier + startAngleRadians;
+		var angle = (index * angleMultiplier + startAngle) % 360;
+
+		return (angle < 0 ? angle + 360 : angle) * Math.PI * 2 / 360;
 	},
 
 	getDistanceFromCenterForValue: function(value) {
 		var me = this;
 
-		if (value === null) {
-			return 0; // null always in center
+		if (helpers$1.isNullOrUndef(value)) {
+			return NaN;
 		}
 
 		// Take into account half font size + the yPadding of the top value
@@ -12505,79 +13805,130 @@ var scale_radialLinear = scale_linearbase.extend({
 		return this.getPointPosition(index, this.getDistanceFromCenterForValue(value));
 	},
 
-	getBasePosition: function() {
+	getBasePosition: function(index) {
 		var me = this;
 		var min = me.min;
 		var max = me.max;
 
-		return me.getPointPositionForValue(0,
+		return me.getPointPositionForValue(index || 0,
 			me.beginAtZero ? 0 :
 			min < 0 && max < 0 ? max :
 			min > 0 && max > 0 ? min :
 			0);
 	},
 
-	draw: function() {
+	/**
+	 * @private
+	 */
+	_drawGrid: function() {
 		var me = this;
+		var ctx = me.ctx;
 		var opts = me.options;
 		var gridLineOpts = opts.gridLines;
-		var tickOpts = opts.ticks;
+		var angleLineOpts = opts.angleLines;
+		var lineWidth = valueOrDefault$c(angleLineOpts.lineWidth, gridLineOpts.lineWidth);
+		var lineColor = valueOrDefault$c(angleLineOpts.color, gridLineOpts.color);
+		var i, offset, position;
 
-		if (opts.display) {
-			var ctx = me.ctx;
-			var startAngle = this.getIndexAngle(0);
-			var tickFont = helpers$1.options._parseFont(tickOpts);
+		if (opts.pointLabels.display) {
+			drawPointLabels(me);
+		}
 
-			if (opts.angleLines.display || opts.pointLabels.display) {
-				drawPointLabels(me);
-			}
-
+		if (gridLineOpts.display) {
 			helpers$1.each(me.ticks, function(label, index) {
-				// Don't draw a centre value (if it is minimum)
-				if (index > 0 || tickOpts.reverse) {
-					var yCenterOffset = me.getDistanceFromCenterForValue(me.ticksAsNumbers[index]);
-
-					// Draw circular lines around the scale
-					if (gridLineOpts.display && index !== 0) {
-						drawRadiusLine(me, gridLineOpts, yCenterOffset, index);
-					}
-
-					if (tickOpts.display) {
-						var tickFontColor = valueOrDefault$b(tickOpts.fontColor, core_defaults.global.defaultFontColor);
-						ctx.font = tickFont.string;
-
-						ctx.save();
-						ctx.translate(me.xCenter, me.yCenter);
-						ctx.rotate(startAngle);
-
-						if (tickOpts.showLabelBackdrop) {
-							var labelWidth = ctx.measureText(label).width;
-							ctx.fillStyle = tickOpts.backdropColor;
-							ctx.fillRect(
-								-labelWidth / 2 - tickOpts.backdropPaddingX,
-								-yCenterOffset - tickFont.size / 2 - tickOpts.backdropPaddingY,
-								labelWidth + tickOpts.backdropPaddingX * 2,
-								tickFont.size + tickOpts.backdropPaddingY * 2
-							);
-						}
-
-						ctx.textAlign = 'center';
-						ctx.textBaseline = 'middle';
-						ctx.fillStyle = tickFontColor;
-						ctx.fillText(label, 0, -yCenterOffset);
-						ctx.restore();
-					}
+				if (index !== 0) {
+					offset = me.getDistanceFromCenterForValue(me.ticksAsNumbers[index]);
+					drawRadiusLine(me, gridLineOpts, offset, index);
 				}
 			});
 		}
-	}
+
+		if (angleLineOpts.display && lineWidth && lineColor) {
+			ctx.save();
+			ctx.lineWidth = lineWidth;
+			ctx.strokeStyle = lineColor;
+			if (ctx.setLineDash) {
+				ctx.setLineDash(resolve$4([angleLineOpts.borderDash, gridLineOpts.borderDash, []]));
+				ctx.lineDashOffset = resolve$4([angleLineOpts.borderDashOffset, gridLineOpts.borderDashOffset, 0.0]);
+			}
+
+			for (i = me.chart.data.labels.length - 1; i >= 0; i--) {
+				offset = me.getDistanceFromCenterForValue(opts.ticks.reverse ? me.min : me.max);
+				position = me.getPointPosition(i, offset);
+				ctx.beginPath();
+				ctx.moveTo(me.xCenter, me.yCenter);
+				ctx.lineTo(position.x, position.y);
+				ctx.stroke();
+			}
+
+			ctx.restore();
+		}
+	},
+
+	/**
+	 * @private
+	 */
+	_drawLabels: function() {
+		var me = this;
+		var ctx = me.ctx;
+		var opts = me.options;
+		var tickOpts = opts.ticks;
+
+		if (!tickOpts.display) {
+			return;
+		}
+
+		var startAngle = me.getIndexAngle(0);
+		var tickFont = helpers$1.options._parseFont(tickOpts);
+		var tickFontColor = valueOrDefault$c(tickOpts.fontColor, core_defaults.global.defaultFontColor);
+		var offset, width;
+
+		ctx.save();
+		ctx.font = tickFont.string;
+		ctx.translate(me.xCenter, me.yCenter);
+		ctx.rotate(startAngle);
+		ctx.textAlign = 'center';
+		ctx.textBaseline = 'middle';
+
+		helpers$1.each(me.ticks, function(label, index) {
+			if (index === 0 && !tickOpts.reverse) {
+				return;
+			}
+
+			offset = me.getDistanceFromCenterForValue(me.ticksAsNumbers[index]);
+
+			if (tickOpts.showLabelBackdrop) {
+				width = ctx.measureText(label).width;
+				ctx.fillStyle = tickOpts.backdropColor;
+
+				ctx.fillRect(
+					-width / 2 - tickOpts.backdropPaddingX,
+					-offset - tickFont.size / 2 - tickOpts.backdropPaddingY,
+					width + tickOpts.backdropPaddingX * 2,
+					tickFont.size + tickOpts.backdropPaddingY * 2
+				);
+			}
+
+			ctx.fillStyle = tickFontColor;
+			ctx.fillText(label, 0, -offset);
+		});
+
+		ctx.restore();
+	},
+
+	/**
+	 * @private
+	 */
+	_drawTitle: helpers$1.noop
 });
 
 // INTERNAL: static default options, registered in src/index.js
 var _defaults$3 = defaultConfig$3;
 scale_radialLinear._defaults = _defaults$3;
 
-var valueOrDefault$c = helpers$1.valueOrDefault;
+var deprecated$1 = helpers$1._deprecated;
+var resolve$5 = helpers$1.options.resolve;
+var valueOrDefault$d = helpers$1.valueOrDefault;
 
 // Integer constants are from the ES6 spec.
 var MIN_INTEGER = Number.MIN_SAFE_INTEGER || -9007199254740991;
@@ -12587,42 +13938,42 @@ var INTERVALS = {
 	millisecond: {
 		common: true,
 		size: 1,
-		steps: [1, 2, 5, 10, 20, 50, 100, 250, 500]
+		steps: 1000
 	},
 	second: {
 		common: true,
 		size: 1000,
-		steps: [1, 2, 5, 10, 15, 30]
+		steps: 60
 	},
 	minute: {
 		common: true,
 		size: 60000,
-		steps: [1, 2, 5, 10, 15, 30]
+		steps: 60
 	},
 	hour: {
 		common: true,
 		size: 3600000,
-		steps: [1, 2, 3, 6, 12]
+		steps: 24
 	},
 	day: {
 		common: true,
 		size: 86400000,
-		steps: [1, 2, 5]
+		steps: 30
 	},
 	week: {
 		common: false,
 		size: 604800000,
-		steps: [1, 2, 3, 4]
+		steps: 4
 	},
 	month: {
 		common: true,
 		size: 2.628e9,
-		steps: [1, 2, 3]
+		steps: 12
 	},
 	quarter: {
 		common: false,
 		size: 7.884e9,
-		steps: [1, 2, 3, 4]
+		steps: 4
 	},
 	year: {
 		common: true,
@@ -12650,6 +14001,14 @@ function arrayUnique(items) {
 	}
 
 	return out;
+}
+
+function getMin(options) {
+	return helpers$1.valueOrDefault(options.time.min, options.ticks.min);
+}
+
+function getMax(options) {
+	return helpers$1.valueOrDefault(options.time.max, options.ticks.max);
 }
 
 /**
@@ -12804,31 +14163,6 @@ function parse(scale, input) {
 }
 
 /**
- * Returns the number of unit to skip to be able to display up to `capacity` number of ticks
- * in `unit` for the given `min` / `max` range and respecting the interval steps constraints.
- */
-function determineStepSize(min, max, unit, capacity) {
-	var range = max - min;
-	var interval = INTERVALS[unit];
-	var milliseconds = interval.size;
-	var steps = interval.steps;
-	var i, ilen, factor;
-
-	if (!steps) {
-		return Math.ceil(range / (capacity * milliseconds));
-	}
-
-	for (i = 0, ilen = steps.length; i < ilen; ++i) {
-		factor = steps[i];
-		if (Math.ceil(range / (milliseconds * factor)) <= capacity) {
-			break;
-		}
-	}
-
-	return factor;
-}
-
-/**
  * Figures out what unit results in an appropriate number of auto-generated ticks
  */
 function determineUnitForAutoTicks(minUnit, min, max, capacity) {
@@ -12837,7 +14171,7 @@ function determineUnitForAutoTicks(minUnit, min, max, capacity) {
 
 	for (i = UNITS.indexOf(minUnit); i < ilen - 1; ++i) {
 		interval = INTERVALS[UNITS[i]];
-		factor = interval.steps ? interval.steps[interval.steps.length - 1] : MAX_INTEGER;
+		factor = interval.steps ? interval.steps : MAX_INTEGER;
 
 		if (interval.common && Math.ceil((max - min) / (factor * interval.size)) <= capacity) {
 			return UNITS[i];
@@ -12850,13 +14184,12 @@ function determineUnitForAutoTicks(minUnit, min, max, capacity) {
 /**
  * Figures out what unit to format a set of ticks with
  */
-function determineUnitForFormatting(scale, ticks, minUnit, min, max) {
-	var ilen = UNITS.length;
+function determineUnitForFormatting(scale, numTicks, minUnit, min, max) {
 	var i, unit;
 
-	for (i = ilen - 1; i >= UNITS.indexOf(minUnit); i--) {
+	for (i = UNITS.length - 1; i >= UNITS.indexOf(minUnit); i--) {
 		unit = UNITS[i];
-		if (INTERVALS[unit].common && scale._adapter.diff(max, min, unit) >= ticks.length) {
+		if (INTERVALS[unit].common && scale._adapter.diff(max, min, unit) >= numTicks - 1) {
 			return unit;
 		}
 	}
@@ -12874,7 +14207,7 @@ function determineMajorUnit(unit) {
 
 /**
  * Generates a maximum of `capacity` timestamps between min and max, rounded to the
- * `minor` unit, aligned on the `major` unit and using the given scale time `options`.
+ * `minor` unit using the given scale time `options`.
  * Important: this method can return ticks outside the min and max range, it's the
  * responsibility of the calling code to clamp values if needed.
  */
@@ -12883,50 +14216,32 @@ function generate(scale, min, max, capacity) {
 	var options = scale.options;
 	var timeOpts = options.time;
 	var minor = timeOpts.unit || determineUnitForAutoTicks(timeOpts.minUnit, min, max, capacity);
-	var major = determineMajorUnit(minor);
-	var stepSize = valueOrDefault$c(timeOpts.stepSize, timeOpts.unitStepSize);
+	var stepSize = resolve$5([timeOpts.stepSize, timeOpts.unitStepSize, 1]);
 	var weekday = minor === 'week' ? timeOpts.isoWeekday : false;
-	var majorTicksEnabled = options.ticks.major.enabled;
-	var interval = INTERVALS[minor];
 	var first = min;
-	var last = max;
 	var ticks = [];
 	var time;
-
-	if (!stepSize) {
-		stepSize = determineStepSize(min, max, minor, capacity);
-	}
 
 	// For 'week' unit, handle the first day of week option
 	if (weekday) {
 		first = +adapter.startOf(first, 'isoWeek', weekday);
-		last = +adapter.startOf(last, 'isoWeek', weekday);
 	}
 
-	// Align first/last ticks on unit
+	// Align first ticks on unit
 	first = +adapter.startOf(first, weekday ? 'day' : minor);
-	last = +adapter.startOf(last, weekday ? 'day' : minor);
 
-	// Make sure that the last tick include max
-	if (last < max) {
-		last = +adapter.add(last, 1, minor);
+	// Prevent browser from freezing in case user options request millions of milliseconds
+	if (adapter.diff(max, min, minor) > 100000 * stepSize) {
+		throw min + ' and ' + max + ' are too far apart with stepSize of ' + stepSize + ' ' + minor;
 	}
 
-	time = first;
-
-	if (majorTicksEnabled && major && !weekday && !timeOpts.round) {
-		// Align the first tick on the previous `minor` unit aligned on the `major` unit:
-		// we first aligned time on the previous `major` unit then add the number of full
-		// stepSize there is between first and the previous major time.
-		time = +adapter.startOf(time, major);
-		time = +adapter.add(time, ~~((first - time) / (interval.size * stepSize)) * stepSize, minor);
+	for (time = first; time < max; time = +adapter.add(time, stepSize, minor)) {
+		ticks.push(time);
 	}
 
-	for (; time < last; time = +adapter.add(time, stepSize, minor)) {
-		ticks.push(+time);
+	if (time === max || options.bounds === 'ticks') {
+		ticks.push(time);
 	}
-
-	ticks.push(+time);
 
 	return ticks;
 }
@@ -12943,42 +14258,57 @@ function computeOffsets(table, ticks, min, max, options) {
 	var first, last;
 
 	if (options.offset && ticks.length) {
-		if (!options.time.min) {
-			first = interpolate$1(table, 'time', ticks[0], 'pos');
-			if (ticks.length === 1) {
-				start = 1 - first;
-			} else {
-				start = (interpolate$1(table, 'time', ticks[1], 'pos') - first) / 2;
-			}
+		first = interpolate$1(table, 'time', ticks[0], 'pos');
+		if (ticks.length === 1) {
+			start = 1 - first;
+		} else {
+			start = (interpolate$1(table, 'time', ticks[1], 'pos') - first) / 2;
 		}
-		if (!options.time.max) {
-			last = interpolate$1(table, 'time', ticks[ticks.length - 1], 'pos');
-			if (ticks.length === 1) {
-				end = last;
-			} else {
-				end = (last - interpolate$1(table, 'time', ticks[ticks.length - 2], 'pos')) / 2;
-			}
+		last = interpolate$1(table, 'time', ticks[ticks.length - 1], 'pos');
+		if (ticks.length === 1) {
+			end = last;
+		} else {
+			end = (last - interpolate$1(table, 'time', ticks[ticks.length - 2], 'pos')) / 2;
 		}
 	}
 
-	return {start: start, end: end};
+	return {start: start, end: end, factor: 1 / (start + 1 + end)};
+}
+
+function setMajorTicks(scale, ticks, map, majorUnit) {
+	var adapter = scale._adapter;
+	var first = +adapter.startOf(ticks[0].value, majorUnit);
+	var last = ticks[ticks.length - 1].value;
+	var major, index;
+
+	for (major = first; major <= last; major = +adapter.add(major, 1, majorUnit)) {
+		index = map[major];
+		if (index >= 0) {
+			ticks[index].major = true;
+		}
+	}
+	return ticks;
 }
 
 function ticksFromTimestamps(scale, values, majorUnit) {
 	var ticks = [];
-	var i, ilen, value, major;
+	var map = {};
+	var ilen = values.length;
+	var i, value;
 
-	for (i = 0, ilen = values.length; i < ilen; ++i) {
+	for (i = 0; i < ilen; ++i) {
 		value = values[i];
-		major = majorUnit ? value === +scale._adapter.startOf(value, majorUnit) : false;
+		map[value] = i;
 
 		ticks.push({
 			value: value,
-			major: major
+			major: false
 		});
 	}
 
-	return ticks;
+	// We set the major ticks separately from the above loop because calling startOf for every tick
+	// is expensive when there is a large number of ticks
+	return (ilen === 0 || !majorUnit) ? ticks : setMajorTicks(scale, ticks, map, majorUnit);
 }
 
 var defaultConfig$4 = {
@@ -13005,7 +14335,6 @@ var defaultConfig$4 = {
 	adapters: {},
 	time: {
 		parser: false, // false == a pattern string from https://momentjs.com/docs/#/parsing/string-format/ or a custom callback that converts its argument to a moment
-		format: false, // DEPRECATED false == date objects, moment object, callback or a pattern string from https://momentjs.com/docs/#/parsing/string-format/
 		unit: false, // false == automatic or override with week, month, year, etc.
 		round: false, // none, or override with week, month, year, etc.
 		displayFormat: false, // DEPRECATED
@@ -13045,9 +14374,9 @@ var scale_time = core_scale.extend({
 		var adapter = me._adapter = new core_adapters._date(options.adapters.date);
 
 		// DEPRECATIONS: output a message only one time per update
-		if (time.format) {
-			console.warn('options.time.format is deprecated and replaced by options.time.parser.');
-		}
+		deprecated$1('time scale', time.format, 'time.format', 'time.parser');
+		deprecated$1('time scale', time.min, 'time.min', 'ticks.min');
+		deprecated$1('time scale', time.max, 'time.max', 'ticks.max');
 
 		// Backward compatibility: before introducing adapter, `displayFormats` was
 		// supposed to contain *all* unit/string pairs but this can't be resolved
@@ -13072,22 +14401,20 @@ var scale_time = core_scale.extend({
 		var me = this;
 		var chart = me.chart;
 		var adapter = me._adapter;
-		var timeOpts = me.options.time;
-		var unit = timeOpts.unit || 'day';
+		var options = me.options;
+		var unit = options.time.unit || 'day';
 		var min = MAX_INTEGER;
 		var max = MIN_INTEGER;
 		var timestamps = [];
 		var datasets = [];
 		var labels = [];
-		var i, j, ilen, jlen, data, timestamp;
-		var dataLabels = chart.data.labels || [];
+		var i, j, ilen, jlen, data, timestamp, labelsAdded;
+		var dataLabels = me._getLabels();
 
-		// Convert labels to timestamps
 		for (i = 0, ilen = dataLabels.length; i < ilen; ++i) {
 			labels.push(parse(me, dataLabels[i]));
 		}
 
-		// Convert data to timestamps
 		for (i = 0, ilen = (chart.data.datasets || []).length; i < ilen; ++i) {
 			if (chart.isDatasetVisible(i)) {
 				data = chart.data.datasets[i].data;
@@ -13102,10 +14429,11 @@ var scale_time = core_scale.extend({
 						datasets[i][j] = timestamp;
 					}
 				} else {
-					for (j = 0, jlen = labels.length; j < jlen; ++j) {
-						timestamps.push(labels[j]);
-					}
 					datasets[i] = labels.slice(0);
+					if (!labelsAdded) {
+						timestamps = timestamps.concat(labels);
+						labelsAdded = true;
+					}
 				}
 			} else {
 				datasets[i] = [];
@@ -13113,20 +14441,18 @@ var scale_time = core_scale.extend({
 		}
 
 		if (labels.length) {
-			// Sort labels **after** data have been converted
-			labels = arrayUnique(labels).sort(sorter);
 			min = Math.min(min, labels[0]);
 			max = Math.max(max, labels[labels.length - 1]);
 		}
 
 		if (timestamps.length) {
-			timestamps = arrayUnique(timestamps).sort(sorter);
+			timestamps = ilen > 1 ? arrayUnique(timestamps).sort(sorter) : timestamps.sort(sorter);
 			min = Math.min(min, timestamps[0]);
 			max = Math.max(max, timestamps[timestamps.length - 1]);
 		}
 
-		min = parse(me, timeOpts.min) || min;
-		max = parse(me, timeOpts.max) || max;
+		min = parse(me, getMin(options)) || min;
+		max = parse(me, getMax(options)) || max;
 
 		// In case there is no valid min/max, set limits based on unit time option
 		min = min === MAX_INTEGER ? +adapter.startOf(Date.now(), unit) : min;
@@ -13137,7 +14463,6 @@ var scale_time = core_scale.extend({
 		me.max = Math.max(min + 1, max);
 
 		// PRIVATE
-		me._horizontal = me.isHorizontal();
 		me._table = [];
 		me._timestamps = {
 			data: timestamps,
@@ -13151,21 +14476,21 @@ var scale_time = core_scale.extend({
 		var min = me.min;
 		var max = me.max;
 		var options = me.options;
+		var tickOpts = options.ticks;
 		var timeOpts = options.time;
-		var timestamps = [];
+		var timestamps = me._timestamps;
 		var ticks = [];
+		var capacity = me.getLabelCapacity(min);
+		var source = tickOpts.source;
+		var distribution = options.distribution;
 		var i, ilen, timestamp;
 
-		switch (options.ticks.source) {
-		case 'data':
-			timestamps = me._timestamps.data;
-			break;
-		case 'labels':
-			timestamps = me._timestamps.labels;
-			break;
-		case 'auto':
-		default:
-			timestamps = generate(me, min, max, me.getLabelCapacity(min), options);
+		if (source === 'data' || (source === 'auto' && distribution === 'series')) {
+			timestamps = timestamps.data;
+		} else if (source === 'labels') {
+			timestamps = timestamps.labels;
+		} else {
+			timestamps = generate(me, min, max, capacity);
 		}
 
 		if (options.bounds === 'ticks' && timestamps.length) {
@@ -13174,8 +14499,8 @@ var scale_time = core_scale.extend({
 		}
 
 		// Enforce limits with user min/max options
-		min = parse(me, timeOpts.min) || min;
-		max = parse(me, timeOpts.max) || max;
+		min = parse(me, getMin(options)) || min;
+		max = parse(me, getMax(options)) || max;
 
 		// Remove ticks outside the min/max range
 		for (i = 0, ilen = timestamps.length; i < ilen; ++i) {
@@ -13189,12 +14514,17 @@ var scale_time = core_scale.extend({
 		me.max = max;
 
 		// PRIVATE
-		me._unit = timeOpts.unit || determineUnitForFormatting(me, ticks, timeOpts.minUnit, me.min, me.max);
-		me._majorUnit = determineMajorUnit(me._unit);
-		me._table = buildLookupTable(me._timestamps.data, min, max, options.distribution);
+		// determineUnitForFormatting relies on the number of ticks so we don't use it when
+		// autoSkip is enabled because we don't yet know what the final number of ticks will be
+		me._unit = timeOpts.unit || (tickOpts.autoSkip
+			? determineUnitForAutoTicks(timeOpts.minUnit, me.min, me.max, capacity)
+			: determineUnitForFormatting(me, ticks.length, timeOpts.minUnit, me.min, me.max));
+		me._majorUnit = !tickOpts.major.enabled || me._unit === 'year' ? undefined
+			: determineMajorUnit(me._unit);
+		me._table = buildLookupTable(me._timestamps.data, min, max, distribution);
 		me._offsets = computeOffsets(me._table, ticks, min, max, options);
 
-		if (options.ticks.reverse) {
+		if (tickOpts.reverse) {
 			ticks.reverse();
 		}
 
@@ -13233,12 +14563,17 @@ var scale_time = core_scale.extend({
 		var minorFormat = formats[me._unit];
 		var majorUnit = me._majorUnit;
 		var majorFormat = formats[majorUnit];
-		var majorTime = +adapter.startOf(time, majorUnit);
-		var majorTickOpts = options.ticks.major;
-		var major = majorTickOpts.enabled && majorUnit && majorFormat && time === majorTime;
+		var tick = ticks[index];
+		var tickOpts = options.ticks;
+		var major = majorUnit && majorFormat && tick && tick.major;
 		var label = adapter.format(time, format ? format : major ? majorFormat : minorFormat);
-		var tickOpts = major ? majorTickOpts : options.ticks.minor;
-		var formatter = valueOrDefault$c(tickOpts.callback, tickOpts.userCallback);
+		var nestedTickOpts = major ? tickOpts.major : tickOpts.minor;
+		var formatter = resolve$5([
+			nestedTickOpts.callback,
+			nestedTickOpts.userCallback,
+			tickOpts.callback,
+			tickOpts.userCallback
+		]);
 
 		return formatter ? formatter(label, index, ticks) : label;
 	},
@@ -13259,13 +14594,9 @@ var scale_time = core_scale.extend({
 	 */
 	getPixelForOffset: function(time) {
 		var me = this;
-		var isReverse = me.options.ticks.reverse;
-		var size = me._horizontal ? me.width : me.height;
-		var start = me._horizontal ? isReverse ? me.right : me.left : isReverse ? me.bottom : me.top;
+		var offsets = me._offsets;
 		var pos = interpolate$1(me._table, 'time', time, 'pos');
-		var offset = size * (me._offsets.start + pos) / (me._offsets.start + 1 + me._offsets.end);
-
-		return isReverse ? start - offset : start + offset;
+		return me.getPixelForDecimal((offsets.start + pos) * offsets.factor);
 	},
 
 	getPixelForValue: function(value, index, datasetIndex) {
@@ -13294,9 +14625,8 @@ var scale_time = core_scale.extend({
 
 	getValueForPixel: function(pixel) {
 		var me = this;
-		var size = me._horizontal ? me.width : me.height;
-		var start = me._horizontal ? me.left : me.top;
-		var pos = (size ? (pixel - start) / size : 0) * (me._offsets.start + 1 + me._offsets.start) - me._offsets.end;
+		var offsets = me._offsets;
+		var pos = me.getDecimalForPixel(pixel) / offsets.factor - offsets.end;
 		var time = interpolate$1(me._table, 'pos', pos, 'time');
 
 		// DEPRECATION, we should return time directly
@@ -13304,19 +14634,29 @@ var scale_time = core_scale.extend({
 	},
 
 	/**
+	 * @private
+	 */
+	_getLabelSize: function(label) {
+		var me = this;
+		var ticksOpts = me.options.ticks;
+		var tickLabelWidth = me.ctx.measureText(label).width;
+		var angle = helpers$1.toRadians(me.isHorizontal() ? ticksOpts.maxRotation : ticksOpts.minRotation);
+		var cosRotation = Math.cos(angle);
+		var sinRotation = Math.sin(angle);
+		var tickFontSize = valueOrDefault$d(ticksOpts.fontSize, core_defaults.global.defaultFontSize);
+
+		return {
+			w: (tickLabelWidth * cosRotation) + (tickFontSize * sinRotation),
+			h: (tickLabelWidth * sinRotation) + (tickFontSize * cosRotation)
+		};
+	},
+
+	/**
 	 * Crude approximation of what the label width might be
 	 * @private
 	 */
 	getLabelWidth: function(label) {
-		var me = this;
-		var ticksOpts = me.options.ticks;
-		var tickLabelWidth = me.ctx.measureText(label).width;
-		var angle = helpers$1.toRadians(ticksOpts.maxRotation);
-		var cosRotation = Math.cos(angle);
-		var sinRotation = Math.sin(angle);
-		var tickFontSize = valueOrDefault$c(ticksOpts.fontSize, core_defaults.global.defaultFontSize);
-
-		return (tickLabelWidth * cosRotation) + (tickFontSize * sinRotation);
+		return this._getLabelSize(label).w;
 	},
 
 	/**
@@ -13324,13 +14664,18 @@ var scale_time = core_scale.extend({
 	 */
 	getLabelCapacity: function(exampleTime) {
 		var me = this;
+		var timeOpts = me.options.time;
+		var displayFormats = timeOpts.displayFormats;
 
 		// pick the longest format (milliseconds) for guestimation
-		var format = me.options.time.displayFormats.millisecond;
-		var exampleLabel = me.tickFormatFunction(exampleTime, 0, [], format);
-		var tickLabelWidth = me.getLabelWidth(exampleLabel);
-		var innerWidth = me.isHorizontal() ? me.width : me.height;
-		var capacity = Math.floor(innerWidth / tickLabelWidth);
+		var format = displayFormats[timeOpts.unit] || displayFormats.millisecond;
+		var exampleLabel = me.tickFormatFunction(exampleTime, 0, ticksFromTimestamps(me, [exampleTime], me._majorUnit), format);
+		var size = me._getLabelSize(exampleLabel);
+		var capacity = Math.floor(me.isHorizontal() ? me.width / size.w : me.height / size.h);
+
+		if (me.options.offset) {
+			capacity--;
+		}
 
 		return capacity > 0 ? capacity : 1;
 	}
@@ -13386,7 +14731,7 @@ core_adapters._date.override(typeof moment === 'function' ? {
 	},
 
 	diff: function(max, min, unit) {
-		return moment.duration(moment(max).diff(moment(min))).as(unit);
+		return moment(max).diff(moment(min), unit);
 	},
 
 	startOf: function(time, unit, weekday) {
@@ -13440,6 +14785,12 @@ var mappers = {
 		var boundary = source.boundary;
 		var x = boundary ? boundary.x : null;
 		var y = boundary ? boundary.y : null;
+
+		if (helpers$1.isArray(boundary)) {
+			return function(point, i) {
+				return boundary[i];
+			};
+		}
 
 		return function(point) {
 			return {
@@ -13500,7 +14851,7 @@ function decodeFill(el, index, count) {
 	}
 }
 
-function computeBoundary(source) {
+function computeLinearBoundary(source) {
 	var model = source.el._model || {};
 	var scale = source.el._scale || {};
 	var fill = source.fill;
@@ -13521,8 +14872,6 @@ function computeBoundary(source) {
 		target = model.scaleTop === undefined ? scale.top : model.scaleTop;
 	} else if (model.scaleZero !== undefined) {
 		target = model.scaleZero;
-	} else if (scale.getBasePosition) {
-		target = scale.getBasePosition();
 	} else if (scale.getBasePixel) {
 		target = scale.getBasePixel();
 	}
@@ -13542,6 +14891,44 @@ function computeBoundary(source) {
 	}
 
 	return null;
+}
+
+function computeCircularBoundary(source) {
+	var scale = source.el._scale;
+	var options = scale.options;
+	var length = scale.chart.data.labels.length;
+	var fill = source.fill;
+	var target = [];
+	var start, end, center, i, point;
+
+	if (!length) {
+		return null;
+	}
+
+	start = options.ticks.reverse ? scale.max : scale.min;
+	end = options.ticks.reverse ? scale.min : scale.max;
+	center = scale.getPointPositionForValue(0, start);
+	for (i = 0; i < length; ++i) {
+		point = fill === 'start' || fill === 'end'
+			? scale.getPointPositionForValue(i, fill === 'start' ? start : end)
+			: scale.getBasePosition(i);
+		if (options.gridLines.circular) {
+			point.cx = center.x;
+			point.cy = center.y;
+			point.angle = scale.getIndexAngle(i) - Math.PI / 2;
+		}
+		target.push(point);
+	}
+	return target;
+}
+
+function computeBoundary(source) {
+	var scale = source.el._scale || {};
+
+	if (scale.getPointPositionForValue) {
+		return computeCircularBoundary(source);
+	}
+	return computeLinearBoundary(source);
 }
 
 function resolveTarget(sources, index, propagate) {
@@ -13595,7 +14982,7 @@ function isDrawable(point) {
 }
 
 function drawArea(ctx, curve0, curve1, len0, len1) {
-	var i;
+	var i, cx, cy, r;
 
 	if (!len0 || !len1) {
 		return;
@@ -13605,6 +14992,16 @@ function drawArea(ctx, curve0, curve1, len0, len1) {
 	ctx.moveTo(curve0[0].x, curve0[0].y);
 	for (i = 1; i < len0; ++i) {
 		helpers$1.canvas.lineTo(ctx, curve0[i - 1], curve0[i]);
+	}
+
+	if (curve1[0].angle !== undefined) {
+		cx = curve1[0].cx;
+		cy = curve1[0].cy;
+		r = Math.sqrt(Math.pow(curve1[0].x - cx, 2) + Math.pow(curve1[0].y - cy, 2));
+		for (i = len1 - 1; i > 0; --i) {
+			ctx.arc(cx, cy, r, curve1[i].angle, curve1[i - 1].angle, true);
+		}
+		return;
 	}
 
 	// joining the two area curves
@@ -13623,16 +15020,21 @@ function doFill(ctx, points, mapper, view, color, loop) {
 	var curve1 = [];
 	var len0 = 0;
 	var len1 = 0;
-	var i, ilen, index, p0, p1, d0, d1;
+	var i, ilen, index, p0, p1, d0, d1, loopOffset;
 
 	ctx.beginPath();
 
-	for (i = 0, ilen = (count + !!loop); i < ilen; ++i) {
+	for (i = 0, ilen = count; i < ilen; ++i) {
 		index = i % count;
 		p0 = points[index]._view;
 		p1 = mapper(p0, index, view);
 		d0 = isDrawable(p0);
 		d1 = isDrawable(p1);
+
+		if (loop && loopOffset === undefined && d0) {
+			loopOffset = i + 1;
+			ilen = count + loopOffset;
+		}
 
 		if (d0 && d1) {
 			len0 = curve0.push(p0);
@@ -13700,34 +15102,42 @@ var plugin_filler = {
 		}
 	},
 
-	beforeDatasetDraw: function(chart, args) {
-		var meta = args.meta.$filler;
-		if (!meta) {
-			return;
-		}
-
+	beforeDatasetsDraw: function(chart) {
+		var metasets = chart._getSortedVisibleDatasetMetas();
 		var ctx = chart.ctx;
-		var el = meta.el;
-		var view = el._view;
-		var points = el._children || [];
-		var mapper = meta.mapper;
-		var color = view.backgroundColor || core_defaults.global.defaultColor;
+		var meta, i, el, view, points, mapper, color;
 
-		if (mapper && color && points.length) {
-			helpers$1.canvas.clipArea(ctx, chart.chartArea);
-			doFill(ctx, points, mapper, view, color, el._loop);
-			helpers$1.canvas.unclipArea(ctx);
+		for (i = metasets.length - 1; i >= 0; --i) {
+			meta = metasets[i].$filler;
+
+			if (!meta || !meta.visible) {
+				continue;
+			}
+
+			el = meta.el;
+			view = el._view;
+			points = el._children || [];
+			mapper = meta.mapper;
+			color = view.backgroundColor || core_defaults.global.defaultColor;
+
+			if (mapper && color && points.length) {
+				helpers$1.canvas.clipArea(ctx, chart.chartArea);
+				doFill(ctx, points, mapper, view, color, el._loop);
+				helpers$1.canvas.unclipArea(ctx);
+			}
 		}
 	}
 };
 
+var getRtlHelper$1 = helpers$1.rtl.getRtlAdapter;
 var noop$1 = helpers$1.noop;
-var valueOrDefault$d = helpers$1.valueOrDefault;
+var valueOrDefault$e = helpers$1.valueOrDefault;
 
 core_defaults._set('global', {
 	legend: {
 		display: true,
 		position: 'top',
+		align: 'center',
 		fullWidth: true,
 		reverse: false,
 		weight: 1000,
@@ -13763,40 +15173,51 @@ core_defaults._set('global', {
 			// lineJoin :
 			// lineWidth :
 			generateLabels: function(chart) {
-				var data = chart.data;
-				return helpers$1.isArray(data.datasets) ? data.datasets.map(function(dataset, i) {
+				var datasets = chart.data.datasets;
+				var options = chart.options.legend || {};
+				var usePointStyle = options.labels && options.labels.usePointStyle;
+
+				return chart._getSortedDatasetMetas().map(function(meta) {
+					var style = meta.controller.getStyle(usePointStyle ? 0 : undefined);
+
 					return {
-						text: dataset.label,
-						fillStyle: (!helpers$1.isArray(dataset.backgroundColor) ? dataset.backgroundColor : dataset.backgroundColor[0]),
-						hidden: !chart.isDatasetVisible(i),
-						lineCap: dataset.borderCapStyle,
-						lineDash: dataset.borderDash,
-						lineDashOffset: dataset.borderDashOffset,
-						lineJoin: dataset.borderJoinStyle,
-						lineWidth: dataset.borderWidth,
-						strokeStyle: dataset.borderColor,
-						pointStyle: dataset.pointStyle,
+						text: datasets[meta.index].label,
+						fillStyle: style.backgroundColor,
+						hidden: !chart.isDatasetVisible(meta.index),
+						lineCap: style.borderCapStyle,
+						lineDash: style.borderDash,
+						lineDashOffset: style.borderDashOffset,
+						lineJoin: style.borderJoinStyle,
+						lineWidth: style.borderWidth,
+						strokeStyle: style.borderColor,
+						pointStyle: style.pointStyle,
+						rotation: style.rotation,
 
 						// Below is extra data used for toggling the datasets
-						datasetIndex: i
+						datasetIndex: meta.index
 					};
-				}, this) : [];
+				}, this);
 			}
 		}
 	},
 
 	legendCallback: function(chart) {
-		var text = [];
-		text.push('<ul class="' + chart.id + '-legend">');
-		for (var i = 0; i < chart.data.datasets.length; i++) {
-			text.push('<li><span style="background-color:' + chart.data.datasets[i].backgroundColor + '"></span>');
-			if (chart.data.datasets[i].label) {
-				text.push(chart.data.datasets[i].label);
+		var list = document.createElement('ul');
+		var datasets = chart.data.datasets;
+		var i, ilen, listItem, listItemSpan;
+
+		list.setAttribute('class', chart.id + '-legend');
+
+		for (i = 0, ilen = datasets.length; i < ilen; i++) {
+			listItem = list.appendChild(document.createElement('li'));
+			listItemSpan = listItem.appendChild(document.createElement('span'));
+			listItemSpan.style.backgroundColor = datasets[i].backgroundColor;
+			if (datasets[i].label) {
+				listItem.appendChild(document.createTextNode(datasets[i].label));
 			}
-			text.push('</li>');
 		}
-		text.push('</ul>');
-		return text.join('');
+
+		return list.outerHTML;
 	}
 });
 
@@ -13818,18 +15239,19 @@ function getBoxWidth(labelOpts, fontSize) {
 var Legend = core_element.extend({
 
 	initialize: function(config) {
-		helpers$1.extend(this, config);
+		var me = this;
+		helpers$1.extend(me, config);
 
 		// Contains hit boxes for each dataset (in dataset order)
-		this.legendHitBoxes = [];
+		me.legendHitBoxes = [];
 
 		/**
  		 * @private
  		 */
-		this._hoveredItem = null;
+		me._hoveredItem = null;
 
 		// Are we in doughnut mode which has a different data type
-		this.doughnutMode = false;
+		me.doughnutMode = false;
 	},
 
 	// These methods are ordered by lifecycle. Utilities then follow.
@@ -13952,79 +15374,82 @@ var Legend = core_element.extend({
 		}
 
 		// Increase sizes here
-		if (display) {
-			ctx.font = labelFont.string;
+		if (!display) {
+			me.width = minSize.width = me.height = minSize.height = 0;
+			return;
+		}
+		ctx.font = labelFont.string;
 
-			if (isHorizontal) {
-				// Labels
+		if (isHorizontal) {
+			// Labels
 
-				// Width of each line of legend boxes. Labels wrap onto multiple lines when there are too many to fit on one
-				var lineWidths = me.lineWidths = [0];
-				var totalHeight = 0;
+			// Width of each line of legend boxes. Labels wrap onto multiple lines when there are too many to fit on one
+			var lineWidths = me.lineWidths = [0];
+			var totalHeight = 0;
 
-				ctx.textAlign = 'left';
-				ctx.textBaseline = 'top';
+			ctx.textAlign = 'left';
+			ctx.textBaseline = 'middle';
 
-				helpers$1.each(me.legendItems, function(legendItem, i) {
-					var boxWidth = getBoxWidth(labelOpts, fontSize);
-					var width = boxWidth + (fontSize / 2) + ctx.measureText(legendItem.text).width;
+			helpers$1.each(me.legendItems, function(legendItem, i) {
+				var boxWidth = getBoxWidth(labelOpts, fontSize);
+				var width = boxWidth + (fontSize / 2) + ctx.measureText(legendItem.text).width;
 
-					if (i === 0 || lineWidths[lineWidths.length - 1] + width + labelOpts.padding > minSize.width) {
-						totalHeight += fontSize + labelOpts.padding;
-						lineWidths[lineWidths.length - (i > 0 ? 0 : 1)] = labelOpts.padding;
-					}
+				if (i === 0 || lineWidths[lineWidths.length - 1] + width + 2 * labelOpts.padding > minSize.width) {
+					totalHeight += fontSize + labelOpts.padding;
+					lineWidths[lineWidths.length - (i > 0 ? 0 : 1)] = 0;
+				}
 
-					// Store the hitbox width and height here. Final position will be updated in `draw`
-					hitboxes[i] = {
-						left: 0,
-						top: 0,
-						width: width,
-						height: fontSize
-					};
+				// Store the hitbox width and height here. Final position will be updated in `draw`
+				hitboxes[i] = {
+					left: 0,
+					top: 0,
+					width: width,
+					height: fontSize
+				};
 
-					lineWidths[lineWidths.length - 1] += width + labelOpts.padding;
-				});
+				lineWidths[lineWidths.length - 1] += width + labelOpts.padding;
+			});
 
-				minSize.height += totalHeight;
+			minSize.height += totalHeight;
 
-			} else {
-				var vPadding = labelOpts.padding;
-				var columnWidths = me.columnWidths = [];
-				var totalWidth = labelOpts.padding;
-				var currentColWidth = 0;
-				var currentColHeight = 0;
-				var itemHeight = fontSize + vPadding;
+		} else {
+			var vPadding = labelOpts.padding;
+			var columnWidths = me.columnWidths = [];
+			var columnHeights = me.columnHeights = [];
+			var totalWidth = labelOpts.padding;
+			var currentColWidth = 0;
+			var currentColHeight = 0;
 
-				helpers$1.each(me.legendItems, function(legendItem, i) {
-					var boxWidth = getBoxWidth(labelOpts, fontSize);
-					var itemWidth = boxWidth + (fontSize / 2) + ctx.measureText(legendItem.text).width;
+			helpers$1.each(me.legendItems, function(legendItem, i) {
+				var boxWidth = getBoxWidth(labelOpts, fontSize);
+				var itemWidth = boxWidth + (fontSize / 2) + ctx.measureText(legendItem.text).width;
 
-					// If too tall, go to new column
-					if (i > 0 && currentColHeight + itemHeight > minSize.height - vPadding) {
-						totalWidth += currentColWidth + labelOpts.padding;
-						columnWidths.push(currentColWidth); // previous column width
+				// If too tall, go to new column
+				if (i > 0 && currentColHeight + fontSize + 2 * vPadding > minSize.height) {
+					totalWidth += currentColWidth + labelOpts.padding;
+					columnWidths.push(currentColWidth); // previous column width
+					columnHeights.push(currentColHeight);
+					currentColWidth = 0;
+					currentColHeight = 0;
+				}
 
-						currentColWidth = 0;
-						currentColHeight = 0;
-					}
+				// Get max width
+				currentColWidth = Math.max(currentColWidth, itemWidth);
+				currentColHeight += fontSize + vPadding;
 
-					// Get max width
-					currentColWidth = Math.max(currentColWidth, itemWidth);
-					currentColHeight += itemHeight;
+				// Store the hitbox width and height here. Final position will be updated in `draw`
+				hitboxes[i] = {
+					left: 0,
+					top: 0,
+					width: itemWidth,
+					height: fontSize
+				};
+			});
 
-					// Store the hitbox width and height here. Final position will be updated in `draw`
-					hitboxes[i] = {
-						left: 0,
-						top: 0,
-						width: itemWidth,
-						height: fontSize
-					};
-				});
-
-				totalWidth += currentColWidth;
-				columnWidths.push(currentColWidth);
-				minSize.width += totalWidth;
-			}
+			totalWidth += currentColWidth;
+			columnWidths.push(currentColWidth);
+			columnHeights.push(currentColHeight);
+			minSize.width += totalWidth;
 		}
 
 		me.width = minSize.width;
@@ -14045,139 +15470,163 @@ var Legend = core_element.extend({
 		var globalDefaults = core_defaults.global;
 		var defaultColor = globalDefaults.defaultColor;
 		var lineDefault = globalDefaults.elements.line;
+		var legendHeight = me.height;
+		var columnHeights = me.columnHeights;
 		var legendWidth = me.width;
 		var lineWidths = me.lineWidths;
 
-		if (opts.display) {
-			var ctx = me.ctx;
-			var fontColor = valueOrDefault$d(labelOpts.fontColor, globalDefaults.defaultFontColor);
-			var labelFont = helpers$1.options._parseFont(labelOpts);
-			var fontSize = labelFont.size;
-			var cursor;
+		if (!opts.display) {
+			return;
+		}
 
-			// Canvas setup
-			ctx.textAlign = 'left';
-			ctx.textBaseline = 'middle';
-			ctx.lineWidth = 0.5;
-			ctx.strokeStyle = fontColor; // for strikethrough effect
-			ctx.fillStyle = fontColor; // render in correct colour
-			ctx.font = labelFont.string;
+		var rtlHelper = getRtlHelper$1(opts.rtl, me.left, me.minSize.width);
+		var ctx = me.ctx;
+		var fontColor = valueOrDefault$e(labelOpts.fontColor, globalDefaults.defaultFontColor);
+		var labelFont = helpers$1.options._parseFont(labelOpts);
+		var fontSize = labelFont.size;
+		var cursor;
 
-			var boxWidth = getBoxWidth(labelOpts, fontSize);
-			var hitboxes = me.legendHitBoxes;
+		// Canvas setup
+		ctx.textAlign = rtlHelper.textAlign('left');
+		ctx.textBaseline = 'middle';
+		ctx.lineWidth = 0.5;
+		ctx.strokeStyle = fontColor; // for strikethrough effect
+		ctx.fillStyle = fontColor; // render in correct colour
+		ctx.font = labelFont.string;
 
-			// current position
-			var drawLegendBox = function(x, y, legendItem) {
-				if (isNaN(boxWidth) || boxWidth <= 0) {
-					return;
-				}
+		var boxWidth = getBoxWidth(labelOpts, fontSize);
+		var hitboxes = me.legendHitBoxes;
 
-				// Set the ctx for the box
-				ctx.save();
-
-				var lineWidth = valueOrDefault$d(legendItem.lineWidth, lineDefault.borderWidth);
-				ctx.fillStyle = valueOrDefault$d(legendItem.fillStyle, defaultColor);
-				ctx.lineCap = valueOrDefault$d(legendItem.lineCap, lineDefault.borderCapStyle);
-				ctx.lineDashOffset = valueOrDefault$d(legendItem.lineDashOffset, lineDefault.borderDashOffset);
-				ctx.lineJoin = valueOrDefault$d(legendItem.lineJoin, lineDefault.borderJoinStyle);
-				ctx.lineWidth = lineWidth;
-				ctx.strokeStyle = valueOrDefault$d(legendItem.strokeStyle, defaultColor);
-
-				if (ctx.setLineDash) {
-					// IE 9 and 10 do not support line dash
-					ctx.setLineDash(valueOrDefault$d(legendItem.lineDash, lineDefault.borderDash));
-				}
-
-				if (opts.labels && opts.labels.usePointStyle) {
-					// Recalculate x and y for drawPoint() because its expecting
-					// x and y to be center of figure (instead of top left)
-					var radius = boxWidth * Math.SQRT2 / 2;
-					var centerX = x + boxWidth / 2;
-					var centerY = y + fontSize / 2;
-
-					// Draw pointStyle as legend symbol
-					helpers$1.canvas.drawPoint(ctx, legendItem.pointStyle, radius, centerX, centerY);
-				} else {
-					// Draw box as legend symbol
-					if (lineWidth !== 0) {
-						ctx.strokeRect(x, y, boxWidth, fontSize);
-					}
-					ctx.fillRect(x, y, boxWidth, fontSize);
-				}
-
-				ctx.restore();
-			};
-			var fillText = function(x, y, legendItem, textWidth) {
-				var halfFontSize = fontSize / 2;
-				var xLeft = boxWidth + halfFontSize + x;
-				var yMiddle = y + halfFontSize;
-
-				ctx.fillText(legendItem.text, xLeft, yMiddle);
-
-				if (legendItem.hidden) {
-					// Strikethrough the text if hidden
-					ctx.beginPath();
-					ctx.lineWidth = 2;
-					ctx.moveTo(xLeft, yMiddle);
-					ctx.lineTo(xLeft + textWidth, yMiddle);
-					ctx.stroke();
-				}
-			};
-
-			// Horizontal
-			var isHorizontal = me.isHorizontal();
-			if (isHorizontal) {
-				cursor = {
-					x: me.left + ((legendWidth - lineWidths[0]) / 2) + labelOpts.padding,
-					y: me.top + labelOpts.padding,
-					line: 0
-				};
-			} else {
-				cursor = {
-					x: me.left + labelOpts.padding,
-					y: me.top + labelOpts.padding,
-					line: 0
-				};
+		// current position
+		var drawLegendBox = function(x, y, legendItem) {
+			if (isNaN(boxWidth) || boxWidth <= 0) {
+				return;
 			}
 
-			var itemHeight = fontSize + labelOpts.padding;
-			helpers$1.each(me.legendItems, function(legendItem, i) {
-				var textWidth = ctx.measureText(legendItem.text).width;
-				var width = boxWidth + (fontSize / 2) + textWidth;
-				var x = cursor.x;
-				var y = cursor.y;
+			// Set the ctx for the box
+			ctx.save();
 
-				// Use (me.left + me.minSize.width) and (me.top + me.minSize.height)
-				// instead of me.right and me.bottom because me.width and me.height
-				// may have been changed since me.minSize was calculated
-				if (isHorizontal) {
-					if (i > 0 && x + width + labelOpts.padding > me.left + me.minSize.width) {
-						y = cursor.y += itemHeight;
-						cursor.line++;
-						x = cursor.x = me.left + ((legendWidth - lineWidths[cursor.line]) / 2) + labelOpts.padding;
-					}
-				} else if (i > 0 && y + itemHeight > me.top + me.minSize.height) {
-					x = cursor.x = x + me.columnWidths[cursor.line] + labelOpts.padding;
-					y = cursor.y = me.top + labelOpts.padding;
-					cursor.line++;
+			var lineWidth = valueOrDefault$e(legendItem.lineWidth, lineDefault.borderWidth);
+			ctx.fillStyle = valueOrDefault$e(legendItem.fillStyle, defaultColor);
+			ctx.lineCap = valueOrDefault$e(legendItem.lineCap, lineDefault.borderCapStyle);
+			ctx.lineDashOffset = valueOrDefault$e(legendItem.lineDashOffset, lineDefault.borderDashOffset);
+			ctx.lineJoin = valueOrDefault$e(legendItem.lineJoin, lineDefault.borderJoinStyle);
+			ctx.lineWidth = lineWidth;
+			ctx.strokeStyle = valueOrDefault$e(legendItem.strokeStyle, defaultColor);
+
+			if (ctx.setLineDash) {
+				// IE 9 and 10 do not support line dash
+				ctx.setLineDash(valueOrDefault$e(legendItem.lineDash, lineDefault.borderDash));
+			}
+
+			if (labelOpts && labelOpts.usePointStyle) {
+				// Recalculate x and y for drawPoint() because its expecting
+				// x and y to be center of figure (instead of top left)
+				var radius = boxWidth * Math.SQRT2 / 2;
+				var centerX = rtlHelper.xPlus(x, boxWidth / 2);
+				var centerY = y + fontSize / 2;
+
+				// Draw pointStyle as legend symbol
+				helpers$1.canvas.drawPoint(ctx, legendItem.pointStyle, radius, centerX, centerY, legendItem.rotation);
+			} else {
+				// Draw box as legend symbol
+				ctx.fillRect(rtlHelper.leftForLtr(x, boxWidth), y, boxWidth, fontSize);
+				if (lineWidth !== 0) {
+					ctx.strokeRect(rtlHelper.leftForLtr(x, boxWidth), y, boxWidth, fontSize);
 				}
+			}
 
-				drawLegendBox(x, y, legendItem);
+			ctx.restore();
+		};
 
-				hitboxes[i].left = x;
-				hitboxes[i].top = y;
+		var fillText = function(x, y, legendItem, textWidth) {
+			var halfFontSize = fontSize / 2;
+			var xLeft = rtlHelper.xPlus(x, boxWidth + halfFontSize);
+			var yMiddle = y + halfFontSize;
 
-				// Fill the actual label
-				fillText(x, y, legendItem, textWidth);
+			ctx.fillText(legendItem.text, xLeft, yMiddle);
 
-				if (isHorizontal) {
-					cursor.x += width + labelOpts.padding;
-				} else {
-					cursor.y += itemHeight;
-				}
+			if (legendItem.hidden) {
+				// Strikethrough the text if hidden
+				ctx.beginPath();
+				ctx.lineWidth = 2;
+				ctx.moveTo(xLeft, yMiddle);
+				ctx.lineTo(rtlHelper.xPlus(xLeft, textWidth), yMiddle);
+				ctx.stroke();
+			}
+		};
 
-			});
+		var alignmentOffset = function(dimension, blockSize) {
+			switch (opts.align) {
+			case 'start':
+				return labelOpts.padding;
+			case 'end':
+				return dimension - blockSize;
+			default: // center
+				return (dimension - blockSize + labelOpts.padding) / 2;
+			}
+		};
+
+		// Horizontal
+		var isHorizontal = me.isHorizontal();
+		if (isHorizontal) {
+			cursor = {
+				x: me.left + alignmentOffset(legendWidth, lineWidths[0]),
+				y: me.top + labelOpts.padding,
+				line: 0
+			};
+		} else {
+			cursor = {
+				x: me.left + labelOpts.padding,
+				y: me.top + alignmentOffset(legendHeight, columnHeights[0]),
+				line: 0
+			};
 		}
+
+		helpers$1.rtl.overrideTextDirection(me.ctx, opts.textDirection);
+
+		var itemHeight = fontSize + labelOpts.padding;
+		helpers$1.each(me.legendItems, function(legendItem, i) {
+			var textWidth = ctx.measureText(legendItem.text).width;
+			var width = boxWidth + (fontSize / 2) + textWidth;
+			var x = cursor.x;
+			var y = cursor.y;
+
+			rtlHelper.setWidth(me.minSize.width);
+
+			// Use (me.left + me.minSize.width) and (me.top + me.minSize.height)
+			// instead of me.right and me.bottom because me.width and me.height
+			// may have been changed since me.minSize was calculated
+			if (isHorizontal) {
+				if (i > 0 && x + width + labelOpts.padding > me.left + me.minSize.width) {
+					y = cursor.y += itemHeight;
+					cursor.line++;
+					x = cursor.x = me.left + alignmentOffset(legendWidth, lineWidths[cursor.line]);
+				}
+			} else if (i > 0 && y + itemHeight > me.top + me.minSize.height) {
+				x = cursor.x = x + me.columnWidths[cursor.line] + labelOpts.padding;
+				cursor.line++;
+				y = cursor.y = me.top + alignmentOffset(legendHeight, columnHeights[cursor.line]);
+			}
+
+			var realX = rtlHelper.x(x);
+
+			drawLegendBox(realX, y, legendItem);
+
+			hitboxes[i].left = rtlHelper.leftForLtr(realX, hitboxes[i].width);
+			hitboxes[i].top = y;
+
+			// Fill the actual label
+			fillText(realX, y, legendItem, textWidth);
+
+			if (isHorizontal) {
+				cursor.x += width + labelOpts.padding;
+			} else {
+				cursor.y += itemHeight;
+			}
+		});
+
+		helpers$1.rtl.restoreTextDirection(me.ctx, opts.textDirection);
 	},
 
 	/**
@@ -14415,23 +15864,20 @@ var Title = core_element.extend({
 	fit: function() {
 		var me = this;
 		var opts = me.options;
-		var display = opts.display;
-		var minSize = me.minSize;
-		var lineCount = helpers$1.isArray(opts.text) ? opts.text.length : 1;
-		var fontOpts = helpers$1.options._parseFont(opts);
-		var textSize = display ? (lineCount * fontOpts.lineHeight) + (opts.padding * 2) : 0;
+		var minSize = me.minSize = {};
+		var isHorizontal = me.isHorizontal();
+		var lineCount, textSize;
 
-		if (me.isHorizontal()) {
-			minSize.width = me.maxWidth; // fill all the width
-			minSize.height = textSize;
-		} else {
-			minSize.width = textSize;
-			minSize.height = me.maxHeight; // fill all the height
+		if (!opts.display) {
+			me.width = minSize.width = me.height = minSize.height = 0;
+			return;
 		}
 
-		me.width = minSize.width;
-		me.height = minSize.height;
+		lineCount = helpers$1.isArray(opts.text) ? opts.text.length : 1;
+		textSize = lineCount * helpers$1.options._parseFont(opts).lineHeight + opts.padding * 2;
 
+		me.width = minSize.width = isHorizontal ? me.maxWidth : textSize;
+		me.height = minSize.height = isHorizontal ? textSize : me.maxHeight;
 	},
 	afterFit: noop$2,
 
@@ -14447,51 +15893,53 @@ var Title = core_element.extend({
 		var ctx = me.ctx;
 		var opts = me.options;
 
-		if (opts.display) {
-			var fontOpts = helpers$1.options._parseFont(opts);
-			var lineHeight = fontOpts.lineHeight;
-			var offset = lineHeight / 2 + opts.padding;
-			var rotation = 0;
-			var top = me.top;
-			var left = me.left;
-			var bottom = me.bottom;
-			var right = me.right;
-			var maxWidth, titleX, titleY;
-
-			ctx.fillStyle = helpers$1.valueOrDefault(opts.fontColor, core_defaults.global.defaultFontColor); // render in correct colour
-			ctx.font = fontOpts.string;
-
-			// Horizontal
-			if (me.isHorizontal()) {
-				titleX = left + ((right - left) / 2); // midpoint of the width
-				titleY = top + offset;
-				maxWidth = right - left;
-			} else {
-				titleX = opts.position === 'left' ? left + offset : right - offset;
-				titleY = top + ((bottom - top) / 2);
-				maxWidth = bottom - top;
-				rotation = Math.PI * (opts.position === 'left' ? -0.5 : 0.5);
-			}
-
-			ctx.save();
-			ctx.translate(titleX, titleY);
-			ctx.rotate(rotation);
-			ctx.textAlign = 'center';
-			ctx.textBaseline = 'middle';
-
-			var text = opts.text;
-			if (helpers$1.isArray(text)) {
-				var y = 0;
-				for (var i = 0; i < text.length; ++i) {
-					ctx.fillText(text[i], 0, y, maxWidth);
-					y += lineHeight;
-				}
-			} else {
-				ctx.fillText(text, 0, 0, maxWidth);
-			}
-
-			ctx.restore();
+		if (!opts.display) {
+			return;
 		}
+
+		var fontOpts = helpers$1.options._parseFont(opts);
+		var lineHeight = fontOpts.lineHeight;
+		var offset = lineHeight / 2 + opts.padding;
+		var rotation = 0;
+		var top = me.top;
+		var left = me.left;
+		var bottom = me.bottom;
+		var right = me.right;
+		var maxWidth, titleX, titleY;
+
+		ctx.fillStyle = helpers$1.valueOrDefault(opts.fontColor, core_defaults.global.defaultFontColor); // render in correct colour
+		ctx.font = fontOpts.string;
+
+		// Horizontal
+		if (me.isHorizontal()) {
+			titleX = left + ((right - left) / 2); // midpoint of the width
+			titleY = top + offset;
+			maxWidth = right - left;
+		} else {
+			titleX = opts.position === 'left' ? left + offset : right - offset;
+			titleY = top + ((bottom - top) / 2);
+			maxWidth = bottom - top;
+			rotation = Math.PI * (opts.position === 'left' ? -0.5 : 0.5);
+		}
+
+		ctx.save();
+		ctx.translate(titleX, titleY);
+		ctx.rotate(rotation);
+		ctx.textAlign = 'center';
+		ctx.textBaseline = 'middle';
+
+		var text = opts.text;
+		if (helpers$1.isArray(text)) {
+			var y = 0;
+			for (var i = 0; i < text.length; ++i) {
+				ctx.fillText(text[i], 0, y, maxWidth);
+				y += lineHeight;
+			}
+		} else {
+			ctx.fillText(text, 0, 0, maxWidth);
+		}
+
+		ctx.restore();
 	}
 });
 
@@ -14563,7 +16011,7 @@ plugins.title = title;
 core_controller.helpers = helpers$1;
 
 // @todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!
-core_helpers(core_controller);
+core_helpers();
 
 core_controller._adapters = core_adapters;
 core_controller.Animation = core_animation;
@@ -14709,2823 +16157,6 @@ core_controller.helpers.each(
 return src;
 
 })));
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/a-function.js":
-/*!******************************************************!*\
-  !*** ./node_modules/core-js/internals/a-function.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  if (typeof it != 'function') {
-    throw TypeError(String(it) + ' is not a function');
-  } return it;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/an-instance.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/internals/an-instance.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function (it, Constructor, name) {
-  if (!(it instanceof Constructor)) {
-    throw TypeError('Incorrect ' + (name ? name + ' ' : '') + 'invocation');
-  } return it;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/an-object.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/internals/an-object.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-
-module.exports = function (it) {
-  if (!isObject(it)) {
-    throw TypeError(String(it) + ' is not an object');
-  } return it;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/array-includes.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/internals/array-includes.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
-var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/core-js/internals/to-absolute-index.js");
-
-// `Array.prototype.{ indexOf, includes }` methods implementation
-// false -> Array#indexOf
-// https://tc39.github.io/ecma262/#sec-array.prototype.indexof
-// true  -> Array#includes
-// https://tc39.github.io/ecma262/#sec-array.prototype.includes
-module.exports = function (IS_INCLUDES) {
-  return function ($this, el, fromIndex) {
-    var O = toIndexedObject($this);
-    var length = toLength(O.length);
-    var index = toAbsoluteIndex(fromIndex, length);
-    var value;
-    // Array#includes uses SameValueZero equality algorithm
-    // eslint-disable-next-line no-self-compare
-    if (IS_INCLUDES && el != el) while (length > index) {
-      value = O[index++];
-      // eslint-disable-next-line no-self-compare
-      if (value != value) return true;
-    // Array#indexOf ignores holes, Array#includes - not
-    } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
-      if (O[index] === el) return IS_INCLUDES || index || 0;
-    } return !IS_INCLUDES && -1;
-  };
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/array-methods.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/internals/array-methods.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var bind = __webpack_require__(/*! ../internals/bind-context */ "./node_modules/core-js/internals/bind-context.js");
-var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/core-js/internals/indexed-object.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
-var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-create */ "./node_modules/core-js/internals/array-species-create.js");
-
-// `Array.prototype.{ forEach, map, filter, some, every, find, findIndex }` methods implementation
-// 0 -> Array#forEach
-// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
-// 1 -> Array#map
-// https://tc39.github.io/ecma262/#sec-array.prototype.map
-// 2 -> Array#filter
-// https://tc39.github.io/ecma262/#sec-array.prototype.filter
-// 3 -> Array#some
-// https://tc39.github.io/ecma262/#sec-array.prototype.some
-// 4 -> Array#every
-// https://tc39.github.io/ecma262/#sec-array.prototype.every
-// 5 -> Array#find
-// https://tc39.github.io/ecma262/#sec-array.prototype.find
-// 6 -> Array#findIndex
-// https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
-module.exports = function (TYPE, specificCreate) {
-  var IS_MAP = TYPE == 1;
-  var IS_FILTER = TYPE == 2;
-  var IS_SOME = TYPE == 3;
-  var IS_EVERY = TYPE == 4;
-  var IS_FIND_INDEX = TYPE == 6;
-  var NO_HOLES = TYPE == 5 || IS_FIND_INDEX;
-  var create = specificCreate || arraySpeciesCreate;
-  return function ($this, callbackfn, that) {
-    var O = toObject($this);
-    var self = IndexedObject(O);
-    var boundFunction = bind(callbackfn, that, 3);
-    var length = toLength(self.length);
-    var index = 0;
-    var target = IS_MAP ? create($this, length) : IS_FILTER ? create($this, 0) : undefined;
-    var value, result;
-    for (;length > index; index++) if (NO_HOLES || index in self) {
-      value = self[index];
-      result = boundFunction(value, index, O);
-      if (TYPE) {
-        if (IS_MAP) target[index] = result; // map
-        else if (result) switch (TYPE) {
-          case 3: return true;              // some
-          case 5: return value;             // find
-          case 6: return index;             // findIndex
-          case 2: target.push(value);       // filter
-        } else if (IS_EVERY) return false;  // every
-      }
-    }
-    return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : target;
-  };
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/array-species-create.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/core-js/internals/array-species-create.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
-var SPECIES = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js")('species');
-
-// `ArraySpeciesCreate` abstract operation
-// https://tc39.github.io/ecma262/#sec-arrayspeciescreate
-module.exports = function (originalArray, length) {
-  var C;
-  if (isArray(originalArray)) {
-    C = originalArray.constructor;
-    // cross-realm fallback
-    if (typeof C == 'function' && (C === Array || isArray(C.prototype))) C = undefined;
-    else if (isObject(C)) {
-      C = C[SPECIES];
-      if (C === null) C = undefined;
-    }
-  } return new (C === undefined ? Array : C)(length === 0 ? 0 : length);
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/bind-context.js":
-/*!********************************************************!*\
-  !*** ./node_modules/core-js/internals/bind-context.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
-
-// optional / simple context binding
-module.exports = function (fn, that, length) {
-  aFunction(fn);
-  if (that === undefined) return fn;
-  switch (length) {
-    case 0: return function () {
-      return fn.call(that);
-    };
-    case 1: return function (a) {
-      return fn.call(that, a);
-    };
-    case 2: return function (a, b) {
-      return fn.call(that, a, b);
-    };
-    case 3: return function (a, b, c) {
-      return fn.call(that, a, b, c);
-    };
-  }
-  return function (/* ...args */) {
-    return fn.apply(that, arguments);
-  };
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/call-with-safe-iteration-closing.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/core-js/internals/call-with-safe-iteration-closing.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-
-// call something on iterator step with safe closing on error
-module.exports = function (iterator, fn, value, ENTRIES) {
-  try {
-    return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
-  // 7.4.6 IteratorClose(iterator, completion)
-  } catch (error) {
-    var returnMethod = iterator['return'];
-    if (returnMethod !== undefined) anObject(returnMethod.call(iterator));
-    throw error;
-  }
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/check-correctness-of-iteration.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/core-js/internals/check-correctness-of-iteration.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var ITERATOR = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js")('iterator');
-var SAFE_CLOSING = false;
-
-try {
-  var called = 0;
-  var iteratorWithReturn = {
-    next: function () {
-      return { done: !!called++ };
-    },
-    'return': function () {
-      SAFE_CLOSING = true;
-    }
-  };
-  iteratorWithReturn[ITERATOR] = function () {
-    return this;
-  };
-  // eslint-disable-next-line no-throw-literal
-  Array.from(iteratorWithReturn, function () { throw 2; });
-} catch (error) { /* empty */ }
-
-module.exports = function (exec, SKIP_CLOSING) {
-  if (!SKIP_CLOSING && !SAFE_CLOSING) return false;
-  var ITERATION_SUPPORT = false;
-  try {
-    var object = {};
-    object[ITERATOR] = function () {
-      return {
-        next: function () {
-          return { done: ITERATION_SUPPORT = true };
-        }
-      };
-    };
-    exec(object);
-  } catch (error) { /* empty */ }
-  return ITERATION_SUPPORT;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/classof-raw.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/internals/classof-raw.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = function (it) {
-  return toString.call(it).slice(8, -1);
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/classof.js":
-/*!***************************************************!*\
-  !*** ./node_modules/core-js/internals/classof.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var classofRaw = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
-var TO_STRING_TAG = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js")('toStringTag');
-// ES3 wrong here
-var CORRECT_ARGUMENTS = classofRaw(function () { return arguments; }()) == 'Arguments';
-
-// fallback for IE11 Script Access Denied error
-var tryGet = function (it, key) {
-  try {
-    return it[key];
-  } catch (error) { /* empty */ }
-};
-
-// getting tag from ES6+ `Object.prototype.toString`
-module.exports = function (it) {
-  var O, tag, result;
-  return it === undefined ? 'Undefined' : it === null ? 'Null'
-    // @@toStringTag case
-    : typeof (tag = tryGet(O = Object(it), TO_STRING_TAG)) == 'string' ? tag
-    // builtinTag case
-    : CORRECT_ARGUMENTS ? classofRaw(O)
-    // ES3 arguments fallback
-    : (result = classofRaw(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : result;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/collection-strong.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/internals/collection-strong.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
-var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "./node_modules/core-js/internals/redefine-all.js");
-var bind = __webpack_require__(/*! ../internals/bind-context */ "./node_modules/core-js/internals/bind-context.js");
-var anInstance = __webpack_require__(/*! ../internals/an-instance */ "./node_modules/core-js/internals/an-instance.js");
-var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/core-js/internals/iterate.js");
-var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "./node_modules/core-js/internals/define-iterator.js");
-var setSpecies = __webpack_require__(/*! ../internals/set-species */ "./node_modules/core-js/internals/set-species.js");
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
-var fastKey = __webpack_require__(/*! ../internals/internal-metadata */ "./node_modules/core-js/internals/internal-metadata.js").fastKey;
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
-var setInternalState = InternalStateModule.set;
-var internalStateGetterFor = InternalStateModule.getterFor;
-
-module.exports = {
-  getConstructor: function (wrapper, CONSTRUCTOR_NAME, IS_MAP, ADDER) {
-    var C = wrapper(function (that, iterable) {
-      anInstance(that, C, CONSTRUCTOR_NAME);
-      setInternalState(that, {
-        type: CONSTRUCTOR_NAME,
-        index: create(null),
-        first: undefined,
-        last: undefined,
-        size: 0
-      });
-      if (!DESCRIPTORS) that.size = 0;
-      if (iterable != undefined) iterate(iterable, that[ADDER], that, IS_MAP);
-    });
-
-    var getInternalState = internalStateGetterFor(CONSTRUCTOR_NAME);
-
-    var define = function (that, key, value) {
-      var state = getInternalState(that);
-      var entry = getEntry(that, key);
-      var previous, index;
-      // change existing entry
-      if (entry) {
-        entry.value = value;
-      // create new entry
-      } else {
-        state.last = entry = {
-          index: index = fastKey(key, true),
-          key: key,
-          value: value,
-          previous: previous = state.last,
-          next: undefined,
-          removed: false
-        };
-        if (!state.first) state.first = entry;
-        if (previous) previous.next = entry;
-        if (DESCRIPTORS) state.size++;
-        else that.size++;
-        // add to index
-        if (index !== 'F') state.index[index] = entry;
-      } return that;
-    };
-
-    var getEntry = function (that, key) {
-      var state = getInternalState(that);
-      // fast case
-      var index = fastKey(key);
-      var entry;
-      if (index !== 'F') return state.index[index];
-      // frozen object case
-      for (entry = state.first; entry; entry = entry.next) {
-        if (entry.key == key) return entry;
-      }
-    };
-
-    redefineAll(C.prototype, {
-      // 23.1.3.1 Map.prototype.clear()
-      // 23.2.3.2 Set.prototype.clear()
-      clear: function clear() {
-        var that = this;
-        var state = getInternalState(that);
-        var data = state.index;
-        var entry = state.first;
-        while (entry) {
-          entry.removed = true;
-          if (entry.previous) entry.previous = entry.previous.next = undefined;
-          delete data[entry.index];
-          entry = entry.next;
-        }
-        state.first = state.last = undefined;
-        if (DESCRIPTORS) state.size = 0;
-        else that.size = 0;
-      },
-      // 23.1.3.3 Map.prototype.delete(key)
-      // 23.2.3.4 Set.prototype.delete(value)
-      'delete': function (key) {
-        var that = this;
-        var state = getInternalState(that);
-        var entry = getEntry(that, key);
-        if (entry) {
-          var next = entry.next;
-          var prev = entry.previous;
-          delete state.index[entry.index];
-          entry.removed = true;
-          if (prev) prev.next = next;
-          if (next) next.previous = prev;
-          if (state.first == entry) state.first = next;
-          if (state.last == entry) state.last = prev;
-          if (DESCRIPTORS) state.size--;
-          else that.size--;
-        } return !!entry;
-      },
-      // 23.2.3.6 Set.prototype.forEach(callbackfn, thisArg = undefined)
-      // 23.1.3.5 Map.prototype.forEach(callbackfn, thisArg = undefined)
-      forEach: function forEach(callbackfn /* , that = undefined */) {
-        var state = getInternalState(this);
-        var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined, 3);
-        var entry;
-        while (entry = entry ? entry.next : state.first) {
-          boundFunction(entry.value, entry.key, this);
-          // revert to the last existing entry
-          while (entry && entry.removed) entry = entry.previous;
-        }
-      },
-      // 23.1.3.7 Map.prototype.has(key)
-      // 23.2.3.7 Set.prototype.has(value)
-      has: function has(key) {
-        return !!getEntry(this, key);
-      }
-    });
-
-    redefineAll(C.prototype, IS_MAP ? {
-      // 23.1.3.6 Map.prototype.get(key)
-      get: function get(key) {
-        var entry = getEntry(this, key);
-        return entry && entry.value;
-      },
-      // 23.1.3.9 Map.prototype.set(key, value)
-      set: function set(key, value) {
-        return define(this, key === 0 ? 0 : key, value);
-      }
-    } : {
-      // 23.2.3.1 Set.prototype.add(value)
-      add: function add(value) {
-        return define(this, value = value === 0 ? 0 : value, value);
-      }
-    });
-    if (DESCRIPTORS) defineProperty(C.prototype, 'size', {
-      get: function () {
-        return getInternalState(this).size;
-      }
-    });
-    return C;
-  },
-  setStrong: function (C, CONSTRUCTOR_NAME, IS_MAP) {
-    var ITERATOR_NAME = CONSTRUCTOR_NAME + ' Iterator';
-    var getInternalCollectionState = internalStateGetterFor(CONSTRUCTOR_NAME);
-    var getInternalIteratorState = internalStateGetterFor(ITERATOR_NAME);
-    // add .keys, .values, .entries, [@@iterator]
-    // 23.1.3.4, 23.1.3.8, 23.1.3.11, 23.1.3.12, 23.2.3.5, 23.2.3.8, 23.2.3.10, 23.2.3.11
-    defineIterator(C, CONSTRUCTOR_NAME, function (iterated, kind) {
-      setInternalState(this, {
-        type: ITERATOR_NAME,
-        target: iterated,
-        state: getInternalCollectionState(iterated),
-        kind: kind,
-        last: undefined
-      });
-    }, function () {
-      var state = getInternalIteratorState(this);
-      var kind = state.kind;
-      var entry = state.last;
-      // revert to the last existing entry
-      while (entry && entry.removed) entry = entry.previous;
-      // get next entry
-      if (!state.target || !(state.last = entry = entry ? entry.next : state.state.first)) {
-        // or finish the iteration
-        state.target = undefined;
-        return { value: undefined, done: true };
-      }
-      // return step by kind
-      if (kind == 'keys') return { value: entry.key, done: false };
-      if (kind == 'values') return { value: entry.value, done: false };
-      return { value: [entry.key, entry.value], done: false };
-    }, IS_MAP ? 'entries' : 'values', !IS_MAP, true);
-
-    // add [@@species], 23.1.2.2, 23.2.2.2
-    setSpecies(CONSTRUCTOR_NAME);
-  }
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/collection-weak.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/internals/collection-weak.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "./node_modules/core-js/internals/redefine-all.js");
-var getWeakData = __webpack_require__(/*! ../internals/internal-metadata */ "./node_modules/core-js/internals/internal-metadata.js").getWeakData;
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var anInstance = __webpack_require__(/*! ../internals/an-instance */ "./node_modules/core-js/internals/an-instance.js");
-var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/core-js/internals/iterate.js");
-var createArrayMethod = __webpack_require__(/*! ../internals/array-methods */ "./node_modules/core-js/internals/array-methods.js");
-var $has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
-var setInternalState = InternalStateModule.set;
-var internalStateGetterFor = InternalStateModule.getterFor;
-var arrayFind = createArrayMethod(5);
-var arrayFindIndex = createArrayMethod(6);
-var id = 0;
-
-// fallback for uncaught frozen keys
-var uncaughtFrozenStore = function (store) {
-  return store.frozen || (store.frozen = new UncaughtFrozenStore());
-};
-
-var UncaughtFrozenStore = function () {
-  this.entries = [];
-};
-
-var findUncaughtFrozen = function (store, key) {
-  return arrayFind(store.entries, function (it) {
-    return it[0] === key;
-  });
-};
-
-UncaughtFrozenStore.prototype = {
-  get: function (key) {
-    var entry = findUncaughtFrozen(this, key);
-    if (entry) return entry[1];
-  },
-  has: function (key) {
-    return !!findUncaughtFrozen(this, key);
-  },
-  set: function (key, value) {
-    var entry = findUncaughtFrozen(this, key);
-    if (entry) entry[1] = value;
-    else this.entries.push([key, value]);
-  },
-  'delete': function (key) {
-    var index = arrayFindIndex(this.entries, function (it) {
-      return it[0] === key;
-    });
-    if (~index) this.entries.splice(index, 1);
-    return !!~index;
-  }
-};
-
-module.exports = {
-  getConstructor: function (wrapper, CONSTRUCTOR_NAME, IS_MAP, ADDER) {
-    var C = wrapper(function (that, iterable) {
-      anInstance(that, C, CONSTRUCTOR_NAME);
-      setInternalState(that, {
-        type: CONSTRUCTOR_NAME,
-        id: id++,
-        frozen: undefined
-      });
-      if (iterable != undefined) iterate(iterable, that[ADDER], that, IS_MAP);
-    });
-
-    var getInternalState = internalStateGetterFor(CONSTRUCTOR_NAME);
-
-    var define = function (that, key, value) {
-      var state = getInternalState(that);
-      var data = getWeakData(anObject(key), true);
-      if (data === true) uncaughtFrozenStore(state).set(key, value);
-      else data[state.id] = value;
-      return that;
-    };
-
-    redefineAll(C.prototype, {
-      // 23.3.3.2 WeakMap.prototype.delete(key)
-      // 23.4.3.3 WeakSet.prototype.delete(value)
-      'delete': function (key) {
-        var state = getInternalState(this);
-        if (!isObject(key)) return false;
-        var data = getWeakData(key);
-        if (data === true) return uncaughtFrozenStore(state)['delete'](key);
-        return data && $has(data, state.id) && delete data[state.id];
-      },
-      // 23.3.3.4 WeakMap.prototype.has(key)
-      // 23.4.3.4 WeakSet.prototype.has(value)
-      has: function has(key) {
-        var state = getInternalState(this);
-        if (!isObject(key)) return false;
-        var data = getWeakData(key);
-        if (data === true) return uncaughtFrozenStore(state).has(key);
-        return data && $has(data, state.id);
-      }
-    });
-
-    redefineAll(C.prototype, IS_MAP ? {
-      // 23.3.3.3 WeakMap.prototype.get(key)
-      get: function get(key) {
-        var state = getInternalState(this);
-        if (isObject(key)) {
-          var data = getWeakData(key);
-          if (data === true) return uncaughtFrozenStore(state).get(key);
-          return data ? data[state.id] : undefined;
-        }
-      },
-      // 23.3.3.5 WeakMap.prototype.set(key, value)
-      set: function set(key, value) {
-        return define(this, key, value);
-      }
-    } : {
-      // 23.4.3.1 WeakSet.prototype.add(value)
-      add: function add(value) {
-        return define(this, value, true);
-      }
-    });
-
-    return C;
-  }
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/collection.js":
-/*!******************************************************!*\
-  !*** ./node_modules/core-js/internals/collection.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/core-js/internals/is-forced.js");
-var $export = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
-var InternalMetadataModule = __webpack_require__(/*! ../internals/internal-metadata */ "./node_modules/core-js/internals/internal-metadata.js");
-var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/core-js/internals/iterate.js");
-var anInstance = __webpack_require__(/*! ../internals/an-instance */ "./node_modules/core-js/internals/an-instance.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
-var checkCorrectnessOfIteration = __webpack_require__(/*! ../internals/check-correctness-of-iteration */ "./node_modules/core-js/internals/check-correctness-of-iteration.js");
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
-var inheritIfRequired = __webpack_require__(/*! ../internals/inherit-if-required */ "./node_modules/core-js/internals/inherit-if-required.js");
-
-module.exports = function (CONSTRUCTOR_NAME, wrapper, common, IS_MAP, IS_WEAK) {
-  var NativeConstructor = global[CONSTRUCTOR_NAME];
-  var NativePrototype = NativeConstructor && NativeConstructor.prototype;
-  var Constructor = NativeConstructor;
-  var ADDER = IS_MAP ? 'set' : 'add';
-  var exported = {};
-
-  var fixMethod = function (KEY) {
-    var nativeMethod = NativePrototype[KEY];
-    redefine(NativePrototype, KEY,
-      KEY == 'add' ? function add(a) {
-        nativeMethod.call(this, a === 0 ? 0 : a);
-        return this;
-      } : KEY == 'delete' ? function (a) {
-        return IS_WEAK && !isObject(a) ? false : nativeMethod.call(this, a === 0 ? 0 : a);
-      } : KEY == 'get' ? function get(a) {
-        return IS_WEAK && !isObject(a) ? undefined : nativeMethod.call(this, a === 0 ? 0 : a);
-      } : KEY == 'has' ? function has(a) {
-        return IS_WEAK && !isObject(a) ? false : nativeMethod.call(this, a === 0 ? 0 : a);
-      } : function set(a, b) {
-        nativeMethod.call(this, a === 0 ? 0 : a, b);
-        return this;
-      }
-    );
-  };
-
-  // eslint-disable-next-line max-len
-  if (isForced(CONSTRUCTOR_NAME, typeof NativeConstructor != 'function' || !(IS_WEAK || NativePrototype.forEach && !fails(function () {
-    new NativeConstructor().entries().next();
-  })))) {
-    // create collection constructor
-    Constructor = common.getConstructor(wrapper, CONSTRUCTOR_NAME, IS_MAP, ADDER);
-    InternalMetadataModule.REQUIRED = true;
-  } else if (isForced(CONSTRUCTOR_NAME, true)) {
-    var instance = new Constructor();
-    // early implementations not supports chaining
-    var HASNT_CHAINING = instance[ADDER](IS_WEAK ? {} : -0, 1) != instance;
-    // V8 ~  Chromium 40- weak-collections throws on primitives, but should return false
-    var THROWS_ON_PRIMITIVES = fails(function () { instance.has(1); });
-    // most early implementations doesn't supports iterables, most modern - not close it correctly
-    // eslint-disable-next-line no-new
-    var ACCEPT_ITERABLES = checkCorrectnessOfIteration(function (iterable) { new NativeConstructor(iterable); });
-    // for early implementations -0 and +0 not the same
-    var BUGGY_ZERO = !IS_WEAK && fails(function () {
-      // V8 ~ Chromium 42- fails only with 5+ elements
-      var $instance = new NativeConstructor();
-      var index = 5;
-      while (index--) $instance[ADDER](index, index);
-      return !$instance.has(-0);
-    });
-
-    if (!ACCEPT_ITERABLES) {
-      Constructor = wrapper(function (target, iterable) {
-        anInstance(target, Constructor, CONSTRUCTOR_NAME);
-        var that = inheritIfRequired(new NativeConstructor(), target, Constructor);
-        if (iterable != undefined) iterate(iterable, that[ADDER], that, IS_MAP);
-        return that;
-      });
-      Constructor.prototype = NativePrototype;
-      NativePrototype.constructor = Constructor;
-    }
-
-    if (THROWS_ON_PRIMITIVES || BUGGY_ZERO) {
-      fixMethod('delete');
-      fixMethod('has');
-      IS_MAP && fixMethod('get');
-    }
-
-    if (BUGGY_ZERO || HASNT_CHAINING) fixMethod(ADDER);
-
-    // weak collections should not contains .clear method
-    if (IS_WEAK && NativePrototype.clear) delete NativePrototype.clear;
-  }
-
-  exported[CONSTRUCTOR_NAME] = Constructor;
-  $export({ global: true, forced: Constructor != NativeConstructor }, exported);
-
-  setToStringTag(Constructor, CONSTRUCTOR_NAME);
-
-  if (!IS_WEAK) common.setStrong(Constructor, CONSTRUCTOR_NAME, IS_MAP);
-
-  return Constructor;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/copy-constructor-properties.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/core-js/internals/copy-constructor-properties.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
-var ownKeys = __webpack_require__(/*! ../internals/own-keys */ "./node_modules/core-js/internals/own-keys.js");
-var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
-
-module.exports = function (target, source) {
-  var keys = ownKeys(source);
-  var defineProperty = definePropertyModule.f;
-  var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
-  for (var i = 0; i < keys.length; i++) {
-    var key = keys[i];
-    if (!has(target, key)) defineProperty(target, key, getOwnPropertyDescriptor(source, key));
-  }
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/correct-prototype-getter.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/core-js/internals/correct-prototype-getter.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = !__webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js")(function () {
-  function F() { /* empty */ }
-  F.prototype.constructor = null;
-  return Object.getPrototypeOf(new F()) !== F.prototype;
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/create-iterator-constructor.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/core-js/internals/create-iterator-constructor.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var IteratorPrototype = __webpack_require__(/*! ../internals/iterators-core */ "./node_modules/core-js/internals/iterators-core.js").IteratorPrototype;
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
-
-var returnThis = function () { return this; };
-
-module.exports = function (IteratorConstructor, NAME, next) {
-  var TO_STRING_TAG = NAME + ' Iterator';
-  IteratorConstructor.prototype = create(IteratorPrototype, { next: createPropertyDescriptor(1, next) });
-  setToStringTag(IteratorConstructor, TO_STRING_TAG, false, true);
-  Iterators[TO_STRING_TAG] = returnThis;
-  return IteratorConstructor;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/create-property-descriptor.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/core-js/internals/create-property-descriptor.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function (bitmap, value) {
-  return {
-    enumerable: !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable: !(bitmap & 4),
-    value: value
-  };
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/define-iterator.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/internals/define-iterator.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $export = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
-var createIteratorConstructor = __webpack_require__(/*! ../internals/create-iterator-constructor */ "./node_modules/core-js/internals/create-iterator-constructor.js");
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
-var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/core-js/internals/object-set-prototype-of.js");
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
-var hide = __webpack_require__(/*! ../internals/hide */ "./node_modules/core-js/internals/hide.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
-var ITERATOR = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js")('iterator');
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
-var IteratorsCore = __webpack_require__(/*! ../internals/iterators-core */ "./node_modules/core-js/internals/iterators-core.js");
-var IteratorPrototype = IteratorsCore.IteratorPrototype;
-var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
-var KEYS = 'keys';
-var VALUES = 'values';
-var ENTRIES = 'entries';
-
-var returnThis = function () { return this; };
-
-module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, IS_SET, FORCED) {
-  createIteratorConstructor(IteratorConstructor, NAME, next);
-
-  var getIterationMethod = function (KIND) {
-    if (KIND === DEFAULT && defaultIterator) return defaultIterator;
-    if (!BUGGY_SAFARI_ITERATORS && KIND in IterablePrototype) return IterablePrototype[KIND];
-    switch (KIND) {
-      case KEYS: return function keys() { return new IteratorConstructor(this, KIND); };
-      case VALUES: return function values() { return new IteratorConstructor(this, KIND); };
-      case ENTRIES: return function entries() { return new IteratorConstructor(this, KIND); };
-    } return function () { return new IteratorConstructor(this); };
-  };
-
-  var TO_STRING_TAG = NAME + ' Iterator';
-  var INCORRECT_VALUES_NAME = false;
-  var IterablePrototype = Iterable.prototype;
-  var nativeIterator = IterablePrototype[ITERATOR]
-    || IterablePrototype['@@iterator']
-    || DEFAULT && IterablePrototype[DEFAULT];
-  var defaultIterator = !BUGGY_SAFARI_ITERATORS && nativeIterator || getIterationMethod(DEFAULT);
-  var anyNativeIterator = NAME == 'Array' ? IterablePrototype.entries || nativeIterator : nativeIterator;
-  var CurrentIteratorPrototype, methods, KEY;
-
-  // fix native
-  if (anyNativeIterator) {
-    CurrentIteratorPrototype = getPrototypeOf(anyNativeIterator.call(new Iterable()));
-    if (IteratorPrototype !== Object.prototype && CurrentIteratorPrototype.next) {
-      if (!IS_PURE && getPrototypeOf(CurrentIteratorPrototype) !== IteratorPrototype) {
-        if (setPrototypeOf) {
-          setPrototypeOf(CurrentIteratorPrototype, IteratorPrototype);
-        } else if (typeof CurrentIteratorPrototype[ITERATOR] != 'function') {
-          hide(CurrentIteratorPrototype, ITERATOR, returnThis);
-        }
-      }
-      // Set @@toStringTag to native iterators
-      setToStringTag(CurrentIteratorPrototype, TO_STRING_TAG, true, true);
-      if (IS_PURE) Iterators[TO_STRING_TAG] = returnThis;
-    }
-  }
-
-  // fix Array#{values, @@iterator}.name in V8 / FF
-  if (DEFAULT == VALUES && nativeIterator && nativeIterator.name !== VALUES) {
-    INCORRECT_VALUES_NAME = true;
-    defaultIterator = function values() { return nativeIterator.call(this); };
-  }
-
-  // define iterator
-  if ((!IS_PURE || FORCED) && IterablePrototype[ITERATOR] !== defaultIterator) {
-    hide(IterablePrototype, ITERATOR, defaultIterator);
-  }
-  Iterators[NAME] = defaultIterator;
-
-  // export additional methods
-  if (DEFAULT) {
-    methods = {
-      values: getIterationMethod(VALUES),
-      keys: IS_SET ? defaultIterator : getIterationMethod(KEYS),
-      entries: getIterationMethod(ENTRIES)
-    };
-    if (FORCED) for (KEY in methods) {
-      if (BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME || !(KEY in IterablePrototype)) {
-        redefine(IterablePrototype, KEY, methods[KEY]);
-      }
-    } else $export({ target: NAME, proto: true, forced: BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME }, methods);
-  }
-
-  return methods;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/descriptors.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/internals/descriptors.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js")(function () {
-  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/document-create-element.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/core-js/internals/document-create-element.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var document = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js").document;
-// typeof document.createElement is 'object' in old IE
-var exist = isObject(document) && isObject(document.createElement);
-
-module.exports = function (it) {
-  return exist ? document.createElement(it) : {};
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/enum-bug-keys.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/internals/enum-bug-keys.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// IE8- don't enum bug keys
-module.exports = [
-  'constructor',
-  'hasOwnProperty',
-  'isPrototypeOf',
-  'propertyIsEnumerable',
-  'toLocaleString',
-  'toString',
-  'valueOf'
-];
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/export.js":
-/*!**************************************************!*\
-  !*** ./node_modules/core-js/internals/export.js ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
-var hide = __webpack_require__(/*! ../internals/hide */ "./node_modules/core-js/internals/hide.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
-var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/core-js/internals/set-global.js");
-var copyConstructorProperties = __webpack_require__(/*! ../internals/copy-constructor-properties */ "./node_modules/core-js/internals/copy-constructor-properties.js");
-var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/core-js/internals/is-forced.js");
-
-/*
-  options.target      - name of the target object
-  options.global      - target is the global object
-  options.stat        - export as static methods of target
-  options.proto       - export as prototype methods of target
-  options.real        - real prototype method for the `pure` version
-  options.forced      - export even if the native feature is available
-  options.bind        - bind methods to the target, required for the `pure` version
-  options.wrap        - wrap constructors to preventing global pollution, required for the `pure` version
-  options.unsafe      - use the simple assignment of property instead of delete + defineProperty
-  options.sham        - add a flag to not completely full polyfills
-  options.enumerable  - export as enumerable property
-  options.noTargetGet - prevent calling a getter on target
-*/
-module.exports = function (options, source) {
-  var TARGET = options.target;
-  var GLOBAL = options.global;
-  var STATIC = options.stat;
-  var FORCED, target, key, targetProperty, sourceProperty, descriptor;
-  if (GLOBAL) {
-    target = global;
-  } else if (STATIC) {
-    target = global[TARGET] || setGlobal(TARGET, {});
-  } else {
-    target = (global[TARGET] || {}).prototype;
-  }
-  if (target) for (key in source) {
-    sourceProperty = source[key];
-    if (options.noTargetGet) {
-      descriptor = getOwnPropertyDescriptor(target, key);
-      targetProperty = descriptor && descriptor.value;
-    } else targetProperty = target[key];
-    FORCED = isForced(GLOBAL ? key : TARGET + (STATIC ? '.' : '#') + key, options.forced);
-    // contained in target
-    if (!FORCED && targetProperty !== undefined) {
-      if (typeof sourceProperty === typeof targetProperty) continue;
-      copyConstructorProperties(sourceProperty, targetProperty);
-    }
-    // add a flag to not completely full polyfills
-    if (options.sham || (targetProperty && targetProperty.sham)) {
-      hide(sourceProperty, 'sham', true);
-    }
-    // extend global
-    redefine(target, key, sourceProperty, options);
-  }
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/fails.js":
-/*!*************************************************!*\
-  !*** ./node_modules/core-js/internals/fails.js ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function (exec) {
-  try {
-    return !!exec();
-  } catch (error) {
-    return true;
-  }
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/freezing.js":
-/*!****************************************************!*\
-  !*** ./node_modules/core-js/internals/freezing.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = !__webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js")(function () {
-  return Object.isExtensible(Object.preventExtensions({}));
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/function-to-string.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/core-js/internals/function-to-string.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js")('native-function-to-string', Function.toString);
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/get-built-in.js":
-/*!********************************************************!*\
-  !*** ./node_modules/core-js/internals/get-built-in.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var path = __webpack_require__(/*! ../internals/path */ "./node_modules/core-js/internals/path.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-
-var aFunction = function (variable) {
-  return typeof variable == 'function' ? variable : undefined;
-};
-
-module.exports = function (namespace, method) {
-  return arguments.length < 2 ? aFunction(path[namespace]) || aFunction(global[namespace])
-    : path[namespace] && path[namespace][method] || global[namespace] && global[namespace][method];
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/get-iterator-method.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/core-js/internals/get-iterator-method.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/core-js/internals/classof.js");
-var ITERATOR = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js")('iterator');
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
-
-module.exports = function (it) {
-  if (it != undefined) return it[ITERATOR]
-    || it['@@iterator']
-    || Iterators[classof(it)];
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/global.js":
-/*!**************************************************!*\
-  !*** ./node_modules/core-js/internals/global.js ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-module.exports = typeof window == 'object' && window && window.Math == Math ? window
-  : typeof self == 'object' && self && self.Math == Math ? self
-  // eslint-disable-next-line no-new-func
-  : Function('return this')();
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/has.js":
-/*!***********************************************!*\
-  !*** ./node_modules/core-js/internals/has.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var hasOwnProperty = {}.hasOwnProperty;
-
-module.exports = function (it, key) {
-  return hasOwnProperty.call(it, key);
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/hidden-keys.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/internals/hidden-keys.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/hide.js":
-/*!************************************************!*\
-  !*** ./node_modules/core-js/internals/hide.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
-
-module.exports = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js") ? function (object, key, value) {
-  return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/html.js":
-/*!************************************************!*\
-  !*** ./node_modules/core-js/internals/html.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var document = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js").document;
-
-module.exports = document && document.documentElement;
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/ie8-dom-define.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/internals/ie8-dom-define.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js") && !__webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js")(function () {
-  return Object.defineProperty(__webpack_require__(/*! ../internals/document-create-element */ "./node_modules/core-js/internals/document-create-element.js")('div'), 'a', {
-    get: function () { return 7; }
-  }).a != 7;
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/indexed-object.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/internals/indexed-object.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// fallback for non-array-like ES3 and non-enumerable old V8 strings
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
-var split = ''.split;
-
-module.exports = fails(function () {
-  // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
-  // eslint-disable-next-line no-prototype-builtins
-  return !Object('z').propertyIsEnumerable(0);
-}) ? function (it) {
-  return classof(it) == 'String' ? split.call(it, '') : Object(it);
-} : Object;
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/inherit-if-required.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/core-js/internals/inherit-if-required.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/core-js/internals/object-set-prototype-of.js");
-
-module.exports = function (that, target, C) {
-  var S = target.constructor;
-  var P;
-  if (S !== C && typeof S == 'function' && (P = S.prototype) !== C.prototype && isObject(P) && setPrototypeOf) {
-    setPrototypeOf(that, P);
-  } return that;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/internal-metadata.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/internals/internal-metadata.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var METADATA = __webpack_require__(/*! ../internals/uid */ "./node_modules/core-js/internals/uid.js")('meta');
-var FREEZING = __webpack_require__(/*! ../internals/freezing */ "./node_modules/core-js/internals/freezing.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
-var id = 0;
-
-var isExtensible = Object.isExtensible || function () {
-  return true;
-};
-
-var setMetadata = function (it) {
-  defineProperty(it, METADATA, { value: {
-    objectID: 'O' + ++id, // object ID
-    weakData: {}          // weak collections IDs
-  } });
-};
-
-var fastKey = function (it, create) {
-  // return a primitive with prefix
-  if (!isObject(it)) return typeof it == 'symbol' ? it : (typeof it == 'string' ? 'S' : 'P') + it;
-  if (!has(it, METADATA)) {
-    // can't set metadata to uncaught frozen object
-    if (!isExtensible(it)) return 'F';
-    // not necessary to add metadata
-    if (!create) return 'E';
-    // add missing metadata
-    setMetadata(it);
-  // return object ID
-  } return it[METADATA].objectID;
-};
-
-var getWeakData = function (it, create) {
-  if (!has(it, METADATA)) {
-    // can't set metadata to uncaught frozen object
-    if (!isExtensible(it)) return true;
-    // not necessary to add metadata
-    if (!create) return false;
-    // add missing metadata
-    setMetadata(it);
-  // return the store of weak collections IDs
-  } return it[METADATA].weakData;
-};
-
-// add metadata on freeze-family methods calling
-var onFreeze = function (it) {
-  if (FREEZING && meta.REQUIRED && isExtensible(it) && !has(it, METADATA)) setMetadata(it);
-  return it;
-};
-
-var meta = module.exports = {
-  REQUIRED: false,
-  fastKey: fastKey,
-  getWeakData: getWeakData,
-  onFreeze: onFreeze
-};
-
-__webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js")[METADATA] = true;
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/internal-state.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/internals/internal-state.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var NATIVE_WEAK_MAP = __webpack_require__(/*! ../internals/native-weak-map */ "./node_modules/core-js/internals/native-weak-map.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var hide = __webpack_require__(/*! ../internals/hide */ "./node_modules/core-js/internals/hide.js");
-var objectHas = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
-var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js");
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
-var WeakMap = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js").WeakMap;
-var set, get, has;
-
-var enforce = function (it) {
-  return has(it) ? get(it) : set(it, {});
-};
-
-var getterFor = function (TYPE) {
-  return function (it) {
-    var state;
-    if (!isObject(it) || (state = get(it)).type !== TYPE) {
-      throw TypeError('Incompatible receiver, ' + TYPE + ' required');
-    } return state;
-  };
-};
-
-if (NATIVE_WEAK_MAP) {
-  var store = new WeakMap();
-  var wmget = store.get;
-  var wmhas = store.has;
-  var wmset = store.set;
-  set = function (it, metadata) {
-    wmset.call(store, it, metadata);
-    return metadata;
-  };
-  get = function (it) {
-    return wmget.call(store, it) || {};
-  };
-  has = function (it) {
-    return wmhas.call(store, it);
-  };
-} else {
-  var STATE = sharedKey('state');
-  hiddenKeys[STATE] = true;
-  set = function (it, metadata) {
-    hide(it, STATE, metadata);
-    return metadata;
-  };
-  get = function (it) {
-    return objectHas(it, STATE) ? it[STATE] : {};
-  };
-  has = function (it) {
-    return objectHas(it, STATE);
-  };
-}
-
-module.exports = {
-  set: set,
-  get: get,
-  has: has,
-  enforce: enforce,
-  getterFor: getterFor
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/is-array-iterator-method.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/core-js/internals/is-array-iterator-method.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// check on default Array iterator
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
-var ITERATOR = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js")('iterator');
-var ArrayPrototype = Array.prototype;
-
-module.exports = function (it) {
-  return it !== undefined && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/is-array.js":
-/*!****************************************************!*\
-  !*** ./node_modules/core-js/internals/is-array.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
-
-// `IsArray` abstract operation
-// https://tc39.github.io/ecma262/#sec-isarray
-module.exports = Array.isArray || function isArray(arg) {
-  return classof(arg) == 'Array';
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/is-forced.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/internals/is-forced.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
-var replacement = /#|\.prototype\./;
-
-var isForced = function (feature, detection) {
-  var value = data[normalize(feature)];
-  return value == POLYFILL ? true
-    : value == NATIVE ? false
-    : typeof detection == 'function' ? fails(detection)
-    : !!detection;
-};
-
-var normalize = isForced.normalize = function (string) {
-  return String(string).replace(replacement, '.').toLowerCase();
-};
-
-var data = isForced.data = {};
-var NATIVE = isForced.NATIVE = 'N';
-var POLYFILL = isForced.POLYFILL = 'P';
-
-module.exports = isForced;
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/is-object.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/internals/is-object.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/is-pure.js":
-/*!***************************************************!*\
-  !*** ./node_modules/core-js/internals/is-pure.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = false;
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/iterate.js":
-/*!***************************************************!*\
-  !*** ./node_modules/core-js/internals/iterate.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterator-method */ "./node_modules/core-js/internals/is-array-iterator-method.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
-var bind = __webpack_require__(/*! ../internals/bind-context */ "./node_modules/core-js/internals/bind-context.js");
-var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "./node_modules/core-js/internals/get-iterator-method.js");
-var callWithSafeIterationClosing = __webpack_require__(/*! ../internals/call-with-safe-iteration-closing */ "./node_modules/core-js/internals/call-with-safe-iteration-closing.js");
-var BREAK = {};
-
-var exports = module.exports = function (iterable, fn, that, ENTRIES, ITERATOR) {
-  var boundFunction = bind(fn, that, ENTRIES ? 2 : 1);
-  var iterator, iterFn, index, length, result, step;
-
-  if (ITERATOR) {
-    iterator = iterable;
-  } else {
-    iterFn = getIteratorMethod(iterable);
-    if (typeof iterFn != 'function') throw TypeError('Target is not iterable');
-    // optimisation for array iterators
-    if (isArrayIteratorMethod(iterFn)) {
-      for (index = 0, length = toLength(iterable.length); length > index; index++) {
-        result = ENTRIES ? boundFunction(anObject(step = iterable[index])[0], step[1]) : boundFunction(iterable[index]);
-        if (result === BREAK) return BREAK;
-      } return;
-    }
-    iterator = iterFn.call(iterable);
-  }
-
-  while (!(step = iterator.next()).done) {
-    if (callWithSafeIterationClosing(iterator, boundFunction, step.value, ENTRIES) === BREAK) return BREAK;
-  }
-};
-
-exports.BREAK = BREAK;
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/iterators-core.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/internals/iterators-core.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
-var hide = __webpack_require__(/*! ../internals/hide */ "./node_modules/core-js/internals/hide.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
-var ITERATOR = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js")('iterator');
-var BUGGY_SAFARI_ITERATORS = false;
-
-var returnThis = function () { return this; };
-
-// `%IteratorPrototype%` object
-// https://tc39.github.io/ecma262/#sec-%iteratorprototype%-object
-var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
-
-if ([].keys) {
-  arrayIterator = [].keys();
-  // Safari 8 has buggy iterators w/o `next`
-  if (!('next' in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
-  else {
-    PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
-    if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
-  }
-}
-
-if (IteratorPrototype == undefined) IteratorPrototype = {};
-
-// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-if (!IS_PURE && !has(IteratorPrototype, ITERATOR)) hide(IteratorPrototype, ITERATOR, returnThis);
-
-module.exports = {
-  IteratorPrototype: IteratorPrototype,
-  BUGGY_SAFARI_ITERATORS: BUGGY_SAFARI_ITERATORS
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/iterators.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/internals/iterators.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/native-symbol.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/internals/native-symbol.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Chrome 38 Symbol has incorrect toString conversion
-module.exports = !__webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js")(function () {
-  // eslint-disable-next-line no-undef
-  return !String(Symbol());
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/native-weak-map.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/internals/native-weak-map.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var nativeFunctionToString = __webpack_require__(/*! ../internals/function-to-string */ "./node_modules/core-js/internals/function-to-string.js");
-var WeakMap = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js").WeakMap;
-
-module.exports = typeof WeakMap === 'function' && /native code/.test(nativeFunctionToString.call(WeakMap));
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/object-create.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/internals/object-create.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var defineProperties = __webpack_require__(/*! ../internals/object-define-properties */ "./node_modules/core-js/internals/object-define-properties.js");
-var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/core-js/internals/enum-bug-keys.js");
-var html = __webpack_require__(/*! ../internals/html */ "./node_modules/core-js/internals/html.js");
-var documentCreateElement = __webpack_require__(/*! ../internals/document-create-element */ "./node_modules/core-js/internals/document-create-element.js");
-var IE_PROTO = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js")('IE_PROTO');
-var PROTOTYPE = 'prototype';
-var Empty = function () { /* empty */ };
-
-// Create object with fake `null` prototype: use iframe Object with cleared prototype
-var createDict = function () {
-  // Thrash, waste and sodomy: IE GC bug
-  var iframe = documentCreateElement('iframe');
-  var length = enumBugKeys.length;
-  var lt = '<';
-  var script = 'script';
-  var gt = '>';
-  var js = 'java' + script + ':';
-  var iframeDocument;
-  iframe.style.display = 'none';
-  html.appendChild(iframe);
-  iframe.src = String(js);
-  iframeDocument = iframe.contentWindow.document;
-  iframeDocument.open();
-  iframeDocument.write(lt + script + gt + 'document.F=Object' + lt + '/' + script + gt);
-  iframeDocument.close();
-  createDict = iframeDocument.F;
-  while (length--) delete createDict[PROTOTYPE][enumBugKeys[length]];
-  return createDict();
-};
-
-module.exports = Object.create || function create(O, Properties) {
-  var result;
-  if (O !== null) {
-    Empty[PROTOTYPE] = anObject(O);
-    result = new Empty();
-    Empty[PROTOTYPE] = null;
-    // add "__proto__" for Object.getPrototypeOf polyfill
-    result[IE_PROTO] = O;
-  } else result = createDict();
-  return Properties === undefined ? result : defineProperties(result, Properties);
-};
-
-__webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js")[IE_PROTO] = true;
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/object-define-properties.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-define-properties.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_modules/core-js/internals/object-keys.js");
-
-module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperties(O, Properties) {
-  anObject(O);
-  var keys = objectKeys(Properties);
-  var length = keys.length;
-  var i = 0;
-  var key;
-  while (length > i) definePropertyModule.f(O, key = keys[i++], Properties[key]);
-  return O;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/object-define-property.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-define-property.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
-var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/core-js/internals/ie8-dom-define.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
-var nativeDefineProperty = Object.defineProperty;
-
-exports.f = DESCRIPTORS ? nativeDefineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return nativeDefineProperty(O, P, Attributes);
-  } catch (error) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/object-get-own-property-descriptor.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-get-own-property-descriptor.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
-var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "./node_modules/core-js/internals/object-property-is-enumerable.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
-var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/core-js/internals/ie8-dom-define.js");
-var nativeGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-
-exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
-  O = toIndexedObject(O);
-  P = toPrimitive(P, true);
-  if (IE8_DOM_DEFINE) try {
-    return nativeGetOwnPropertyDescriptor(O, P);
-  } catch (error) { /* empty */ }
-  if (has(O, P)) return createPropertyDescriptor(!propertyIsEnumerableModule.f.call(O, P), O[P]);
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/object-get-own-property-names.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-get-own-property-names.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/core-js/internals/object-keys-internal.js");
-var hiddenKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/core-js/internals/enum-bug-keys.js").concat('length', 'prototype');
-
-exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
-  return internalObjectKeys(O, hiddenKeys);
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/object-get-own-property-symbols.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-get-own-property-symbols.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-exports.f = Object.getOwnPropertySymbols;
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/object-get-prototype-of.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-get-prototype-of.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
-var IE_PROTO = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js")('IE_PROTO');
-var CORRECT_PROTOTYPE_GETTER = __webpack_require__(/*! ../internals/correct-prototype-getter */ "./node_modules/core-js/internals/correct-prototype-getter.js");
-var ObjectPrototype = Object.prototype;
-
-module.exports = CORRECT_PROTOTYPE_GETTER ? Object.getPrototypeOf : function (O) {
-  O = toObject(O);
-  if (has(O, IE_PROTO)) return O[IE_PROTO];
-  if (typeof O.constructor == 'function' && O instanceof O.constructor) {
-    return O.constructor.prototype;
-  } return O instanceof Object ? ObjectPrototype : null;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/object-keys-internal.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-keys-internal.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
-var arrayIndexOf = __webpack_require__(/*! ../internals/array-includes */ "./node_modules/core-js/internals/array-includes.js")(false);
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
-
-module.exports = function (object, names) {
-  var O = toIndexedObject(object);
-  var i = 0;
-  var result = [];
-  var key;
-  for (key in O) !has(hiddenKeys, key) && has(O, key) && result.push(key);
-  // Don't enum bug & hidden keys
-  while (names.length > i) if (has(O, key = names[i++])) {
-    ~arrayIndexOf(result, key) || result.push(key);
-  }
-  return result;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/object-keys.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/internals/object-keys.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/core-js/internals/object-keys-internal.js");
-var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/core-js/internals/enum-bug-keys.js");
-
-module.exports = Object.keys || function keys(O) {
-  return internalObjectKeys(O, enumBugKeys);
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/object-property-is-enumerable.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-property-is-enumerable.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var nativePropertyIsEnumerable = {}.propertyIsEnumerable;
-var nativeGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-
-// Nashorn ~ JDK8 bug
-var NASHORN_BUG = nativeGetOwnPropertyDescriptor && !nativePropertyIsEnumerable.call({ 1: 2 }, 1);
-
-exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
-  var descriptor = nativeGetOwnPropertyDescriptor(this, V);
-  return !!descriptor && descriptor.enumerable;
-} : nativePropertyIsEnumerable;
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/object-set-prototype-of.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-set-prototype-of.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Works with __proto__ only. Old v8 can't work with null proto objects.
-/* eslint-disable no-proto */
-var validateSetPrototypeOfArguments = __webpack_require__(/*! ../internals/validate-set-prototype-of-arguments */ "./node_modules/core-js/internals/validate-set-prototype-of-arguments.js");
-
-module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
-  var correctSetter = false;
-  var test = {};
-  var setter;
-  try {
-    setter = Object.getOwnPropertyDescriptor(Object.prototype, '__proto__').set;
-    setter.call(test, []);
-    correctSetter = test instanceof Array;
-  } catch (error) { /* empty */ }
-  return function setPrototypeOf(O, proto) {
-    validateSetPrototypeOfArguments(O, proto);
-    if (correctSetter) setter.call(O, proto);
-    else O.__proto__ = proto;
-    return O;
-  };
-}() : undefined);
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/own-keys.js":
-/*!****************************************************!*\
-  !*** ./node_modules/core-js/internals/own-keys.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var getOwnPropertyNamesModule = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js");
-var getOwnPropertySymbolsModule = __webpack_require__(/*! ../internals/object-get-own-property-symbols */ "./node_modules/core-js/internals/object-get-own-property-symbols.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var Reflect = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js").Reflect;
-
-// all object keys, includes non-enumerable and symbols
-module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
-  var keys = getOwnPropertyNamesModule.f(anObject(it));
-  var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
-  return getOwnPropertySymbols ? keys.concat(getOwnPropertySymbols(it)) : keys;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/path.js":
-/*!************************************************!*\
-  !*** ./node_modules/core-js/internals/path.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/redefine-all.js":
-/*!********************************************************!*\
-  !*** ./node_modules/core-js/internals/redefine-all.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
-
-module.exports = function (target, src, options) {
-  for (var key in src) redefine(target, key, src[key], options);
-  return target;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/redefine.js":
-/*!****************************************************!*\
-  !*** ./node_modules/core-js/internals/redefine.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-var hide = __webpack_require__(/*! ../internals/hide */ "./node_modules/core-js/internals/hide.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
-var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/core-js/internals/set-global.js");
-var nativeFunctionToString = __webpack_require__(/*! ../internals/function-to-string */ "./node_modules/core-js/internals/function-to-string.js");
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
-var getInternalState = InternalStateModule.get;
-var enforceInternalState = InternalStateModule.enforce;
-var TEMPLATE = String(nativeFunctionToString).split('toString');
-
-__webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js")('inspectSource', function (it) {
-  return nativeFunctionToString.call(it);
-});
-
-(module.exports = function (O, key, value, options) {
-  var unsafe = options ? !!options.unsafe : false;
-  var simple = options ? !!options.enumerable : false;
-  var noTargetGet = options ? !!options.noTargetGet : false;
-  if (typeof value == 'function') {
-    if (typeof key == 'string' && !has(value, 'name')) hide(value, 'name', key);
-    enforceInternalState(value).source = TEMPLATE.join(typeof key == 'string' ? key : '');
-  }
-  if (O === global) {
-    if (simple) O[key] = value;
-    else setGlobal(key, value);
-    return;
-  } else if (!unsafe) {
-    delete O[key];
-  } else if (!noTargetGet && O[key]) {
-    simple = true;
-  }
-  if (simple) O[key] = value;
-  else hide(O, key, value);
-// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
-})(Function.prototype, 'toString', function toString() {
-  return typeof this == 'function' && getInternalState(this).source || nativeFunctionToString.call(this);
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/reflect-metadata.js":
-/*!************************************************************!*\
-  !*** ./node_modules/core-js/internals/reflect-metadata.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Map = __webpack_require__(/*! ../modules/es.map */ "./node_modules/core-js/modules/es.map.js");
-var WeakMap = __webpack_require__(/*! ../modules/es.weak-map */ "./node_modules/core-js/modules/es.weak-map.js");
-var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js")('metadata');
-var store = shared.store || (shared.store = new WeakMap());
-
-var getOrCreateMetadataMap = function (target, targetKey, create) {
-  var targetMetadata = store.get(target);
-  if (!targetMetadata) {
-    if (!create) return;
-    store.set(target, targetMetadata = new Map());
-  }
-  var keyMetadata = targetMetadata.get(targetKey);
-  if (!keyMetadata) {
-    if (!create) return;
-    targetMetadata.set(targetKey, keyMetadata = new Map());
-  } return keyMetadata;
-};
-
-var ordinaryHasOwnMetadata = function (MetadataKey, O, P) {
-  var metadataMap = getOrCreateMetadataMap(O, P, false);
-  return metadataMap === undefined ? false : metadataMap.has(MetadataKey);
-};
-
-var ordinaryGetOwnMetadata = function (MetadataKey, O, P) {
-  var metadataMap = getOrCreateMetadataMap(O, P, false);
-  return metadataMap === undefined ? undefined : metadataMap.get(MetadataKey);
-};
-
-var ordinaryDefineOwnMetadata = function (MetadataKey, MetadataValue, O, P) {
-  getOrCreateMetadataMap(O, P, true).set(MetadataKey, MetadataValue);
-};
-
-var ordinaryOwnMetadataKeys = function (target, targetKey) {
-  var metadataMap = getOrCreateMetadataMap(target, targetKey, false);
-  var keys = [];
-  if (metadataMap) metadataMap.forEach(function (_, key) { keys.push(key); });
-  return keys;
-};
-
-var toMetadataKey = function (it) {
-  return it === undefined || typeof it == 'symbol' ? it : String(it);
-};
-
-module.exports = {
-  store: store,
-  getMap: getOrCreateMetadataMap,
-  has: ordinaryHasOwnMetadata,
-  get: ordinaryGetOwnMetadata,
-  set: ordinaryDefineOwnMetadata,
-  keys: ordinaryOwnMetadataKeys,
-  toKey: toMetadataKey
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/require-object-coercible.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/core-js/internals/require-object-coercible.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// `RequireObjectCoercible` abstract operation
-// https://tc39.github.io/ecma262/#sec-requireobjectcoercible
-module.exports = function (it) {
-  if (it == undefined) throw TypeError("Can't call method on " + it);
-  return it;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/set-global.js":
-/*!******************************************************!*\
-  !*** ./node_modules/core-js/internals/set-global.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-var hide = __webpack_require__(/*! ../internals/hide */ "./node_modules/core-js/internals/hide.js");
-
-module.exports = function (key, value) {
-  try {
-    hide(global, key, value);
-  } catch (error) {
-    global[key] = value;
-  } return value;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/set-species.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/internals/set-species.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
-var SPECIES = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js")('species');
-
-module.exports = function (CONSTRUCTOR_NAME) {
-  var C = getBuiltIn(CONSTRUCTOR_NAME);
-  var defineProperty = definePropertyModule.f;
-  if (DESCRIPTORS && C && !C[SPECIES]) defineProperty(C, SPECIES, {
-    configurable: true,
-    get: function () { return this; }
-  });
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/set-to-string-tag.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/internals/set-to-string-tag.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
-var TO_STRING_TAG = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js")('toStringTag');
-
-module.exports = function (it, TAG, STATIC) {
-  if (it && !has(it = STATIC ? it : it.prototype, TO_STRING_TAG)) {
-    defineProperty(it, TO_STRING_TAG, { configurable: true, value: TAG });
-  }
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/shared-key.js":
-/*!******************************************************!*\
-  !*** ./node_modules/core-js/internals/shared-key.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js")('keys');
-var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/core-js/internals/uid.js");
-
-module.exports = function (key) {
-  return shared[key] || (shared[key] = uid(key));
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/shared.js":
-/*!**************************************************!*\
-  !*** ./node_modules/core-js/internals/shared.js ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/core-js/internals/set-global.js");
-var SHARED = '__core-js_shared__';
-var store = global[SHARED] || setGlobal(SHARED, {});
-
-(module.exports = function (key, value) {
-  return store[key] || (store[key] = value !== undefined ? value : {});
-})('versions', []).push({
-  version: '3.0.1',
-  mode: __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js") ? 'pure' : 'global',
-  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/to-absolute-index.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/internals/to-absolute-index.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
-var max = Math.max;
-var min = Math.min;
-
-// Helper for a popular repeating case of the spec:
-// Let integer be ? ToInteger(index).
-// If integer < 0, let result be max((length + integer), 0); else let result be min(length, length).
-module.exports = function (index, length) {
-  var integer = toInteger(index);
-  return integer < 0 ? max(integer + length, 0) : min(integer, length);
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/to-indexed-object.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/internals/to-indexed-object.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// toObject with fallback for non-array-like ES3 strings
-var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/core-js/internals/indexed-object.js");
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
-
-module.exports = function (it) {
-  return IndexedObject(requireObjectCoercible(it));
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/to-integer.js":
-/*!******************************************************!*\
-  !*** ./node_modules/core-js/internals/to-integer.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var ceil = Math.ceil;
-var floor = Math.floor;
-
-// `ToInteger` abstract operation
-// https://tc39.github.io/ecma262/#sec-tointeger
-module.exports = function (argument) {
-  return isNaN(argument = +argument) ? 0 : (argument > 0 ? floor : ceil)(argument);
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/to-length.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/internals/to-length.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
-var min = Math.min;
-
-// `ToLength` abstract operation
-// https://tc39.github.io/ecma262/#sec-tolength
-module.exports = function (argument) {
-  return argument > 0 ? min(toInteger(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/to-object.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/internals/to-object.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
-
-// `ToObject` abstract operation
-// https://tc39.github.io/ecma262/#sec-toobject
-module.exports = function (argument) {
-  return Object(requireObjectCoercible(argument));
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/to-primitive.js":
-/*!********************************************************!*\
-  !*** ./node_modules/core-js/internals/to-primitive.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-module.exports = function (it, S) {
-  if (!isObject(it)) return it;
-  var fn, val;
-  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/uid.js":
-/*!***********************************************!*\
-  !*** ./node_modules/core-js/internals/uid.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var id = 0;
-var postfix = Math.random();
-
-module.exports = function (key) {
-  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + postfix).toString(36));
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/validate-set-prototype-of-arguments.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/core-js/internals/validate-set-prototype-of-arguments.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-
-module.exports = function (O, proto) {
-  anObject(O);
-  if (!isObject(proto) && proto !== null) {
-    throw TypeError("Can't set " + String(proto) + ' as a prototype');
-  }
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/well-known-symbol.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/internals/well-known-symbol.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var store = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js")('wks');
-var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/core-js/internals/uid.js");
-var Symbol = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js").Symbol;
-var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/core-js/internals/native-symbol.js");
-
-module.exports = function (name) {
-  return store[name] || (store[name] = NATIVE_SYMBOL && Symbol[name]
-    || (NATIVE_SYMBOL ? Symbol : uid)('Symbol.' + name));
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/es.map.js":
-/*!************************************************!*\
-  !*** ./node_modules/core-js/modules/es.map.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-// `Map` constructor
-// https://tc39.github.io/ecma262/#sec-map-objects
-module.exports = __webpack_require__(/*! ../internals/collection */ "./node_modules/core-js/internals/collection.js")('Map', function (get) {
-  return function Map() { return get(this, arguments.length > 0 ? arguments[0] : undefined); };
-}, __webpack_require__(/*! ../internals/collection-strong */ "./node_modules/core-js/internals/collection-strong.js"), true);
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/es.set.js":
-/*!************************************************!*\
-  !*** ./node_modules/core-js/modules/es.set.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-// `Set` constructor
-// https://tc39.github.io/ecma262/#sec-set-objects
-module.exports = __webpack_require__(/*! ../internals/collection */ "./node_modules/core-js/internals/collection.js")('Set', function (get) {
-  return function Set() { return get(this, arguments.length > 0 ? arguments[0] : undefined); };
-}, __webpack_require__(/*! ../internals/collection-strong */ "./node_modules/core-js/internals/collection-strong.js"));
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/es.weak-map.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/modules/es.weak-map.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "./node_modules/core-js/internals/redefine-all.js");
-var InternalMetadataModule = __webpack_require__(/*! ../internals/internal-metadata */ "./node_modules/core-js/internals/internal-metadata.js");
-var weak = __webpack_require__(/*! ../internals/collection-weak */ "./node_modules/core-js/internals/collection-weak.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var enforceIternalState = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js").enforce;
-var NATIVE_WEAK_MAP = __webpack_require__(/*! ../internals/native-weak-map */ "./node_modules/core-js/internals/native-weak-map.js");
-var IS_IE11 = !global.ActiveXObject && 'ActiveXObject' in global;
-var isExtensible = Object.isExtensible;
-var InternalWeakMap;
-
-var wrapper = function (get) {
-  return function WeakMap() {
-    return get(this, arguments.length > 0 ? arguments[0] : undefined);
-  };
-};
-
-// `WeakMap` constructor
-// https://tc39.github.io/ecma262/#sec-weakmap-constructor
-var $WeakMap = module.exports = __webpack_require__(/*! ../internals/collection */ "./node_modules/core-js/internals/collection.js")('WeakMap', wrapper, weak, true, true);
-
-// IE11 WeakMap frozen keys fix
-// We can't use feature detection because it crash some old IE builds
-// https://github.com/zloirock/core-js/issues/485
-if (NATIVE_WEAK_MAP && IS_IE11) {
-  InternalWeakMap = weak.getConstructor(wrapper, 'WeakMap', true);
-  InternalMetadataModule.REQUIRED = true;
-  var WeakMapPrototype = $WeakMap.prototype;
-  var nativeDelete = WeakMapPrototype['delete'];
-  var nativeHas = WeakMapPrototype.has;
-  var nativeGet = WeakMapPrototype.get;
-  var nativeSet = WeakMapPrototype.set;
-  redefineAll(WeakMapPrototype, {
-    'delete': function (key) {
-      if (isObject(key) && !isExtensible(key)) {
-        var state = enforceIternalState(this);
-        if (!state.frozen) state.frozen = new InternalWeakMap();
-        return nativeDelete.call(this, key) || state.frozen['delete'](key);
-      } return nativeDelete.call(this, key);
-    },
-    has: function has(key) {
-      if (isObject(key) && !isExtensible(key)) {
-        var state = enforceIternalState(this);
-        if (!state.frozen) state.frozen = new InternalWeakMap();
-        return nativeHas.call(this, key) || state.frozen.has(key);
-      } return nativeHas.call(this, key);
-    },
-    get: function get(key) {
-      if (isObject(key) && !isExtensible(key)) {
-        var state = enforceIternalState(this);
-        if (!state.frozen) state.frozen = new InternalWeakMap();
-        return nativeHas.call(this, key) ? nativeGet.call(this, key) : state.frozen.get(key);
-      } return nativeGet.call(this, key);
-    },
-    set: function set(key, value) {
-      if (isObject(key) && !isExtensible(key)) {
-        var state = enforceIternalState(this);
-        if (!state.frozen) state.frozen = new InternalWeakMap();
-        nativeHas.call(this, key) ? nativeSet.call(this, key, value) : state.frozen.set(key, value);
-      } else nativeSet.call(this, key, value);
-      return this;
-    }
-  });
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/esnext.reflect.define-metadata.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/core-js/modules/esnext.reflect.define-metadata.js ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "./node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var toMetadataKey = ReflectMetadataModule.toKey;
-var ordinaryDefineOwnMetadata = ReflectMetadataModule.set;
-
-// `Reflect.defineMetadata` method
-// https://github.com/rbuckton/reflect-metadata
-__webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js")({ target: 'Reflect', stat: true }, {
-  defineMetadata: function defineMetadata(metadataKey, metadataValue, target /* , targetKey */) {
-    var targetKey = arguments.length < 4 ? undefined : toMetadataKey(arguments[3]);
-    ordinaryDefineOwnMetadata(metadataKey, metadataValue, anObject(target), targetKey);
-  }
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/esnext.reflect.delete-metadata.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/core-js/modules/esnext.reflect.delete-metadata.js ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "./node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var toMetadataKey = ReflectMetadataModule.toKey;
-var getOrCreateMetadataMap = ReflectMetadataModule.getMap;
-var store = ReflectMetadataModule.store;
-
-// `Reflect.deleteMetadata` method
-// https://github.com/rbuckton/reflect-metadata
-__webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js")({ target: 'Reflect', stat: true }, {
-  deleteMetadata: function deleteMetadata(metadataKey, target /* , targetKey */) {
-    var targetKey = arguments.length < 3 ? undefined : toMetadataKey(arguments[2]);
-    var metadataMap = getOrCreateMetadataMap(anObject(target), targetKey, false);
-    if (metadataMap === undefined || !metadataMap['delete'](metadataKey)) return false;
-    if (metadataMap.size) return true;
-    var targetMetadata = store.get(target);
-    targetMetadata['delete'](targetKey);
-    return !!targetMetadata.size || store['delete'](target);
-  }
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/esnext.reflect.get-metadata-keys.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/core-js/modules/esnext.reflect.get-metadata-keys.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Set = __webpack_require__(/*! ../modules/es.set */ "./node_modules/core-js/modules/es.set.js");
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "./node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
-var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/core-js/internals/iterate.js");
-var ordinaryOwnMetadataKeys = ReflectMetadataModule.keys;
-var toMetadataKey = ReflectMetadataModule.toKey;
-
-var from = function (iter) {
-  var result = [];
-  iterate(iter, result.push, result);
-  return result;
-};
-
-var ordinaryMetadataKeys = function (O, P) {
-  var oKeys = ordinaryOwnMetadataKeys(O, P);
-  var parent = getPrototypeOf(O);
-  if (parent === null) return oKeys;
-  var pKeys = ordinaryMetadataKeys(parent, P);
-  return pKeys.length ? oKeys.length ? from(new Set(oKeys.concat(pKeys))) : pKeys : oKeys;
-};
-
-// `Reflect.getMetadataKeys` method
-// https://github.com/rbuckton/reflect-metadata
-__webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js")({ target: 'Reflect', stat: true }, {
-  getMetadataKeys: function getMetadataKeys(target /* , targetKey */) {
-    var targetKey = arguments.length < 2 ? undefined : toMetadataKey(arguments[1]);
-    return ordinaryMetadataKeys(anObject(target), targetKey);
-  }
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/esnext.reflect.get-metadata.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/core-js/modules/esnext.reflect.get-metadata.js ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "./node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
-var ordinaryHasOwnMetadata = ReflectMetadataModule.has;
-var ordinaryGetOwnMetadata = ReflectMetadataModule.get;
-var toMetadataKey = ReflectMetadataModule.toKey;
-
-var ordinaryGetMetadata = function (MetadataKey, O, P) {
-  var hasOwn = ordinaryHasOwnMetadata(MetadataKey, O, P);
-  if (hasOwn) return ordinaryGetOwnMetadata(MetadataKey, O, P);
-  var parent = getPrototypeOf(O);
-  return parent !== null ? ordinaryGetMetadata(MetadataKey, parent, P) : undefined;
-};
-
-// `Reflect.getMetadata` method
-// https://github.com/rbuckton/reflect-metadata
-__webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js")({ target: 'Reflect', stat: true }, {
-  getMetadata: function getMetadata(metadataKey, target /* , targetKey */) {
-    var targetKey = arguments.length < 3 ? undefined : toMetadataKey(arguments[2]);
-    return ordinaryGetMetadata(metadataKey, anObject(target), targetKey);
-  }
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/esnext.reflect.get-own-metadata-keys.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/core-js/modules/esnext.reflect.get-own-metadata-keys.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "./node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var ordinaryOwnMetadataKeys = ReflectMetadataModule.keys;
-var toMetadataKey = ReflectMetadataModule.toKey;
-
-// `Reflect.getOwnMetadataKeys` method
-// https://github.com/rbuckton/reflect-metadata
-__webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js")({ target: 'Reflect', stat: true }, {
-  getOwnMetadataKeys: function getOwnMetadataKeys(target /* , targetKey */) {
-    var targetKey = arguments.length < 2 ? undefined : toMetadataKey(arguments[1]);
-    return ordinaryOwnMetadataKeys(anObject(target), targetKey);
-  }
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/esnext.reflect.get-own-metadata.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/core-js/modules/esnext.reflect.get-own-metadata.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "./node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var ordinaryGetOwnMetadata = ReflectMetadataModule.get;
-var toMetadataKey = ReflectMetadataModule.toKey;
-
-// `Reflect.getOwnMetadata` method
-// https://github.com/rbuckton/reflect-metadata
-__webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js")({ target: 'Reflect', stat: true }, {
-  getOwnMetadata: function getOwnMetadata(metadataKey, target /* , targetKey */) {
-    var targetKey = arguments.length < 3 ? undefined : toMetadataKey(arguments[2]);
-    return ordinaryGetOwnMetadata(metadataKey, anObject(target), targetKey);
-  }
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/esnext.reflect.has-metadata.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/core-js/modules/esnext.reflect.has-metadata.js ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "./node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
-var ordinaryHasOwnMetadata = ReflectMetadataModule.has;
-var toMetadataKey = ReflectMetadataModule.toKey;
-
-var ordinaryHasMetadata = function (MetadataKey, O, P) {
-  var hasOwn = ordinaryHasOwnMetadata(MetadataKey, O, P);
-  if (hasOwn) return true;
-  var parent = getPrototypeOf(O);
-  return parent !== null ? ordinaryHasMetadata(MetadataKey, parent, P) : false;
-};
-
-// `Reflect.hasMetadata` method
-// https://github.com/rbuckton/reflect-metadata
-__webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js")({ target: 'Reflect', stat: true }, {
-  hasMetadata: function hasMetadata(metadataKey, target /* , targetKey */) {
-    var targetKey = arguments.length < 3 ? undefined : toMetadataKey(arguments[2]);
-    return ordinaryHasMetadata(metadataKey, anObject(target), targetKey);
-  }
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/esnext.reflect.has-own-metadata.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/core-js/modules/esnext.reflect.has-own-metadata.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "./node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var ordinaryHasOwnMetadata = ReflectMetadataModule.has;
-var toMetadataKey = ReflectMetadataModule.toKey;
-
-// `Reflect.hasOwnMetadata` method
-// https://github.com/rbuckton/reflect-metadata
-__webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js")({ target: 'Reflect', stat: true }, {
-  hasOwnMetadata: function hasOwnMetadata(metadataKey, target /* , targetKey */) {
-    var targetKey = arguments.length < 3 ? undefined : toMetadataKey(arguments[2]);
-    return ordinaryHasOwnMetadata(metadataKey, anObject(target), targetKey);
-  }
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/esnext.reflect.metadata.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/core-js/modules/esnext.reflect.metadata.js ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "./node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var toMetadataKey = ReflectMetadataModule.toKey;
-var ordinaryDefineOwnMetadata = ReflectMetadataModule.set;
-
-// `Reflect.metadata` method
-// https://github.com/rbuckton/reflect-metadata
-__webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js")({ target: 'Reflect', stat: true }, {
-  metadata: function metadata(metadataKey, metadataValue) {
-    return function decorator(target, key) {
-      ordinaryDefineOwnMetadata(metadataKey, metadataValue, anObject(target), toMetadataKey(key));
-    };
-  }
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/proposals/reflect-metadata.js":
-/*!************************************************************!*\
-  !*** ./node_modules/core-js/proposals/reflect-metadata.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! ../modules/esnext.reflect.define-metadata */ "./node_modules/core-js/modules/esnext.reflect.define-metadata.js");
-__webpack_require__(/*! ../modules/esnext.reflect.delete-metadata */ "./node_modules/core-js/modules/esnext.reflect.delete-metadata.js");
-__webpack_require__(/*! ../modules/esnext.reflect.get-metadata */ "./node_modules/core-js/modules/esnext.reflect.get-metadata.js");
-__webpack_require__(/*! ../modules/esnext.reflect.get-metadata-keys */ "./node_modules/core-js/modules/esnext.reflect.get-metadata-keys.js");
-__webpack_require__(/*! ../modules/esnext.reflect.get-own-metadata */ "./node_modules/core-js/modules/esnext.reflect.get-own-metadata.js");
-__webpack_require__(/*! ../modules/esnext.reflect.get-own-metadata-keys */ "./node_modules/core-js/modules/esnext.reflect.get-own-metadata-keys.js");
-__webpack_require__(/*! ../modules/esnext.reflect.has-metadata */ "./node_modules/core-js/modules/esnext.reflect.has-metadata.js");
-__webpack_require__(/*! ../modules/esnext.reflect.has-own-metadata */ "./node_modules/core-js/modules/esnext.reflect.has-own-metadata.js");
-__webpack_require__(/*! ../modules/esnext.reflect.metadata */ "./node_modules/core-js/modules/esnext.reflect.metadata.js");
 
 
 /***/ }),
@@ -35173,1843 +33804,1966 @@ module.exports = function(module) {
   !*** ./node_modules/zone.js/dist/zone-evergreen.js ***!
   \*****************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/**
-* @license
-* Copyright Google Inc. All Rights Reserved.
-*
-* Use of this source code is governed by an MIT-style license that can be
-* found in the LICENSE file at https://angular.io/license
-*/
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
+ * @license Angular v0.10.2
+ * (c) 2010-2019 Google LLC. https://angular.io/
+ * License: MIT
  */
-const Zone$1 = (function (global) {
-    const performance = global['performance'];
-    function mark(name) {
-        performance && performance['mark'] && performance['mark'](name);
-    }
-    function performanceMeasure(name, label) {
-        performance && performance['measure'] && performance['measure'](name, label);
-    }
-    mark('Zone');
-    const checkDuplicate = global[('__zone_symbol__forceDuplicateZoneCheck')] === true;
-    if (global['Zone']) {
-        // if global['Zone'] already exists (maybe zone.js was already loaded or
-        // some other lib also registered a global object named Zone), we may need
-        // to throw an error, but sometimes user may not want this error.
-        // For example,
-        // we have two web pages, page1 includes zone.js, page2 doesn't.
-        // and the 1st time user load page1 and page2, everything work fine,
-        // but when user load page2 again, error occurs because global['Zone'] already exists.
-        // so we add a flag to let user choose whether to throw this error or not.
-        // By default, if existing Zone is from zone.js, we will not throw the error.
-        if (checkDuplicate || typeof global['Zone'].__symbol__ !== 'function') {
-            throw new Error('Zone already loaded.');
+
+(function (factory) {
+     true ? !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) :
+    undefined;
+}(function () { 'use strict';
+
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+    const Zone$1 = (function (global) {
+        const performance = global['performance'];
+        function mark(name) { performance && performance['mark'] && performance['mark'](name); }
+        function performanceMeasure(name, label) {
+            performance && performance['measure'] && performance['measure'](name, label);
         }
-        else {
-            return global['Zone'];
-        }
-    }
-    class Zone {
-        constructor(parent, zoneSpec) {
-            this._parent = parent;
-            this._name = zoneSpec ? zoneSpec.name || 'unnamed' : '<root>';
-            this._properties = zoneSpec && zoneSpec.properties || {};
-            this._zoneDelegate =
-                new ZoneDelegate(this, this._parent && this._parent._zoneDelegate, zoneSpec);
-        }
-        static assertZonePatched() {
-            if (global['Promise'] !== patches['ZoneAwarePromise']) {
-                throw new Error('Zone.js has detected that ZoneAwarePromise `(window|global).Promise` ' +
-                    'has been overwritten.\n' +
-                    'Most likely cause is that a Promise polyfill has been loaded ' +
-                    'after Zone.js (Polyfilling Promise api is not necessary when zone.js is loaded. ' +
-                    'If you must load one, do so before loading zone.js.)');
+        mark('Zone');
+        // Initialize before it's accessed below.
+        // __Zone_symbol_prefix global can be used to override the default zone
+        // symbol prefix with a custom one if needed.
+        const symbolPrefix = global['__Zone_symbol_prefix'] || '__zone_symbol__';
+        function __symbol__(name) { return symbolPrefix + name; }
+        const checkDuplicate = global[__symbol__('forceDuplicateZoneCheck')] === true;
+        if (global['Zone']) {
+            // if global['Zone'] already exists (maybe zone.js was already loaded or
+            // some other lib also registered a global object named Zone), we may need
+            // to throw an error, but sometimes user may not want this error.
+            // For example,
+            // we have two web pages, page1 includes zone.js, page2 doesn't.
+            // and the 1st time user load page1 and page2, everything work fine,
+            // but when user load page2 again, error occurs because global['Zone'] already exists.
+            // so we add a flag to let user choose whether to throw this error or not.
+            // By default, if existing Zone is from zone.js, we will not throw the error.
+            if (checkDuplicate || typeof global['Zone'].__symbol__ !== 'function') {
+                throw new Error('Zone already loaded.');
+            }
+            else {
+                return global['Zone'];
             }
         }
-        static get root() {
-            let zone = Zone.current;
-            while (zone.parent) {
-                zone = zone.parent;
+        class Zone {
+            constructor(parent, zoneSpec) {
+                this._parent = parent;
+                this._name = zoneSpec ? zoneSpec.name || 'unnamed' : '<root>';
+                this._properties = zoneSpec && zoneSpec.properties || {};
+                this._zoneDelegate =
+                    new ZoneDelegate(this, this._parent && this._parent._zoneDelegate, zoneSpec);
             }
-            return zone;
-        }
-        static get current() {
-            return _currentZoneFrame.zone;
-        }
-        static get currentTask() {
-            return _currentTask;
-        }
-        static __load_patch(name, fn) {
-            if (patches.hasOwnProperty(name)) {
-                if (checkDuplicate) {
-                    throw Error('Already loaded patch: ' + name);
+            static assertZonePatched() {
+                if (global['Promise'] !== patches['ZoneAwarePromise']) {
+                    throw new Error('Zone.js has detected that ZoneAwarePromise `(window|global).Promise` ' +
+                        'has been overwritten.\n' +
+                        'Most likely cause is that a Promise polyfill has been loaded ' +
+                        'after Zone.js (Polyfilling Promise api is not necessary when zone.js is loaded. ' +
+                        'If you must load one, do so before loading zone.js.)');
                 }
             }
-            else if (!global['__Zone_disable_' + name]) {
-                const perfName = 'Zone:' + name;
-                mark(perfName);
-                patches[name] = fn(global, Zone, _api);
-                performanceMeasure(perfName, perfName);
-            }
-        }
-        get parent() {
-            return this._parent;
-        }
-        get name() {
-            return this._name;
-        }
-        get(key) {
-            const zone = this.getZoneWith(key);
-            if (zone)
-                return zone._properties[key];
-        }
-        getZoneWith(key) {
-            let current = this;
-            while (current) {
-                if (current._properties.hasOwnProperty(key)) {
-                    return current;
+            static get root() {
+                let zone = Zone.current;
+                while (zone.parent) {
+                    zone = zone.parent;
                 }
-                current = current._parent;
+                return zone;
             }
-            return null;
-        }
-        fork(zoneSpec) {
-            if (!zoneSpec)
-                throw new Error('ZoneSpec required!');
-            return this._zoneDelegate.fork(this, zoneSpec);
-        }
-        wrap(callback, source) {
-            if (typeof callback !== 'function') {
-                throw new Error('Expecting function got: ' + callback);
+            static get current() { return _currentZoneFrame.zone; }
+            static get currentTask() { return _currentTask; }
+            // tslint:disable-next-line:require-internal-with-underscore
+            static __load_patch(name, fn) {
+                if (patches.hasOwnProperty(name)) {
+                    if (checkDuplicate) {
+                        throw Error('Already loaded patch: ' + name);
+                    }
+                }
+                else if (!global['__Zone_disable_' + name]) {
+                    const perfName = 'Zone:' + name;
+                    mark(perfName);
+                    patches[name] = fn(global, Zone, _api);
+                    performanceMeasure(perfName, perfName);
+                }
             }
-            const _callback = this._zoneDelegate.intercept(this, callback, source);
-            const zone = this;
-            return function () {
-                return zone.runGuarded(_callback, this, arguments, source);
-            };
-        }
-        run(callback, applyThis, applyArgs, source) {
-            _currentZoneFrame = { parent: _currentZoneFrame, zone: this };
-            try {
-                return this._zoneDelegate.invoke(this, callback, applyThis, applyArgs, source);
+            get parent() { return this._parent; }
+            get name() { return this._name; }
+            get(key) {
+                const zone = this.getZoneWith(key);
+                if (zone)
+                    return zone._properties[key];
             }
-            finally {
-                _currentZoneFrame = _currentZoneFrame.parent;
+            getZoneWith(key) {
+                let current = this;
+                while (current) {
+                    if (current._properties.hasOwnProperty(key)) {
+                        return current;
+                    }
+                    current = current._parent;
+                }
+                return null;
             }
-        }
-        runGuarded(callback, applyThis = null, applyArgs, source) {
-            _currentZoneFrame = { parent: _currentZoneFrame, zone: this };
-            try {
+            fork(zoneSpec) {
+                if (!zoneSpec)
+                    throw new Error('ZoneSpec required!');
+                return this._zoneDelegate.fork(this, zoneSpec);
+            }
+            wrap(callback, source) {
+                if (typeof callback !== 'function') {
+                    throw new Error('Expecting function got: ' + callback);
+                }
+                const _callback = this._zoneDelegate.intercept(this, callback, source);
+                const zone = this;
+                return function () {
+                    return zone.runGuarded(_callback, this, arguments, source);
+                };
+            }
+            run(callback, applyThis, applyArgs, source) {
+                _currentZoneFrame = { parent: _currentZoneFrame, zone: this };
                 try {
                     return this._zoneDelegate.invoke(this, callback, applyThis, applyArgs, source);
                 }
-                catch (error) {
-                    if (this._zoneDelegate.handleError(this, error)) {
-                        throw error;
-                    }
+                finally {
+                    _currentZoneFrame = _currentZoneFrame.parent;
                 }
             }
-            finally {
-                _currentZoneFrame = _currentZoneFrame.parent;
-            }
-        }
-        runTask(task, applyThis, applyArgs) {
-            if (task.zone != this) {
-                throw new Error('A task can only be run in the zone of creation! (Creation: ' +
-                    (task.zone || NO_ZONE).name + '; Execution: ' + this.name + ')');
-            }
-            // https://github.com/angular/zone.js/issues/778, sometimes eventTask
-            // will run in notScheduled(canceled) state, we should not try to
-            // run such kind of task but just return
-            if (task.state === notScheduled && (task.type === eventTask || task.type === macroTask)) {
-                return;
-            }
-            const reEntryGuard = task.state != running;
-            reEntryGuard && task._transitionTo(running, scheduled);
-            task.runCount++;
-            const previousTask = _currentTask;
-            _currentTask = task;
-            _currentZoneFrame = { parent: _currentZoneFrame, zone: this };
-            try {
-                if (task.type == macroTask && task.data && !task.data.isPeriodic) {
-                    task.cancelFn = undefined;
-                }
+            runGuarded(callback, applyThis = null, applyArgs, source) {
+                _currentZoneFrame = { parent: _currentZoneFrame, zone: this };
                 try {
-                    return this._zoneDelegate.invokeTask(this, task, applyThis, applyArgs);
-                }
-                catch (error) {
-                    if (this._zoneDelegate.handleError(this, error)) {
-                        throw error;
-                    }
-                }
-            }
-            finally {
-                // if the task's state is notScheduled or unknown, then it has already been cancelled
-                // we should not reset the state to scheduled
-                if (task.state !== notScheduled && task.state !== unknown) {
-                    if (task.type == eventTask || (task.data && task.data.isPeriodic)) {
-                        reEntryGuard && task._transitionTo(scheduled, running);
-                    }
-                    else {
-                        task.runCount = 0;
-                        this._updateTaskCount(task, -1);
-                        reEntryGuard &&
-                            task._transitionTo(notScheduled, running, notScheduled);
-                    }
-                }
-                _currentZoneFrame = _currentZoneFrame.parent;
-                _currentTask = previousTask;
-            }
-        }
-        scheduleTask(task) {
-            if (task.zone && task.zone !== this) {
-                // check if the task was rescheduled, the newZone
-                // should not be the children of the original zone
-                let newZone = this;
-                while (newZone) {
-                    if (newZone === task.zone) {
-                        throw Error(`can not reschedule task to ${this.name} which is descendants of the original zone ${task.zone.name}`);
-                    }
-                    newZone = newZone.parent;
-                }
-            }
-            task._transitionTo(scheduling, notScheduled);
-            const zoneDelegates = [];
-            task._zoneDelegates = zoneDelegates;
-            task._zone = this;
-            try {
-                task = this._zoneDelegate.scheduleTask(this, task);
-            }
-            catch (err) {
-                // should set task's state to unknown when scheduleTask throw error
-                // because the err may from reschedule, so the fromState maybe notScheduled
-                task._transitionTo(unknown, scheduling, notScheduled);
-                // TODO: @JiaLiPassion, should we check the result from handleError?
-                this._zoneDelegate.handleError(this, err);
-                throw err;
-            }
-            if (task._zoneDelegates === zoneDelegates) {
-                // we have to check because internally the delegate can reschedule the task.
-                this._updateTaskCount(task, 1);
-            }
-            if (task.state == scheduling) {
-                task._transitionTo(scheduled, scheduling);
-            }
-            return task;
-        }
-        scheduleMicroTask(source, callback, data, customSchedule) {
-            return this.scheduleTask(new ZoneTask(microTask, source, callback, data, customSchedule, undefined));
-        }
-        scheduleMacroTask(source, callback, data, customSchedule, customCancel) {
-            return this.scheduleTask(new ZoneTask(macroTask, source, callback, data, customSchedule, customCancel));
-        }
-        scheduleEventTask(source, callback, data, customSchedule, customCancel) {
-            return this.scheduleTask(new ZoneTask(eventTask, source, callback, data, customSchedule, customCancel));
-        }
-        cancelTask(task) {
-            if (task.zone != this)
-                throw new Error('A task can only be cancelled in the zone of creation! (Creation: ' +
-                    (task.zone || NO_ZONE).name + '; Execution: ' + this.name + ')');
-            task._transitionTo(canceling, scheduled, running);
-            try {
-                this._zoneDelegate.cancelTask(this, task);
-            }
-            catch (err) {
-                // if error occurs when cancelTask, transit the state to unknown
-                task._transitionTo(unknown, canceling);
-                this._zoneDelegate.handleError(this, err);
-                throw err;
-            }
-            this._updateTaskCount(task, -1);
-            task._transitionTo(notScheduled, canceling);
-            task.runCount = 0;
-            return task;
-        }
-        _updateTaskCount(task, count) {
-            const zoneDelegates = task._zoneDelegates;
-            if (count == -1) {
-                task._zoneDelegates = null;
-            }
-            for (let i = 0; i < zoneDelegates.length; i++) {
-                zoneDelegates[i]._updateTaskCount(task.type, count);
-            }
-        }
-    }
-    Zone.__symbol__ = __symbol__;
-    const DELEGATE_ZS = {
-        name: '',
-        onHasTask: (delegate, _, target, hasTaskState) => delegate.hasTask(target, hasTaskState),
-        onScheduleTask: (delegate, _, target, task) => delegate.scheduleTask(target, task),
-        onInvokeTask: (delegate, _, target, task, applyThis, applyArgs) => delegate.invokeTask(target, task, applyThis, applyArgs),
-        onCancelTask: (delegate, _, target, task) => delegate.cancelTask(target, task)
-    };
-    class ZoneDelegate {
-        constructor(zone, parentDelegate, zoneSpec) {
-            this._taskCounts = { 'microTask': 0, 'macroTask': 0, 'eventTask': 0 };
-            this.zone = zone;
-            this._parentDelegate = parentDelegate;
-            this._forkZS = zoneSpec && (zoneSpec && zoneSpec.onFork ? zoneSpec : parentDelegate._forkZS);
-            this._forkDlgt = zoneSpec && (zoneSpec.onFork ? parentDelegate : parentDelegate._forkDlgt);
-            this._forkCurrZone = zoneSpec && (zoneSpec.onFork ? this.zone : parentDelegate.zone);
-            this._interceptZS =
-                zoneSpec && (zoneSpec.onIntercept ? zoneSpec : parentDelegate._interceptZS);
-            this._interceptDlgt =
-                zoneSpec && (zoneSpec.onIntercept ? parentDelegate : parentDelegate._interceptDlgt);
-            this._interceptCurrZone =
-                zoneSpec && (zoneSpec.onIntercept ? this.zone : parentDelegate.zone);
-            this._invokeZS = zoneSpec && (zoneSpec.onInvoke ? zoneSpec : parentDelegate._invokeZS);
-            this._invokeDlgt =
-                zoneSpec && (zoneSpec.onInvoke ? parentDelegate : parentDelegate._invokeDlgt);
-            this._invokeCurrZone = zoneSpec && (zoneSpec.onInvoke ? this.zone : parentDelegate.zone);
-            this._handleErrorZS =
-                zoneSpec && (zoneSpec.onHandleError ? zoneSpec : parentDelegate._handleErrorZS);
-            this._handleErrorDlgt =
-                zoneSpec && (zoneSpec.onHandleError ? parentDelegate : parentDelegate._handleErrorDlgt);
-            this._handleErrorCurrZone =
-                zoneSpec && (zoneSpec.onHandleError ? this.zone : parentDelegate.zone);
-            this._scheduleTaskZS =
-                zoneSpec && (zoneSpec.onScheduleTask ? zoneSpec : parentDelegate._scheduleTaskZS);
-            this._scheduleTaskDlgt = zoneSpec &&
-                (zoneSpec.onScheduleTask ? parentDelegate : parentDelegate._scheduleTaskDlgt);
-            this._scheduleTaskCurrZone =
-                zoneSpec && (zoneSpec.onScheduleTask ? this.zone : parentDelegate.zone);
-            this._invokeTaskZS =
-                zoneSpec && (zoneSpec.onInvokeTask ? zoneSpec : parentDelegate._invokeTaskZS);
-            this._invokeTaskDlgt =
-                zoneSpec && (zoneSpec.onInvokeTask ? parentDelegate : parentDelegate._invokeTaskDlgt);
-            this._invokeTaskCurrZone =
-                zoneSpec && (zoneSpec.onInvokeTask ? this.zone : parentDelegate.zone);
-            this._cancelTaskZS =
-                zoneSpec && (zoneSpec.onCancelTask ? zoneSpec : parentDelegate._cancelTaskZS);
-            this._cancelTaskDlgt =
-                zoneSpec && (zoneSpec.onCancelTask ? parentDelegate : parentDelegate._cancelTaskDlgt);
-            this._cancelTaskCurrZone =
-                zoneSpec && (zoneSpec.onCancelTask ? this.zone : parentDelegate.zone);
-            this._hasTaskZS = null;
-            this._hasTaskDlgt = null;
-            this._hasTaskDlgtOwner = null;
-            this._hasTaskCurrZone = null;
-            const zoneSpecHasTask = zoneSpec && zoneSpec.onHasTask;
-            const parentHasTask = parentDelegate && parentDelegate._hasTaskZS;
-            if (zoneSpecHasTask || parentHasTask) {
-                // If we need to report hasTask, than this ZS needs to do ref counting on tasks. In such
-                // a case all task related interceptors must go through this ZD. We can't short circuit it.
-                this._hasTaskZS = zoneSpecHasTask ? zoneSpec : DELEGATE_ZS;
-                this._hasTaskDlgt = parentDelegate;
-                this._hasTaskDlgtOwner = this;
-                this._hasTaskCurrZone = zone;
-                if (!zoneSpec.onScheduleTask) {
-                    this._scheduleTaskZS = DELEGATE_ZS;
-                    this._scheduleTaskDlgt = parentDelegate;
-                    this._scheduleTaskCurrZone = this.zone;
-                }
-                if (!zoneSpec.onInvokeTask) {
-                    this._invokeTaskZS = DELEGATE_ZS;
-                    this._invokeTaskDlgt = parentDelegate;
-                    this._invokeTaskCurrZone = this.zone;
-                }
-                if (!zoneSpec.onCancelTask) {
-                    this._cancelTaskZS = DELEGATE_ZS;
-                    this._cancelTaskDlgt = parentDelegate;
-                    this._cancelTaskCurrZone = this.zone;
-                }
-            }
-        }
-        fork(targetZone, zoneSpec) {
-            return this._forkZS ? this._forkZS.onFork(this._forkDlgt, this.zone, targetZone, zoneSpec) :
-                new Zone(targetZone, zoneSpec);
-        }
-        intercept(targetZone, callback, source) {
-            return this._interceptZS ?
-                this._interceptZS.onIntercept(this._interceptDlgt, this._interceptCurrZone, targetZone, callback, source) :
-                callback;
-        }
-        invoke(targetZone, callback, applyThis, applyArgs, source) {
-            return this._invokeZS ? this._invokeZS.onInvoke(this._invokeDlgt, this._invokeCurrZone, targetZone, callback, applyThis, applyArgs, source) :
-                callback.apply(applyThis, applyArgs);
-        }
-        handleError(targetZone, error) {
-            return this._handleErrorZS ?
-                this._handleErrorZS.onHandleError(this._handleErrorDlgt, this._handleErrorCurrZone, targetZone, error) :
-                true;
-        }
-        scheduleTask(targetZone, task) {
-            let returnTask = task;
-            if (this._scheduleTaskZS) {
-                if (this._hasTaskZS) {
-                    returnTask._zoneDelegates.push(this._hasTaskDlgtOwner);
-                }
-                returnTask = this._scheduleTaskZS.onScheduleTask(this._scheduleTaskDlgt, this._scheduleTaskCurrZone, targetZone, task);
-                if (!returnTask)
-                    returnTask = task;
-            }
-            else {
-                if (task.scheduleFn) {
-                    task.scheduleFn(task);
-                }
-                else if (task.type == microTask) {
-                    scheduleMicroTask(task);
-                }
-                else {
-                    throw new Error('Task is missing scheduleFn.');
-                }
-            }
-            return returnTask;
-        }
-        invokeTask(targetZone, task, applyThis, applyArgs) {
-            return this._invokeTaskZS ? this._invokeTaskZS.onInvokeTask(this._invokeTaskDlgt, this._invokeTaskCurrZone, targetZone, task, applyThis, applyArgs) :
-                task.callback.apply(applyThis, applyArgs);
-        }
-        cancelTask(targetZone, task) {
-            let value;
-            if (this._cancelTaskZS) {
-                value = this._cancelTaskZS.onCancelTask(this._cancelTaskDlgt, this._cancelTaskCurrZone, targetZone, task);
-            }
-            else {
-                if (!task.cancelFn) {
-                    throw Error('Task is not cancelable');
-                }
-                value = task.cancelFn(task);
-            }
-            return value;
-        }
-        hasTask(targetZone, isEmpty) {
-            // hasTask should not throw error so other ZoneDelegate
-            // can still trigger hasTask callback
-            try {
-                this._hasTaskZS &&
-                    this._hasTaskZS.onHasTask(this._hasTaskDlgt, this._hasTaskCurrZone, targetZone, isEmpty);
-            }
-            catch (err) {
-                this.handleError(targetZone, err);
-            }
-        }
-        _updateTaskCount(type, count) {
-            const counts = this._taskCounts;
-            const prev = counts[type];
-            const next = counts[type] = prev + count;
-            if (next < 0) {
-                throw new Error('More tasks executed then were scheduled.');
-            }
-            if (prev == 0 || next == 0) {
-                const isEmpty = {
-                    microTask: counts['microTask'] > 0,
-                    macroTask: counts['macroTask'] > 0,
-                    eventTask: counts['eventTask'] > 0,
-                    change: type
-                };
-                this.hasTask(this.zone, isEmpty);
-            }
-        }
-    }
-    class ZoneTask {
-        constructor(type, source, callback, options, scheduleFn, cancelFn) {
-            this._zone = null;
-            this.runCount = 0;
-            this._zoneDelegates = null;
-            this._state = 'notScheduled';
-            this.type = type;
-            this.source = source;
-            this.data = options;
-            this.scheduleFn = scheduleFn;
-            this.cancelFn = cancelFn;
-            this.callback = callback;
-            const self = this;
-            // TODO: @JiaLiPassion options should have interface
-            if (type === eventTask && options && options.useG) {
-                this.invoke = ZoneTask.invokeTask;
-            }
-            else {
-                this.invoke = function () {
-                    return ZoneTask.invokeTask.call(global, self, this, arguments);
-                };
-            }
-        }
-        static invokeTask(task, target, args) {
-            if (!task) {
-                task = this;
-            }
-            _numberOfNestedTaskFrames++;
-            try {
-                task.runCount++;
-                return task.zone.runTask(task, target, args);
-            }
-            finally {
-                if (_numberOfNestedTaskFrames == 1) {
-                    drainMicroTaskQueue();
-                }
-                _numberOfNestedTaskFrames--;
-            }
-        }
-        get zone() {
-            return this._zone;
-        }
-        get state() {
-            return this._state;
-        }
-        cancelScheduleRequest() {
-            this._transitionTo(notScheduled, scheduling);
-        }
-        _transitionTo(toState, fromState1, fromState2) {
-            if (this._state === fromState1 || this._state === fromState2) {
-                this._state = toState;
-                if (toState == notScheduled) {
-                    this._zoneDelegates = null;
-                }
-            }
-            else {
-                throw new Error(`${this.type} '${this.source}': can not transition to '${toState}', expecting state '${fromState1}'${fromState2 ? ' or \'' + fromState2 + '\'' : ''}, was '${this._state}'.`);
-            }
-        }
-        toString() {
-            if (this.data && typeof this.data.handleId !== 'undefined') {
-                return this.data.handleId.toString();
-            }
-            else {
-                return Object.prototype.toString.call(this);
-            }
-        }
-        // add toJSON method to prevent cyclic error when
-        // call JSON.stringify(zoneTask)
-        toJSON() {
-            return {
-                type: this.type,
-                state: this.state,
-                source: this.source,
-                zone: this.zone.name,
-                runCount: this.runCount
-            };
-        }
-    }
-    //////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////
-    ///  MICROTASK QUEUE
-    //////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////
-    const symbolSetTimeout = __symbol__('setTimeout');
-    const symbolPromise = __symbol__('Promise');
-    const symbolThen = __symbol__('then');
-    let _microTaskQueue = [];
-    let _isDrainingMicrotaskQueue = false;
-    let nativeMicroTaskQueuePromise;
-    function scheduleMicroTask(task) {
-        // if we are not running in any task, and there has not been anything scheduled
-        // we must bootstrap the initial task creation by manually scheduling the drain
-        if (_numberOfNestedTaskFrames === 0 && _microTaskQueue.length === 0) {
-            // We are not running in Task, so we need to kickstart the microtask queue.
-            if (!nativeMicroTaskQueuePromise) {
-                if (global[symbolPromise]) {
-                    nativeMicroTaskQueuePromise = global[symbolPromise].resolve(0);
-                }
-            }
-            if (nativeMicroTaskQueuePromise) {
-                let nativeThen = nativeMicroTaskQueuePromise[symbolThen];
-                if (!nativeThen) {
-                    // native Promise is not patchable, we need to use `then` directly
-                    // issue 1078
-                    nativeThen = nativeMicroTaskQueuePromise['then'];
-                }
-                nativeThen.call(nativeMicroTaskQueuePromise, drainMicroTaskQueue);
-            }
-            else {
-                global[symbolSetTimeout](drainMicroTaskQueue, 0);
-            }
-        }
-        task && _microTaskQueue.push(task);
-    }
-    function drainMicroTaskQueue() {
-        if (!_isDrainingMicrotaskQueue) {
-            _isDrainingMicrotaskQueue = true;
-            while (_microTaskQueue.length) {
-                const queue = _microTaskQueue;
-                _microTaskQueue = [];
-                for (let i = 0; i < queue.length; i++) {
-                    const task = queue[i];
                     try {
-                        task.zone.runTask(task, null, null);
+                        return this._zoneDelegate.invoke(this, callback, applyThis, applyArgs, source);
                     }
                     catch (error) {
-                        _api.onUnhandledError(error);
+                        if (this._zoneDelegate.handleError(this, error)) {
+                            throw error;
+                        }
                     }
                 }
-            }
-            _api.microtaskDrainDone();
-            _isDrainingMicrotaskQueue = false;
-        }
-    }
-    //////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////
-    ///  BOOTSTRAP
-    //////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////
-    const NO_ZONE = { name: 'NO ZONE' };
-    const notScheduled = 'notScheduled', scheduling = 'scheduling', scheduled = 'scheduled', running = 'running', canceling = 'canceling', unknown = 'unknown';
-    const microTask = 'microTask', macroTask = 'macroTask', eventTask = 'eventTask';
-    const patches = {};
-    const _api = {
-        symbol: __symbol__,
-        currentZoneFrame: () => _currentZoneFrame,
-        onUnhandledError: noop,
-        microtaskDrainDone: noop,
-        scheduleMicroTask: scheduleMicroTask,
-        showUncaughtError: () => !Zone[__symbol__('ignoreConsoleErrorUncaughtError')],
-        patchEventTarget: () => [],
-        patchOnProperties: noop,
-        patchMethod: () => noop,
-        bindArguments: () => [],
-        patchThen: () => noop,
-        patchMacroTask: () => noop,
-        setNativePromise: (NativePromise) => {
-            // sometimes NativePromise.resolve static function
-            // is not ready yet, (such as core-js/es6.promise)
-            // so we need to check here.
-            if (NativePromise && typeof NativePromise.resolve === 'function') {
-                nativeMicroTaskQueuePromise = NativePromise.resolve(0);
-            }
-        },
-        patchEventPrototype: () => noop,
-        isIEOrEdge: () => false,
-        getGlobalObjects: () => undefined,
-        ObjectDefineProperty: () => noop,
-        ObjectGetOwnPropertyDescriptor: () => undefined,
-        ObjectCreate: () => undefined,
-        ArraySlice: () => [],
-        patchClass: () => noop,
-        wrapWithCurrentZone: () => noop,
-        filterProperties: () => [],
-        attachOriginToPatched: () => noop,
-        _redefineProperty: () => noop,
-        patchCallbacks: () => noop
-    };
-    let _currentZoneFrame = { parent: null, zone: new Zone(null, null) };
-    let _currentTask = null;
-    let _numberOfNestedTaskFrames = 0;
-    function noop() { }
-    function __symbol__(name) {
-        return '__zone_symbol__' + name;
-    }
-    performanceMeasure('Zone', 'Zone');
-    return global['Zone'] = Zone;
-})(typeof window !== 'undefined' && window || typeof self !== 'undefined' && self || global);
-
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-Zone.__load_patch('ZoneAwarePromise', (global, Zone, api) => {
-    const ObjectGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-    const ObjectDefineProperty = Object.defineProperty;
-    function readableObjectToString(obj) {
-        if (obj && obj.toString === Object.prototype.toString) {
-            const className = obj.constructor && obj.constructor.name;
-            return (className ? className : '') + ': ' + JSON.stringify(obj);
-        }
-        return obj ? obj.toString() : Object.prototype.toString.call(obj);
-    }
-    const __symbol__ = api.symbol;
-    const _uncaughtPromiseErrors = [];
-    const symbolPromise = __symbol__('Promise');
-    const symbolThen = __symbol__('then');
-    const creationTrace = '__creationTrace__';
-    api.onUnhandledError = (e) => {
-        if (api.showUncaughtError()) {
-            const rejection = e && e.rejection;
-            if (rejection) {
-                console.error('Unhandled Promise rejection:', rejection instanceof Error ? rejection.message : rejection, '; Zone:', e.zone.name, '; Task:', e.task && e.task.source, '; Value:', rejection, rejection instanceof Error ? rejection.stack : undefined);
-            }
-            else {
-                console.error(e);
-            }
-        }
-    };
-    api.microtaskDrainDone = () => {
-        while (_uncaughtPromiseErrors.length) {
-            while (_uncaughtPromiseErrors.length) {
-                const uncaughtPromiseError = _uncaughtPromiseErrors.shift();
-                try {
-                    uncaughtPromiseError.zone.runGuarded(() => {
-                        throw uncaughtPromiseError;
-                    });
-                }
-                catch (error) {
-                    handleUnhandledRejection(error);
+                finally {
+                    _currentZoneFrame = _currentZoneFrame.parent;
                 }
             }
-        }
-    };
-    const UNHANDLED_PROMISE_REJECTION_HANDLER_SYMBOL = __symbol__('unhandledPromiseRejectionHandler');
-    function handleUnhandledRejection(e) {
-        api.onUnhandledError(e);
-        try {
-            const handler = Zone[UNHANDLED_PROMISE_REJECTION_HANDLER_SYMBOL];
-            if (handler && typeof handler === 'function') {
-                handler.call(this, e);
-            }
-        }
-        catch (err) {
-        }
-    }
-    function isThenable(value) {
-        return value && value.then;
-    }
-    function forwardResolution(value) {
-        return value;
-    }
-    function forwardRejection(rejection) {
-        return ZoneAwarePromise.reject(rejection);
-    }
-    const symbolState = __symbol__('state');
-    const symbolValue = __symbol__('value');
-    const symbolFinally = __symbol__('finally');
-    const symbolParentPromiseValue = __symbol__('parentPromiseValue');
-    const symbolParentPromiseState = __symbol__('parentPromiseState');
-    const source = 'Promise.then';
-    const UNRESOLVED = null;
-    const RESOLVED = true;
-    const REJECTED = false;
-    const REJECTED_NO_CATCH = 0;
-    function makeResolver(promise, state) {
-        return (v) => {
-            try {
-                resolvePromise(promise, state, v);
-            }
-            catch (err) {
-                resolvePromise(promise, false, err);
-            }
-            // Do not return value or you will break the Promise spec.
-        };
-    }
-    const once = function () {
-        let wasCalled = false;
-        return function wrapper(wrappedFunction) {
-            return function () {
-                if (wasCalled) {
+            runTask(task, applyThis, applyArgs) {
+                if (task.zone != this) {
+                    throw new Error('A task can only be run in the zone of creation! (Creation: ' +
+                        (task.zone || NO_ZONE).name + '; Execution: ' + this.name + ')');
+                }
+                // https://github.com/angular/zone.js/issues/778, sometimes eventTask
+                // will run in notScheduled(canceled) state, we should not try to
+                // run such kind of task but just return
+                if (task.state === notScheduled && (task.type === eventTask || task.type === macroTask)) {
                     return;
                 }
-                wasCalled = true;
-                wrappedFunction.apply(null, arguments);
-            };
-        };
-    };
-    const TYPE_ERROR = 'Promise resolved with itself';
-    const CURRENT_TASK_TRACE_SYMBOL = __symbol__('currentTaskTrace');
-    // Promise Resolution
-    function resolvePromise(promise, state, value) {
-        const onceWrapper = once();
-        if (promise === value) {
-            throw new TypeError(TYPE_ERROR);
-        }
-        if (promise[symbolState] === UNRESOLVED) {
-            // should only get value.then once based on promise spec.
-            let then = null;
-            try {
-                if (typeof value === 'object' || typeof value === 'function') {
-                    then = value && value.then;
+                const reEntryGuard = task.state != running;
+                reEntryGuard && task._transitionTo(running, scheduled);
+                task.runCount++;
+                const previousTask = _currentTask;
+                _currentTask = task;
+                _currentZoneFrame = { parent: _currentZoneFrame, zone: this };
+                try {
+                    if (task.type == macroTask && task.data && !task.data.isPeriodic) {
+                        task.cancelFn = undefined;
+                    }
+                    try {
+                        return this._zoneDelegate.invokeTask(this, task, applyThis, applyArgs);
+                    }
+                    catch (error) {
+                        if (this._zoneDelegate.handleError(this, error)) {
+                            throw error;
+                        }
+                    }
+                }
+                finally {
+                    // if the task's state is notScheduled or unknown, then it has already been cancelled
+                    // we should not reset the state to scheduled
+                    if (task.state !== notScheduled && task.state !== unknown) {
+                        if (task.type == eventTask || (task.data && task.data.isPeriodic)) {
+                            reEntryGuard && task._transitionTo(scheduled, running);
+                        }
+                        else {
+                            task.runCount = 0;
+                            this._updateTaskCount(task, -1);
+                            reEntryGuard &&
+                                task._transitionTo(notScheduled, running, notScheduled);
+                        }
+                    }
+                    _currentZoneFrame = _currentZoneFrame.parent;
+                    _currentTask = previousTask;
                 }
             }
-            catch (err) {
-                onceWrapper(() => {
-                    resolvePromise(promise, false, err);
-                })();
-                return promise;
-            }
-            // if (value instanceof ZoneAwarePromise) {
-            if (state !== REJECTED && value instanceof ZoneAwarePromise &&
-                value.hasOwnProperty(symbolState) && value.hasOwnProperty(symbolValue) &&
-                value[symbolState] !== UNRESOLVED) {
-                clearRejectedNoCatch(value);
-                resolvePromise(promise, value[symbolState], value[symbolValue]);
-            }
-            else if (state !== REJECTED && typeof then === 'function') {
+            scheduleTask(task) {
+                if (task.zone && task.zone !== this) {
+                    // check if the task was rescheduled, the newZone
+                    // should not be the children of the original zone
+                    let newZone = this;
+                    while (newZone) {
+                        if (newZone === task.zone) {
+                            throw Error(`can not reschedule task to ${this.name} which is descendants of the original zone ${task.zone.name}`);
+                        }
+                        newZone = newZone.parent;
+                    }
+                }
+                task._transitionTo(scheduling, notScheduled);
+                const zoneDelegates = [];
+                task._zoneDelegates = zoneDelegates;
+                task._zone = this;
                 try {
-                    then.call(value, onceWrapper(makeResolver(promise, state)), onceWrapper(makeResolver(promise, false)));
+                    task = this._zoneDelegate.scheduleTask(this, task);
                 }
                 catch (err) {
-                    onceWrapper(() => {
-                        resolvePromise(promise, false, err);
-                    })();
+                    // should set task's state to unknown when scheduleTask throw error
+                    // because the err may from reschedule, so the fromState maybe notScheduled
+                    task._transitionTo(unknown, scheduling, notScheduled);
+                    // TODO: @JiaLiPassion, should we check the result from handleError?
+                    this._zoneDelegate.handleError(this, err);
+                    throw err;
                 }
+                if (task._zoneDelegates === zoneDelegates) {
+                    // we have to check because internally the delegate can reschedule the task.
+                    this._updateTaskCount(task, 1);
+                }
+                if (task.state == scheduling) {
+                    task._transitionTo(scheduled, scheduling);
+                }
+                return task;
             }
-            else {
-                promise[symbolState] = state;
-                const queue = promise[symbolValue];
-                promise[symbolValue] = value;
-                if (promise[symbolFinally] === symbolFinally) {
-                    // the promise is generated by Promise.prototype.finally
-                    if (state === RESOLVED) {
-                        // the state is resolved, should ignore the value
-                        // and use parent promise value
-                        promise[symbolState] = promise[symbolParentPromiseState];
-                        promise[symbolValue] = promise[symbolParentPromiseValue];
-                    }
-                }
-                // record task information in value when error occurs, so we can
-                // do some additional work such as render longStackTrace
-                if (state === REJECTED && value instanceof Error) {
-                    // check if longStackTraceZone is here
-                    const trace = Zone.currentTask && Zone.currentTask.data &&
-                        Zone.currentTask.data[creationTrace];
-                    if (trace) {
-                        // only keep the long stack trace into error when in longStackTraceZone
-                        ObjectDefineProperty(value, CURRENT_TASK_TRACE_SYMBOL, { configurable: true, enumerable: false, writable: true, value: trace });
-                    }
-                }
-                for (let i = 0; i < queue.length;) {
-                    scheduleResolveOrReject(promise, queue[i++], queue[i++], queue[i++], queue[i++]);
-                }
-                if (queue.length == 0 && state == REJECTED) {
-                    promise[symbolState] = REJECTED_NO_CATCH;
-                    try {
-                        // try to print more readable error log
-                        throw new Error('Uncaught (in promise): ' + readableObjectToString(value) +
-                            (value && value.stack ? '\n' + value.stack : ''));
-                    }
-                    catch (err) {
-                        const error = err;
-                        error.rejection = value;
-                        error.promise = promise;
-                        error.zone = Zone.current;
-                        error.task = Zone.currentTask;
-                        _uncaughtPromiseErrors.push(error);
-                        api.scheduleMicroTask(); // to make sure that it is running
-                    }
-                }
+            scheduleMicroTask(source, callback, data, customSchedule) {
+                return this.scheduleTask(new ZoneTask(microTask, source, callback, data, customSchedule, undefined));
             }
-        }
-        // Resolving an already resolved promise is a noop.
-        return promise;
-    }
-    const REJECTION_HANDLED_HANDLER = __symbol__('rejectionHandledHandler');
-    function clearRejectedNoCatch(promise) {
-        if (promise[symbolState] === REJECTED_NO_CATCH) {
-            // if the promise is rejected no catch status
-            // and queue.length > 0, means there is a error handler
-            // here to handle the rejected promise, we should trigger
-            // windows.rejectionhandled eventHandler or nodejs rejectionHandled
-            // eventHandler
-            try {
-                const handler = Zone[REJECTION_HANDLED_HANDLER];
-                if (handler && typeof handler === 'function') {
-                    handler.call(this, { rejection: promise[symbolValue], promise: promise });
+            scheduleMacroTask(source, callback, data, customSchedule, customCancel) {
+                return this.scheduleTask(new ZoneTask(macroTask, source, callback, data, customSchedule, customCancel));
+            }
+            scheduleEventTask(source, callback, data, customSchedule, customCancel) {
+                return this.scheduleTask(new ZoneTask(eventTask, source, callback, data, customSchedule, customCancel));
+            }
+            cancelTask(task) {
+                if (task.zone != this)
+                    throw new Error('A task can only be cancelled in the zone of creation! (Creation: ' +
+                        (task.zone || NO_ZONE).name + '; Execution: ' + this.name + ')');
+                task._transitionTo(canceling, scheduled, running);
+                try {
+                    this._zoneDelegate.cancelTask(this, task);
                 }
+                catch (err) {
+                    // if error occurs when cancelTask, transit the state to unknown
+                    task._transitionTo(unknown, canceling);
+                    this._zoneDelegate.handleError(this, err);
+                    throw err;
+                }
+                this._updateTaskCount(task, -1);
+                task._transitionTo(notScheduled, canceling);
+                task.runCount = 0;
+                return task;
             }
-            catch (err) {
-            }
-            promise[symbolState] = REJECTED;
-            for (let i = 0; i < _uncaughtPromiseErrors.length; i++) {
-                if (promise === _uncaughtPromiseErrors[i].promise) {
-                    _uncaughtPromiseErrors.splice(i, 1);
+            _updateTaskCount(task, count) {
+                const zoneDelegates = task._zoneDelegates;
+                if (count == -1) {
+                    task._zoneDelegates = null;
+                }
+                for (let i = 0; i < zoneDelegates.length; i++) {
+                    zoneDelegates[i]._updateTaskCount(task.type, count);
                 }
             }
         }
-    }
-    function scheduleResolveOrReject(promise, zone, chainPromise, onFulfilled, onRejected) {
-        clearRejectedNoCatch(promise);
-        const promiseState = promise[symbolState];
-        const delegate = promiseState ?
-            (typeof onFulfilled === 'function') ? onFulfilled : forwardResolution :
-            (typeof onRejected === 'function') ? onRejected : forwardRejection;
-        zone.scheduleMicroTask(source, () => {
-            try {
-                const parentPromiseValue = promise[symbolValue];
-                const isFinallyPromise = chainPromise && symbolFinally === chainPromise[symbolFinally];
-                if (isFinallyPromise) {
-                    // if the promise is generated from finally call, keep parent promise's state and value
-                    chainPromise[symbolParentPromiseValue] = parentPromiseValue;
-                    chainPromise[symbolParentPromiseState] = promiseState;
-                }
-                // should not pass value to finally callback
-                const value = zone.run(delegate, undefined, isFinallyPromise && delegate !== forwardRejection && delegate !== forwardResolution ?
-                    [] :
-                    [parentPromiseValue]);
-                resolvePromise(chainPromise, true, value);
-            }
-            catch (error) {
-                // if error occurs, should always return this error
-                resolvePromise(chainPromise, false, error);
-            }
-        }, chainPromise);
-    }
-    const ZONE_AWARE_PROMISE_TO_STRING = 'function ZoneAwarePromise() { [native code] }';
-    class ZoneAwarePromise {
-        constructor(executor) {
-            const promise = this;
-            if (!(promise instanceof ZoneAwarePromise)) {
-                throw new Error('Must be an instanceof Promise.');
-            }
-            promise[symbolState] = UNRESOLVED;
-            promise[symbolValue] = []; // queue;
-            try {
-                executor && executor(makeResolver(promise, RESOLVED), makeResolver(promise, REJECTED));
-            }
-            catch (error) {
-                resolvePromise(promise, false, error);
-            }
-        }
-        static toString() {
-            return ZONE_AWARE_PROMISE_TO_STRING;
-        }
-        static resolve(value) {
-            return resolvePromise(new this(null), RESOLVED, value);
-        }
-        static reject(error) {
-            return resolvePromise(new this(null), REJECTED, error);
-        }
-        static race(values) {
-            let resolve;
-            let reject;
-            let promise = new this((res, rej) => {
-                resolve = res;
-                reject = rej;
-            });
-            function onResolve(value) {
-                resolve(value);
-            }
-            function onReject(error) {
-                reject(error);
-            }
-            for (let value of values) {
-                if (!isThenable(value)) {
-                    value = this.resolve(value);
-                }
-                value.then(onResolve, onReject);
-            }
-            return promise;
-        }
-        static all(values) {
-            let resolve;
-            let reject;
-            let promise = new this((res, rej) => {
-                resolve = res;
-                reject = rej;
-            });
-            // Start at 2 to prevent prematurely resolving if .then is called immediately.
-            let unresolvedCount = 2;
-            let valueIndex = 0;
-            const resolvedValues = [];
-            for (let value of values) {
-                if (!isThenable(value)) {
-                    value = this.resolve(value);
-                }
-                const curValueIndex = valueIndex;
-                value.then((value) => {
-                    resolvedValues[curValueIndex] = value;
-                    unresolvedCount--;
-                    if (unresolvedCount === 0) {
-                        resolve(resolvedValues);
-                    }
-                }, reject);
-                unresolvedCount++;
-                valueIndex++;
-            }
-            // Make the unresolvedCount zero-based again.
-            unresolvedCount -= 2;
-            if (unresolvedCount === 0) {
-                resolve(resolvedValues);
-            }
-            return promise;
-        }
-        get [Symbol.toStringTag]() {
-            return 'Promise';
-        }
-        then(onFulfilled, onRejected) {
-            const chainPromise = new this.constructor(null);
-            const zone = Zone.current;
-            if (this[symbolState] == UNRESOLVED) {
-                this[symbolValue].push(zone, chainPromise, onFulfilled, onRejected);
-            }
-            else {
-                scheduleResolveOrReject(this, zone, chainPromise, onFulfilled, onRejected);
-            }
-            return chainPromise;
-        }
-        catch(onRejected) {
-            return this.then(null, onRejected);
-        }
-        finally(onFinally) {
-            const chainPromise = new this.constructor(null);
-            chainPromise[symbolFinally] = symbolFinally;
-            const zone = Zone.current;
-            if (this[symbolState] == UNRESOLVED) {
-                this[symbolValue].push(zone, chainPromise, onFinally, onFinally);
-            }
-            else {
-                scheduleResolveOrReject(this, zone, chainPromise, onFinally, onFinally);
-            }
-            return chainPromise;
-        }
-    }
-    // Protect against aggressive optimizers dropping seemingly unused properties.
-    // E.g. Closure Compiler in advanced mode.
-    ZoneAwarePromise['resolve'] = ZoneAwarePromise.resolve;
-    ZoneAwarePromise['reject'] = ZoneAwarePromise.reject;
-    ZoneAwarePromise['race'] = ZoneAwarePromise.race;
-    ZoneAwarePromise['all'] = ZoneAwarePromise.all;
-    const NativePromise = global[symbolPromise] = global['Promise'];
-    const ZONE_AWARE_PROMISE = Zone.__symbol__('ZoneAwarePromise');
-    let desc = ObjectGetOwnPropertyDescriptor(global, 'Promise');
-    if (!desc || desc.configurable) {
-        desc && delete desc.writable;
-        desc && delete desc.value;
-        if (!desc) {
-            desc = { configurable: true, enumerable: true };
-        }
-        desc.get = function () {
-            // if we already set ZoneAwarePromise, use patched one
-            // otherwise return native one.
-            return global[ZONE_AWARE_PROMISE] ? global[ZONE_AWARE_PROMISE] : global[symbolPromise];
+        // tslint:disable-next-line:require-internal-with-underscore
+        Zone.__symbol__ = __symbol__;
+        const DELEGATE_ZS = {
+            name: '',
+            onHasTask: (delegate, _, target, hasTaskState) => delegate.hasTask(target, hasTaskState),
+            onScheduleTask: (delegate, _, target, task) => delegate.scheduleTask(target, task),
+            onInvokeTask: (delegate, _, target, task, applyThis, applyArgs) => delegate.invokeTask(target, task, applyThis, applyArgs),
+            onCancelTask: (delegate, _, target, task) => delegate.cancelTask(target, task)
         };
-        desc.set = function (NewNativePromise) {
-            if (NewNativePromise === ZoneAwarePromise) {
-                // if the NewNativePromise is ZoneAwarePromise
-                // save to global
-                global[ZONE_AWARE_PROMISE] = NewNativePromise;
-            }
-            else {
-                // if the NewNativePromise is not ZoneAwarePromise
-                // for example: after load zone.js, some library just
-                // set es6-promise to global, if we set it to global
-                // directly, assertZonePatched will fail and angular
-                // will not loaded, so we just set the NewNativePromise
-                // to global[symbolPromise], so the result is just like
-                // we load ES6 Promise before zone.js
-                global[symbolPromise] = NewNativePromise;
-                if (!NewNativePromise.prototype[symbolThen]) {
-                    patchThen(NewNativePromise);
+        class ZoneDelegate {
+            constructor(zone, parentDelegate, zoneSpec) {
+                this._taskCounts = { 'microTask': 0, 'macroTask': 0, 'eventTask': 0 };
+                this.zone = zone;
+                this._parentDelegate = parentDelegate;
+                this._forkZS =
+                    zoneSpec && (zoneSpec && zoneSpec.onFork ? zoneSpec : parentDelegate._forkZS);
+                this._forkDlgt = zoneSpec && (zoneSpec.onFork ? parentDelegate : parentDelegate._forkDlgt);
+                this._forkCurrZone =
+                    zoneSpec && (zoneSpec.onFork ? this.zone : parentDelegate._forkCurrZone);
+                this._interceptZS =
+                    zoneSpec && (zoneSpec.onIntercept ? zoneSpec : parentDelegate._interceptZS);
+                this._interceptDlgt =
+                    zoneSpec && (zoneSpec.onIntercept ? parentDelegate : parentDelegate._interceptDlgt);
+                this._interceptCurrZone =
+                    zoneSpec && (zoneSpec.onIntercept ? this.zone : parentDelegate._interceptCurrZone);
+                this._invokeZS = zoneSpec && (zoneSpec.onInvoke ? zoneSpec : parentDelegate._invokeZS);
+                this._invokeDlgt =
+                    zoneSpec && (zoneSpec.onInvoke ? parentDelegate : parentDelegate._invokeDlgt);
+                this._invokeCurrZone =
+                    zoneSpec && (zoneSpec.onInvoke ? this.zone : parentDelegate._invokeCurrZone);
+                this._handleErrorZS =
+                    zoneSpec && (zoneSpec.onHandleError ? zoneSpec : parentDelegate._handleErrorZS);
+                this._handleErrorDlgt = zoneSpec &&
+                    (zoneSpec.onHandleError ? parentDelegate : parentDelegate._handleErrorDlgt);
+                this._handleErrorCurrZone =
+                    zoneSpec && (zoneSpec.onHandleError ? this.zone : parentDelegate._handleErrorCurrZone);
+                this._scheduleTaskZS =
+                    zoneSpec && (zoneSpec.onScheduleTask ? zoneSpec : parentDelegate._scheduleTaskZS);
+                this._scheduleTaskDlgt = zoneSpec &&
+                    (zoneSpec.onScheduleTask ? parentDelegate : parentDelegate._scheduleTaskDlgt);
+                this._scheduleTaskCurrZone = zoneSpec &&
+                    (zoneSpec.onScheduleTask ? this.zone : parentDelegate._scheduleTaskCurrZone);
+                this._invokeTaskZS =
+                    zoneSpec && (zoneSpec.onInvokeTask ? zoneSpec : parentDelegate._invokeTaskZS);
+                this._invokeTaskDlgt =
+                    zoneSpec && (zoneSpec.onInvokeTask ? parentDelegate : parentDelegate._invokeTaskDlgt);
+                this._invokeTaskCurrZone =
+                    zoneSpec && (zoneSpec.onInvokeTask ? this.zone : parentDelegate._invokeTaskCurrZone);
+                this._cancelTaskZS =
+                    zoneSpec && (zoneSpec.onCancelTask ? zoneSpec : parentDelegate._cancelTaskZS);
+                this._cancelTaskDlgt =
+                    zoneSpec && (zoneSpec.onCancelTask ? parentDelegate : parentDelegate._cancelTaskDlgt);
+                this._cancelTaskCurrZone =
+                    zoneSpec && (zoneSpec.onCancelTask ? this.zone : parentDelegate._cancelTaskCurrZone);
+                this._hasTaskZS = null;
+                this._hasTaskDlgt = null;
+                this._hasTaskDlgtOwner = null;
+                this._hasTaskCurrZone = null;
+                const zoneSpecHasTask = zoneSpec && zoneSpec.onHasTask;
+                const parentHasTask = parentDelegate && parentDelegate._hasTaskZS;
+                if (zoneSpecHasTask || parentHasTask) {
+                    // If we need to report hasTask, than this ZS needs to do ref counting on tasks. In such
+                    // a case all task related interceptors must go through this ZD. We can't short circuit it.
+                    this._hasTaskZS = zoneSpecHasTask ? zoneSpec : DELEGATE_ZS;
+                    this._hasTaskDlgt = parentDelegate;
+                    this._hasTaskDlgtOwner = this;
+                    this._hasTaskCurrZone = zone;
+                    if (!zoneSpec.onScheduleTask) {
+                        this._scheduleTaskZS = DELEGATE_ZS;
+                        this._scheduleTaskDlgt = parentDelegate;
+                        this._scheduleTaskCurrZone = this.zone;
+                    }
+                    if (!zoneSpec.onInvokeTask) {
+                        this._invokeTaskZS = DELEGATE_ZS;
+                        this._invokeTaskDlgt = parentDelegate;
+                        this._invokeTaskCurrZone = this.zone;
+                    }
+                    if (!zoneSpec.onCancelTask) {
+                        this._cancelTaskZS = DELEGATE_ZS;
+                        this._cancelTaskDlgt = parentDelegate;
+                        this._cancelTaskCurrZone = this.zone;
+                    }
                 }
-                api.setNativePromise(NewNativePromise);
             }
-        };
-        ObjectDefineProperty(global, 'Promise', desc);
-    }
-    global['Promise'] = ZoneAwarePromise;
-    const symbolThenPatched = __symbol__('thenPatched');
-    function patchThen(Ctor) {
-        const proto = Ctor.prototype;
-        const prop = ObjectGetOwnPropertyDescriptor(proto, 'then');
-        if (prop && (prop.writable === false || !prop.configurable)) {
-            // check Ctor.prototype.then propertyDescriptor is writable or not
-            // in meteor env, writable is false, we should ignore such case
-            return;
-        }
-        const originalThen = proto.then;
-        // Keep a reference to the original method.
-        proto[symbolThen] = originalThen;
-        Ctor.prototype.then = function (onResolve, onReject) {
-            const wrapped = new ZoneAwarePromise((resolve, reject) => {
-                originalThen.call(this, resolve, reject);
-            });
-            return wrapped.then(onResolve, onReject);
-        };
-        Ctor[symbolThenPatched] = true;
-    }
-    api.patchThen = patchThen;
-    function zoneify(fn) {
-        return function () {
-            let resultPromise = fn.apply(this, arguments);
-            if (resultPromise instanceof ZoneAwarePromise) {
-                return resultPromise;
+            fork(targetZone, zoneSpec) {
+                return this._forkZS ?
+                    this._forkZS.onFork(this._forkDlgt, this.zone, targetZone, zoneSpec) :
+                    new Zone(targetZone, zoneSpec);
             }
-            let ctor = resultPromise.constructor;
-            if (!ctor[symbolThenPatched]) {
-                patchThen(ctor);
+            intercept(targetZone, callback, source) {
+                return this._interceptZS ?
+                    this._interceptZS.onIntercept(this._interceptDlgt, this._interceptCurrZone, targetZone, callback, source) :
+                    callback;
             }
-            return resultPromise;
-        };
-    }
-    if (NativePromise) {
-        patchThen(NativePromise);
-        const fetch = global['fetch'];
-        if (typeof fetch == 'function') {
-            global[api.symbol('fetch')] = fetch;
-            global['fetch'] = zoneify(fetch);
-        }
-    }
-    // This is not part of public API, but it is useful for tests, so we expose it.
-    Promise[Zone.__symbol__('uncaughtPromiseErrors')] = _uncaughtPromiseErrors;
-    return ZoneAwarePromise;
-});
-
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * Suppress closure compiler errors about unknown 'Zone' variable
- * @fileoverview
- * @suppress {undefinedVars,globalThis,missingRequire}
- */
-// issue #989, to reduce bundle size, use short name
-/** Object.getOwnPropertyDescriptor */
-const ObjectGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-/** Object.defineProperty */
-const ObjectDefineProperty = Object.defineProperty;
-/** Object.getPrototypeOf */
-const ObjectGetPrototypeOf = Object.getPrototypeOf;
-/** Object.create */
-const ObjectCreate = Object.create;
-/** Array.prototype.slice */
-const ArraySlice = Array.prototype.slice;
-/** addEventListener string const */
-const ADD_EVENT_LISTENER_STR = 'addEventListener';
-/** removeEventListener string const */
-const REMOVE_EVENT_LISTENER_STR = 'removeEventListener';
-/** zoneSymbol addEventListener */
-const ZONE_SYMBOL_ADD_EVENT_LISTENER = Zone.__symbol__(ADD_EVENT_LISTENER_STR);
-/** zoneSymbol removeEventListener */
-const ZONE_SYMBOL_REMOVE_EVENT_LISTENER = Zone.__symbol__(REMOVE_EVENT_LISTENER_STR);
-/** true string const */
-const TRUE_STR = 'true';
-/** false string const */
-const FALSE_STR = 'false';
-/** __zone_symbol__ string const */
-const ZONE_SYMBOL_PREFIX = '__zone_symbol__';
-function wrapWithCurrentZone(callback, source) {
-    return Zone.current.wrap(callback, source);
-}
-function scheduleMacroTaskWithCurrentZone(source, callback, data, customSchedule, customCancel) {
-    return Zone.current.scheduleMacroTask(source, callback, data, customSchedule, customCancel);
-}
-const zoneSymbol = Zone.__symbol__;
-const isWindowExists = typeof window !== 'undefined';
-const internalWindow = isWindowExists ? window : undefined;
-const _global = isWindowExists && internalWindow || typeof self === 'object' && self || global;
-const REMOVE_ATTRIBUTE = 'removeAttribute';
-const NULL_ON_PROP_VALUE = [null];
-function bindArguments(args, source) {
-    for (let i = args.length - 1; i >= 0; i--) {
-        if (typeof args[i] === 'function') {
-            args[i] = wrapWithCurrentZone(args[i], source + '_' + i);
-        }
-    }
-    return args;
-}
-function patchPrototype(prototype, fnNames) {
-    const source = prototype.constructor['name'];
-    for (let i = 0; i < fnNames.length; i++) {
-        const name = fnNames[i];
-        const delegate = prototype[name];
-        if (delegate) {
-            const prototypeDesc = ObjectGetOwnPropertyDescriptor(prototype, name);
-            if (!isPropertyWritable(prototypeDesc)) {
-                continue;
+            invoke(targetZone, callback, applyThis, applyArgs, source) {
+                return this._invokeZS ?
+                    this._invokeZS.onInvoke(this._invokeDlgt, this._invokeCurrZone, targetZone, callback, applyThis, applyArgs, source) :
+                    callback.apply(applyThis, applyArgs);
             }
-            prototype[name] = ((delegate) => {
-                const patched = function () {
-                    return delegate.apply(this, bindArguments(arguments, source + '.' + name));
-                };
-                attachOriginToPatched(patched, delegate);
-                return patched;
-            })(delegate);
-        }
-    }
-}
-function isPropertyWritable(propertyDesc) {
-    if (!propertyDesc) {
-        return true;
-    }
-    if (propertyDesc.writable === false) {
-        return false;
-    }
-    return !(typeof propertyDesc.get === 'function' && typeof propertyDesc.set === 'undefined');
-}
-const isWebWorker = (typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope);
-// Make sure to access `process` through `_global` so that WebPack does not accidentally browserify
-// this code.
-const isNode = (!('nw' in _global) && typeof _global.process !== 'undefined' &&
-    {}.toString.call(_global.process) === '[object process]');
-const isBrowser = !isNode && !isWebWorker && !!(isWindowExists && internalWindow['HTMLElement']);
-// we are in electron of nw, so we are both browser and nodejs
-// Make sure to access `process` through `_global` so that WebPack does not accidentally browserify
-// this code.
-const isMix = typeof _global.process !== 'undefined' &&
-    {}.toString.call(_global.process) === '[object process]' && !isWebWorker &&
-    !!(isWindowExists && internalWindow['HTMLElement']);
-const zoneSymbolEventNames = {};
-const wrapFn = function (event) {
-    // https://github.com/angular/zone.js/issues/911, in IE, sometimes
-    // event will be undefined, so we need to use window.event
-    event = event || _global.event;
-    if (!event) {
-        return;
-    }
-    let eventNameSymbol = zoneSymbolEventNames[event.type];
-    if (!eventNameSymbol) {
-        eventNameSymbol = zoneSymbolEventNames[event.type] = zoneSymbol('ON_PROPERTY' + event.type);
-    }
-    const target = this || event.target || _global;
-    const listener = target[eventNameSymbol];
-    let result;
-    if (isBrowser && target === internalWindow && event.type === 'error') {
-        // window.onerror have different signiture
-        // https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror#window.onerror
-        // and onerror callback will prevent default when callback return true
-        const errorEvent = event;
-        result = listener &&
-            listener.call(this, errorEvent.message, errorEvent.filename, errorEvent.lineno, errorEvent.colno, errorEvent.error);
-        if (result === true) {
-            event.preventDefault();
-        }
-    }
-    else {
-        result = listener && listener.apply(this, arguments);
-        if (result != undefined && !result) {
-            event.preventDefault();
-        }
-    }
-    return result;
-};
-function patchProperty(obj, prop, prototype) {
-    let desc = ObjectGetOwnPropertyDescriptor(obj, prop);
-    if (!desc && prototype) {
-        // when patch window object, use prototype to check prop exist or not
-        const prototypeDesc = ObjectGetOwnPropertyDescriptor(prototype, prop);
-        if (prototypeDesc) {
-            desc = { enumerable: true, configurable: true };
-        }
-    }
-    // if the descriptor not exists or is not configurable
-    // just return
-    if (!desc || !desc.configurable) {
-        return;
-    }
-    const onPropPatchedSymbol = zoneSymbol('on' + prop + 'patched');
-    if (obj.hasOwnProperty(onPropPatchedSymbol) && obj[onPropPatchedSymbol]) {
-        return;
-    }
-    // A property descriptor cannot have getter/setter and be writable
-    // deleting the writable and value properties avoids this error:
-    //
-    // TypeError: property descriptors must not specify a value or be writable when a
-    // getter or setter has been specified
-    delete desc.writable;
-    delete desc.value;
-    const originalDescGet = desc.get;
-    const originalDescSet = desc.set;
-    // substr(2) cuz 'onclick' -> 'click', etc
-    const eventName = prop.substr(2);
-    let eventNameSymbol = zoneSymbolEventNames[eventName];
-    if (!eventNameSymbol) {
-        eventNameSymbol = zoneSymbolEventNames[eventName] = zoneSymbol('ON_PROPERTY' + eventName);
-    }
-    desc.set = function (newValue) {
-        // in some of windows's onproperty callback, this is undefined
-        // so we need to check it
-        let target = this;
-        if (!target && obj === _global) {
-            target = _global;
-        }
-        if (!target) {
-            return;
-        }
-        let previousValue = target[eventNameSymbol];
-        if (previousValue) {
-            target.removeEventListener(eventName, wrapFn);
-        }
-        // issue #978, when onload handler was added before loading zone.js
-        // we should remove it with originalDescSet
-        if (originalDescSet) {
-            originalDescSet.apply(target, NULL_ON_PROP_VALUE);
-        }
-        if (typeof newValue === 'function') {
-            target[eventNameSymbol] = newValue;
-            target.addEventListener(eventName, wrapFn, false);
-        }
-        else {
-            target[eventNameSymbol] = null;
-        }
-    };
-    // The getter would return undefined for unassigned properties but the default value of an
-    // unassigned property is null
-    desc.get = function () {
-        // in some of windows's onproperty callback, this is undefined
-        // so we need to check it
-        let target = this;
-        if (!target && obj === _global) {
-            target = _global;
-        }
-        if (!target) {
-            return null;
-        }
-        const listener = target[eventNameSymbol];
-        if (listener) {
-            return listener;
-        }
-        else if (originalDescGet) {
-            // result will be null when use inline event attribute,
-            // such as <button onclick="func();">OK</button>
-            // because the onclick function is internal raw uncompiled handler
-            // the onclick will be evaluated when first time event was triggered or
-            // the property is accessed, https://github.com/angular/zone.js/issues/525
-            // so we should use original native get to retrieve the handler
-            let value = originalDescGet && originalDescGet.call(this);
-            if (value) {
-                desc.set.call(this, value);
-                if (typeof target[REMOVE_ATTRIBUTE] === 'function') {
-                    target.removeAttribute(prop);
+            handleError(targetZone, error) {
+                return this._handleErrorZS ?
+                    this._handleErrorZS.onHandleError(this._handleErrorDlgt, this._handleErrorCurrZone, targetZone, error) :
+                    true;
+            }
+            scheduleTask(targetZone, task) {
+                let returnTask = task;
+                if (this._scheduleTaskZS) {
+                    if (this._hasTaskZS) {
+                        returnTask._zoneDelegates.push(this._hasTaskDlgtOwner);
+                    }
+                    // clang-format off
+                    returnTask = this._scheduleTaskZS.onScheduleTask(this._scheduleTaskDlgt, this._scheduleTaskCurrZone, targetZone, task);
+                    // clang-format on
+                    if (!returnTask)
+                        returnTask = task;
+                }
+                else {
+                    if (task.scheduleFn) {
+                        task.scheduleFn(task);
+                    }
+                    else if (task.type == microTask) {
+                        scheduleMicroTask(task);
+                    }
+                    else {
+                        throw new Error('Task is missing scheduleFn.');
+                    }
+                }
+                return returnTask;
+            }
+            invokeTask(targetZone, task, applyThis, applyArgs) {
+                return this._invokeTaskZS ?
+                    this._invokeTaskZS.onInvokeTask(this._invokeTaskDlgt, this._invokeTaskCurrZone, targetZone, task, applyThis, applyArgs) :
+                    task.callback.apply(applyThis, applyArgs);
+            }
+            cancelTask(targetZone, task) {
+                let value;
+                if (this._cancelTaskZS) {
+                    value = this._cancelTaskZS.onCancelTask(this._cancelTaskDlgt, this._cancelTaskCurrZone, targetZone, task);
+                }
+                else {
+                    if (!task.cancelFn) {
+                        throw Error('Task is not cancelable');
+                    }
+                    value = task.cancelFn(task);
                 }
                 return value;
             }
-        }
-        return null;
-    };
-    ObjectDefineProperty(obj, prop, desc);
-    obj[onPropPatchedSymbol] = true;
-}
-function patchOnProperties(obj, properties, prototype) {
-    if (properties) {
-        for (let i = 0; i < properties.length; i++) {
-            patchProperty(obj, 'on' + properties[i], prototype);
-        }
-    }
-    else {
-        const onProperties = [];
-        for (const prop in obj) {
-            if (prop.substr(0, 2) == 'on') {
-                onProperties.push(prop);
-            }
-        }
-        for (let j = 0; j < onProperties.length; j++) {
-            patchProperty(obj, onProperties[j], prototype);
-        }
-    }
-}
-const originalInstanceKey = zoneSymbol('originalInstance');
-// wrap some native API on `window`
-function patchClass(className) {
-    const OriginalClass = _global[className];
-    if (!OriginalClass)
-        return;
-    // keep original class in global
-    _global[zoneSymbol(className)] = OriginalClass;
-    _global[className] = function () {
-        const a = bindArguments(arguments, className);
-        switch (a.length) {
-            case 0:
-                this[originalInstanceKey] = new OriginalClass();
-                break;
-            case 1:
-                this[originalInstanceKey] = new OriginalClass(a[0]);
-                break;
-            case 2:
-                this[originalInstanceKey] = new OriginalClass(a[0], a[1]);
-                break;
-            case 3:
-                this[originalInstanceKey] = new OriginalClass(a[0], a[1], a[2]);
-                break;
-            case 4:
-                this[originalInstanceKey] = new OriginalClass(a[0], a[1], a[2], a[3]);
-                break;
-            default:
-                throw new Error('Arg list too long.');
-        }
-    };
-    // attach original delegate to patched function
-    attachOriginToPatched(_global[className], OriginalClass);
-    const instance = new OriginalClass(function () { });
-    let prop;
-    for (prop in instance) {
-        // https://bugs.webkit.org/show_bug.cgi?id=44721
-        if (className === 'XMLHttpRequest' && prop === 'responseBlob')
-            continue;
-        (function (prop) {
-            if (typeof instance[prop] === 'function') {
-                _global[className].prototype[prop] = function () {
-                    return this[originalInstanceKey][prop].apply(this[originalInstanceKey], arguments);
-                };
-            }
-            else {
-                ObjectDefineProperty(_global[className].prototype, prop, {
-                    set: function (fn) {
-                        if (typeof fn === 'function') {
-                            this[originalInstanceKey][prop] = wrapWithCurrentZone(fn, className + '.' + prop);
-                            // keep callback in wrapped function so we can
-                            // use it in Function.prototype.toString to return
-                            // the native one.
-                            attachOriginToPatched(this[originalInstanceKey][prop], fn);
-                        }
-                        else {
-                            this[originalInstanceKey][prop] = fn;
-                        }
-                    },
-                    get: function () {
-                        return this[originalInstanceKey][prop];
-                    }
-                });
-            }
-        }(prop));
-    }
-    for (prop in OriginalClass) {
-        if (prop !== 'prototype' && OriginalClass.hasOwnProperty(prop)) {
-            _global[className][prop] = OriginalClass[prop];
-        }
-    }
-}
-function copySymbolProperties(src, dest) {
-    if (typeof Object.getOwnPropertySymbols !== 'function') {
-        return;
-    }
-    const symbols = Object.getOwnPropertySymbols(src);
-    symbols.forEach((symbol) => {
-        const desc = Object.getOwnPropertyDescriptor(src, symbol);
-        Object.defineProperty(dest, symbol, {
-            get: function () {
-                return src[symbol];
-            },
-            set: function (value) {
-                if (desc && (!desc.writable || typeof desc.set !== 'function')) {
-                    // if src[symbol] is not writable or not have a setter, just return
-                    return;
+            hasTask(targetZone, isEmpty) {
+                // hasTask should not throw error so other ZoneDelegate
+                // can still trigger hasTask callback
+                try {
+                    this._hasTaskZS &&
+                        this._hasTaskZS.onHasTask(this._hasTaskDlgt, this._hasTaskCurrZone, targetZone, isEmpty);
                 }
-                src[symbol] = value;
-            },
-            enumerable: desc ? desc.enumerable : true,
-            configurable: desc ? desc.configurable : true
-        });
-    });
-}
-let shouldCopySymbolProperties = false;
-
-function patchMethod(target, name, patchFn) {
-    let proto = target;
-    while (proto && !proto.hasOwnProperty(name)) {
-        proto = ObjectGetPrototypeOf(proto);
-    }
-    if (!proto && target[name]) {
-        // somehow we did not find it, but we can see it. This happens on IE for Window properties.
-        proto = target;
-    }
-    const delegateName = zoneSymbol(name);
-    let delegate = null;
-    if (proto && !(delegate = proto[delegateName])) {
-        delegate = proto[delegateName] = proto[name];
-        // check whether proto[name] is writable
-        // some property is readonly in safari, such as HtmlCanvasElement.prototype.toBlob
-        const desc = proto && ObjectGetOwnPropertyDescriptor(proto, name);
-        if (isPropertyWritable(desc)) {
-            const patchDelegate = patchFn(delegate, delegateName, name);
-            proto[name] = function () {
-                return patchDelegate(this, arguments);
-            };
-            attachOriginToPatched(proto[name], delegate);
-            if (shouldCopySymbolProperties) {
-                copySymbolProperties(delegate, proto[name]);
+                catch (err) {
+                    this.handleError(targetZone, err);
+                }
+            }
+            // tslint:disable-next-line:require-internal-with-underscore
+            _updateTaskCount(type, count) {
+                const counts = this._taskCounts;
+                const prev = counts[type];
+                const next = counts[type] = prev + count;
+                if (next < 0) {
+                    throw new Error('More tasks executed then were scheduled.');
+                }
+                if (prev == 0 || next == 0) {
+                    const isEmpty = {
+                        microTask: counts['microTask'] > 0,
+                        macroTask: counts['macroTask'] > 0,
+                        eventTask: counts['eventTask'] > 0,
+                        change: type
+                    };
+                    this.hasTask(this.zone, isEmpty);
+                }
             }
         }
-    }
-    return delegate;
-}
-// TODO: @JiaLiPassion, support cancel task later if necessary
-function patchMacroTask(obj, funcName, metaCreator) {
-    let setNative = null;
-    function scheduleTask(task) {
-        const data = task.data;
-        data.args[data.cbIdx] = function () {
-            task.invoke.apply(this, arguments);
-        };
-        setNative.apply(data.target, data.args);
-        return task;
-    }
-    setNative = patchMethod(obj, funcName, (delegate) => function (self, args) {
-        const meta = metaCreator(self, args);
-        if (meta.cbIdx >= 0 && typeof args[meta.cbIdx] === 'function') {
-            return scheduleMacroTaskWithCurrentZone(meta.name, args[meta.cbIdx], meta, scheduleTask);
-        }
-        else {
-            // cause an error by calling it directly.
-            return delegate.apply(self, args);
-        }
-    });
-}
-
-function attachOriginToPatched(patched, original) {
-    patched[zoneSymbol('OriginalDelegate')] = original;
-}
-let isDetectedIEOrEdge = false;
-let ieOrEdge = false;
-function isIE() {
-    try {
-        const ua = internalWindow.navigator.userAgent;
-        if (ua.indexOf('MSIE ') !== -1 || ua.indexOf('Trident/') !== -1) {
-            return true;
-        }
-    }
-    catch (error) {
-    }
-    return false;
-}
-function isIEOrEdge() {
-    if (isDetectedIEOrEdge) {
-        return ieOrEdge;
-    }
-    isDetectedIEOrEdge = true;
-    try {
-        const ua = internalWindow.navigator.userAgent;
-        if (ua.indexOf('MSIE ') !== -1 || ua.indexOf('Trident/') !== -1 || ua.indexOf('Edge/') !== -1) {
-            ieOrEdge = true;
-        }
-    }
-    catch (error) {
-    }
-    return ieOrEdge;
-}
-
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-// override Function.prototype.toString to make zone.js patched function
-// look like native function
-Zone.__load_patch('toString', (global) => {
-    // patch Func.prototype.toString to let them look like native
-    const originalFunctionToString = Function.prototype.toString;
-    const ORIGINAL_DELEGATE_SYMBOL = zoneSymbol('OriginalDelegate');
-    const PROMISE_SYMBOL = zoneSymbol('Promise');
-    const ERROR_SYMBOL = zoneSymbol('Error');
-    const newFunctionToString = function toString() {
-        if (typeof this === 'function') {
-            const originalDelegate = this[ORIGINAL_DELEGATE_SYMBOL];
-            if (originalDelegate) {
-                if (typeof originalDelegate === 'function') {
-                    return originalFunctionToString.call(originalDelegate);
+        class ZoneTask {
+            constructor(type, source, callback, options, scheduleFn, cancelFn) {
+                // tslint:disable-next-line:require-internal-with-underscore
+                this._zone = null;
+                this.runCount = 0;
+                // tslint:disable-next-line:require-internal-with-underscore
+                this._zoneDelegates = null;
+                // tslint:disable-next-line:require-internal-with-underscore
+                this._state = 'notScheduled';
+                this.type = type;
+                this.source = source;
+                this.data = options;
+                this.scheduleFn = scheduleFn;
+                this.cancelFn = cancelFn;
+                if (!callback) {
+                    throw new Error('callback is not defined');
+                }
+                this.callback = callback;
+                const self = this;
+                // TODO: @JiaLiPassion options should have interface
+                if (type === eventTask && options && options.useG) {
+                    this.invoke = ZoneTask.invokeTask;
                 }
                 else {
-                    return Object.prototype.toString.call(originalDelegate);
+                    this.invoke = function () {
+                        return ZoneTask.invokeTask.call(global, self, this, arguments);
+                    };
                 }
             }
-            if (this === Promise) {
-                const nativePromise = global[PROMISE_SYMBOL];
-                if (nativePromise) {
-                    return originalFunctionToString.call(nativePromise);
+            static invokeTask(task, target, args) {
+                if (!task) {
+                    task = this;
+                }
+                _numberOfNestedTaskFrames++;
+                try {
+                    task.runCount++;
+                    return task.zone.runTask(task, target, args);
+                }
+                finally {
+                    if (_numberOfNestedTaskFrames == 1) {
+                        drainMicroTaskQueue();
+                    }
+                    _numberOfNestedTaskFrames--;
                 }
             }
-            if (this === Error) {
-                const nativeError = global[ERROR_SYMBOL];
-                if (nativeError) {
-                    return originalFunctionToString.call(nativeError);
+            get zone() { return this._zone; }
+            get state() { return this._state; }
+            cancelScheduleRequest() { this._transitionTo(notScheduled, scheduling); }
+            // tslint:disable-next-line:require-internal-with-underscore
+            _transitionTo(toState, fromState1, fromState2) {
+                if (this._state === fromState1 || this._state === fromState2) {
+                    this._state = toState;
+                    if (toState == notScheduled) {
+                        this._zoneDelegates = null;
+                    }
                 }
+                else {
+                    throw new Error(`${this.type} '${this.source}': can not transition to '${toState}', expecting state '${fromState1}'${fromState2 ? ' or \'' + fromState2 + '\'' : ''}, was '${this._state}'.`);
+                }
+            }
+            toString() {
+                if (this.data && typeof this.data.handleId !== 'undefined') {
+                    return this.data.handleId.toString();
+                }
+                else {
+                    return Object.prototype.toString.call(this);
+                }
+            }
+            // add toJSON method to prevent cyclic error when
+            // call JSON.stringify(zoneTask)
+            toJSON() {
+                return {
+                    type: this.type,
+                    state: this.state,
+                    source: this.source,
+                    zone: this.zone.name,
+                    runCount: this.runCount
+                };
             }
         }
-        return originalFunctionToString.call(this);
-    };
-    newFunctionToString[ORIGINAL_DELEGATE_SYMBOL] = originalFunctionToString;
-    Function.prototype.toString = newFunctionToString;
-    // patch Object.prototype.toString to let them look like native
-    const originalObjectToString = Object.prototype.toString;
-    const PROMISE_OBJECT_TO_STRING = '[object Promise]';
-    Object.prototype.toString = function () {
-        if (this instanceof Promise) {
-            return PROMISE_OBJECT_TO_STRING;
+        //////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////
+        ///  MICROTASK QUEUE
+        //////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////
+        const symbolSetTimeout = __symbol__('setTimeout');
+        const symbolPromise = __symbol__('Promise');
+        const symbolThen = __symbol__('then');
+        let _microTaskQueue = [];
+        let _isDrainingMicrotaskQueue = false;
+        let nativeMicroTaskQueuePromise;
+        function scheduleMicroTask(task) {
+            // if we are not running in any task, and there has not been anything scheduled
+            // we must bootstrap the initial task creation by manually scheduling the drain
+            if (_numberOfNestedTaskFrames === 0 && _microTaskQueue.length === 0) {
+                // We are not running in Task, so we need to kickstart the microtask queue.
+                if (!nativeMicroTaskQueuePromise) {
+                    if (global[symbolPromise]) {
+                        nativeMicroTaskQueuePromise = global[symbolPromise].resolve(0);
+                    }
+                }
+                if (nativeMicroTaskQueuePromise) {
+                    let nativeThen = nativeMicroTaskQueuePromise[symbolThen];
+                    if (!nativeThen) {
+                        // native Promise is not patchable, we need to use `then` directly
+                        // issue 1078
+                        nativeThen = nativeMicroTaskQueuePromise['then'];
+                    }
+                    nativeThen.call(nativeMicroTaskQueuePromise, drainMicroTaskQueue);
+                }
+                else {
+                    global[symbolSetTimeout](drainMicroTaskQueue, 0);
+                }
+            }
+            task && _microTaskQueue.push(task);
         }
-        return originalObjectToString.call(this);
-    };
-});
+        function drainMicroTaskQueue() {
+            if (!_isDrainingMicrotaskQueue) {
+                _isDrainingMicrotaskQueue = true;
+                while (_microTaskQueue.length) {
+                    const queue = _microTaskQueue;
+                    _microTaskQueue = [];
+                    for (let i = 0; i < queue.length; i++) {
+                        const task = queue[i];
+                        try {
+                            task.zone.runTask(task, null, null);
+                        }
+                        catch (error) {
+                            _api.onUnhandledError(error);
+                        }
+                    }
+                }
+                _api.microtaskDrainDone();
+                _isDrainingMicrotaskQueue = false;
+            }
+        }
+        //////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////
+        ///  BOOTSTRAP
+        //////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////
+        const NO_ZONE = { name: 'NO ZONE' };
+        const notScheduled = 'notScheduled', scheduling = 'scheduling', scheduled = 'scheduled', running = 'running', canceling = 'canceling', unknown = 'unknown';
+        const microTask = 'microTask', macroTask = 'macroTask', eventTask = 'eventTask';
+        const patches = {};
+        const _api = {
+            symbol: __symbol__,
+            currentZoneFrame: () => _currentZoneFrame,
+            onUnhandledError: noop,
+            microtaskDrainDone: noop,
+            scheduleMicroTask: scheduleMicroTask,
+            showUncaughtError: () => !Zone[__symbol__('ignoreConsoleErrorUncaughtError')],
+            patchEventTarget: () => [],
+            patchOnProperties: noop,
+            patchMethod: () => noop,
+            bindArguments: () => [],
+            patchThen: () => noop,
+            patchMacroTask: () => noop,
+            setNativePromise: (NativePromise) => {
+                // sometimes NativePromise.resolve static function
+                // is not ready yet, (such as core-js/es6.promise)
+                // so we need to check here.
+                if (NativePromise && typeof NativePromise.resolve === 'function') {
+                    nativeMicroTaskQueuePromise = NativePromise.resolve(0);
+                }
+            },
+            patchEventPrototype: () => noop,
+            isIEOrEdge: () => false,
+            getGlobalObjects: () => undefined,
+            ObjectDefineProperty: () => noop,
+            ObjectGetOwnPropertyDescriptor: () => undefined,
+            ObjectCreate: () => undefined,
+            ArraySlice: () => [],
+            patchClass: () => noop,
+            wrapWithCurrentZone: () => noop,
+            filterProperties: () => [],
+            attachOriginToPatched: () => noop,
+            _redefineProperty: () => noop,
+            patchCallbacks: () => noop
+        };
+        let _currentZoneFrame = { parent: null, zone: new Zone(null, null) };
+        let _currentTask = null;
+        let _numberOfNestedTaskFrames = 0;
+        function noop() { }
+        performanceMeasure('Zone', 'Zone');
+        return global['Zone'] = Zone;
+    })(typeof window !== 'undefined' && window || typeof self !== 'undefined' && self || global);
 
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @fileoverview
- * @suppress {missingRequire}
- */
-let passiveSupported = false;
-if (typeof window !== 'undefined') {
-    try {
-        const options = Object.defineProperty({}, 'passive', {
-            get: function () {
-                passiveSupported = true;
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+    Zone.__load_patch('ZoneAwarePromise', (global, Zone, api) => {
+        const ObjectGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+        const ObjectDefineProperty = Object.defineProperty;
+        function readableObjectToString(obj) {
+            if (obj && obj.toString === Object.prototype.toString) {
+                const className = obj.constructor && obj.constructor.name;
+                return (className ? className : '') + ': ' + JSON.stringify(obj);
             }
-        });
-        window.addEventListener('test', options, options);
-        window.removeEventListener('test', options, options);
-    }
-    catch (err) {
-        passiveSupported = false;
-    }
-}
-// an identifier to tell ZoneTask do not create a new invoke closure
-const OPTIMIZED_ZONE_EVENT_TASK_DATA = {
-    useG: true
-};
-const zoneSymbolEventNames$1 = {};
-const globalSources = {};
-const EVENT_NAME_SYMBOL_REGX = /^__zone_symbol__(\w+)(true|false)$/;
-const IMMEDIATE_PROPAGATION_SYMBOL = ('__zone_symbol__propagationStopped');
-function patchEventTarget(_global, apis, patchOptions) {
-    const ADD_EVENT_LISTENER = (patchOptions && patchOptions.add) || ADD_EVENT_LISTENER_STR;
-    const REMOVE_EVENT_LISTENER = (patchOptions && patchOptions.rm) || REMOVE_EVENT_LISTENER_STR;
-    const LISTENERS_EVENT_LISTENER = (patchOptions && patchOptions.listeners) || 'eventListeners';
-    const REMOVE_ALL_LISTENERS_EVENT_LISTENER = (patchOptions && patchOptions.rmAll) || 'removeAllListeners';
-    const zoneSymbolAddEventListener = zoneSymbol(ADD_EVENT_LISTENER);
-    const ADD_EVENT_LISTENER_SOURCE = '.' + ADD_EVENT_LISTENER + ':';
-    const PREPEND_EVENT_LISTENER = 'prependListener';
-    const PREPEND_EVENT_LISTENER_SOURCE = '.' + PREPEND_EVENT_LISTENER + ':';
-    const invokeTask = function (task, target, event) {
-        // for better performance, check isRemoved which is set
-        // by removeEventListener
-        if (task.isRemoved) {
-            return;
+            return obj ? obj.toString() : Object.prototype.toString.call(obj);
         }
-        const delegate = task.callback;
-        if (typeof delegate === 'object' && delegate.handleEvent) {
-            // create the bind version of handleEvent when invoke
-            task.callback = (event) => delegate.handleEvent(event);
-            task.originalDelegate = delegate;
-        }
-        // invoke static task.invoke
-        task.invoke(task, target, [event]);
-        const options = task.options;
-        if (options && typeof options === 'object' && options.once) {
-            // if options.once is true, after invoke once remove listener here
-            // only browser need to do this, nodejs eventEmitter will cal removeListener
-            // inside EventEmitter.once
-            const delegate = task.originalDelegate ? task.originalDelegate : task.callback;
-            target[REMOVE_EVENT_LISTENER].call(target, event.type, delegate, options);
-        }
-    };
-    // global shared zoneAwareCallback to handle all event callback with capture = false
-    const globalZoneAwareCallback = function (event) {
-        // https://github.com/angular/zone.js/issues/911, in IE, sometimes
-        // event will be undefined, so we need to use window.event
-        event = event || _global.event;
-        if (!event) {
-            return;
-        }
-        // event.target is needed for Samsung TV and SourceBuffer
-        // || global is needed https://github.com/angular/zone.js/issues/190
-        const target = this || event.target || _global;
-        const tasks = target[zoneSymbolEventNames$1[event.type][FALSE_STR]];
-        if (tasks) {
-            // invoke all tasks which attached to current target with given event.type and capture = false
-            // for performance concern, if task.length === 1, just invoke
-            if (tasks.length === 1) {
-                invokeTask(tasks[0], target, event);
+        const __symbol__ = api.symbol;
+        const _uncaughtPromiseErrors = [];
+        const symbolPromise = __symbol__('Promise');
+        const symbolThen = __symbol__('then');
+        const creationTrace = '__creationTrace__';
+        api.onUnhandledError = (e) => {
+            if (api.showUncaughtError()) {
+                const rejection = e && e.rejection;
+                if (rejection) {
+                    console.error('Unhandled Promise rejection:', rejection instanceof Error ? rejection.message : rejection, '; Zone:', e.zone.name, '; Task:', e.task && e.task.source, '; Value:', rejection, rejection instanceof Error ? rejection.stack : undefined);
+                }
+                else {
+                    console.error(e);
+                }
             }
-            else {
-                // https://github.com/angular/zone.js/issues/836
-                // copy the tasks array before invoke, to avoid
-                // the callback will remove itself or other listener
-                const copyTasks = tasks.slice();
-                for (let i = 0; i < copyTasks.length; i++) {
-                    if (event && event[IMMEDIATE_PROPAGATION_SYMBOL] === true) {
-                        break;
+        };
+        api.microtaskDrainDone = () => {
+            while (_uncaughtPromiseErrors.length) {
+                while (_uncaughtPromiseErrors.length) {
+                    const uncaughtPromiseError = _uncaughtPromiseErrors.shift();
+                    try {
+                        uncaughtPromiseError.zone.runGuarded(() => { throw uncaughtPromiseError; });
                     }
-                    invokeTask(copyTasks[i], target, event);
+                    catch (error) {
+                        handleUnhandledRejection(error);
+                    }
+                }
+            }
+        };
+        const UNHANDLED_PROMISE_REJECTION_HANDLER_SYMBOL = __symbol__('unhandledPromiseRejectionHandler');
+        function handleUnhandledRejection(e) {
+            api.onUnhandledError(e);
+            try {
+                const handler = Zone[UNHANDLED_PROMISE_REJECTION_HANDLER_SYMBOL];
+                if (handler && typeof handler === 'function') {
+                    handler.call(this, e);
+                }
+            }
+            catch (err) {
+            }
+        }
+        function isThenable(value) { return value && value.then; }
+        function forwardResolution(value) { return value; }
+        function forwardRejection(rejection) { return ZoneAwarePromise.reject(rejection); }
+        const symbolState = __symbol__('state');
+        const symbolValue = __symbol__('value');
+        const symbolFinally = __symbol__('finally');
+        const symbolParentPromiseValue = __symbol__('parentPromiseValue');
+        const symbolParentPromiseState = __symbol__('parentPromiseState');
+        const source = 'Promise.then';
+        const UNRESOLVED = null;
+        const RESOLVED = true;
+        const REJECTED = false;
+        const REJECTED_NO_CATCH = 0;
+        function makeResolver(promise, state) {
+            return (v) => {
+                try {
+                    resolvePromise(promise, state, v);
+                }
+                catch (err) {
+                    resolvePromise(promise, false, err);
+                }
+                // Do not return value or you will break the Promise spec.
+            };
+        }
+        const once = function () {
+            let wasCalled = false;
+            return function wrapper(wrappedFunction) {
+                return function () {
+                    if (wasCalled) {
+                        return;
+                    }
+                    wasCalled = true;
+                    wrappedFunction.apply(null, arguments);
+                };
+            };
+        };
+        const TYPE_ERROR = 'Promise resolved with itself';
+        const CURRENT_TASK_TRACE_SYMBOL = __symbol__('currentTaskTrace');
+        // Promise Resolution
+        function resolvePromise(promise, state, value) {
+            const onceWrapper = once();
+            if (promise === value) {
+                throw new TypeError(TYPE_ERROR);
+            }
+            if (promise[symbolState] === UNRESOLVED) {
+                // should only get value.then once based on promise spec.
+                let then = null;
+                try {
+                    if (typeof value === 'object' || typeof value === 'function') {
+                        then = value && value.then;
+                    }
+                }
+                catch (err) {
+                    onceWrapper(() => { resolvePromise(promise, false, err); })();
+                    return promise;
+                }
+                // if (value instanceof ZoneAwarePromise) {
+                if (state !== REJECTED && value instanceof ZoneAwarePromise &&
+                    value.hasOwnProperty(symbolState) && value.hasOwnProperty(symbolValue) &&
+                    value[symbolState] !== UNRESOLVED) {
+                    clearRejectedNoCatch(value);
+                    resolvePromise(promise, value[symbolState], value[symbolValue]);
+                }
+                else if (state !== REJECTED && typeof then === 'function') {
+                    try {
+                        then.call(value, onceWrapper(makeResolver(promise, state)), onceWrapper(makeResolver(promise, false)));
+                    }
+                    catch (err) {
+                        onceWrapper(() => { resolvePromise(promise, false, err); })();
+                    }
+                }
+                else {
+                    promise[symbolState] = state;
+                    const queue = promise[symbolValue];
+                    promise[symbolValue] = value;
+                    if (promise[symbolFinally] === symbolFinally) {
+                        // the promise is generated by Promise.prototype.finally
+                        if (state === RESOLVED) {
+                            // the state is resolved, should ignore the value
+                            // and use parent promise value
+                            promise[symbolState] = promise[symbolParentPromiseState];
+                            promise[symbolValue] = promise[symbolParentPromiseValue];
+                        }
+                    }
+                    // record task information in value when error occurs, so we can
+                    // do some additional work such as render longStackTrace
+                    if (state === REJECTED && value instanceof Error) {
+                        // check if longStackTraceZone is here
+                        const trace = Zone.currentTask && Zone.currentTask.data &&
+                            Zone.currentTask.data[creationTrace];
+                        if (trace) {
+                            // only keep the long stack trace into error when in longStackTraceZone
+                            ObjectDefineProperty(value, CURRENT_TASK_TRACE_SYMBOL, { configurable: true, enumerable: false, writable: true, value: trace });
+                        }
+                    }
+                    for (let i = 0; i < queue.length;) {
+                        scheduleResolveOrReject(promise, queue[i++], queue[i++], queue[i++], queue[i++]);
+                    }
+                    if (queue.length == 0 && state == REJECTED) {
+                        promise[symbolState] = REJECTED_NO_CATCH;
+                        try {
+                            // try to print more readable error log
+                            throw new Error('Uncaught (in promise): ' + readableObjectToString(value) +
+                                (value && value.stack ? '\n' + value.stack : ''));
+                        }
+                        catch (err) {
+                            const error = err;
+                            error.rejection = value;
+                            error.promise = promise;
+                            error.zone = Zone.current;
+                            error.task = Zone.currentTask;
+                            _uncaughtPromiseErrors.push(error);
+                            api.scheduleMicroTask(); // to make sure that it is running
+                        }
+                    }
+                }
+            }
+            // Resolving an already resolved promise is a noop.
+            return promise;
+        }
+        const REJECTION_HANDLED_HANDLER = __symbol__('rejectionHandledHandler');
+        function clearRejectedNoCatch(promise) {
+            if (promise[symbolState] === REJECTED_NO_CATCH) {
+                // if the promise is rejected no catch status
+                // and queue.length > 0, means there is a error handler
+                // here to handle the rejected promise, we should trigger
+                // windows.rejectionhandled eventHandler or nodejs rejectionHandled
+                // eventHandler
+                try {
+                    const handler = Zone[REJECTION_HANDLED_HANDLER];
+                    if (handler && typeof handler === 'function') {
+                        handler.call(this, { rejection: promise[symbolValue], promise: promise });
+                    }
+                }
+                catch (err) {
+                }
+                promise[symbolState] = REJECTED;
+                for (let i = 0; i < _uncaughtPromiseErrors.length; i++) {
+                    if (promise === _uncaughtPromiseErrors[i].promise) {
+                        _uncaughtPromiseErrors.splice(i, 1);
+                    }
                 }
             }
         }
-    };
-    // global shared zoneAwareCallback to handle all event callback with capture = true
-    const globalZoneAwareCaptureCallback = function (event) {
-        // https://github.com/angular/zone.js/issues/911, in IE, sometimes
-        // event will be undefined, so we need to use window.event
-        event = event || _global.event;
-        if (!event) {
-            return;
-        }
-        // event.target is needed for Samsung TV and SourceBuffer
-        // || global is needed https://github.com/angular/zone.js/issues/190
-        const target = this || event.target || _global;
-        const tasks = target[zoneSymbolEventNames$1[event.type][TRUE_STR]];
-        if (tasks) {
-            // invoke all tasks which attached to current target with given event.type and capture = false
-            // for performance concern, if task.length === 1, just invoke
-            if (tasks.length === 1) {
-                invokeTask(tasks[0], target, event);
-            }
-            else {
-                // https://github.com/angular/zone.js/issues/836
-                // copy the tasks array before invoke, to avoid
-                // the callback will remove itself or other listener
-                const copyTasks = tasks.slice();
-                for (let i = 0; i < copyTasks.length; i++) {
-                    if (event && event[IMMEDIATE_PROPAGATION_SYMBOL] === true) {
-                        break;
+        function scheduleResolveOrReject(promise, zone, chainPromise, onFulfilled, onRejected) {
+            clearRejectedNoCatch(promise);
+            const promiseState = promise[symbolState];
+            const delegate = promiseState ?
+                (typeof onFulfilled === 'function') ? onFulfilled : forwardResolution :
+                (typeof onRejected === 'function') ? onRejected : forwardRejection;
+            zone.scheduleMicroTask(source, () => {
+                try {
+                    const parentPromiseValue = promise[symbolValue];
+                    const isFinallyPromise = !!chainPromise && symbolFinally === chainPromise[symbolFinally];
+                    if (isFinallyPromise) {
+                        // if the promise is generated from finally call, keep parent promise's state and value
+                        chainPromise[symbolParentPromiseValue] = parentPromiseValue;
+                        chainPromise[symbolParentPromiseState] = promiseState;
                     }
-                    invokeTask(copyTasks[i], target, event);
+                    // should not pass value to finally callback
+                    const value = zone.run(delegate, undefined, isFinallyPromise && delegate !== forwardRejection && delegate !== forwardResolution ?
+                        [] :
+                        [parentPromiseValue]);
+                    resolvePromise(chainPromise, true, value);
+                }
+                catch (error) {
+                    // if error occurs, should always return this error
+                    resolvePromise(chainPromise, false, error);
+                }
+            }, chainPromise);
+        }
+        const ZONE_AWARE_PROMISE_TO_STRING = 'function ZoneAwarePromise() { [native code] }';
+        class ZoneAwarePromise {
+            constructor(executor) {
+                const promise = this;
+                if (!(promise instanceof ZoneAwarePromise)) {
+                    throw new Error('Must be an instanceof Promise.');
+                }
+                promise[symbolState] = UNRESOLVED;
+                promise[symbolValue] = []; // queue;
+                try {
+                    executor && executor(makeResolver(promise, RESOLVED), makeResolver(promise, REJECTED));
+                }
+                catch (error) {
+                    resolvePromise(promise, false, error);
                 }
             }
+            static toString() { return ZONE_AWARE_PROMISE_TO_STRING; }
+            static resolve(value) {
+                return resolvePromise(new this(null), RESOLVED, value);
+            }
+            static reject(error) {
+                return resolvePromise(new this(null), REJECTED, error);
+            }
+            static race(values) {
+                let resolve;
+                let reject;
+                let promise = new this((res, rej) => {
+                    resolve = res;
+                    reject = rej;
+                });
+                function onResolve(value) { resolve(value); }
+                function onReject(error) { reject(error); }
+                for (let value of values) {
+                    if (!isThenable(value)) {
+                        value = this.resolve(value);
+                    }
+                    value.then(onResolve, onReject);
+                }
+                return promise;
+            }
+            static all(values) { return ZoneAwarePromise.allWithCallback(values); }
+            static allSettled(values) {
+                const P = this && this.prototype instanceof ZoneAwarePromise ? this : ZoneAwarePromise;
+                return P.allWithCallback(values, {
+                    thenCallback: (value) => ({ status: 'fulfilled', value }),
+                    errorCallback: (err) => ({ status: 'rejected', reason: err })
+                });
+            }
+            static allWithCallback(values, callback) {
+                let resolve;
+                let reject;
+                let promise = new this((res, rej) => {
+                    resolve = res;
+                    reject = rej;
+                });
+                // Start at 2 to prevent prematurely resolving if .then is called immediately.
+                let unresolvedCount = 2;
+                let valueIndex = 0;
+                const resolvedValues = [];
+                for (let value of values) {
+                    if (!isThenable(value)) {
+                        value = this.resolve(value);
+                    }
+                    const curValueIndex = valueIndex;
+                    try {
+                        value.then((value) => {
+                            resolvedValues[curValueIndex] = callback ? callback.thenCallback(value) : value;
+                            unresolvedCount--;
+                            if (unresolvedCount === 0) {
+                                resolve(resolvedValues);
+                            }
+                        }, (err) => {
+                            if (!callback) {
+                                reject(err);
+                            }
+                            else {
+                                resolvedValues[curValueIndex] = callback.errorCallback(err);
+                                unresolvedCount--;
+                                if (unresolvedCount === 0) {
+                                    resolve(resolvedValues);
+                                }
+                            }
+                        });
+                    }
+                    catch (thenErr) {
+                        reject(thenErr);
+                    }
+                    unresolvedCount++;
+                    valueIndex++;
+                }
+                // Make the unresolvedCount zero-based again.
+                unresolvedCount -= 2;
+                if (unresolvedCount === 0) {
+                    resolve(resolvedValues);
+                }
+                return promise;
+            }
+            get [Symbol.toStringTag]() { return 'Promise'; }
+            then(onFulfilled, onRejected) {
+                const chainPromise = new this.constructor(null);
+                const zone = Zone.current;
+                if (this[symbolState] == UNRESOLVED) {
+                    this[symbolValue].push(zone, chainPromise, onFulfilled, onRejected);
+                }
+                else {
+                    scheduleResolveOrReject(this, zone, chainPromise, onFulfilled, onRejected);
+                }
+                return chainPromise;
+            }
+            catch(onRejected) {
+                return this.then(null, onRejected);
+            }
+            finally(onFinally) {
+                const chainPromise = new this.constructor(null);
+                chainPromise[symbolFinally] = symbolFinally;
+                const zone = Zone.current;
+                if (this[symbolState] == UNRESOLVED) {
+                    this[symbolValue].push(zone, chainPromise, onFinally, onFinally);
+                }
+                else {
+                    scheduleResolveOrReject(this, zone, chainPromise, onFinally, onFinally);
+                }
+                return chainPromise;
+            }
         }
-    };
-    function patchEventTargetMethods(obj, patchOptions) {
-        if (!obj) {
+        // Protect against aggressive optimizers dropping seemingly unused properties.
+        // E.g. Closure Compiler in advanced mode.
+        ZoneAwarePromise['resolve'] = ZoneAwarePromise.resolve;
+        ZoneAwarePromise['reject'] = ZoneAwarePromise.reject;
+        ZoneAwarePromise['race'] = ZoneAwarePromise.race;
+        ZoneAwarePromise['all'] = ZoneAwarePromise.all;
+        const NativePromise = global[symbolPromise] = global['Promise'];
+        const ZONE_AWARE_PROMISE = Zone.__symbol__('ZoneAwarePromise');
+        let desc = ObjectGetOwnPropertyDescriptor(global, 'Promise');
+        if (!desc || desc.configurable) {
+            desc && delete desc.writable;
+            desc && delete desc.value;
+            if (!desc) {
+                desc = { configurable: true, enumerable: true };
+            }
+            desc.get = function () {
+                // if we already set ZoneAwarePromise, use patched one
+                // otherwise return native one.
+                return global[ZONE_AWARE_PROMISE] ? global[ZONE_AWARE_PROMISE] : global[symbolPromise];
+            };
+            desc.set = function (NewNativePromise) {
+                if (NewNativePromise === ZoneAwarePromise) {
+                    // if the NewNativePromise is ZoneAwarePromise
+                    // save to global
+                    global[ZONE_AWARE_PROMISE] = NewNativePromise;
+                }
+                else {
+                    // if the NewNativePromise is not ZoneAwarePromise
+                    // for example: after load zone.js, some library just
+                    // set es6-promise to global, if we set it to global
+                    // directly, assertZonePatched will fail and angular
+                    // will not loaded, so we just set the NewNativePromise
+                    // to global[symbolPromise], so the result is just like
+                    // we load ES6 Promise before zone.js
+                    global[symbolPromise] = NewNativePromise;
+                    if (!NewNativePromise.prototype[symbolThen]) {
+                        patchThen(NewNativePromise);
+                    }
+                    api.setNativePromise(NewNativePromise);
+                }
+            };
+            ObjectDefineProperty(global, 'Promise', desc);
+        }
+        global['Promise'] = ZoneAwarePromise;
+        const symbolThenPatched = __symbol__('thenPatched');
+        function patchThen(Ctor) {
+            const proto = Ctor.prototype;
+            const prop = ObjectGetOwnPropertyDescriptor(proto, 'then');
+            if (prop && (prop.writable === false || !prop.configurable)) {
+                // check Ctor.prototype.then propertyDescriptor is writable or not
+                // in meteor env, writable is false, we should ignore such case
+                return;
+            }
+            const originalThen = proto.then;
+            // Keep a reference to the original method.
+            proto[symbolThen] = originalThen;
+            Ctor.prototype.then = function (onResolve, onReject) {
+                const wrapped = new ZoneAwarePromise((resolve, reject) => { originalThen.call(this, resolve, reject); });
+                return wrapped.then(onResolve, onReject);
+            };
+            Ctor[symbolThenPatched] = true;
+        }
+        api.patchThen = patchThen;
+        function zoneify(fn) {
+            return function () {
+                let resultPromise = fn.apply(this, arguments);
+                if (resultPromise instanceof ZoneAwarePromise) {
+                    return resultPromise;
+                }
+                let ctor = resultPromise.constructor;
+                if (!ctor[symbolThenPatched]) {
+                    patchThen(ctor);
+                }
+                return resultPromise;
+            };
+        }
+        if (NativePromise) {
+            patchThen(NativePromise);
+            const fetch = global['fetch'];
+            if (typeof fetch == 'function') {
+                global[api.symbol('fetch')] = fetch;
+                global['fetch'] = zoneify(fetch);
+            }
+        }
+        // This is not part of public API, but it is useful for tests, so we expose it.
+        Promise[Zone.__symbol__('uncaughtPromiseErrors')] = _uncaughtPromiseErrors;
+        return ZoneAwarePromise;
+    });
+
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+    /**
+     * Suppress closure compiler errors about unknown 'Zone' variable
+     * @fileoverview
+     * @suppress {undefinedVars,globalThis,missingRequire}
+     */
+    /// <reference types="node"/>
+    // issue #989, to reduce bundle size, use short name
+    /** Object.getOwnPropertyDescriptor */
+    const ObjectGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+    /** Object.defineProperty */
+    const ObjectDefineProperty = Object.defineProperty;
+    /** Object.getPrototypeOf */
+    const ObjectGetPrototypeOf = Object.getPrototypeOf;
+    /** Object.create */
+    const ObjectCreate = Object.create;
+    /** Array.prototype.slice */
+    const ArraySlice = Array.prototype.slice;
+    /** addEventListener string const */
+    const ADD_EVENT_LISTENER_STR = 'addEventListener';
+    /** removeEventListener string const */
+    const REMOVE_EVENT_LISTENER_STR = 'removeEventListener';
+    /** zoneSymbol addEventListener */
+    const ZONE_SYMBOL_ADD_EVENT_LISTENER = Zone.__symbol__(ADD_EVENT_LISTENER_STR);
+    /** zoneSymbol removeEventListener */
+    const ZONE_SYMBOL_REMOVE_EVENT_LISTENER = Zone.__symbol__(REMOVE_EVENT_LISTENER_STR);
+    /** true string const */
+    const TRUE_STR = 'true';
+    /** false string const */
+    const FALSE_STR = 'false';
+    /** Zone symbol prefix string const. */
+    const ZONE_SYMBOL_PREFIX = Zone.__symbol__('');
+    function wrapWithCurrentZone(callback, source) {
+        return Zone.current.wrap(callback, source);
+    }
+    function scheduleMacroTaskWithCurrentZone(source, callback, data, customSchedule, customCancel) {
+        return Zone.current.scheduleMacroTask(source, callback, data, customSchedule, customCancel);
+    }
+    const zoneSymbol = Zone.__symbol__;
+    const isWindowExists = typeof window !== 'undefined';
+    const internalWindow = isWindowExists ? window : undefined;
+    const _global = isWindowExists && internalWindow || typeof self === 'object' && self || global;
+    const REMOVE_ATTRIBUTE = 'removeAttribute';
+    const NULL_ON_PROP_VALUE = [null];
+    function bindArguments(args, source) {
+        for (let i = args.length - 1; i >= 0; i--) {
+            if (typeof args[i] === 'function') {
+                args[i] = wrapWithCurrentZone(args[i], source + '_' + i);
+            }
+        }
+        return args;
+    }
+    function patchPrototype(prototype, fnNames) {
+        const source = prototype.constructor['name'];
+        for (let i = 0; i < fnNames.length; i++) {
+            const name = fnNames[i];
+            const delegate = prototype[name];
+            if (delegate) {
+                const prototypeDesc = ObjectGetOwnPropertyDescriptor(prototype, name);
+                if (!isPropertyWritable(prototypeDesc)) {
+                    continue;
+                }
+                prototype[name] = ((delegate) => {
+                    const patched = function () {
+                        return delegate.apply(this, bindArguments(arguments, source + '.' + name));
+                    };
+                    attachOriginToPatched(patched, delegate);
+                    return patched;
+                })(delegate);
+            }
+        }
+    }
+    function isPropertyWritable(propertyDesc) {
+        if (!propertyDesc) {
+            return true;
+        }
+        if (propertyDesc.writable === false) {
             return false;
         }
-        let useGlobalCallback = true;
-        if (patchOptions && patchOptions.useG !== undefined) {
-            useGlobalCallback = patchOptions.useG;
+        return !(typeof propertyDesc.get === 'function' && typeof propertyDesc.set === 'undefined');
+    }
+    const isWebWorker = (typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope);
+    // Make sure to access `process` through `_global` so that WebPack does not accidentally browserify
+    // this code.
+    const isNode = (!('nw' in _global) && typeof _global.process !== 'undefined' &&
+        {}.toString.call(_global.process) === '[object process]');
+    const isBrowser = !isNode && !isWebWorker && !!(isWindowExists && internalWindow['HTMLElement']);
+    // we are in electron of nw, so we are both browser and nodejs
+    // Make sure to access `process` through `_global` so that WebPack does not accidentally browserify
+    // this code.
+    const isMix = typeof _global.process !== 'undefined' &&
+        {}.toString.call(_global.process) === '[object process]' && !isWebWorker &&
+        !!(isWindowExists && internalWindow['HTMLElement']);
+    const zoneSymbolEventNames = {};
+    const wrapFn = function (event) {
+        // https://github.com/angular/zone.js/issues/911, in IE, sometimes
+        // event will be undefined, so we need to use window.event
+        event = event || _global.event;
+        if (!event) {
+            return;
         }
-        const validateHandler = patchOptions && patchOptions.vh;
-        let checkDuplicate = true;
-        if (patchOptions && patchOptions.chkDup !== undefined) {
-            checkDuplicate = patchOptions.chkDup;
+        let eventNameSymbol = zoneSymbolEventNames[event.type];
+        if (!eventNameSymbol) {
+            eventNameSymbol = zoneSymbolEventNames[event.type] = zoneSymbol('ON_PROPERTY' + event.type);
         }
-        let returnTarget = false;
-        if (patchOptions && patchOptions.rt !== undefined) {
-            returnTarget = patchOptions.rt;
+        const target = this || event.target || _global;
+        const listener = target[eventNameSymbol];
+        let result;
+        if (isBrowser && target === internalWindow && event.type === 'error') {
+            // window.onerror have different signiture
+            // https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror#window.onerror
+            // and onerror callback will prevent default when callback return true
+            const errorEvent = event;
+            result = listener &&
+                listener.call(this, errorEvent.message, errorEvent.filename, errorEvent.lineno, errorEvent.colno, errorEvent.error);
+            if (result === true) {
+                event.preventDefault();
+            }
         }
-        let proto = obj;
-        while (proto && !proto.hasOwnProperty(ADD_EVENT_LISTENER)) {
+        else {
+            result = listener && listener.apply(this, arguments);
+            if (result != undefined && !result) {
+                event.preventDefault();
+            }
+        }
+        return result;
+    };
+    function patchProperty(obj, prop, prototype) {
+        let desc = ObjectGetOwnPropertyDescriptor(obj, prop);
+        if (!desc && prototype) {
+            // when patch window object, use prototype to check prop exist or not
+            const prototypeDesc = ObjectGetOwnPropertyDescriptor(prototype, prop);
+            if (prototypeDesc) {
+                desc = { enumerable: true, configurable: true };
+            }
+        }
+        // if the descriptor not exists or is not configurable
+        // just return
+        if (!desc || !desc.configurable) {
+            return;
+        }
+        const onPropPatchedSymbol = zoneSymbol('on' + prop + 'patched');
+        if (obj.hasOwnProperty(onPropPatchedSymbol) && obj[onPropPatchedSymbol]) {
+            return;
+        }
+        // A property descriptor cannot have getter/setter and be writable
+        // deleting the writable and value properties avoids this error:
+        //
+        // TypeError: property descriptors must not specify a value or be writable when a
+        // getter or setter has been specified
+        delete desc.writable;
+        delete desc.value;
+        const originalDescGet = desc.get;
+        const originalDescSet = desc.set;
+        // substr(2) cuz 'onclick' -> 'click', etc
+        const eventName = prop.substr(2);
+        let eventNameSymbol = zoneSymbolEventNames[eventName];
+        if (!eventNameSymbol) {
+            eventNameSymbol = zoneSymbolEventNames[eventName] = zoneSymbol('ON_PROPERTY' + eventName);
+        }
+        desc.set = function (newValue) {
+            // in some of windows's onproperty callback, this is undefined
+            // so we need to check it
+            let target = this;
+            if (!target && obj === _global) {
+                target = _global;
+            }
+            if (!target) {
+                return;
+            }
+            let previousValue = target[eventNameSymbol];
+            if (previousValue) {
+                target.removeEventListener(eventName, wrapFn);
+            }
+            // issue #978, when onload handler was added before loading zone.js
+            // we should remove it with originalDescSet
+            if (originalDescSet) {
+                originalDescSet.apply(target, NULL_ON_PROP_VALUE);
+            }
+            if (typeof newValue === 'function') {
+                target[eventNameSymbol] = newValue;
+                target.addEventListener(eventName, wrapFn, false);
+            }
+            else {
+                target[eventNameSymbol] = null;
+            }
+        };
+        // The getter would return undefined for unassigned properties but the default value of an
+        // unassigned property is null
+        desc.get = function () {
+            // in some of windows's onproperty callback, this is undefined
+            // so we need to check it
+            let target = this;
+            if (!target && obj === _global) {
+                target = _global;
+            }
+            if (!target) {
+                return null;
+            }
+            const listener = target[eventNameSymbol];
+            if (listener) {
+                return listener;
+            }
+            else if (originalDescGet) {
+                // result will be null when use inline event attribute,
+                // such as <button onclick="func();">OK</button>
+                // because the onclick function is internal raw uncompiled handler
+                // the onclick will be evaluated when first time event was triggered or
+                // the property is accessed, https://github.com/angular/zone.js/issues/525
+                // so we should use original native get to retrieve the handler
+                let value = originalDescGet && originalDescGet.call(this);
+                if (value) {
+                    desc.set.call(this, value);
+                    if (typeof target[REMOVE_ATTRIBUTE] === 'function') {
+                        target.removeAttribute(prop);
+                    }
+                    return value;
+                }
+            }
+            return null;
+        };
+        ObjectDefineProperty(obj, prop, desc);
+        obj[onPropPatchedSymbol] = true;
+    }
+    function patchOnProperties(obj, properties, prototype) {
+        if (properties) {
+            for (let i = 0; i < properties.length; i++) {
+                patchProperty(obj, 'on' + properties[i], prototype);
+            }
+        }
+        else {
+            const onProperties = [];
+            for (const prop in obj) {
+                if (prop.substr(0, 2) == 'on') {
+                    onProperties.push(prop);
+                }
+            }
+            for (let j = 0; j < onProperties.length; j++) {
+                patchProperty(obj, onProperties[j], prototype);
+            }
+        }
+    }
+    const originalInstanceKey = zoneSymbol('originalInstance');
+    // wrap some native API on `window`
+    function patchClass(className) {
+        const OriginalClass = _global[className];
+        if (!OriginalClass)
+            return;
+        // keep original class in global
+        _global[zoneSymbol(className)] = OriginalClass;
+        _global[className] = function () {
+            const a = bindArguments(arguments, className);
+            switch (a.length) {
+                case 0:
+                    this[originalInstanceKey] = new OriginalClass();
+                    break;
+                case 1:
+                    this[originalInstanceKey] = new OriginalClass(a[0]);
+                    break;
+                case 2:
+                    this[originalInstanceKey] = new OriginalClass(a[0], a[1]);
+                    break;
+                case 3:
+                    this[originalInstanceKey] = new OriginalClass(a[0], a[1], a[2]);
+                    break;
+                case 4:
+                    this[originalInstanceKey] = new OriginalClass(a[0], a[1], a[2], a[3]);
+                    break;
+                default:
+                    throw new Error('Arg list too long.');
+            }
+        };
+        // attach original delegate to patched function
+        attachOriginToPatched(_global[className], OriginalClass);
+        const instance = new OriginalClass(function () { });
+        let prop;
+        for (prop in instance) {
+            // https://bugs.webkit.org/show_bug.cgi?id=44721
+            if (className === 'XMLHttpRequest' && prop === 'responseBlob')
+                continue;
+            (function (prop) {
+                if (typeof instance[prop] === 'function') {
+                    _global[className].prototype[prop] = function () {
+                        return this[originalInstanceKey][prop].apply(this[originalInstanceKey], arguments);
+                    };
+                }
+                else {
+                    ObjectDefineProperty(_global[className].prototype, prop, {
+                        set: function (fn) {
+                            if (typeof fn === 'function') {
+                                this[originalInstanceKey][prop] = wrapWithCurrentZone(fn, className + '.' + prop);
+                                // keep callback in wrapped function so we can
+                                // use it in Function.prototype.toString to return
+                                // the native one.
+                                attachOriginToPatched(this[originalInstanceKey][prop], fn);
+                            }
+                            else {
+                                this[originalInstanceKey][prop] = fn;
+                            }
+                        },
+                        get: function () { return this[originalInstanceKey][prop]; }
+                    });
+                }
+            }(prop));
+        }
+        for (prop in OriginalClass) {
+            if (prop !== 'prototype' && OriginalClass.hasOwnProperty(prop)) {
+                _global[className][prop] = OriginalClass[prop];
+            }
+        }
+    }
+    function copySymbolProperties(src, dest) {
+        if (typeof Object.getOwnPropertySymbols !== 'function') {
+            return;
+        }
+        const symbols = Object.getOwnPropertySymbols(src);
+        symbols.forEach((symbol) => {
+            const desc = Object.getOwnPropertyDescriptor(src, symbol);
+            Object.defineProperty(dest, symbol, {
+                get: function () { return src[symbol]; },
+                set: function (value) {
+                    if (desc && (!desc.writable || typeof desc.set !== 'function')) {
+                        // if src[symbol] is not writable or not have a setter, just return
+                        return;
+                    }
+                    src[symbol] = value;
+                },
+                enumerable: desc ? desc.enumerable : true,
+                configurable: desc ? desc.configurable : true
+            });
+        });
+    }
+    let shouldCopySymbolProperties = false;
+    function patchMethod(target, name, patchFn) {
+        let proto = target;
+        while (proto && !proto.hasOwnProperty(name)) {
             proto = ObjectGetPrototypeOf(proto);
         }
-        if (!proto && obj[ADD_EVENT_LISTENER]) {
+        if (!proto && target[name]) {
             // somehow we did not find it, but we can see it. This happens on IE for Window properties.
-            proto = obj;
+            proto = target;
         }
-        if (!proto) {
-            return false;
-        }
-        if (proto[zoneSymbolAddEventListener]) {
-            return false;
-        }
-        const eventNameToString = patchOptions && patchOptions.eventNameToString;
-        // a shared global taskData to pass data for scheduleEventTask
-        // so we do not need to create a new object just for pass some data
-        const taskData = {};
-        const nativeAddEventListener = proto[zoneSymbolAddEventListener] = proto[ADD_EVENT_LISTENER];
-        const nativeRemoveEventListener = proto[zoneSymbol(REMOVE_EVENT_LISTENER)] =
-            proto[REMOVE_EVENT_LISTENER];
-        const nativeListeners = proto[zoneSymbol(LISTENERS_EVENT_LISTENER)] =
-            proto[LISTENERS_EVENT_LISTENER];
-        const nativeRemoveAllListeners = proto[zoneSymbol(REMOVE_ALL_LISTENERS_EVENT_LISTENER)] =
-            proto[REMOVE_ALL_LISTENERS_EVENT_LISTENER];
-        let nativePrependEventListener;
-        if (patchOptions && patchOptions.prepend) {
-            nativePrependEventListener = proto[zoneSymbol(patchOptions.prepend)] =
-                proto[patchOptions.prepend];
-        }
-        function checkIsPassive(task) {
-            if (!passiveSupported && typeof taskData.options !== 'boolean' &&
-                typeof taskData.options !== 'undefined' && taskData.options !== null) {
-                // options is a non-null non-undefined object
-                // passive is not supported
-                // don't pass options as object
-                // just pass capture as a boolean
-                task.options = !!taskData.options.capture;
-                taskData.options = task.options;
+        const delegateName = zoneSymbol(name);
+        let delegate = null;
+        if (proto && !(delegate = proto[delegateName])) {
+            delegate = proto[delegateName] = proto[name];
+            // check whether proto[name] is writable
+            // some property is readonly in safari, such as HtmlCanvasElement.prototype.toBlob
+            const desc = proto && ObjectGetOwnPropertyDescriptor(proto, name);
+            if (isPropertyWritable(desc)) {
+                const patchDelegate = patchFn(delegate, delegateName, name);
+                proto[name] = function () { return patchDelegate(this, arguments); };
+                attachOriginToPatched(proto[name], delegate);
+                if (shouldCopySymbolProperties) {
+                    copySymbolProperties(delegate, proto[name]);
+                }
             }
         }
-        const customScheduleGlobal = function (task) {
-            // if there is already a task for the eventName + capture,
-            // just return, because we use the shared globalZoneAwareCallback here.
-            if (taskData.isExisting) {
+        return delegate;
+    }
+    // TODO: @JiaLiPassion, support cancel task later if necessary
+    function patchMacroTask(obj, funcName, metaCreator) {
+        let setNative = null;
+        function scheduleTask(task) {
+            const data = task.data;
+            data.args[data.cbIdx] = function () { task.invoke.apply(this, arguments); };
+            setNative.apply(data.target, data.args);
+            return task;
+        }
+        setNative = patchMethod(obj, funcName, (delegate) => function (self, args) {
+            const meta = metaCreator(self, args);
+            if (meta.cbIdx >= 0 && typeof args[meta.cbIdx] === 'function') {
+                return scheduleMacroTaskWithCurrentZone(meta.name, args[meta.cbIdx], meta, scheduleTask);
+            }
+            else {
+                // cause an error by calling it directly.
+                return delegate.apply(self, args);
+            }
+        });
+    }
+    function attachOriginToPatched(patched, original) {
+        patched[zoneSymbol('OriginalDelegate')] = original;
+    }
+    let isDetectedIEOrEdge = false;
+    let ieOrEdge = false;
+    function isIE() {
+        try {
+            const ua = internalWindow.navigator.userAgent;
+            if (ua.indexOf('MSIE ') !== -1 || ua.indexOf('Trident/') !== -1) {
+                return true;
+            }
+        }
+        catch (error) {
+        }
+        return false;
+    }
+    function isIEOrEdge() {
+        if (isDetectedIEOrEdge) {
+            return ieOrEdge;
+        }
+        isDetectedIEOrEdge = true;
+        try {
+            const ua = internalWindow.navigator.userAgent;
+            if (ua.indexOf('MSIE ') !== -1 || ua.indexOf('Trident/') !== -1 || ua.indexOf('Edge/') !== -1) {
+                ieOrEdge = true;
+            }
+        }
+        catch (error) {
+        }
+        return ieOrEdge;
+    }
+
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+    // override Function.prototype.toString to make zone.js patched function
+    // look like native function
+    Zone.__load_patch('toString', (global) => {
+        // patch Func.prototype.toString to let them look like native
+        const originalFunctionToString = Function.prototype.toString;
+        const ORIGINAL_DELEGATE_SYMBOL = zoneSymbol('OriginalDelegate');
+        const PROMISE_SYMBOL = zoneSymbol('Promise');
+        const ERROR_SYMBOL = zoneSymbol('Error');
+        const newFunctionToString = function toString() {
+            if (typeof this === 'function') {
+                const originalDelegate = this[ORIGINAL_DELEGATE_SYMBOL];
+                if (originalDelegate) {
+                    if (typeof originalDelegate === 'function') {
+                        return originalFunctionToString.call(originalDelegate);
+                    }
+                    else {
+                        return Object.prototype.toString.call(originalDelegate);
+                    }
+                }
+                if (this === Promise) {
+                    const nativePromise = global[PROMISE_SYMBOL];
+                    if (nativePromise) {
+                        return originalFunctionToString.call(nativePromise);
+                    }
+                }
+                if (this === Error) {
+                    const nativeError = global[ERROR_SYMBOL];
+                    if (nativeError) {
+                        return originalFunctionToString.call(nativeError);
+                    }
+                }
+            }
+            return originalFunctionToString.call(this);
+        };
+        newFunctionToString[ORIGINAL_DELEGATE_SYMBOL] = originalFunctionToString;
+        Function.prototype.toString = newFunctionToString;
+        // patch Object.prototype.toString to let them look like native
+        const originalObjectToString = Object.prototype.toString;
+        const PROMISE_OBJECT_TO_STRING = '[object Promise]';
+        Object.prototype.toString = function () {
+            if (this instanceof Promise) {
+                return PROMISE_OBJECT_TO_STRING;
+            }
+            return originalObjectToString.call(this);
+        };
+    });
+
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+    let passiveSupported = false;
+    if (typeof window !== 'undefined') {
+        try {
+            const options = Object.defineProperty({}, 'passive', { get: function () { passiveSupported = true; } });
+            window.addEventListener('test', options, options);
+            window.removeEventListener('test', options, options);
+        }
+        catch (err) {
+            passiveSupported = false;
+        }
+    }
+    // an identifier to tell ZoneTask do not create a new invoke closure
+    const OPTIMIZED_ZONE_EVENT_TASK_DATA = {
+        useG: true
+    };
+    const zoneSymbolEventNames$1 = {};
+    const globalSources = {};
+    const EVENT_NAME_SYMBOL_REGX = new RegExp('^' + ZONE_SYMBOL_PREFIX + '(\\w+)(true|false)$');
+    const IMMEDIATE_PROPAGATION_SYMBOL = zoneSymbol('propagationStopped');
+    function patchEventTarget(_global, apis, patchOptions) {
+        const ADD_EVENT_LISTENER = (patchOptions && patchOptions.add) || ADD_EVENT_LISTENER_STR;
+        const REMOVE_EVENT_LISTENER = (patchOptions && patchOptions.rm) || REMOVE_EVENT_LISTENER_STR;
+        const LISTENERS_EVENT_LISTENER = (patchOptions && patchOptions.listeners) || 'eventListeners';
+        const REMOVE_ALL_LISTENERS_EVENT_LISTENER = (patchOptions && patchOptions.rmAll) || 'removeAllListeners';
+        const zoneSymbolAddEventListener = zoneSymbol(ADD_EVENT_LISTENER);
+        const ADD_EVENT_LISTENER_SOURCE = '.' + ADD_EVENT_LISTENER + ':';
+        const PREPEND_EVENT_LISTENER = 'prependListener';
+        const PREPEND_EVENT_LISTENER_SOURCE = '.' + PREPEND_EVENT_LISTENER + ':';
+        const invokeTask = function (task, target, event) {
+            // for better performance, check isRemoved which is set
+            // by removeEventListener
+            if (task.isRemoved) {
                 return;
             }
-            checkIsPassive(task);
-            return nativeAddEventListener.call(taskData.target, taskData.eventName, taskData.capture ? globalZoneAwareCaptureCallback : globalZoneAwareCallback, taskData.options);
+            const delegate = task.callback;
+            if (typeof delegate === 'object' && delegate.handleEvent) {
+                // create the bind version of handleEvent when invoke
+                task.callback = (event) => delegate.handleEvent(event);
+                task.originalDelegate = delegate;
+            }
+            // invoke static task.invoke
+            task.invoke(task, target, [event]);
+            const options = task.options;
+            if (options && typeof options === 'object' && options.once) {
+                // if options.once is true, after invoke once remove listener here
+                // only browser need to do this, nodejs eventEmitter will cal removeListener
+                // inside EventEmitter.once
+                const delegate = task.originalDelegate ? task.originalDelegate : task.callback;
+                target[REMOVE_EVENT_LISTENER].call(target, event.type, delegate, options);
+            }
         };
-        const customCancelGlobal = function (task) {
-            // if task is not marked as isRemoved, this call is directly
-            // from Zone.prototype.cancelTask, we should remove the task
-            // from tasksList of target first
-            if (!task.isRemoved) {
-                const symbolEventNames = zoneSymbolEventNames$1[task.eventName];
-                let symbolEventName;
-                if (symbolEventNames) {
-                    symbolEventName = symbolEventNames[task.capture ? TRUE_STR : FALSE_STR];
+        // global shared zoneAwareCallback to handle all event callback with capture = false
+        const globalZoneAwareCallback = function (event) {
+            // https://github.com/angular/zone.js/issues/911, in IE, sometimes
+            // event will be undefined, so we need to use window.event
+            event = event || _global.event;
+            if (!event) {
+                return;
+            }
+            // event.target is needed for Samsung TV and SourceBuffer
+            // || global is needed https://github.com/angular/zone.js/issues/190
+            const target = this || event.target || _global;
+            const tasks = target[zoneSymbolEventNames$1[event.type][FALSE_STR]];
+            if (tasks) {
+                // invoke all tasks which attached to current target with given event.type and capture = false
+                // for performance concern, if task.length === 1, just invoke
+                if (tasks.length === 1) {
+                    invokeTask(tasks[0], target, event);
                 }
-                const existingTasks = symbolEventName && task.target[symbolEventName];
-                if (existingTasks) {
-                    for (let i = 0; i < existingTasks.length; i++) {
-                        const existingTask = existingTasks[i];
-                        if (existingTask === task) {
-                            existingTasks.splice(i, 1);
-                            // set isRemoved to data for faster invokeTask check
-                            task.isRemoved = true;
-                            if (existingTasks.length === 0) {
-                                // all tasks for the eventName + capture have gone,
-                                // remove globalZoneAwareCallback and remove the task cache from target
-                                task.allRemoved = true;
-                                task.target[symbolEventName] = null;
-                            }
+                else {
+                    // https://github.com/angular/zone.js/issues/836
+                    // copy the tasks array before invoke, to avoid
+                    // the callback will remove itself or other listener
+                    const copyTasks = tasks.slice();
+                    for (let i = 0; i < copyTasks.length; i++) {
+                        if (event && event[IMMEDIATE_PROPAGATION_SYMBOL] === true) {
                             break;
                         }
+                        invokeTask(copyTasks[i], target, event);
                     }
                 }
             }
-            // if all tasks for the eventName + capture have gone,
-            // we will really remove the global event callback,
-            // if not, return
-            if (!task.allRemoved) {
+        };
+        // global shared zoneAwareCallback to handle all event callback with capture = true
+        const globalZoneAwareCaptureCallback = function (event) {
+            // https://github.com/angular/zone.js/issues/911, in IE, sometimes
+            // event will be undefined, so we need to use window.event
+            event = event || _global.event;
+            if (!event) {
                 return;
             }
-            return nativeRemoveEventListener.call(task.target, task.eventName, task.capture ? globalZoneAwareCaptureCallback : globalZoneAwareCallback, task.options);
-        };
-        const customScheduleNonGlobal = function (task) {
-            checkIsPassive(task);
-            return nativeAddEventListener.call(taskData.target, taskData.eventName, task.invoke, taskData.options);
-        };
-        const customSchedulePrepend = function (task) {
-            return nativePrependEventListener.call(taskData.target, taskData.eventName, task.invoke, taskData.options);
-        };
-        const customCancelNonGlobal = function (task) {
-            return nativeRemoveEventListener.call(task.target, task.eventName, task.invoke, task.options);
-        };
-        const customSchedule = useGlobalCallback ? customScheduleGlobal : customScheduleNonGlobal;
-        const customCancel = useGlobalCallback ? customCancelGlobal : customCancelNonGlobal;
-        const compareTaskCallbackVsDelegate = function (task, delegate) {
-            const typeOfDelegate = typeof delegate;
-            return (typeOfDelegate === 'function' && task.callback === delegate) ||
-                (typeOfDelegate === 'object' && task.originalDelegate === delegate);
-        };
-        const compare = (patchOptions && patchOptions.diff) ? patchOptions.diff : compareTaskCallbackVsDelegate;
-        const blackListedEvents = Zone[Zone.__symbol__('BLACK_LISTED_EVENTS')];
-        const makeAddListener = function (nativeListener, addSource, customScheduleFn, customCancelFn, returnTarget = false, prepend = false) {
-            return function () {
-                const target = this || _global;
-                const eventName = arguments[0];
-                let delegate = arguments[1];
-                if (!delegate) {
-                    return nativeListener.apply(this, arguments);
+            // event.target is needed for Samsung TV and SourceBuffer
+            // || global is needed https://github.com/angular/zone.js/issues/190
+            const target = this || event.target || _global;
+            const tasks = target[zoneSymbolEventNames$1[event.type][TRUE_STR]];
+            if (tasks) {
+                // invoke all tasks which attached to current target with given event.type and capture = false
+                // for performance concern, if task.length === 1, just invoke
+                if (tasks.length === 1) {
+                    invokeTask(tasks[0], target, event);
                 }
-                if (isNode && eventName === 'uncaughtException') {
-                    // don't patch uncaughtException of nodejs to prevent endless loop
-                    return nativeListener.apply(this, arguments);
-                }
-                // don't create the bind delegate function for handleEvent
-                // case here to improve addEventListener performance
-                // we will create the bind delegate when invoke
-                let isHandleEvent = false;
-                if (typeof delegate !== 'function') {
-                    if (!delegate.handleEvent) {
-                        return nativeListener.apply(this, arguments);
+                else {
+                    // https://github.com/angular/zone.js/issues/836
+                    // copy the tasks array before invoke, to avoid
+                    // the callback will remove itself or other listener
+                    const copyTasks = tasks.slice();
+                    for (let i = 0; i < copyTasks.length; i++) {
+                        if (event && event[IMMEDIATE_PROPAGATION_SYMBOL] === true) {
+                            break;
+                        }
+                        invokeTask(copyTasks[i], target, event);
                     }
-                    isHandleEvent = true;
                 }
-                if (validateHandler && !validateHandler(nativeListener, delegate, target, arguments)) {
+            }
+        };
+        function patchEventTargetMethods(obj, patchOptions) {
+            if (!obj) {
+                return false;
+            }
+            let useGlobalCallback = true;
+            if (patchOptions && patchOptions.useG !== undefined) {
+                useGlobalCallback = patchOptions.useG;
+            }
+            const validateHandler = patchOptions && patchOptions.vh;
+            let checkDuplicate = true;
+            if (patchOptions && patchOptions.chkDup !== undefined) {
+                checkDuplicate = patchOptions.chkDup;
+            }
+            let returnTarget = false;
+            if (patchOptions && patchOptions.rt !== undefined) {
+                returnTarget = patchOptions.rt;
+            }
+            let proto = obj;
+            while (proto && !proto.hasOwnProperty(ADD_EVENT_LISTENER)) {
+                proto = ObjectGetPrototypeOf(proto);
+            }
+            if (!proto && obj[ADD_EVENT_LISTENER]) {
+                // somehow we did not find it, but we can see it. This happens on IE for Window properties.
+                proto = obj;
+            }
+            if (!proto) {
+                return false;
+            }
+            if (proto[zoneSymbolAddEventListener]) {
+                return false;
+            }
+            const eventNameToString = patchOptions && patchOptions.eventNameToString;
+            // a shared global taskData to pass data for scheduleEventTask
+            // so we do not need to create a new object just for pass some data
+            const taskData = {};
+            const nativeAddEventListener = proto[zoneSymbolAddEventListener] = proto[ADD_EVENT_LISTENER];
+            const nativeRemoveEventListener = proto[zoneSymbol(REMOVE_EVENT_LISTENER)] =
+                proto[REMOVE_EVENT_LISTENER];
+            const nativeListeners = proto[zoneSymbol(LISTENERS_EVENT_LISTENER)] =
+                proto[LISTENERS_EVENT_LISTENER];
+            const nativeRemoveAllListeners = proto[zoneSymbol(REMOVE_ALL_LISTENERS_EVENT_LISTENER)] =
+                proto[REMOVE_ALL_LISTENERS_EVENT_LISTENER];
+            let nativePrependEventListener;
+            if (patchOptions && patchOptions.prepend) {
+                nativePrependEventListener = proto[zoneSymbol(patchOptions.prepend)] =
+                    proto[patchOptions.prepend];
+            }
+            function checkIsPassive(task) {
+                if (!passiveSupported && typeof taskData.options !== 'boolean' &&
+                    typeof taskData.options !== 'undefined' && taskData.options !== null) {
+                    // options is a non-null non-undefined object
+                    // passive is not supported
+                    // don't pass options as object
+                    // just pass capture as a boolean
+                    task.options = !!taskData.options.capture;
+                    taskData.options = task.options;
+                }
+            }
+            const customScheduleGlobal = function (task) {
+                // if there is already a task for the eventName + capture,
+                // just return, because we use the shared globalZoneAwareCallback here.
+                if (taskData.isExisting) {
                     return;
                 }
-                const options = arguments[2];
-                if (blackListedEvents) {
-                    // check black list
-                    for (let i = 0; i < blackListedEvents.length; i++) {
-                        if (eventName === blackListedEvents[i]) {
-                            return nativeListener.apply(this, arguments);
+                checkIsPassive(task);
+                return nativeAddEventListener.call(taskData.target, taskData.eventName, taskData.capture ? globalZoneAwareCaptureCallback : globalZoneAwareCallback, taskData.options);
+            };
+            const customCancelGlobal = function (task) {
+                // if task is not marked as isRemoved, this call is directly
+                // from Zone.prototype.cancelTask, we should remove the task
+                // from tasksList of target first
+                if (!task.isRemoved) {
+                    const symbolEventNames = zoneSymbolEventNames$1[task.eventName];
+                    let symbolEventName;
+                    if (symbolEventNames) {
+                        symbolEventName = symbolEventNames[task.capture ? TRUE_STR : FALSE_STR];
+                    }
+                    const existingTasks = symbolEventName && task.target[symbolEventName];
+                    if (existingTasks) {
+                        for (let i = 0; i < existingTasks.length; i++) {
+                            const existingTask = existingTasks[i];
+                            if (existingTask === task) {
+                                existingTasks.splice(i, 1);
+                                // set isRemoved to data for faster invokeTask check
+                                task.isRemoved = true;
+                                if (existingTasks.length === 0) {
+                                    // all tasks for the eventName + capture have gone,
+                                    // remove globalZoneAwareCallback and remove the task cache from target
+                                    task.allRemoved = true;
+                                    task.target[symbolEventName] = null;
+                                }
+                                break;
+                            }
                         }
                     }
                 }
+                // if all tasks for the eventName + capture have gone,
+                // we will really remove the global event callback,
+                // if not, return
+                if (!task.allRemoved) {
+                    return;
+                }
+                return nativeRemoveEventListener.call(task.target, task.eventName, task.capture ? globalZoneAwareCaptureCallback : globalZoneAwareCallback, task.options);
+            };
+            const customScheduleNonGlobal = function (task) {
+                checkIsPassive(task);
+                return nativeAddEventListener.call(taskData.target, taskData.eventName, task.invoke, taskData.options);
+            };
+            const customSchedulePrepend = function (task) {
+                return nativePrependEventListener.call(taskData.target, taskData.eventName, task.invoke, taskData.options);
+            };
+            const customCancelNonGlobal = function (task) {
+                return nativeRemoveEventListener.call(task.target, task.eventName, task.invoke, task.options);
+            };
+            const customSchedule = useGlobalCallback ? customScheduleGlobal : customScheduleNonGlobal;
+            const customCancel = useGlobalCallback ? customCancelGlobal : customCancelNonGlobal;
+            const compareTaskCallbackVsDelegate = function (task, delegate) {
+                const typeOfDelegate = typeof delegate;
+                return (typeOfDelegate === 'function' && task.callback === delegate) ||
+                    (typeOfDelegate === 'object' && task.originalDelegate === delegate);
+            };
+            const compare = (patchOptions && patchOptions.diff) ? patchOptions.diff : compareTaskCallbackVsDelegate;
+            const blackListedEvents = Zone[zoneSymbol('BLACK_LISTED_EVENTS')];
+            const makeAddListener = function (nativeListener, addSource, customScheduleFn, customCancelFn, returnTarget = false, prepend = false) {
+                return function () {
+                    const target = this || _global;
+                    let eventName = arguments[0];
+                    if (patchOptions && patchOptions.transferEventName) {
+                        eventName = patchOptions.transferEventName(eventName);
+                    }
+                    let delegate = arguments[1];
+                    if (!delegate) {
+                        return nativeListener.apply(this, arguments);
+                    }
+                    if (isNode && eventName === 'uncaughtException') {
+                        // don't patch uncaughtException of nodejs to prevent endless loop
+                        return nativeListener.apply(this, arguments);
+                    }
+                    // don't create the bind delegate function for handleEvent
+                    // case here to improve addEventListener performance
+                    // we will create the bind delegate when invoke
+                    let isHandleEvent = false;
+                    if (typeof delegate !== 'function') {
+                        if (!delegate.handleEvent) {
+                            return nativeListener.apply(this, arguments);
+                        }
+                        isHandleEvent = true;
+                    }
+                    if (validateHandler && !validateHandler(nativeListener, delegate, target, arguments)) {
+                        return;
+                    }
+                    const options = arguments[2];
+                    if (blackListedEvents) {
+                        // check black list
+                        for (let i = 0; i < blackListedEvents.length; i++) {
+                            if (eventName === blackListedEvents[i]) {
+                                return nativeListener.apply(this, arguments);
+                            }
+                        }
+                    }
+                    let capture;
+                    let once = false;
+                    if (options === undefined) {
+                        capture = false;
+                    }
+                    else if (options === true) {
+                        capture = true;
+                    }
+                    else if (options === false) {
+                        capture = false;
+                    }
+                    else {
+                        capture = options ? !!options.capture : false;
+                        once = options ? !!options.once : false;
+                    }
+                    const zone = Zone.current;
+                    const symbolEventNames = zoneSymbolEventNames$1[eventName];
+                    let symbolEventName;
+                    if (!symbolEventNames) {
+                        // the code is duplicate, but I just want to get some better performance
+                        const falseEventName = (eventNameToString ? eventNameToString(eventName) : eventName) + FALSE_STR;
+                        const trueEventName = (eventNameToString ? eventNameToString(eventName) : eventName) + TRUE_STR;
+                        const symbol = ZONE_SYMBOL_PREFIX + falseEventName;
+                        const symbolCapture = ZONE_SYMBOL_PREFIX + trueEventName;
+                        zoneSymbolEventNames$1[eventName] = {};
+                        zoneSymbolEventNames$1[eventName][FALSE_STR] = symbol;
+                        zoneSymbolEventNames$1[eventName][TRUE_STR] = symbolCapture;
+                        symbolEventName = capture ? symbolCapture : symbol;
+                    }
+                    else {
+                        symbolEventName = symbolEventNames[capture ? TRUE_STR : FALSE_STR];
+                    }
+                    let existingTasks = target[symbolEventName];
+                    let isExisting = false;
+                    if (existingTasks) {
+                        // already have task registered
+                        isExisting = true;
+                        if (checkDuplicate) {
+                            for (let i = 0; i < existingTasks.length; i++) {
+                                if (compare(existingTasks[i], delegate)) {
+                                    // same callback, same capture, same event name, just return
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        existingTasks = target[symbolEventName] = [];
+                    }
+                    let source;
+                    const constructorName = target.constructor['name'];
+                    const targetSource = globalSources[constructorName];
+                    if (targetSource) {
+                        source = targetSource[eventName];
+                    }
+                    if (!source) {
+                        source = constructorName + addSource +
+                            (eventNameToString ? eventNameToString(eventName) : eventName);
+                    }
+                    // do not create a new object as task.data to pass those things
+                    // just use the global shared one
+                    taskData.options = options;
+                    if (once) {
+                        // if addEventListener with once options, we don't pass it to
+                        // native addEventListener, instead we keep the once setting
+                        // and handle ourselves.
+                        taskData.options.once = false;
+                    }
+                    taskData.target = target;
+                    taskData.capture = capture;
+                    taskData.eventName = eventName;
+                    taskData.isExisting = isExisting;
+                    const data = useGlobalCallback ? OPTIMIZED_ZONE_EVENT_TASK_DATA : undefined;
+                    // keep taskData into data to allow onScheduleEventTask to access the task information
+                    if (data) {
+                        data.taskData = taskData;
+                    }
+                    const task = zone.scheduleEventTask(source, delegate, data, customScheduleFn, customCancelFn);
+                    // should clear taskData.target to avoid memory leak
+                    // issue, https://github.com/angular/angular/issues/20442
+                    taskData.target = null;
+                    // need to clear up taskData because it is a global object
+                    if (data) {
+                        data.taskData = null;
+                    }
+                    // have to save those information to task in case
+                    // application may call task.zone.cancelTask() directly
+                    if (once) {
+                        options.once = true;
+                    }
+                    if (!(!passiveSupported && typeof task.options === 'boolean')) {
+                        // if not support passive, and we pass an option object
+                        // to addEventListener, we should save the options to task
+                        task.options = options;
+                    }
+                    task.target = target;
+                    task.capture = capture;
+                    task.eventName = eventName;
+                    if (isHandleEvent) {
+                        // save original delegate for compare to check duplicate
+                        task.originalDelegate = delegate;
+                    }
+                    if (!prepend) {
+                        existingTasks.push(task);
+                    }
+                    else {
+                        existingTasks.unshift(task);
+                    }
+                    if (returnTarget) {
+                        return target;
+                    }
+                };
+            };
+            proto[ADD_EVENT_LISTENER] = makeAddListener(nativeAddEventListener, ADD_EVENT_LISTENER_SOURCE, customSchedule, customCancel, returnTarget);
+            if (nativePrependEventListener) {
+                proto[PREPEND_EVENT_LISTENER] = makeAddListener(nativePrependEventListener, PREPEND_EVENT_LISTENER_SOURCE, customSchedulePrepend, customCancel, returnTarget, true);
+            }
+            proto[REMOVE_EVENT_LISTENER] = function () {
+                const target = this || _global;
+                let eventName = arguments[0];
+                if (patchOptions && patchOptions.transferEventName) {
+                    eventName = patchOptions.transferEventName(eventName);
+                }
+                const options = arguments[2];
                 let capture;
-                let once = false;
                 if (options === undefined) {
                     capture = false;
                 }
@@ -37021,1213 +35775,972 @@ function patchEventTarget(_global, apis, patchOptions) {
                 }
                 else {
                     capture = options ? !!options.capture : false;
-                    once = options ? !!options.once : false;
                 }
-                const zone = Zone.current;
+                const delegate = arguments[1];
+                if (!delegate) {
+                    return nativeRemoveEventListener.apply(this, arguments);
+                }
+                if (validateHandler &&
+                    !validateHandler(nativeRemoveEventListener, delegate, target, arguments)) {
+                    return;
+                }
                 const symbolEventNames = zoneSymbolEventNames$1[eventName];
                 let symbolEventName;
-                if (!symbolEventNames) {
-                    // the code is duplicate, but I just want to get some better performance
-                    const falseEventName = (eventNameToString ? eventNameToString(eventName) : eventName) + FALSE_STR;
-                    const trueEventName = (eventNameToString ? eventNameToString(eventName) : eventName) + TRUE_STR;
-                    const symbol = ZONE_SYMBOL_PREFIX + falseEventName;
-                    const symbolCapture = ZONE_SYMBOL_PREFIX + trueEventName;
-                    zoneSymbolEventNames$1[eventName] = {};
-                    zoneSymbolEventNames$1[eventName][FALSE_STR] = symbol;
-                    zoneSymbolEventNames$1[eventName][TRUE_STR] = symbolCapture;
-                    symbolEventName = capture ? symbolCapture : symbol;
-                }
-                else {
+                if (symbolEventNames) {
                     symbolEventName = symbolEventNames[capture ? TRUE_STR : FALSE_STR];
                 }
-                let existingTasks = target[symbolEventName];
-                let isExisting = false;
+                const existingTasks = symbolEventName && target[symbolEventName];
                 if (existingTasks) {
-                    // already have task registered
-                    isExisting = true;
-                    if (checkDuplicate) {
-                        for (let i = 0; i < existingTasks.length; i++) {
-                            if (compare(existingTasks[i], delegate)) {
-                                // same callback, same capture, same event name, just return
-                                return;
+                    for (let i = 0; i < existingTasks.length; i++) {
+                        const existingTask = existingTasks[i];
+                        if (compare(existingTask, delegate)) {
+                            existingTasks.splice(i, 1);
+                            // set isRemoved to data for faster invokeTask check
+                            existingTask.isRemoved = true;
+                            if (existingTasks.length === 0) {
+                                // all tasks for the eventName + capture have gone,
+                                // remove globalZoneAwareCallback and remove the task cache from target
+                                existingTask.allRemoved = true;
+                                target[symbolEventName] = null;
+                                // in the target, we have an event listener which is added by on_property
+                                // such as target.onclick = function() {}, so we need to clear this internal
+                                // property too if all delegates all removed
+                                if (typeof eventName === 'string') {
+                                    const onPropertySymbol = ZONE_SYMBOL_PREFIX + 'ON_PROPERTY' + eventName;
+                                    target[onPropertySymbol] = null;
+                                }
+                            }
+                            existingTask.zone.cancelTask(existingTask);
+                            if (returnTarget) {
+                                return target;
+                            }
+                            return;
+                        }
+                    }
+                }
+                // issue 930, didn't find the event name or callback
+                // from zone kept existingTasks, the callback maybe
+                // added outside of zone, we need to call native removeEventListener
+                // to try to remove it.
+                return nativeRemoveEventListener.apply(this, arguments);
+            };
+            proto[LISTENERS_EVENT_LISTENER] = function () {
+                const target = this || _global;
+                let eventName = arguments[0];
+                if (patchOptions && patchOptions.transferEventName) {
+                    eventName = patchOptions.transferEventName(eventName);
+                }
+                const listeners = [];
+                const tasks = findEventTasks(target, eventNameToString ? eventNameToString(eventName) : eventName);
+                for (let i = 0; i < tasks.length; i++) {
+                    const task = tasks[i];
+                    let delegate = task.originalDelegate ? task.originalDelegate : task.callback;
+                    listeners.push(delegate);
+                }
+                return listeners;
+            };
+            proto[REMOVE_ALL_LISTENERS_EVENT_LISTENER] = function () {
+                const target = this || _global;
+                let eventName = arguments[0];
+                if (!eventName) {
+                    const keys = Object.keys(target);
+                    for (let i = 0; i < keys.length; i++) {
+                        const prop = keys[i];
+                        const match = EVENT_NAME_SYMBOL_REGX.exec(prop);
+                        let evtName = match && match[1];
+                        // in nodejs EventEmitter, removeListener event is
+                        // used for monitoring the removeListener call,
+                        // so just keep removeListener eventListener until
+                        // all other eventListeners are removed
+                        if (evtName && evtName !== 'removeListener') {
+                            this[REMOVE_ALL_LISTENERS_EVENT_LISTENER].call(this, evtName);
+                        }
+                    }
+                    // remove removeListener listener finally
+                    this[REMOVE_ALL_LISTENERS_EVENT_LISTENER].call(this, 'removeListener');
+                }
+                else {
+                    if (patchOptions && patchOptions.transferEventName) {
+                        eventName = patchOptions.transferEventName(eventName);
+                    }
+                    const symbolEventNames = zoneSymbolEventNames$1[eventName];
+                    if (symbolEventNames) {
+                        const symbolEventName = symbolEventNames[FALSE_STR];
+                        const symbolCaptureEventName = symbolEventNames[TRUE_STR];
+                        const tasks = target[symbolEventName];
+                        const captureTasks = target[symbolCaptureEventName];
+                        if (tasks) {
+                            const removeTasks = tasks.slice();
+                            for (let i = 0; i < removeTasks.length; i++) {
+                                const task = removeTasks[i];
+                                let delegate = task.originalDelegate ? task.originalDelegate : task.callback;
+                                this[REMOVE_EVENT_LISTENER].call(this, eventName, delegate, task.options);
+                            }
+                        }
+                        if (captureTasks) {
+                            const removeTasks = captureTasks.slice();
+                            for (let i = 0; i < removeTasks.length; i++) {
+                                const task = removeTasks[i];
+                                let delegate = task.originalDelegate ? task.originalDelegate : task.callback;
+                                this[REMOVE_EVENT_LISTENER].call(this, eventName, delegate, task.options);
                             }
                         }
                     }
                 }
-                else {
-                    existingTasks = target[symbolEventName] = [];
-                }
-                let source;
-                const constructorName = target.constructor['name'];
-                const targetSource = globalSources[constructorName];
-                if (targetSource) {
-                    source = targetSource[eventName];
-                }
-                if (!source) {
-                    source = constructorName + addSource +
-                        (eventNameToString ? eventNameToString(eventName) : eventName);
-                }
-                // do not create a new object as task.data to pass those things
-                // just use the global shared one
-                taskData.options = options;
-                if (once) {
-                    // if addEventListener with once options, we don't pass it to
-                    // native addEventListener, instead we keep the once setting
-                    // and handle ourselves.
-                    taskData.options.once = false;
-                }
-                taskData.target = target;
-                taskData.capture = capture;
-                taskData.eventName = eventName;
-                taskData.isExisting = isExisting;
-                const data = useGlobalCallback ? OPTIMIZED_ZONE_EVENT_TASK_DATA : undefined;
-                // keep taskData into data to allow onScheduleEventTask to access the task information
-                if (data) {
-                    data.taskData = taskData;
-                }
-                const task = zone.scheduleEventTask(source, delegate, data, customScheduleFn, customCancelFn);
-                // should clear taskData.target to avoid memory leak
-                // issue, https://github.com/angular/angular/issues/20442
-                taskData.target = null;
-                // need to clear up taskData because it is a global object
-                if (data) {
-                    data.taskData = null;
-                }
-                // have to save those information to task in case
-                // application may call task.zone.cancelTask() directly
-                if (once) {
-                    options.once = true;
-                }
-                if (!(!passiveSupported && typeof task.options === 'boolean')) {
-                    // if not support passive, and we pass an option object
-                    // to addEventListener, we should save the options to task
-                    task.options = options;
-                }
-                task.target = target;
-                task.capture = capture;
-                task.eventName = eventName;
-                if (isHandleEvent) {
-                    // save original delegate for compare to check duplicate
-                    task.originalDelegate = delegate;
-                }
-                if (!prepend) {
-                    existingTasks.push(task);
-                }
-                else {
-                    existingTasks.unshift(task);
-                }
                 if (returnTarget) {
-                    return target;
+                    return this;
                 }
             };
-        };
-        proto[ADD_EVENT_LISTENER] = makeAddListener(nativeAddEventListener, ADD_EVENT_LISTENER_SOURCE, customSchedule, customCancel, returnTarget);
-        if (nativePrependEventListener) {
-            proto[PREPEND_EVENT_LISTENER] = makeAddListener(nativePrependEventListener, PREPEND_EVENT_LISTENER_SOURCE, customSchedulePrepend, customCancel, returnTarget, true);
+            // for native toString patch
+            attachOriginToPatched(proto[ADD_EVENT_LISTENER], nativeAddEventListener);
+            attachOriginToPatched(proto[REMOVE_EVENT_LISTENER], nativeRemoveEventListener);
+            if (nativeRemoveAllListeners) {
+                attachOriginToPatched(proto[REMOVE_ALL_LISTENERS_EVENT_LISTENER], nativeRemoveAllListeners);
+            }
+            if (nativeListeners) {
+                attachOriginToPatched(proto[LISTENERS_EVENT_LISTENER], nativeListeners);
+            }
+            return true;
         }
-        proto[REMOVE_EVENT_LISTENER] = function () {
-            const target = this || _global;
-            const eventName = arguments[0];
-            const options = arguments[2];
-            let capture;
-            if (options === undefined) {
-                capture = false;
-            }
-            else if (options === true) {
-                capture = true;
-            }
-            else if (options === false) {
-                capture = false;
-            }
-            else {
-                capture = options ? !!options.capture : false;
-            }
-            const delegate = arguments[1];
-            if (!delegate) {
-                return nativeRemoveEventListener.apply(this, arguments);
-            }
-            if (validateHandler &&
-                !validateHandler(nativeRemoveEventListener, delegate, target, arguments)) {
-                return;
-            }
-            const symbolEventNames = zoneSymbolEventNames$1[eventName];
-            let symbolEventName;
-            if (symbolEventNames) {
-                symbolEventName = symbolEventNames[capture ? TRUE_STR : FALSE_STR];
-            }
-            const existingTasks = symbolEventName && target[symbolEventName];
-            if (existingTasks) {
-                for (let i = 0; i < existingTasks.length; i++) {
-                    const existingTask = existingTasks[i];
-                    if (compare(existingTask, delegate)) {
-                        existingTasks.splice(i, 1);
-                        // set isRemoved to data for faster invokeTask check
-                        existingTask.isRemoved = true;
-                        if (existingTasks.length === 0) {
-                            // all tasks for the eventName + capture have gone,
-                            // remove globalZoneAwareCallback and remove the task cache from target
-                            existingTask.allRemoved = true;
-                            target[symbolEventName] = null;
-                        }
-                        existingTask.zone.cancelTask(existingTask);
-                        if (returnTarget) {
-                            return target;
-                        }
-                        return;
+        let results = [];
+        for (let i = 0; i < apis.length; i++) {
+            results[i] = patchEventTargetMethods(apis[i], patchOptions);
+        }
+        return results;
+    }
+    function findEventTasks(target, eventName) {
+        const foundTasks = [];
+        for (let prop in target) {
+            const match = EVENT_NAME_SYMBOL_REGX.exec(prop);
+            let evtName = match && match[1];
+            if (evtName && (!eventName || evtName === eventName)) {
+                const tasks = target[prop];
+                if (tasks) {
+                    for (let i = 0; i < tasks.length; i++) {
+                        foundTasks.push(tasks[i]);
                     }
                 }
             }
-            // issue 930, didn't find the event name or callback
-            // from zone kept existingTasks, the callback maybe
-            // added outside of zone, we need to call native removeEventListener
-            // to try to remove it.
-            return nativeRemoveEventListener.apply(this, arguments);
-        };
-        proto[LISTENERS_EVENT_LISTENER] = function () {
-            const target = this || _global;
-            const eventName = arguments[0];
-            const listeners = [];
-            const tasks = findEventTasks(target, eventNameToString ? eventNameToString(eventName) : eventName);
-            for (let i = 0; i < tasks.length; i++) {
-                const task = tasks[i];
-                let delegate = task.originalDelegate ? task.originalDelegate : task.callback;
-                listeners.push(delegate);
-            }
-            return listeners;
-        };
-        proto[REMOVE_ALL_LISTENERS_EVENT_LISTENER] = function () {
-            const target = this || _global;
-            const eventName = arguments[0];
-            if (!eventName) {
-                const keys = Object.keys(target);
-                for (let i = 0; i < keys.length; i++) {
-                    const prop = keys[i];
-                    const match = EVENT_NAME_SYMBOL_REGX.exec(prop);
-                    let evtName = match && match[1];
-                    // in nodejs EventEmitter, removeListener event is
-                    // used for monitoring the removeListener call,
-                    // so just keep removeListener eventListener until
-                    // all other eventListeners are removed
-                    if (evtName && evtName !== 'removeListener') {
-                        this[REMOVE_ALL_LISTENERS_EVENT_LISTENER].call(this, evtName);
-                    }
-                }
-                // remove removeListener listener finally
-                this[REMOVE_ALL_LISTENERS_EVENT_LISTENER].call(this, 'removeListener');
-            }
-            else {
-                const symbolEventNames = zoneSymbolEventNames$1[eventName];
-                if (symbolEventNames) {
-                    const symbolEventName = symbolEventNames[FALSE_STR];
-                    const symbolCaptureEventName = symbolEventNames[TRUE_STR];
-                    const tasks = target[symbolEventName];
-                    const captureTasks = target[symbolCaptureEventName];
-                    if (tasks) {
-                        const removeTasks = tasks.slice();
-                        for (let i = 0; i < removeTasks.length; i++) {
-                            const task = removeTasks[i];
-                            let delegate = task.originalDelegate ? task.originalDelegate : task.callback;
-                            this[REMOVE_EVENT_LISTENER].call(this, eventName, delegate, task.options);
-                        }
-                    }
-                    if (captureTasks) {
-                        const removeTasks = captureTasks.slice();
-                        for (let i = 0; i < removeTasks.length; i++) {
-                            const task = removeTasks[i];
-                            let delegate = task.originalDelegate ? task.originalDelegate : task.callback;
-                            this[REMOVE_EVENT_LISTENER].call(this, eventName, delegate, task.options);
-                        }
-                    }
-                }
-            }
-            if (returnTarget) {
-                return this;
-            }
-        };
-        // for native toString patch
-        attachOriginToPatched(proto[ADD_EVENT_LISTENER], nativeAddEventListener);
-        attachOriginToPatched(proto[REMOVE_EVENT_LISTENER], nativeRemoveEventListener);
-        if (nativeRemoveAllListeners) {
-            attachOriginToPatched(proto[REMOVE_ALL_LISTENERS_EVENT_LISTENER], nativeRemoveAllListeners);
         }
-        if (nativeListeners) {
-            attachOriginToPatched(proto[LISTENERS_EVENT_LISTENER], nativeListeners);
-        }
-        return true;
+        return foundTasks;
     }
-    let results = [];
-    for (let i = 0; i < apis.length; i++) {
-        results[i] = patchEventTargetMethods(apis[i], patchOptions);
-    }
-    return results;
-}
-function findEventTasks(target, eventName) {
-    const foundTasks = [];
-    for (let prop in target) {
-        const match = EVENT_NAME_SYMBOL_REGX.exec(prop);
-        let evtName = match && match[1];
-        if (evtName && (!eventName || evtName === eventName)) {
-            const tasks = target[prop];
-            if (tasks) {
-                for (let i = 0; i < tasks.length; i++) {
-                    foundTasks.push(tasks[i]);
-                }
-            }
+    function patchEventPrototype(global, api) {
+        const Event = global['Event'];
+        if (Event && Event.prototype) {
+            api.patchMethod(Event.prototype, 'stopImmediatePropagation', (delegate) => function (self, args) {
+                self[IMMEDIATE_PROPAGATION_SYMBOL] = true;
+                // we need to call the native stopImmediatePropagation
+                // in case in some hybrid application, some part of
+                // application will be controlled by zone, some are not
+                delegate && delegate.apply(self, args);
+            });
         }
     }
-    return foundTasks;
-}
-function patchEventPrototype(global, api) {
-    const Event = global['Event'];
-    if (Event && Event.prototype) {
-        api.patchMethod(Event.prototype, 'stopImmediatePropagation', (delegate) => function (self, args) {
-            self[IMMEDIATE_PROPAGATION_SYMBOL] = true;
-            // we need to call the native stopImmediatePropagation
-            // in case in some hybrid application, some part of
-            // application will be controlled by zone, some are not
-            delegate && delegate.apply(self, args);
-        });
-    }
-}
 
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-function patchCallbacks(api, target, targetName, method, callbacks) {
-    const symbol = Zone.__symbol__(method);
-    if (target[symbol]) {
-        return;
-    }
-    const nativeDelegate = target[symbol] = target[method];
-    target[method] = function (name, opts, options) {
-        if (opts && opts.prototype) {
-            callbacks.forEach(function (callback) {
-                const source = `${targetName}.${method}::` + callback;
-                const prototype = opts.prototype;
-                if (prototype.hasOwnProperty(callback)) {
-                    const descriptor = api.ObjectGetOwnPropertyDescriptor(prototype, callback);
-                    if (descriptor && descriptor.value) {
-                        descriptor.value = api.wrapWithCurrentZone(descriptor.value, source);
-                        api._redefineProperty(opts.prototype, callback, descriptor);
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+    function patchCallbacks(api, target, targetName, method, callbacks) {
+        const symbol = Zone.__symbol__(method);
+        if (target[symbol]) {
+            return;
+        }
+        const nativeDelegate = target[symbol] = target[method];
+        target[method] = function (name, opts, options) {
+            if (opts && opts.prototype) {
+                callbacks.forEach(function (callback) {
+                    const source = `${targetName}.${method}::` + callback;
+                    const prototype = opts.prototype;
+                    if (prototype.hasOwnProperty(callback)) {
+                        const descriptor = api.ObjectGetOwnPropertyDescriptor(prototype, callback);
+                        if (descriptor && descriptor.value) {
+                            descriptor.value = api.wrapWithCurrentZone(descriptor.value, source);
+                            api._redefineProperty(opts.prototype, callback, descriptor);
+                        }
+                        else if (prototype[callback]) {
+                            prototype[callback] = api.wrapWithCurrentZone(prototype[callback], source);
+                        }
                     }
                     else if (prototype[callback]) {
                         prototype[callback] = api.wrapWithCurrentZone(prototype[callback], source);
                     }
-                }
-                else if (prototype[callback]) {
-                    prototype[callback] = api.wrapWithCurrentZone(prototype[callback], source);
-                }
-            });
-        }
-        return nativeDelegate.call(target, name, opts, options);
-    };
-    api.attachOriginToPatched(target[method], nativeDelegate);
-}
+                });
+            }
+            return nativeDelegate.call(target, name, opts, options);
+        };
+        api.attachOriginToPatched(target[method], nativeDelegate);
+    }
 
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/*
- * This is necessary for Chrome and Chrome mobile, to enable
- * things like redefining `createdCallback` on an element.
- */
-const zoneSymbol$1 = Zone.__symbol__;
-const _defineProperty = Object[zoneSymbol$1('defineProperty')] = Object.defineProperty;
-const _getOwnPropertyDescriptor = Object[zoneSymbol$1('getOwnPropertyDescriptor')] =
-    Object.getOwnPropertyDescriptor;
-const _create = Object.create;
-const unconfigurablesKey = zoneSymbol$1('unconfigurables');
-function propertyPatch() {
-    Object.defineProperty = function (obj, prop, desc) {
-        if (isUnconfigurable(obj, prop)) {
-            throw new TypeError('Cannot assign to read only property \'' + prop + '\' of ' + obj);
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+    const globalEventHandlersEventNames = [
+        'abort',
+        'animationcancel',
+        'animationend',
+        'animationiteration',
+        'auxclick',
+        'beforeinput',
+        'blur',
+        'cancel',
+        'canplay',
+        'canplaythrough',
+        'change',
+        'compositionstart',
+        'compositionupdate',
+        'compositionend',
+        'cuechange',
+        'click',
+        'close',
+        'contextmenu',
+        'curechange',
+        'dblclick',
+        'drag',
+        'dragend',
+        'dragenter',
+        'dragexit',
+        'dragleave',
+        'dragover',
+        'drop',
+        'durationchange',
+        'emptied',
+        'ended',
+        'error',
+        'focus',
+        'focusin',
+        'focusout',
+        'gotpointercapture',
+        'input',
+        'invalid',
+        'keydown',
+        'keypress',
+        'keyup',
+        'load',
+        'loadstart',
+        'loadeddata',
+        'loadedmetadata',
+        'lostpointercapture',
+        'mousedown',
+        'mouseenter',
+        'mouseleave',
+        'mousemove',
+        'mouseout',
+        'mouseover',
+        'mouseup',
+        'mousewheel',
+        'orientationchange',
+        'pause',
+        'play',
+        'playing',
+        'pointercancel',
+        'pointerdown',
+        'pointerenter',
+        'pointerleave',
+        'pointerlockchange',
+        'mozpointerlockchange',
+        'webkitpointerlockerchange',
+        'pointerlockerror',
+        'mozpointerlockerror',
+        'webkitpointerlockerror',
+        'pointermove',
+        'pointout',
+        'pointerover',
+        'pointerup',
+        'progress',
+        'ratechange',
+        'reset',
+        'resize',
+        'scroll',
+        'seeked',
+        'seeking',
+        'select',
+        'selectionchange',
+        'selectstart',
+        'show',
+        'sort',
+        'stalled',
+        'submit',
+        'suspend',
+        'timeupdate',
+        'volumechange',
+        'touchcancel',
+        'touchmove',
+        'touchstart',
+        'touchend',
+        'transitioncancel',
+        'transitionend',
+        'waiting',
+        'wheel'
+    ];
+    const documentEventNames = [
+        'afterscriptexecute', 'beforescriptexecute', 'DOMContentLoaded', 'freeze', 'fullscreenchange',
+        'mozfullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange', 'fullscreenerror',
+        'mozfullscreenerror', 'webkitfullscreenerror', 'msfullscreenerror', 'readystatechange',
+        'visibilitychange', 'resume'
+    ];
+    const windowEventNames = [
+        'absolutedeviceorientation',
+        'afterinput',
+        'afterprint',
+        'appinstalled',
+        'beforeinstallprompt',
+        'beforeprint',
+        'beforeunload',
+        'devicelight',
+        'devicemotion',
+        'deviceorientation',
+        'deviceorientationabsolute',
+        'deviceproximity',
+        'hashchange',
+        'languagechange',
+        'message',
+        'mozbeforepaint',
+        'offline',
+        'online',
+        'paint',
+        'pageshow',
+        'pagehide',
+        'popstate',
+        'rejectionhandled',
+        'storage',
+        'unhandledrejection',
+        'unload',
+        'userproximity',
+        'vrdisplyconnected',
+        'vrdisplaydisconnected',
+        'vrdisplaypresentchange'
+    ];
+    const htmlElementEventNames = [
+        'beforecopy', 'beforecut', 'beforepaste', 'copy', 'cut', 'paste', 'dragstart', 'loadend',
+        'animationstart', 'search', 'transitionrun', 'transitionstart', 'webkitanimationend',
+        'webkitanimationiteration', 'webkitanimationstart', 'webkittransitionend'
+    ];
+    const mediaElementEventNames = ['encrypted', 'waitingforkey', 'msneedkey', 'mozinterruptbegin', 'mozinterruptend'];
+    const ieElementEventNames = [
+        'activate',
+        'afterupdate',
+        'ariarequest',
+        'beforeactivate',
+        'beforedeactivate',
+        'beforeeditfocus',
+        'beforeupdate',
+        'cellchange',
+        'controlselect',
+        'dataavailable',
+        'datasetchanged',
+        'datasetcomplete',
+        'errorupdate',
+        'filterchange',
+        'layoutcomplete',
+        'losecapture',
+        'move',
+        'moveend',
+        'movestart',
+        'propertychange',
+        'resizeend',
+        'resizestart',
+        'rowenter',
+        'rowexit',
+        'rowsdelete',
+        'rowsinserted',
+        'command',
+        'compassneedscalibration',
+        'deactivate',
+        'help',
+        'mscontentzoom',
+        'msmanipulationstatechanged',
+        'msgesturechange',
+        'msgesturedoubletap',
+        'msgestureend',
+        'msgesturehold',
+        'msgesturestart',
+        'msgesturetap',
+        'msgotpointercapture',
+        'msinertiastart',
+        'mslostpointercapture',
+        'mspointercancel',
+        'mspointerdown',
+        'mspointerenter',
+        'mspointerhover',
+        'mspointerleave',
+        'mspointermove',
+        'mspointerout',
+        'mspointerover',
+        'mspointerup',
+        'pointerout',
+        'mssitemodejumplistitemremoved',
+        'msthumbnailclick',
+        'stop',
+        'storagecommit'
+    ];
+    const webglEventNames = ['webglcontextrestored', 'webglcontextlost', 'webglcontextcreationerror'];
+    const formEventNames = ['autocomplete', 'autocompleteerror'];
+    const detailEventNames = ['toggle'];
+    const frameEventNames = ['load'];
+    const frameSetEventNames = ['blur', 'error', 'focus', 'load', 'resize', 'scroll', 'messageerror'];
+    const marqueeEventNames = ['bounce', 'finish', 'start'];
+    const XMLHttpRequestEventNames = [
+        'loadstart', 'progress', 'abort', 'error', 'load', 'progress', 'timeout', 'loadend',
+        'readystatechange'
+    ];
+    const IDBIndexEventNames = ['upgradeneeded', 'complete', 'abort', 'success', 'error', 'blocked', 'versionchange', 'close'];
+    const websocketEventNames = ['close', 'error', 'open', 'message'];
+    const workerEventNames = ['error', 'message'];
+    const eventNames = globalEventHandlersEventNames.concat(webglEventNames, formEventNames, detailEventNames, documentEventNames, windowEventNames, htmlElementEventNames, ieElementEventNames);
+    function filterProperties(target, onProperties, ignoreProperties) {
+        if (!ignoreProperties || ignoreProperties.length === 0) {
+            return onProperties;
         }
-        const originalConfigurableFlag = desc.configurable;
-        if (prop !== 'prototype') {
-            desc = rewriteDescriptor(obj, prop, desc);
+        const tip = ignoreProperties.filter(ip => ip.target === target);
+        if (!tip || tip.length === 0) {
+            return onProperties;
         }
-        return _tryDefineProperty(obj, prop, desc, originalConfigurableFlag);
-    };
-    Object.defineProperties = function (obj, props) {
-        Object.keys(props).forEach(function (prop) {
-            Object.defineProperty(obj, prop, props[prop]);
-        });
-        return obj;
-    };
-    Object.create = function (obj, proto) {
-        if (typeof proto === 'object' && !Object.isFrozen(proto)) {
-            Object.keys(proto).forEach(function (prop) {
-                proto[prop] = rewriteDescriptor(obj, prop, proto[prop]);
-            });
-        }
-        return _create(obj, proto);
-    };
-    Object.getOwnPropertyDescriptor = function (obj, prop) {
-        const desc = _getOwnPropertyDescriptor(obj, prop);
-        if (desc && isUnconfigurable(obj, prop)) {
-            desc.configurable = false;
-        }
-        return desc;
-    };
-}
-function _redefineProperty(obj, prop, desc) {
-    const originalConfigurableFlag = desc.configurable;
-    desc = rewriteDescriptor(obj, prop, desc);
-    return _tryDefineProperty(obj, prop, desc, originalConfigurableFlag);
-}
-function isUnconfigurable(obj, prop) {
-    return obj && obj[unconfigurablesKey] && obj[unconfigurablesKey][prop];
-}
-function rewriteDescriptor(obj, prop, desc) {
-    // issue-927, if the desc is frozen, don't try to change the desc
-    if (!Object.isFrozen(desc)) {
-        desc.configurable = true;
+        const targetIgnoreProperties = tip[0].ignoreProperties;
+        return onProperties.filter(op => targetIgnoreProperties.indexOf(op) === -1);
     }
-    if (!desc.configurable) {
-        // issue-927, if the obj is frozen, don't try to set the desc to obj
-        if (!obj[unconfigurablesKey] && !Object.isFrozen(obj)) {
-            _defineProperty(obj, unconfigurablesKey, { writable: true, value: {} });
-        }
-        if (obj[unconfigurablesKey]) {
-            obj[unconfigurablesKey][prop] = true;
-        }
-    }
-    return desc;
-}
-function _tryDefineProperty(obj, prop, desc, originalConfigurableFlag) {
-    try {
-        return _defineProperty(obj, prop, desc);
-    }
-    catch (error) {
-        if (desc.configurable) {
-            // In case of errors, when the configurable flag was likely set by rewriteDescriptor(), let's
-            // retry with the original flag value
-            if (typeof originalConfigurableFlag == 'undefined') {
-                delete desc.configurable;
-            }
-            else {
-                desc.configurable = originalConfigurableFlag;
-            }
-            try {
-                return _defineProperty(obj, prop, desc);
-            }
-            catch (error) {
-                let descJson = null;
-                try {
-                    descJson = JSON.stringify(desc);
-                }
-                catch (error) {
-                    descJson = desc.toString();
-                }
-                console.log(`Attempting to configure '${prop}' with descriptor '${descJson}' on object '${obj}' and got error, giving up: ${error}`);
-            }
-        }
-        else {
-            throw error;
-        }
-    }
-}
-
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @fileoverview
- * @suppress {globalThis}
- */
-const globalEventHandlersEventNames = [
-    'abort',
-    'animationcancel',
-    'animationend',
-    'animationiteration',
-    'auxclick',
-    'beforeinput',
-    'blur',
-    'cancel',
-    'canplay',
-    'canplaythrough',
-    'change',
-    'compositionstart',
-    'compositionupdate',
-    'compositionend',
-    'cuechange',
-    'click',
-    'close',
-    'contextmenu',
-    'curechange',
-    'dblclick',
-    'drag',
-    'dragend',
-    'dragenter',
-    'dragexit',
-    'dragleave',
-    'dragover',
-    'drop',
-    'durationchange',
-    'emptied',
-    'ended',
-    'error',
-    'focus',
-    'focusin',
-    'focusout',
-    'gotpointercapture',
-    'input',
-    'invalid',
-    'keydown',
-    'keypress',
-    'keyup',
-    'load',
-    'loadstart',
-    'loadeddata',
-    'loadedmetadata',
-    'lostpointercapture',
-    'mousedown',
-    'mouseenter',
-    'mouseleave',
-    'mousemove',
-    'mouseout',
-    'mouseover',
-    'mouseup',
-    'mousewheel',
-    'orientationchange',
-    'pause',
-    'play',
-    'playing',
-    'pointercancel',
-    'pointerdown',
-    'pointerenter',
-    'pointerleave',
-    'pointerlockchange',
-    'mozpointerlockchange',
-    'webkitpointerlockerchange',
-    'pointerlockerror',
-    'mozpointerlockerror',
-    'webkitpointerlockerror',
-    'pointermove',
-    'pointout',
-    'pointerover',
-    'pointerup',
-    'progress',
-    'ratechange',
-    'reset',
-    'resize',
-    'scroll',
-    'seeked',
-    'seeking',
-    'select',
-    'selectionchange',
-    'selectstart',
-    'show',
-    'sort',
-    'stalled',
-    'submit',
-    'suspend',
-    'timeupdate',
-    'volumechange',
-    'touchcancel',
-    'touchmove',
-    'touchstart',
-    'touchend',
-    'transitioncancel',
-    'transitionend',
-    'waiting',
-    'wheel'
-];
-const documentEventNames = [
-    'afterscriptexecute', 'beforescriptexecute', 'DOMContentLoaded', 'freeze', 'fullscreenchange',
-    'mozfullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange', 'fullscreenerror',
-    'mozfullscreenerror', 'webkitfullscreenerror', 'msfullscreenerror', 'readystatechange',
-    'visibilitychange', 'resume'
-];
-const windowEventNames = [
-    'absolutedeviceorientation',
-    'afterinput',
-    'afterprint',
-    'appinstalled',
-    'beforeinstallprompt',
-    'beforeprint',
-    'beforeunload',
-    'devicelight',
-    'devicemotion',
-    'deviceorientation',
-    'deviceorientationabsolute',
-    'deviceproximity',
-    'hashchange',
-    'languagechange',
-    'message',
-    'mozbeforepaint',
-    'offline',
-    'online',
-    'paint',
-    'pageshow',
-    'pagehide',
-    'popstate',
-    'rejectionhandled',
-    'storage',
-    'unhandledrejection',
-    'unload',
-    'userproximity',
-    'vrdisplyconnected',
-    'vrdisplaydisconnected',
-    'vrdisplaypresentchange'
-];
-const htmlElementEventNames = [
-    'beforecopy', 'beforecut', 'beforepaste', 'copy', 'cut', 'paste', 'dragstart', 'loadend',
-    'animationstart', 'search', 'transitionrun', 'transitionstart', 'webkitanimationend',
-    'webkitanimationiteration', 'webkitanimationstart', 'webkittransitionend'
-];
-const mediaElementEventNames = ['encrypted', 'waitingforkey', 'msneedkey', 'mozinterruptbegin', 'mozinterruptend'];
-const ieElementEventNames = [
-    'activate',
-    'afterupdate',
-    'ariarequest',
-    'beforeactivate',
-    'beforedeactivate',
-    'beforeeditfocus',
-    'beforeupdate',
-    'cellchange',
-    'controlselect',
-    'dataavailable',
-    'datasetchanged',
-    'datasetcomplete',
-    'errorupdate',
-    'filterchange',
-    'layoutcomplete',
-    'losecapture',
-    'move',
-    'moveend',
-    'movestart',
-    'propertychange',
-    'resizeend',
-    'resizestart',
-    'rowenter',
-    'rowexit',
-    'rowsdelete',
-    'rowsinserted',
-    'command',
-    'compassneedscalibration',
-    'deactivate',
-    'help',
-    'mscontentzoom',
-    'msmanipulationstatechanged',
-    'msgesturechange',
-    'msgesturedoubletap',
-    'msgestureend',
-    'msgesturehold',
-    'msgesturestart',
-    'msgesturetap',
-    'msgotpointercapture',
-    'msinertiastart',
-    'mslostpointercapture',
-    'mspointercancel',
-    'mspointerdown',
-    'mspointerenter',
-    'mspointerhover',
-    'mspointerleave',
-    'mspointermove',
-    'mspointerout',
-    'mspointerover',
-    'mspointerup',
-    'pointerout',
-    'mssitemodejumplistitemremoved',
-    'msthumbnailclick',
-    'stop',
-    'storagecommit'
-];
-const webglEventNames = ['webglcontextrestored', 'webglcontextlost', 'webglcontextcreationerror'];
-const formEventNames = ['autocomplete', 'autocompleteerror'];
-const detailEventNames = ['toggle'];
-const frameEventNames = ['load'];
-const frameSetEventNames = ['blur', 'error', 'focus', 'load', 'resize', 'scroll', 'messageerror'];
-const marqueeEventNames = ['bounce', 'finish', 'start'];
-const XMLHttpRequestEventNames = [
-    'loadstart', 'progress', 'abort', 'error', 'load', 'progress', 'timeout', 'loadend',
-    'readystatechange'
-];
-const IDBIndexEventNames = ['upgradeneeded', 'complete', 'abort', 'success', 'error', 'blocked', 'versionchange', 'close'];
-const websocketEventNames = ['close', 'error', 'open', 'message'];
-const workerEventNames = ['error', 'message'];
-const eventNames = globalEventHandlersEventNames.concat(webglEventNames, formEventNames, detailEventNames, documentEventNames, windowEventNames, htmlElementEventNames, ieElementEventNames);
-function filterProperties(target, onProperties, ignoreProperties) {
-    if (!ignoreProperties || ignoreProperties.length === 0) {
-        return onProperties;
-    }
-    const tip = ignoreProperties.filter(ip => ip.target === target);
-    if (!tip || tip.length === 0) {
-        return onProperties;
-    }
-    const targetIgnoreProperties = tip[0].ignoreProperties;
-    return onProperties.filter(op => targetIgnoreProperties.indexOf(op) === -1);
-}
-function patchFilteredProperties(target, onProperties, ignoreProperties, prototype) {
-    // check whether target is available, sometimes target will be undefined
-    // because different browser or some 3rd party plugin.
-    if (!target) {
-        return;
-    }
-    const filteredProperties = filterProperties(target, onProperties, ignoreProperties);
-    patchOnProperties(target, filteredProperties, prototype);
-}
-function propertyDescriptorPatch(api, _global) {
-    if (isNode && !isMix) {
-        return;
-    }
-    if (Zone[api.symbol('patchEvents')]) {
-        // events are already been patched by legacy patch.
-        return;
-    }
-    const supportsWebSocket = typeof WebSocket !== 'undefined';
-    const ignoreProperties = _global['__Zone_ignore_on_properties'];
-    // for browsers that we can patch the descriptor:  Chrome & Firefox
-    if (isBrowser) {
-        const internalWindow = window;
-        const ignoreErrorProperties = isIE ? [{ target: internalWindow, ignoreProperties: ['error'] }] : [];
-        // in IE/Edge, onProp not exist in window object, but in WindowPrototype
-        // so we need to pass WindowPrototype to check onProp exist or not
-        patchFilteredProperties(internalWindow, eventNames.concat(['messageerror']), ignoreProperties ? ignoreProperties.concat(ignoreErrorProperties) : ignoreProperties, ObjectGetPrototypeOf(internalWindow));
-        patchFilteredProperties(Document.prototype, eventNames, ignoreProperties);
-        if (typeof internalWindow['SVGElement'] !== 'undefined') {
-            patchFilteredProperties(internalWindow['SVGElement'].prototype, eventNames, ignoreProperties);
-        }
-        patchFilteredProperties(Element.prototype, eventNames, ignoreProperties);
-        patchFilteredProperties(HTMLElement.prototype, eventNames, ignoreProperties);
-        patchFilteredProperties(HTMLMediaElement.prototype, mediaElementEventNames, ignoreProperties);
-        patchFilteredProperties(HTMLFrameSetElement.prototype, windowEventNames.concat(frameSetEventNames), ignoreProperties);
-        patchFilteredProperties(HTMLBodyElement.prototype, windowEventNames.concat(frameSetEventNames), ignoreProperties);
-        patchFilteredProperties(HTMLFrameElement.prototype, frameEventNames, ignoreProperties);
-        patchFilteredProperties(HTMLIFrameElement.prototype, frameEventNames, ignoreProperties);
-        const HTMLMarqueeElement = internalWindow['HTMLMarqueeElement'];
-        if (HTMLMarqueeElement) {
-            patchFilteredProperties(HTMLMarqueeElement.prototype, marqueeEventNames, ignoreProperties);
-        }
-        const Worker = internalWindow['Worker'];
-        if (Worker) {
-            patchFilteredProperties(Worker.prototype, workerEventNames, ignoreProperties);
-        }
-    }
-    const XMLHttpRequest = _global['XMLHttpRequest'];
-    if (XMLHttpRequest) {
-        // XMLHttpRequest is not available in ServiceWorker, so we need to check here
-        patchFilteredProperties(XMLHttpRequest.prototype, XMLHttpRequestEventNames, ignoreProperties);
-    }
-    const XMLHttpRequestEventTarget = _global['XMLHttpRequestEventTarget'];
-    if (XMLHttpRequestEventTarget) {
-        patchFilteredProperties(XMLHttpRequestEventTarget && XMLHttpRequestEventTarget.prototype, XMLHttpRequestEventNames, ignoreProperties);
-    }
-    if (typeof IDBIndex !== 'undefined') {
-        patchFilteredProperties(IDBIndex.prototype, IDBIndexEventNames, ignoreProperties);
-        patchFilteredProperties(IDBRequest.prototype, IDBIndexEventNames, ignoreProperties);
-        patchFilteredProperties(IDBOpenDBRequest.prototype, IDBIndexEventNames, ignoreProperties);
-        patchFilteredProperties(IDBDatabase.prototype, IDBIndexEventNames, ignoreProperties);
-        patchFilteredProperties(IDBTransaction.prototype, IDBIndexEventNames, ignoreProperties);
-        patchFilteredProperties(IDBCursor.prototype, IDBIndexEventNames, ignoreProperties);
-    }
-    if (supportsWebSocket) {
-        patchFilteredProperties(WebSocket.prototype, websocketEventNames, ignoreProperties);
-    }
-}
-
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-Zone.__load_patch('util', (global, Zone, api) => {
-    api.patchOnProperties = patchOnProperties;
-    api.patchMethod = patchMethod;
-    api.bindArguments = bindArguments;
-    api.patchMacroTask = patchMacroTask;
-    // In earlier version of zone.js (<0.9.0), we use env name `__zone_symbol__BLACK_LISTED_EVENTS` to
-    // define which events will not be patched by `Zone.js`.
-    // In newer version (>=0.9.0), we change the env name to `__zone_symbol__UNPATCHED_EVENTS` to keep
-    // the name consistent with angular repo.
-    // The  `__zone_symbol__BLACK_LISTED_EVENTS` is deprecated, but it is still be supported for
-    // backwards compatibility.
-    const SYMBOL_BLACK_LISTED_EVENTS = Zone.__symbol__('BLACK_LISTED_EVENTS');
-    const SYMBOL_UNPATCHED_EVENTS = Zone.__symbol__('UNPATCHED_EVENTS');
-    if (global[SYMBOL_UNPATCHED_EVENTS]) {
-        global[SYMBOL_BLACK_LISTED_EVENTS] = global[SYMBOL_UNPATCHED_EVENTS];
-    }
-    if (global[SYMBOL_BLACK_LISTED_EVENTS]) {
-        Zone[SYMBOL_BLACK_LISTED_EVENTS] = Zone[SYMBOL_UNPATCHED_EVENTS] =
-            global[SYMBOL_BLACK_LISTED_EVENTS];
-    }
-    api.patchEventPrototype = patchEventPrototype;
-    api.patchEventTarget = patchEventTarget;
-    api.isIEOrEdge = isIEOrEdge;
-    api.ObjectDefineProperty = ObjectDefineProperty;
-    api.ObjectGetOwnPropertyDescriptor = ObjectGetOwnPropertyDescriptor;
-    api.ObjectCreate = ObjectCreate;
-    api.ArraySlice = ArraySlice;
-    api.patchClass = patchClass;
-    api.wrapWithCurrentZone = wrapWithCurrentZone;
-    api.filterProperties = filterProperties;
-    api.attachOriginToPatched = attachOriginToPatched;
-    api._redefineProperty = _redefineProperty;
-    api.patchCallbacks = patchCallbacks;
-    api.getGlobalObjects = () => ({
-        globalSources,
-        zoneSymbolEventNames: zoneSymbolEventNames$1,
-        eventNames,
-        isBrowser,
-        isMix,
-        isNode,
-        TRUE_STR,
-        FALSE_STR,
-        ZONE_SYMBOL_PREFIX,
-        ADD_EVENT_LISTENER_STR,
-        REMOVE_EVENT_LISTENER_STR
-    });
-});
-
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @fileoverview
- * @suppress {missingRequire}
- */
-const taskSymbol = zoneSymbol('zoneTask');
-function patchTimer(window, setName, cancelName, nameSuffix) {
-    let setNative = null;
-    let clearNative = null;
-    setName += nameSuffix;
-    cancelName += nameSuffix;
-    const tasksByHandleId = {};
-    function scheduleTask(task) {
-        const data = task.data;
-        function timer() {
-            try {
-                task.invoke.apply(this, arguments);
-            }
-            finally {
-                // issue-934, task will be cancelled
-                // even it is a periodic task such as
-                // setInterval
-                if (!(task.data && task.data.isPeriodic)) {
-                    if (typeof data.handleId === 'number') {
-                        // in non-nodejs env, we remove timerId
-                        // from local cache
-                        delete tasksByHandleId[data.handleId];
-                    }
-                    else if (data.handleId) {
-                        // Node returns complex objects as handleIds
-                        // we remove task reference from timer object
-                        data.handleId[taskSymbol] = null;
-                    }
-                }
-            }
-        }
-        data.args[0] = timer;
-        data.handleId = setNative.apply(window, data.args);
-        return task;
-    }
-    function clearTask(task) {
-        return clearNative(task.data.handleId);
-    }
-    setNative =
-        patchMethod(window, setName, (delegate) => function (self, args) {
-            if (typeof args[0] === 'function') {
-                const options = {
-                    isPeriodic: nameSuffix === 'Interval',
-                    delay: (nameSuffix === 'Timeout' || nameSuffix === 'Interval') ? args[1] || 0 :
-                        undefined,
-                    args: args
-                };
-                const task = scheduleMacroTaskWithCurrentZone(setName, args[0], options, scheduleTask, clearTask);
-                if (!task) {
-                    return task;
-                }
-                // Node.js must additionally support the ref and unref functions.
-                const handle = task.data.handleId;
-                if (typeof handle === 'number') {
-                    // for non nodejs env, we save handleId: task
-                    // mapping in local cache for clearTimeout
-                    tasksByHandleId[handle] = task;
-                }
-                else if (handle) {
-                    // for nodejs env, we save task
-                    // reference in timerId Object for clearTimeout
-                    handle[taskSymbol] = task;
-                }
-                // check whether handle is null, because some polyfill or browser
-                // may return undefined from setTimeout/setInterval/setImmediate/requestAnimationFrame
-                if (handle && handle.ref && handle.unref && typeof handle.ref === 'function' &&
-                    typeof handle.unref === 'function') {
-                    task.ref = handle.ref.bind(handle);
-                    task.unref = handle.unref.bind(handle);
-                }
-                if (typeof handle === 'number' || handle) {
-                    return handle;
-                }
-                return task;
-            }
-            else {
-                // cause an error by calling it directly.
-                return delegate.apply(window, args);
-            }
-        });
-    clearNative =
-        patchMethod(window, cancelName, (delegate) => function (self, args) {
-            const id = args[0];
-            let task;
-            if (typeof id === 'number') {
-                // non nodejs env.
-                task = tasksByHandleId[id];
-            }
-            else {
-                // nodejs env.
-                task = id && id[taskSymbol];
-                // other environments.
-                if (!task) {
-                    task = id;
-                }
-            }
-            if (task && typeof task.type === 'string') {
-                if (task.state !== 'notScheduled' &&
-                    (task.cancelFn && task.data.isPeriodic || task.runCount === 0)) {
-                    if (typeof id === 'number') {
-                        delete tasksByHandleId[id];
-                    }
-                    else if (id) {
-                        id[taskSymbol] = null;
-                    }
-                    // Do not cancel already canceled functions
-                    task.zone.cancelTask(task);
-                }
-            }
-            else {
-                // cause an error by calling it directly.
-                delegate.apply(window, args);
-            }
-        });
-}
-
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-function patchCustomElements(_global, api) {
-    const { isBrowser, isMix } = api.getGlobalObjects();
-    if ((!isBrowser && !isMix) || !_global['customElements'] || !('customElements' in _global)) {
-        return;
-    }
-    const callbacks = ['connectedCallback', 'disconnectedCallback', 'adoptedCallback', 'attributeChangedCallback'];
-    api.patchCallbacks(api, _global.customElements, 'customElements', 'define', callbacks);
-}
-
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-function eventTargetPatch(_global, api) {
-    if (Zone[api.symbol('patchEventTarget')]) {
-        // EventTarget is already patched.
-        return;
-    }
-    const { eventNames, zoneSymbolEventNames, TRUE_STR, FALSE_STR, ZONE_SYMBOL_PREFIX } = api.getGlobalObjects();
-    //  predefine all __zone_symbol__ + eventName + true/false string
-    for (let i = 0; i < eventNames.length; i++) {
-        const eventName = eventNames[i];
-        const falseEventName = eventName + FALSE_STR;
-        const trueEventName = eventName + TRUE_STR;
-        const symbol = ZONE_SYMBOL_PREFIX + falseEventName;
-        const symbolCapture = ZONE_SYMBOL_PREFIX + trueEventName;
-        zoneSymbolEventNames[eventName] = {};
-        zoneSymbolEventNames[eventName][FALSE_STR] = symbol;
-        zoneSymbolEventNames[eventName][TRUE_STR] = symbolCapture;
-    }
-    const EVENT_TARGET = _global['EventTarget'];
-    if (!EVENT_TARGET || !EVENT_TARGET.prototype) {
-        return;
-    }
-    api.patchEventTarget(_global, [EVENT_TARGET && EVENT_TARGET.prototype]);
-    return true;
-}
-function patchEvent(global, api) {
-    api.patchEventPrototype(global, api);
-}
-
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @fileoverview
- * @suppress {missingRequire}
- */
-Zone.__load_patch('legacy', (global) => {
-    const legacyPatch = global[Zone.__symbol__('legacyPatch')];
-    if (legacyPatch) {
-        legacyPatch();
-    }
-});
-Zone.__load_patch('timers', (global) => {
-    const set = 'set';
-    const clear = 'clear';
-    patchTimer(global, set, clear, 'Timeout');
-    patchTimer(global, set, clear, 'Interval');
-    patchTimer(global, set, clear, 'Immediate');
-});
-Zone.__load_patch('requestAnimationFrame', (global) => {
-    patchTimer(global, 'request', 'cancel', 'AnimationFrame');
-    patchTimer(global, 'mozRequest', 'mozCancel', 'AnimationFrame');
-    patchTimer(global, 'webkitRequest', 'webkitCancel', 'AnimationFrame');
-});
-Zone.__load_patch('blocking', (global, Zone) => {
-    const blockingMethods = ['alert', 'prompt', 'confirm'];
-    for (let i = 0; i < blockingMethods.length; i++) {
-        const name = blockingMethods[i];
-        patchMethod(global, name, (delegate, symbol, name) => {
-            return function (s, args) {
-                return Zone.current.run(delegate, global, args, name);
-            };
-        });
-    }
-});
-Zone.__load_patch('EventTarget', (global, Zone, api) => {
-    patchEvent(global, api);
-    eventTargetPatch(global, api);
-    // patch XMLHttpRequestEventTarget's addEventListener/removeEventListener
-    const XMLHttpRequestEventTarget = global['XMLHttpRequestEventTarget'];
-    if (XMLHttpRequestEventTarget && XMLHttpRequestEventTarget.prototype) {
-        api.patchEventTarget(global, [XMLHttpRequestEventTarget.prototype]);
-    }
-    patchClass('MutationObserver');
-    patchClass('WebKitMutationObserver');
-    patchClass('IntersectionObserver');
-    patchClass('FileReader');
-});
-Zone.__load_patch('on_property', (global, Zone, api) => {
-    propertyDescriptorPatch(api, global);
-    propertyPatch();
-});
-Zone.__load_patch('customElements', (global, Zone, api) => {
-    patchCustomElements(global, api);
-});
-Zone.__load_patch('XHR', (global, Zone) => {
-    // Treat XMLHttpRequest as a macrotask.
-    patchXHR(global);
-    const XHR_TASK = zoneSymbol('xhrTask');
-    const XHR_SYNC = zoneSymbol('xhrSync');
-    const XHR_LISTENER = zoneSymbol('xhrListener');
-    const XHR_SCHEDULED = zoneSymbol('xhrScheduled');
-    const XHR_URL = zoneSymbol('xhrURL');
-    const XHR_ERROR_BEFORE_SCHEDULED = zoneSymbol('xhrErrorBeforeScheduled');
-    function patchXHR(window) {
-        const XMLHttpRequest = window['XMLHttpRequest'];
-        if (!XMLHttpRequest) {
-            // XMLHttpRequest is not available in service worker
+    function patchFilteredProperties(target, onProperties, ignoreProperties, prototype) {
+        // check whether target is available, sometimes target will be undefined
+        // because different browser or some 3rd party plugin.
+        if (!target) {
             return;
         }
-        const XMLHttpRequestPrototype = XMLHttpRequest.prototype;
-        function findPendingTask(target) {
-            return target[XHR_TASK];
+        const filteredProperties = filterProperties(target, onProperties, ignoreProperties);
+        patchOnProperties(target, filteredProperties, prototype);
+    }
+    function propertyDescriptorPatch(api, _global) {
+        if (isNode && !isMix) {
+            return;
         }
-        let oriAddListener = XMLHttpRequestPrototype[ZONE_SYMBOL_ADD_EVENT_LISTENER];
-        let oriRemoveListener = XMLHttpRequestPrototype[ZONE_SYMBOL_REMOVE_EVENT_LISTENER];
-        if (!oriAddListener) {
-            const XMLHttpRequestEventTarget = window['XMLHttpRequestEventTarget'];
-            if (XMLHttpRequestEventTarget) {
-                const XMLHttpRequestEventTargetPrototype = XMLHttpRequestEventTarget.prototype;
-                oriAddListener = XMLHttpRequestEventTargetPrototype[ZONE_SYMBOL_ADD_EVENT_LISTENER];
-                oriRemoveListener = XMLHttpRequestEventTargetPrototype[ZONE_SYMBOL_REMOVE_EVENT_LISTENER];
+        if (Zone[api.symbol('patchEvents')]) {
+            // events are already been patched by legacy patch.
+            return;
+        }
+        const supportsWebSocket = typeof WebSocket !== 'undefined';
+        const ignoreProperties = _global['__Zone_ignore_on_properties'];
+        // for browsers that we can patch the descriptor:  Chrome & Firefox
+        if (isBrowser) {
+            const internalWindow = window;
+            const ignoreErrorProperties = isIE ? [{ target: internalWindow, ignoreProperties: ['error'] }] : [];
+            // in IE/Edge, onProp not exist in window object, but in WindowPrototype
+            // so we need to pass WindowPrototype to check onProp exist or not
+            patchFilteredProperties(internalWindow, eventNames.concat(['messageerror']), ignoreProperties ? ignoreProperties.concat(ignoreErrorProperties) : ignoreProperties, ObjectGetPrototypeOf(internalWindow));
+            patchFilteredProperties(Document.prototype, eventNames, ignoreProperties);
+            if (typeof internalWindow['SVGElement'] !== 'undefined') {
+                patchFilteredProperties(internalWindow['SVGElement'].prototype, eventNames, ignoreProperties);
+            }
+            patchFilteredProperties(Element.prototype, eventNames, ignoreProperties);
+            patchFilteredProperties(HTMLElement.prototype, eventNames, ignoreProperties);
+            patchFilteredProperties(HTMLMediaElement.prototype, mediaElementEventNames, ignoreProperties);
+            patchFilteredProperties(HTMLFrameSetElement.prototype, windowEventNames.concat(frameSetEventNames), ignoreProperties);
+            patchFilteredProperties(HTMLBodyElement.prototype, windowEventNames.concat(frameSetEventNames), ignoreProperties);
+            patchFilteredProperties(HTMLFrameElement.prototype, frameEventNames, ignoreProperties);
+            patchFilteredProperties(HTMLIFrameElement.prototype, frameEventNames, ignoreProperties);
+            const HTMLMarqueeElement = internalWindow['HTMLMarqueeElement'];
+            if (HTMLMarqueeElement) {
+                patchFilteredProperties(HTMLMarqueeElement.prototype, marqueeEventNames, ignoreProperties);
+            }
+            const Worker = internalWindow['Worker'];
+            if (Worker) {
+                patchFilteredProperties(Worker.prototype, workerEventNames, ignoreProperties);
             }
         }
-        const READY_STATE_CHANGE = 'readystatechange';
-        const SCHEDULED = 'scheduled';
+        const XMLHttpRequest = _global['XMLHttpRequest'];
+        if (XMLHttpRequest) {
+            // XMLHttpRequest is not available in ServiceWorker, so we need to check here
+            patchFilteredProperties(XMLHttpRequest.prototype, XMLHttpRequestEventNames, ignoreProperties);
+        }
+        const XMLHttpRequestEventTarget = _global['XMLHttpRequestEventTarget'];
+        if (XMLHttpRequestEventTarget) {
+            patchFilteredProperties(XMLHttpRequestEventTarget && XMLHttpRequestEventTarget.prototype, XMLHttpRequestEventNames, ignoreProperties);
+        }
+        if (typeof IDBIndex !== 'undefined') {
+            patchFilteredProperties(IDBIndex.prototype, IDBIndexEventNames, ignoreProperties);
+            patchFilteredProperties(IDBRequest.prototype, IDBIndexEventNames, ignoreProperties);
+            patchFilteredProperties(IDBOpenDBRequest.prototype, IDBIndexEventNames, ignoreProperties);
+            patchFilteredProperties(IDBDatabase.prototype, IDBIndexEventNames, ignoreProperties);
+            patchFilteredProperties(IDBTransaction.prototype, IDBIndexEventNames, ignoreProperties);
+            patchFilteredProperties(IDBCursor.prototype, IDBIndexEventNames, ignoreProperties);
+        }
+        if (supportsWebSocket) {
+            patchFilteredProperties(WebSocket.prototype, websocketEventNames, ignoreProperties);
+        }
+    }
+
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+    Zone.__load_patch('util', (global, Zone, api) => {
+        api.patchOnProperties = patchOnProperties;
+        api.patchMethod = patchMethod;
+        api.bindArguments = bindArguments;
+        api.patchMacroTask = patchMacroTask;
+        // In earlier version of zone.js (<0.9.0), we use env name `__zone_symbol__BLACK_LISTED_EVENTS` to
+        // define which events will not be patched by `Zone.js`.
+        // In newer version (>=0.9.0), we change the env name to `__zone_symbol__UNPATCHED_EVENTS` to keep
+        // the name consistent with angular repo.
+        // The  `__zone_symbol__BLACK_LISTED_EVENTS` is deprecated, but it is still be supported for
+        // backwards compatibility.
+        const SYMBOL_BLACK_LISTED_EVENTS = Zone.__symbol__('BLACK_LISTED_EVENTS');
+        const SYMBOL_UNPATCHED_EVENTS = Zone.__symbol__('UNPATCHED_EVENTS');
+        if (global[SYMBOL_UNPATCHED_EVENTS]) {
+            global[SYMBOL_BLACK_LISTED_EVENTS] = global[SYMBOL_UNPATCHED_EVENTS];
+        }
+        if (global[SYMBOL_BLACK_LISTED_EVENTS]) {
+            Zone[SYMBOL_BLACK_LISTED_EVENTS] = Zone[SYMBOL_UNPATCHED_EVENTS] =
+                global[SYMBOL_BLACK_LISTED_EVENTS];
+        }
+        api.patchEventPrototype = patchEventPrototype;
+        api.patchEventTarget = patchEventTarget;
+        api.isIEOrEdge = isIEOrEdge;
+        api.ObjectDefineProperty = ObjectDefineProperty;
+        api.ObjectGetOwnPropertyDescriptor = ObjectGetOwnPropertyDescriptor;
+        api.ObjectCreate = ObjectCreate;
+        api.ArraySlice = ArraySlice;
+        api.patchClass = patchClass;
+        api.wrapWithCurrentZone = wrapWithCurrentZone;
+        api.filterProperties = filterProperties;
+        api.attachOriginToPatched = attachOriginToPatched;
+        api._redefineProperty = Object.defineProperty;
+        api.patchCallbacks = patchCallbacks;
+        api.getGlobalObjects = () => ({ globalSources, zoneSymbolEventNames: zoneSymbolEventNames$1, eventNames, isBrowser, isMix, isNode, TRUE_STR,
+            FALSE_STR, ZONE_SYMBOL_PREFIX, ADD_EVENT_LISTENER_STR, REMOVE_EVENT_LISTENER_STR });
+    });
+
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+    const taskSymbol = zoneSymbol('zoneTask');
+    function patchTimer(window, setName, cancelName, nameSuffix) {
+        let setNative = null;
+        let clearNative = null;
+        setName += nameSuffix;
+        cancelName += nameSuffix;
+        const tasksByHandleId = {};
         function scheduleTask(task) {
             const data = task.data;
-            const target = data.target;
-            target[XHR_SCHEDULED] = false;
-            target[XHR_ERROR_BEFORE_SCHEDULED] = false;
-            // remove existing event listener
-            const listener = target[XHR_LISTENER];
-            if (!oriAddListener) {
-                oriAddListener = target[ZONE_SYMBOL_ADD_EVENT_LISTENER];
-                oriRemoveListener = target[ZONE_SYMBOL_REMOVE_EVENT_LISTENER];
-            }
-            if (listener) {
-                oriRemoveListener.call(target, READY_STATE_CHANGE, listener);
-            }
-            const newListener = target[XHR_LISTENER] = () => {
-                if (target.readyState === target.DONE) {
-                    // sometimes on some browsers XMLHttpRequest will fire onreadystatechange with
-                    // readyState=4 multiple times, so we need to check task state here
-                    if (!data.aborted && target[XHR_SCHEDULED] && task.state === SCHEDULED) {
-                        // check whether the xhr has registered onload listener
-                        // if that is the case, the task should invoke after all
-                        // onload listeners finish.
-                        const loadTasks = target['__zone_symbol__loadfalse'];
-                        if (loadTasks && loadTasks.length > 0) {
-                            const oriInvoke = task.invoke;
-                            task.invoke = function () {
-                                // need to load the tasks again, because in other
-                                // load listener, they may remove themselves
-                                const loadTasks = target['__zone_symbol__loadfalse'];
-                                for (let i = 0; i < loadTasks.length; i++) {
-                                    if (loadTasks[i] === task) {
-                                        loadTasks.splice(i, 1);
-                                    }
-                                }
-                                if (!data.aborted && task.state === SCHEDULED) {
-                                    oriInvoke.call(task);
-                                }
-                            };
-                            loadTasks.push(task);
+            function timer() {
+                try {
+                    task.invoke.apply(this, arguments);
+                }
+                finally {
+                    // issue-934, task will be cancelled
+                    // even it is a periodic task such as
+                    // setInterval
+                    if (!(task.data && task.data.isPeriodic)) {
+                        if (typeof data.handleId === 'number') {
+                            // in non-nodejs env, we remove timerId
+                            // from local cache
+                            delete tasksByHandleId[data.handleId];
                         }
-                        else {
-                            task.invoke();
+                        else if (data.handleId) {
+                            // Node returns complex objects as handleIds
+                            // we remove task reference from timer object
+                            data.handleId[taskSymbol] = null;
                         }
-                    }
-                    else if (!data.aborted && target[XHR_SCHEDULED] === false) {
-                        // error occurs when xhr.send()
-                        target[XHR_ERROR_BEFORE_SCHEDULED] = true;
                     }
                 }
-            };
-            oriAddListener.call(target, READY_STATE_CHANGE, newListener);
-            const storedTask = target[XHR_TASK];
-            if (!storedTask) {
-                target[XHR_TASK] = task;
             }
-            sendNative.apply(target, data.args);
-            target[XHR_SCHEDULED] = true;
+            data.args[0] = timer;
+            data.handleId = setNative.apply(window, data.args);
             return task;
         }
-        function placeholderCallback() { }
-        function clearTask(task) {
-            const data = task.data;
-            // Note - ideally, we would call data.target.removeEventListener here, but it's too late
-            // to prevent it from firing. So instead, we store info for the event listener.
-            data.aborted = true;
-            return abortNative.apply(data.target, data.args);
-        }
-        const openNative = patchMethod(XMLHttpRequestPrototype, 'open', () => function (self, args) {
-            self[XHR_SYNC] = args[2] == false;
-            self[XHR_URL] = args[1];
-            return openNative.apply(self, args);
-        });
-        const XMLHTTPREQUEST_SOURCE = 'XMLHttpRequest.send';
-        const fetchTaskAborting = zoneSymbol('fetchTaskAborting');
-        const fetchTaskScheduling = zoneSymbol('fetchTaskScheduling');
-        const sendNative = patchMethod(XMLHttpRequestPrototype, 'send', () => function (self, args) {
-            if (Zone.current[fetchTaskScheduling] === true) {
-                // a fetch is scheduling, so we are using xhr to polyfill fetch
-                // and because we already schedule macroTask for fetch, we should
-                // not schedule a macroTask for xhr again
-                return sendNative.apply(self, args);
-            }
-            if (self[XHR_SYNC]) {
-                // if the XHR is sync there is no task to schedule, just execute the code.
-                return sendNative.apply(self, args);
-            }
-            else {
-                const options = { target: self, url: self[XHR_URL], isPeriodic: false, args: args, aborted: false };
-                const task = scheduleMacroTaskWithCurrentZone(XMLHTTPREQUEST_SOURCE, placeholderCallback, options, scheduleTask, clearTask);
-                if (self && self[XHR_ERROR_BEFORE_SCHEDULED] === true && !options.aborted &&
-                    task.state === SCHEDULED) {
-                    // xhr request throw error when send
-                    // we should invoke task instead of leaving a scheduled
-                    // pending macroTask
-                    task.invoke();
+        function clearTask(task) { return clearNative(task.data.handleId); }
+        setNative =
+            patchMethod(window, setName, (delegate) => function (self, args) {
+                if (typeof args[0] === 'function') {
+                    const options = {
+                        isPeriodic: nameSuffix === 'Interval',
+                        delay: (nameSuffix === 'Timeout' || nameSuffix === 'Interval') ? args[1] || 0 :
+                            undefined,
+                        args: args
+                    };
+                    const task = scheduleMacroTaskWithCurrentZone(setName, args[0], options, scheduleTask, clearTask);
+                    if (!task) {
+                        return task;
+                    }
+                    // Node.js must additionally support the ref and unref functions.
+                    const handle = task.data.handleId;
+                    if (typeof handle === 'number') {
+                        // for non nodejs env, we save handleId: task
+                        // mapping in local cache for clearTimeout
+                        tasksByHandleId[handle] = task;
+                    }
+                    else if (handle) {
+                        // for nodejs env, we save task
+                        // reference in timerId Object for clearTimeout
+                        handle[taskSymbol] = task;
+                    }
+                    // check whether handle is null, because some polyfill or browser
+                    // may return undefined from setTimeout/setInterval/setImmediate/requestAnimationFrame
+                    if (handle && handle.ref && handle.unref && typeof handle.ref === 'function' &&
+                        typeof handle.unref === 'function') {
+                        task.ref = handle.ref.bind(handle);
+                        task.unref = handle.unref.bind(handle);
+                    }
+                    if (typeof handle === 'number' || handle) {
+                        return handle;
+                    }
+                    return task;
                 }
-            }
-        });
-        const abortNative = patchMethod(XMLHttpRequestPrototype, 'abort', () => function (self, args) {
-            const task = findPendingTask(self);
-            if (task && typeof task.type == 'string') {
-                // If the XHR has already completed, do nothing.
-                // If the XHR has already been aborted, do nothing.
-                // Fix #569, call abort multiple times before done will cause
-                // macroTask task count be negative number
-                if (task.cancelFn == null || (task.data && task.data.aborted)) {
-                    return;
-                }
-                task.zone.cancelTask(task);
-            }
-            else if (Zone.current[fetchTaskAborting] === true) {
-                // the abort is called from fetch polyfill, we need to call native abort of XHR.
-                return abortNative.apply(self, args);
-            }
-            // Otherwise, we are trying to abort an XHR which has not yet been sent, so there is no
-            // task
-            // to cancel. Do nothing.
-        });
-    }
-});
-Zone.__load_patch('geolocation', (global) => {
-    /// GEO_LOCATION
-    if (global['navigator'] && global['navigator'].geolocation) {
-        patchPrototype(global['navigator'].geolocation, ['getCurrentPosition', 'watchPosition']);
-    }
-});
-Zone.__load_patch('PromiseRejectionEvent', (global, Zone) => {
-    // handle unhandled promise rejection
-    function findPromiseRejectionHandler(evtName) {
-        return function (e) {
-            const eventTasks = findEventTasks(global, evtName);
-            eventTasks.forEach(eventTask => {
-                // windows has added unhandledrejection event listener
-                // trigger the event listener
-                const PromiseRejectionEvent = global['PromiseRejectionEvent'];
-                if (PromiseRejectionEvent) {
-                    const evt = new PromiseRejectionEvent(evtName, { promise: e.promise, reason: e.rejection });
-                    eventTask.invoke(evt);
+                else {
+                    // cause an error by calling it directly.
+                    return delegate.apply(window, args);
                 }
             });
-        };
+        clearNative =
+            patchMethod(window, cancelName, (delegate) => function (self, args) {
+                const id = args[0];
+                let task;
+                if (typeof id === 'number') {
+                    // non nodejs env.
+                    task = tasksByHandleId[id];
+                }
+                else {
+                    // nodejs env.
+                    task = id && id[taskSymbol];
+                    // other environments.
+                    if (!task) {
+                        task = id;
+                    }
+                }
+                if (task && typeof task.type === 'string') {
+                    if (task.state !== 'notScheduled' &&
+                        (task.cancelFn && task.data.isPeriodic || task.runCount === 0)) {
+                        if (typeof id === 'number') {
+                            delete tasksByHandleId[id];
+                        }
+                        else if (id) {
+                            id[taskSymbol] = null;
+                        }
+                        // Do not cancel already canceled functions
+                        task.zone.cancelTask(task);
+                    }
+                }
+                else {
+                    // cause an error by calling it directly.
+                    delegate.apply(window, args);
+                }
+            });
     }
-    if (global['PromiseRejectionEvent']) {
-        Zone[zoneSymbol('unhandledPromiseRejectionHandler')] =
-            findPromiseRejectionHandler('unhandledrejection');
-        Zone[zoneSymbol('rejectionHandledHandler')] =
-            findPromiseRejectionHandler('rejectionhandled');
-    }
-});
 
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+    function patchCustomElements(_global, api) {
+        const { isBrowser, isMix } = api.getGlobalObjects();
+        if ((!isBrowser && !isMix) || !_global['customElements'] || !('customElements' in _global)) {
+            return;
+        }
+        const callbacks = ['connectedCallback', 'disconnectedCallback', 'adoptedCallback', 'attributeChangedCallback'];
+        api.patchCallbacks(api, _global.customElements, 'customElements', 'define', callbacks);
+    }
+
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+    function eventTargetPatch(_global, api) {
+        if (Zone[api.symbol('patchEventTarget')]) {
+            // EventTarget is already patched.
+            return;
+        }
+        const { eventNames, zoneSymbolEventNames, TRUE_STR, FALSE_STR, ZONE_SYMBOL_PREFIX } = api.getGlobalObjects();
+        //  predefine all __zone_symbol__ + eventName + true/false string
+        for (let i = 0; i < eventNames.length; i++) {
+            const eventName = eventNames[i];
+            const falseEventName = eventName + FALSE_STR;
+            const trueEventName = eventName + TRUE_STR;
+            const symbol = ZONE_SYMBOL_PREFIX + falseEventName;
+            const symbolCapture = ZONE_SYMBOL_PREFIX + trueEventName;
+            zoneSymbolEventNames[eventName] = {};
+            zoneSymbolEventNames[eventName][FALSE_STR] = symbol;
+            zoneSymbolEventNames[eventName][TRUE_STR] = symbolCapture;
+        }
+        const EVENT_TARGET = _global['EventTarget'];
+        if (!EVENT_TARGET || !EVENT_TARGET.prototype) {
+            return;
+        }
+        api.patchEventTarget(_global, [EVENT_TARGET && EVENT_TARGET.prototype]);
+        return true;
+    }
+    function patchEvent(global, api) {
+        api.patchEventPrototype(global, api);
+    }
+
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+    Zone.__load_patch('legacy', (global) => {
+        const legacyPatch = global[Zone.__symbol__('legacyPatch')];
+        if (legacyPatch) {
+            legacyPatch();
+        }
+    });
+    Zone.__load_patch('timers', (global) => {
+        const set = 'set';
+        const clear = 'clear';
+        patchTimer(global, set, clear, 'Timeout');
+        patchTimer(global, set, clear, 'Interval');
+        patchTimer(global, set, clear, 'Immediate');
+    });
+    Zone.__load_patch('requestAnimationFrame', (global) => {
+        patchTimer(global, 'request', 'cancel', 'AnimationFrame');
+        patchTimer(global, 'mozRequest', 'mozCancel', 'AnimationFrame');
+        patchTimer(global, 'webkitRequest', 'webkitCancel', 'AnimationFrame');
+    });
+    Zone.__load_patch('blocking', (global, Zone) => {
+        const blockingMethods = ['alert', 'prompt', 'confirm'];
+        for (let i = 0; i < blockingMethods.length; i++) {
+            const name = blockingMethods[i];
+            patchMethod(global, name, (delegate, symbol, name) => {
+                return function (s, args) {
+                    return Zone.current.run(delegate, global, args, name);
+                };
+            });
+        }
+    });
+    Zone.__load_patch('EventTarget', (global, Zone, api) => {
+        patchEvent(global, api);
+        eventTargetPatch(global, api);
+        // patch XMLHttpRequestEventTarget's addEventListener/removeEventListener
+        const XMLHttpRequestEventTarget = global['XMLHttpRequestEventTarget'];
+        if (XMLHttpRequestEventTarget && XMLHttpRequestEventTarget.prototype) {
+            api.patchEventTarget(global, [XMLHttpRequestEventTarget.prototype]);
+        }
+        patchClass('MutationObserver');
+        patchClass('WebKitMutationObserver');
+        patchClass('IntersectionObserver');
+        patchClass('FileReader');
+    });
+    Zone.__load_patch('on_property', (global, Zone, api) => {
+        propertyDescriptorPatch(api, global);
+    });
+    Zone.__load_patch('customElements', (global, Zone, api) => {
+        patchCustomElements(global, api);
+    });
+    Zone.__load_patch('XHR', (global, Zone) => {
+        // Treat XMLHttpRequest as a macrotask.
+        patchXHR(global);
+        const XHR_TASK = zoneSymbol('xhrTask');
+        const XHR_SYNC = zoneSymbol('xhrSync');
+        const XHR_LISTENER = zoneSymbol('xhrListener');
+        const XHR_SCHEDULED = zoneSymbol('xhrScheduled');
+        const XHR_URL = zoneSymbol('xhrURL');
+        const XHR_ERROR_BEFORE_SCHEDULED = zoneSymbol('xhrErrorBeforeScheduled');
+        function patchXHR(window) {
+            const XMLHttpRequest = window['XMLHttpRequest'];
+            if (!XMLHttpRequest) {
+                // XMLHttpRequest is not available in service worker
+                return;
+            }
+            const XMLHttpRequestPrototype = XMLHttpRequest.prototype;
+            function findPendingTask(target) { return target[XHR_TASK]; }
+            let oriAddListener = XMLHttpRequestPrototype[ZONE_SYMBOL_ADD_EVENT_LISTENER];
+            let oriRemoveListener = XMLHttpRequestPrototype[ZONE_SYMBOL_REMOVE_EVENT_LISTENER];
+            if (!oriAddListener) {
+                const XMLHttpRequestEventTarget = window['XMLHttpRequestEventTarget'];
+                if (XMLHttpRequestEventTarget) {
+                    const XMLHttpRequestEventTargetPrototype = XMLHttpRequestEventTarget.prototype;
+                    oriAddListener = XMLHttpRequestEventTargetPrototype[ZONE_SYMBOL_ADD_EVENT_LISTENER];
+                    oriRemoveListener = XMLHttpRequestEventTargetPrototype[ZONE_SYMBOL_REMOVE_EVENT_LISTENER];
+                }
+            }
+            const READY_STATE_CHANGE = 'readystatechange';
+            const SCHEDULED = 'scheduled';
+            function scheduleTask(task) {
+                const data = task.data;
+                const target = data.target;
+                target[XHR_SCHEDULED] = false;
+                target[XHR_ERROR_BEFORE_SCHEDULED] = false;
+                // remove existing event listener
+                const listener = target[XHR_LISTENER];
+                if (!oriAddListener) {
+                    oriAddListener = target[ZONE_SYMBOL_ADD_EVENT_LISTENER];
+                    oriRemoveListener = target[ZONE_SYMBOL_REMOVE_EVENT_LISTENER];
+                }
+                if (listener) {
+                    oriRemoveListener.call(target, READY_STATE_CHANGE, listener);
+                }
+                const newListener = target[XHR_LISTENER] = () => {
+                    if (target.readyState === target.DONE) {
+                        // sometimes on some browsers XMLHttpRequest will fire onreadystatechange with
+                        // readyState=4 multiple times, so we need to check task state here
+                        if (!data.aborted && target[XHR_SCHEDULED] && task.state === SCHEDULED) {
+                            // check whether the xhr has registered onload listener
+                            // if that is the case, the task should invoke after all
+                            // onload listeners finish.
+                            const loadTasks = target[Zone.__symbol__('loadfalse')];
+                            if (loadTasks && loadTasks.length > 0) {
+                                const oriInvoke = task.invoke;
+                                task.invoke = function () {
+                                    // need to load the tasks again, because in other
+                                    // load listener, they may remove themselves
+                                    const loadTasks = target[Zone.__symbol__('loadfalse')];
+                                    for (let i = 0; i < loadTasks.length; i++) {
+                                        if (loadTasks[i] === task) {
+                                            loadTasks.splice(i, 1);
+                                        }
+                                    }
+                                    if (!data.aborted && task.state === SCHEDULED) {
+                                        oriInvoke.call(task);
+                                    }
+                                };
+                                loadTasks.push(task);
+                            }
+                            else {
+                                task.invoke();
+                            }
+                        }
+                        else if (!data.aborted && target[XHR_SCHEDULED] === false) {
+                            // error occurs when xhr.send()
+                            target[XHR_ERROR_BEFORE_SCHEDULED] = true;
+                        }
+                    }
+                };
+                oriAddListener.call(target, READY_STATE_CHANGE, newListener);
+                const storedTask = target[XHR_TASK];
+                if (!storedTask) {
+                    target[XHR_TASK] = task;
+                }
+                sendNative.apply(target, data.args);
+                target[XHR_SCHEDULED] = true;
+                return task;
+            }
+            function placeholderCallback() { }
+            function clearTask(task) {
+                const data = task.data;
+                // Note - ideally, we would call data.target.removeEventListener here, but it's too late
+                // to prevent it from firing. So instead, we store info for the event listener.
+                data.aborted = true;
+                return abortNative.apply(data.target, data.args);
+            }
+            const openNative = patchMethod(XMLHttpRequestPrototype, 'open', () => function (self, args) {
+                self[XHR_SYNC] = args[2] == false;
+                self[XHR_URL] = args[1];
+                return openNative.apply(self, args);
+            });
+            const XMLHTTPREQUEST_SOURCE = 'XMLHttpRequest.send';
+            const fetchTaskAborting = zoneSymbol('fetchTaskAborting');
+            const fetchTaskScheduling = zoneSymbol('fetchTaskScheduling');
+            const sendNative = patchMethod(XMLHttpRequestPrototype, 'send', () => function (self, args) {
+                if (Zone.current[fetchTaskScheduling] === true) {
+                    // a fetch is scheduling, so we are using xhr to polyfill fetch
+                    // and because we already schedule macroTask for fetch, we should
+                    // not schedule a macroTask for xhr again
+                    return sendNative.apply(self, args);
+                }
+                if (self[XHR_SYNC]) {
+                    // if the XHR is sync there is no task to schedule, just execute the code.
+                    return sendNative.apply(self, args);
+                }
+                else {
+                    const options = { target: self, url: self[XHR_URL], isPeriodic: false, args: args, aborted: false };
+                    const task = scheduleMacroTaskWithCurrentZone(XMLHTTPREQUEST_SOURCE, placeholderCallback, options, scheduleTask, clearTask);
+                    if (self && self[XHR_ERROR_BEFORE_SCHEDULED] === true && !options.aborted &&
+                        task.state === SCHEDULED) {
+                        // xhr request throw error when send
+                        // we should invoke task instead of leaving a scheduled
+                        // pending macroTask
+                        task.invoke();
+                    }
+                }
+            });
+            const abortNative = patchMethod(XMLHttpRequestPrototype, 'abort', () => function (self, args) {
+                const task = findPendingTask(self);
+                if (task && typeof task.type == 'string') {
+                    // If the XHR has already completed, do nothing.
+                    // If the XHR has already been aborted, do nothing.
+                    // Fix #569, call abort multiple times before done will cause
+                    // macroTask task count be negative number
+                    if (task.cancelFn == null || (task.data && task.data.aborted)) {
+                        return;
+                    }
+                    task.zone.cancelTask(task);
+                }
+                else if (Zone.current[fetchTaskAborting] === true) {
+                    // the abort is called from fetch polyfill, we need to call native abort of XHR.
+                    return abortNative.apply(self, args);
+                }
+                // Otherwise, we are trying to abort an XHR which has not yet been sent, so there is no
+                // task
+                // to cancel. Do nothing.
+            });
+        }
+    });
+    Zone.__load_patch('geolocation', (global) => {
+        /// GEO_LOCATION
+        if (global['navigator'] && global['navigator'].geolocation) {
+            patchPrototype(global['navigator'].geolocation, ['getCurrentPosition', 'watchPosition']);
+        }
+    });
+    Zone.__load_patch('PromiseRejectionEvent', (global, Zone) => {
+        // handle unhandled promise rejection
+        function findPromiseRejectionHandler(evtName) {
+            return function (e) {
+                const eventTasks = findEventTasks(global, evtName);
+                eventTasks.forEach(eventTask => {
+                    // windows has added unhandledrejection event listener
+                    // trigger the event listener
+                    const PromiseRejectionEvent = global['PromiseRejectionEvent'];
+                    if (PromiseRejectionEvent) {
+                        const evt = new PromiseRejectionEvent(evtName, { promise: e.promise, reason: e.rejection });
+                        eventTask.invoke(evt);
+                    }
+                });
+            };
+        }
+        if (global['PromiseRejectionEvent']) {
+            Zone[zoneSymbol('unhandledPromiseRejectionHandler')] =
+                findPromiseRejectionHandler('unhandledrejection');
+            Zone[zoneSymbol('rejectionHandledHandler')] =
+                findPromiseRejectionHandler('rejectionhandled');
+        }
+    });
+
+    /**
+     * @license
+     * Copyright Google Inc. All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+}));
 
 
 /***/ }),
@@ -38309,18 +36822,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 1:
-/*!***************************************************************************************************************************!*\
-  !*** multi ./src/polyfills.ts ./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js ***!
-  \***************************************************************************************************************************/
+/***/ 2:
+/*!********************************!*\
+  !*** multi ./src/polyfills.ts ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\work\projects\sandbox\ezy-chart-app\src\polyfills.ts */"./src/polyfills.ts");
-module.exports = __webpack_require__(/*! C:\work\projects\sandbox\ezy-chart-app\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
+module.exports = __webpack_require__(/*! C:\work\projects\sandbox\ezy-chart-app\src\polyfills.ts */"./src/polyfills.ts");
 
 
 /***/ })
 
-},[[1,"runtime"]]]);
+},[[2,"runtime"]]]);
 //# sourceMappingURL=polyfills-es2015.js.map

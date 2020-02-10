@@ -27,7 +27,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*!**********************************************!*\
   !*** ./dist/ezy-chart/fesm2015/ezy-chart.js ***!
   \**********************************************/
-/*! exports provided: CHART_DEFAULT_COLORS, ChartComponent, ChartsModule, EChartComponent, ɵa */
+/*! exports provided: CHART_DEFAULT_COLORS, ChartComponent, ChartsModule, EChartComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36,9 +36,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChartComponent", function() { return ChartComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChartsModule", function() { return ChartsModule; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EChartComponent", function() { return EChartComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵa", function() { return BaseChart; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/cloneDeep */ "./node_modules/lodash/cloneDeep.js");
@@ -77,12 +76,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/**
- * \@internal
- * @type {?}
+ * @internal
  */
 const DEFAULT_COLORS = [
     [236, 64, 122],
@@ -128,52 +122,36 @@ const DEFAULT_COLORS = [
     [128, 128, 128]
 ];
 /**
- * \@internal
- * @param {?} colors
- * @return {?}
+ * @internal
  */
 function replaceDefaultColors(colors) {
     Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])(DEFAULT_COLORS, colors);
 }
 /**
- * \@internal
- * @param {?} definedColors
- * @param {?} totalNum
- * @return {?}
+ * @internal
  */
 function generateColors(definedColors, totalNum) {
-    /** @type {?} */
     let defaultIdx = 0;
-    /** @type {?} */
     const colors = [];
     if (definedColors.length < totalNum) {
         definedColors = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["concat"])(definedColors, new Array(totalNum - definedColors.length));
     }
-    Object(lodash__WEBPACK_IMPORTED_MODULE_2__["each"])(definedColors, (/**
-     * @param {?} val
-     * @param {?} i
-     * @return {?}
-     */
-    (val, i) => {
-        /** @type {?} */
+    Object(lodash__WEBPACK_IMPORTED_MODULE_2__["each"])(definedColors, (val, i) => {
         let col = parseColor(val);
         if (!col) {
             col = DEFAULT_COLORS[defaultIdx++] || getRandomColor();
         }
         colors.push(col);
-    }));
+    });
     return colors;
 }
 /**
- * \@internal
- * @param {?} input
- * @return {?}
+ * @internal
  */
 function parseColor(input) {
     if (!input) {
         return undefined;
     }
-    /** @type {?} */
     let m = input.match(/^#([0-9a-f]{6})$/i);
     if (m) {
         return [parseInt(m[1].substr(0, 2), 16), parseInt(m[1].substr(2, 2), 16), parseInt(m[1].substr(4, 2), 16)];
@@ -200,55 +178,34 @@ function parseColor(input) {
     }
 }
 /**
- * \@internal
- * @param {?} definedColors
- * @param {?} totalNum
- * @return {?}
+ * @internal
  */
 function generateColorsAsStrings(definedColors, totalNum) {
-    return generateColors(definedColors, totalNum).map((/**
-     * @param {?} c
-     * @return {?}
-     */
-    c => `rgba(${c[0]}, ${c[1]}, ${c[2]}, 0.8)`));
+    return generateColors(definedColors, totalNum).map(c => `rgba(${c[0]}, ${c[1]}, ${c[2]}, 0.8)`);
 }
 /**
- * \@internal
- * @param {?} colour
- * @param {?} alpha
- * @return {?}
+ * @internal
  */
 function rgba(colour, alpha) {
     return 'rgba(' + colour.concat(alpha).join(',') + ')';
 }
 /**
- * \@internal
- * @param {?} min
- * @param {?} max
- * @return {?}
+ * @internal
  */
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 /**
- * \@internal
- * @return {?}
+ * @internal
  */
 function getRandomColor() {
     return [getRandomInt(0, 255), getRandomInt(0, 255), getRandomInt(0, 255)];
 }
 /**
- * \@internal
- * @param {?} colors
- * @param {?} type
- * @return {?}
+ * @internal
  */
 function formatChartColorsForSeries(colors, type) {
-    return colors.map((/**
-     * @param {?} color
-     * @return {?}
-     */
-    color => ({
+    return colors.map(color => ({
         hoverBackgroundColor: rgba(color, 0.6),
         backgroundColor: rgba(color, 1),
         borderColor: type === 'line' ? rgba(color, 0.6) : 'rgba(255, 255, 255, 0.3)',
@@ -256,91 +213,43 @@ function formatChartColorsForSeries(colors, type) {
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: rgba(color, 1),
         pointHoverBorderColor: rgba(color, 0.8)
-    })));
+    }));
 }
 /**
- * \@internal
- * @param {?} definedColors
- * @param {?} totalNum
- * @param {?} type
- * @return {?}
+ * @internal
  */
 function generateColorsBySeries(definedColors, totalNum, type) {
     return formatChartColorsForSeries(generateColors(definedColors || [], totalNum), type);
 }
 /**
- * \@internal
- * @param {?} colors
- * @param {?} type
- * @return {?}
+ * @internal
  */
 function formatChartColorsForData(colors, type) {
     return {
-        hoverBackgroundColor: colors.map((/**
-         * @param {?} color
-         * @return {?}
-         */
-        color => rgba(color, 0.6))),
-        backgroundColor: colors.map((/**
-         * @param {?} color
-         * @return {?}
-         */
-        color => rgba(color, 1))),
-        borderColor: colors.map((/**
-         * @param {?} color
-         * @return {?}
-         */
-        color => (type === 'line' ? rgba(color, 0.6) : 'rgba(255, 255, 255, 0.3)'))),
-        pointBackgroundColor: colors.map((/**
-         * @param {?} color
-         * @return {?}
-         */
-        color => rgba(color, 1))),
-        pointBorderColor: colors.map((/**
-         * @param {?} color
-         * @return {?}
-         */
-        color => '#fff')),
-        pointHoverBackgroundColor: colors.map((/**
-         * @param {?} color
-         * @return {?}
-         */
-        color => rgba(color, 1))),
-        pointHoverBorderColor: colors.map((/**
-         * @param {?} color
-         * @return {?}
-         */
-        color => rgba(color, 0.8)))
+        hoverBackgroundColor: colors.map(color => rgba(color, 0.6)),
+        backgroundColor: colors.map(color => rgba(color, 1)),
+        borderColor: colors.map(color => (type === 'line' ? rgba(color, 0.6) : 'rgba(255, 255, 255, 0.3)')),
+        pointBackgroundColor: colors.map(color => rgba(color, 1)),
+        pointBorderColor: colors.map(color => '#fff'),
+        pointHoverBackgroundColor: colors.map(color => rgba(color, 1)),
+        pointHoverBorderColor: colors.map(color => rgba(color, 0.8))
     };
 }
 /**
- * \@internal
- * @param {?} definedColors
- * @param {?} totalNum
- * @param {?} type
- * @return {?}
+ * @internal
  */
 function generateColorsByDataPoints(definedColors, totalNum, type) {
     return formatChartColorsForData(generateColors(definedColors || [], totalNum), type);
 }
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/**
- * \@internal
- * @param {?} val
- * @param {?} currency
- * @return {?}
+ * @internal
  */
 function formatScale(val, currency) {
-    /** @type {?} */
     let n = Number(val);
     if (n === 0) {
         return '0';
     }
-    /** @type {?} */
     let base = '';
     if (n >= 1000) {
         n = n / 1000;
@@ -353,81 +262,52 @@ function formatScale(val, currency) {
     return (formatMoney(n, currency, undefined) || '').replace(/\.0+?$/, '') + base;
 }
 /**
- * \@internal
- * @param {?} val
- * @param {?} currency
- * @param {?=} digitInfo
- * @return {?}
+ * @internal
  */
 function formatMoney(val, currency, digitInfo) {
     if (val && currency) {
-        /** @type {?} */
         const pipe = new _angular_common__WEBPACK_IMPORTED_MODULE_1__["CurrencyPipe"](Object(moment__WEBPACK_IMPORTED_MODULE_10__["locale"])());
         return pipe.transform(val, currency, 'symbol-narrow', digitInfo);
     }
 }
-/**
- * @abstract
- */
 class BaseChart {
-    /**
-     * @param {?} _zone
-     */
     constructor(_zone) {
         this._zone = _zone;
         this._params = {};
         this._prevParams = {};
-        this._wndEvSubs = Object(rxjs__WEBPACK_IMPORTED_MODULE_11__["fromEvent"])(window, 'resize').subscribe((/**
-         * @return {?}
-         */
-        () => {
+        this._wndEvSubs = Object(rxjs__WEBPACK_IMPORTED_MODULE_11__["fromEvent"])(window, 'resize').subscribe(() => {
             this._resized = true;
             this._doCheck(500);
-        }));
+        });
     }
     /**
      * An array of strings, corresponding to Chart.ChartConfiguration.data.labels
-     * \@property
-     * @param {?} l
-     * @return {?}
+     * @property
      */
     set labels(l) {
         this._params.labels = l;
     }
-    /**
-     * @return {?}
-     */
     get labels() {
         return this._params.labels;
     }
     /**
      * The chart type, corresponding to Chart.ChartConfiguration.type
-     * \@default 'bar'
-     * \@property
-     * @param {?} t
-     * @return {?}
+     * @default 'bar'
+     * @property
      */
     set type(t) {
         this._params.type = t;
     }
-    /**
-     * @return {?}
-     */
     get type() {
         return this._params.type;
     }
     /**
      * An array of Chart.ChartDataSets, corresponding to Chart.ChartConfiguration.data.datasets
-     * \@property
-     * @param {?} ds
-     * @return {?}
+     * @property
      */
     set datasets(ds) {
         this._params.datasets = ds;
     }
-    /**
-     * @return {?}
-     */
     get datasets() {
         return this._params.datasets;
     }
@@ -435,16 +315,11 @@ class BaseChart {
      * An array of strings in hex, rgb, or rgba format, to define the base colors of datasets, or the data points of each dataset. If this
      * property is absent, or the colors defined are less than the number of datasets (or the data points of each dataset), the missing
      * colors will be assigned from the default palette
-     * \@property
-     * @param {?} c
-     * @return {?}
+     * @property
      */
     set colors(c) {
         this._params.colors = c;
     }
-    /**
-     * @return {?}
-     */
     get colors() {
         return this._params.colors;
     }
@@ -454,33 +329,23 @@ class BaseChart {
      *  * 'data' - each color corresponds to a data point of each dataset
      *  * 'auto' - use 'series' for chart types 'bar', 'horizontalBar' and 'line'; and use 'data' for other chart types
      *  * 'none' - turn off the color generator. Use this value if colors are specified via #options
-     * \@default 'auto'
-     * \@property
-     * @param {?} cf
-     * @return {?}
+     * @default 'auto'
+     * @property
      */
     set colorsFor(cf) {
         this._params.colorsFor = cf;
     }
-    /**
-     * @return {?}
-     */
     get colorsFor() {
         return this._params.colorsFor;
     }
     /**
      * The aspect ratio of the chart
-     * \@default 2
-     * \@property
-     * @param {?} r
-     * @return {?}
+     * @default 2
+     * @property
      */
     set ratio(r) {
         this._params.ratio = r;
     }
-    /**
-     * @return {?}
-     */
     get ratio() {
         return this._params.ratio;
     }
@@ -491,199 +356,140 @@ class BaseChart {
      *    too small
      *  * if the value is of type Chart.ChartLegendOptions, it corresponds to Chart.ChartConfiguration.options.legend.position
      *  * if the value is of type Chart.ChartLegendOptions, it corresponds to Chart.ChartConfiguration.options.legend
-     * \@default 'auto'
-     * \@property
-     * @param {?} l
-     * @return {?}
+     * @default 'auto'
+     * @property
      */
     set legend(l) {
         this._params.legend = l;
     }
-    /**
-     * @return {?}
-     */
     get legend() {
         return this._params.legend;
     }
     /**
      * An ISO 4217 currency code. If specified, it will be used to format the scales of the main axis, as well as the values in the tooltips.
-     * \@property
-     * @param {?} curr
-     * @return {?}
+     * @property
      */
     set currency(curr) {
         this._params.currency = curr;
     }
-    /**
-     * @return {?}
-     */
     get currency() {
         return this._params.currency;
     }
     /**
      * The digit info of the output template, used to format numbers in scales. Please refer to https://angular.io/api/common/DecimalPipe
      * for its usage.
-     * \@property
-     * @param {?} d
-     * @return {?}
+     * @property
      */
     set digits(d) {
         this._params.digits = d;
     }
-    /**
-     * @return {?}
-     */
     get digits() {
         return this._params.digits;
     }
     /**
      * Corresponds to Chart.ChartConfiguration.options. This overrides any other settings.
-     * \@property
-     * @param {?} opt
-     * @return {?}
+     * @property
      */
     set options(opt) {
         this._params.options = opt;
     }
-    /**
-     * @return {?}
-     */
     get options() {
         return this._params.options;
     }
     /**
      * A moment.js format string. When specified, the X axis will be configured with time scales, and this value will be used to format the
      * tooltips.
-     * \@property
-     * @param {?} tf
-     * @return {?}
+     * @property
      */
     set timeFormat(tf) {
         this._params.timeFormat = tf;
     }
-    /**
-     * @return {?}
-     */
     get timeFormat() {
         return this._params.timeFormat;
     }
     /**
      * Specify whether to show the overall percentage values in the popover tooltips.
-     * \@property
-     * @param {?} p
-     * @return {?}
+     * @property
      */
     set percentage(p) {
         this._params.percentage = p;
     }
-    /**
-     * @return {?}
-     */
     get percentage() {
         return this._params.percentage;
     }
-    /**
-     * @return {?}
-     */
     get paramsChanged() {
         return !Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEqual"])(this._params, this._prevParams);
     }
-    /**
-     * @param {?} property
-     * @return {?}
-     */
     isParamChanged(property) {
         return !Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEqual"])(Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this._params, property), Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(this._prevParams, property));
     }
-    /**
-     * @return {?}
-     */
     resetParamsChangeState() {
         this._prevParams = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["cloneDeep"])(this._params);
     }
-    /**
-     * @return {?}
-     */
     ngDoCheck() {
         if (!this._resized) {
             this._doCheck(50);
         }
     }
-    /**
-     * @return {?}
-     */
     ngOnDestroy() {
         this._wndEvSubs.unsubscribe();
         this._onDestroy();
     }
-    /**
-     * @private
-     * @param {?} deferred
-     * @return {?}
-     */
     _doCheck(deferred) {
         if (this._debounceTimer) {
-            clearTimeout((/** @type {?} */ (this._debounceTimer)));
+            clearTimeout(this._debounceTimer);
             this._debounceTimer = null;
         }
-        this._zone.runOutsideAngular((/**
-         * @return {?}
-         */
-        () => {
-            this._debounceTimer = setTimeout((/**
-             * @return {?}
-             */
-            () => {
+        this._zone.runOutsideAngular(() => {
+            this._debounceTimer = setTimeout(() => {
                 this._checkUpdate(this._resized);
                 this._resized = false;
-            }), deferred);
-        }));
+            }, deferred);
+        });
     }
 }
-BaseChart.propDecorators = {
-    labels: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    type: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    datasets: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    colors: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    colorsFor: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    ratio: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    legend: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    currency: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    digits: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    options: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    timeFormat: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    percentage: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
-};
+BaseChart.ɵfac = function BaseChart_Factory(t) { return new (t || BaseChart)(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"])); };
+BaseChart.ɵdir = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"])({ type: BaseChart, inputs: { labels: "labels", type: "type", datasets: "datasets", colors: "colors", colorsFor: "colorsFor", ratio: "ratio", legend: "legend", currency: "currency", digits: "digits", options: "options", timeFormat: "timeFormat", percentage: "percentage" } });
+/*@__PURE__*/ (function () { Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"])(BaseChart, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] }]; }, { labels: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], type: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], datasets: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], colors: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], colorsFor: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], ratio: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], legend: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], currency: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], digits: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], options: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], timeFormat: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], percentage: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }] }); })();
 
+const _c0 = ["chartContainer"];
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/**
- * \@internal
- * @type {?}
+ * @internal
  */
 const MULTI_SERIES_BY_DEFAULT = ['line', 'bar', 'horizontalBar', 'radar'];
 /**
- * \@internal
- * @param {?} currency
- * @param {?} percentage
- * @param {?} digitInfo
- * @param {?} type
- * @return {?}
+ * @internal
  */
 function getTooltipLabelCallBack(currency, percentage, digitInfo, type) {
-    return (/**
-     * @param {?} tooltipItem
-     * @param {?} data
-     * @return {?}
-     */
-    (tooltipItem, data) => {
-        /** @type {?} */
+    return (tooltipItem, data) => {
         const labels = [];
-        /** @type {?} */
-        const ds = (/** @type {?} */ (data.datasets));
-        /** @type {?} */
+        const ds = data.datasets;
         const label = ds.length > 1 ? ds[tooltipItem.datasetIndex || 0].label || '' : '';
         if (label && type === 'both') {
             labels.push(label);
@@ -691,11 +497,8 @@ function getTooltipLabelCallBack(currency, percentage, digitInfo, type) {
         if (type === 'label') {
             return label;
         }
-        /** @type {?} */
         const dsData = ds[tooltipItem.datasetIndex || 0].data || [];
-        /** @type {?} */
         const point = dsData[tooltipItem.index || 0];
-        /** @type {?} */
         const value = typeof point === 'number' ? point : point.y;
         if (percentage !== 'only') {
             if (currency) {
@@ -709,94 +512,56 @@ function getTooltipLabelCallBack(currency, percentage, digitInfo, type) {
             }
         }
         if (percentage) {
-            /** @type {?} */
             const perc = typeof value === 'number' ? value : 0;
-            /** @type {?} */
-            const total = lodash_sumBy__WEBPACK_IMPORTED_MODULE_6___default()(dsData, (/**
-             * @param {?} d
-             * @return {?}
-             */
-            d => (typeof d === 'number' ? d : ((/** @type {?} */ (d.y))))));
+            const total = lodash_sumBy__WEBPACK_IMPORTED_MODULE_6___default()(dsData, d => (typeof d === 'number' ? d : d.y));
             labels.push(`${total ? ((perc * 100) / total).toFixed(2) : 0}%`);
         }
         return labels.join(' : ');
-    });
+    };
 }
-/**
- * @param {?} text
- * @param {?} maxLength
- * @return {?}
- */
 function splitWords(text, maxLength) {
-    /** @type {?} */
     const words = [];
-    /** @type {?} */
     let word = '';
-    text.split(' ').forEach((/**
-     * @param {?} w
-     * @return {?}
-     */
-    w => {
+    text.split(' ').forEach(w => {
         word = [word, w].join(' ');
         if (word.length > maxLength) {
             words.push(word);
             word = '';
         }
-    }));
+    });
     if (word) {
         words.push(word);
     }
     return words;
 }
 /**
- * \@internal
- * @param {?=} horizontal
- * @return {?}
+ * @internal
  */
 function getTooltipTitleCallBack(horizontal) {
-    return (/**
-     * @param {?} tooltipItems
-     * @param {?} data
-     * @return {?}
-     */
-    (tooltipItems, data) => {
+    return (tooltipItems, data) => {
         // Pick first xLabel for now
-        /** @type {?} */
         let title = '';
-        /** @type {?} */
         const labels = data.labels || [];
-        /** @type {?} */
         const labelCount = labels.length;
         if (tooltipItems.length > 0) {
-            /** @type {?} */
             const item = tooltipItems[0];
             if (item.xLabel || (horizontal && item.yLabel)) {
-                title = ((/** @type {?} */ ((horizontal ? item.yLabel : item.xLabel)))) || '';
+                title = (horizontal ? item.yLabel : item.xLabel) || '';
             }
             else if ((labelCount > 0 && item.index) || 0 < labelCount) {
-                title = (/** @type {?} */ (labels[item.index || 0]));
+                title = labels[item.index || 0];
             }
         }
         return splitWords(title, 15);
-    });
+    };
 }
 if (typeof Chart !== 'undefined') {
     Chart.pluginService.register({
-        afterEvent: (/**
-         * @param {?} chartInstance
-         * @param {?} chartEvent
-         * @return {?}
-         */
-        (chartInstance, chartEvent) => {
-            /** @type {?} */
-            const legend = ((/** @type {?} */ (chartInstance))).legend;
-            /** @type {?} */
+        afterEvent: (chartInstance, chartEvent) => {
+            const legend = chartInstance.legend;
             const canvas = chartInstance.canvas;
-            /** @type {?} */
             const x = chartEvent.x;
-            /** @type {?} */
             const y = chartEvent.y;
-            /** @type {?} */
             let cursorStyle = 'default';
             if (x <= legend.right && x >= legend.left && y <= legend.bottom && y >= legend.top) {
                 for (const box of legend.legendHitBoxes) {
@@ -809,34 +574,21 @@ if (typeof Chart !== 'undefined') {
             if (canvas) {
                 canvas.style.cursor = cursorStyle;
             }
-        })
+        }
     });
 }
 class ChartComponent extends BaseChart {
-    /**
-     * @param {?} zone
-     */
     constructor(zone) {
         super(zone);
         this._config = {};
         this._prevConfig = {};
     }
-    /**
-     * @protected
-     * @return {?}
-     */
     _onDestroy() {
         if (this._chart) {
             this._chart.destroy();
         }
     }
-    /**
-     * @protected
-     * @param {?} resized
-     * @return {?}
-     */
     _checkUpdate(resized) {
-        /** @type {?} */
         let dataOrParamsChanged = false;
         if (this.paramsChanged) {
             this._applyConfig();
@@ -844,7 +596,6 @@ class ChartComponent extends BaseChart {
         }
         dataOrParamsChanged =
             dataOrParamsChanged || JSON.stringify(this._config.data) !== JSON.stringify(this._prevConfig.data);
-        /** @type {?} */
         let configChanged = JSON.stringify(this._config.options) !== JSON.stringify(this._prevConfig.options) ||
             this._config.type !== this._prevConfig.type;
         configChanged = configChanged || this.isParamChanged('colorsFor');
@@ -860,11 +611,6 @@ class ChartComponent extends BaseChart {
             this._checkSize();
         }
     }
-    /**
-     * @private
-     * @param {?} configChanged
-     * @return {?}
-     */
     _refresh(configChanged) {
         this._prevConfig = lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_3___default()(this._config);
         this.resetParamsChangeState();
@@ -872,7 +618,6 @@ class ChartComponent extends BaseChart {
             if (this._chart) {
                 this._chart.destroy();
             }
-            /** @type {?} */
             const cfg = lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_3___default()(this._prevConfig);
             this._applyColors(this.colors || [], this.colorsFor || 'auto', (cfg.data || {}).datasets || []);
             this._createNewChart(cfg);
@@ -883,45 +628,26 @@ class ChartComponent extends BaseChart {
             this._chart.update();
         }
     }
-    /**
-     * @private
-     * @param {?} cfg
-     * @return {?}
-     */
     _createNewChart(cfg) {
-        this._zone.runOutsideAngular((/**
-         * @return {?}
-         */
-        () => {
-            /** @type {?} */
+        this._zone.runOutsideAngular(() => {
             const container = this._chartContainer.nativeElement;
-            /** @type {?} */
             const nodes = container.getElementsByTagName('canvas');
             if (nodes.length) {
                 container.removeChild(nodes.item(0));
             }
-            /** @type {?} */
             const canvas = document.createElement('canvas');
             container.appendChild(canvas);
-            ((/** @type {?} */ (cfg))).plugins = this.plugins;
+            cfg.plugins = this.plugins;
             this._chart = new Chart(canvas, cfg);
-        }));
+        });
     }
-    /**
-     * @private
-     * @return {?}
-     */
     _checkSize() {
         if (!this._chart) {
             return;
         }
-        /** @type {?} */
         const cfg = this._chart.config;
-        /** @type {?} */
         const width = this._chart.chartArea.right - this._chart.chartArea.left;
-        /** @type {?} */
         const height = this._chart.chartArea.bottom - this._chart.chartArea.top;
-        /** @type {?} */
         const legendOpt = (cfg.options || {}).legend || {};
         if ((this.legend || 'auto') === 'auto') {
             if ((width < 140 || height < 140) && legendOpt.display) {
@@ -938,70 +664,43 @@ class ChartComponent extends BaseChart {
             }
         }
     }
-    /**
-     * @private
-     * @return {?}
-     */
     _applyConfig() {
-        /** @type {?} */
         const multiType = MULTI_SERIES_BY_DEFAULT.indexOf(this.type || 'bar') >= 0;
         this._config.type = this.type || 'bar';
         this._config.options = this._config.options || {};
         this._config.options.legend = this._config.options.legend || {};
         this._config.data = this._config.data || {};
-        /** @type {?} */
         const ds = (this._config.data.datasets = lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_3___default()(this.datasets || []));
-        if (!ds.some((/**
-         * @param {?} d
-         * @return {?}
-         */
-        d => (d.label ? true : false)))) {
+        if (!ds.some(d => (d.label ? true : false))) {
             if (multiType) {
                 this._config.options.legend.display = false;
             }
         }
-        /** @type {?} */
         const labels = (this._config.data.labels = lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_3___default()(this.labels || []));
-        ((/** @type {?} */ ((this._config.options || {})))).aspectRatio = this.ratio || 2;
-        /** @type {?} */
+        (this._config.options || {}).aspectRatio = this.ratio || 2;
         const legend = this.legend === false ? false : this.legend || 'auto';
         if (typeof legend === 'string' && ['top', 'right', 'bottom', 'left'].indexOf(legend) >= 0) {
-            this._config.options.legend.position = (/** @type {?} */ (legend));
+            this._config.options.legend.position = legend;
         }
         else if (typeof legend === 'boolean') {
             this._config.options.legend.display = legend;
         }
         else if (typeof legend === 'object') {
-            this._config.options.legend = (/** @type {?} */ (lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_3___default()(legend)));
+            this._config.options.legend = lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_3___default()(legend);
         }
         else if (legend === 'auto') {
-            /** @type {?} */
-            const multiPoints = ds.every((/**
-             * @param {?} d
-             * @return {?}
-             */
-            d => (d.data || []).length > 1));
+            const multiPoints = ds.every(d => (d.data || []).length > 1);
             this._config.options.legend.display = (multiType && ds.length > 1) || (multiPoints && !multiType);
             this._config.options.legend.position = multiType && this.type !== 'radar' ? 'top' : 'right';
         }
         this._config.options.scales = {};
         if (this.currency) {
-            /** @type {?} */
             const curr = this.currency;
             if (multiType) {
-                /** @type {?} */
                 const axes = {
-                    ticks: { callback: (/**
-                         * @param {?} val
-                         * @return {?}
-                         */
-                        val => formatScale(val, curr)) }
+                    ticks: { callback: val => formatScale(val, curr) }
                 };
-                if (ds.every((/**
-                 * @param {?} d
-                 * @return {?}
-                 */
-                d => this._isYAxisAllNumbers(d.data || [])))) {
+                if (ds.every(d => this._isYAxisAllNumbers(d.data || []))) {
                     if (this.type !== 'horizontalBar') {
                         this._config.options.scales.yAxes = [axes];
                     }
@@ -1011,41 +710,14 @@ class ChartComponent extends BaseChart {
                 }
             }
         }
-        /** @type {?} */
         let timeScaleConfigured = false;
         this._config.options.tooltips = this._config.options.tooltips || {};
         if (this.type === 'line') {
-            /** @type {?} */
-            const isTimeScale = ds.every((/**
-             * @param {?} d
-             * @return {?}
-             */
-            d => (((/** @type {?} */ (d.data))) || []).every((/**
-             * @param {?} item
-             * @return {?}
-             */
-            item => (item.x ? moment__WEBPACK_IMPORTED_MODULE_10___default()(item.x).isValid() : false)))));
+            const isTimeScale = ds.every(d => (d.data || []).every(item => (item.x ? moment__WEBPACK_IMPORTED_MODULE_10___default()(item.x).isValid() : false)));
             if (isTimeScale) {
                 this._config.options.scales = this._config.options.scales || {};
-                /** @type {?} */
-                const minTime = lodash_min__WEBPACK_IMPORTED_MODULE_4___default()(lodash_flatMap__WEBPACK_IMPORTED_MODULE_5___default()(ds, (/**
-                 * @param {?} d
-                 * @return {?}
-                 */
-                d => (/** @type {?} */ (d.data)))).map((/**
-                 * @param {?} p
-                 * @return {?}
-                 */
-                p => moment__WEBPACK_IMPORTED_MODULE_10___default()(p.x))));
-                ds.every((/**
-                 * @param {?} d
-                 * @return {?}
-                 */
-                d => (((/** @type {?} */ (d.data))) || []).every((/**
-                 * @param {?} item
-                 * @return {?}
-                 */
-                item => (item.x ? moment__WEBPACK_IMPORTED_MODULE_10___default()(item.x).isValid() : false)))));
+                const minTime = lodash_min__WEBPACK_IMPORTED_MODULE_4___default()(lodash_flatMap__WEBPACK_IMPORTED_MODULE_5___default()(ds, d => d.data).map(p => moment__WEBPACK_IMPORTED_MODULE_10___default()(p.x)));
+                ds.every(d => (d.data || []).every(item => (item.x ? moment__WEBPACK_IMPORTED_MODULE_10___default()(item.x).isValid() : false)));
                 this._config.options.scales.xAxes = [
                     {
                         type: 'time',
@@ -1071,14 +743,8 @@ class ChartComponent extends BaseChart {
             console.warn('ezy-chart: wrong number of labels. ');
         }
         if (lodash_isEmpty__WEBPACK_IMPORTED_MODULE_7___default()(this._config.options.scales)) {
-            this._config.options = lodash_pickBy__WEBPACK_IMPORTED_MODULE_9___default()(this._config.options, (/**
-             * @param {?} val
-             * @param {?} key
-             * @return {?}
-             */
-            (val, key) => key !== 'scales'));
+            this._config.options = lodash_pickBy__WEBPACK_IMPORTED_MODULE_9___default()(this._config.options, (val, key) => key !== 'scales');
         }
-        /** @type {?} */
         const splitLabel = (this.type === 'pie' || this.type === 'doughnut') && ds.length > 1;
         this._config.options.tooltips.callbacks = this._config.options.tooltips.callbacks || {};
         this._config.options.tooltips.callbacks.label = getTooltipLabelCallBack(this.currency, this.percentage || false, this.digits, splitLabel ? 'label' : 'both');
@@ -1086,35 +752,16 @@ class ChartComponent extends BaseChart {
             this._config.options.tooltips.callbacks.afterLabel = getTooltipLabelCallBack(this.currency, this.percentage || false, this.digits, 'afterLabel');
         }
         else {
-            this._config.options.tooltips.callbacks.afterLabel = (/**
-             * @return {?}
-             */
-            () => '');
+            this._config.options.tooltips.callbacks.afterLabel = () => '';
         }
         this._config.options.tooltips.callbacks.title = getTooltipTitleCallBack(this.type === 'horizontalBar');
         if (this.options) {
             lodash_merge__WEBPACK_IMPORTED_MODULE_8___default()(this._config.options, this.options);
         }
     }
-    /**
-     * @private
-     * @param {?} data
-     * @return {?}
-     */
     _isYAxisAllNumbers(data) {
-        return data.every((/**
-         * @param {?} d
-         * @return {?}
-         */
-        d => !d || typeof d === 'number' || typeof d.y === 'number'));
+        return data.every(d => !d || typeof d === 'number' || typeof d.y === 'number');
     }
-    /**
-     * @private
-     * @param {?} colors
-     * @param {?} colorsFor
-     * @param {?} datasets
-     * @return {?}
-     */
     _applyColors(colors, colorsFor, datasets) {
         if (colorsFor === 'auto') {
             if (MULTI_SERIES_BY_DEFAULT.indexOf(this.type || 'bar') >= 0) {
@@ -1125,45 +772,44 @@ class ChartComponent extends BaseChart {
             }
         }
         if (colorsFor === 'series') {
-            /** @type {?} */
             const colorGroups = generateColorsBySeries(colors, datasets.length, this.type || 'bar');
             lodash_merge__WEBPACK_IMPORTED_MODULE_8___default()(datasets, colorGroups);
         }
         else if (colorsFor === 'data') {
             for (const ds of datasets) {
-                /** @type {?} */
                 const colorGroup = generateColorsByDataPoints(colors, (ds.data || []).length, this.type || 'bar');
                 lodash_merge__WEBPACK_IMPORTED_MODULE_8___default()(ds, colorGroup);
             }
         }
     }
 }
-ChartComponent.decorators = [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
+ChartComponent.ɵfac = function ChartComponent_Factory(t) { return new (t || ChartComponent)(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"])); };
+ChartComponent.ɵcmp = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"])({ type: ChartComponent, selectors: [["ezy-chart"]], viewQuery: function ChartComponent_Query(rf, ctx) { if (rf & 1) {
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstaticViewQuery"])(_c0, true, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]);
+    } if (rf & 2) {
+        var _t;
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"])(_t = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"])()) && (ctx._chartContainer = _t.first);
+    } }, inputs: { plugins: "plugins" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 2, vars: 0, consts: [["chartContainer", ""]], template: function ChartComponent_Template(rf, ctx) { if (rf & 1) {
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"])(0, "div", null, 0);
+    } }, encapsulation: 2, changeDetection: 0 });
+/*@__PURE__*/ (function () { Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"])(ChartComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
                 selector: 'ezy-chart',
                 template: `
 		<div #chartContainer></div>
 	`,
                 changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
-            }] }
-];
-/** @nocollapse */
-ChartComponent.ctorParameters = () => [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] }
-];
-ChartComponent.propDecorators = {
-    plugins: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    _chartContainer: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"], args: ['chartContainer', { read: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], static: true },] }]
-};
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] }]; }, { plugins: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], _chartContainer: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: ['chartContainer', { read: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], static: true }]
+        }] }); })();
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+const _c0$1 = ["chartContainer"];
 class EChartComponent extends BaseChart {
-    /**
-     * @param {?} zone
-     */
     constructor(zone) {
         super(zone);
         this._echartsOptions = {};
@@ -1175,11 +821,6 @@ class EChartComponent extends BaseChart {
             line: 'line'
         };
     }
-    /**
-     * @protected
-     * @param {?} resized
-     * @return {?}
-     */
     _checkUpdate(resized) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_12__["__awaiter"])(this, void 0, void 0, function* () {
             if (this._chartContainer && !this._chart) {
@@ -1195,30 +836,19 @@ class EChartComponent extends BaseChart {
             }
         });
     }
-    /**
-     * @protected
-     * @return {?}
-     */
     _onDestroy() {
         if (this._chart && !this._chart.isDisposed()) {
             this._chart.dispose();
         }
     }
-    /**
-     * @private
-     * @return {?}
-     */
     _recalculateSize() {
         if (this._chartContainer) {
-            /** @type {?} */
             const div = this._chartContainer.nativeElement;
-            /** @type {?} */
             const height = Math.max(div.clientWidth / (this.ratio || 2), 240);
             div.style.height = `${height}px`;
             if (this._chart) {
                 this._chart.resize();
                 if (this._echartsOptions.legend) {
-                    /** @type {?} */
                     const opt = this._chart.getOption();
                     if (div.clientWidth <= 240 || div.clientHeight <= 240) {
                         opt.legend = undefined;
@@ -1231,62 +861,29 @@ class EChartComponent extends BaseChart {
             }
         }
     }
-    /**
-     * @private
-     * @return {?}
-     */
     _createChart() {
         this._chart = echarts.init(this._chartContainer.nativeElement);
     }
-    /**
-     * @private
-     * @return {?}
-     */
     _applyOptions() {
-        /** @type {?} */
         const ds = this.datasets || [];
         this._echartsOptions = {};
-        /** @type {?} */
         const mainType = this.type || 'bar';
-        /** @type {?} */
-        const series = ds.map((/**
-         * @param {?} v
-         * @return {?}
-         */
-        v => ({
+        const series = ds.map(v => ({
             name: v.name || typeof v.label === 'string' ? v.label : '',
             type: this._typeMap[v.type || mainType] || v.type || mainType,
-            data: (v.data || ((/** @type {?} */ ([])))).map((/**
-             * @param {?} d
-             * @return {?}
-             */
-            d => this._mapDataItem(d, this.timeFormat)))
-        })));
-        /** @type {?} */
-        const isTime = series.some((/**
-         * @param {?} s
-         * @return {?}
-         */
-        s => s.data.some((/**
-         * @param {?} d
-         * @return {?}
-         */
-        d => d.name && moment__WEBPACK_IMPORTED_MODULE_10___default()(d.name).isValid()))));
-        /** @type {?} */
+            data: (v.data || []).map(d => this._mapDataItem(d, this.timeFormat))
+        }));
+        const isTime = series.some(s => s.data.some(d => d.name && moment__WEBPACK_IMPORTED_MODULE_10___default()(d.name).isValid()));
         const labels = this.labels || [];
-        /** @type {?} */
         const timeAxis = [
             {
                 type: 'time'
             }
         ];
-        /** @type {?} */
         const catAxis = [
             { data: labels, type: 'category' }
         ];
-        /** @type {?} */
         const valAxis = [{ type: 'value' }];
-        /** @type {?} */
         const tooltip = {
             axisPointer: {
                 type: 'shadow'
@@ -1294,24 +891,20 @@ class EChartComponent extends BaseChart {
         };
         tooltip.formatter = this._formatTooltip.bind(this, this.currency, this.percentage, this.digits);
         if (this.currency) {
-            valAxis[0].axisLabel = { formatter: (/**
-                 * @param {?} value
-                 * @return {?}
-                 */
-                value => formatScale(value, this.currency)) };
+            valAxis[0].axisLabel = { formatter: value => formatScale(value, this.currency) };
         }
         this._echartsOptions = {
             series,
             tooltip
         };
         if (mainType === 'horizontalBar') {
-            this._echartsOptions.yAxis = (/** @type {?} */ (catAxis));
-            this._echartsOptions.xAxis = (/** @type {?} */ (valAxis));
+            this._echartsOptions.yAxis = catAxis;
+            this._echartsOptions.xAxis = valAxis;
             this._echartsOptions.tooltip['trigger'] = 'axis';
         }
         else if (mainType === 'line' || mainType === 'bar') {
-            this._echartsOptions.xAxis = (/** @type {?} */ ((isTime ? timeAxis : catAxis)));
-            this._echartsOptions.yAxis = (/** @type {?} */ (valAxis));
+            this._echartsOptions.xAxis = (isTime ? timeAxis : catAxis);
+            this._echartsOptions.yAxis = valAxis;
             this._echartsOptions.tooltip['trigger'] = 'axis';
         }
         else if (this._typeMap[mainType] === 'pie') {
@@ -1321,17 +914,10 @@ class EChartComponent extends BaseChart {
             this._echartsOptions.legend = this._generateLegendOptions(series.length > 1, this._typeMap[mainType] === 'pie');
         }
         this._defineColors(series, this._typeMap[mainType] === 'pie');
-        /** @type {?} */
         let opt = lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_3___default()(this._echartsOptions);
         opt = lodash_merge__WEBPACK_IMPORTED_MODULE_8___default()(opt, this.options);
         this._chart.setOption(opt, true);
     }
-    /**
-     * @private
-     * @param {?} item
-     * @param {?} timeFormat
-     * @return {?}
-     */
     _mapDataItem(item, timeFormat) {
         if (typeof item === 'number') {
             return { value: item };
@@ -1340,7 +926,6 @@ class EChartComponent extends BaseChart {
             return undefined;
         }
         if (item.x && moment__WEBPACK_IMPORTED_MODULE_10___default()(item.x).isValid() && typeof item.y === 'number') {
-            /** @type {?} */
             const m = moment__WEBPACK_IMPORTED_MODULE_10___default()(item.x);
             return {
                 name: moment__WEBPACK_IMPORTED_MODULE_10___default()(item.x).format(timeFormat || 'L'),
@@ -1349,33 +934,15 @@ class EChartComponent extends BaseChart {
         }
         return item;
     }
-    /**
-     * @private
-     * @param {?} series
-     * @param {?} labels
-     * @param {?} makeDoughnut
-     * @return {?}
-     */
     _definePieShape(series, labels, makeDoughnut) {
-        /** @type {?} */
         let r = 0;
-        /** @type {?} */
         let step = 80;
         if (makeDoughnut) {
             r = 40;
         }
         step = (80 - r) / series.length;
-        series.forEach((/**
-         * @param {?} s
-         * @return {?}
-         */
-        s => {
-            s.data.forEach((/**
-             * @param {?} d
-             * @param {?} i
-             * @return {?}
-             */
-            (d, i) => (d.name = labels[i])));
+        series.forEach(s => {
+            s.data.forEach((d, i) => (d.name = labels[i]));
             s.radius = [`${r}%`, `${r + step - 1}%`];
             r = r + step;
             s.label = {
@@ -1390,16 +957,9 @@ class EChartComponent extends BaseChart {
                 }
             };
             s['avoidLabelOverlap'] = false;
-        }));
+        });
     }
-    /**
-     * @private
-     * @param {?} series
-     * @param {?} pieLike
-     * @return {?}
-     */
     _defineColors(series, pieLike) {
-        /** @type {?} */
         let cf = this.colorsFor || 'auto';
         if (cf === 'auto') {
             if (pieLike) {
@@ -1410,55 +970,22 @@ class EChartComponent extends BaseChart {
             }
         }
         if (cf === 'series') {
-            /** @type {?} */
             const colors = generateColorsAsStrings(this.colors || [], series.length);
-            series.forEach((/**
-             * @param {?} s
-             * @param {?} i
-             * @return {?}
-             */
-            (s, i) => (s['color'] = colors[i])));
+            series.forEach((s, i) => (s['color'] = colors[i]));
         }
         else if (cf === 'data') {
-            series.forEach((/**
-             * @param {?} s
-             * @return {?}
-             */
-            s => {
-                /** @type {?} */
+            series.forEach(s => {
                 const colors = generateColorsAsStrings(this.colors || [], s.data.length);
-                s.data.forEach((/**
-                 * @param {?} d
-                 * @param {?} i
-                 * @return {?}
-                 */
-                (d, i) => (d.itemStyle = { color: colors[i] })));
-            }));
+                s.data.forEach((d, i) => (d.itemStyle = { color: colors[i] }));
+            });
         }
     }
-    /**
-     * @private
-     * @param {?} currencyCode
-     * @param {?} percent
-     * @param {?} digitInfo
-     * @param {?} param
-     * @return {?}
-     */
     _formatTooltip(currencyCode, percent, digitInfo, param) {
-        /** @type {?} */
-        const formatParam = (/**
-         * @param {?} p
-         * @return {?}
-         */
-        p => {
-            /** @type {?} */
+        const formatParam = p => {
             let l = `<div class="ezy-echart-tooltip-item"><span class="ezy-echart-series-indicator" style="background-color: ${p.color}"></span>
 			 ${p.seriesName}: `;
-            /** @type {?} */
             const percentOnly = percent === 'only' && p.percent;
-            /** @type {?} */
             const showPercent = percent && p.percent;
-            /** @type {?} */
             const v = lodash_isArray__WEBPACK_IMPORTED_MODULE_13___default()(p.data.value) ? p.data.value[1] : p.data.value;
             if (!percentOnly) {
                 if (currencyCode) {
@@ -1473,16 +1000,11 @@ class EChartComponent extends BaseChart {
             }
             l += '</div>';
             return l;
-        });
-        /** @type {?} */
+        };
         let str = '<div style="max-width: 35vw; white-space:normal">';
         if (lodash_isArray__WEBPACK_IMPORTED_MODULE_13___default()(param)) {
             str += `<strong>${param[0].name}</strong><br/>`;
-            str += `${param.map((/**
-             * @param {?} p
-             * @return {?}
-             */
-            p => formatParam(p))).join('')}`;
+            str += `${param.map(p => formatParam(p)).join('')}`;
         }
         else {
             str += `<strong>${param.name}</strong><br/>`;
@@ -1490,22 +1012,14 @@ class EChartComponent extends BaseChart {
         }
         return str + '</div>';
     }
-    /**
-     * @private
-     * @param {?} multiSeries
-     * @param {?} pieLike
-     * @return {?}
-     */
     _generateLegendOptions(multiSeries, pieLike) {
-        /** @type {?} */
         const l = this.legend || 'auto';
         if ((l === 'auto' && (multiSeries || pieLike)) || typeof this.legend === 'string') {
-            /** @type {?} */
             const legend = {};
             if (l === 'auto' && pieLike) {
                 legend.x = 'left';
             }
-            if (['left', 'right', 'top', 'bottom'].indexOf((/** @type {?} */ (l))) >= 0) {
+            if (['left', 'right', 'top', 'bottom'].indexOf(l) >= 0) {
                 legend.x = l;
             }
             if (legend.x === 'left' || legend.x === 'right') {
@@ -1518,15 +1032,26 @@ class EChartComponent extends BaseChart {
         }
     }
 }
-EChartComponent.decorators = [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
+EChartComponent.ɵfac = function EChartComponent_Factory(t) { return new (t || EChartComponent)(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"])); };
+EChartComponent.ɵcmp = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"])({ type: EChartComponent, selectors: [["ezy-echart"]], viewQuery: function EChartComponent_Query(rf, ctx) { if (rf & 1) {
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstaticViewQuery"])(_c0$1, true, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]);
+    } if (rf & 2) {
+        var _t;
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"])(_t = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"])()) && (ctx._chartContainer = _t.first);
+    } }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 2, vars: 0, consts: [["chartContainer", ""]], template: function EChartComponent_Template(rf, ctx) { if (rf & 1) {
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"])(0, "div", null, 0);
+    } }, styles: ["\n\t\t\t.ezy-echart-series-indicator {\n\t\t\t\tdisplay: inline-block;\n\t\t\t\tborder-radius: 10px;\n\t\t\t\tborder-width: 1px;\n\t\t\t\tborder-style: solid;\n\t\t\t\tborder-color: white;\n\t\t\t\twidth: 10px;\n\t\t\t\theight: 10px;\n\t\t\t}\n\t\t\t.ezy-echart-tooltip-item {\n\t\t\t\ttext-indent: -13px;\n\t\t\t\tpadding-left: 13px;\n\t\t\t}\n\t\t"], encapsulation: 2, changeDetection: 0 });
+/*@__PURE__*/ (function () { Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"])(EChartComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
                 selector: 'ezy-echart',
                 template: `
 		<div #chartContainer></div>
 	`,
                 changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
                 encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
-                styles: [`
+                styles: [
+                    `
 			.ezy-echart-series-indicator {
 				display: inline-block;
 				border-radius: 10px;
@@ -1540,44 +1065,46 @@ EChartComponent.decorators = [
 				text-indent: -13px;
 				padding-left: 13px;
 			}
-		`]
-            }] }
-];
-/** @nocollapse */
-EChartComponent.ctorParameters = () => [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] }
-];
-EChartComponent.propDecorators = {
-    _chartContainer: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"], args: ['chartContainer', { read: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], static: true },] }]
-};
+		`
+                ]
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] }]; }, { _chartContainer: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: ['chartContainer', { read: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], static: true }]
+        }] }); })();
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
 const CHART_DEFAULT_COLORS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('ezy-chart-default-colours');
 class ChartsModule {
-    /**
-     * @param {?} defaultColors
-     */
     constructor(defaultColors) {
         if (defaultColors) {
             replaceDefaultColors(defaultColors);
         }
     }
 }
-ChartsModule.decorators = [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
+ChartsModule.ɵmod = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"])({ type: ChartsModule });
+ChartsModule.ɵinj = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"])({ factory: function ChartsModule_Factory(t) { return new (t || ChartsModule)(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(CHART_DEFAULT_COLORS, 8)); }, imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"])(ChartsModule, { declarations: [ChartComponent, EChartComponent], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]], exports: [ChartComponent, EChartComponent] }); })();
+/*@__PURE__*/ (function () { Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"])(ChartsModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
                 declarations: [ChartComponent, EChartComponent],
                 imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]],
                 exports: [ChartComponent, EChartComponent]
-            },] }
-];
-/** @nocollapse */
-ChartsModule.ctorParameters = () => [
-    { type: Array, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [CHART_DEFAULT_COLORS,] }] }
-];
+            }]
+    }], function () { return [{ type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+            }, {
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+                args: [CHART_DEFAULT_COLORS]
+            }] }]; }, null); })();
+
+/*
+ * Public API Surface of ezy-chart
+ */
+
+/**
+ * Generated bundle index. Do not edit.
+ */
 
 
 //# sourceMappingURL=ezy-chart.js.map
@@ -19190,17 +18717,6 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/app.component.html":
-/*!**************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/app.component.html ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<label class=\"col-form-label\">Engine</label>\r\n<div>\r\n\t<div class=\"form-check form-check-inline\">\r\n\t\t<label class=\"form-check-label\">\r\n\t\t\t<input class=\"form-control\" type=\"radio\" name=\"engine\" value=\"chartjs\" [(ngModel)]=\"engine\" /> Chart.js\r\n\t\t</label>\r\n\t</div>\r\n\t<div class=\"form-check form-check-inline\">\r\n\t\t<label class=\"form-check-label\">\r\n\t\t\t<input class=\"form-control\" type=\"radio\" name=\"engine\" value=\"echarts\" [(ngModel)]=\"engine\" /> EChart\r\n\t\t</label>\r\n\t</div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n\t<div class=\"col-lg-6\">\r\n\t\t<div [ngSwitch]=\"engine\">\r\n\t\t\t<div *ngSwitchCase=\"'chartjs'\">\r\n\t\t\t\t<ezy-chart [datasets]=\"datasets\" [labels]=\"labels\" [type]=\"type\" [colorsFor]=\"colorsFor\" [currency]=\"currencyMode ? 'USD' : undefined\"\r\n\t\t\t\t [percentage]=\"showPercentage\"></ezy-chart>\r\n\r\n\t\t\t</div>\r\n\t\t\t<div *ngSwitchDefault>\r\n\t\t\t\t<ezy-echart [datasets]=\"datasets\" [labels]=\"labels\" [type]=\"type\" [colorsFor]=\"colorsFor\" [currency]=\"currencyMode ? 'USD' : undefined\"\r\n\t\t\t\t [percentage]=\"showPercentage\"></ezy-echart>\r\n\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"row align-items-center\">\r\n\t\t\t<div class=\"form-group col-lg-6\">\r\n\t\t\t\t<label class=\"col-form-label\" for=\"chartType\">Chart type</label>\r\n\t\t\t\t<select [(ngModel)]=\"type\" class=\"form-control\" id=\"chartType\" (change)=\"chartTypeChanged()\">\r\n\t\t\t\t\t<option [value]=\"'bar'\">Bar</option>\r\n\t\t\t\t\t<option [value]=\"'horizontalBar'\">Horizontal Bar</option>\r\n\t\t\t\t\t<option [value]=\"'line'\">Line</option>\r\n\t\t\t\t\t<option [value]=\"'pie'\">Pie</option>\r\n\t\t\t\t\t<option [value]=\"'doughnut'\">Doughnut</option>\r\n\t\t\t\t\t<option [value]=\"'polarArea'\">Polar Area</option>\r\n\t\t\t\t\t<option [value]=\"'radar'\">Radar</option>\r\n\t\t\t\t</select>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-lg-6\">\r\n\t\t\t\t<label class=\"col-form-label\">Colors for</label>\r\n\t\t\t\t<div>\r\n\t\t\t\t\t<div class=\"form-check form-check-inline\">\r\n\t\t\t\t\t\t<label class=\"form-check-label\">\r\n\t\t\t\t\t\t\t<input class=\"form-control\" type=\"radio\" name=\"colorsFor\" value=\"auto\" [(ngModel)]=\"colorsFor\" /> Auto\r\n\t\t\t\t\t\t</label>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"form-check form-check-inline\">\r\n\t\t\t\t\t\t<label class=\"form-check-label\">\r\n\t\t\t\t\t\t\t<input class=\"form-control\" type=\"radio\" name=\"colorsFor\" value=\"series\" [(ngModel)]=\"colorsFor\" /> Series\r\n\t\t\t\t\t\t</label>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"form-check form-check-inline\">\r\n\t\t\t\t\t\t<label class=\"form-check-label\">\r\n\t\t\t\t\t\t\t<input class=\"form-control\" type=\"radio\" name=\"colorsFor\" value=\"data\" [(ngModel)]=\"colorsFor\" /> Data\r\n\t\t\t\t\t\t</label>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"form-check form-check-inline\">\r\n\t\t\t\t\t\t<label class=\"form-check-label\">\r\n\t\t\t\t\t\t\t<input class=\"form-control\" type=\"radio\" name=\"colorsFor\" value=\"none\" [(ngModel)]=\"colorsFor\" /> None\r\n\t\t\t\t\t\t</label>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"form-check col-lg-3\">\r\n\t\t\t\t<label class=\"form-check-label d-flex align-items-center\">\r\n\t\t\t\t\t<input class=\"form-check-input mt-0\" type=\"checkbox\" [(ngModel)]=\"timeScale\" (change)=\"scaleChanged()\" [disabled]=\"type !== 'line'\"\r\n\t\t\t\t\t/>\r\n\t\t\t\t\t<span>Time scale</span>\r\n\t\t\t\t</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"form-check col-lg-3\">\r\n\t\t\t\t<label class=\"form-check-label d-flex align-items-center\">\r\n\t\t\t\t\t<input class=\"form-check-input mt-0\" type=\"checkbox\" [(ngModel)]=\"currencyMode\" />\r\n\t\t\t\t\t<span>Currency mode</span>\r\n\t\t\t\t</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"form-check col-lg-6\">\r\n\t\t\t\t<label class=\"col-form-label\">Show percentage</label>\r\n\t\t\t\t<div>\r\n\t\t\t\t\t<div class=\"form-check form-check-inline\">\r\n\t\t\t\t\t\t<label class=\"form-check-label\">\r\n\t\t\t\t\t\t\t<input class=\"form-control\" type=\"radio\" name=\"showPercentage\" [value]=\"false\" [(ngModel)]=\"showPercentage\" /> False\r\n\t\t\t\t\t\t</label>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"form-check form-check-inline\">\r\n\t\t\t\t\t\t<label class=\"form-check-label\">\r\n\t\t\t\t\t\t\t<input class=\"form-control\" type=\"radio\" name=\"showPercentage\" [value]=\"true\" [(ngModel)]=\"showPercentage\" /> True\r\n\t\t\t\t\t\t</label>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"form-check form-check-inline\">\r\n\t\t\t\t\t\t<label class=\"form-check-label\">\r\n\t\t\t\t\t\t\t<input class=\"form-control\" type=\"radio\" name=\"showPercentage\" value=\"only\" [(ngModel)]=\"showPercentage\" /> Only\r\n\t\t\t\t\t\t</label>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<button (click)=\"addData()\" class=\"btn btn-default mb-1\">Add data point</button>\r\n\t\t<button (click)=\"removeData()\" class=\"btn btn-default mb-1\">Remove data point</button>\r\n\t\t<button (click)=\"addSeries()\" class=\"btn btn-default mb-1\">Add data series</button>\r\n\t\t<button (click)=\"removeSeries()\" class=\"btn btn-default mb-1\">Remove data series</button>\r\n\t</div>\r\n\t<div class=\"col-lg-6\">\r\n\t\t<div class=\"form-group\">\r\n\t\t\t<label class=\"col-form-label\">Datasets</label>\r\n\t\t\t<pre class=\"form-control pre-scrollable\"><code>{{datasets | json}}</code></pre>\r\n\t\t</div>\r\n\t\t<div class=\"form-group\">\r\n\t\t\t<label class=\"col-form-label\">Labels</label>\r\n\t\t\t<pre class=\"form-control pre-scrollable\"><code>{{labels | json}}</code></pre>\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"col\">\r\n\t\t<div class=\"form-group\">\r\n\t\t\t<label class=\"col-form-label\">Template code</label>\r\n\t\t\t<pre class=\"form-control pre-scrollable\"><code>{{sampleTemplate}}</code></pre>\r\n\t\t</div>\r\n\r\n\t</div>\r\n</div>"
-
-/***/ }),
-
 /***/ "./node_modules/webpack/buildin/module.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/module.js ***!
@@ -19234,17 +18750,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./src/app/app.component.scss":
-/*!************************************!*\
-  !*** ./src/app/app.component.scss ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */"
-
-/***/ }),
-
 /***/ "./src/app/app.component.ts":
 /*!**********************************!*\
   !*** ./src/app/app.component.ts ***!
@@ -19255,17 +18760,40 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var ezy_chart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ezy-chart */ "./dist/ezy-chart/fesm2015/ezy-chart.js");
 
 
 
 
-let AppComponent = class AppComponent {
+
+
+
+function AppComponent_div_14_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "ezy-chart", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("datasets", ctx_r0.datasets)("labels", ctx_r0.labels)("type", ctx_r0.type)("colorsFor", ctx_r0.colorsFor)("currency", ctx_r0.currencyMode ? "USD" : undefined)("percentage", ctx_r0.showPercentage);
+} }
+function AppComponent_div_15_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "ezy-echart", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("datasets", ctx_r1.datasets)("labels", ctx_r1.labels)("type", ctx_r1.type)("colorsFor", ctx_r1.colorsFor)("currency", ctx_r1.currencyMode ? "USD" : undefined)("percentage", ctx_r1.showPercentage);
+} }
+class AppComponent {
     constructor() {
         this.datasets = [{ data: [12, 19, 3, 5, 2, 3], label: 'series 1' }];
         this.labels = ['sample 1', 'sample 2', 'sample 3', 'sample 4', 'sample 5', 'sample 6'];
@@ -19318,7 +18846,7 @@ let AppComponent = class AppComponent {
             this.datasets.forEach(ds => this._configLineSpecificProperties(ds));
         }
         else {
-            this.datasets = this.datasets.map(ds => lodash__WEBPACK_IMPORTED_MODULE_2__["pick"](ds, 'data', 'label'));
+            this.datasets = this.datasets.map(ds => lodash__WEBPACK_IMPORTED_MODULE_1__["pick"](ds, 'data', 'label'));
         }
     }
     scaleChanged() {
@@ -19328,7 +18856,7 @@ let AppComponent = class AppComponent {
             dataPoints = Math.max(dataPoints, data.length);
             data.forEach((d, i) => {
                 if (typeof d === 'number' && this.timeScale) {
-                    data[i] = { y: d, x: moment__WEBPACK_IMPORTED_MODULE_3___default()().add(-i, 'year') };
+                    data[i] = { y: d, x: moment__WEBPACK_IMPORTED_MODULE_2___default()().add(-i, 'year') };
                 }
                 else if (!this.timeScale && typeof d !== 'number') {
                     data[i] = d.y;
@@ -19372,21 +18900,275 @@ let AppComponent = class AppComponent {
     _getRandomDataItem(dsIndex) {
         const n = Number((Math.random() * 20).toFixed(1));
         if (this.timeScale) {
-            return { y: n, x: moment__WEBPACK_IMPORTED_MODULE_3___default()().add(-dsIndex, 'year') };
+            return { y: n, x: moment__WEBPACK_IMPORTED_MODULE_2___default()().add(-dsIndex, 'year') };
         }
         else {
             return n;
         }
     }
-};
-AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'ezy-chart-app-root',
-        template: __webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/index.js!./src/app/app.component.html"),
-        styles: [__webpack_require__(/*! ./app.component.scss */ "./src/app/app.component.scss")]
-    })
-], AppComponent);
-
+}
+AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(); };
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["ezy-chart-app-root"]], decls: 111, vars: 31, consts: [[1, "col-form-label"], [1, "form-check", "form-check-inline"], [1, "form-check-label"], ["type", "radio", "name", "engine", "value", "chartjs", 1, "form-control", 3, "ngModel", "ngModelChange"], ["type", "radio", "name", "engine", "value", "echarts", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "row"], [1, "col-lg-6"], [3, "ngSwitch"], [4, "ngSwitchCase"], [4, "ngSwitchDefault"], [1, "row", "align-items-center"], [1, "form-group", "col-lg-6"], ["for", "chartType", 1, "col-form-label"], ["id", "chartType", 1, "form-control", 3, "ngModel", "ngModelChange", "change"], [3, "value"], ["type", "radio", "name", "colorsFor", "value", "auto", 1, "form-control", 3, "ngModel", "ngModelChange"], ["type", "radio", "name", "colorsFor", "value", "series", 1, "form-control", 3, "ngModel", "ngModelChange"], ["type", "radio", "name", "colorsFor", "value", "data", 1, "form-control", 3, "ngModel", "ngModelChange"], ["type", "radio", "name", "colorsFor", "value", "none", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "form-check", "col-lg-3"], [1, "form-check-label", "d-flex", "align-items-center"], ["type", "checkbox", 1, "form-check-input", "mt-0", 3, "ngModel", "disabled", "ngModelChange", "change"], ["type", "checkbox", 1, "form-check-input", "mt-0", 3, "ngModel", "ngModelChange"], [1, "form-check", "col-lg-6"], ["type", "radio", "name", "showPercentage", 1, "form-control", 3, "value", "ngModel", "ngModelChange"], ["type", "radio", "name", "showPercentage", "value", "only", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "btn", "btn-default", "mb-1", 3, "click"], [1, "form-group"], [1, "form-control", "pre-scrollable"], [1, "col"], [3, "datasets", "labels", "type", "colorsFor", "currency", "percentage"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "label", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Engine");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "label", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "input", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_input_ngModelChange_5_listener($event) { return ctx.engine = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " Chart.js ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "label", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "input", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_input_ngModelChange_9_listener($event) { return ctx.engine = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, " EChart ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, AppComponent_div_14_Template, 2, 6, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, AppComponent_div_15_Template, 2, 6, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "div", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "label", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, "Chart type");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "select", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_select_ngModelChange_20_listener($event) { return ctx.type = $event; })("change", function AppComponent_Template_select_change_20_listener($event) { return ctx.chartTypeChanged(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "option", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, "Bar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "option", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Horizontal Bar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "option", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Line");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "option", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Pie");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "option", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Doughnut");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "option", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, "Polar Area");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "option", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, "Radar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "label", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, "Colors for");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "label", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "input", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_input_ngModelChange_41_listener($event) { return ctx.colorsFor = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42, " Auto ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "label", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "input", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_input_ngModelChange_45_listener($event) { return ctx.colorsFor = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](46, " Series ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "label", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "input", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_input_ngModelChange_49_listener($event) { return ctx.colorsFor = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](50, " Data ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "label", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "input", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_input_ngModelChange_53_listener($event) { return ctx.colorsFor = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](54, " None ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "div", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "label", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "input", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_input_ngModelChange_57_listener($event) { return ctx.timeScale = $event; })("change", function AppComponent_Template_input_change_57_listener($event) { return ctx.scaleChanged(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](58, "span");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](59, "Time scale");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "div", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "label", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](62, "input", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_input_ngModelChange_62_listener($event) { return ctx.currencyMode = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "span");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](64, "Currency mode");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "div", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](66, "label", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](67, "Show percentage");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](68, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "label", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](71, "input", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_input_ngModelChange_71_listener($event) { return ctx.showPercentage = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](72, " False ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](73, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](74, "label", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](75, "input", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_input_ngModelChange_75_listener($event) { return ctx.showPercentage = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](76, " True ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](77, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](78, "label", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](79, "input", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_input_ngModelChange_79_listener($event) { return ctx.showPercentage = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](80, " Only ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "button", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AppComponent_Template_button_click_81_listener($event) { return ctx.addData(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](82, "Add data point");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](83, "button", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AppComponent_Template_button_click_83_listener($event) { return ctx.removeData(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](84, "Remove data point");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](85, "button", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AppComponent_Template_button_click_85_listener($event) { return ctx.addSeries(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](86, "Add data series");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](87, "button", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AppComponent_Template_button_click_87_listener($event) { return ctx.removeSeries(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](88, "Remove data series");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](89, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](90, "div", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](91, "label", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](92, "Datasets");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](93, "pre", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](94, "code");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](95);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](96, "json");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](97, "div", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](98, "label", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](99, "Labels");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](100, "pre", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](101, "code");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](102);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](103, "json");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](104, "div", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](105, "div", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](106, "label", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](107, "Template code");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](108, "pre", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](109, "code");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](110);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.engine);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.engine);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitch", ctx.engine);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitchCase", "chartjs");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.type);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", "bar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", "horizontalBar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", "line");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", "pie");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", "doughnut");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", "polarArea");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", "radar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.colorsFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.colorsFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.colorsFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.colorsFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.timeScale)("disabled", ctx.type !== "line");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.currencyMode);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", false)("ngModel", ctx.showPercentage);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", true)("ngModel", ctx.showPercentage);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.showPercentage);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](96, 27, ctx.datasets));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](103, 29, ctx.labels));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.sampleTemplate);
+    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchCase"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchDefault"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxControlValueAccessor"], ezy_chart__WEBPACK_IMPORTED_MODULE_5__["ChartComponent"], ezy_chart__WEBPACK_IMPORTED_MODULE_5__["EChartComponent"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["JsonPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AppComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'ezy-chart-app-root',
+                templateUrl: './app.component.html',
+                styleUrls: ['./app.component.scss']
+            }]
+    }], null, null); })();
 
 
 /***/ }),
@@ -19401,13 +19183,12 @@ AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var ezy_chart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ezy-chart */ "./dist/ezy-chart/fesm2015/ezy-chart.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var ezy_chart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ezy-chart */ "./dist/ezy-chart/fesm2015/ezy-chart.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
 
 
 
@@ -19415,17 +19196,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let AppModule = class AppModule {
-};
-AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]],
-        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"], ezy_chart__WEBPACK_IMPORTED_MODULE_4__["ChartsModule"]],
-        providers: [],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
-    })
-], AppModule);
-
+class AppModule {
+}
+AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]] });
+AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [], imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], ezy_chart__WEBPACK_IMPORTED_MODULE_3__["ChartsModule"]]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], ezy_chart__WEBPACK_IMPORTED_MODULE_3__["ChartsModule"]] }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AppModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
+        args: [{
+                declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]],
+                imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], ezy_chart__WEBPACK_IMPORTED_MODULE_3__["ChartsModule"]],
+                providers: [],
+                bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
+            }]
+    }], null, null); })();
 
 
 /***/ }),
@@ -19467,18 +19251,18 @@ const environment = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm2015/platform-browser-dynamic.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/app.module */ "./src/app/app.module.ts");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js");
 
 
 
 
-if (_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].production) {
+if (_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].production) {
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
 }
-Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])
+_angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["platformBrowser"]().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])
     .catch(err => console.error(err));
 
 
