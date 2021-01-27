@@ -1,13 +1,7 @@
 import { Component, ChangeDetectionStrategy, Input, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { generateColorsBySeries, generateColorsByDataPoints } from './color.helpers';
 import { DecimalPipe } from '@angular/common';
-import cloneDeep from 'lodash/cloneDeep';
-import min from 'lodash/min';
-import flatMap from 'lodash/flatMap';
-import sumBy from 'lodash/sumBy';
-import isEmpty from 'lodash/isEmpty';
-import merge from 'lodash/merge';
-import pickBy from 'lodash/pickBy';
+import { cloneDeep } from './utils';
 import moment from 'moment';
 import { BaseChart, ShowPercentageType, ColorsForType, formatMoney, formatScale } from './base.chart';
 
@@ -51,7 +45,7 @@ function getTooltipLabelCallBack(
 
 		if (percentage) {
 			const perc = typeof value === 'number' ? value : 0;
-			const total = sumBy(dsData, (d) => (typeof d === 'number' ? d : (d.y as number)));
+			const total = (dsData as any[]).reduce((p, d) => p + (typeof d === 'number' ? d : (d.y as number)), 0);
 			labels.push(`${total ? ((perc * 100) / total).toFixed(2) : 0}%`);
 		}
 		return labels.join(' : ');
@@ -298,7 +292,14 @@ export class ChartComponent extends BaseChart {
 			);
 			if (isTimeScale) {
 				this._config.options.scales = this._config.options.scales || {};
-				const minTime = min(flatMap(ds, (d) => d.data as Chart.ChartPoint[]).map((p) => moment(p.x)));
+				let minTime: moment.Moment;
+				ds.reduce((p, c) => [...p, ...(c.data as Chart.ChartPoint[])], [])
+					.map((p) => moment(p.x))
+					.forEach((m) => {
+						if (!minTime || minTime.isAfter(m)) {
+							minTime = m;
+						}
+					});
 				ds.every((d) =>
 					((d.data as Chart.ChartPoint[]) || []).every((item) => (item.x ? moment(item.x).isValid() : false))
 				);
@@ -321,13 +322,17 @@ export class ChartComponent extends BaseChart {
 		}
 
 		if (ds.length === 0 || (ds[0].data || []).length === 0) {
-			console.warn('ezy-chart: empty datasets. ');
+			console.debug('ezy-chart: empty datasets. ');
 		} else if ((ds[0].data || []).length > labels.length && !timeScaleConfigured) {
 			console.warn('ezy-chart: wrong number of labels. ');
 		}
 
-		if (isEmpty(this._config.options.scales)) {
-			this._config.options = pickBy(this._config.options, (val, key) => key !== 'scales');
+		if (!this._config.options.scales || Object.keys(this._config.options.scales).length === 0) {
+			const opt: any = {};
+			Object.keys(this._config.options || {})
+				.filter((k) => k !== 'scales')
+				.forEach((k) => (opt[k] = this._config.options[k]));
+			this._config.options = opt;
 		}
 
 		const splitLabel: boolean = (this.type === 'pie' || this.type === 'doughnut') && ds.length > 1;
@@ -351,7 +356,11 @@ export class ChartComponent extends BaseChart {
 		this._config.options.tooltips.callbacks.title = getTooltipTitleCallBack(this.type === 'horizontalBar');
 
 		if (this.options) {
-			merge(this._config.options, this.options);
+			Object.keys(this.options).forEach((k) => {
+				if (this.options[k] || this.options[k] === 0) {
+					this._config.options[k] = this.options[k];
+				}
+			});
 		}
 	}
 
@@ -370,11 +379,13 @@ export class ChartComponent extends BaseChart {
 
 		if (colorsFor === 'series') {
 			const colorGroups = generateColorsBySeries(colors, datasets.length, this.type || 'bar');
-			merge(datasets, colorGroups);
+			datasets.forEach((ds, i) => {
+				Object.keys(colorGroups[i]).forEach((k) => (ds[k] = colorGroups[i][k]));
+			});
 		} else if (colorsFor === 'data') {
 			for (const ds of datasets) {
 				const colorGroup = generateColorsByDataPoints(colors, (ds.data || []).length, this.type || 'bar');
-				merge(ds, colorGroup);
+				Object.keys(colorGroup).forEach((k) => (ds[k] = colorGroup[k]));
 			}
 		}
 	}

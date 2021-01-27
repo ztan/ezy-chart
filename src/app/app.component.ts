@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import * as _ from 'lodash';
 import moment from 'moment';
 
 @Component({
 	selector: 'ezy-chart-app-root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss']
+	styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
 	datasets: Chart.ChartDataSets[] = [{ data: [12, 19, 3, 5, 2, 3], label: 'series 1' }];
@@ -19,7 +18,7 @@ export class AppComponent {
 
 	addData() {
 		this.labels.push(`sample ${this.labels.length + 1}`);
-		this.datasets.forEach(ds => {
+		this.datasets.forEach((ds) => {
 			const data = (ds.data as number[]) || [];
 			data.push(this._getRandomDataItem(data.length) as number);
 		});
@@ -44,9 +43,9 @@ export class AppComponent {
 		if (this.labels.length > 1) {
 			this.labels.pop();
 			this.datasets
-				.map(ds => ds.data as number[])
-				.filter(d => d.length > 1)
-				.forEach(d => d.pop());
+				.map((ds) => ds.data as number[])
+				.filter((d) => d.length > 1)
+				.forEach((d) => d.pop());
 		}
 	}
 
@@ -61,15 +60,15 @@ export class AppComponent {
 		this.timeScale = false;
 		this.scaleChanged();
 		if (this.type === 'line' && this.engine === 'chartjs') {
-			this.datasets.forEach(ds => this._configLineSpecificProperties(ds));
+			this.datasets.forEach((ds) => this._configLineSpecificProperties(ds));
 		} else {
-			this.datasets = this.datasets.map(ds => _.pick(ds, 'data', 'label'));
+			this.datasets = this.datasets.map((ds) => ({ data: ds.data, label: ds.label }));
 		}
 	}
 
 	scaleChanged() {
 		let dataPoints = 0;
-		this.datasets.forEach(ds => {
+		this.datasets.forEach((ds) => {
 			const data = (ds.data as Array<number | Chart.ChartPoint>) || [];
 			dataPoints = Math.max(dataPoints, data.length);
 			data.forEach((d, i) => {

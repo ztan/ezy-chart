@@ -3,16 +3,12 @@ import { BaseChart, formatScale, formatMoney, ShowPercentageType } from './base.
 import { Component, ChangeDetectionStrategy, NgZone, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 import { generateColorsAsStrings } from './color.helpers';
 import { DecimalPipe } from '@angular/common';
-import cloneDeep from 'lodash/cloneDeep';
-import isArray from 'lodash/isArray';
-import merge from 'lodash/merge';
+import { cloneDeep } from './utils';
 import moment from 'moment';
 
 @Component({
 	selector: 'ezy-echart',
-	template: `
-		<div #chartContainer></div>
-	`,
+	template: ` <div #chartContainer></div> `,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 	styles: [
@@ -30,8 +26,8 @@ import moment from 'moment';
 				text-indent: -13px;
 				padding-left: 13px;
 			}
-		`
-	]
+		`,
+	],
 })
 export class EChartComponent extends BaseChart {
 	@ViewChild('chartContainer', { read: ElementRef, static: true })
@@ -45,7 +41,7 @@ export class EChartComponent extends BaseChart {
 		horizontalBar: 'bar',
 		doughnut: 'pie',
 		pie: 'pie',
-		line: 'line'
+		line: 'line',
 	};
 
 	constructor(zone: NgZone) {
@@ -100,34 +96,34 @@ export class EChartComponent extends BaseChart {
 		const ds = this.datasets || [];
 		this._echartsOptions = {};
 		const mainType = this.type || 'bar';
-		const series: any[] = ds.map(v => ({
+		const series: any[] = ds.map((v) => ({
 			name: v.name || typeof v.label === 'string' ? v.label : '',
 			type: this._typeMap[v.type || mainType] || v.type || mainType,
-			data: (v.data || ([] as any[])).map(d => this._mapDataItem(d, this.timeFormat))
+			data: (v.data || ([] as any[])).map((d) => this._mapDataItem(d, this.timeFormat)),
 		}));
-		const isTime = series.some(s => s.data.some(d => d.name && moment(d.name).isValid()));
+		const isTime = series.some((s) => s.data.some((d) => d.name && moment(d.name).isValid()));
 		const labels = this.labels || [];
 		const timeAxis = [
 			{
-				type: 'time'
-			}
+				type: 'time',
+			},
 		];
 		const catAxis: Array<echarts.EChartOption.XAxis | echarts.EChartOption.YAxis> = [
-			{ data: labels, type: 'category' }
+			{ data: labels, type: 'category' },
 		];
 		const valAxis: Array<echarts.EChartOption.XAxis | echarts.EChartOption.YAxis> = [{ type: 'value' }];
 		const tooltip: any = {
 			axisPointer: {
-				type: 'shadow'
-			}
+				type: 'shadow',
+			},
 		};
 		tooltip.formatter = this._formatTooltip.bind(this, this.currency, this.percentage, this.digits);
 		if (this.currency) {
-			valAxis[0].axisLabel = { formatter: value => formatScale(value, this.currency) };
+			valAxis[0].axisLabel = { formatter: (value) => formatScale(value, this.currency) };
 		}
 		this._echartsOptions = {
 			series,
-			tooltip
+			tooltip,
 		};
 
 		if (mainType === 'horizontalBar') {
@@ -143,13 +139,20 @@ export class EChartComponent extends BaseChart {
 		}
 
 		if (this.legend !== false) {
-			this._echartsOptions.legend = this._generateLegendOptions(series.length > 1, this._typeMap[mainType] === 'pie');
+			this._echartsOptions.legend = this._generateLegendOptions(
+				series.length > 1,
+				this._typeMap[mainType] === 'pie'
+			);
 		}
 
 		this._defineColors(series, this._typeMap[mainType] === 'pie');
 
-		let opt = cloneDeep(this._echartsOptions);
-		opt = merge(opt, this.options);
+		let opt = cloneDeep(this._echartsOptions || {});
+		Object.keys(this.options || {}).forEach((k) => {
+			if (this.options[k] || this.options[k] === 0) {
+				opt[k] = this.options[k];
+			}
+		});
 
 		this._chart.setOption(opt, true);
 	}
@@ -165,7 +168,7 @@ export class EChartComponent extends BaseChart {
 			const m = moment(item.x);
 			return {
 				name: moment(item.x).format(timeFormat || 'L'),
-				value: [`${m.get('year')}-${m.get('month')}-${m.get('day')}`, item.y]
+				value: [`${m.get('year')}-${m.get('month')}-${m.get('day')}`, item.y],
 			};
 		}
 		return item;
@@ -178,20 +181,20 @@ export class EChartComponent extends BaseChart {
 			r = 40;
 		}
 		step = (80 - r) / series.length;
-		series.forEach(s => {
+		series.forEach((s) => {
 			s.data.forEach((d, i) => (d.name = labels[i]));
 			s.radius = [`${r}%`, `${r + step - 1}%`];
 			r = r + step;
 			s.label = {
 				normal: {
 					show: false,
-					position: 'center'
+					position: 'center',
 				},
 				emphasis: {
 					show: makeDoughnut ? true : false,
 					textShadowColor: 'grey',
-					textShadowOffsetY: 1
-				}
+					textShadowOffsetY: 1,
+				},
 			};
 			s['avoidLabelOverlap'] = false;
 		});
@@ -210,7 +213,7 @@ export class EChartComponent extends BaseChart {
 			const colors = generateColorsAsStrings(this.colors || [], series.length);
 			series.forEach((s, i) => (s['color'] = colors[i]));
 		} else if (cf === 'data') {
-			series.forEach(s => {
+			series.forEach((s) => {
 				const colors = generateColorsAsStrings(this.colors || [], s.data.length);
 				s.data.forEach((d, i) => (d.itemStyle = { color: colors[i] }));
 			});
@@ -218,14 +221,12 @@ export class EChartComponent extends BaseChart {
 	}
 
 	private _formatTooltip(currencyCode: string, percent: ShowPercentageType, digitInfo: string, param: any) {
-		const formatParam = p => {
-			let l = `<div class="ezy-echart-tooltip-item"><span class="ezy-echart-series-indicator" style="background-color: ${
-				p.color
-			}"></span>
+		const formatParam = (p) => {
+			let l = `<div class="ezy-echart-tooltip-item"><span class="ezy-echart-series-indicator" style="background-color: ${p.color}"></span>
 			 ${p.seriesName}: `;
 			const percentOnly: boolean = percent === 'only' && p.percent;
 			const showPercent: boolean = percent && p.percent;
-			const v = isArray(p.data.value) ? p.data.value[1] : p.data.value;
+			const v = Array.isArray(p.data.value) ? p.data.value[1] : p.data.value;
 
 			if (!percentOnly) {
 				if (currencyCode) {
@@ -243,9 +244,9 @@ export class EChartComponent extends BaseChart {
 		};
 
 		let str = '<div style="max-width: 35vw; white-space:normal">';
-		if (isArray(param)) {
+		if (Array.isArray(param)) {
 			str += `<strong>${param[0].name}</strong><br/>`;
-			str += `${param.map(p => formatParam(p)).join('')}`;
+			str += `${param.map((p) => formatParam(p)).join('')}`;
 		} else {
 			str += `<strong>${param.name}</strong><br/>`;
 			str += `${formatParam(param)}`;
