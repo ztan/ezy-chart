@@ -147,7 +147,7 @@ export class EChartComponent extends BaseChart {
 
 		this._defineColors(series, this._typeMap[mainType] === 'pie');
 
-		let opt = cloneDeep(this._echartsOptions || {});
+		const opt = cloneDeep(this._echartsOptions || {});
 		Object.keys(this.options || {}).forEach((k) => {
 			if (this.options[k] || this.options[k] === 0) {
 				opt[k] = this.options[k];

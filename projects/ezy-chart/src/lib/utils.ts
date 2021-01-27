@@ -6,25 +6,25 @@ export function cloneDeep(item: any) {
 		return item;
 	} // null, undefined values check
 
-	var types = [Number, String, Boolean],
-		result;
+	const types: any[] = [Number, String, Boolean];
+	let result: any;
 
 	// normalizing primitives if someone did new String('aaa'), or new Number('444');
-	types.forEach(function (type) {
+	types.forEach((type) => {
 		if (item instanceof type) {
 			result = type(item);
 		}
 	});
 
-	if (typeof result == 'undefined') {
+	if (typeof result === 'undefined') {
 		if (Object.prototype.toString.call(item) === '[object Array]') {
 			result = [];
-			item.forEach(function (child, index, array) {
+			item.forEach((child, index, array) => {
 				result[index] = cloneDeep(child);
 			});
-		} else if (typeof item == 'object') {
+		} else if (typeof item === 'object') {
 			// testing that this is DOM
-			if (item.nodeType && typeof item.cloneNode == 'function') {
+			if (item.nodeType && typeof item.cloneNode === 'function') {
 				result = item.cloneNode(true);
 			} else if (!item.prototype) {
 				// check that this is a literal
@@ -33,8 +33,10 @@ export function cloneDeep(item: any) {
 				} else {
 					// it is an object literal
 					result = {};
-					for (var i in item) {
-						result[i] = cloneDeep(item[i]);
+					for (const i in item) {
+						if (item[i]) {
+							result[i] = cloneDeep(item[i]);
+						}
 					}
 				}
 			} else {

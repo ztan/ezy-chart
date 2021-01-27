@@ -59,6 +59,7 @@ export function formatMoney(val: any, currency: string, digitInfo?: string) {
 }
 
 @Directive()
+// tslint:disable-next-line:directive-class-suffix
 export abstract class BaseChart implements OnDestroy, DoCheck {
 	private _params: ChartParameters = {};
 	private _prevParams: ChartParameters = {};

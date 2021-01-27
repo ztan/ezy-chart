@@ -322,7 +322,6 @@ export class ChartComponent extends BaseChart {
 		}
 
 		if (ds.length === 0 || (ds[0].data || []).length === 0) {
-			console.debug('ezy-chart: empty datasets. ');
 		} else if ((ds[0].data || []).length > labels.length && !timeScaleConfigured) {
 			console.warn('ezy-chart: wrong number of labels. ');
 		}
