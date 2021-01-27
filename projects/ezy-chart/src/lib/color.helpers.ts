@@ -1,5 +1,3 @@
-import * as _ from 'lodash';
-
 /**
  * @internal
  */
@@ -44,7 +42,7 @@ const DEFAULT_COLORS = [
 	[128, 128, 0],
 	[255, 215, 180],
 	[0, 0, 128],
-	[128, 128, 128]
+	[128, 128, 128],
 ];
 
 /**
@@ -65,7 +63,7 @@ export interface ColorGroup {
  * @internal
  */
 export function replaceDefaultColors(colors: number[][]) {
-	_.merge(DEFAULT_COLORS, colors);
+	(colors || []).forEach((a, i) => (DEFAULT_COLORS[i] = a));
 }
 
 /**
@@ -75,9 +73,9 @@ function generateColors(definedColors: string[], totalNum: number): number[][] {
 	let defaultIdx = 0;
 	const colors: number[][] = [];
 	if (definedColors.length < totalNum) {
-		definedColors = _.concat(definedColors, new Array<string>(totalNum - definedColors.length));
+		definedColors = [...definedColors, ...new Array<string>(totalNum - definedColors.length)];
 	}
-	_.each(definedColors, (val, i) => {
+	definedColors.forEach((val) => {
 		let col = parseColor(val);
 		if (!col) {
 			col = DEFAULT_COLORS[defaultIdx++] || getRandomColor();
@@ -103,7 +101,7 @@ function parseColor(input: string): number[] | undefined {
 			return [
 				parseInt(m[1].charAt(0), 16) * 0x11,
 				parseInt(m[1].charAt(1), 16) * 0x11,
-				parseInt(m[1].charAt(2), 16) * 0x11
+				parseInt(m[1].charAt(2), 16) * 0x11,
 			];
 		} else {
 			m = input.match(/^rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/i);
@@ -121,7 +119,7 @@ function parseColor(input: string): number[] | undefined {
  * @internal
  */
 export function generateColorsAsStrings(definedColors: string[], totalNum: number): string[] {
-	return generateColors(definedColors, totalNum).map(c => `rgba(${c[0]}, ${c[1]}, ${c[2]}, 0.8)`);
+	return generateColors(definedColors, totalNum).map((c) => `rgba(${c[0]}, ${c[1]}, ${c[2]}, 0.8)`);
 }
 
 /**
@@ -149,14 +147,14 @@ function getRandomColor() {
  * @internal
  */
 function formatChartColorsForSeries(colors: number[][], type: string): ColorGroup[] {
-	return colors.map(color => ({
+	return colors.map((color) => ({
 		hoverBackgroundColor: rgba(color, 0.6),
 		backgroundColor: rgba(color, 1),
 		borderColor: type === 'line' ? rgba(color, 0.6) : 'rgba(255, 255, 255, 0.3)',
 		pointBackgroundColor: rgba(color, 0.6),
 		pointBorderColor: '#fff',
 		pointHoverBackgroundColor: rgba(color, 1),
-		pointHoverBorderColor: rgba(color, 0.8)
+		pointHoverBorderColor: rgba(color, 0.8),
 	}));
 }
 
@@ -172,13 +170,13 @@ export function generateColorsBySeries(definedColors: string[], totalNum: number
  */
 function formatChartColorsForData(colors: number[][], type: string): ColorGroup {
 	return {
-		hoverBackgroundColor: colors.map(color => rgba(color, 0.6)),
-		backgroundColor: colors.map(color => rgba(color, 1)),
-		borderColor: colors.map(color => (type === 'line' ? rgba(color, 0.6) : 'rgba(255, 255, 255, 0.3)')),
-		pointBackgroundColor: colors.map(color => rgba(color, 1)),
-		pointBorderColor: colors.map(color => '#fff'),
-		pointHoverBackgroundColor: colors.map(color => rgba(color, 1)),
-		pointHoverBorderColor: colors.map(color => rgba(color, 0.8))
+		hoverBackgroundColor: colors.map((color) => rgba(color, 0.6)),
+		backgroundColor: colors.map((color) => rgba(color, 1)),
+		borderColor: colors.map((color) => (type === 'line' ? rgba(color, 0.6) : 'rgba(255, 255, 255, 0.3)')),
+		pointBackgroundColor: colors.map((color) => rgba(color, 1)),
+		pointBorderColor: colors.map((color) => '#fff'),
+		pointHoverBackgroundColor: colors.map((color) => rgba(color, 1)),
+		pointHoverBorderColor: colors.map((color) => rgba(color, 0.8)),
 	};
 }
 

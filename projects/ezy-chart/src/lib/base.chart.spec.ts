@@ -1,5 +1,5 @@
 import { BaseChart } from './base.chart';
-import { async as ngAsync, inject } from '@angular/core/testing';
+import { waitForAsync, inject } from '@angular/core/testing';
 import { NgZone } from '@angular/core';
 
 class MockBaseChart extends BaseChart {
@@ -13,7 +13,7 @@ describe('MockBaseChart class', () => {
 	let bc: MockBaseChart;
 
 	beforeEach(
-		ngAsync(
+		waitForAsync(
 			inject([NgZone], (zone: NgZone) => {
 				bc = new MockBaseChart(zone);
 			})
@@ -21,14 +21,14 @@ describe('MockBaseChart class', () => {
 	);
 
 	afterEach(
-		ngAsync(() => {
+		waitForAsync(() => {
 			bc.ngOnDestroy();
 		})
 	);
 
 	it(
 		'should reflect changes from colors input to the internal parameter',
-		ngAsync(() => {
+		waitForAsync(() => {
 			expect(bc.colors).toBeUndefined();
 			expect(bc.isParamChanged('colors')).toBeFalsy();
 			expect(bc.paramsChanged).toBeFalsy();
@@ -47,7 +47,7 @@ describe('MockBaseChart class', () => {
 
 	it(
 		'should reflect changes from colorsFor input to the internal parameter',
-		ngAsync(() => {
+		waitForAsync(() => {
 			expect(bc.colorsFor).toBeUndefined();
 			expect(bc.isParamChanged('colorsFor')).toBeFalsy();
 			expect(bc.paramsChanged).toBeFalsy();
@@ -66,7 +66,7 @@ describe('MockBaseChart class', () => {
 
 	it(
 		'should reflect changes from currency input to the internal parameter',
-		ngAsync(() => {
+		waitForAsync(() => {
 			expect(bc.currency).toBeUndefined();
 			expect(bc.isParamChanged('currency')).toBeFalsy();
 			expect(bc.paramsChanged).toBeFalsy();
@@ -85,7 +85,7 @@ describe('MockBaseChart class', () => {
 
 	it(
 		'should reflect changes from datasets input to the internal parameter',
-		ngAsync(() => {
+		waitForAsync(() => {
 			expect(bc.datasets).toBeUndefined();
 			expect(bc.isParamChanged('datasets')).toBeFalsy();
 			expect(bc.paramsChanged).toBeFalsy();
@@ -104,7 +104,7 @@ describe('MockBaseChart class', () => {
 
 	it(
 		'should reflect changes from digits input to the internal parameter',
-		ngAsync(() => {
+		waitForAsync(() => {
 			expect(bc.digits).toBeUndefined();
 			expect(bc.isParamChanged('digits')).toBeFalsy();
 			expect(bc.paramsChanged).toBeFalsy();
@@ -123,7 +123,7 @@ describe('MockBaseChart class', () => {
 
 	it(
 		'should reflect changes from labels input to the internal parameter',
-		ngAsync(() => {
+		waitForAsync(() => {
 			expect(bc.labels).toBeUndefined();
 			expect(bc.isParamChanged('labels')).toBeFalsy();
 			expect(bc.paramsChanged).toBeFalsy();
@@ -142,7 +142,7 @@ describe('MockBaseChart class', () => {
 
 	it(
 		'should reflect changes from legend input to the internal parameter',
-		ngAsync(() => {
+		waitForAsync(() => {
 			expect(bc.legend).toBeUndefined();
 			expect(bc.isParamChanged('legend')).toBeFalsy();
 			expect(bc.paramsChanged).toBeFalsy();
@@ -161,7 +161,7 @@ describe('MockBaseChart class', () => {
 
 	it(
 		'should reflect changes from percentage input to the internal parameter',
-		ngAsync(() => {
+		waitForAsync(() => {
 			expect(bc.percentage).toBeUndefined();
 			expect(bc.isParamChanged('percentage')).toBeFalsy();
 			expect(bc.paramsChanged).toBeFalsy();
@@ -180,7 +180,7 @@ describe('MockBaseChart class', () => {
 
 	it(
 		'should reflect changes from ratio input to the internal parameter',
-		ngAsync(() => {
+		waitForAsync(() => {
 			expect(bc.ratio).toBeUndefined();
 			expect(bc.isParamChanged('ratio')).toBeFalsy();
 			expect(bc.paramsChanged).toBeFalsy();
@@ -199,7 +199,7 @@ describe('MockBaseChart class', () => {
 
 	it(
 		'should reflect changes from options input to the internal parameter',
-		ngAsync(() => {
+		waitForAsync(() => {
 			expect(bc.options).toBeUndefined();
 			expect(bc.isParamChanged('options')).toBeFalsy();
 			expect(bc.paramsChanged).toBeFalsy();

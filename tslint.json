@@ -1,17 +1,25 @@
 {
 	"extends": "tslint:recommended",
-	"rules": {
+  "rules": {
+    "align": {
+      "options": [
+        "parameters",
+        "statements"
+      ]
+    },
 		"indent": [
 			true,
 			"tabs",
 			4
 		],
-		"array-type": false,
+    "array-type": false,
+    "arrow-return-shorthand": true,
 		"arrow-parens": false,
 		"deprecation": {
 			"severity": "warn"
 		},
-		"component-class-suffix": true,
+    "component-class-suffix": true,
+    "curly": true,
 		"contextual-lifecycle": true,
 		"directive-class-suffix": true,
 		"directive-selector": [
@@ -19,13 +27,15 @@
 			"attribute",
 			"ezy",
 			"camelCase"
-		],
+    ],
+    "eofline": true,
 		"component-selector": [
 			true,
 			"element",
 			"ezy",
 			"kebab-case"
-		],
+    ],
+    "import-spacing": true,
 		"import-blacklist": [
 			true,
 			"rxjs/Rx"
@@ -64,8 +74,7 @@
 		],
 		"no-non-null-assertion": true,
 		"no-redundant-jsdoc": false,
-		"no-switch-case-fall-through": true,
-		"no-use-before-declare": true,
+    "no-switch-case-fall-through": true,
 		"no-var-requires": false,
 		"object-literal-key-quotes": [
 			true,
@@ -84,10 +93,42 @@
 		"no-inputs-metadata-property": true,
 		"no-output-native": true,
 		"no-output-on-prefix": true,
-		"no-output-rename": true,
+    "no-output-rename": true,
+    "semicolon": {
+      "options": [
+        "always"
+      ]
+    },
+    "space-before-function-paren": {
+      "options": {
+        "anonymous": "never",
+        "asyncArrow": "always",
+        "constructor": "never",
+        "method": "never",
+        "named": "never"
+      }
+    },
 		"no-outputs-metadata-property": true,
 		"template-banana-in-box": true,
-		"template-no-negated-async": true,
+    "template-no-negated-async": true,
+    "typedef-whitespace": {
+      "options": [
+        {
+          "call-signature": "nospace",
+          "index-signature": "nospace",
+          "parameter": "nospace",
+          "property-declaration": "nospace",
+          "variable-declaration": "nospace"
+        },
+        {
+          "call-signature": "onespace",
+          "index-signature": "onespace",
+          "parameter": "onespace",
+          "property-declaration": "onespace",
+          "variable-declaration": "onespace"
+        }
+      ]
+    },
 		"use-lifecycle-interface": true,
 		"use-pipe-transform-interface": true,
 		"variable-name": {
@@ -97,7 +138,17 @@
 				"allow-leading-underscore",
 				"allow-pascal-case"
 			]
-		}
+    },
+    "whitespace": {
+      "options": [
+        "check-branch",
+        "check-decl",
+        "check-operator",
+        "check-separator",
+        "check-type",
+        "check-typecast"
+      ]
+    }
 	},
 	"rulesDirectory": [
 		"codelyzer"

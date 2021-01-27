@@ -1,8 +1,8 @@
 import { Input, NgZone, OnDestroy, DoCheck, Directive } from '@angular/core';
-import * as _ from 'lodash';
 import { Subscription, fromEvent } from 'rxjs';
 import { CurrencyPipe } from '@angular/common';
 import * as moment from 'moment';
+import { cloneDeep, isEqual } from './utils';
 
 export type ColorsForType = 'auto' | 'series' | 'data' | 'none';
 
@@ -59,6 +59,7 @@ export function formatMoney(val: any, currency: string, digitInfo?: string) {
 }
 
 @Directive()
+// tslint:disable-next-line:directive-class-suffix
 export abstract class BaseChart implements OnDestroy, DoCheck {
 	private _params: ChartParameters = {};
 	private _prevParams: ChartParameters = {};
@@ -241,15 +242,15 @@ export abstract class BaseChart implements OnDestroy, DoCheck {
 	}
 
 	get paramsChanged(): boolean {
-		return !_.isEqual(this._params, this._prevParams);
+		return !isEqual(this._params, this._prevParams);
 	}
 
-	isParamChanged(property: string) {
-		return !_.isEqual(_.get(this._params, property), _.get(this._prevParams, property));
+	isParamChanged(property: keyof ChartParameters) {
+		return !isEqual(this._params[property], this._prevParams[property]);
 	}
 
 	resetParamsChangeState() {
-		this._prevParams = _.cloneDeep(this._params);
+		this._prevParams = cloneDeep(this._params);
 	}
 
 	constructor(protected _zone: NgZone) {
