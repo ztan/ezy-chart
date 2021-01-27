@@ -121,8 +121,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div #chartContainer&gt;&lt;/div&gt;
-	</code></pre></td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div #chartContainer&gt;&lt;/div&gt;</code></pre></td>
             </tr>
 
 
@@ -149,7 +148,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/ezy-chart/src/lib/echart.component.ts:49</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/ezy-chart/src/lib/echart.component.ts:45</a></div>
                             </td>
                         </tr>
 
@@ -202,16 +201,12 @@
 import { Component, ChangeDetectionStrategy, NgZone, ViewChild, ElementRef, ViewEncapsulation } from &#x27;@angular/core&#x27;;
 import { generateColorsAsStrings } from &#x27;./color.helpers&#x27;;
 import { DecimalPipe } from &#x27;@angular/common&#x27;;
-import cloneDeep from &#x27;lodash/cloneDeep&#x27;;
-import isArray from &#x27;lodash/isArray&#x27;;
-import merge from &#x27;lodash/merge&#x27;;
+import { cloneDeep } from &#x27;./utils&#x27;;
 import moment from &#x27;moment&#x27;;
 
 @Component({
 	selector: &#x27;ezy-echart&#x27;,
-	template: &#x60;
-		&lt;div #chartContainer&gt;&lt;/div&gt;
-	&#x60;,
+	template: &#x60; &lt;div #chartContainer&gt;&lt;/div&gt; &#x60;,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 	styles: [
@@ -229,8 +224,8 @@ import moment from &#x27;moment&#x27;;
 				text-indent: -13px;
 				padding-left: 13px;
 			}
-		&#x60;
-	]
+		&#x60;,
+	],
 })
 export class EChartComponent extends BaseChart {
 	@ViewChild(&#x27;chartContainer&#x27;, { read: ElementRef, static: true })
@@ -244,7 +239,7 @@ export class EChartComponent extends BaseChart {
 		horizontalBar: &#x27;bar&#x27;,
 		doughnut: &#x27;pie&#x27;,
 		pie: &#x27;pie&#x27;,
-		line: &#x27;line&#x27;
+		line: &#x27;line&#x27;,
 	};
 
 	constructor(zone: NgZone) {
@@ -299,34 +294,34 @@ export class EChartComponent extends BaseChart {
 		const ds &#x3D; this.datasets || [];
 		this._echartsOptions &#x3D; {};
 		const mainType &#x3D; this.type || &#x27;bar&#x27;;
-		const series: any[] &#x3D; ds.map(v &#x3D;&gt; ({
+		const series: any[] &#x3D; ds.map((v) &#x3D;&gt; ({
 			name: v.name || typeof v.label &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ? v.label : &#x27;&#x27;,
 			type: this._typeMap[v.type || mainType] || v.type || mainType,
-			data: (v.data || ([] as any[])).map(d &#x3D;&gt; this._mapDataItem(d, this.timeFormat))
+			data: (v.data || ([] as any[])).map((d) &#x3D;&gt; this._mapDataItem(d, this.timeFormat)),
 		}));
-		const isTime &#x3D; series.some(s &#x3D;&gt; s.data.some(d &#x3D;&gt; d.name &amp;&amp; moment(d.name).isValid()));
+		const isTime &#x3D; series.some((s) &#x3D;&gt; s.data.some((d) &#x3D;&gt; d.name &amp;&amp; moment(d.name).isValid()));
 		const labels &#x3D; this.labels || [];
 		const timeAxis &#x3D; [
 			{
-				type: &#x27;time&#x27;
-			}
+				type: &#x27;time&#x27;,
+			},
 		];
 		const catAxis: Array&lt;echarts.EChartOption.XAxis | echarts.EChartOption.YAxis&gt; &#x3D; [
-			{ data: labels, type: &#x27;category&#x27; }
+			{ data: labels, type: &#x27;category&#x27; },
 		];
 		const valAxis: Array&lt;echarts.EChartOption.XAxis | echarts.EChartOption.YAxis&gt; &#x3D; [{ type: &#x27;value&#x27; }];
 		const tooltip: any &#x3D; {
 			axisPointer: {
-				type: &#x27;shadow&#x27;
-			}
+				type: &#x27;shadow&#x27;,
+			},
 		};
 		tooltip.formatter &#x3D; this._formatTooltip.bind(this, this.currency, this.percentage, this.digits);
 		if (this.currency) {
-			valAxis[0].axisLabel &#x3D; { formatter: value &#x3D;&gt; formatScale(value, this.currency) };
+			valAxis[0].axisLabel &#x3D; { formatter: (value) &#x3D;&gt; formatScale(value, this.currency) };
 		}
 		this._echartsOptions &#x3D; {
 			series,
-			tooltip
+			tooltip,
 		};
 
 		if (mainType &#x3D;&#x3D;&#x3D; &#x27;horizontalBar&#x27;) {
@@ -342,13 +337,20 @@ export class EChartComponent extends BaseChart {
 		}
 
 		if (this.legend !&#x3D;&#x3D; false) {
-			this._echartsOptions.legend &#x3D; this._generateLegendOptions(series.length &gt; 1, this._typeMap[mainType] &#x3D;&#x3D;&#x3D; &#x27;pie&#x27;);
+			this._echartsOptions.legend &#x3D; this._generateLegendOptions(
+				series.length &gt; 1,
+				this._typeMap[mainType] &#x3D;&#x3D;&#x3D; &#x27;pie&#x27;
+			);
 		}
 
 		this._defineColors(series, this._typeMap[mainType] &#x3D;&#x3D;&#x3D; &#x27;pie&#x27;);
 
-		let opt &#x3D; cloneDeep(this._echartsOptions);
-		opt &#x3D; merge(opt, this.options);
+		const opt &#x3D; cloneDeep(this._echartsOptions || {});
+		Object.keys(this.options || {}).forEach((k) &#x3D;&gt; {
+			if (this.options[k] || this.options[k] &#x3D;&#x3D;&#x3D; 0) {
+				opt[k] &#x3D; this.options[k];
+			}
+		});
 
 		this._chart.setOption(opt, true);
 	}
@@ -364,7 +366,7 @@ export class EChartComponent extends BaseChart {
 			const m &#x3D; moment(item.x);
 			return {
 				name: moment(item.x).format(timeFormat || &#x27;L&#x27;),
-				value: [&#x60;${m.get(&#x27;year&#x27;)}-${m.get(&#x27;month&#x27;)}-${m.get(&#x27;day&#x27;)}&#x60;, item.y]
+				value: [&#x60;${m.get(&#x27;year&#x27;)}-${m.get(&#x27;month&#x27;)}-${m.get(&#x27;day&#x27;)}&#x60;, item.y],
 			};
 		}
 		return item;
@@ -377,20 +379,20 @@ export class EChartComponent extends BaseChart {
 			r &#x3D; 40;
 		}
 		step &#x3D; (80 - r) / series.length;
-		series.forEach(s &#x3D;&gt; {
+		series.forEach((s) &#x3D;&gt; {
 			s.data.forEach((d, i) &#x3D;&gt; (d.name &#x3D; labels[i]));
 			s.radius &#x3D; [&#x60;${r}%&#x60;, &#x60;${r + step - 1}%&#x60;];
 			r &#x3D; r + step;
 			s.label &#x3D; {
 				normal: {
 					show: false,
-					position: &#x27;center&#x27;
+					position: &#x27;center&#x27;,
 				},
 				emphasis: {
 					show: makeDoughnut ? true : false,
 					textShadowColor: &#x27;grey&#x27;,
-					textShadowOffsetY: 1
-				}
+					textShadowOffsetY: 1,
+				},
 			};
 			s[&#x27;avoidLabelOverlap&#x27;] &#x3D; false;
 		});
@@ -409,7 +411,7 @@ export class EChartComponent extends BaseChart {
 			const colors &#x3D; generateColorsAsStrings(this.colors || [], series.length);
 			series.forEach((s, i) &#x3D;&gt; (s[&#x27;color&#x27;] &#x3D; colors[i]));
 		} else if (cf &#x3D;&#x3D;&#x3D; &#x27;data&#x27;) {
-			series.forEach(s &#x3D;&gt; {
+			series.forEach((s) &#x3D;&gt; {
 				const colors &#x3D; generateColorsAsStrings(this.colors || [], s.data.length);
 				s.data.forEach((d, i) &#x3D;&gt; (d.itemStyle &#x3D; { color: colors[i] }));
 			});
@@ -417,14 +419,12 @@ export class EChartComponent extends BaseChart {
 	}
 
 	private _formatTooltip(currencyCode: string, percent: ShowPercentageType, digitInfo: string, param: any) {
-		const formatParam &#x3D; p &#x3D;&gt; {
-			let l &#x3D; &#x60;&lt;div class&#x3D;&quot;ezy-echart-tooltip-item&quot;&gt;&lt;span class&#x3D;&quot;ezy-echart-series-indicator&quot; style&#x3D;&quot;background-color: ${
-				p.color
-			}&quot;&gt;&lt;/span&gt;
+		const formatParam &#x3D; (p) &#x3D;&gt; {
+			let l &#x3D; &#x60;&lt;div class&#x3D;&quot;ezy-echart-tooltip-item&quot;&gt;&lt;span class&#x3D;&quot;ezy-echart-series-indicator&quot; style&#x3D;&quot;background-color: ${p.color}&quot;&gt;&lt;/span&gt;
 			 ${p.seriesName}: &#x60;;
 			const percentOnly: boolean &#x3D; percent &#x3D;&#x3D;&#x3D; &#x27;only&#x27; &amp;&amp; p.percent;
 			const showPercent: boolean &#x3D; percent &amp;&amp; p.percent;
-			const v &#x3D; isArray(p.data.value) ? p.data.value[1] : p.data.value;
+			const v &#x3D; Array.isArray(p.data.value) ? p.data.value[1] : p.data.value;
 
 			if (!percentOnly) {
 				if (currencyCode) {
@@ -442,9 +442,9 @@ export class EChartComponent extends BaseChart {
 		};
 
 		let str &#x3D; &#x27;&lt;div style&#x3D;&quot;max-width: 35vw; white-space:normal&quot;&gt;&#x27;;
-		if (isArray(param)) {
+		if (Array.isArray(param)) {
 			str +&#x3D; &#x60;&lt;strong&gt;${param[0].name}&lt;/strong&gt;&lt;br/&gt;&#x60;;
-			str +&#x3D; &#x60;${param.map(p &#x3D;&gt; formatParam(p)).join(&#x27;&#x27;)}&#x60;;
+			str +&#x3D; &#x60;${param.map((p) &#x3D;&gt; formatParam(p)).join(&#x27;&#x27;)}&#x60;;
 		} else {
 			str +&#x3D; &#x60;&lt;strong&gt;${param.name}&lt;/strong&gt;&lt;br/&gt;&#x60;;
 			str +&#x3D; &#x60;${formatParam(param)}&#x60;;
@@ -519,7 +519,7 @@ export class EChartComponent extends BaseChart {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div #chartContainer></div>	</div>'
+        var COMPONENT_TEMPLATE = '<div><div #chartContainer></div></div>'
     var COMPONENTS = [{'name': 'ChartComponent', 'selector': 'ezy-chart'},{'name': 'EChartComponent', 'selector': 'ezy-echart'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'EChartComponent'};

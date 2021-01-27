@@ -96,8 +96,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div #chartContainer&gt;&lt;/div&gt;
-	</code></pre></td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div #chartContainer&gt;&lt;/div&gt;</code></pre></td>
             </tr>
 
 
@@ -151,7 +150,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">projects/ezy-chart/src/lib/chart.component.ts:142</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">projects/ezy-chart/src/lib/chart.component.ts:134</a></div>
                             </td>
                         </tr>
 
@@ -207,7 +206,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">projects/ezy-chart/src/lib/chart.component.ts:134</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">projects/ezy-chart/src/lib/chart.component.ts:126</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -225,13 +224,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ChangeDetectionStrategy, Input, ElementRef, ViewChild, NgZone } from &#x27;@angular/core&#x27;;
 import { generateColorsBySeries, generateColorsByDataPoints } from &#x27;./color.helpers&#x27;;
 import { DecimalPipe } from &#x27;@angular/common&#x27;;
-import cloneDeep from &#x27;lodash/cloneDeep&#x27;;
-import min from &#x27;lodash/min&#x27;;
-import flatMap from &#x27;lodash/flatMap&#x27;;
-import sumBy from &#x27;lodash/sumBy&#x27;;
-import isEmpty from &#x27;lodash/isEmpty&#x27;;
-import merge from &#x27;lodash/merge&#x27;;
-import pickBy from &#x27;lodash/pickBy&#x27;;
+import { cloneDeep } from &#x27;./utils&#x27;;
 import moment from &#x27;moment&#x27;;
 import { BaseChart, ShowPercentageType, ColorsForType, formatMoney, formatScale } from &#x27;./base.chart&#x27;;
 
@@ -259,9 +252,9 @@ function getTooltipLabelCallBack(
 		if (type &#x3D;&#x3D;&#x3D; &#x27;label&#x27;) {
 			return label;
 		}
-		const dsData: Array&lt;number | Chart.ChartPoint&gt; &#x3D; ds[tooltipItem.datasetIndex || 0].data || [];
+		const dsData: (number | number[])[] | Chart.ChartPoint[] &#x3D; ds[tooltipItem.datasetIndex || 0].data || [];
 		const point &#x3D; dsData[tooltipItem.index || 0];
-		const value &#x3D; typeof point &#x3D;&#x3D;&#x3D; &#x27;number&#x27; ? point : point.y;
+		const value &#x3D; typeof point &#x3D;&#x3D;&#x3D; &#x27;number&#x27; ? point : Array.isArray(point) ? point[0] : point.y;
 
 		if (percentage !&#x3D;&#x3D; &#x27;only&#x27;) {
 			if (currency) {
@@ -275,7 +268,7 @@ function getTooltipLabelCallBack(
 
 		if (percentage) {
 			const perc &#x3D; typeof value &#x3D;&#x3D;&#x3D; &#x27;number&#x27; ? value : 0;
-			const total &#x3D; sumBy(dsData, d &#x3D;&gt; (typeof d &#x3D;&#x3D;&#x3D; &#x27;number&#x27; ? d : (d.y as number)));
+			const total &#x3D; (dsData as any[]).reduce((p, d) &#x3D;&gt; p + (typeof d &#x3D;&#x3D;&#x3D; &#x27;number&#x27; ? d : (d.y as number)), 0);
 			labels.push(&#x60;${total ? ((perc * 100) / total).toFixed(2) : 0}%&#x60;);
 		}
 		return labels.join(&#x27; : &#x27;);
@@ -285,7 +278,7 @@ function getTooltipLabelCallBack(
 function splitWords(text: string, maxLength: number) {
 	const words: string[] &#x3D; [];
 	let word &#x3D; &#x27;&#x27;;
-	text.split(&#x27; &#x27;).forEach(w &#x3D;&gt; {
+	text.split(&#x27; &#x27;).forEach((w) &#x3D;&gt; {
 		word &#x3D; [word, w].join(&#x27; &#x27;);
 		if (word.length &gt; maxLength) {
 			words.push(word);
@@ -342,16 +335,14 @@ if (typeof Chart !&#x3D;&#x3D; &#x27;undefined&#x27;) {
 			if (canvas) {
 				canvas.style.cursor &#x3D; cursorStyle;
 			}
-		}
+		},
 	});
 }
 
 @Component({
 	selector: &#x27;ezy-chart&#x27;,
-	template: &#x60;
-		&lt;div #chartContainer&gt;&lt;/div&gt;
-	&#x60;,
-	changeDetection: ChangeDetectionStrategy.OnPush
+	template: &#x60; &lt;div #chartContainer&gt;&lt;/div&gt; &#x60;,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChartComponent extends BaseChart {
 	@Input()
@@ -469,7 +460,7 @@ export class ChartComponent extends BaseChart {
 		this._config.data &#x3D; this._config.data || {};
 		const ds: Chart.ChartDataSets[] &#x3D; (this._config.data.datasets &#x3D; cloneDeep(this.datasets || []));
 
-		if (!ds.some(d &#x3D;&gt; (d.label ? true : false))) {
+		if (!ds.some((d) &#x3D;&gt; (d.label ? true : false))) {
 			if (multiType) {
 				this._config.options.legend.display &#x3D; false;
 			}
@@ -486,7 +477,7 @@ export class ChartComponent extends BaseChart {
 		} else if (typeof legend &#x3D;&#x3D;&#x3D; &#x27;object&#x27;) {
 			this._config.options.legend &#x3D; cloneDeep(legend) as Chart.ChartLegendOptions;
 		} else if (legend &#x3D;&#x3D;&#x3D; &#x27;auto&#x27;) {
-			const multiPoints: boolean &#x3D; ds.every(d &#x3D;&gt; (d.data || []).length &gt; 1);
+			const multiPoints: boolean &#x3D; ds.every((d) &#x3D;&gt; (d.data || []).length &gt; 1);
 			this._config.options.legend.display &#x3D; (multiType &amp;&amp; ds.length &gt; 1) || (multiPoints &amp;&amp; !multiType);
 			this._config.options.legend.position &#x3D; multiType &amp;&amp; this.type !&#x3D;&#x3D; &#x27;radar&#x27; ? &#x27;top&#x27; : &#x27;right&#x27;;
 		}
@@ -496,9 +487,15 @@ export class ChartComponent extends BaseChart {
 			const curr &#x3D; this.currency;
 			if (multiType) {
 				const axes: Chart.CommonAxe &#x3D; {
-					ticks: { callback: val &#x3D;&gt; formatScale(val, curr) }
+					ticks: { callback: (val) &#x3D;&gt; formatScale(val, curr) },
 				};
-				if (ds.every(d &#x3D;&gt; this._isYAxisAllNumbers(d.data || []))) {
+				if (
+					ds.every((d) &#x3D;&gt;
+						this._isYAxisAllNumbers(
+							Array.isArray(d.data) ? d.data : typeof d.data &#x3D;&#x3D;&#x3D; &#x27;number&#x27; ? [d.data] : []
+						)
+					)
+				) {
 					if (this.type !&#x3D;&#x3D; &#x27;horizontalBar&#x27;) {
 						this._config.options.scales.yAxes &#x3D; [axes];
 					} else {
@@ -513,23 +510,30 @@ export class ChartComponent extends BaseChart {
 		this._config.options.tooltips &#x3D; this._config.options.tooltips || {};
 
 		if (this.type &#x3D;&#x3D;&#x3D; &#x27;line&#x27;) {
-			const isTimeScale &#x3D; ds.every(d &#x3D;&gt;
-				((d.data as Chart.ChartPoint[]) || []).every(item &#x3D;&gt; (item.x ? moment(item.x).isValid() : false))
+			const isTimeScale &#x3D; ds.every((d) &#x3D;&gt;
+				((d.data as Chart.ChartPoint[]) || []).every((item) &#x3D;&gt; (item.x ? moment(item.x).isValid() : false))
 			);
 			if (isTimeScale) {
 				this._config.options.scales &#x3D; this._config.options.scales || {};
-				const minTime &#x3D; min(flatMap(ds, d &#x3D;&gt; d.data as Chart.ChartPoint[]).map(p &#x3D;&gt; moment(p.x)));
-				ds.every(d &#x3D;&gt;
-					((d.data as Chart.ChartPoint[]) || []).every(item &#x3D;&gt; (item.x ? moment(item.x).isValid() : false))
+				let minTime: moment.Moment;
+				ds.reduce((p, c) &#x3D;&gt; [...p, ...(c.data as Chart.ChartPoint[])], [])
+					.map((p) &#x3D;&gt; moment(p.x))
+					.forEach((m) &#x3D;&gt; {
+						if (!minTime || minTime.isAfter(m)) {
+							minTime &#x3D; m;
+						}
+					});
+				ds.every((d) &#x3D;&gt;
+					((d.data as Chart.ChartPoint[]) || []).every((item) &#x3D;&gt; (item.x ? moment(item.x).isValid() : false))
 				);
 				this._config.options.scales.xAxes &#x3D; [
 					{
 						type: &#x27;time&#x27;,
 						time: {
 							tooltipFormat: this.timeFormat || &#x27;L&#x27;,
-							min: minTime ? minTime.toISOString() : undefined
-						}
-					}
+							min: minTime ? minTime.toISOString() : undefined,
+						},
+					},
 				];
 				timeScaleConfigured &#x3D; true;
 			}
@@ -541,13 +545,16 @@ export class ChartComponent extends BaseChart {
 		}
 
 		if (ds.length &#x3D;&#x3D;&#x3D; 0 || (ds[0].data || []).length &#x3D;&#x3D;&#x3D; 0) {
-			console.warn(&#x27;ezy-chart: empty datasets. &#x27;);
 		} else if ((ds[0].data || []).length &gt; labels.length &amp;&amp; !timeScaleConfigured) {
 			console.warn(&#x27;ezy-chart: wrong number of labels. &#x27;);
 		}
 
-		if (isEmpty(this._config.options.scales)) {
-			this._config.options &#x3D; pickBy(this._config.options, (val, key) &#x3D;&gt; key !&#x3D;&#x3D; &#x27;scales&#x27;);
+		if (!this._config.options.scales || Object.keys(this._config.options.scales).length &#x3D;&#x3D;&#x3D; 0) {
+			const opt: any &#x3D; {};
+			Object.keys(this._config.options || {})
+				.filter((k) &#x3D;&gt; k !&#x3D;&#x3D; &#x27;scales&#x27;)
+				.forEach((k) &#x3D;&gt; (opt[k] &#x3D; this._config.options[k]));
+			this._config.options &#x3D; opt;
 		}
 
 		const splitLabel: boolean &#x3D; (this.type &#x3D;&#x3D;&#x3D; &#x27;pie&#x27; || this.type &#x3D;&#x3D;&#x3D; &#x27;doughnut&#x27;) &amp;&amp; ds.length &gt; 1;
@@ -571,12 +578,16 @@ export class ChartComponent extends BaseChart {
 		this._config.options.tooltips.callbacks.title &#x3D; getTooltipTitleCallBack(this.type &#x3D;&#x3D;&#x3D; &#x27;horizontalBar&#x27;);
 
 		if (this.options) {
-			merge(this._config.options, this.options);
+			Object.keys(this.options).forEach((k) &#x3D;&gt; {
+				if (this.options[k] || this.options[k] &#x3D;&#x3D;&#x3D; 0) {
+					this._config.options[k] &#x3D; this.options[k];
+				}
+			});
 		}
 	}
 
-	private _isYAxisAllNumbers(data: Array&lt;Chart.ChartPoint | number&gt;): boolean {
-		return data.every(d &#x3D;&gt; !d || typeof d &#x3D;&#x3D;&#x3D; &#x27;number&#x27; || typeof d.y &#x3D;&#x3D;&#x3D; &#x27;number&#x27;);
+	private _isYAxisAllNumbers(data: Array&lt;Chart.ChartPoint | number | number[]&gt;): boolean {
+		return data.every((d) &#x3D;&gt; !d || typeof d &#x3D;&#x3D;&#x3D; &#x27;number&#x27; || (!Array.isArray(d) &amp;&amp; typeof d.y &#x3D;&#x3D;&#x3D; &#x27;number&#x27;));
 	}
 
 	private _applyColors(colors: string[], colorsFor: ColorsForType, datasets: Chart.ChartDataSets[]) {
@@ -590,11 +601,13 @@ export class ChartComponent extends BaseChart {
 
 		if (colorsFor &#x3D;&#x3D;&#x3D; &#x27;series&#x27;) {
 			const colorGroups &#x3D; generateColorsBySeries(colors, datasets.length, this.type || &#x27;bar&#x27;);
-			merge(datasets, colorGroups);
+			datasets.forEach((ds, i) &#x3D;&gt; {
+				Object.keys(colorGroups[i]).forEach((k) &#x3D;&gt; (ds[k] &#x3D; colorGroups[i][k]));
+			});
 		} else if (colorsFor &#x3D;&#x3D;&#x3D; &#x27;data&#x27;) {
 			for (const ds of datasets) {
 				const colorGroup &#x3D; generateColorsByDataPoints(colors, (ds.data || []).length, this.type || &#x27;bar&#x27;);
-				merge(ds, colorGroup);
+				Object.keys(colorGroup).forEach((k) &#x3D;&gt; (ds[k] &#x3D; colorGroup[k]));
 			}
 		}
 	}
@@ -629,7 +642,7 @@ export class ChartComponent extends BaseChart {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div #chartContainer></div>	</div>'
+        var COMPONENT_TEMPLATE = '<div><div #chartContainer></div></div>'
     var COMPONENTS = [{'name': 'ChartComponent', 'selector': 'ezy-chart'},{'name': 'EChartComponent', 'selector': 'ezy-echart'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ChartComponent'};
