@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.1-beta.3](https://github.com/ztan/ezy-chart/compare/v0.5.0-beta.2...v0.5.1-beta.3) (2021-01-27)
+
 ## [0.5.0-beta.2](https://github.com/ztan/ezy-chart/compare/v0.3.1...v0.5.0-beta.2) (2020-02-10)
 
 <a name="0.3.1"></a>
