@@ -200,7 +200,7 @@
 
 import { Component, ChangeDetectionStrategy, NgZone, ViewChild, ElementRef, ViewEncapsulation } from &#x27;@angular/core&#x27;;
 import { generateColorsAsStrings } from &#x27;./color.helpers&#x27;;
-import { DecimalPipe } from &#x27;@angular/common&#x27;;
+import { DecimalPipe, PercentPipe } from &#x27;@angular/common&#x27;;
 import { cloneDeep } from &#x27;./utils&#x27;;
 import moment from &#x27;moment&#x27;;
 
@@ -315,7 +315,13 @@ export class EChartComponent extends BaseChart {
 				type: &#x27;shadow&#x27;,
 			},
 		};
-		tooltip.formatter &#x3D; this._formatTooltip.bind(this, this.currency, this.percentage, this.digits);
+		tooltip.formatter &#x3D; this._formatTooltip.bind(
+			this,
+			this.currency,
+			this.percentage,
+			this.digits,
+			this.percentDigits
+		);
 		if (this.currency) {
 			valAxis[0].axisLabel &#x3D; { formatter: (value) &#x3D;&gt; formatScale(value, this.currency) };
 		}
@@ -418,7 +424,13 @@ export class EChartComponent extends BaseChart {
 		}
 	}
 
-	private _formatTooltip(currencyCode: string, percent: ShowPercentageType, digitInfo: string, param: any) {
+	private _formatTooltip(
+		currencyCode: string,
+		percent: ShowPercentageType,
+		digitInfo: string,
+		percentDigitInfo: string,
+		param: any
+	) {
 		const formatParam &#x3D; (p) &#x3D;&gt; {
 			let l &#x3D; &#x60;&lt;div class&#x3D;&quot;ezy-echart-tooltip-item&quot;&gt;&lt;span class&#x3D;&quot;ezy-echart-series-indicator&quot; style&#x3D;&quot;background-color: ${p.color}&quot;&gt;&lt;/span&gt;
 			 ${p.seriesName}: &#x60;;
@@ -435,7 +447,10 @@ export class EChartComponent extends BaseChart {
 			}
 
 			if (showPercent) {
-				l +&#x3D; &#x60;&lt;span&gt; ${p.percent}%&lt;/span&gt;&#x60;;
+				l +&#x3D; &#x60;&lt;span&gt; ${new PercentPipe(moment.locale()).transform(
+					p.percent / 100,
+					percentDigitInfo || digitInfo || &#x27;1.0-2&#x27;
+				)}%&lt;/span&gt;&#x60;;
 			}
 			l +&#x3D; &#x27;&lt;/div&gt;&#x27;;
 			return l;

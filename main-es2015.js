@@ -1011,10 +1011,9 @@ function cloneDeep(item) {
                 else {
                     // it is an object literal
                     result = {};
+                    // tslint:disable-next-line: forin
                     for (const i in item) {
-                        if (item[i]) {
-                            result[i] = cloneDeep(item[i]);
-                        }
+                        result[i] = cloneDeep(item[i]);
                     }
                 }
             }
@@ -1036,19 +1035,100 @@ function cloneDeep(item) {
 /**
  * @internal
  */
-function isEqual(v1, v2) {
-    if (v1 === v2) {
-        return true;
-    }
-    if (v1) {
-        if (!v2) {
+function isEqual(...args) {
+    let i;
+    let l;
+    let leftChain;
+    let rightChain;
+    function compare2Objects(x, y) {
+        let p;
+        // remember that NaN === NaN returns false
+        // and isNaN(undefined) returns true
+        if (isNaN(x) && isNaN(y) && typeof x === 'number' && typeof y === 'number') {
+            return true;
+        }
+        // Compare primitives and functions.
+        // Check if both arguments link to the same object.
+        // Especially useful on the step where we compare prototypes
+        if (x === y) {
+            return true;
+        }
+        // Works in case when functions are created in constructor.
+        // Comparing dates is a common scenario. Another built-ins?
+        // We can even handle functions passed across iframes
+        if ((typeof x === 'function' && typeof y === 'function') ||
+            (x instanceof Date && y instanceof Date) ||
+            (x instanceof RegExp && y instanceof RegExp) ||
+            (x instanceof String && y instanceof String) ||
+            (x instanceof Number && y instanceof Number)) {
+            return x.toString() === y.toString();
+        }
+        // At last checking prototypes as good as we can
+        if (!(x instanceof Object && y instanceof Object)) {
             return false;
         }
-        return JSON.stringify(v1) === JSON.stringify(v2);
+        if (x.isPrototypeOf(y) || y.isPrototypeOf(x)) {
+            return false;
+        }
+        if (x.constructor !== y.constructor) {
+            return false;
+        }
+        if (x.prototype !== y.prototype) {
+            return false;
+        }
+        // Check for infinitive linking loops
+        if (leftChain.indexOf(x) > -1 || rightChain.indexOf(y) > -1) {
+            return false;
+        }
+        // Quick checking of one object being a subset of another.
+        // todo: cache the structure of arguments[0] for performance
+        for (p in y) {
+            if (y.hasOwnProperty(p) !== x.hasOwnProperty(p)) {
+                return false;
+            }
+            else if (typeof y[p] !== typeof x[p]) {
+                return false;
+            }
+        }
+        // tslint:disable-next-line: forin
+        for (p in x) {
+            if (y.hasOwnProperty(p) !== x.hasOwnProperty(p)) {
+                return false;
+            }
+            else if (typeof y[p] !== typeof x[p]) {
+                return false;
+            }
+            switch (typeof x[p]) {
+                case 'object':
+                case 'function':
+                    leftChain.push(x);
+                    rightChain.push(y);
+                    if (!compare2Objects(x[p], y[p])) {
+                        return false;
+                    }
+                    leftChain.pop();
+                    rightChain.pop();
+                    break;
+                default:
+                    if (x[p] !== y[p]) {
+                        return false;
+                    }
+                    break;
+            }
+        }
+        return true;
     }
-    else {
-        return !v2;
+    if (args.length < 1) {
+        return true; // Die silently? Don't know how to handle such case, please help...
     }
+    for (i = 1, l = args.length; i < l; i++) {
+        leftChain = []; // Todo: this can be cached
+        rightChain = [];
+        if (!compare2Objects(arguments[0], arguments[i])) {
+            return false;
+        }
+    }
+    return true;
 }
 
 /**
@@ -1197,6 +1277,17 @@ class BaseChart {
         return this._params.digits;
     }
     /**
+     * The digit info of the output template, used to format numbers in scales. Please refer to https://angular.io/api/common/DecimalPipe
+     * for its usage.
+     * @property
+     */
+    set percentDigits(d) {
+        this._params.percentDigits = d;
+    }
+    get percentDigits() {
+        return this._params.percentDigits;
+    }
+    /**
      * Corresponds to Chart.ChartConfiguration.options. This overrides any other settings.
      * @property
      */
@@ -1259,7 +1350,7 @@ class BaseChart {
     }
 }
 BaseChart.ɵfac = function BaseChart_Factory(t) { return new (t || BaseChart)(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"])); };
-BaseChart.ɵdir = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"])({ type: BaseChart, inputs: { labels: "labels", type: "type", datasets: "datasets", colors: "colors", colorsFor: "colorsFor", ratio: "ratio", legend: "legend", currency: "currency", digits: "digits", options: "options", timeFormat: "timeFormat", percentage: "percentage" } });
+BaseChart.ɵdir = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"])({ type: BaseChart, inputs: { labels: "labels", type: "type", datasets: "datasets", colors: "colors", colorsFor: "colorsFor", ratio: "ratio", legend: "legend", currency: "currency", digits: "digits", percentDigits: "percentDigits", options: "options", timeFormat: "timeFormat", percentage: "percentage" } });
 (function () { (typeof ngDevMode === "undefined" || ngDevMode) && Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"])(BaseChart, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] }]; }, { labels: [{
@@ -1280,6 +1371,8 @@ BaseChart.ɵdir = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineD
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }], digits: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], percentDigits: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }], options: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }], timeFormat: [{
@@ -1296,7 +1389,7 @@ const MULTI_SERIES_BY_DEFAULT = ['line', 'bar', 'horizontalBar', 'radar'];
 /**
  * @internal
  */
-function getTooltipLabelCallBack(currency, percentage, digitInfo, type) {
+function getTooltipLabelCallBack(currency, percentage, digitInfo, percentDigitInfo, type) {
     return (tooltipItem, data) => {
         const labels = [];
         const ds = data.datasets;
@@ -1324,7 +1417,7 @@ function getTooltipLabelCallBack(currency, percentage, digitInfo, type) {
         if (percentage) {
             const perc = typeof value === 'number' ? value : 0;
             const total = dsData.reduce((p, d) => p + (typeof d === 'number' ? d : d.y), 0);
-            labels.push(`${total ? ((perc * 100) / total).toFixed(2) : 0}%`);
+            labels.push(new _angular_common__WEBPACK_IMPORTED_MODULE_1__["PercentPipe"](moment__WEBPACK_IMPORTED_MODULE_2___default.a.locale()).transform(total ? perc / total : 0, percentDigitInfo || digitInfo || '1.0-2'));
         }
         return labels.join(' : ');
     };
@@ -1567,9 +1660,9 @@ class ChartComponent extends BaseChart {
         }
         const splitLabel = (this.type === 'pie' || this.type === 'doughnut') && ds.length > 1;
         this._config.options.tooltips.callbacks = this._config.options.tooltips.callbacks || {};
-        this._config.options.tooltips.callbacks.label = getTooltipLabelCallBack(this.currency, this.percentage || false, this.digits, splitLabel ? 'label' : 'both');
+        this._config.options.tooltips.callbacks.label = getTooltipLabelCallBack(this.currency, this.percentage || false, this.digits, this.percentDigits, splitLabel ? 'label' : 'both');
         if (splitLabel) {
-            this._config.options.tooltips.callbacks.afterLabel = getTooltipLabelCallBack(this.currency, this.percentage || false, this.digits, 'afterLabel');
+            this._config.options.tooltips.callbacks.afterLabel = getTooltipLabelCallBack(this.currency, this.percentage || false, this.digits, this.percentDigits, 'afterLabel');
         }
         else {
             this._config.options.tooltips.callbacks.afterLabel = () => '';
@@ -1713,7 +1806,7 @@ class EChartComponent extends BaseChart {
                 type: 'shadow',
             },
         };
-        tooltip.formatter = this._formatTooltip.bind(this, this.currency, this.percentage, this.digits);
+        tooltip.formatter = this._formatTooltip.bind(this, this.currency, this.percentage, this.digits, this.percentDigits);
         if (this.currency) {
             valAxis[0].axisLabel = { formatter: (value) => formatScale(value, this.currency) };
         }
@@ -1808,7 +1901,7 @@ class EChartComponent extends BaseChart {
             });
         }
     }
-    _formatTooltip(currencyCode, percent, digitInfo, param) {
+    _formatTooltip(currencyCode, percent, digitInfo, percentDigitInfo, param) {
         const formatParam = (p) => {
             let l = `<div class="ezy-echart-tooltip-item"><span class="ezy-echart-series-indicator" style="background-color: ${p.color}"></span>
 			 ${p.seriesName}: `;
@@ -1824,7 +1917,7 @@ class EChartComponent extends BaseChart {
                 }
             }
             if (showPercent) {
-                l += `<span> ${p.percent}%</span>`;
+                l += `<span> ${new _angular_common__WEBPACK_IMPORTED_MODULE_1__["PercentPipe"](moment__WEBPACK_IMPORTED_MODULE_2___default.a.locale()).transform(p.percent / 100, percentDigitInfo || digitInfo || '1.0-2')}%</span>`;
             }
             l += '</div>';
             return l;
