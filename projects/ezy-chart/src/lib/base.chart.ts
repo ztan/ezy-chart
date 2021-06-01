@@ -26,6 +26,7 @@ export interface ChartParameters {
 	timeFormat?: string;
 	percentage?: ShowPercentageType;
 	digits?: string;
+	percentDigits?: string;
 }
 
 /**
@@ -199,6 +200,20 @@ export abstract class BaseChart implements OnDestroy, DoCheck {
 
 	get digits(): string | undefined {
 		return this._params.digits;
+	}
+
+	/**
+	 * The digit info of the output template, used to format numbers in scales. Please refer to https://angular.io/api/common/DecimalPipe
+	 * for its usage.
+	 * @property
+	 */
+	@Input()
+	set percentDigits(d: string | undefined) {
+		this._params.percentDigits = d;
+	}
+
+	get percentDigits(): string | undefined {
+		return this._params.percentDigits;
 	}
 
 	/**

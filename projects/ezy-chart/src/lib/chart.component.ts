@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { generateColorsBySeries, generateColorsByDataPoints } from './color.helpers';
-import { DecimalPipe } from '@angular/common';
+import { DecimalPipe, PercentPipe } from '@angular/common';
 import { cloneDeep } from './utils';
 import moment from 'moment';
 import { BaseChart, ShowPercentageType, ColorsForType, formatMoney, formatScale } from './base.chart';
@@ -17,6 +17,7 @@ function getTooltipLabelCallBack(
 	currency: string | undefined,
 	percentage: ShowPercentageType,
 	digitInfo: string | undefined,
+	percentDigitInfo: string | undefined,
 	type: 'label' | 'afterLabel' | 'both'
 ): Chart.ChartTooltipCallback['label'] | Chart.ChartTooltipCallback['afterLabel'] {
 	return (tooltipItem, data) => {
@@ -46,7 +47,12 @@ function getTooltipLabelCallBack(
 		if (percentage) {
 			const perc = typeof value === 'number' ? value : 0;
 			const total = (dsData as any[]).reduce((p, d) => p + (typeof d === 'number' ? d : (d.y as number)), 0);
-			labels.push(`${total ? ((perc * 100) / total).toFixed(2) : 0}%`);
+			labels.push(
+				new PercentPipe(moment.locale()).transform(
+					total ? perc / total : 0,
+					percentDigitInfo || digitInfo || '1.0-2'
+				)
+			);
 		}
 		return labels.join(' : ');
 	};
@@ -340,6 +346,7 @@ export class ChartComponent extends BaseChart {
 			this.currency,
 			this.percentage || false,
 			this.digits,
+			this.percentDigits,
 			splitLabel ? 'label' : 'both'
 		);
 		if (splitLabel) {
@@ -347,6 +354,7 @@ export class ChartComponent extends BaseChart {
 				this.currency,
 				this.percentage || false,
 				this.digits,
+				this.percentDigits,
 				'afterLabel'
 			);
 		} else {
