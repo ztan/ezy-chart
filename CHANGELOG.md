@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.1](https://github.com/ztan/ezy-chart/compare/v0.5.1-beta.3...v0.5.1) (2021-06-01)
+
+
+### Features
+
+* add support for percetange digit info ([cb4de60](https://github.com/ztan/ezy-chart/commit/cb4de609ddf90f4cbb7bcb5386c220d8ecc481f6))
+
+
+### Bug Fixes
+
+* fix the issue with unstable object comparison ([161a84b](https://github.com/ztan/ezy-chart/commit/161a84b0599e227e4a00b2adf6d2bd7d30c32c34))
+* fix unstable isEqual implementation ([a020229](https://github.com/ztan/ezy-chart/commit/a02022908d144001c156117a4c86c1cb5e82bcbf))
+
 ### [0.5.1-beta.3](https://github.com/ztan/ezy-chart/compare/v0.5.0-beta.2...v0.5.1-beta.3) (2021-01-27)
 
 ## [0.5.0-beta.2](https://github.com/ztan/ezy-chart/compare/v0.3.1...v0.5.0-beta.2) (2020-02-10)

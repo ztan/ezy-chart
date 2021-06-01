@@ -2,7 +2,7 @@ import { BaseChart, formatScale, formatMoney, ShowPercentageType } from './base.
 
 import { Component, ChangeDetectionStrategy, NgZone, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 import { generateColorsAsStrings } from './color.helpers';
-import { DecimalPipe } from '@angular/common';
+import { DecimalPipe, PercentPipe } from '@angular/common';
 import { cloneDeep } from './utils';
 import moment from 'moment';
 
@@ -117,7 +117,13 @@ export class EChartComponent extends BaseChart {
 				type: 'shadow',
 			},
 		};
-		tooltip.formatter = this._formatTooltip.bind(this, this.currency, this.percentage, this.digits);
+		tooltip.formatter = this._formatTooltip.bind(
+			this,
+			this.currency,
+			this.percentage,
+			this.digits,
+			this.percentDigits
+		);
 		if (this.currency) {
 			valAxis[0].axisLabel = { formatter: (value) => formatScale(value, this.currency) };
 		}
@@ -220,7 +226,13 @@ export class EChartComponent extends BaseChart {
 		}
 	}
 
-	private _formatTooltip(currencyCode: string, percent: ShowPercentageType, digitInfo: string, param: any) {
+	private _formatTooltip(
+		currencyCode: string,
+		percent: ShowPercentageType,
+		digitInfo: string,
+		percentDigitInfo: string,
+		param: any
+	) {
 		const formatParam = (p) => {
 			let l = `<div class="ezy-echart-tooltip-item"><span class="ezy-echart-series-indicator" style="background-color: ${p.color}"></span>
 			 ${p.seriesName}: `;
@@ -237,7 +249,10 @@ export class EChartComponent extends BaseChart {
 			}
 
 			if (showPercent) {
-				l += `<span> ${p.percent}%</span>`;
+				l += `<span> ${new PercentPipe(moment.locale()).transform(
+					p.percent / 100,
+					percentDigitInfo || digitInfo || '1.0-2'
+				)}%</span>`;
 			}
 			l += '</div>';
 			return l;
