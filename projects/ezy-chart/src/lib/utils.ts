@@ -33,10 +33,9 @@ export function cloneDeep(item: any) {
 				} else {
 					// it is an object literal
 					result = {};
+					// tslint:disable-next-line: forin
 					for (const i in item) {
-						if (item[i]) {
-							result[i] = cloneDeep(item[i]);
-						}
+						result[i] = cloneDeep(item[i]);
 					}
 				}
 			} else {
