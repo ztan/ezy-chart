@@ -1,9 +1,8 @@
-import { BaseChart, formatScale, formatMoney, ShowPercentageType } from './base.chart';
+import { BaseChart, ShowPercentageType } from './base.chart';
 
 import { Component, ChangeDetectionStrategy, NgZone, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 import { generateColorsAsStrings } from './color.helpers';
-import { DecimalPipe, PercentPipe } from '@angular/common';
-import { cloneDeep } from './utils';
+import { cloneDeep, formatDecimal, formatMoney, formatPercentage, formatScale } from './utils';
 import moment from 'moment';
 
 @Component({
@@ -122,7 +121,8 @@ export class EChartComponent extends BaseChart {
 			this.currency,
 			this.percentage,
 			this.digits,
-			this.percentDigits
+			this.percentDigits,
+			this.lessThanHint
 		);
 		if (this.currency) {
 			valAxis[0].axisLabel = { formatter: (value) => formatScale(value, this.currency) };
@@ -231,6 +231,7 @@ export class EChartComponent extends BaseChart {
 		percent: ShowPercentageType,
 		digitInfo: string,
 		percentDigitInfo: string,
+		lessThanHint: string,
 		param: any
 	) {
 		const formatParam = (p) => {
@@ -242,16 +243,17 @@ export class EChartComponent extends BaseChart {
 
 			if (!percentOnly) {
 				if (currencyCode) {
-					l += formatMoney(v, currencyCode, digitInfo);
+					l += formatMoney(v, currencyCode, digitInfo, lessThanHint);
 				} else {
-					l += new DecimalPipe(moment.locale()).transform(v, digitInfo);
+					l += formatDecimal(v, digitInfo, lessThanHint);
 				}
 			}
 
 			if (showPercent) {
-				l += `<span> ${new PercentPipe(moment.locale()).transform(
+				l += `<span> ${formatPercentage(
 					p.percent / 100,
-					percentDigitInfo || digitInfo || '1.0-2'
+					percentDigitInfo || digitInfo || '1.0-2',
+					lessThanHint
 				)}%</span>`;
 			}
 			l += '</div>';
