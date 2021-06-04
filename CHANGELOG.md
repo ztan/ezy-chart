@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.2](https://github.com/ztan/ezy-chart/compare/v0.5.1...v0.5.2) (2021-06-04)
+
+
+### Features
+
+* add inaccuracy indicator support ([761d0e6](https://github.com/ztan/ezy-chart/commit/761d0e62ba881875e04578791bfcb09b8b701bbe))
+
 ### [0.5.1](https://github.com/ztan/ezy-chart/compare/v0.5.1-beta.3...v0.5.1) (2021-06-01)
 
 
