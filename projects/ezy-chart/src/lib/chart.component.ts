@@ -1,9 +1,8 @@
 import { Component, ChangeDetectionStrategy, Input, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { generateColorsBySeries, generateColorsByDataPoints } from './color.helpers';
-import { DecimalPipe, PercentPipe } from '@angular/common';
-import { cloneDeep } from './utils';
+import { cloneDeep, formatDecimal, formatMoney, formatPercentage, formatScale } from './utils';
 import moment from 'moment';
-import { BaseChart, ShowPercentageType, ColorsForType, formatMoney, formatScale } from './base.chart';
+import { BaseChart, ShowPercentageType, ColorsForType } from './base.chart';
 
 /**
  * @internal
@@ -18,6 +17,7 @@ function getTooltipLabelCallBack(
 	percentage: ShowPercentageType,
 	digitInfo: string | undefined,
 	percentDigitInfo: string | undefined,
+	lessThanHint: string,
 	type: 'label' | 'afterLabel' | 'both'
 ): Chart.ChartTooltipCallback['label'] | Chart.ChartTooltipCallback['afterLabel'] {
 	return (tooltipItem, data) => {
@@ -36,9 +36,9 @@ function getTooltipLabelCallBack(
 
 		if (percentage !== 'only') {
 			if (currency) {
-				labels.push(formatMoney(value, currency, digitInfo));
+				labels.push(formatMoney(value, currency, digitInfo, lessThanHint));
 			} else if (digitInfo && typeof value === 'number') {
-				labels.push(new DecimalPipe(moment.locale()).transform(value, digitInfo));
+				labels.push(formatDecimal(value, digitInfo, lessThanHint));
 			} else {
 				labels.push(tooltipItem.yLabel || value);
 			}
@@ -48,10 +48,7 @@ function getTooltipLabelCallBack(
 			const perc = typeof value === 'number' ? value : 0;
 			const total = (dsData as any[]).reduce((p, d) => p + (typeof d === 'number' ? d : (d.y as number)), 0);
 			labels.push(
-				new PercentPipe(moment.locale()).transform(
-					total ? perc / total : 0,
-					percentDigitInfo || digitInfo || '1.0-2'
-				)
+				formatPercentage(total ? perc / total : 0, percentDigitInfo || digitInfo || '1.0-2', lessThanHint)
 			);
 		}
 		return labels.join(' : ');
@@ -347,6 +344,7 @@ export class ChartComponent extends BaseChart {
 			this.percentage || false,
 			this.digits,
 			this.percentDigits,
+			this.lessThanHint,
 			splitLabel ? 'label' : 'both'
 		);
 		if (splitLabel) {
@@ -355,6 +353,7 @@ export class ChartComponent extends BaseChart {
 				this.percentage || false,
 				this.digits,
 				this.percentDigits,
+				this.lessThanHint,
 				'afterLabel'
 			);
 		} else {

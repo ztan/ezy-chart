@@ -1,7 +1,5 @@
 import { Input, NgZone, OnDestroy, DoCheck, Directive } from '@angular/core';
 import { Subscription, fromEvent } from 'rxjs';
-import { CurrencyPipe } from '@angular/common';
-import * as moment from 'moment';
 import { cloneDeep, isEqual } from './utils';
 
 export type ColorsForType = 'auto' | 'series' | 'data' | 'none';
@@ -27,36 +25,7 @@ export interface ChartParameters {
 	percentage?: ShowPercentageType;
 	digits?: string;
 	percentDigits?: string;
-}
-
-/**
- * @internal
- */
-export function formatScale(val: any, currency: string) {
-	let n = Number(val);
-	if (n === 0) {
-		return '0';
-	}
-	let base = '';
-	if (n >= 1000) {
-		n = n / 1000;
-		base = 'K';
-	}
-	if (n >= 1000) {
-		n = n / 1000;
-		base = 'M';
-	}
-	return (formatMoney(n, currency, undefined) || '').replace(/\.0+?$/, '') + base;
-}
-
-/**
- * @internal
- */
-export function formatMoney(val: any, currency: string, digitInfo?: string) {
-	if (val && currency) {
-		const pipe = new CurrencyPipe(moment.locale());
-		return pipe.transform(val, currency, 'symbol-narrow', digitInfo);
-	}
+	lessThanHint?: string;
 }
 
 @Directive()
@@ -157,7 +126,7 @@ export abstract class BaseChart implements OnDestroy, DoCheck {
 	}
 
 	/**
-	 * Specifiy how to display the legend
+	 * Specify how to display the legend
 	 *  * if the value is a boolean, it corresponds to Chart.ChartConfiguration.options.legend.display
 	 *  * if the value is 'auto', the legend will be arranged automatically. For example, the legend will be hidden if the chart area is
 	 *    too small
@@ -254,6 +223,24 @@ export abstract class BaseChart implements OnDestroy, DoCheck {
 
 	get percentage(): ShowPercentageType | undefined {
 		return this._params.percentage;
+	}
+
+	/**
+	 * Shows an approximate indicator when the decimal value is less than the minimal value that can be
+	 * accurately represented based on the digits info.
+	 *
+	 * @example 'less than ' => 'less than xx%'
+	 * @example '<' => '<xx%'
+	 *
+	 * @property
+	 */
+	@Input()
+	set lessThanHint(p: string | undefined) {
+		this._params.lessThanHint = p;
+	}
+
+	get lessThanHint(): string | undefined {
+		return this._params.lessThanHint;
 	}
 
 	get paramsChanged(): boolean {

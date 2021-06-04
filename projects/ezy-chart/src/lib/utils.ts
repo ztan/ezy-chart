@@ -1,3 +1,6 @@
+import { CurrencyPipe, DecimalPipe, PercentPipe } from '@angular/common';
+import moment from 'moment';
+
 /**
  * @internal
  */
@@ -173,4 +176,85 @@ export function isEqual(...args: any[]): boolean {
 	}
 
 	return true;
+}
+
+/**
+ * @internal
+ *
+ * @param n number to format
+ * @param digitsInfo digits info
+ * @param lessThanHint inaccuracy indicator
+ * @param formatter the formatter
+ * @returns formatted string
+ */
+function formatNumber(
+	n: number,
+	digitsInfo: string,
+	lessThanHint: string,
+	formatter: (v: number) => string,
+	isPercentPipe?: boolean
+) {
+	if (lessThanHint && digitsInfo) {
+		const accuracy = 1 / Math.pow(10, (isPercentPipe ? 2 : 0) + Number(digitsInfo.match(/\.[0-9]+\-([0-9]+)/)[1]));
+		if (n < accuracy) {
+			return lessThanHint + formatter(accuracy);
+		} else if (isPercentPipe) {
+			const h = formatter(1);
+			const s = formatter(n);
+			if (n < 1 && h === s) {
+				return lessThanHint + h;
+			} else {
+				return s;
+			}
+		}
+	}
+	return formatter(n);
+}
+
+/**
+ * @internal
+ */
+export function formatPercentage(p: number, digitsInfo: string, lessThanHint?: string): string {
+	const pipe = new PercentPipe(moment.locale());
+	return formatNumber(p, digitsInfo, lessThanHint, (n) => pipe.transform(n, digitsInfo), true);
+}
+
+/**
+ * @internal
+ */
+export function formatScale(val: any, currency: string) {
+	let n = Number(val);
+	if (n === 0) {
+		return '0';
+	}
+	let base = '';
+	if (n >= 1000) {
+		n = n / 1000;
+		base = 'K';
+	}
+	if (n >= 1000) {
+		n = n / 1000;
+		base = 'M';
+	}
+	return (formatMoney(n, currency, undefined) || '').replace(/\.0+?$/, '') + base;
+}
+
+/**
+ * @internal
+ */
+export function formatMoney(val: any, currency: string, digitInfo?: string, lessThanHint?: string) {
+	if (val && currency) {
+		const pipe = new CurrencyPipe(moment.locale());
+		return formatNumber(val, digitInfo, lessThanHint, (n) =>
+			pipe.transform(n, currency, 'symbol-narrow', digitInfo)
+		);
+	}
+}
+
+/**
+ * @internal
+ */
+export function formatDecimal(p: number, digitsInfo: string, lessThanHint?: string): string {
+	const pipe = new DecimalPipe(moment.locale());
+	return formatNumber(p, digitsInfo, lessThanHint, (n) => pipe.transform(n, digitsInfo));
 }

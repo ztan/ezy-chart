@@ -556,12 +556,12 @@ describe('ezy-chart component', () => {
 		await fixture.whenStable();
 
 		const label2 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, { datasets: ds });
-		expect(label2).toContain('16.74%');
+		expect(label2).toContain('16.737%');
 
 		const label3 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, {
 			datasets: [{ data: [{ y: 3 }, { y: 4 }, { y: 5 }] }]
 		});
-		expect(label3).toContain('25.00%');
+		expect(label3).toContain('25.000%');
 
 		const label4 = comp['_chart'].config.options.tooltips.callbacks.label(tooltipItem, {
 			datasets: [{ data: [{}, {}, {}] }]
