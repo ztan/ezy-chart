@@ -1717,6 +1717,48 @@
       }
       /**
        * @internal
+       *
+       * @param n number to format
+       * @param digitsInfo digits info
+       * @param lessThanHint inaccuracy indicator
+       * @param formatter the formatter
+       * @returns formatted string
+       */
+
+
+      function formatNumber(n, digitsInfo, lessThanHint, formatter, isPercentPipe) {
+        if (lessThanHint && digitsInfo) {
+          var accuracy = 1 / Math.pow(10, (isPercentPipe ? 2 : 0) + Number(digitsInfo.match(/\.[0-9]+\-([0-9]+)/)[1]));
+
+          if (n < accuracy) {
+            return lessThanHint + formatter(accuracy);
+          } else if (isPercentPipe) {
+            var h = formatter(1);
+            var s = formatter(n);
+
+            if (n < 1 && h === s) {
+              return lessThanHint + h;
+            } else {
+              return s;
+            }
+          }
+        }
+
+        return formatter(n);
+      }
+      /**
+       * @internal
+       */
+
+
+      function formatPercentage(p, digitsInfo, lessThanHint) {
+        var pipe = new _angular_common__WEBPACK_IMPORTED_MODULE_1__["PercentPipe"](moment__WEBPACK_IMPORTED_MODULE_2___default.a.locale());
+        return formatNumber(p, digitsInfo, lessThanHint, function (n) {
+          return pipe.transform(n, digitsInfo);
+        }, true);
+      }
+      /**
+       * @internal
        */
 
 
@@ -1746,11 +1788,24 @@
        */
 
 
-      function formatMoney(val, currency, digitInfo) {
+      function formatMoney(val, currency, digitInfo, lessThanHint) {
         if (val && currency) {
-          var pipe = new _angular_common__WEBPACK_IMPORTED_MODULE_1__["CurrencyPipe"](Object(moment__WEBPACK_IMPORTED_MODULE_2__["locale"])());
-          return pipe.transform(val, currency, 'symbol-narrow', digitInfo);
+          var pipe = new _angular_common__WEBPACK_IMPORTED_MODULE_1__["CurrencyPipe"](moment__WEBPACK_IMPORTED_MODULE_2___default.a.locale());
+          return formatNumber(val, digitInfo, lessThanHint, function (n) {
+            return pipe.transform(n, currency, 'symbol-narrow', digitInfo);
+          });
         }
+      }
+      /**
+       * @internal
+       */
+
+
+      function formatDecimal(p, digitsInfo, lessThanHint) {
+        var pipe = new _angular_common__WEBPACK_IMPORTED_MODULE_1__["DecimalPipe"](moment__WEBPACK_IMPORTED_MODULE_2___default.a.locale());
+        return formatNumber(p, digitsInfo, lessThanHint, function (n) {
+          return pipe.transform(n, digitsInfo);
+        });
       } // tslint:disable-next-line:directive-class-suffix
 
 
@@ -1900,7 +1955,7 @@
             return this._params.ratio;
           }
           /**
-           * Specifiy how to display the legend
+           * Specify how to display the legend
            *  * if the value is a boolean, it corresponds to Chart.ChartConfiguration.options.legend.display
            *  * if the value is 'auto', the legend will be arranged automatically. For example, the legend will be hidden if the chart area is
            *    too small
@@ -1999,6 +2054,24 @@
           get: function get() {
             return this._params.percentage;
           }
+          /**
+           * Shows an approximate indicator when the decimal value is less than the minimal value that can be
+           * accurately represented based on the digits info.
+           *
+           * @example 'less than ' => 'less than xx%'
+           * @example '<' => '<xx%'
+           *
+           * @property
+           */
+
+        }, {
+          key: "lessThanHint",
+          set: function set(p) {
+            this._params.lessThanHint = p;
+          },
+          get: function get() {
+            return this._params.lessThanHint;
+          }
         }, {
           key: "paramsChanged",
           get: function get() {
@@ -2028,7 +2101,8 @@
           percentDigits: "percentDigits",
           options: "options",
           timeFormat: "timeFormat",
-          percentage: "percentage"
+          percentage: "percentage",
+          lessThanHint: "lessThanHint"
         }
       });
 
@@ -2078,6 +2152,9 @@
           }],
           percentage: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+          }],
+          lessThanHint: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
           }]
         });
       })();
@@ -2092,7 +2169,7 @@
        * @internal
        */
 
-      function getTooltipLabelCallBack(currency, percentage, digitInfo, percentDigitInfo, type) {
+      function getTooltipLabelCallBack(currency, percentage, digitInfo, percentDigitInfo, lessThanHint, type) {
         return function (tooltipItem, data) {
           var labels = [];
           var ds = data.datasets;
@@ -2112,9 +2189,9 @@
 
           if (percentage !== 'only') {
             if (currency) {
-              labels.push(formatMoney(value, currency, digitInfo));
+              labels.push(formatMoney(value, currency, digitInfo, lessThanHint));
             } else if (digitInfo && typeof value === 'number') {
-              labels.push(new _angular_common__WEBPACK_IMPORTED_MODULE_1__["DecimalPipe"](moment__WEBPACK_IMPORTED_MODULE_2___default.a.locale()).transform(value, digitInfo));
+              labels.push(formatDecimal(value, digitInfo, lessThanHint));
             } else {
               labels.push(tooltipItem.yLabel || value);
             }
@@ -2125,7 +2202,7 @@
             var total = dsData.reduce(function (p, d) {
               return p + (typeof d === 'number' ? d : d.y);
             }, 0);
-            labels.push(new _angular_common__WEBPACK_IMPORTED_MODULE_1__["PercentPipe"](moment__WEBPACK_IMPORTED_MODULE_2___default.a.locale()).transform(total ? perc / total : 0, percentDigitInfo || digitInfo || '1.0-2'));
+            labels.push(formatPercentage(total ? perc / total : 0, percentDigitInfo || digitInfo || '1.0-2', lessThanHint));
           }
 
           return labels.join(' : ');
@@ -2455,10 +2532,10 @@
 
             var splitLabel = (this.type === 'pie' || this.type === 'doughnut') && ds.length > 1;
             this._config.options.tooltips.callbacks = this._config.options.tooltips.callbacks || {};
-            this._config.options.tooltips.callbacks.label = getTooltipLabelCallBack(this.currency, this.percentage || false, this.digits, this.percentDigits, splitLabel ? 'label' : 'both');
+            this._config.options.tooltips.callbacks.label = getTooltipLabelCallBack(this.currency, this.percentage || false, this.digits, this.percentDigits, this.lessThanHint, splitLabel ? 'label' : 'both');
 
             if (splitLabel) {
-              this._config.options.tooltips.callbacks.afterLabel = getTooltipLabelCallBack(this.currency, this.percentage || false, this.digits, this.percentDigits, 'afterLabel');
+              this._config.options.tooltips.callbacks.afterLabel = getTooltipLabelCallBack(this.currency, this.percentage || false, this.digits, this.percentDigits, this.lessThanHint, 'afterLabel');
             } else {
               this._config.options.tooltips.callbacks.afterLabel = function () {
                 return '';
@@ -2719,7 +2796,7 @@
                 type: 'shadow'
               }
             };
-            tooltip.formatter = this._formatTooltip.bind(this, this.currency, this.percentage, this.digits, this.percentDigits);
+            tooltip.formatter = this._formatTooltip.bind(this, this.currency, this.percentage, this.digits, this.percentDigits, this.lessThanHint);
 
             if (this.currency) {
               valAxis[0].axisLabel = {
@@ -2848,7 +2925,7 @@
           }
         }, {
           key: "_formatTooltip",
-          value: function _formatTooltip(currencyCode, percent, digitInfo, percentDigitInfo, param) {
+          value: function _formatTooltip(currencyCode, percent, digitInfo, percentDigitInfo, lessThanHint, param) {
             var formatParam = function formatParam(p) {
               var l = "<div class=\"ezy-echart-tooltip-item\"><span class=\"ezy-echart-series-indicator\" style=\"background-color: ".concat(p.color, "\"></span>\n\t\t\t ").concat(p.seriesName, ": ");
               var percentOnly = percent === 'only' && p.percent;
@@ -2857,14 +2934,14 @@
 
               if (!percentOnly) {
                 if (currencyCode) {
-                  l += formatMoney(v, currencyCode, digitInfo);
+                  l += formatMoney(v, currencyCode, digitInfo, lessThanHint);
                 } else {
-                  l += new _angular_common__WEBPACK_IMPORTED_MODULE_1__["DecimalPipe"](moment__WEBPACK_IMPORTED_MODULE_2___default.a.locale()).transform(v, digitInfo);
+                  l += formatDecimal(v, digitInfo, lessThanHint);
                 }
               }
 
               if (showPercent) {
-                l += "<span> ".concat(new _angular_common__WEBPACK_IMPORTED_MODULE_1__["PercentPipe"](moment__WEBPACK_IMPORTED_MODULE_2___default.a.locale()).transform(p.percent / 100, percentDigitInfo || digitInfo || '1.0-2'), "%</span>");
+                l += "<span> ".concat(formatPercentage(p.percent / 100, percentDigitInfo || digitInfo || '1.0-2', lessThanHint), "%</span>");
               }
 
               l += '</div>';

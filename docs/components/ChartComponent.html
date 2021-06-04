@@ -150,7 +150,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">projects/ezy-chart/src/lib/chart.component.ts:140</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">projects/ezy-chart/src/lib/chart.component.ts:137</a></div>
                             </td>
                         </tr>
 
@@ -206,7 +206,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">projects/ezy-chart/src/lib/chart.component.ts:132</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">projects/ezy-chart/src/lib/chart.component.ts:129</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -223,10 +223,9 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ChangeDetectionStrategy, Input, ElementRef, ViewChild, NgZone } from &#x27;@angular/core&#x27;;
 import { generateColorsBySeries, generateColorsByDataPoints } from &#x27;./color.helpers&#x27;;
-import { DecimalPipe, PercentPipe } from &#x27;@angular/common&#x27;;
-import { cloneDeep } from &#x27;./utils&#x27;;
+import { cloneDeep, formatDecimal, formatMoney, formatPercentage, formatScale } from &#x27;./utils&#x27;;
 import moment from &#x27;moment&#x27;;
-import { BaseChart, ShowPercentageType, ColorsForType, formatMoney, formatScale } from &#x27;./base.chart&#x27;;
+import { BaseChart, ShowPercentageType, ColorsForType } from &#x27;./base.chart&#x27;;
 
 /**
  * @internal
@@ -241,6 +240,7 @@ function getTooltipLabelCallBack(
 	percentage: ShowPercentageType,
 	digitInfo: string | undefined,
 	percentDigitInfo: string | undefined,
+	lessThanHint: string,
 	type: &#x27;label&#x27; | &#x27;afterLabel&#x27; | &#x27;both&#x27;
 ): Chart.ChartTooltipCallback[&#x27;label&#x27;] | Chart.ChartTooltipCallback[&#x27;afterLabel&#x27;] {
 	return (tooltipItem, data) &#x3D;&gt; {
@@ -259,9 +259,9 @@ function getTooltipLabelCallBack(
 
 		if (percentage !&#x3D;&#x3D; &#x27;only&#x27;) {
 			if (currency) {
-				labels.push(formatMoney(value, currency, digitInfo));
+				labels.push(formatMoney(value, currency, digitInfo, lessThanHint));
 			} else if (digitInfo &amp;&amp; typeof value &#x3D;&#x3D;&#x3D; &#x27;number&#x27;) {
-				labels.push(new DecimalPipe(moment.locale()).transform(value, digitInfo));
+				labels.push(formatDecimal(value, digitInfo, lessThanHint));
 			} else {
 				labels.push(tooltipItem.yLabel || value);
 			}
@@ -271,10 +271,7 @@ function getTooltipLabelCallBack(
 			const perc &#x3D; typeof value &#x3D;&#x3D;&#x3D; &#x27;number&#x27; ? value : 0;
 			const total &#x3D; (dsData as any[]).reduce((p, d) &#x3D;&gt; p + (typeof d &#x3D;&#x3D;&#x3D; &#x27;number&#x27; ? d : (d.y as number)), 0);
 			labels.push(
-				new PercentPipe(moment.locale()).transform(
-					total ? perc / total : 0,
-					percentDigitInfo || digitInfo || &#x27;1.0-2&#x27;
-				)
+				formatPercentage(total ? perc / total : 0, percentDigitInfo || digitInfo || &#x27;1.0-2&#x27;, lessThanHint)
 			);
 		}
 		return labels.join(&#x27; : &#x27;);
@@ -570,6 +567,7 @@ export class ChartComponent extends BaseChart {
 			this.percentage || false,
 			this.digits,
 			this.percentDigits,
+			this.lessThanHint,
 			splitLabel ? &#x27;label&#x27; : &#x27;both&#x27;
 		);
 		if (splitLabel) {
@@ -578,6 +576,7 @@ export class ChartComponent extends BaseChart {
 				this.percentage || false,
 				this.digits,
 				this.percentDigits,
+				this.lessThanHint,
 				&#x27;afterLabel&#x27;
 			);
 		} else {

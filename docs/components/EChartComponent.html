@@ -148,7 +148,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/ezy-chart/src/lib/echart.component.ts:45</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/ezy-chart/src/lib/echart.component.ts:44</a></div>
                             </td>
                         </tr>
 
@@ -196,12 +196,11 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { BaseChart, formatScale, formatMoney, ShowPercentageType } from &#x27;./base.chart&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { BaseChart, ShowPercentageType } from &#x27;./base.chart&#x27;;
 
 import { Component, ChangeDetectionStrategy, NgZone, ViewChild, ElementRef, ViewEncapsulation } from &#x27;@angular/core&#x27;;
 import { generateColorsAsStrings } from &#x27;./color.helpers&#x27;;
-import { DecimalPipe, PercentPipe } from &#x27;@angular/common&#x27;;
-import { cloneDeep } from &#x27;./utils&#x27;;
+import { cloneDeep, formatDecimal, formatMoney, formatPercentage, formatScale } from &#x27;./utils&#x27;;
 import moment from &#x27;moment&#x27;;
 
 @Component({
@@ -320,7 +319,8 @@ export class EChartComponent extends BaseChart {
 			this.currency,
 			this.percentage,
 			this.digits,
-			this.percentDigits
+			this.percentDigits,
+			this.lessThanHint
 		);
 		if (this.currency) {
 			valAxis[0].axisLabel &#x3D; { formatter: (value) &#x3D;&gt; formatScale(value, this.currency) };
@@ -429,6 +429,7 @@ export class EChartComponent extends BaseChart {
 		percent: ShowPercentageType,
 		digitInfo: string,
 		percentDigitInfo: string,
+		lessThanHint: string,
 		param: any
 	) {
 		const formatParam &#x3D; (p) &#x3D;&gt; {
@@ -440,16 +441,17 @@ export class EChartComponent extends BaseChart {
 
 			if (!percentOnly) {
 				if (currencyCode) {
-					l +&#x3D; formatMoney(v, currencyCode, digitInfo);
+					l +&#x3D; formatMoney(v, currencyCode, digitInfo, lessThanHint);
 				} else {
-					l +&#x3D; new DecimalPipe(moment.locale()).transform(v, digitInfo);
+					l +&#x3D; formatDecimal(v, digitInfo, lessThanHint);
 				}
 			}
 
 			if (showPercent) {
-				l +&#x3D; &#x60;&lt;span&gt; ${new PercentPipe(moment.locale()).transform(
+				l +&#x3D; &#x60;&lt;span&gt; ${formatPercentage(
 					p.percent / 100,
-					percentDigitInfo || digitInfo || &#x27;1.0-2&#x27;
+					percentDigitInfo || digitInfo || &#x27;1.0-2&#x27;,
+					lessThanHint
 				)}%&lt;/span&gt;&#x60;;
 			}
 			l +&#x3D; &#x27;&lt;/div&gt;&#x27;;
