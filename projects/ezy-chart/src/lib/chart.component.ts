@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { generateColorsBySeries, generateColorsByDataPoints } from './color.helpers';
-import { cloneDeep, formatDecimal, formatMoney, formatPercentage, formatScale } from './utils';
+import { calculatePercent, cloneDeep, formatDecimal, formatMoney, formatPercentage, formatScale } from './utils';
 import moment from 'moment';
 import { BaseChart, ShowPercentageType, ColorsForType } from './base.chart';
 
@@ -45,11 +45,11 @@ function getTooltipLabelCallBack(
 		}
 
 		if (percentage) {
-			const perc = typeof value === 'number' ? value : 0;
-			const total = (dsData as any[]).reduce((p, d) => p + (typeof d === 'number' ? d : (d.y as number)), 0);
-			labels.push(
-				formatPercentage(total ? perc / total : 0, percentDigitInfo || digitInfo || '1.0-2', lessThanHint)
-			);
+			const splits = (dsData as any[]).map((e) => (typeof e === 'number' ? e : (e.y as number)));
+			const digitsFormat = percentDigitInfo || digitInfo || '1.0-2';
+			const decimalPlaces = Number(digitsFormat.match(/\.[0-9]+\-([0-9]+)/)[1]);
+			let perc = calculatePercent(tooltipItem.index, splits, decimalPlaces);
+			labels.push(formatPercentage(perc.rounded / 100, digitsFormat, lessThanHint, perc.raw));
 		}
 		return labels.join(' : ');
 	};
