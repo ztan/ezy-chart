@@ -1,4 +1,4 @@
-import { formatMoney, formatPercentage } from './utils';
+import { calculatePercent, formatMoney, formatPercentage } from './utils';
 
 describe('utils', () => {
 	it('should format percentage based on digit info', () => {
@@ -21,7 +21,7 @@ describe('utils', () => {
 		expect(formatPercentage(0.003723, '1.0-0', '<')).toEqual('<1%');
 		expect(formatPercentage(0.03723, '1.0-0', '<')).toEqual('4%');
 
-		expect(formatPercentage(0.9999981, '1.0-0', '<')).toEqual('<100%');
+		expect(formatPercentage(0.9999981, '1.0-0', '<')).toEqual('100%');
 	});
 
 	it('should format currency based on digit info', () => {
@@ -42,5 +42,56 @@ describe('utils', () => {
 		expect(formatMoney(0.4243, 'AUD', '1.0-0')).toEqual('$0');
 		expect(formatMoney(0.4243, 'AUD', '1.0-0', '<')).toEqual('<$1');
 		expect(formatMoney(4.243, 'AUD', '1.0-0', '<')).toEqual('$4');
+	});
+
+	it('should round percentages without exceeding 100%', () => {
+		{
+			const splits = [55.5, 44.5];
+			const decimalPlaces = 0;
+			expect(calculatePercent(0, splits, decimalPlaces).rounded).toEqual(55);
+			expect(calculatePercent(1, splits, decimalPlaces).rounded).toEqual(45);
+		}
+		{
+			const splits = [99.6, 0.4];
+			const decimalPlaces = 0;
+			expect(calculatePercent(0, splits, decimalPlaces).rounded).toEqual(99);
+			expect(calculatePercent(1, splits, decimalPlaces).rounded).toEqual(1);
+		}
+		{
+			const splits = [99.5, 0.5];
+			const decimalPlaces = 0;
+			expect(calculatePercent(0, splits, decimalPlaces).rounded).toEqual(99);
+			expect(calculatePercent(1, splits, decimalPlaces).rounded).toEqual(1);
+		}
+		{
+			const splits = [33.3, 33.3, 33.4];
+			const decimalPlaces = 0;
+			expect(calculatePercent(0, splits, decimalPlaces).rounded).toEqual(33);
+			expect(calculatePercent(1, splits, decimalPlaces).rounded).toEqual(33);
+			expect(calculatePercent(2, splits, decimalPlaces).rounded).toEqual(34);
+		}
+		{
+			const splits = [100, 100, 100];
+			const decimalPlaces = 2;
+			debugger;
+			expect(calculatePercent(0, splits, decimalPlaces).rounded).toEqual(33.34);
+			expect(calculatePercent(1, splits, decimalPlaces).rounded).toEqual(33.33);
+			expect(calculatePercent(2, splits, decimalPlaces).rounded).toEqual(33.33);
+		}
+		{
+			const splits = [null, 0, undefined, 100];
+			const decimalPlaces = 2;
+			expect(calculatePercent(0, splits, decimalPlaces).rounded).toEqual(0);
+			expect(calculatePercent(1, splits, decimalPlaces).rounded).toEqual(0);
+			expect(calculatePercent(2, splits, decimalPlaces).rounded).toEqual(0);
+			expect(calculatePercent(3, splits, decimalPlaces).rounded).toEqual(100);
+		}
+		{
+			const splits = [100, 100, 0];
+			const decimalPlaces = 0;
+			expect(calculatePercent(0, splits, decimalPlaces).rounded).toEqual(50);
+			expect(calculatePercent(1, splits, decimalPlaces).rounded).toEqual(50);
+			expect(calculatePercent(2, splits, decimalPlaces).rounded).toEqual(0);
+		}
 	});
 });

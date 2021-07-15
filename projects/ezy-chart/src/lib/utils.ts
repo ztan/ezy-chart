@@ -1,4 +1,5 @@
 import { CurrencyPipe, DecimalPipe, PercentPipe } from '@angular/common';
+import { debugOutputAstAsTypeScript } from '@angular/compiler';
 import moment from 'moment';
 
 /**
@@ -192,20 +193,18 @@ function formatNumber(
 	digitsInfo: string,
 	lessThanHint: string,
 	formatter: (v: number) => string,
-	isPercentPipe?: boolean
+	isPercentPipe?: boolean,
+	unroundedPercent?: number
 ) {
 	if (lessThanHint && digitsInfo) {
-		const accuracy = 1 / Math.pow(10, (isPercentPipe ? 2 : 0) + Number(digitsInfo.match(/\.[0-9]+\-([0-9]+)/)[1]));
+		const decimalPlaces = Number(digitsInfo.match(/\.[0-9]+\-([0-9]+)/)[1]);
+		const minAmountDisplay = 1 / Math.pow(10, decimalPlaces);
+		if (isPercentPipe && unroundedPercent < minAmountDisplay) {
+			return lessThanHint + formatter(n);
+		}
+		const accuracy = 1 / Math.pow(10, (isPercentPipe ? 2 : 0) + decimalPlaces);
 		if (n < accuracy) {
 			return lessThanHint + formatter(accuracy);
-		} else if (isPercentPipe) {
-			const h = formatter(1);
-			const s = formatter(n);
-			if (n < 1 && h === s) {
-				return lessThanHint + h;
-			} else {
-				return s;
-			}
 		}
 	}
 	return formatter(n);
@@ -214,9 +213,14 @@ function formatNumber(
 /**
  * @internal
  */
-export function formatPercentage(p: number, digitsInfo: string, lessThanHint?: string): string {
+export function formatPercentage(
+	p: number,
+	digitsInfo: string,
+	lessThanHint?: string,
+	unroundedPercent?: number
+): string {
 	const pipe = new PercentPipe(moment.locale());
-	return formatNumber(p, digitsInfo, lessThanHint, (n) => pipe.transform(n, digitsInfo), true);
+	return formatNumber(p, digitsInfo, lessThanHint, (n) => pipe.transform(n, digitsInfo), true, unroundedPercent);
 }
 
 /**
@@ -257,4 +261,27 @@ export function formatMoney(val: any, currency: string, digitInfo?: string, less
 export function formatDecimal(p: number, digitsInfo: string, lessThanHint?: string): string {
 	const pipe = new DecimalPipe(moment.locale());
 	return formatNumber(p, digitsInfo, lessThanHint, (n) => pipe.transform(n, digitsInfo));
+}
+
+/**
+ * @internal
+ * Calculate a percentage where all splits must total to 100%.
+ */
+export function calculatePercent(
+	splitIndex: number,
+	splits: number[],
+	decimalPlaces: number
+): { rounded: number; raw: number } {
+	const amount = splits[splitIndex];
+	if (!amount) return { raw: 0, rounded: 0 };
+	const totalAmount = splits.filter(Number).reduce((p, d) => p + d, 0);
+	const calcPerc = (n: number) => (totalAmount ? (n || 0) / totalAmount : 0) * 100;
+	const calcPercRounded = (n: number) =>
+		Math.max(Number(calcPerc(n).toFixed(decimalPlaces)), n > 0 ? 1 / Math.pow(10, decimalPlaces) : 0);
+	let roundingAdjustment = 0;
+	if (splits.indexOf(Math.max(...splits)) === splitIndex) {
+		roundingAdjustment = 100 - splits.reduce((p, d) => p + calcPercRounded(d), 0);
+	}
+
+	return { raw: calcPerc(amount), rounded: calcPercRounded(amount) + roundingAdjustment };
 }

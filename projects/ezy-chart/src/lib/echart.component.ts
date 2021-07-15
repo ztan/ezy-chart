@@ -1,8 +1,7 @@
 import { BaseChart, ShowPercentageType } from './base.chart';
-
 import { Component, ChangeDetectionStrategy, NgZone, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 import { generateColorsAsStrings } from './color.helpers';
-import { cloneDeep, formatDecimal, formatMoney, formatPercentage, formatScale } from './utils';
+import { calculatePercent, cloneDeep, formatDecimal, formatMoney, formatPercentage, formatScale } from './utils';
 import moment from 'moment';
 
 @Component({
@@ -234,7 +233,7 @@ export class EChartComponent extends BaseChart {
 		lessThanHint: string,
 		param: any
 	) {
-		const formatParam = (p) => {
+		const formatParam = (p, datasets) => {
 			let l = `<div class="ezy-echart-tooltip-item"><span class="ezy-echart-series-indicator" style="background-color: ${p.color}"></span>
 			 ${p.seriesName}: `;
 			const percentOnly: boolean = percent === 'only' && p.percent;
@@ -250,11 +249,12 @@ export class EChartComponent extends BaseChart {
 			}
 
 			if (showPercent) {
-				l += `<span> ${formatPercentage(
-					p.percent / 100,
-					percentDigitInfo || digitInfo || '1.0-2',
-					lessThanHint
-				)}%</span>`;
+				const dsData = (datasets[p.seriesIndex] || {}).data;
+				const splits = (dsData as any[]).map((e) => (typeof e === 'number' ? e : (e.y as number)));
+				const digitsFormat = percentDigitInfo || digitInfo || '1.0-2';
+				const decimalPlaces = Number(digitsFormat.match(/\.[0-9]+\-([0-9]+)/)[1]);
+				const perc = calculatePercent(p.dataIndex, splits, decimalPlaces);
+				l += `<span> ${formatPercentage(perc.rounded / 100, digitsFormat, lessThanHint, perc.raw)}</span>`;
 			}
 			l += '</div>';
 			return l;
@@ -263,10 +263,10 @@ export class EChartComponent extends BaseChart {
 		let str = '<div style="max-width: 35vw; white-space:normal">';
 		if (Array.isArray(param)) {
 			str += `<strong>${param[0].name}</strong><br/>`;
-			str += `${param.map((p) => formatParam(p)).join('')}`;
+			str += `${param.map((p) => formatParam(p, this.datasets)).join('')}`;
 		} else {
 			str += `<strong>${param.name}</strong><br/>`;
-			str += `${formatParam(param)}`;
+			str += `${formatParam(param, this.datasets)}`;
 		}
 		return str + '</div>';
 	}
