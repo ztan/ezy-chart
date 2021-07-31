@@ -1,8 +1,16 @@
+import { ChangeDetectionStrategy, Component, ElementRef, NgZone, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+	DatasetComponentOption,
+	ECharts,
+	EChartsOption,
+	init,
+	XAXisComponentOption,
+	YAXisComponentOption,
+} from 'echarts';
+import moment from 'moment';
 import { BaseChart, ShowPercentageType } from './base.chart';
-import { Component, ChangeDetectionStrategy, NgZone, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 import { generateColorsAsStrings } from './color.helpers';
 import { calculatePercent, cloneDeep, formatDecimal, formatMoney, formatPercentage, formatScale } from './utils';
-import moment from 'moment';
 
 @Component({
 	selector: 'ezy-echart',
@@ -31,8 +39,8 @@ export class EChartComponent extends BaseChart {
 	@ViewChild('chartContainer', { read: ElementRef, static: true })
 	private _chartContainer: ElementRef;
 
-	private _chart: echarts.ECharts;
-	private _echartsOptions: echarts.EChartOption = {};
+	private _chart: ECharts;
+	private _echartsOptions: EChartsOption = {};
 
 	private _typeMap = {
 		bar: 'bar',
@@ -87,14 +95,14 @@ export class EChartComponent extends BaseChart {
 	}
 
 	private _createChart() {
-		this._chart = echarts.init(this._chartContainer.nativeElement);
+		this._chart = init(this._chartContainer.nativeElement);
 	}
 
 	private _applyOptions() {
-		const ds = this.datasets || [];
+		const ds: DatasetComponentOption[] = Array.isArray(this.datasets) ? this.datasets : [this.datasets];
 		this._echartsOptions = {};
 		const mainType = this.type || 'bar';
-		const series: any[] = ds.map((v) => ({
+		const series: any[] = ds.map((v: any) => ({
 			name: v.name || typeof v.label === 'string' ? v.label : '',
 			type: this._typeMap[v.type || mainType] || v.type || mainType,
 			data: (v.data || ([] as any[])).map((d) => this._mapDataItem(d, this.timeFormat)),
@@ -106,10 +114,8 @@ export class EChartComponent extends BaseChart {
 				type: 'time',
 			},
 		];
-		const catAxis: Array<echarts.EChartOption.XAxis | echarts.EChartOption.YAxis> = [
-			{ data: labels, type: 'category' },
-		];
-		const valAxis: Array<echarts.EChartOption.XAxis | echarts.EChartOption.YAxis> = [{ type: 'value' }];
+		const catAxis: Array<XAXisComponentOption | YAXisComponentOption> = [{ data: labels, type: 'category' }];
+		const valAxis: Array<XAXisComponentOption | YAXisComponentOption> = [{ type: 'value' }];
 		const tooltip: any = {
 			axisPointer: {
 				type: 'shadow',
@@ -132,12 +138,12 @@ export class EChartComponent extends BaseChart {
 		};
 
 		if (mainType === 'horizontalBar') {
-			this._echartsOptions.yAxis = catAxis as echarts.EChartOption.YAxis[];
-			this._echartsOptions.xAxis = valAxis as echarts.EChartOption.XAxis[];
+			this._echartsOptions.yAxis = catAxis as YAXisComponentOption;
+			this._echartsOptions.xAxis = valAxis as XAXisComponentOption;
 			this._echartsOptions.tooltip['trigger'] = 'axis';
 		} else if (mainType === 'line' || mainType === 'bar') {
-			this._echartsOptions.xAxis = (isTime ? timeAxis : catAxis) as echarts.EChartOption.XAxis[];
-			this._echartsOptions.yAxis = valAxis as echarts.EChartOption.YAxis[];
+			this._echartsOptions.xAxis = (isTime ? timeAxis : catAxis) as XAXisComponentOption;
+			this._echartsOptions.yAxis = valAxis as YAXisComponentOption;
 			this._echartsOptions.tooltip['trigger'] = 'axis';
 		} else if (this._typeMap[mainType] === 'pie') {
 			this._definePieShape(series, labels, mainType === 'doughnut');

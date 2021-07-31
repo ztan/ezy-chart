@@ -1,10 +1,12 @@
-import { Input, NgZone, OnDestroy, DoCheck, Directive } from '@angular/core';
+import { Input, NgZone, OnDestroy, DoCheck, Directive, InjectionToken } from '@angular/core';
 import { Subscription, fromEvent } from 'rxjs';
 import { cloneDeep, isEqual } from './utils';
+import { LegendOptions, LayoutPosition, ChartOptions, ChartDataset } from 'chart.js';
+import { EChartsOption, LegendComponentOption } from 'echarts';
 
 export type ColorsForType = 'auto' | 'series' | 'data' | 'none';
 
-export type LegendType = Chart.ChartLegendOptions | 'auto' | boolean | Chart.PositionType;
+export type LegendType = LegendOptions | 'auto' | boolean | LayoutPosition | LegendComponentOption;
 
 export type ShowPercentageType = boolean | 'only';
 
@@ -14,12 +16,12 @@ export type ShowPercentageType = boolean | 'only';
 export interface ChartParameters {
 	type?: string;
 	labels?: string[];
-	datasets?: Chart.ChartDataSets[];
+	datasets?: ChartDataset[] | EChartsOption['dataset'];
 	colors?: string[];
 	colorsFor?: ColorsForType;
 	ratio?: number;
 	legend?: LegendType;
-	options?: Chart.ChartOptions;
+	options?: ChartOptions | EChartsOption;
 	currency?: string;
 	timeFormat?: string;
 	percentage?: ShowPercentageType;
@@ -27,6 +29,10 @@ export interface ChartParameters {
 	percentDigits?: string;
 	lessThanHint?: string;
 }
+
+export const CHART_DEFAULT_COLORS: InjectionToken<number[][]> = new InjectionToken<number[][]>(
+	'ezy-chart-default-colours'
+);
 
 @Directive()
 // tslint:disable-next-line:directive-class-suffix
@@ -70,11 +76,11 @@ export abstract class BaseChart implements OnDestroy, DoCheck {
 	 * @property
 	 */
 	@Input()
-	set datasets(ds: Chart.ChartDataSets[] | any) {
+	set datasets(ds: ChartDataset[] | EChartsOption['dataset']) {
 		this._params.datasets = ds;
 	}
 
-	get datasets(): Chart.ChartDataSets[] | any {
+	get datasets(): ChartDataset[] | EChartsOption['dataset'] {
 		return this._params.datasets;
 	}
 
@@ -190,11 +196,11 @@ export abstract class BaseChart implements OnDestroy, DoCheck {
 	 * @property
 	 */
 	@Input()
-	set options(opt: Chart.ChartOptions | undefined) {
+	set options(opt: ChartOptions | EChartsOption | undefined) {
 		this._params.options = opt;
 	}
 
-	get options(): Chart.ChartOptions | undefined {
+	get options(): ChartOptions | EChartsOption | undefined {
 		return this._params.options;
 	}
 

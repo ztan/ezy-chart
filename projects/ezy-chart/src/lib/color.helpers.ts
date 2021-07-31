@@ -1,3 +1,5 @@
+import { Chart, Color } from 'chart.js';
+
 /**
  * @internal
  */
@@ -49,14 +51,14 @@ const DEFAULT_COLORS = [
  * @internal
  */
 export interface ColorGroup {
-	backgroundColor?: Chart.ChartColor;
-	borderColor?: Chart.ChartColor;
+	backgroundColor?: Color | Color[];
+	borderColor?: Color | Color[];
 
-	pointBackgroundColor?: Chart.ChartColor;
-	pointBorderColor?: Chart.ChartColor;
-	pointHoverBackgroundColor?: Chart.ChartColor;
-	pointHoverBorderColor?: Chart.ChartColor;
-	hoverBackgroundColor?: Chart.ChartColor;
+	pointBackgroundColor?: Color | Color[];
+	pointBorderColor?: Color | Color[];
+	pointHoverBackgroundColor?: Color | Color[];
+	pointHoverBorderColor?: Color | Color[];
+	hoverBackgroundColor?: Color | Color[];
 }
 
 /**

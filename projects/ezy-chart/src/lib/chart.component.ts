@@ -1,8 +1,28 @@
-import { Component, ChangeDetectionStrategy, Input, ElementRef, ViewChild, NgZone } from '@angular/core';
-import { generateColorsBySeries, generateColorsByDataPoints } from './color.helpers';
-import { calculatePercent, cloneDeep, formatDecimal, formatMoney, formatPercentage, formatScale } from './utils';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, NgZone, ViewChild } from '@angular/core';
+import {
+	CategoryScaleOptions,
+	Chart,
+	ChartConfiguration,
+	ChartDataset,
+	ChartType,
+	LayoutPosition,
+	LegendOptions,
+	ScatterDataPoint,
+	TimeScaleOptions,
+	TooltipCallbacks,
+} from 'chart.js';
 import moment from 'moment';
-import { BaseChart, ShowPercentageType, ColorsForType } from './base.chart';
+import { BaseChart, ColorsForType, ShowPercentageType } from './base.chart';
+import { generateColorsByDataPoints, generateColorsBySeries } from './color.helpers';
+import {
+	calculatePercent,
+	cloneDeep,
+	formatDecimal,
+	formatMoney,
+	formatPercentage,
+	formatScale,
+	getOrDefault,
+} from './utils';
 
 /**
  * @internal
@@ -19,19 +39,18 @@ function getTooltipLabelCallBack(
 	percentDigitInfo: string | undefined,
 	lessThanHint: string,
 	type: 'label' | 'afterLabel' | 'both'
-): Chart.ChartTooltipCallback['label'] | Chart.ChartTooltipCallback['afterLabel'] {
-	return (tooltipItem, data) => {
+): TooltipCallbacks<any>['label'] | TooltipCallbacks<any>['afterLabel'] {
+	return function (this, tooltipItem) {
 		const labels: any[] = [];
-		const ds = data.datasets as Chart.ChartDataSets[];
-		const label = ds.length > 1 ? ds[tooltipItem.datasetIndex || 0].label || '' : '';
+		const label = tooltipItem.dataset?.label || tooltipItem.label;
 		if (label && type === 'both') {
 			labels.push(label);
 		}
 		if (type === 'label') {
 			return label;
 		}
-		const dsData: (number | number[])[] | Chart.ChartPoint[] = ds[tooltipItem.datasetIndex || 0].data || [];
-		const point = dsData[tooltipItem.index || 0];
+		const dsData: (number | ScatterDataPoint)[] = tooltipItem.dataset.data;
+		const point = dsData[tooltipItem.dataIndex || 0];
 		const value = typeof point === 'number' ? point : Array.isArray(point) ? point[0] : point.y;
 
 		if (percentage !== 'only') {
@@ -40,7 +59,7 @@ function getTooltipLabelCallBack(
 			} else if (digitInfo && typeof value === 'number') {
 				labels.push(formatDecimal(value, digitInfo, lessThanHint));
 			} else {
-				labels.push(tooltipItem.yLabel || value);
+				labels.push(tooltipItem.formattedValue || value);
 			}
 		}
 
@@ -48,7 +67,7 @@ function getTooltipLabelCallBack(
 			const splits = (dsData as any[]).map((e) => (typeof e === 'number' ? e : (e.y as number)));
 			const digitsFormat = percentDigitInfo || digitInfo || '1.0-2';
 			const decimalPlaces = Number(digitsFormat.match(/\.[0-9]+\-([0-9]+)/)[1]);
-			let perc = calculatePercent(tooltipItem.index, splits, decimalPlaces);
+			let perc = calculatePercent(tooltipItem.dataIndex, splits, decimalPlaces);
 			labels.push(formatPercentage(perc.rounded / 100, digitsFormat, lessThanHint, perc.raw));
 		}
 		return labels.join(' : ');
@@ -74,49 +93,25 @@ function splitWords(text: string, maxLength: number) {
 /**
  * @internal
  */
-export function getTooltipTitleCallBack(horizontal?: boolean): Chart.ChartTooltipCallback['title'] {
-	return (tooltipItems, data) => {
+export function getTooltipTitleCallBack(): TooltipCallbacks<any>['title'] {
+	return function (this, tooltipItems) {
 		// Pick first xLabel for now
 		let title = '';
-		const labels = data.labels || [];
+		const labels = this.dataPoints.map((dp) => dp.label);
 		const labelCount = labels.length;
 
 		if (tooltipItems.length > 0) {
 			const item = tooltipItems[0];
 
-			if (item.xLabel || (horizontal && item.yLabel)) {
-				title = ((horizontal ? item.yLabel : item.xLabel) as string) || '';
-			} else if ((labelCount > 0 && item.index) || 0 < labelCount) {
-				title = labels[item.index || 0] as string;
+			if (item.label) {
+				title = item.label;
+			} else if ((labelCount > 0 && item.dataIndex) || 0 < labelCount) {
+				title = labels[item.dataIndex || 0] as string;
 			}
 		}
 
 		return splitWords(title, 15);
 	};
-}
-
-declare const Chart: any;
-if (typeof Chart !== 'undefined') {
-	Chart.pluginService.register({
-		afterEvent: (chartInstance: Chart, chartEvent: MouseEvent) => {
-			const legend = (chartInstance as any).legend;
-			const canvas = chartInstance.canvas;
-			const x = chartEvent.x;
-			const y = chartEvent.y;
-			let cursorStyle = 'default';
-			if (x <= legend.right && x >= legend.left && y <= legend.bottom && y >= legend.top) {
-				for (const box of legend.legendHitBoxes) {
-					if (x <= box.left + box.width && x >= box.left && y <= box.top + box.height && y >= box.top) {
-						cursorStyle = 'pointer';
-						break;
-					}
-				}
-			}
-			if (canvas) {
-				canvas.style.cursor = cursorStyle;
-			}
-		},
-	});
 }
 
 @Component({
@@ -128,13 +123,15 @@ export class ChartComponent extends BaseChart {
 	@Input()
 	plugins: any[];
 
-	private _config: Chart.ChartConfiguration = {};
-	private _prevConfig: Chart.ChartConfiguration = {};
+	private _config: ChartConfiguration = {} as ChartConfiguration;
+	private _prevConfig: ChartConfiguration = {} as ChartConfiguration;
 
 	private _chart: Chart;
 
 	@ViewChild('chartContainer', { read: ElementRef, static: true })
 	private _chartContainer: ElementRef;
+
+	private _currencyScaleFormatter = (val) => formatScale(val, this.currency);
 
 	constructor(zone: NgZone) {
 		super(zone);
@@ -183,16 +180,16 @@ export class ChartComponent extends BaseChart {
 				this._chart.destroy();
 			}
 			const cfg = cloneDeep(this._prevConfig);
-			this._applyColors(this.colors || [], this.colorsFor || 'auto', (cfg.data || {}).datasets || []);
+			this._applyColors(this.colors || [], this.colorsFor || 'auto', cfg.data?.datasets || []);
 			this._createNewChart(cfg);
 		} else {
-			this._chart.config.data = cloneDeep(this._config.data || {});
+			this._chart.config.data = cloneDeep(this._config.data || { datasets: [] });
 			this._applyColors(this.colors || [], this.colorsFor || 'auto', this._chart.config.data.datasets || []);
 			this._chart.update();
 		}
 	}
 
-	private _createNewChart(cfg: Chart.ChartConfiguration) {
+	private _createNewChart(cfg: ChartConfiguration) {
 		this._zone.runOutsideAngular(() => {
 			const container: HTMLElement = this._chartContainer.nativeElement;
 			const nodes = container.getElementsByTagName('canvas');
@@ -201,7 +198,8 @@ export class ChartComponent extends BaseChart {
 			}
 			const canvas = document.createElement('canvas');
 			container.appendChild(canvas);
-			(cfg as any).plugins = this.plugins;
+			cfg.plugins = this.plugins;
+			Object.keys(this.plugins || []).forEach((k) => (cfg.plugins[k] = this.plugins[k]));
 			this._chart = new Chart(canvas, cfg);
 		});
 	}
@@ -213,133 +211,106 @@ export class ChartComponent extends BaseChart {
 		const cfg = this._chart.config;
 		const width = this._chart.chartArea.right - this._chart.chartArea.left;
 		const height = this._chart.chartArea.bottom - this._chart.chartArea.top;
-		const legendOpt = (cfg.options || {}).legend || {};
+		const plugins = getOrDefault(cfg.options, 'plugins', {});
+		const legendOpt = getOrDefault(plugins, 'legend', {});
 		if ((this.legend || 'auto') === 'auto') {
 			if ((width < 140 || height < 140) && legendOpt.display) {
-				this._chart.destroy();
 				legendOpt.display = false;
-				this._createNewChart(cfg);
-			} else if (
-				width > 150 &&
-				height > 150 &&
-				!legendOpt.display &&
-				this._config.options.legend &&
-				this._config.options.legend.display
-			) {
-				this._refresh(true);
+				this._chart.update('resize');
+			} else if (width > 150 && height > 150 && !legendOpt.display) {
+				this._applyLegend(legendOpt);
+				this._chart.update('resize');
 			}
+		}
+	}
+
+	private _applyLegend(legend: any) {
+		const ds: ChartDataset[] = (this.datasets as any) || [];
+		const multiType: boolean = MULTI_SERIES_BY_DEFAULT.indexOf(this.type || 'bar') >= 0;
+		if (!ds.some((d) => (d.label ? true : false))) {
+			if (multiType) {
+				legend.display = false;
+			}
+		}
+		const legendType = this.legend === false ? false : this.legend || 'auto';
+		if (typeof legendType === 'string' && ['top', 'right', 'bottom', 'left'].indexOf(legendType) >= 0) {
+			legend.position = legendType as LayoutPosition;
+		} else if (typeof legendType === 'boolean') {
+			legend.display = legendType;
+		} else if (typeof legendType === 'object') {
+			const l = cloneDeep(legendType) as LegendOptions;
+			Object.keys(legend).forEach((k) => (legend[k] = l[k]));
+		} else if (legendType === 'auto') {
+			const multiPoints: boolean = ds.every((d) => (d.data || []).length > 1);
+			legend.display = (multiType && ds.length > 1) || (multiPoints && !multiType);
+			legend.position = multiType && this.type !== 'radar' ? 'top' : 'right';
 		}
 	}
 
 	private _applyConfig() {
 		const multiType: boolean = MULTI_SERIES_BY_DEFAULT.indexOf(this.type || 'bar') >= 0;
 
-		this._config.type = this.type || 'bar';
-		this._config.options = this._config.options || {};
-		this._config.options.legend = this._config.options.legend || {};
-		this._config.data = this._config.data || {};
-		const ds: Chart.ChartDataSets[] = (this._config.data.datasets = cloneDeep(this.datasets || []));
+		this._config.type = (this.type || 'bar') as ChartType;
+		const options = getOrDefault(this._config, 'options', {});
+		const plugins = getOrDefault(options, 'plugins', {});
+		const legend = getOrDefault(plugins, 'legend', {});
+		const data = getOrDefault(this._config, 'data', { datasets: [] });
+		const ds: ChartDataset[] = (data.datasets = cloneDeep(this.datasets || []) as any);
+		if (this.type === 'horizontalBar') {
+			this._config.type = 'bar';
+			options.indexAxis = 'y';
+		} else {
+			options.indexAxis = 'x';
+		}
 
-		if (!ds.some((d) => (d.label ? true : false))) {
-			if (multiType) {
-				this._config.options.legend.display = false;
+		data.labels = cloneDeep(this.labels || []);
+
+		options.aspectRatio = this.ratio || 2;
+		this._applyLegend(legend);
+
+		const scales = getOrDefault(options, 'scales', {});
+		const isNumericScale = ds.every((d) =>
+			this._isYAxisAllNumbers(Array.isArray(d.data) ? d.data : typeof d.data === 'number' ? [d.data] : [])
+		);
+
+		const tooltip = getOrDefault(plugins, 'tooltip', {});
+
+		if (this.type === 'line' || this.type === 'bar' || this.type === 'horizontalBar') {
+			const x = getOrDefault(scales, 'x', {}) as CategoryScaleOptions;
+			const xTicks = getOrDefault(x, 'ticks', {} as CategoryScaleOptions['ticks']);
+			const y = getOrDefault(scales, 'y', {}) as CategoryScaleOptions;
+			const yTicks = getOrDefault(y, 'ticks', {} as CategoryScaleOptions['ticks']);
+			const ticks = this.type === 'horizontalBar' ? xTicks : yTicks;
+			if (this.currency && multiType && isNumericScale) {
+				ticks.callback = this._currencyScaleFormatter;
+			} else {
+				delete ticks.callback;
 			}
-		}
-		const labels = (this._config.data.labels = cloneDeep(this.labels || []));
 
-		((this._config.options || {}) as any).aspectRatio = this.ratio || 2;
-
-		const legend = this.legend === false ? false : this.legend || 'auto';
-		if (typeof legend === 'string' && ['top', 'right', 'bottom', 'left'].indexOf(legend) >= 0) {
-			this._config.options.legend.position = legend as Chart.PositionType;
-		} else if (typeof legend === 'boolean') {
-			this._config.options.legend.display = legend;
-		} else if (typeof legend === 'object') {
-			this._config.options.legend = cloneDeep(legend) as Chart.ChartLegendOptions;
-		} else if (legend === 'auto') {
-			const multiPoints: boolean = ds.every((d) => (d.data || []).length > 1);
-			this._config.options.legend.display = (multiType && ds.length > 1) || (multiPoints && !multiType);
-			this._config.options.legend.position = multiType && this.type !== 'radar' ? 'top' : 'right';
-		}
-
-		this._config.options.scales = {};
-		if (this.currency) {
-			const curr = this.currency;
-			if (multiType) {
-				const axes: Chart.CommonAxe = {
-					ticks: { callback: (val) => formatScale(val, curr) },
-				};
-				if (
-					ds.every((d) =>
-						this._isYAxisAllNumbers(
-							Array.isArray(d.data) ? d.data : typeof d.data === 'number' ? [d.data] : []
-						)
-					)
-				) {
-					if (this.type !== 'horizontalBar') {
-						this._config.options.scales.yAxes = [axes];
-					} else {
-						this._config.options.scales.xAxes = [axes];
-					}
-				}
-			}
-		}
-
-		let timeScaleConfigured = false;
-
-		this._config.options.tooltips = this._config.options.tooltips || {};
-
-		if (this.type === 'line') {
 			const isTimeScale = ds.every((d) =>
-				((d.data as Chart.ChartPoint[]) || []).every((item) => (item.x ? moment(item.x).isValid() : false))
+				((d.data as ScatterDataPoint[]) || []).every((item) => (item.x ? moment(item.x).isValid() : false))
 			);
 			if (isTimeScale) {
-				this._config.options.scales = this._config.options.scales || {};
-				let minTime: moment.Moment;
-				ds.reduce((p, c) => [...p, ...(c.data as Chart.ChartPoint[])], [])
-					.map((p) => moment(p.x))
-					.forEach((m) => {
-						if (!minTime || minTime.isAfter(m)) {
-							minTime = m;
-						}
-					});
-				ds.every((d) =>
-					((d.data as Chart.ChartPoint[]) || []).every((item) => (item.x ? moment(item.x).isValid() : false))
-				);
-				this._config.options.scales.xAxes = [
-					{
-						type: 'time',
-						time: {
-							tooltipFormat: this.timeFormat || 'L',
-							min: minTime ? minTime.toISOString() : undefined,
-						},
-					},
-				];
-				timeScaleConfigured = true;
+				const timeScale = getOrDefault(scales, 'x', {}) as any;
+				timeScale.type = 'time';
+				const time = getOrDefault(timeScale, 'time', {} as TimeScaleOptions['time']);
+				time.tooltipFormat = this.timeFormat || 'L';
 			}
-			this._config.options.tooltips.mode = 'index';
-			this._config.options.tooltips.intersect = false;
+			tooltip.mode = 'index';
+			tooltip.intersect = false;
 		} else {
-			this._config.options.tooltips.mode = 'nearest';
-			this._config.options.tooltips.intersect = true;
+			tooltip.mode = 'nearest';
+			tooltip.intersect = true;
+			delete options.scales;
 		}
 
-		if (ds.length === 0 || (ds[0].data || []).length === 0) {
-		} else if ((ds[0].data || []).length > labels.length && !timeScaleConfigured) {
-			console.warn('ezy-chart: wrong number of labels. ');
-		}
-
-		if (!this._config.options.scales || Object.keys(this._config.options.scales).length === 0) {
-			const opt: any = {};
-			Object.keys(this._config.options || {})
-				.filter((k) => k !== 'scales')
-				.forEach((k) => (opt[k] = this._config.options[k]));
-			this._config.options = opt;
+		if (Object.keys(scales).length === 0) {
+			delete options.scales;
 		}
 
 		const splitLabel: boolean = (this.type === 'pie' || this.type === 'doughnut') && ds.length > 1;
-		this._config.options.tooltips.callbacks = this._config.options.tooltips.callbacks || {};
-		this._config.options.tooltips.callbacks.label = getTooltipLabelCallBack(
+		const callbacks = getOrDefault(tooltip, 'callbacks', {});
+		callbacks.label = getTooltipLabelCallBack(
 			this.currency,
 			this.percentage || false,
 			this.digits,
@@ -348,7 +319,7 @@ export class ChartComponent extends BaseChart {
 			splitLabel ? 'label' : 'both'
 		);
 		if (splitLabel) {
-			this._config.options.tooltips.callbacks.afterLabel = getTooltipLabelCallBack(
+			callbacks.afterLabel = getTooltipLabelCallBack(
 				this.currency,
 				this.percentage || false,
 				this.digits,
@@ -357,24 +328,24 @@ export class ChartComponent extends BaseChart {
 				'afterLabel'
 			);
 		} else {
-			this._config.options.tooltips.callbacks.afterLabel = () => '';
+			callbacks.afterLabel = () => '';
 		}
-		this._config.options.tooltips.callbacks.title = getTooltipTitleCallBack(this.type === 'horizontalBar');
+		callbacks.title = getTooltipTitleCallBack();
 
 		if (this.options) {
 			Object.keys(this.options).forEach((k) => {
 				if (this.options[k] || this.options[k] === 0) {
-					this._config.options[k] = this.options[k];
+					options[k] = this.options[k];
 				}
 			});
 		}
 	}
 
-	private _isYAxisAllNumbers(data: Array<Chart.ChartPoint | number | number[]>): boolean {
+	private _isYAxisAllNumbers(data: Array<ScatterDataPoint | number | number[]>): boolean {
 		return data.every((d) => !d || typeof d === 'number' || (!Array.isArray(d) && typeof d.y === 'number'));
 	}
 
-	private _applyColors(colors: string[], colorsFor: ColorsForType, datasets: Chart.ChartDataSets[]) {
+	private _applyColors(colors: string[], colorsFor: ColorsForType, datasets: ChartConfiguration['data']['datasets']) {
 		if (colorsFor === 'auto') {
 			if (MULTI_SERIES_BY_DEFAULT.indexOf(this.type || 'bar') >= 0) {
 				colorsFor = 'series';

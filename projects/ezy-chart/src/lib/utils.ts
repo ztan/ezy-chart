@@ -5,7 +5,8 @@ import moment from 'moment';
 /**
  * @internal
  */
-export function cloneDeep(item: any) {
+export function cloneDeep<T>(source: T): T {
+	const item: any = source;
 	if (!item) {
 		return item;
 	} // null, undefined values check
@@ -284,4 +285,13 @@ export function calculatePercent(
 	}
 
 	return { raw: calcPerc(amount), rounded: calcPercRounded(amount) + roundingAdjustment };
+}
+
+/**
+ * @internal
+ */
+export function getOrDefault<T, K extends keyof T>(obj: T, prop: K, defaultValue: T[K]): T[K] {
+	const v = obj[prop] || defaultValue;
+	obj[prop] = v;
+	return v;
 }
