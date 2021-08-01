@@ -7,10 +7,18 @@ import {
 	XAXisComponentOption,
 	YAXisComponentOption,
 } from 'echarts';
+import {
+	BaseChart,
+	calculatePercent,
+	cloneDeep,
+	formatDecimal,
+	formatMoney,
+	formatPercentage,
+	formatScale,
+	generateColorsAsStrings,
+	ShowPercentageType,
+} from 'ezy-chart';
 import moment from 'moment';
-import { BaseChart, ShowPercentageType } from './base.chart';
-import { generateColorsAsStrings } from './color.helpers';
-import { calculatePercent, cloneDeep, formatDecimal, formatMoney, formatPercentage, formatScale } from './utils';
 
 @Component({
 	selector: 'ezy-echart',

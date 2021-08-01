@@ -2,5 +2,6 @@
  * Public API Surface of ezy-chart
  */
 
-export * from './lib/charts.module';
-export * from './lib/echarts.module';
+export * from './lib/utils';
+export * from './lib/base.chart';
+export * from './lib/color.helpers';

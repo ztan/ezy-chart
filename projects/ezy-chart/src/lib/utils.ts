@@ -1,5 +1,4 @@
 import { CurrencyPipe, DecimalPipe, PercentPipe } from '@angular/common';
-import { debugOutputAstAsTypeScript } from '@angular/compiler';
 import moment from 'moment';
 
 /**

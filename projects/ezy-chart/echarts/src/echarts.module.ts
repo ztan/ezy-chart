@@ -1,15 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Inject, NgModule, Optional } from '@angular/core';
-import { CHART_DEFAULT_COLORS } from './base.chart';
-import { ChartComponent } from './chart.component';
-import { replaceDefaultColors } from './color.helpers';
+import { CHART_DEFAULT_COLORS, replaceDefaultColors } from 'ezy-chart';
+import { EChartComponent } from './echart.component';
 
 @NgModule({
-	declarations: [ChartComponent],
+	declarations: [EChartComponent],
 	imports: [CommonModule],
-	exports: [ChartComponent],
+	exports: [EChartComponent],
 })
-export class ChartsModule {
+export class EChartsModule {
 	constructor(
 		@Optional()
 		@Inject(CHART_DEFAULT_COLORS)
@@ -21,5 +20,4 @@ export class ChartsModule {
 	}
 }
 
-export { ChartComponent };
-
+export { EChartComponent };

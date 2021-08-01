@@ -11,18 +11,21 @@ import {
 	TimeScaleOptions,
 	TooltipCallbacks,
 } from 'chart.js';
-import moment from 'moment';
-import { BaseChart, ColorsForType, ShowPercentageType } from './base.chart';
-import { generateColorsByDataPoints, generateColorsBySeries } from './color.helpers';
 import {
+	BaseChart,
 	calculatePercent,
 	cloneDeep,
+	ColorsForType,
 	formatDecimal,
 	formatMoney,
 	formatPercentage,
 	formatScale,
+	generateColorsByDataPoints,
+	generateColorsBySeries,
 	getOrDefault,
-} from './utils';
+	ShowPercentageType,
+} from 'ezy-chart';
+import moment from 'moment';
 
 /**
  * @internal
