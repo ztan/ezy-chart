@@ -1,6 +1,6 @@
 {
 	"name": "ezy-chart",
-	"version": "0.5.3",
+	"version": "0.6.0-beta.1",
 	"description": "Angular components based on Chart.js and ECharts",
 	"repository": {
 		"type": "git",
@@ -20,8 +20,8 @@
     "tslib": "^2.0.0"
   },
 	"peerDependencies": {
-		"@angular/common": ">=11.0.0",
-		"@angular/core": ">=11.0.0",
+		"@angular/common": ">=12.0.0",
+		"@angular/core": ">=12.0.0",
 		"chart.js": ">=3.4.0 <4.0.0",
 		"echarts": ">=4.0.0 <6.0.0",
 		"moment": ">=2.18.0 <3.0.0"
