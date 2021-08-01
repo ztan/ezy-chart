@@ -241,7 +241,7 @@ export class ChartComponent extends BaseChart {
 		} else if (typeof legendType === 'boolean') {
 			legend.display = legendType;
 		} else if (typeof legendType === 'object') {
-			const l = cloneDeep(legendType) as LegendOptions;
+			const l = cloneDeep(legendType) as LegendOptions<any>;
 			Object.keys(legend).forEach((k) => (legend[k] = l[k]));
 		} else if (legendType === 'auto') {
 			const multiPoints: boolean = ds.every((d) => (d.data || []).length > 1);

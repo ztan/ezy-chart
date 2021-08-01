@@ -6,7 +6,7 @@ import { EChartsOption, LegendComponentOption } from 'echarts';
 
 export type ColorsForType = 'auto' | 'series' | 'data' | 'none';
 
-export type LegendType = LegendOptions | 'auto' | boolean | LayoutPosition | LegendComponentOption;
+export type LegendType = LegendOptions<any> | 'auto' | boolean | LayoutPosition | LegendComponentOption;
 
 export type ShowPercentageType = boolean | 'only';
 
