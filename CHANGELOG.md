@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0-beta.1](https://github.com/ztan/ezy-chart/compare/v0.5.3...v0.6.0-beta.1) (2021-08-01)
+
+
+### Features
+
+* upgrade chartjs ([3e3cbd7](https://github.com/ztan/ezy-chart/commit/3e3cbd7966a2da45c6ff1b928f649f47afc612f1))
+
 ### [0.5.3](https://github.com/ztan/ezy-chart/compare/v0.5.2...v0.5.3) (2021-07-15)
 
 
