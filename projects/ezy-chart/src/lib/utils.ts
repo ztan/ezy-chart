@@ -265,23 +265,63 @@ export function formatDecimal(p: number, digitsInfo: string, lessThanHint?: stri
 
 /**
  * @internal
+ */
+function round(n: number, precision: number) {
+	precision = precision == null ? 0 : precision >= 0 ? Math.min(precision, 292) : Math.max(precision, -292);
+	if (precision) {
+		// Shift with exponential notation to avoid floating-point issues.
+		// See [MDN](https://mdn.io/round#Examples) for more details.
+		let pair = `${n}e`.split('e');
+		const value = Math.round(Number(`${pair[0]}e${+pair[1] + precision}`));
+
+		pair = `${value}e`.split('e');
+		return +`${pair[0]}e${+pair[1] - precision}`;
+	}
+	return Math.round(n);
+}
+
+/**
+ * @internal
  * Calculate a percentage where all splits must total to 100%.
  */
 export function calculatePercent(
 	splitIndex: number,
 	splits: number[],
-	decimalPlaces: number
+	precision: number
 ): { rounded: number; raw: number } {
 	const amount = splits[splitIndex];
-	if (!amount) return { raw: 0, rounded: 0 };
-	const totalAmount = splits.filter(Number).reduce((p, d) => p + d, 0);
-	const calcPerc = (n: number) => (totalAmount ? (n || 0) / totalAmount : 0) * 100;
-	const calcPercRounded = (n: number) =>
-		Math.max(Number(calcPerc(n).toFixed(decimalPlaces)), n > 0 ? 1 / Math.pow(10, decimalPlaces) : 0);
-	let roundingAdjustment = 0;
-	if (splits.indexOf(Math.max(...splits)) === splitIndex) {
-		roundingAdjustment = 100 - splits.reduce((p, d) => p + calcPercRounded(d), 0);
+	if (!amount) {
+		return { raw: 0, rounded: 0 };
 	}
+	const totalAmount = splits.filter(Number).reduce((p, d) => p + d, 0);
+	if (!totalAmount) {
+		return { raw: 0, rounded: 0 };
+	}
+	const values = splits.map((n) => (n * 100) / totalAmount);
+	const accuracy = 1 / Math.pow(10, precision);
+	let largest = 0;
+	let sum = 0;
+	const adjusted = values.map((n, i) => {
+		if (values[largest] < n) {
+			largest = i;
+		}
+		let r = round(n, precision);
+		if (n > 0 && r < accuracy) {
+			r = accuracy;
+			sum += n || 0;
+		} else {
+			sum += r || 0;
+		}
+		return r;
+	});
 
-	return { raw: calcPerc(amount), rounded: calcPercRounded(amount) + roundingAdjustment };
+	const raw = values[splitIndex];
+	let rounded = adjusted[splitIndex];
+
+	if (splitIndex === largest) {
+		if (sum !== 100) {
+			rounded = round(values[splitIndex] - sum + 100, precision);
+		}
+	}
+	return { raw, rounded };
 }
