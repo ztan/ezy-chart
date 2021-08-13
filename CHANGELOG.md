@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.4](https://github.com/ztan/ezy-chart/compare/v0.5.3...v0.5.4) (2021-08-13)
+
+
+### Bug Fixes
+
+* fix an issue with rounding of small values ([e0923ca](https://github.com/ztan/ezy-chart/commit/e0923ca4ca26df28527a02e8e352d810d47bc60b))
+
 ### [0.5.3](https://github.com/ztan/ezy-chart/compare/v0.5.2...v0.5.3) (2021-07-15)
 
 
