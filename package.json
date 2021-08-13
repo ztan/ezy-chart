@@ -1,6 +1,6 @@
 {
   "name": "ezy-chart",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve ezy-chart-app",
