@@ -21,7 +21,7 @@ describe('utils', () => {
 		expect(formatPercentage(0.003723, '1.0-0', '<')).toEqual('<1%');
 		expect(formatPercentage(0.03723, '1.0-0', '<')).toEqual('4%');
 
-		expect(formatPercentage(0.9999981, '1.0-0', '<')).toEqual('100%');
+		expect(formatPercentage(0.9999981, '1.0-0', '<')).toEqual('99%');
 	});
 
 	it('should format currency based on digit info', () => {

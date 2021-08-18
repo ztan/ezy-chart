@@ -206,6 +206,9 @@ function formatNumber(
 		if (n < accuracy) {
 			return lessThanHint + formatter(accuracy);
 		}
+		if (isPercentPipe && n > 1 - accuracy && n < 1) {
+			return formatter(1 - accuracy);
+		}
 	}
 	return formatter(n);
 }
