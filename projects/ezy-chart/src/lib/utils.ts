@@ -206,7 +206,8 @@ function formatNumber(
 		if (n < accuracy) {
 			return lessThanHint + formatter(accuracy);
 		}
-		if (isPercentPipe && n > 1 - accuracy && n < 1) {
+		const v = unroundedPercent ? unroundedPercent / 100 : n;
+		if (isPercentPipe && v > 1 - accuracy && v < 1) {
 			return formatter(1 - accuracy);
 		}
 	}
