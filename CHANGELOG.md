@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.6](https://github.com/ztan/ezy-chart/compare/v0.5.5...v0.5.6) (2021-08-18)
+
+
+### Bug Fixes
+
+* use raw percentage value for rounding ceiling calculation ([22515b5](https://github.com/ztan/ezy-chart/commit/22515b532182a21092f584ea73fd0b7ff978cbcc))
+
 ### [0.5.5](https://github.com/ztan/ezy-chart/compare/v0.5.4...v0.5.5) (2021-08-18)
 
 
